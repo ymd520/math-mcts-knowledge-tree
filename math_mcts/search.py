@@ -24,15 +24,22 @@ class LearningPathProblem(Problem):
         self.target = target
         self.max_steps = max_steps
         self.known = tuple(k for k in known if k in tree.by_id)
+        # 规模优化: 预计算前置集合; MCTS 会反复访问相同状态, 缓存动作列表
+        self._pre = [(c.id, frozenset(c.prereq))
+                     for c in tree.concepts]
+        self._act_cache: dict[tuple, list] = {}
 
     def initial_state(self):
         return self.known
 
     def actions(self, state) -> list:
-        learned = set(state)
-        cands = [c.id for c in self.tree.concepts
-                 if c.id not in learned and set(c.prereq) <= learned]
-        return sorted(cands)  # 排序保证可复现
+        if state in self._act_cache:
+            return self._act_cache[state]
+        learned = frozenset(state)
+        cands = sorted(cid for cid, pre in self._pre
+                       if cid not in learned and pre <= learned)
+        self._act_cache[state] = cands
+        return cands
 
     def step(self, state, action):
         return state + (action,)
@@ -129,19 +136,26 @@ class ConceptSearchProblem(Problem):
         self.query = query
         self.qtok = Counter(_tokenize(query))
         self.qtotal = sum(self.qtok.values()) or 1
+        # 规模优化: 查询确定后叶节点奖励是静态的, 预计算一次;
+        # 再自底向上算出每个层级节点的子树最大奖励, simulate 变 O(1).
+        self._leaf_reward: dict[str, float] = {}
+        for c in tree.concepts:
+            self._leaf_reward[c.id] = self._score_concept(c)
+        self._submax: dict[tuple, float] = {}
+        self._build_submax(())
+
+    def _build_submax(self, node: tuple) -> float:
+        if self.tree.is_concept_leaf(node):
+            v = self._leaf_reward[node[1]]
+        else:
+            kids = self.tree.hierarchy_children(node)
+            v = max((self._build_submax(ch) for ch in kids),
+                    default=0.0)
+        self._submax[node] = v
+        return v
 
     def simulate(self, state, rng, max_depth: int) -> float:
-        best = 0.0
-        stack = [state]
-        while stack:
-            s = stack.pop()
-            if self.tree.is_concept_leaf(s):
-                r = self.reward(s)
-                if r > best:
-                    best = r
-            else:
-                stack.extend(self.tree.hierarchy_children(s))
-        return best
+        return self._submax.get(state, 0.0)
 
     def initial_state(self):
         return ()
@@ -155,10 +169,7 @@ class ConceptSearchProblem(Problem):
     def terminal(self, state) -> bool:
         return self.tree.is_concept_leaf(state)
 
-    def reward(self, state) -> float:
-        if not self.tree.is_concept_leaf(state):
-            return 0.0
-        c = self.tree.leaf_concept(state)
+    def _score_concept(self, c) -> float:
         ctok = Counter(_tokenize(c.text_blob()))
         overlap = sum(min(self.qtok[t], ctok.get(t, 0)) for t in self.qtok)
         score = overlap / self.qtotal
@@ -174,6 +185,11 @@ class ConceptSearchProblem(Problem):
         if "核心" in c.tags:
             score += 0.15
         return score
+
+    def reward(self, state) -> float:
+        if not self.tree.is_concept_leaf(state):
+            return 0.0
+        return self._leaf_reward[state[1]]
 
 
 def collision_score(tree: KnowledgeTree, a: str, b: str) -> float:
@@ -207,9 +223,23 @@ class CollisionProblem(Problem):
 
     value_op = "max"
 
+    # 规模优化: 第二层候选上限. 概念数上千后全量配对是 O(N²),
+    # 按"跨领域 + 标签优先级"截断, 既保证质量又保证速度.
+    CAND_CAP = 600
+
     def __init__(self, tree: KnowledgeTree, seed: str | None = None):
         self.tree = tree
         self.seed = tree.find(seed).id if seed else None
+        self._cands: dict[str, list[str]] = {}
+        self._best_cache: dict[str, float] = {}
+        for c in tree.concepts:
+            pool = [o for o in tree.concepts
+                    if o.id != c.id and o.domain_cn != c.domain_cn]
+            # 核心优先, 其次重要, 最后按 id 稳定排序
+            rank = {"核心": 0, "重要": 1}
+            pool.sort(key=lambda o: (rank.get(o.tags[0] if o.tags else "",
+                                              2), o.id))
+            self._cands[c.id] = [o.id for o in pool[:self.CAND_CAP]]
 
     def initial_state(self):
         return ()
@@ -220,10 +250,7 @@ class CollisionProblem(Problem):
                 return [self.seed]
             return sorted(c.id for c in self.tree.concepts)
         if len(state) == 1:
-            first = self.tree.get(state[0])
-            return sorted(c.id for c in self.tree.concepts
-                          if c.id != state[0]
-                          and c.domain_cn != first.domain_cn)
+            return self._cands[state[0]]
         return []
 
     def step(self, state, action):
@@ -237,18 +264,24 @@ class CollisionProblem(Problem):
             return 0.0
         return collision_score(self.tree, state[0], state[1])
 
+    def _best_partner(self, cid: str) -> float:
+        if cid not in self._best_cache:
+            self._best_cache[cid] = max(
+                (collision_score(self.tree, cid, o)
+                 for o in self._cands[cid]),
+                default=0.0)
+        return self._best_cache[cid]
+
     def simulate(self, state, rng, max_depth: int) -> float:
-        best = 0.0
-        stack = [state]
-        while stack:
-            s = stack.pop()
-            if self.terminal(s):
-                r = self.reward(s)
-                if r > best:
-                    best = r
-            else:
-                stack.extend(self.step(s, a) for a in self.actions(s))
-        return best
+        if len(state) == 0:
+            if self.seed:
+                return self._best_partner(self.seed)
+            # 全局: 懒计算各概念最优搭档的最大值
+            return max((self._best_partner(c.id)
+                        for c in self.tree.concepts), default=0.0)
+        if len(state) == 1:
+            return self._best_partner(state[0])
+        return self.reward(state)
 
 
 def collide_concepts(tree: KnowledgeTree, seed: str | None = None,
