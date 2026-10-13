@@ -2,7 +2,7 @@
   "meta": {
     "name": "全领域数学基础与重要知识 MCTS 搜索树",
     "name_en": "Math Knowledge MCTS Search Tree",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "structure": "领域 -> 分支 -> 主题 -> 概念",
     "note": "每条概念: 一句话定义(零基础可读) + 关键公式(纯Unicode) + 难度1-5 + 前置依赖"
   },
@@ -291,5 +291,17 @@
     {"id": "BS21", "domain_cn": "数学基础", "domain_en": "Foundations", "branch_cn": "数理逻辑", "topic_cn": "逻辑", "cn": "哥德尔不完备定理", "en": "Gödel's Incompleteness Theorems", "definition": "相容的形式系统必有不可判定命题; 数学基础的边界。", "formulas": [], "level": 5, "prereq": ["BS11"], "tags": ["重要"]},
     {"id": "BS22", "domain_cn": "数学基础", "domain_en": "Foundations", "branch_cn": "集合论", "topic_cn": "集合", "cn": "序数简介", "en": "Ordinal Numbers", "definition": "超限数ω,ω+1,…: 良序集的长度, 集合论的计数标尺。", "formulas": [], "level": 4, "prereq": ["BS08"], "tags": []},
     {"id": "BS23", "domain_cn": "数学基础", "domain_en": "Foundations", "branch_cn": "数理逻辑", "topic_cn": "逻辑", "cn": "皮亚诺公理", "en": "Peano Axioms", "definition": "自然数的五条公理: 0是数、后继、归纳; 算术的形式地基。", "formulas": [], "level": 3, "prereq": ["BS13"], "tags": ["重要"]}
+  ,
+    {"id": "BS24", "domain_cn": "数学基础", "domain_en": "Foundations", "branch_cn": "数理逻辑", "topic_cn": "证明方法", "cn": "反证法", "en": "Proof by Contradiction", "definition": "假设结论不成立, 推出矛盾, 从而原命题成立; 最古老的证明套路之一。", "formulas": [], "level": 2, "prereq": ["BS11"], "tags": ["核心"], "kind": "思路", "example": "证明√2是无理数: 设√2=p/q(既约), 推出p,q皆偶数, 矛盾。"},
+    {"id": "BS25", "domain_cn": "数学基础", "domain_en": "Foundations", "branch_cn": "数理逻辑", "topic_cn": "证明方法", "cn": "构造法", "en": "Constructive Proof", "definition": "直接给出满足要求的对象, 而不是只证存在性; 存在性证明的硬核版本。", "formulas": [], "level": 3, "prereq": ["BS13"], "tags": ["重要"], "kind": "思路", "example": "证存在无理数a,b使a^b为有理数: 看(√2^√2)^√2, 分两种情况必有一种成立。"},
+    {"id": "BS26", "domain_cn": "数学基础", "domain_en": "Foundations", "branch_cn": "数理逻辑", "topic_cn": "证明方法", "cn": "无穷递降法", "en": "Infinite Descent", "definition": "假设有正整数解, 构造出更小的正整数解, 无限递降不可能, 故原假设错; 费马的最爱。", "formulas": [], "level": 4, "prereq": ["BS24"], "tags": ["重要"], "kind": "思路", "example": "费马证x⁴+y⁴=z²无正整数解: 由一组解造出更小的一组, 无限递降矛盾。"},
+    {"id": "DM31", "domain_cn": "离散数学", "domain_en": "Discrete Math", "branch_cn": "组合数学", "topic_cn": "计数", "cn": "不变量法", "en": "Invariant Method", "definition": "找一个在操作下保持不变的量(奇偶、染色、模数), 用它证明某状态不可达。", "formulas": [], "level": 3, "prereq": ["DM02"], "tags": ["核心"], "kind": "思路", "example": "残缺棋盘(挖掉对角两格)不能被多米诺覆盖: 染色后黑白格数不等, 多米诺恒盖一黑一白。"},
+    {"id": "DM32", "domain_cn": "离散数学", "domain_en": "Discrete Math", "branch_cn": "组合数学", "topic_cn": "计数", "cn": "极端原理", "en": "Extremal Principle", "definition": "取最大/最小的极端对象, 利用其极端性推出矛盾或结构; 存在性证明的万能钥匙。", "formulas": [], "level": 3, "prereq": ["DM01"], "tags": ["重要"], "kind": "思路", "example": "证每棵有限树至少有两个叶子: 取最长路径, 其端点必为叶子。"},
+    {"id": "AN60", "domain_cn": "分析", "domain_en": "Analysis", "branch_cn": "微积分", "topic_cn": "微分技巧", "cn": "放缩法", "en": "Estimation / Squeeze Techniques", "definition": "把难算的量夹在两个好算的量之间, 或放大缩小到可判敛的形态; 分析学的手艺活。", "formulas": [], "level": 3, "prereq": ["AN12"], "tags": ["重要"], "kind": "思路", "example": "证lim n!/nⁿ=0: n!/nⁿ=(1/n)(1/n)…≤1/n→0。"},
+    {"id": "AL53", "domain_cn": "代数", "domain_en": "Algebra", "branch_cn": "多项式", "topic_cn": "方程", "cn": "待定系数法", "en": "Undetermined Coefficients", "definition": "设出含未知系数的表达式, 代入比较系数解出它们; 因式分解与求特解的通用套路。", "formulas": [], "level": 2, "prereq": ["AL50"], "tags": ["重要"], "kind": "思路", "example": "分解x⁴+4: 设(x²+ax+b)(x²+cx+d), 比较系数得苏菲·热尔曼恒等式。"},
+    {"id": "PR43", "domain_cn": "概率与统计", "domain_en": "Probability & Statistics", "branch_cn": "概率论", "topic_cn": "不等式", "cn": "矩方法", "en": "Method of Moments (inequalities)", "definition": "用期望/方差控制尾概率: 马尔可夫不等式、切比雪夫不等式是同一思想的两副面孔。", "formulas": ["P(|X−μ|≥kσ) ≤ 1/k²"], "level": 3, "prereq": ["PR07"], "tags": ["重要"], "kind": "思路", "example": "证弱大数定律: 切比雪夫不等式直接给出样本均值依概率收敛。"},
+    {"id": "GE36", "domain_cn": "几何与拓扑", "domain_en": "Geometry & Topology", "branch_cn": "解析几何", "topic_cn": "坐标", "cn": "坐标化", "en": "Coordinatization", "definition": "把几何问题翻译成代数: 建系设坐标, 几何条件变方程; 解析几何的核心动作。", "formulas": [], "level": 2, "prereq": ["GE04"], "tags": ["重要"], "kind": "思路", "example": "证三角形三条中线共点: 设A(0,0),B(c,0),C(b,a), 算出三中线交于同一点。"},
+    {"id": "AL54", "domain_cn": "代数", "domain_en": "Algebra", "branch_cn": "数论", "topic_cn": "初等数论", "cn": "费马小定理的推论", "en": "Corollary of Fermat's Little Theorem", "definition": "p素数且p∤a时, a^{p−1}≡1 (mod p); 费马小定理在a与p互素时的形态。", "formulas": ["a^{p−1} ≡ 1 (mod p) (p∤a)"], "level": 3, "prereq": ["AL41"], "tags": ["重要"], "kind": "推论", "example": "快速幂取模、素性测试的理论起点。"},
+    {"id": "AL55", "domain_cn": "代数", "domain_en": "Algebra", "branch_cn": "数论", "topic_cn": "初等数论", "cn": "RSA正确性", "en": "Correctness of RSA", "definition": "取ed≡1 (mod φ(n)), 则m^{ed}≡m (mod n): 欧拉定理保证解密还原明文。", "formulas": ["m^{ed} ≡ m (mod n)"], "level": 4, "prereq": ["AL42", "AL41"], "tags": ["核心"], "kind": "推论", "example": "RSA加密: 公钥(e,n)加密, 私钥d解密, 安全性基于大整数分解之难。"}
   ]
 }

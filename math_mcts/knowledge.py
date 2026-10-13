@@ -29,19 +29,23 @@ class Concept:
     level: int = 1               # 难度 1(入门)-5(博士)
     prereq: list = field(default_factory=list)     # 前置概念 id 列表
     tags: list = field(default_factory=list)       # 如 ["核心"]
+    kind: str = "概念"            # 知识类型: 概念/定理/推论/思路/公式/算法/分布…
+    example: str = ""            # 一句话经典例子或适用场景(思路类必填)
 
     def path(self) -> str:
         return f"{self.domain_cn} / {self.branch_cn} / {self.topic_cn}"
 
     def card(self) -> str:
         """概念卡片: 完整的可读信息块."""
-        lines = [f"【{self.cn}】({self.en})  [{self.id}]",
+        lines = [f"【{self.cn}】({self.en})  [{self.id}·{self.kind}]",
                  f"位置: {self.path()}",
                  f"难度: {'★' * self.level}{'☆' * (5 - self.level)} "
                  f"({self.level}/5)",
                  f"定义: {self.definition}"]
         if self.formulas:
             lines.append("公式: " + " ; ".join(self.formulas))
+        if self.example:
+            lines.append(f"例子: {self.example}")
         pre = "、".join(self.prereq) if self.prereq else "无"
         lines.append(f"前置: {pre}")
         if self.tags:
@@ -50,7 +54,8 @@ class Concept:
 
     def text_blob(self) -> str:
         parts = [self.cn, self.en, self.definition, self.branch_cn,
-                 self.topic_cn] + list(self.tags) + list(self.formulas)
+                 self.topic_cn, self.kind,
+                 self.example] + list(self.tags) + list(self.formulas)
         return " ".join(parts)
 
 
