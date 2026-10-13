@@ -1,0 +1,7932 @@
+[
+ {
+  "cn": "子集关系",
+  "en": "Subset Relation",
+  "definition": "A 是 B 的子集，指 A 的每个元素都属于 B，记作 A ⊆ B，是集合间最基本的大小比较。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "A ⊆ B ⟺ ∀x(x ∈ A → x ∈ B)"
+  ]
+ },
+ {
+  "cn": "真子集",
+  "en": "Proper Subset",
+  "definition": "A 是 B 的真子集，指 A ⊆ B 且 A ≠ B，即 B 中至少有一个元素不在 A 里。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 1,
+  "prereq_names": [
+   "NEW:子集关系"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "A ⊂ B ⟺ A ⊆ B ∧ A ≠ B"
+  ]
+ },
+ {
+  "cn": "幂集",
+  "en": "Power Set",
+  "definition": "集合 A 的幂集 P(A) 是 A 的所有子集组成的集合，是“由小造大”的标准工具。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 2,
+  "prereq_names": [
+   "NEW:子集关系"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "A = {1,2} 时 P(A) = {∅, {1}, {2}, {1,2}}，共 4 个。",
+  "formulas": [
+   "P(A) = {X | X ⊆ A}"
+  ]
+ },
+ {
+  "cn": "有限集的幂集基数公式",
+  "en": "Cardinality of Power Set of Finite Set",
+  "definition": "n 元有限集的幂集恰有 2ⁿ 个元素：每个元素独立决定“进或不进”子集。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 2,
+  "prereq_names": [
+   "NEW:幂集"
+  ],
+  "tags": [],
+  "kind": "公式",
+  "example": "3 个元素的集合有 2³ = 8 个子集。",
+  "formulas": [
+   "|P(A)| = 2^|A|"
+  ]
+ },
+ {
+  "cn": "并集与交集",
+  "en": "Union and Intersection",
+  "definition": "A ∪ B 是“属于 A 或属于 B”的元素全体，A ∩ B 是“既属于 A 又属于 B”的元素全体。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 1,
+  "prereq_names": [
+   "NEW:子集关系"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "{1,2} ∪ {2,3} = {1,2,3}，{1,2} ∩ {2,3} = {2}。",
+  "formulas": [
+   "A ∪ B = {x | x ∈ A ∨ x ∈ B}",
+   "A ∩ B = {x | x ∈ A ∧ x ∈ B}"
+  ]
+ },
+ {
+  "cn": "差集与补集",
+  "en": "Set Difference and Complement",
+  "definition": "A − B 是属于 A 但不属于 B 的元素全体；在全集 U 下 A 的补集 Aᶜ = U − A。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 1,
+  "prereq_names": [
+   "NEW:并集与交集"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "{1,2,3} − {2} = {1,3}。",
+  "formulas": [
+   "A − B = {x | x ∈ A ∧ x ∉ B}"
+  ]
+ },
+ {
+  "cn": "对称差",
+  "en": "Symmetric Difference",
+  "definition": "A △ B 是“恰属于其中之一”的元素全体，即 (A−B) ∪ (B−A)，度量两集合的差异。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 2,
+  "prereq_names": [
+   "NEW:差集与补集"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "{1,2} △ {2,3} = {1,3}。",
+  "formulas": [
+   "A △ B = (A − B) ∪ (B − A)"
+  ]
+ },
+ {
+  "cn": "集合的德摩根律",
+  "en": "De Morgan's Laws for Sets",
+  "definition": "(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ 且 (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ：取补把并交互换，是集合运算中最常用的恒等式。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 2,
+  "prereq_names": [
+   "NEW:并集与交集",
+   "NEW:差集与补集"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "“不是男生或不是党员”等价于“不是(男生且党员)”。",
+  "formulas": [
+   "(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ",
+   "(A ∩ B)ᶜ = Aᶜ ∪ Bᶜ"
+  ]
+ },
+ {
+  "cn": "集合运算的分配律",
+  "en": "Distributive Laws for Sets",
+  "definition": "A ∩ (B ∪ C) = (A∩B) ∪ (A∩C) 且 A ∪ (B ∩ C) = (A∪B) ∩ (A∪C)，交并互相分配。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 2,
+  "prereq_names": [
+   "NEW:并集与交集"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": [
+   "A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)"
+  ]
+ },
+ {
+  "cn": "笛卡尔积",
+  "en": "Cartesian Product",
+  "definition": "A × B 是所有有序对 (a, b)（a∈A, b∈B）组成的集合，是“配对”的数学化。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 2,
+  "prereq_names": [
+   "NEW:子集关系"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "平面直角坐标系就是 ℝ × ℝ；{1,2} × {a,b} 有 4 个有序对。",
+  "formulas": [
+   "A × B = {(a,b) | a ∈ A ∧ b ∈ B}"
+  ]
+ },
+ {
+  "cn": "集合的特征函数",
+  "en": "Characteristic Function of a Set",
+  "definition": "子集 A ⊆ U 的特征函数 χ_A(x) 在 x∈A 时取 1 否则取 0，把“集合问题”翻译成“函数问题”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 2,
+  "prereq_names": [
+   "NEW:子集关系"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "χ_{A∩B} = χ_A · χ_B，交集变成乘法。",
+  "formulas": [
+   "χ_A(x) = 1 若 x ∈ A，否则 0"
+  ]
+ },
+ {
+  "cn": "二元关系",
+  "en": "Binary Relation",
+  "definition": "A 上的二元关系是 A × A 的子集，即“哪些有序对有关系”的记录。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 2,
+  "prereq_names": [
+   "NEW:笛卡尔积"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "“小于”关系 < 是 ℝ × ℝ 的子集 {(x,y) | x < y}。",
+  "formulas": []
+ },
+ {
+  "cn": "自反性对称性传递性",
+  "en": "Reflexivity, Symmetry, Transitivity",
+  "definition": "关系的三种基本品性：自反（每个 x 都与自己有关系）、对称（xRy 则 yRx）、传递（xRy 且 yRz 则 xRz）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 2,
+  "prereq_names": [
+   "NEW:二元关系"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "=“ 自反、对称、传递都成立；”<“ 只传递，不自反不对称。",
+  "formulas": []
+ },
+ {
+  "cn": "等价关系",
+  "en": "Equivalence Relation",
+  "definition": "同时自反、对称、传递的二元关系，是“分类”的数学化：把有关系的对象视为同一类。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 2,
+  "prereq_names": [
+   "NEW:自反性对称性传递性"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "模 n 同余是等价关系；“同班同学”是等价关系。",
+  "formulas": []
+ },
+ {
+  "cn": "等价类与商集",
+  "en": "Equivalence Class and Quotient Set",
+  "definition": "等价关系下与 x 有关系的全体记作 [x]（等价类），所有等价类组成的集合叫商集 A/R。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 3,
+  "prereq_names": [
+   "NEW:等价关系"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "模 3 同余的商集是 {[0],[1],[2]}，这就是 ℤ/3ℤ 的雏形。",
+  "formulas": [
+   "[x] = {y | xRy}"
+  ]
+ },
+ {
+  "cn": "划分与等价关系互化定理",
+  "en": "Partitions vs Equivalence Relations",
+  "definition": "集合的每个划分（两两不交、并为全集的子集族）唯一对应一个等价关系，反之亦然。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 3,
+  "prereq_names": [
+   "NEW:等价类与商集"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "把全班按“同宿舍”划分，就得到“同宿舍”这个等价关系。",
+  "formulas": []
+ },
+ {
+  "cn": "偏序关系",
+  "en": "Partial Order",
+  "definition": "自反、反对称、传递的二元关系 ≤，允许有些元素不可比，是“层次/包含”这类关系的抽象。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 2,
+  "prereq_names": [
+   "NEW:自反性对称性传递性"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "集合的 ⊆ 是偏序；正整数的整除关系是偏序（2 和 3 不可比）。",
+  "formulas": []
+ },
+ {
+  "cn": "全序关系",
+  "en": "Total Order",
+  "definition": "任意两个元素都可比的偏序，即对所有 x,y 有 x ≤ y 或 y ≤ x，是“排成一队”的抽象。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 2,
+  "prereq_names": [
+   "NEW:偏序关系"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "实数的 ≤ 是全序；集合的 ⊆ 一般不是全序。",
+  "formulas": []
+ },
+ {
+  "cn": "哈斯图",
+  "en": "Hasse Diagram",
+  "definition": "画偏序集的图：x < y 且中间无 z 时连一条向上的线，省略自反环和传递边，一眼看清层次结构。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 2,
+  "prereq_names": [
+   "NEW:偏序关系"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "{1,2,3} 的子集按 ⊆ 的哈斯图是个立方体骨架。",
+  "formulas": []
+ },
+ {
+  "cn": "极大元与最大元",
+  "en": "Maximal vs Maximum Element",
+  "definition": "极大元是没有比它更大的元素（可以有多个），最大元是比所有元素都大（至多一个）；有限偏序集必有极大元。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 3,
+  "prereq_names": [
+   "NEW:偏序关系"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "{{1},{2}} 按 ⊆ 有两个极大元 {1},{2}，但没有最大元。",
+  "formulas": []
+ },
+ {
+  "cn": "字典序",
+  "en": "Lexicographic Order",
+  "definition": "按“第一分量优先、相同再看第二分量”的规则给有序对/序列排序，就是查字典的顺序。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 2,
+  "prereq_names": [
+   "NEW:全序关系",
+   "NEW:笛卡尔积"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "(1,100) < (2,0)，因为第一分量 1 < 2。",
+  "formulas": []
+ },
+ {
+  "cn": "逆关系与关系的复合",
+  "en": "Inverse and Composition of Relations",
+  "definition": "R 的逆 R⁻¹ 把每个 (x,y) 颠倒成 (y,x)；R 与 S 复合 R∘S 表示“经 S 再经 R”的两步关系。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 3,
+  "prereq_names": [
+   "NEW:二元关系"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“父子”关系的逆是“子女”关系；“父”∘“父”=“祖父”。",
+  "formulas": [
+   "R⁻¹ = {(y,x) | (x,y) ∈ R}"
+  ]
+ },
+ {
+  "cn": "关系的闭包",
+  "en": "Closure of a Relation",
+  "definition": "包含 R 的最小的自反（对称/传递）关系，叫 R 的自反（对称/传递）闭包，是“补足品性”的最小代价。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 3,
+  "prereq_names": [
+   "NEW:自反性对称性传递性"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“<” 的自反闭包是 “≤”；有向图的传递闭包就是可达关系。",
+  "formulas": []
+ },
+ {
+  "cn": "函数的集合论定义",
+  "en": "Set-theoretic Definition of Function",
+  "definition": "函数 f: A → B 是满足“每个 a∈A 恰对应一个 b∈B”的特殊二元关系，把“对应法则”变成集合。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 2,
+  "prereq_names": [
+   "NEW:二元关系"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "f = {(1,a),(2,b)} 是 {1,2}→{a,b} 的函数；{(1,a),(1,b)} 不是。",
+  "formulas": []
+ },
+ {
+  "cn": "单射",
+  "en": "Injective Map",
+  "definition": "不同的输入给出不同的输出（f(x₁)=f(x₂) 则 x₁=x₂），即“不合并”的映射。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 1,
+  "prereq_names": [
+   "NEW:函数的集合论定义"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "f(x)=2x 是单射；f(x)=x² 在 ℝ 上不是单射。",
+  "formulas": [
+   "单 ⟺ ∀x₁x₂(f(x₁)=f(x₂) → x₁=x₂)"
+  ]
+ },
+ {
+  "cn": "满射",
+  "en": "Surjective Map",
+  "definition": "值域盖满整个陪域（每个 y∈B 都有 x∈A 使 f(x)=y），即“没有漏网”的映射。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 1,
+  "prereq_names": [
+   "NEW:函数的集合论定义"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "f(x)=x³: ℝ→ℝ 是满射；f(x)=eˣ: ℝ→ℝ 不是满射（取不到负数）。",
+  "formulas": [
+   "满 ⟺ ∀y∈B ∃x∈A (f(x)=y)"
+  ]
+ },
+ {
+  "cn": "双射",
+  "en": "Bijective Map",
+  "definition": "既单又满的映射，即 A 与 B 元素“一一配对”，是“两个集合一样大”的精确含义。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 2,
+  "prereq_names": [
+   "NEW:单射",
+   "NEW:满射"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "f(n)=2n 是 ℕ 到偶数集的双射——无穷集可以和真子集一样大。",
+  "formulas": []
+ },
+ {
+  "cn": "单射的左逆",
+  "en": "Left Inverse of Injection",
+  "definition": "f: A→B 单当且仅当存在 g: B→A 使 g∘f = id_A（g 把 f 的像还原回去），不需要选择公理。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 3,
+  "prereq_names": [
+   "NEW:单射",
+   "NEW:双射"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "f(n)=2n 的左逆 g(m)=m/2（m 为偶数时），其余随意。",
+  "formulas": [
+   "f 单 ⟺ ∃g (g∘f = id)"
+  ]
+ },
+ {
+  "cn": "满射的右逆与选择公理",
+  "en": "Right Inverse of Surjection = AC",
+  "definition": "f: B→A 满时，存在右逆 g: A→B（f∘g=id_A）当且仅当承认选择公理——“每个 y 挑一个原像”需要同时做无穷多次选择。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "选择公理",
+  "level": 4,
+  "prereq_names": [
+   "NEW:满射"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": [
+   "f 满 ∧ ∃g(f∘g=id) ⟺ AC"
+  ]
+ },
+ {
+  "cn": "有限集与无限集",
+  "en": "Finite and Infinite Sets",
+  "definition": "能与 {1,…,n} 双射的叫 n 元有限集；不是有限的叫无限集——无限是“有限”的否定，不是“很大”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 2,
+  "prereq_names": [
+   "NEW:双射"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "ℕ、ℤ、ℚ 都是无限集；{1,…,100} 是有限集。",
+  "formulas": []
+ },
+ {
+  "cn": "戴德金无限",
+  "en": "Dedekind-infinite Set",
+  "definition": "与自己的某个真子集双射的集合叫戴德金无限，这是“无限”的内在刻画（不数个数）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 3,
+  "prereq_names": [
+   "NEW:有限集与无限集",
+   "NEW:真子集"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "ℕ 与偶数集双射（n↦2n），故 ℕ 戴德金无限。",
+  "formulas": []
+ },
+ {
+  "cn": "可数集",
+  "en": "Countable Set",
+  "definition": "能与自然数集 ℕ 一一配对的无限集叫可数无限集，“排成一列数完”就是可数。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 2,
+  "prereq_names": [
+   "NEW:双射",
+   "NEW:有限集与无限集"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "ℤ 可数（0,1,−1,2,−2,…）；ℚ 可数（按分子分母之和排）。",
+  "formulas": []
+ },
+ {
+  "cn": "有理数可数定理",
+  "en": "Rationals are Countable",
+  "definition": "ℚ 是可数集：把 p/q 按 p+q 从小到大排成一列，跳过重复即可数完——“稠密”不等于“多”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 3,
+  "prereq_names": [
+   "NEW:可数集"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "1/1, 1/2, 2/1, 1/3, 2/2(跳过), 3/1, …",
+  "formulas": []
+ },
+ {
+  "cn": "可数并定理",
+  "en": "Countable Union of Countable Sets",
+  "definition": "可数个可数集的并仍可数：把第 n 个集合的第 m 个元素排在 (n,m) 位置，再用 ℕ×ℕ 可数数完。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 3,
+  "prereq_names": [
+   "NEW:可数集"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "所有“有限小数”可数：它是可数个有限集的并。",
+  "formulas": []
+ },
+ {
+  "cn": "实数不可数定理",
+  "en": "Reals are Uncountable",
+  "definition": "ℝ 不可数：假设 (0,1) 的实数排成一列，用对角线法造出一个小数位处处不同的数，它不在列中，矛盾。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 3,
+  "prereq_names": [
+   "NEW:可数集",
+   "对角线论证法"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "基数比较",
+  "en": "Comparison of Cardinal Numbers",
+  "definition": "|A| ≤ |B| 指存在 A 到 B 的单射；|A| = |B| 指存在双射——“大小”用映射定义，不用数数。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 3,
+  "prereq_names": [
+   "NEW:单射",
+   "NEW:双射"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "|ℕ| = |偶数集| < |ℝ|。",
+  "formulas": [
+   "|A| ≤ |B| ⟺ ∃单射 f: A → B"
+  ]
+ },
+ {
+  "cn": "基数的三分性与选择公理",
+  "en": "Trichotomy of Cardinals = AC",
+  "definition": "任意两个集合的基数总可比（|A|≤|B| 或 |B|≤|A|）当且仅当选择公理成立——“大小总能分高下”并不显然。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 4,
+  "prereq_names": [
+   "NEW:基数比较"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "无穷基数的和与积",
+  "en": "Sum and Product of Infinite Cardinals",
+  "definition": "（承认选择公理时）两个无穷基数中，和与积都等于其中较大者：κ + λ = κ·λ = max(κ,λ)。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 4,
+  "prereq_names": [
+   "NEW:基数比较",
+   "NEW:可数并定理"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "|ℝ| + |ℕ| = |ℝ|；|ℝ| × |ℝ| = |ℝ|（平面和直线“一样多”）。",
+  "formulas": [
+   "κ,λ 无穷 ⟹ κ+λ = κ·λ = max(κ,λ)"
+  ]
+ },
+ {
+  "cn": "连续统",
+  "en": "Continuum",
+  "definition": "实数集 ℝ 的基数叫连续统，记作 𝔠（或 2^{ℵ₀}），是“比可数大一级”的典型无穷。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 3,
+  "prereq_names": [
+   "NEW:实数不可数定理",
+   "NEW:幂集"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "|P(ℕ)| = |ℝ| = 𝔠。",
+  "formulas": [
+   "𝔠 = |ℝ| = 2^{ℵ₀}"
+  ]
+ },
+ {
+  "cn": "序数的直观",
+  "en": "Intuition of Ordinal Numbers",
+  "definition": "序数是“良序集的长度”：不仅数“有多少”（基数），还记录“怎么排”（顺序型）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "序数入门",
+  "level": 3,
+  "prereq_names": [
+   "NEW:全序关系"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "ℕ 按 0<1<2<… 排长度是 ω；按 1<2<…<0 排则是另一个序数 ω+1。",
+  "formulas": []
+ },
+ {
+  "cn": "自然数的冯诺依曼定义",
+  "en": "von Neumann Definition of Natural Numbers",
+  "definition": "0 = ∅，n+1 = n ∪ {n}：于是 1={∅}，2={∅,{∅}}…每个自然数恰是“比它小的全体”组成的集合。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "序数入门",
+  "level": 3,
+  "prereq_names": [
+   "NEW:幂集"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "3 = {0,1,2}，|3| = 3，数和它的大小统一了。",
+  "formulas": [
+   "0 = ∅",
+   "n+1 = n ∪ {n}"
+  ]
+ },
+ {
+  "cn": "序数与基数的区别",
+  "en": "Ordinal vs Cardinal",
+  "definition": "基数只管“多少”（双射等价），序数还管“顺序”（序同构等价）；有限时两者重合，无穷时分道扬镳。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "序数入门",
+  "level": 3,
+  "prereq_names": [
+   "NEW:序数的直观",
+   "NEW:基数比较"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "ω 与 ω+1 基数都是 ℵ₀，但序数不同（后者多个“最后一名”）。",
+  "formulas": []
+ },
+ {
+  "cn": "阿列夫数",
+  "en": "Aleph Numbers",
+  "definition": "ℵ₀, ℵ₁, ℵ₂, … 是无穷基数的“标准尺”：ℵ₀ = |ℕ|，ℵ₁ 是大于 ℵ₀ 的最小基数，依此类推。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 3,
+  "prereq_names": [
+   "NEW:可数集",
+   "NEW:基数比较"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "ℵ₀ 是最小的无穷基数。",
+  "formulas": []
+ },
+ {
+  "cn": "豪斯多夫极大原理",
+  "en": "Hausdorff Maximal Principle",
+  "definition": "偏序集中每个全序子集都包含于一个极大全序子集中——“链总能延长到不能再长”，等价于选择公理。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "选择公理",
+  "level": 4,
+  "prereq_names": [
+   "NEW:偏序关系",
+   "NEW:全序关系"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "向量空间的每个线性无关集都可扩成基（取包含它的极大无关集）。",
+  "formulas": []
+ },
+ {
+  "cn": "塔斯基引理",
+  "en": "Tarski's Lemma on Cardinal Squaring",
+  "definition": "每个无穷集都与自己的笛卡尔平方双射（|A| = |A×A|）当且仅当选择公理成立。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "选择公理",
+  "level": 5,
+  "prereq_names": [
+   "NEW:笛卡尔积",
+   "NEW:基数比较"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": [
+   "A 无穷 ⟹ (|A×A| = |A| ⟺ AC)"
+  ]
+ },
+ {
+  "cn": "可数选择公理",
+  "en": "Axiom of Countable Choice",
+  "definition": "可数个非空集合的序列必有选择函数——比完整选择公理弱，但已足够支撑分析学的大部分构造。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "选择公理",
+  "level": 4,
+  "prereq_names": [
+   "选择公理简介"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "从每个非空集合 Xₙ 中依次挑 xₙ ∈ Xₙ，得到序列 (xₙ)。",
+  "formulas": []
+ },
+ {
+  "cn": "依赖选择公理",
+  "en": "Axiom of Dependent Choice",
+  "definition": "在“每一步都有后继可选”的二元关系上，能选出无穷序列 x₀Rx₁R…——恰好是“递归构造序列”所需的强度。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "选择公理",
+  "level": 4,
+  "prereq_names": [
+   "NEW:可数选择公理"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "贝尔纲定理的证明本质上用到了依赖选择。",
+  "formulas": []
+ },
+ {
+  "cn": "鸽巢原理",
+  "en": "Pigeonhole Principle",
+  "definition": "n+1 只鸽子进 n 个巢，必有一巢至少两只——“数量超过容量则必重复”，组合论证的基石。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "无穷组合",
+  "level": 1,
+  "prereq_names": [
+   "NEW:有限集与无限集"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "13 个人中必有两人同月生日。",
+  "formulas": []
+ },
+ {
+  "cn": "无限鸽巢原理",
+  "en": "Infinite Pigeonhole Principle",
+  "definition": "无穷多个物品分进有限个盒子，必有一盒装无穷多——“无限”版的鸽巢原理。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "无穷组合",
+  "level": 2,
+  "prereq_names": [
+   "NEW:鸽巢原理",
+   "NEW:有限集与无限集"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "无穷整数列中必有无穷子列全是偶数或全是奇数。",
+  "formulas": []
+ },
+ {
+  "cn": "无穷拉姆齐定理",
+  "en": "Infinite Ramsey Theorem",
+  "definition": "把 ℕ 的二元子集染成红蓝两色，必存在无穷集 H 使 H 的二元子集同色——“无穷大时秩序必然出现”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "无穷组合",
+  "level": 4,
+  "prereq_names": [
+   "NEW:无限鸽巢原理"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "任意无穷人聚会，必有无穷多人两两认识或两两不认识。",
+  "formulas": []
+ },
+ {
+  "cn": "集合论中“属于”的良基性",
+  "en": "Well-foundedness of Membership",
+  "definition": "正则公理的推论：不存在无穷下降链 …∈x₂∈x₁∈x₀，“属于”关系没有无限倒退。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 4,
+  "prereq_names": [
+   "正则公理"
+  ],
+  "tags": [],
+  "kind": "推论",
+  "example": "x ∈ x 不可能发生；也不存在 x∋y∋x 的循环。",
+  "formulas": []
+ },
+ {
+  "cn": "传递集",
+  "en": "Transitive Set",
+  "definition": "集合 T 称为传递的，若 x∈y∈T 蕴含 x∈T——“元素的元素还是元素”，序数都是传递集。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "序数入门",
+  "level": 4,
+  "prereq_names": [
+   "NEW:序数的直观"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "冯诺依曼自然数 3 = {0,1,2} 是传递集。",
+  "formulas": [
+   "T 传递 ⟺ ∀y∈T (y ⊆ T)"
+  ]
+ },
+ {
+  "cn": "序数的三歧性",
+  "en": "Trichotomy of Ordinals",
+  "definition": "任意两个序数必满足 α∈β、α=β、β∈α 恰其一——序数天生全序，不需要选择公理。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "序数入门",
+  "level": 4,
+  "prereq_names": [
+   "NEW:序数的直观"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "后继序数与极限序数",
+  "en": "Successor vs Limit Ordinals",
+  "definition": "有直接前驱的序数叫后继序数（如 5、ω+1），没有的叫极限序数（如 0、ω）——超限归纳分两步的根源。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "序数入门",
+  "level": 3,
+  "prereq_names": [
+   "NEW:序数的直观",
+   "超限归纳"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "ω 是第一个极限序数：它是所有自然数的上确界。",
+  "formulas": []
+ },
+ {
+  "cn": "笛卡尔积的基数公式",
+  "en": "Cardinality of Cartesian Product",
+  "definition": "有限集 A、B 的笛卡尔积 |A×B| = |A|·|B|：“m 行 n 列”的表格直观。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 2,
+  "prereq_names": [
+   "NEW:笛卡尔积",
+   "NEW:有限集与无限集"
+  ],
+  "tags": [],
+  "kind": "公式",
+  "example": "3 件上衣 × 4 条裤子 = 12 种搭配。",
+  "formulas": [
+   "|A × B| = |A| · |B|"
+  ]
+ },
+ {
+  "cn": "函数集的基数",
+  "en": "Cardinality of Function Sets",
+  "definition": "|B^A|（从 A 到 B 的函数全体）= |B|^|A|：每个 a∈A 独立选一个像，共 |B| 选 |A| 次。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 3,
+  "prereq_names": [
+   "NEW:函数的集合论定义",
+   "NEW:有限集的幂集基数公式"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "|P(A)| = 2^|A| 就是 B={0,1} 的特例（特征函数）。",
+  "formulas": [
+   "|B^A| = |B|^|A|"
+  ]
+ },
+ {
+  "cn": "单元素集与空集的极端",
+  "en": "Singleton and Empty Set Extremes",
+  "definition": "空集 ∅ 是唯一没有元素的集合（外延公理的推论），单元素集 {x} 是最小的非空集合——归纳奠基的常客。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 1,
+  "prereq_names": [
+   "NEW:子集关系"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "∅ ⊆ A 对一切 A 成立（空真）；{x} ∩ {y} ≠ ∅ 则 x = y。",
+  "formulas": []
+ },
+ {
+  "cn": "集合相等的判定",
+  "en": "Criterion of Set Equality",
+  "definition": "A = B 当且仅当 A ⊆ B 且 B ⊆ A——证集合相等永远拆成两个包含关系分别证。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 1,
+  "prereq_names": [
+   "NEW:子集关系"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "证 (A∪B)ᶜ = Aᶜ∩Bᶜ 时两边互相包含各证一次。",
+  "formulas": [
+   "A = B ⟺ (A ⊆ B ∧ B ⊆ A)"
+  ]
+ },
+ {
+  "cn": "元素追踪法",
+  "en": "Element Chasing",
+  "definition": "证集合恒等式的万能起手：任取 x∈左边，推出 x∈右边（反之亦然），把集合问题化为逻辑推理。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 1,
+  "prereq_names": [
+   "NEW:集合相等的判定"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证 A∩(B∪C)=(A∩B)∪(A∩C)：取 x∈左，x∈A 且 (x∈B 或 x∈C)，分两种情形即得 x∈右。",
+  "formulas": []
+ },
+ {
+  "cn": "指标集族的并与交",
+  "en": "Indexed Union and Intersection",
+  "definition": "⋃_{i∈I} A_i 是“属于至少一个 A_i”的元素全体，⋂_{i∈I} A_i 是“属于所有 A_i”的元素全体——把二元并交推广到任意多个。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 2,
+  "prereq_names": [
+   "NEW:并集与交集"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "⋂_{n≥1} (0, 1/n) = ∅：没有正数比所有 1/n 都小。",
+  "formulas": [
+   "⋃_{i∈I} A_i = {x | ∃i ∈ I (x ∈ A_i)}"
+  ]
+ },
+ {
+  "cn": "德摩根律的无限版本",
+  "en": "De Morgan's Laws for Indexed Families",
+  "definition": "(⋃A_i)ᶜ = ⋂(A_iᶜ) 且 (⋂A_i)ᶜ = ⋃(A_iᶜ)：德摩根律对任意多个集合同样成立。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "集合运算",
+  "level": 3,
+  "prereq_names": [
+   "NEW:指标集族的并与交",
+   "NEW:集合的德摩根律"
+  ],
+  "tags": [],
+  "kind": "推论",
+  "example": "“不是所有人都及格”⟺“存在不及格的人”。",
+  "formulas": [
+   "(⋃_{i} A_i)ᶜ = ⋂_{i} A_iᶜ"
+  ]
+ },
+ {
+  "cn": "关系的数量",
+  "en": "Number of Relations on a Finite Set",
+  "definition": "n 元集上的二元关系有 2^{n²} 个：A×A 的每个子集都是一个关系。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 3,
+  "prereq_names": [
+   "NEW:二元关系",
+   "NEW:有限集的幂集基数公式"
+  ],
+  "tags": [],
+  "kind": "推论",
+  "example": "2 元集上有 2⁴ = 16 个二元关系。",
+  "formulas": []
+ },
+ {
+  "cn": "等价关系的个数与Bell数",
+  "en": "Bell Numbers Count Equivalence Relations",
+  "definition": "n 元集上的等价关系个数是 Bell 数 Bₙ（B₃=5, B₄=15）：每个等价关系对应一种划分。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 4,
+  "prereq_names": [
+   "NEW:划分与等价关系互化定理"
+  ],
+  "tags": [],
+  "kind": "推论",
+  "example": "{1,2,3} 的 5 种划分：全分开 / 三种两两抱团 / 全抱团。",
+  "formulas": []
+ },
+ {
+  "cn": "偏序集的线性扩张",
+  "en": "Linear Extension of a Poset",
+  "definition": "把偏序集的元素排成一列使 x<y 蕴含 x 排在 y 前面——“拓扑排序”，有限偏序集必存在。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 3,
+  "prereq_names": [
+   "NEW:偏序关系"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "课程先修关系排课表：先修课排在后面课之前。",
+  "formulas": []
+ },
+ {
+  "cn": "良拟序",
+  "en": "Well-quasi-order",
+  "definition": "每个无穷序列都有 i<j 使 x_i ≤ x_j 的拟序——比良序弱，但足以支撑“有限基”类论证（如 Higman 引理）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "关系与映射",
+  "level": 5,
+  "prereq_names": [
+   "NEW:偏序关系"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "ℕ 上的整除关系? 不——反例多；经典例子是有限字母表上子序列序。",
+  "formulas": []
+ },
+ {
+  "cn": "命题",
+  "en": "Proposition",
+  "definition": "能判断真假的陈述句叫命题，真假叫它的真值；“你好”不是命题，“x+1=2”单独看也不是（x 未定）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "“2 是偶数”是真命题；“1+1=3”是假命题。",
+  "formulas": []
+ },
+ {
+  "cn": "真值表",
+  "en": "Truth Table",
+  "definition": "把命题变元的所有真假组合列出来，逐行算出复合命题真值的表格，是命题逻辑的“暴力验算”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 1,
+  "prereq_names": [
+   "NEW:命题"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "p→q 的真值表：只有 p 真 q 假时为假，其余三行为真。",
+  "formulas": []
+ },
+ {
+  "cn": "合取与析取",
+  "en": "Conjunction and Disjunction",
+  "definition": "p∧q（合取，“且”）在两者皆真时为真；p∨q（析取，“或”）在至少一真时为真——逻辑的“乘法”与“加法”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 1,
+  "prereq_names": [
+   "NEW:命题",
+   "NEW:真值表"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "“天晴且无风”要求两个都成立；“天晴或无风”成立一个就行。",
+  "formulas": [
+   "p ∧ q",
+   "p ∨ q"
+  ]
+ },
+ {
+  "cn": "蕴含",
+  "en": "Implication",
+  "definition": "p→q（若 p 则 q）只在“p 真 q 假”时为假；p 假时整个蕴含空真——这是初学者最常绊倒的地方。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:合取与析取"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "“若 2+2=5 则我是超人”是真命题（前提假，空真）。",
+  "formulas": [
+   "p → q ≡ ¬p ∨ q"
+  ]
+ },
+ {
+  "cn": "等值",
+  "en": "Logical Equivalence",
+  "definition": "p↔q（当且仅当）在 p、q 真值相同时为真，是“互为充分必要”的逻辑写法。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 1,
+  "prereq_names": [
+   "NEW:蕴含"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“三角形等边 ↔ 三角等”：两边互相推出。",
+  "formulas": [
+   "p ↔ q ≡ (p → q) ∧ (q → p)"
+  ]
+ },
+ {
+  "cn": "否定",
+  "en": "Negation",
+  "definition": "¬p 把命题的真值翻转：p 真则 ¬p 假。否定词要“作用到整个命题”，不能只否定一半。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 1,
+  "prereq_names": [
+   "NEW:命题"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“所有天鹅都白”的否定是“存在黑天鹅”，不是“所有天鹅都黑”。",
+  "formulas": []
+ },
+ {
+  "cn": "永真式",
+  "en": "Tautology",
+  "definition": "无论变元取什么真值都为真的命题形式，叫永真式（重言式），是逻辑推理的“恒等式”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:真值表"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "p ∨ ¬p（排中律）、(p→q)↔(¬q→¬p) 都是永真式。",
+  "formulas": [
+   "⊨ p ∨ ¬p"
+  ]
+ },
+ {
+  "cn": "矛盾式与可满足式",
+  "en": "Contradiction and Satisfiable Formula",
+  "definition": "恒为假的叫矛盾式；至少在一组赋值下为真的叫可满足式——SAT 问题问的正是“可满足吗”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:永真式"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "p ∧ ¬p 是矛盾式；p → q 是可满足式（取 p 假即满足）。",
+  "formulas": []
+ },
+ {
+  "cn": "逻辑的德摩根律",
+  "en": "De Morgan's Laws in Logic",
+  "definition": "¬(p∧q) ≡ ¬p∨¬q 且 ¬(p∨q) ≡ ¬p∧¬q：否定穿过括号时“且变或、或变且”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:否定",
+   "NEW:合取与析取"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "“并非（有钱且快乐）”=“没钱或不快乐”。",
+  "formulas": [
+   "¬(p ∧ q) ≡ ¬p ∨ ¬q",
+   "¬(p ∨ q) ≡ ¬p ∧ ¬q"
+  ]
+ },
+ {
+  "cn": "蕴含等值式",
+  "en": "Implication as Disjunction",
+  "definition": "p→q 逻辑等值于 ¬p∨q：把“如果…那么…”改写成“或者前提假、或者结论真”，是化简蕴含的利器。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:蕴含"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "“若下雨则带伞”=“没下雨或带了伞”。",
+  "formulas": [
+   "p → q ≡ ¬p ∨ q"
+  ]
+ },
+ {
+  "cn": "逆命题否命题逆否命题",
+  "en": "Converse, Inverse, Contrapositive",
+  "definition": "p→q 的逆命题是 q→p，否命题是 ¬p→¬q，逆否命题是 ¬q→¬p；只有逆否命题与原命题等值。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:蕴含",
+   "NEW:否定"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "“若下雨则地湿”的逆命题“地湿则下雨”是错的（可能是洒水车）。",
+  "formulas": [
+   "(p → q) ≡ (¬q → ¬p)"
+  ]
+ },
+ {
+  "cn": "合取范式",
+  "en": "Conjunctive Normal Form",
+  "definition": "形如“子句的合取”的公式，每个子句是文字（变元或其否定）的析取，如 (p∨¬q)∧(r∨s)。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:合取与析取"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "SAT 求解器吃的标准输入就是 CNF（DIMACS 格式）。",
+  "formulas": []
+ },
+ {
+  "cn": "析取范式",
+  "en": "Disjunctive Normal Form",
+  "definition": "形如“合取项的析取”的公式，每项是文字的合取，如 (p∧¬q)∨(r∧s)——真值表的“行”直接拼出来。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:合取范式"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "范式存在定理",
+  "en": "Existence of Normal Forms",
+  "definition": "每个命题公式都等值于某个合取范式，也等值于某个析取范式——任何逻辑式都能“整理成标准型”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:合取范式",
+   "NEW:析取范式",
+   "NEW:真值表"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "p→q 先化成 ¬p∨q（已是 DNF），再分配成 CNF。",
+  "formulas": []
+ },
+ {
+  "cn": "功能完备集",
+  "en": "Functionally Complete Set",
+  "definition": "一组联结词若能表达所有真值函数就叫功能完备的，如 {¬,∧}、{¬,∨}、{¬,→}——“万能零件”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:合取与析取",
+   "NEW:否定"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "p∨q ≡ ¬(¬p∧¬q)，所以 {¬,∧} 能造出 ∨。",
+  "formulas": []
+ },
+ {
+  "cn": "谢费尔竖线",
+  "en": "Sheffer Stroke (NAND)",
+  "definition": "p↑q 表示“p 与 q 不同时为真”（与非）；单它一个就功能完备——现代芯片全用与非门搭建。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:功能完备集"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "¬p ≡ p↑p；p∧q ≡ (p↑q)↑(p↑q)。",
+  "formulas": [
+   "p ↑ q ≡ ¬(p ∧ q)"
+  ]
+ },
+ {
+  "cn": "SAT问题",
+  "en": "Boolean Satisfiability Problem",
+  "definition": "给定命题公式（常为 CNF），问是否存在赋值使其为真——第一个被证明的 NP 完全问题。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:合取范式",
+   "NEW:矛盾式与可满足式",
+   "Cook-Levin定理"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "芯片验证、排课表、数独求解器底层都是 SAT 求解器。",
+  "formulas": []
+ },
+ {
+  "cn": "消解推理规则",
+  "en": "Resolution Principle",
+  "definition": "从 (p∨C₁) 和 (¬p∨C₂) 推出 (C₁∨C₂)：消去互补文字 p，是自动定理证明的核心推理规则。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:合取范式",
+   "NEW:蕴含"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "由“下雨或带伞”和“没下雨”归结出“带伞”。",
+  "formulas": [
+   "(p ∨ C₁), (¬p ∨ C₂) ⊢ C₁ ∨ C₂"
+  ]
+ },
+ {
+  "cn": "命题逻辑的紧致性定理",
+  "en": "Compactness Theorem (Propositional)",
+  "definition": "一集公式可满足当且仅当它的每个有限子集都可满足——“无限的矛盾必藏在有限处”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 4,
+  "prereq_names": [
+   "NEW:矛盾式与可满足式"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "用它可证：无穷图可 k 染色 ⟺ 每个有限子图可 k 染色。",
+  "formulas": []
+ },
+ {
+  "cn": "语义树方法",
+  "en": "Semantic Tableaux",
+  "definition": "把公式按真假拆成树枝找矛盾：所有分支都封闭则原公式永真，是真值表的“聪明版”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:真值表",
+   "NEW:永真式"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "检验 (p→q)→(¬q→¬p)：假设为假展开，两条分支都出现 p 与 ¬p，封闭，故永真。",
+  "formulas": []
+ },
+ {
+  "cn": "个体词与谓词",
+  "en": "Terms and Predicates",
+  "definition": "谓词逻辑把命题拆开：个体词指对象（如“苏格拉底”），谓词表性质或关系（如“是人”、“<”）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:命题"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“苏格拉底是人”拆成个体 s = 苏格拉底、谓词 H(x) = “x 是人”，写成 H(s)。",
+  "formulas": []
+ },
+ {
+  "cn": "全称量词与存在量词",
+  "en": "Universal and Existential Quantifiers",
+  "definition": "∀x P(x) 表示“所有 x 都使 P 成立”，∃x P(x) 表示“有 x 使 P 成立”——“所有”和“存在”的符号化。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:个体词与谓词"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "∀x(x² ≥ 0) 真；∃x(x² = 2) 在有理数域假、在实数域真。",
+  "formulas": [
+   "∀x P(x)",
+   "∃x P(x)"
+  ]
+ },
+ {
+  "cn": "量词的辖域与约束变元",
+  "en": "Scope and Bound Variables",
+  "definition": "量词管到的公式范围叫辖域，辖域内的变元叫约束变元；约束变元改名不改变含义（α 变换）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:全称量词与存在量词"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "∀x(P(x) → ∃x Q(x)) 里，Q 中的 x 被 ∃ 约束，与外层的 x 无关。",
+  "formulas": []
+ },
+ {
+  "cn": "量词的德摩根律",
+  "en": "De Morgan's Laws for Quantifiers",
+  "definition": "¬∀x P(x) ≡ ∃x ¬P(x)，¬∃x P(x) ≡ ∀x ¬P(x)：否定穿过量词时“全称变存在、存在变全称”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:全称量词与存在量词",
+   "NEW:否定"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "“并非人人及格”=“有人不及格”。",
+  "formulas": [
+   "¬∀x P(x) ≡ ∃x ¬P(x)"
+  ]
+ },
+ {
+  "cn": "量词顺序不可随意交换",
+  "en": "Order of Quantifiers Matters",
+  "definition": "∀x∃y R(x,y)（每 x 都有对应的 y）与 ∃y∀x R(x,y)（同一个 y 对所有 x 成立）含义不同，后者更强。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:全称量词与存在量词"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "“每人都有母亲”（∀∃）真；“有人是所有人的母亲”（∃∀）假。",
+  "formulas": []
+ },
+ {
+  "cn": "前束范式",
+  "en": "Prenex Normal Form",
+  "definition": "把所有量词移到公式最前面的等值形式，如 ∀x∃y (P(x) → Q(y))——“量词在前、命题在后”的标准型。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:量词的德摩根律",
+   "NEW:量词的辖域与约束变元"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "前束范式存在定理",
+  "en": "Existence of Prenex Normal Form",
+  "definition": "每个一阶公式都等值于一个前束范式：用量词德摩根和改名，反复把量词“提”到最前面。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:前束范式"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "斯科伦化",
+  "en": "Skolemization",
+  "definition": "把 ∃y 消去，换成新函数符号 f(x)（斯科伦函数），把“存在 y”变成“y = f(x)”——自动推理的前处理。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 4,
+  "prereq_names": [
+   "NEW:前束范式",
+   "NEW:量词顺序不可随意交换"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "∀x∃y R(x,y) 斯科伦化为 ∀x R(x, f(x))：f 给每个 x 指派一个见证 y。",
+  "formulas": []
+ },
+ {
+  "cn": "自由变元与闭公式",
+  "en": "Free Variables and Sentences",
+  "definition": "没被量词约束的变元叫自由变元；没有自由变元的公式叫闭公式（句子），才能谈真假。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:量词的辖域与约束变元"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "x + 1 = 2 有自由变元 x，真假不定；∃x(x+1=2) 是闭公式，为真。",
+  "formulas": []
+ },
+ {
+  "cn": "解释与赋值",
+  "en": "Interpretation and Assignment",
+  "definition": "解释给语言的符号指定论域和含义，赋值给自由变元指定对象——“公式”配上“解释”才能求真值。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:自由变元与闭公式"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "∃x(x²=2) 在 ℚ 中解释为假，在 ℝ 中解释为真——真假依赖解释。",
+  "formulas": []
+ },
+ {
+  "cn": "逻辑有效式",
+  "en": "Logically Valid Formula",
+  "definition": "在一切解释下都为真的闭公式叫有效式（永真式），记作 ⊨ φ——“放之四海皆真”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:解释与赋值",
+   "NEW:永真式"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "∀x(P(x) → P(x)) 在任何解释下都真。",
+  "formulas": [
+   "⊨ φ"
+  ]
+ },
+ {
+  "cn": "演绎系统的可靠性",
+  "en": "Soundness Theorem",
+  "definition": "形式系统能证明的（⊢ φ）一定逻辑有效（⊨ φ）：证明系统“不会证出假话”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:逻辑有效式"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": [
+   "⊢ φ ⟹ ⊨ φ"
+  ]
+ },
+ {
+  "cn": "一阶逻辑的紧致性定理",
+  "en": "Compactness Theorem (First-order)",
+  "definition": "一集一阶句子可满足当且仅当每个有限子集可满足——无限理论的“有限性原理”，是非标准模型的源头。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 4,
+  "prereq_names": [
+   "NEW:命题逻辑的紧致性定理",
+   "NEW:解释与赋值"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "定理",
+  "example": "给 PA 加上“c 是无穷大”的无穷多公理仍相容，故存在 PA 的非标准模型。",
+  "formulas": []
+ },
+ {
+  "cn": "带等词的一阶逻辑",
+  "en": "First-order Logic with Equality",
+  "definition": "带等词 = 的一阶逻辑，等词公理规定 = 是等价关系且可代入——“相等”本身也要公理化。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:个体词与谓词"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "x = y → (P(x) ↔ P(y))：相等的东西在一切性质上不可区分。",
+  "formulas": []
+ },
+ {
+  "cn": "形式系统",
+  "en": "Formal System",
+  "definition": "形式系统 = 形式语言 ＋ 公理 ＋ 推理规则；“证明”就是从公理出发按规则写出的符号序列。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "元逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:命题"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "欧几里得几何、ZFC、皮亚诺算术 PA 都是形式系统。",
+  "formulas": []
+ },
+ {
+  "cn": "相容性",
+  "en": "Consistency",
+  "definition": "形式系统相容指不能同时证明 φ 和 ¬φ——“不自相矛盾”是系统的底线要求。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "元逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:形式系统"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "不相容的系统能证明一切（爆炸原理），等于什么都没说。",
+  "formulas": []
+ },
+ {
+  "cn": "独立性",
+  "en": "Independence",
+  "definition": "命题 φ 独立于理论 T，指 T 既证不出 φ 也证不出 ¬φ——“系统里决定不了”的问题。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "元逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:相容性"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "平行公设独立于欧氏几何前四公设；连续统假设独立于 ZFC。",
+  "formulas": []
+ },
+ {
+  "cn": "理论的完全性",
+  "en": "Completeness of a Theory",
+  "definition": "理论 T 完全指对每个闭句子 φ，T 能证明 φ 或能证明 ¬φ——“每个问题都有答案”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "元逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:形式系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "实闭域理论完全；PA 不完全（哥德尔第一定理）。",
+  "formulas": []
+ },
+ {
+  "cn": "可靠与完备的区分",
+  "en": "Soundness vs Completeness",
+  "definition": "可靠 = “证出的都真”（⊢→⊨），完备 = “真的都能证”（⊨→⊢）——两个方向，别混。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "元逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:演绎系统的可靠性",
+   "NEW:理论的完全性"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "一阶逻辑既可靠又完备（哥德尔完备性定理）；PA 可靠但不完备。",
+  "formulas": []
+ },
+ {
+  "cn": "判定问题",
+  "en": "Entscheidungsproblem",
+  "definition": "希尔伯特 1928 年提出：是否存在算法判定任意一阶逻辑公式是否永真——答案是否定的（丘奇/图灵 1936）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "元逻辑",
+  "level": 4,
+  "prereq_names": [
+   "NEW:逻辑有效式",
+   "停机问题"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "希尔伯特第十问题",
+  "en": "Hilbert's Tenth Problem",
+  "definition": "是否存在算法判定任意丢番图方程（整系数多项式方程）有无整数解——1970 年马季亚谢维奇证明：不存在。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "元逻辑",
+  "level": 4,
+  "prereq_names": [
+   "NEW:判定问题"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "塔斯基不可定义定理",
+  "en": "Tarski's Undefinability Theorem",
+  "definition": "充分强的形式系统里，“本系统语句为真”这个谓词不能在系统内部定义——真值概念逃逸出系统。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "元逻辑",
+  "level": 5,
+  "prereq_names": [
+   "哥德尔不完备定理",
+   "NEW:形式系统"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "图灵机",
+  "en": "Turing Machine",
+  "definition": "一条无限纸带＋一个读写头＋有限状态控制器——“可计算”的数学定义，简单到只有几种操作。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 3,
+  "prereq_names": [
+   "NEW:形式系统"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "纸带上写 0/1，读写头左右移动改写，状态机决定下一步——这就是全部。",
+  "formulas": []
+ },
+ {
+  "cn": "原始递归函数",
+  "en": "Primitive Recursive Functions",
+  "definition": "从零函数、后继函数、投影函数出发，经复合与原始递归生成的函数类——“for 循环能算”的函数。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 4,
+  "prereq_names": [
+   "NEW:图灵机"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "加法、乘法、阶乘都是原始递归的。",
+  "formulas": []
+ },
+ {
+  "cn": "阿克曼函数",
+  "en": "Ackermann Function",
+  "definition": "A(0,n)=n+1, A(m+1,0)=A(m,1), A(m+1,n+1)=A(m,A(m+1,n))——可计算但不是原始递归的，增长爆炸。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 4,
+  "prereq_names": [
+   "NEW:原始递归函数"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "A(4,2) 已有 19729 位数；它证明了“可计算 ⊋ 原始递归”。",
+  "formulas": []
+ },
+ {
+  "cn": "μ递归函数",
+  "en": "μ-recursive Functions",
+  "definition": "原始递归再加上“无界搜索”（μ 算子：找使 f(x)=0 的最小 x）——恰好等于图灵可计算函数类。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 4,
+  "prereq_names": [
+   "NEW:原始递归函数",
+   "NEW:图灵机"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "while 循环就是无界搜索：不知道要循环多少次。",
+  "formulas": []
+ },
+ {
+  "cn": "可判定与半可判定",
+  "en": "Decidable vs Semidecidable",
+  "definition": "可判定 = 有算法对一切输入回答“是/否”；半可判定 = 回答“是”时算法必停机，“否”时可能永远运行。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 3,
+  "prereq_names": [
+   "NEW:图灵机"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "“程序是否停机”是半可判定（停机则迟早停），但不可判定。",
+  "formulas": []
+ },
+ {
+  "cn": "归约",
+  "en": "Reduction",
+  "definition": "把问题 A 的实例有效转化为问题 B 的实例，使 A 可解 ⟺ B 可解——“A 不比 B 难”的精确说法，证不可判定性的主武器。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 3,
+  "prereq_names": [
+   "NEW:可判定与半可判定"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "把停机问题归约到“程序是否输出 0”，故后者也不可判定。",
+  "formulas": [
+   "A ≤ₘ B"
+  ]
+ },
+ {
+  "cn": "莱斯定理",
+  "en": "Rice's Theorem",
+  "definition": "程序的任何非平凡语义性质都不可判定——“这个程序算什么函数”这类问题，算法一律回答不了。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 4,
+  "prereq_names": [
+   "NEW:归约",
+   "停机问题"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "“程序是否计算常数函数”“程序是否等价于给定程序”都不可判定。",
+  "formulas": []
+ },
+ {
+  "cn": "忙狸猴函数",
+  "en": "Busy Beaver Function",
+  "definition": "n 状态图灵机停机前能写出的最多 1 的个数 Σ(n)——可定义、增长快到超越任何可计算函数。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 4,
+  "prereq_names": [
+   "NEW:图灵机",
+   "NEW:可判定与半可判定"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "Σ(1)=1, Σ(2)=4, Σ(3)=6, Σ(4)=13, Σ(5)≥4098，Σ(6) 大到无法写下。",
+  "formulas": []
+ },
+ {
+  "cn": "克林尼递归定理",
+  "en": "Kleene's Recursion Theorem",
+  "definition": "任何程序都能“拿到自己的源代码”：对任意可计算变换 f，总有程序 e 使 φ_e = φ_{f(e)}——自指程序的理论基础。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 5,
+  "prereq_names": [
+   "NEW:图灵机"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "quine（输出自身源代码的程序）的存在性由此保证。",
+  "formulas": []
+ },
+ {
+  "cn": "希尔伯特演绎系统",
+  "en": "Hilbert-style Deductive System",
+  "definition": "大量公理模式＋极少推理规则（通常只有分离规则 MP）——公理多、规则少，适合元理论研究。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "证明论",
+  "level": 4,
+  "prereq_names": [
+   "NEW:形式系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "经典公理模式：φ → (ψ → φ)。",
+  "formulas": [
+   "MP: φ, φ→ψ ⊢ ψ"
+  ]
+ },
+ {
+  "cn": "根岑相继式演算",
+  "en": "Sequent Calculus",
+  "definition": "Gentzen 的证明系统，证明是“Γ ⇒ Δ”（Γ 成立则 Δ 中至少一式成立）的树形推导——结构清晰，适合自动化。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "证明论",
+  "level": 4,
+  "prereq_names": [
+   "NEW:希尔伯特演绎系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "Γ ⇒ Δ"
+  ]
+ },
+ {
+  "cn": "切消定理",
+  "en": "Cut Elimination Theorem",
+  "definition": "相继式演算中“切规则”（引理的引入）是多余的：任何证明都能消去切，变成只含子公式的“解析证明”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "证明论",
+  "level": 5,
+  "prereq_names": [
+   "NEW:根岑相继式演算"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "它是“证明论基本定理”，推出一阶逻辑的相容性。",
+  "formulas": []
+ },
+ {
+  "cn": "直觉主义逻辑入门",
+  "en": "Intuitionistic Logic",
+  "definition": "去掉排中律（p∨¬p 不再永真）的逻辑：证明存在必须给出构造——“真 = 可构造证明”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "非经典逻辑",
+  "level": 4,
+  "prereq_names": [
+   "NEW:永真式"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "构造性证明 是直觉主义逻辑的实践版。",
+  "formulas": []
+ },
+ {
+  "cn": "模态逻辑入门",
+  "en": "Introduction to Modal Logic",
+  "definition": "在命题逻辑上加 □（必然）、◇（可能）两个算子，研究“必然真”与“可能真”——□p ≡ ¬◇¬p。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "非经典逻辑",
+  "level": 4,
+  "prereq_names": [
+   "NEW:命题"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“必然下雨 → 下雨”（□p → p）是模态公理 T。",
+  "formulas": [
+   "◇p ≡ ¬□¬p"
+  ]
+ },
+ {
+  "cn": "多值逻辑",
+  "en": "Many-valued Logic",
+  "definition": "真值不止真/假两种的逻辑，如三值逻辑加“未知”——数据库 NULL、电路高阻态的逻辑模型。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "非经典逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:命题"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "Łukasiewicz 三值逻辑：真=1，假=0，未知=1/2。",
+  "formulas": []
+ },
+ {
+  "cn": "模糊逻辑",
+  "en": "Fuzzy Logic",
+  "definition": "真值取 [0,1] 区间连续值的逻辑，“高”0.8 真、“很高”0.9 真——处理“程度”而非“是非”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "非经典逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:多值逻辑"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "洗衣机模糊控制：水“很脏”0.8 → 多洗 10 分钟。",
+  "formulas": []
+ },
+ {
+  "cn": "爆炸原理",
+  "en": "Principle of Explosion",
+  "definition": "从矛盾的前提可以推出一切（p∧¬p ⊢ q）——这就是为什么相容性是底线：矛盾的系统什么都“证明”了。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "元逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:相容性",
+   "NEW:矛盾式与可满足式"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "“2 是偶数且 2 不是偶数”能推出“月亮是奶酪做的”。",
+  "formulas": [
+   "p ∧ ¬p ⊢ q"
+  ]
+ },
+ {
+  "cn": "演绎定理",
+  "en": "Deduction Theorem",
+  "definition": "Γ∪{φ} ⊢ ψ 当且仅当 Γ ⊢ φ→ψ：把“假设 φ 推出 ψ”打包成“证明蕴含式 φ→ψ”，是条件证明的合法性来源。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "证明论",
+  "level": 4,
+  "prereq_names": [
+   "NEW:希尔伯特演绎系统",
+   "NEW:蕴含"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": [
+   "Γ, φ ⊢ ψ ⟺ Γ ⊢ φ → ψ"
+  ]
+ },
+ {
+  "cn": "量词的引入与消去规则",
+  "en": "Quantifier Introduction/Elimination",
+  "definition": "自然演绎中量词的四条规则：∀ 消去（特化到任意项）、∀ 引入（对任意常元成立则全称成立）、∃ 引入、∃ 消去——谓词推理的“四则运算”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:全称量词与存在量词",
+   "谓词逻辑的推理规则"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "由 ∀x(P(x)→Q(x)) 和 P(a) 经 ∀ 消去得 P(a)→Q(a)，再 MP 得 Q(a)。",
+  "formulas": [
+   "∀x φ(x) ⊢ φ(t)"
+  ]
+ },
+ {
+  "cn": "合式公式",
+  "en": "Well-formed Formula",
+  "definition": "按形成规则拼出的合法符号串叫合式公式（wff），“p∧→q”这种乱拼的不算——“语法正确”是谈语义的前提。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:命题",
+   "NEW:合取与析取"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "(p → (q ∨ ¬r)) 合式；“)q( → p 不合式。",
+  "formulas": []
+ },
+ {
+  "cn": "联结词的优先级与省略括号",
+  "en": "Precedence of Connectives",
+  "definition": "约定 ¬ 最高，其次 ∧，再 ∨，→ 和 ↔ 最低——不写括号时按此还原，是“读懂公式”的约定。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 1,
+  "prereq_names": [
+   "NEW:合式公式"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "¬p ∧ q → r 读作 ((¬p) ∧ q) → r。",
+  "formulas": []
+ },
+ {
+  "cn": "对偶原理",
+  "en": "Duality Principle in Logic",
+  "definition": "把公式中的 ∧↔∨、真↔假、∀↔∃ 互换得到对偶式：原式永真 ⟺ 对偶式永假——“一套证明管两套定理”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 3,
+  "prereq_names": [
+   "NEW:逻辑的德摩根律",
+   "NEW:量词的德摩根律"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "证了分配律 A∩(B∪C)=(A∩B)∪(A∩C)，对偶的 A∪(B∩C) 免费得到。",
+  "formulas": []
+ },
+ {
+  "cn": "霍恩子句与霍恩SAT",
+  "en": "Horn Clauses and Horn-SAT",
+  "definition": "至多含一个正文字的子句叫霍恩子句；霍恩公式的 SAT 可在线性时间判定——“受限的 SAT 不难”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 4,
+  "prereq_names": [
+   "NEW:SAT问题",
+   "NEW:合取范式"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "Prolog 的逻辑编程本质就是霍恩子句推理。",
+  "formulas": []
+ },
+ {
+  "cn": "2-SAT",
+  "en": "2-Satisfiability",
+  "definition": "每个子句恰两个文字的 SAT 问题，可在线性时间判定（化为蕴含图找强连通分量）——“k=2 时 SAT 变简单”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "命题逻辑",
+  "level": 4,
+  "prereq_names": [
+   "NEW:SAT问题"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "(p∨q)∧(¬p∨r) 化为 p→r, ¬r→¬p 等蕴含边，用 SCC 判定。",
+  "formulas": []
+ },
+ {
+  "cn": "一阶语言的项",
+  "en": "Terms of First-order Language",
+  "definition": "项是“指称对象”的表达式：变元和常元是项，函数符号作用在项上还是项——“名词短语”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:个体词与谓词"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "在算术语言中，x、0、(x+0)、S(S(0)) 都是项。",
+  "formulas": []
+ },
+ {
+  "cn": "原子公式",
+  "en": "Atomic Formula",
+  "definition": "谓词符号作用在项上得到的公式，如 P(t₁,…,tₙ)、t₁ = t₂——不能再拆的“最小命题”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "谓词逻辑",
+  "level": 2,
+  "prereq_names": [
+   "NEW:一阶语言的项"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "x < y、Prime(p) 都是原子公式。",
+  "formulas": []
+ },
+ {
+  "cn": "逆否命题证明法",
+  "en": "Proof by Contrapositive",
+  "definition": "要证 p→q，转而证 ¬q→¬p：两者逻辑等值，但逆否命题有时假设更强、更好下手。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:逆命题否命题逆否命题"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "证“n² 偶则 n 偶”：直接难，转证逆否“n 奇则 n² 奇”，一眼即得。",
+  "formulas": []
+ },
+ {
+  "cn": "逆否与反证的选用",
+  "en": "Contrapositive vs Contradiction",
+  "definition": "逆否只否定结论（证 ¬q→¬p），反证否定整个命题（设 p∧¬q 导出矛盾）；结论是否定式时逆否更顺，结论复杂时反证更自由。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 3,
+  "prereq_names": [
+   "NEW:逆否命题证明法",
+   "反证法"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“若 x² 无理则 x 无理”用逆否；证“√2 无理”必须用反证（结论本身就是否定式）。",
+  "formulas": []
+ },
+ {
+  "cn": "空真",
+  "en": "Vacuous Truth",
+  "definition": "当前提恒假时，“若 p 则 q”空真：∀x∈∅ P(x) 恒真——“对不存在的东西断言什么都对”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:蕴含"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“所有会飞的猪都会解微积分”是真命题（没有会飞的猪）。",
+  "formulas": []
+ },
+ {
+  "cn": "全称命题的任意元法",
+  "en": "Arbitrary Element Method",
+  "definition": "证 ∀x P(x) 时任取一个“没有任何特殊假设”的 x 证出 P(x)——“任意”二字就是全部技巧。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 1,
+  "prereq_names": [
+   "NEW:全称量词与存在量词"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“偶数加偶数是偶数”：设 m=2a, n=2b 为任意偶数，m+n=2(a+b) 为偶数。",
+  "formulas": []
+ },
+ {
+  "cn": "存在命题的见证构造",
+  "en": "Witness Construction for Existence",
+  "definition": "证 ∃x P(x) 最直接的办法是交出一个具体的 x₀ 并验证 P(x₀)——“拿出证据”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 1,
+  "prereq_names": [
+   "NEW:全称量词与存在量词"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“存在无理数 x 使 x^√2 有理”：取 x=√2^√2，若它有理则 done，否则 (x^√2)^√2=2。",
+  "formulas": []
+ },
+ {
+  "cn": "充要条件的双向拆分",
+  "en": "Splitting If-and-only-if",
+  "definition": "证 p↔q 永远拆成 p→q 和 q→p 两半分别证；两半难度常不对称，简单的先写。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 1,
+  "prereq_names": [
+   "NEW:等值"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“T 可逆当且仅当 det≠0”：→ 用行列式乘法，← 用伴随矩阵，各证一半。",
+  "formulas": []
+ },
+ {
+  "cn": "定义展开法",
+  "en": "Unfolding Definitions",
+  "definition": "卡住时把结论和条件中的术语按定义展开成最原始的逻辑形式——“回到定义”是万能重启键。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "证 f 单则 f∘g 单：把“单”展开成 f(x₁)=f(x₂)→x₁=x₂，设 (f∘g)(x₁)=(f∘g)(x₂) 逐步剥。",
+  "formulas": []
+ },
+ {
+  "cn": "反例的威力",
+  "en": "Power of Counterexamples",
+  "definition": "要推翻全称命题 ∀x P(x)，只需一个 x₀ 使 P(x₀) 为假——“一个反例顶一万句论证”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 1,
+  "prereq_names": [
+   "NEW:全称量词与存在量词",
+   "NEW:存在命题的见证构造"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "“所有素数都是奇数”被 2 一个反例推翻。",
+  "formulas": []
+ },
+ {
+  "cn": "条件的等价改写",
+  "en": "Reformulating Conditions",
+  "definition": "用逻辑等值式（蕴含等值、德摩根、逆否）把条件改写成更好用的形状，再开始证明。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:蕴含等值式",
+   "NEW:逻辑的德摩根律"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "把“x∉A∪B”改写成“x∉A 且 x∉B”，后面的集合论证立刻顺滑。",
+  "formulas": []
+ },
+ {
+  "cn": "引入记号的简化",
+  "en": "Introducing Notation",
+  "definition": "给反复出现的复杂表达式起个短名字——记号是“思维的压缩包”，能大幅降低证明的认知负荷。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "证 (a+b)² 相关恒等式时令 s=a+b, p=ab，表达式立刻变短。",
+  "formulas": []
+ },
+ {
+  "cn": "结论先行改写",
+  "en": "Rewriting the Goal First",
+  "definition": "动手前先把“要证什么”改写成最具体的形式（展开定义、移项、取否定），目标越具体路越清晰。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:定义展开法"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "要证 lim aₙ = L，先写出 ∀ε>0 ∃N ∀n>N (|aₙ−L|<ε)，再去找 N。",
+  "formulas": []
+ },
+ {
+  "cn": "欲擒故纵的假设",
+  "en": "Strategic Assumptions",
+  "definition": "为使用某个定理而主动去证明它的前提——“想用结论，先凑条件”，是证明规划的核心动作。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "直接与间接证明",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "想用中值定理，先验证函数在闭区间连续、开区间可导。",
+  "formulas": []
+ },
+ {
+  "cn": "双重归纳法",
+  "en": "Double Induction",
+  "definition": "对两个变元同时归纳：先对 m 作归纳，归纳步内再对 n 作归纳——“归纳套归纳”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 3,
+  "prereq_names": [
+   "数学归纳法"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证阿克曼函数对一切 m,n 有定义：外层对 m 归纳，内层对 n 归纳。",
+  "formulas": []
+ },
+ {
+  "cn": "倒退归纳法",
+  "en": "Cauchy Backward Induction",
+  "definition": "先证命题对 n = 2ᵏ 成立（向前跳），再证“P(n) 蕴含 P(n−1)”（向后退）——柯西证 AM-GM 的名场面。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 3,
+  "prereq_names": [
+   "数学归纳法"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "AM-GM 不等式：先对 2,4,8,… 个数用“折半”证，再从 n 退到 n−1（补一个平均数）。",
+  "formulas": []
+ },
+ {
+  "cn": "螺旋式归纳",
+  "en": "Spiral Induction",
+  "definition": "两个命题 P(n)、Q(n) 互相依赖：证 P(n)→Q(n)→P(n+1) 的循环链条，一次归纳同时拿下两个。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 3,
+  "prereq_names": [
+   "数学归纳法"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "同时证“aₙ 单调增”与“aₙ 有上界”：用 P(n) 推出 Q(n)，再用 Q(n) 推出 P(n+1)。",
+  "formulas": []
+ },
+ {
+  "cn": "归纳法等价于良序原理",
+  "en": "Induction Equivalent to Well-ordering",
+  "definition": "数学归纳法 ⟺ 自然数的良序原理（每非空子集有最小元）：极小反例法就是良序原理的化身。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 3,
+  "prereq_names": [
+   "数学归纳法",
+   "良序原理"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "多元归纳法",
+  "en": "Induction on Multiple Variables",
+  "definition": "对 n+m（或 max(n,m)）作归纳，一次处理两个变元——“把二维压成一维”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 3,
+  "prereq_names": [
+   "数学归纳法",
+   "强归纳法"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“m+n 个物品的某种性质”：对 s=m+n 归纳，归纳步拆 m 或 n 减 1。",
+  "formulas": []
+ },
+ {
+  "cn": "归纳奠基的陷阱",
+  "en": "Pitfalls of the Base Case",
+  "definition": "归纳奠基 n=1 成立、归纳步也“看似”成立，但结论仍可能全错——常因归纳步暗用了 n≥2（如“所有马同色”悖论）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 2,
+  "prereq_names": [
+   "数学归纳法"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“n 匹马同色”：n=1 真；n→n+1 时取两组 n 匹马，“中间 n−1 匹”在 n=1 时是空集，论证崩塌。",
+  "formulas": []
+ },
+ {
+  "cn": "归纳构造证明",
+  "en": "Proof by Inductive Construction",
+  "definition": "用归纳法“造出”所需对象：第 n 步在前 n−1 步产物上添砖加瓦——存在性证明的构造版。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 3,
+  "prereq_names": [
+   "数学归纳法",
+   "NEW:存在命题的见证构造"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "造 n 个两两距离为无理数的点集：已有 n 个点时，用可数性避开“坏位置”添第 n+1 个。",
+  "formulas": []
+ },
+ {
+  "cn": "费马无穷递降法",
+  "en": "Infinite Descent",
+  "definition": "费马的法宝：假设有正整数解，造出更小的正整数解，无限下降与良序原理矛盾——“越证越小，不可能”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 3,
+  "prereq_names": [
+   "NEW:归纳法等价于良序原理",
+   "反证法"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "证 √2 无理：若 √2=a/b（最简），则 a,b 皆偶数，可约分，得到更小的表示，无限下降矛盾。",
+  "formulas": []
+ },
+ {
+  "cn": "极小反例法",
+  "en": "Minimal Counterexample Method",
+  "definition": "设“最小的反例”存在，利用最小性推出更小的反例（或直接矛盾）——良序原理披着反证法的外衣。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 3,
+  "prereq_names": [
+   "NEW:费马无穷递降法",
+   "良序原理"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "证“每个大于 1 的整数有素因子”：设 n 是最小的反例，n 合数则有真因子 d，d 更小必有素因子，矛盾。",
+  "formulas": []
+ },
+ {
+  "cn": "归纳法的形式化",
+  "en": "Formalization of Induction",
+  "definition": "PA 中的归纳是公理模式：对每个公式 φ 有一条公理“φ(0)∧∀n(φ(n)→φ(n+1)) → ∀n φ(n)”——归纳本身被公理化了。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 4,
+  "prereq_names": [
+   "数学归纳法",
+   "NEW:形式系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "φ(0) ∧ ∀n(φ(n) → φ(n+1)) → ∀n φ(n)"
+  ]
+ },
+ {
+  "cn": "双射法",
+  "en": "Bijective Proof",
+  "definition": "要证 |A|=|B|，造一个 A 到 B 的双射——“数数”的终极形态，组合恒等式的王道证法。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:双射"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "证 C(n,k)=C(n,n−k)：子集与其补集一一对应。",
+  "formulas": []
+ },
+ {
+  "cn": "容斥原理",
+  "en": "Inclusion-Exclusion Principle",
+  "definition": "|A∪B| = |A|+|B|−|A∩B|，一般地交替加减各阶交集——“多加了就减回去”，计数的修正公式。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:并集与交集"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "定理",
+  "example": "100 人中 60 喜茶、70 喜咖啡，至少 30 人两者都喜（60+70−100）。",
+  "formulas": [
+   "|⋃Aᵢ| = Σ|Aᵢ| − Σ|Aᵢ∩Aⱼ| + ⋯"
+  ]
+ },
+ {
+  "cn": "容斥原理的筛法证明",
+  "en": "Sieve Proof of Inclusion-Exclusion",
+  "definition": "用特征函数：1−χ_{∪Aᵢ} = ∏(1−χ_{Aᵢ})，展开乘积再求和即得容斥公式——“乘法展开”的视角。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 4,
+  "prereq_names": [
+   "NEW:容斥原理",
+   "NEW:集合的特征函数"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "",
+  "formulas": [
+   "1 − χ_{⋃Aᵢ} = ∏ᵢ(1 − χ_{Aᵢ})"
+  ]
+ },
+ {
+  "cn": "平均值论证",
+  "en": "Averaging Argument",
+  "definition": "一堆数的平均是 μ，则必有 ≥μ 的也有 ≤μ 的——“平均线上下必有成员”，存在性证明的轻骑兵。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "n 个数和为 S，则必有一个 ≥ S/n（否则总和 < S，矛盾）。",
+  "formulas": []
+ },
+ {
+  "cn": "计数两次",
+  "en": "Double Counting",
+  "definition": "同一个量用两种方式数，得到恒等式——“数两次，列等式”，组合证明的万能钥匙。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "证 Σk·C(n,k) = n·2ⁿ⁻¹：左边按“选 k 人再选队长”数，右边按“先选队长再选队员”数。",
+  "formulas": []
+ },
+ {
+  "cn": "组合解释",
+  "en": "Combinatorial Interpretation",
+  "definition": "给代数恒等式的每一项“讲一个组合故事”（选人、分组、排队），等式两边讲的是同一件事。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 3,
+  "prereq_names": [
+   "NEW:计数两次"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "(1+1)ⁿ = ΣC(n,k)：左边是 n 个人每人“选/不选”2 种，右边按选出 k 人分类。",
+  "formulas": []
+ },
+ {
+  "cn": "递推关系的建立",
+  "en": "Setting Up Recurrences",
+  "definition": "找 aₙ 与 aₙ₋₁ 的关系：看第 n 个元素的“去留/位置”如何化归到 n−1 的情形——递推是“大事化小”的公式版。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "n 级楼梯每次走 1 或 2 级：aₙ = aₙ₋₁ + aₙ₋₂（看第一步走几级）。",
+  "formulas": []
+ },
+ {
+  "cn": "生成函数计数法",
+  "en": "Generating Function Method",
+  "definition": "把数列 aₙ 打包成幂级数 A(x)=Σaₙxⁿ，递推关系变成函数方程——“数列的傅里叶变换”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 4,
+  "prereq_names": [
+   "NEW:递推关系的建立"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "斐波那契 F(x)=x/(1−x−x²)，展开系数即得通项公式。",
+  "formulas": [
+   "A(x) = Σₙ aₙxⁿ"
+  ]
+ },
+ {
+  "cn": "错位排列的容斥计算",
+  "en": "Derangements via Inclusion-Exclusion",
+  "definition": "n 个元素的错位排列数 Dₙ = n!·Σ_{k=0}ⁿ(−1)ᵏ/k!：用容斥扣掉“至少一个不动点”的排列。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 3,
+  "prereq_names": [
+   "NEW:容斥原理"
+  ],
+  "tags": [],
+  "kind": "推论",
+  "example": "n=4 时 D₄=9；n 很大时 Dₙ/n! → 1/e。",
+  "formulas": [
+   "Dₙ = n! Σ_{k=0}ⁿ (−1)ᵏ/k!"
+  ]
+ },
+ {
+  "cn": "卡特兰数的递推",
+  "en": "Catalan Recurrence",
+  "definition": "Cₙ₊₁ = Σ_{i=0}ⁿ CᵢCₙ₋ᵢ：看第一个“配对”把问题分成左右两半——括号匹配、二叉树的共同递推。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 3,
+  "prereq_names": [
+   "NEW:递推关系的建立"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "n 对括号的合法匹配数、Cₙ = (1/(n+1))C(2n,n)。",
+  "formulas": [
+   "Cₙ₊₁ = Σᵢ CᵢCₙ₋ᵢ"
+  ]
+ },
+ {
+  "cn": "抽屉论证的定量版",
+  "en": "Quantitative Pigeonhole",
+  "definition": "N 个物品进 k 个盒，必有一盒 ≥ ⌈N/k⌉ 个——鸽巢原理的“加强版”，给出具体数字。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "计数证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:鸽巢原理",
+   "NEW:平均值论证"
+  ],
+  "tags": [],
+  "kind": "推论",
+  "example": "101 个数进 10 个盒，必有一盒 ≥ 11 个数。",
+  "formulas": []
+ },
+ {
+  "cn": "ε-N语言",
+  "en": "Epsilon-N Language",
+  "definition": "lim aₙ=L 指 ∀ε>0 ∃N ∀n>N (|aₙ−L|<ε)：把“无限接近”翻译成“误差可任意小”，分析的“普通话”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:结论先行改写"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "证 1/n → 0：给 ε>0，取 N > 1/ε，则 n>N 时 |1/n| < ε。",
+  "formulas": [
+   "∀ε>0 ∃N ∀n>N (|aₙ − L| < ε)"
+  ]
+ },
+ {
+  "cn": "ε-δ语言",
+  "en": "Epsilon-Delta Language",
+  "definition": "lim_{x→a} f(x)=L 指 ∀ε>0 ∃δ>0 (0<|x−a|<δ → |f(x)−L|<ε)：连续、可导的共同“语法”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:ε-N语言"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "∀ε>0 ∃δ>0 (0<|x−a|<δ → |f(x)−L|<ε)"
+  ]
+ },
+ {
+  "cn": "夹逼论证",
+  "en": "Squeeze Argument",
+  "definition": "aₙ ≤ bₙ ≤ cₙ 且 aₙ,cₙ → L，则 bₙ → L——“两边夹住，中间只好跟过去”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:ε-N语言"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "证 sin(n)/n → 0：−1/n ≤ sin(n)/n ≤ 1/n，两边都 →0。",
+  "formulas": [
+   "aₙ ≤ bₙ ≤ cₙ, aₙ,cₙ→L ⟹ bₙ→L"
+  ]
+ },
+ {
+  "cn": "逼近论证",
+  "en": "Approximation Argument",
+  "definition": "先在稠密子集（如有理数、多项式）上证出结论，再用连续性/极限“延拓”到全集——“先易后难”的分析版。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 3,
+  "prereq_names": [
+   "NEW:ε-N语言"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“连续函数由有理数上的值唯一确定”：x 取有理列逼近，连续性传递等式。",
+  "formulas": []
+ },
+ {
+  "cn": "紧致性论证法",
+  "en": "Compactness Argument",
+  "definition": "有界无穷集必有收敛子列（Bolzano–Weierstrass）：从“乱”中取出“不乱”的子列，是存在性证明的分析利器。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 4,
+  "prereq_names": [
+   "NEW:无限鸽巢原理"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "证闭区间上连续函数取到最大值：取 f(xₙ)→上确界，子列 xₙₖ→x*，连续性得 f(x*)=上确界。",
+  "formulas": []
+ },
+ {
+  "cn": "单调量法",
+  "en": "Monotone Quantity Method",
+  "definition": "找一个沿过程单调变化的量（能量、熵、势函数），用它的单调性推出收敛或终止——“找个只朝一个方向走的量”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "梯度下降中目标函数值单调减；欧几里得算法中余数单调减故终止。",
+  "formulas": []
+ },
+ {
+  "cn": "截断论证",
+  "en": "Truncation Argument",
+  "definition": "先在有限/有界范围证出带误差的结论，再让截断参数 →∞ 消去误差——“先管有限，再放无限”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 3,
+  "prereq_names": [
+   "NEW:逼近论证"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证无穷级数求和公式：先证前 N 项，再令 N→∞。",
+  "formulas": []
+ },
+ {
+  "cn": "反证加紧性",
+  "en": "Contradiction with Compactness",
+  "definition": "分析中的经典组合拳：假设结论不成立，造出违反紧致性的序列（如无收敛子列），矛盾——“反证开路，紧性收网”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 4,
+  "prereq_names": [
+   "NEW:紧致性论证法",
+   "反证法"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“闭区间上连续函数一致连续”：设不然，造出 |xₙ−yₙ|→0 但 |f(xₙ)−f(yₙ)|≥ε₀，取收敛子列得矛盾。",
+  "formulas": []
+ },
+ {
+  "cn": "确界原理的应用",
+  "en": "Using the Supremum Principle",
+  "definition": "要证“存在上确界”，先证集合非空有上界，再令 s=sup，用“s−ε 不是上界”去逼——“上确界是拿 ε 逼出来的”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 3,
+  "prereq_names": [
+   "NEW:ε-N语言"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证 √2 存在：令 S={x≥0 | x²<2}，s=sup S，用 (s±ε)² 夹出 s²=2。",
+  "formulas": []
+ },
+ {
+  "cn": "磨光思想",
+  "en": "Mollification Idea",
+  "definition": "用光滑函数去逼近不光滑的对象（卷积磨光），先在光滑情形证明再取极限——“先磨光滑，再证再过极限”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 4,
+  "prereq_names": [
+   "NEW:逼近论证"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "概率法",
+  "en": "Probabilistic Method",
+  "definition": "Erdős 的绝招：随机造一个对象，算“好性质”发生的概率 >0，则好对象必存在——“随机一试，存在即得”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 3,
+  "prereq_names": [
+   "NEW:平均值论证"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "方法",
+  "example": "证存在 n 顶点图无团也无独立集 ≥2log n：随机图里“坏事件”概率 <1，故好图存在。",
+  "formulas": []
+ },
+ {
+  "cn": "期望论证",
+  "en": "Expectation Argument",
+  "definition": "随机对象的某个量期望是 μ，则必存在该量 ≥μ（或 ≤μ）的实例——概率法的“期望版”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 3,
+  "prereq_names": [
+   "NEW:概率法",
+   "期望与方差"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "MAX-SAT：随机赋值期望满足一半子句，故必有赋值满足 ≥ 一半。",
+  "formulas": [
+   "E[X]=μ ⟹ ∃实例 X≥μ"
+  ]
+ },
+ {
+  "cn": "洛瓦兹局部引理",
+  "en": "Lovász Local Lemma",
+  "definition": "一堆“坏事件”每个概率 ≤p、每个至多与 d 个相关，若 ep(d+1)≤1 则“全不发生”的概率 >0——“坏事稀疏则可全避”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 4,
+  "prereq_names": [
+   "NEW:概率法"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "k-SAT 中每子句至多与 d 个子句相交、d 不大时，必有满足赋值。",
+  "formulas": [
+   "ep(d+1) ≤ 1 ⟹ P(⋀¬Aᵢ) > 0"
+  ]
+ },
+ {
+  "cn": "熵压缩法",
+  "en": "Entropy Compression Method",
+  "definition": "Moser–Tardos 的构造性局部引理：随机赋值，遇到坏事件就重随其变量并记录日志；“记录太长则熵不够”，故算法必停——存在性证明自带算法。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 5,
+  "prereq_names": [
+   "NEW:洛瓦兹局部引理"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "多项式方法",
+  "en": "Polynomial Method",
+  "definition": "把组合问题编码成多项式，用“非零多项式零点不多”（Schwartz–Zippel）推出组合结论——代数给组合打工。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 4,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "Dvir 解决有限域 Kakeya 猜想：假设反例存在，造出低次多项式在其上全零，次数矛盾。",
+  "formulas": []
+ },
+ {
+  "cn": "组合零点定理",
+  "en": "Combinatorial Nullstellenssatz",
+  "definition": "Alon 的定理：多项式某单项系数非零，则在网格 S₁×⋯×Sₙ 上必有非零点——多项式方法的“发动机”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 5,
+  "prereq_names": [
+   "NEW:多项式方法"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "证 Erdős–Heilbronn 猜想（后成定理）等受限和集问题。",
+  "formulas": []
+ },
+ {
+  "cn": "不动点证存在性",
+  "en": "Existence via Fixed Point Theorems",
+  "definition": "把“求解”化为“找映射的不动点”：Brouwer/Schauder 不动点定理保证连续自映射必有不动点——拓扑给出的存在性。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 4,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "纳什均衡存在性：最佳应对映射的不动点就是均衡点。",
+  "formulas": []
+ },
+ {
+  "cn": "势能函数法",
+  "en": "Potential Function Method",
+  "definition": "给离散过程定义一个非负整数值“势能”，每步严格减少则过程必终止——程序终止性证明的通用模板。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 3,
+  "prereq_names": [
+   "NEW:单调量法",
+   "NEW:归纳法等价于良序原理"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "证欧几里得算法终止：势能 = 两数之和，每步严格减少。",
+  "formulas": []
+ },
+ {
+  "cn": "循环不变式",
+  "en": "Loop Invariant",
+  "definition": "循环每次迭代都保持为真的断言：初始化成立＋保持＋终止时推出正确性——算法正确性证明的三段式。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 3,
+  "prereq_names": [
+   "NEW:势能函数法"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "方法",
+  "example": "插入排序的不变式：“前 j 张牌已有序”；终止时 j=n 即全序。",
+  "formulas": []
+ },
+ {
+  "cn": "极大元论证",
+  "en": "Maximal Element Argument",
+  "definition": "考虑满足某性质的“极大”对象（用佐恩引理保证存在），证极大对象必具目标性质——“到头了，所以只能是答案”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 4,
+  "prereq_names": [
+   "佐恩引理",
+   "NEW:极大元与最大元"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证每个向量空间有基：取极大线性无关集，若它张不成全空间则还能加向量，矛盾。",
+  "formulas": []
+ },
+ {
+  "cn": "紧性取极限证存在",
+  "en": "Existence via Compactness and Limits",
+  "definition": "造一列“越来越好”的近似解，用紧致性取收敛子列，极限即为真解——“近似解的极限是解”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 4,
+  "prereq_names": [
+   "NEW:紧致性论证法"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "Weierstrass 逼近定理的证明思路：伯恩斯坦多项式一致收敛到连续函数。",
+  "formulas": []
+ },
+ {
+  "cn": "计数存在性",
+  "en": "Existence by Counting",
+  "definition": "“好对象”比“坏障碍”多，则好对象必存在——鸽巢原理的“计数版”，概率法的确定性兄弟。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 3,
+  "prereq_names": [
+   "NEW:抽屉论证的定量版"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证存在无理数的无理数次方为有理数：√2^√2 若有理则 done，否则 (√2^√2)^√2=2。",
+  "formulas": []
+ },
+ {
+  "cn": "构造性算法证明",
+  "en": "Constructive Proof by Algorithm",
+  "definition": "存在性证明的最高级：直接给出“造出对象”的算法并证其正确——证明即程序。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 3,
+  "prereq_names": [
+   "NEW:循环不变式",
+   "NEW:存在命题的见证构造"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "霍尔 marriage 定理的证明可化为二分图匹配算法（匈牙利算法的雏形）。",
+  "formulas": []
+ },
+ {
+  "cn": "非构造性存在证明举例",
+  "en": "Examples of Nonconstructive Existence",
+  "definition": "只证“存在”不交出实例的证明：典型手法是反证（设都不满足导出矛盾）或计数（好对象比坏的多）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 3,
+  "prereq_names": [
+   "反证法",
+   "NEW:计数存在性",
+   "构造性vs非构造性存在证明"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“存在无理数 a,b 使 a^b 有理”的经典证明：分两种情形，但不知道哪种成立。",
+  "formulas": []
+ },
+ {
+  "cn": "反证法的适用信号",
+  "en": "When to Use Contradiction",
+  "definition": "三种信号提示用反证：结论是否定式（“无理”“不存在”）、直接下手无门、假设反面后条件变强（如“设为最简分数”多出互素条件）。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "否定与反证",
+  "level": 2,
+  "prereq_names": [
+   "反证法"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“素数无穷”：设只有有限个，构造新数导出矛盾——反面假设给了“有限个”这个强条件。",
+  "formulas": []
+ },
+ {
+  "cn": "否定结论的准确表述",
+  "en": "Negating the Conclusion Correctly",
+  "definition": "反证第一步必须把结论否定准：¬∀=∃¬，¬∃=∀¬，“至多一个”的否定是“至少两个”——否定错则全错。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "否定与反证",
+  "level": 2,
+  "prereq_names": [
+   "NEW:量词的德摩根律",
+   "反证法"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "结论“数列有界”的否定是“∀M ∃n (|aₙ|>M)”，不是“数列无界”的字面重复。",
+  "formulas": []
+ },
+ {
+  "cn": "矛盾的三种来源",
+  "en": "Three Sources of Contradiction",
+  "definition": "反证的矛盾只可能来自三处：与已知定理冲突、与假设自相冲突、推出 0=1 类荒谬——找矛盾时按这三处排查。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "否定与反证",
+  "level": 3,
+  "prereq_names": [
+   "反证法"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "√2 无理的证明中，矛盾是“a,b 既互素又皆偶”——假设自相冲突型。",
+  "formulas": []
+ },
+ {
+  "cn": "唯一性证明的套路",
+  "en": "Template for Uniqueness Proofs",
+  "definition": "设 x₁,x₂ 都满足条件，证 x₁=x₂——“假设有两个，证它们是一个”，是唯一性的标准开场。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "否定与反证",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "证加法逆元唯一：设 b,c 都是 a 的逆元，则 b = b+0 = b+(a+c) = (b+a)+c = 0+c = c。",
+  "formulas": []
+ },
+ {
+  "cn": "不存在性证明的套路",
+  "en": "Template for Nonexistence Proofs",
+  "definition": "设存在满足条件的对象，推导出它必须同时具有两个互斥的性质——“存在即荒谬”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "否定与反证",
+  "level": 3,
+  "prereq_names": [
+   "反证法",
+   "NEW:唯一性证明的套路"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“不存在有理数 x 使 x²=2”：设 x=a/b 最简，则 a,b 皆偶数，与最简矛盾。",
+  "formulas": []
+ },
+ {
+  "cn": "经典反证三例",
+  "en": "Three Classic Proofs by Contradiction",
+  "definition": "√2 无理（数论）、素数无穷（欧几里得）、停机问题不可判定（图灵）——三个领域的反证范本，结构都是“设反面→构造→矛盾”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "否定与反证",
+  "level": 3,
+  "prereq_names": [
+   "反证法",
+   "停机问题"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "排中律的使用场景",
+  "en": "Where Excluded Middle is Used",
+  "definition": "分情形“p 或 ¬p” exhaust 一切可能，依赖排中律；构造主义者不用它——“非此即彼”是古典证明的暗器。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "否定与反证",
+  "level": 3,
+  "prereq_names": [
+   "NEW:永真式",
+   "NEW:直觉主义逻辑入门"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“√2^√2 若有理则取 a=b=√2，否则取 a=√2^√2,b=√2”——分两种情形，必有一种成立。",
+  "formulas": []
+ },
+ {
+  "cn": "反证法的构造性质疑",
+  "en": "Constructive Critique of Contradiction",
+  "definition": "直觉主义者认为：由“¬¬p”推出 p 用了排中律，非构造——“证伪了反面”不等于“造出了正面”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "否定与反证",
+  "level": 4,
+  "prereq_names": [
+   "NEW:直觉主义逻辑入门",
+   "反证法"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "引理提炼",
+  "en": "Extracting Lemmas",
+  "definition": "把证明中反复用的关键步骤抽出来单独成引理——“证明的函数式编程”，主定理只剩骨架。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "元技巧",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“有限整环是域”前，先提引理“有限半群中左消去则每个元有左逆”。",
+  "formulas": []
+ },
+ {
+  "cn": "证明模块化",
+  "en": "Modular Proofs",
+  "definition": "长证明拆成“引理链”：每块只用前块的结论，块内自洽——“分而治之”在证明中的体现。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "元技巧",
+  "level": 2,
+  "prereq_names": [
+   "NEW:引理提炼"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "综合法与分析法",
+  "en": "Synthesis vs Analysis",
+  "definition": "综合法从已知推结论（由因导果），分析法从结论反推需什么（执果索因）；想题用分析，写证明用综合。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "元技巧",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "想不等式时从结论往回“凑”（分析），写下来时从已知往前“推”（综合）。",
+  "formulas": []
+ },
+ {
+  "cn": "条件的强化与弱化",
+  "en": "Strengthening and Weakening Conditions",
+  "definition": "证不动时试：加强归纳假设（归纳假设的加强技巧）、弱化结论分步证、强化条件先证特例——“条件结论的松紧带”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "元技巧",
+  "level": 3,
+  "prereq_names": [
+   "归纳假设的加强技巧"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证“前 n 个素数乘积加 1 有新素因子”时，把结论加强为“新素因子大于第 n 个素数”。",
+  "formulas": []
+ },
+ {
+  "cn": "特殊情形先行",
+  "en": "Special Cases First",
+  "definition": "先证 n=2、有限、光滑等特殊情形，摸清证明的“骨架”再推广——“先打样，再量产”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "元技巧",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "证一般矩阵的结论先看 2×2 情形：公式具体，障碍看得见。",
+  "formulas": []
+ },
+ {
+  "cn": "量词顺序辨析",
+  "en": "Disambiguating Quantifier Order",
+  "definition": "∀ε∃δ 与 ∃δ∀ε 天差地别：前者 δ 可依赖 ε（逐点连续），后者 δ 统一（一致连续）——“谁依赖谁”是分析的命门。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "元技巧",
+  "level": 3,
+  "prereq_names": [
+   "NEW:量词顺序不可随意交换",
+   "NEW:ε-δ语言"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "f(x)=x² 在 ℝ 上连续但非一致连续：δ 必须随 x 变大而变小。",
+  "formulas": []
+ },
+ {
+  "cn": "证明的阅读方法",
+  "en": "How to Read a Proof",
+  "definition": "三遍法：一遍抓主线（定理→关键引理→结论），二遍补细节（每个“显然”都问为什么），三遍想“若条件弱一点哪里会断”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "元技巧",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "归谬法的适用边界",
+  "en": "Limits of Reductio ad Absurdum",
+  "definition": "归谬需要“否定结论”有实质内容：结论本身就是存在性断言时，反证常比构造更短；但证“对一切”型结论时直接证往往更清晰。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "元技巧",
+  "level": 3,
+  "prereq_names": [
+   "NEW:反证法的适用信号"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "换元法",
+  "en": "Substitution",
+  "definition": "给复杂表达式换个名字，把陌生问题变成熟悉问题——“改名换姓，旧友重逢”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 1,
+  "prereq_names": [
+   "NEW:引入记号的简化"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "思路",
+  "example": "解 √(x+1)+√(x−1)=2：令 t=√(x+1)−√(x−1)，化为有理方程。",
+  "formulas": []
+ },
+ {
+  "cn": "引入参数",
+  "en": "Introducing Parameters",
+  "definition": "把常数换成参数 t，研究一族问题再令 t 取特定值——“动起来看，不动时取值”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 ΣC(n,k)²=C(2n,n)：引入 (1+x)ⁿ(1+x)ⁿ=(1+x)²ⁿ，比较 xⁿ 系数。",
+  "formulas": []
+ },
+ {
+  "cn": "齐次化技巧",
+  "en": "Homogenization",
+  "definition": "把非齐次的不等式/方程各项补成同一次数，获得“可缩放”的对称美——“次数对齐，缩放无忧”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "条件 a+b+c=1 下证 Σa²≥1/3：把 1/3 写成 (a+b+c)²/3，齐次化后可设 p=a+b+c 任意。",
+  "formulas": []
+ },
+ {
+  "cn": "对称化",
+  "en": "Symmetrization",
+  "definition": "把不对称的表达式换成对称平均（如把 f(a,b) 换成 (f(a,b)+f(b,a))/2），不改变对称的结论——“抹平不对称”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 Σa³/(a+b) ≥ (a²+b²+c²)/4 时先对称化求和指标。",
+  "formulas": []
+ },
+ {
+  "cn": "不妨设",
+  "en": "WLOG (Without Loss of Generality)",
+  "definition": "利用对称性固定一个顺序（如设 a≥b≥c），把 n! 种情形压成 1 种——“对称在手，顺序我定”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "证对称不等式时设 a≥b≥c，则 (a−b)(b−c)≥0 等关系可直接用。",
+  "formulas": []
+ },
+ {
+  "cn": "归一化技巧",
+  "en": "Normalization",
+  "definition": "利用齐次性设某个量为 1（如和为 1、乘积为 1），消去一个自由度——“定住一个，少算一分”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 2,
+  "prereq_names": [
+   "NEW:齐次化技巧"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "齐次不等式证 Σa²/(b+c)≥(a+b+c)/2 时设 p=a+b+c=1。",
+  "formulas": []
+ },
+ {
+  "cn": "补形法",
+  "en": "Complementary Counting/Form",
+  "definition": "直接难，算补集：总数减去“不要的”——“正面硬刚不如反面包抄”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 1,
+  "prereq_names": [
+   "NEW:差集与补集"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "10 人中至少一人及格的概率 = 1 − 10 人全不及格的概率。",
+  "formulas": []
+ },
+ {
+  "cn": "条件方程化",
+  "en": "Turning Conditions into Equations",
+  "definition": "把“存在/整除/不等”等条件翻译成等式（如 a|b 写成 b=ka），让代数工具能接手——“翻译成方程再动手”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证“n² 偶则 n 偶”：设 n²=2k 是方程化的第一步（再转逆否）。",
+  "formulas": []
+ },
+ {
+  "cn": "几何问题代数化",
+  "en": "Algebrization of Geometry",
+  "definition": "建坐标系，把几何条件变成方程——“形”化为“数”，解析几何的基本功。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证三角形三条高交于一点：建坐标，写直线方程，解方程组。",
+  "formulas": []
+ },
+ {
+  "cn": "代数问题几何化",
+  "en": "Geometrization of Algebra",
+  "definition": "给代数式配几何意义（如 √(a²+b²) 看成距离），用几何直观秒杀代数运算——“数”长出“形”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "求 √(x²+1)+√((x−3)²+4) 最小值：看成 x 轴上一点到 (0,1)、(3,2) 的距离和，用反射原理。",
+  "formulas": []
+ },
+ {
+  "cn": "离散转连续",
+  "en": "Discrete to Continuous",
+  "definition": "把求和/计数问题嵌入连续模型（积分、实数），借用微积分工具——“离散是连续的影子”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "估计调和级数 Σ1/k 发散：与 ∫dx/x 比较（积分判别法）。",
+  "formulas": []
+ },
+ {
+  "cn": "连续转离散",
+  "en": "Continuous to Discrete",
+  "definition": "把连续问题切成离散片（取样、网格化），用组合有限方法处理——“切碎了数”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 [0,1] 上连续函数一致连续：把区间切成 n 等份，每份上用普通连续性。",
+  "formulas": []
+ },
+ {
+  "cn": "有限转无限",
+  "en": "Finite to Infinite",
+  "definition": "先证有限情形，再取极限过渡到无限——“有限是无限的彩排”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 3,
+  "prereq_names": [
+   "NEW:截断论证"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "无穷级数求和：先求前 N 项和的公式，再令 N→∞。",
+  "formulas": []
+ },
+ {
+  "cn": "无限转有限",
+  "en": "Infinite to Finite via Truncation",
+  "definition": "用截断/紧致性把无限问题压到有限框里处理——“无限太大，先关进笼子”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 3,
+  "prereq_names": [
+   "NEW:有限转无限"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证无穷图可 3 染色：任取有限子图染色，用紧致性（Kőnig 引理）拼出整体染色。",
+  "formulas": []
+ },
+ {
+  "cn": "特殊值法",
+  "en": "Plugging in Special Values",
+  "definition": "对函数方程/恒等式代入 0、1、−1、x=y 等特殊值，炸出隐藏信息——“先炸几个点看看”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [
+   "核心"
+  ],
+  "kind": "思路",
+  "example": "f(x+y)=f(x)+f(y)：令 x=y=0 得 f(0)=0；令 y=−x 得 f(−x)=−f(x)。",
+  "formulas": []
+ },
+ {
+  "cn": "极端情形检验",
+  "en": "Checking Extreme Cases",
+  "definition": "把猜想放到极端情形（n 很大、ε 很小、退化图形）下检验，错的猜想往往当场现形——“极端是照妖镜”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "猜“n 边形内角和 = n·180°”？n=3 时 540°≠180°，立刻发现该是 (n−2)·180°。",
+  "formulas": []
+ },
+ {
+  "cn": "小规模试验找规律",
+  "en": "Small Cases to Guess Pattern",
+  "definition": "算 n=1,2,3,4 的小情形，从数据里猜出一般公式再证明——“先当实验家，再当理论家”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "1+3+5+…+(2n−1)：n=1 得 1，n=2 得 4，n=3 得 9，猜 =n²，再归纳证。",
+  "formulas": []
+ },
+ {
+  "cn": "边界情形",
+  "en": "Boundary Cases",
+  "definition": "先看定义域的边界/端点：最值常在边界取得，反例常藏在边界——“边界是信息富矿”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "求闭区间上连续函数最值：先算端点值，再找内部驻点。",
+  "formulas": []
+ },
+ {
+  "cn": "退化情形",
+  "en": "Degenerate Cases",
+  "definition": "让图形/参数退化（三角形压成线段、圆半径→0），看公式是否依然自洽——“退化是天然的检验员”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 2,
+  "prereq_names": [
+   "NEW:极端情形检验"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "海伦公式在三角形退化为线段（c=a+b）时给出面积 0，自洽。",
+  "formulas": []
+ },
+ {
+  "cn": "对称点取值",
+  "en": "Evaluating at Symmetric Points",
+  "definition": "在对称点（如 x 与 −x、a 与 1/a）处取值/求和，让对称性替你算一半——“对称点，算一半”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "求 ∫_{−1}¹ x³/(1+x²) dx：被积函数是奇函数，积分直接为 0。",
+  "formulas": []
+ },
+ {
+  "cn": "令变量相等",
+  "en": "Setting Variables Equal",
+  "definition": "多元问题先令所有变量相等，看出“平衡点”的形态，再证一般情形向它靠拢——“先看最对称的点”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "a+b+c=1 求 ab+bc+ca 最大值：先试 a=b=c=1/3 得 1/3，再证 ≤1/3。",
+  "formulas": []
+ },
+ {
+  "cn": "猜公式再证",
+  "en": "Guess then Prove",
+  "definition": "从数据猜出闭式，再用归纳/直接法证明——“猜”是创造，“证”是负责，两步缺一不可。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 1,
+  "prereq_names": [
+   "NEW:小规模试验找规律"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "1²+2²+…+n²：算出 1,5,14,30，猜 =n(n+1)(2n+1)/6，再归纳。",
+  "formulas": []
+ },
+ {
+  "cn": "画图先猜",
+  "en": "Draw First, Conjecture Later",
+  "definition": "动手前先画个草图：交点、单调、凹凸、对称，图里藏着一半答案——“图是免费的情报”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "方程 x³−x−1=0 有几个实根？画 y=x³ 与 y=x+1 的图，一眼一个交点。",
+  "formulas": []
+ },
+ {
+  "cn": "数值实验探路",
+  "en": "Numerical Experimentation",
+  "definition": "先用计算器/程序算几个数值，观察规律再动笔——“让机器先跑，你再思考”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "猜 π(x) ~ x/ln x：先算 π(10³)=168, π(10⁶)=78498，与 x/ln x 对比。",
+  "formulas": []
+ },
+ {
+  "cn": "量纲检验",
+  "en": "Dimensional Check",
+  "definition": "物理/几何公式两边量纲必须一致：对出量纲能秒杀一大类错误——“单位不对，公式必错”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "特殊化",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "猜出单摆周期 T=2π√(l/g)：[l/g]=s²，开方得 s，量纲对。",
+  "formulas": []
+ },
+ {
+  "cn": "显式构造",
+  "en": "Explicit Construction",
+  "definition": "存在性证明的硬派做法：直接把对象写出来并验证——“要什么，给什么”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 2,
+  "prereq_names": [
+   "NEW:存在命题的见证构造"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "证“存在无理数的无理数次方为有理数”：若 √2^√2 有理则 done，否则取 a=√2^√2, b=√2。",
+  "formulas": []
+ },
+ {
+  "cn": "归纳构造",
+  "en": "Inductive Construction",
+  "definition": "一步步“添砖加瓦”造出无限对象：每步保持已造部分满足要求——“盖楼式”构造。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 3,
+  "prereq_names": [
+   "NEW:归纳构造证明"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "造与有理数集交为空的稠密集：枚举有理数 qₙ，第 n 步在 qₙ 附近挖掉小区间但保持稠密。",
+  "formulas": []
+ },
+ {
+  "cn": "贪心构造",
+  "en": "Greedy Construction",
+  "definition": "每一步都取当前最优/最小的选择，若能证“局部最优不破坏全局可行”，构造即完成——“眼前最优，步步为营”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "找硬币找零最少张数：每次取不超过余量的最大面额（对规范币制有效）。",
+  "formulas": []
+ },
+ {
+  "cn": "反例构造",
+  "en": "Constructing Counterexamples",
+  "definition": "要推翻“所有…都…”，针对性造一个破坏者：找“最可能例外”的边界情形下手——“专挑软柿子”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 2,
+  "prereq_names": [
+   "NEW:反例的威力"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "“连续则可导”？造魏尔斯特拉斯函数：处处连续处处不可导。",
+  "formulas": []
+ },
+ {
+  "cn": "极端例子",
+  "en": "Extremal Examples",
+  "definition": "为说明界是“紧”的，造出达到界的例子——“光证不等式不够，还要证不能更好”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 |a+b|≤|a|+|b| 后，取 b=0 说明等号可达到，界是紧的。",
+  "formulas": []
+ },
+ {
+  "cn": "拼接构造",
+  "en": "Gluing Construction",
+  "definition": "把局部的小构造“粘”成整体：分区处理再拼接，接口处验证相容——“分块施工，无缝对接”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "造分段函数：每段上分别定义，在分段点检查连续性/可导性。",
+  "formulas": []
+ },
+ {
+  "cn": "扰动构造",
+  "en": "Perturbation Construction",
+  "definition": "从一个“差不多”的对象出发，微调参数/位置消去瑕疵——“先有个雏形，再精雕细琢”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 4,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "造 n 个点两两距离互异：先任意放 n 个点，再微小扰动避开“距离相等”的零测集。",
+  "formulas": []
+ },
+ {
+  "cn": "构造与验证分离",
+  "en": "Separating Construction and Verification",
+  "definition": "先不管怎么想到的，把构造写出来；再单独验证它满足要求——“灵感”和“证明”分两步写。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证“存在无理数 a,b 使 a^b 有理”：先交出候选 (a,b)，再分两种情形验证必有一种成立。",
+  "formulas": []
+ },
+ {
+  "cn": "递归构造",
+  "en": "Recursive Construction",
+  "definition": "用已造好的小对象拼出大对象：定义“如何由 n 造 n+1”——分形的思想。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 3,
+  "prereq_names": [
+   "NEW:归纳构造"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "康托集：每步删去开区间中间三分之一，无限递归得到“无处稠密但不可数”的集。",
+  "formulas": []
+ },
+ {
+  "cn": "分步构造",
+  "en": "Stepwise Construction",
+  "definition": "把复杂构造拆成“先骨架、后细节”：每步只满足一部分要求，最后叠加——“一口吃不成胖子”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "构造",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "造 [0,1] 上的狄利克雷函数：先在有理点定义为 1，再在无理点定义为 0，分步验证。",
+  "formulas": []
+ },
+ {
+  "cn": "对称性简化",
+  "en": "Exploiting Symmetry",
+  "definition": "看到对称结构立刻用：对称求和只算一半、对称点函数值相等——“对称是免费的计算力”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 1,
+  "prereq_names": [
+   "NEW:不妨设"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "Σ_{k=0}ⁿ C(n,k) = 2ⁿ：一半的求和由 C(n,k)=C(n,n−k) 配对完成。",
+  "formulas": []
+ },
+ {
+  "cn": "轮换对称求和",
+  "en": "Cyclic Summation",
+  "definition": "Σ_cyc f(a,b,c) 表示轮换三项求和：认准“轮换”记号，配对、放缩都有章可循——“轮换求和，认准记号”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 2,
+  "prereq_names": [
+   "NEW:对称性简化"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "Σ_cyc a²/(b+c) 的三项是 (a,b,c)→(b,c,a)→(c,a,b) 轮换得到。",
+  "formulas": []
+ },
+ {
+  "cn": "配对相消",
+  "en": "Pairing and Cancellation",
+  "definition": "把求和/求积的项两两配对相消：正负配、倒数配、互补配——“找个伴，一起消失”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "1−2+3−4+…+(−1)ⁿ⁺¹n：两两配对每对和为 −1（n 偶时）。",
+  "formulas": []
+ },
+ {
+  "cn": "奇偶性论证",
+  "en": "Parity Argument",
+  "definition": "只看奇偶：奇+奇=偶、奇×偶=偶——“ mod 2 是最强的不变量之一”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "棋盘去掉对角两格后不能用多米诺铺满：多米诺盖一黑一白，去掉的是同色两格。",
+  "formulas": []
+ },
+ {
+  "cn": "染色不变量",
+  "en": "Coloring Invariant",
+  "definition": "给对象染色，看“颜色分布”在操作下是否守恒——“染色是奇偶性的推广”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 2,
+  "prereq_names": [
+   "NEW:奇偶性论证"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "8×8 棋盘去两对角格：黑白格数 32 vs 30，多米诺每块盖一黑一白，故铺不满。",
+  "formulas": []
+ },
+ {
+  "cn": "模不变量",
+  "en": "Modular Invariant",
+  "definition": "看操作前后某个 mod m 的余数是否不变：余数变了则操作不可能——“余数是操作的指纹”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 2,
+  "prereq_names": [
+   "NEW:染色不变量"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "操作“把 (a,b) 换成 (a+b, a−b)”：a²+b² mod 2 不变，故 (1,0) 变不成 (0,1)。",
+  "formulas": []
+ },
+ {
+  "cn": "对称点取最值",
+  "en": "Extremum at Symmetric Point",
+  "definition": "对称的优化问题，最值常在最对称的点取得（先猜后证）——“最对称处藏着最值”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 2,
+  "prereq_names": [
+   "NEW:令变量相等"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "周长固定的矩形面积最大是正方形：先猜 a=b，再用 (a−b)²≥0 证。",
+  "formulas": []
+ },
+ {
+  "cn": "利用对称减少情形",
+  "en": "Reducing Cases by Symmetry",
+  "definition": "分类讨论时，对称的情形只算一种——“对称的分支，算一遍就够”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 1,
+  "prereq_names": [
+   "NEW:不妨设"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "三人投票 2:1 的情形：谁是少数派对称，只需讨论一种。",
+  "formulas": []
+ },
+ {
+  "cn": "对称化不等式",
+  "en": "Symmetrizing Inequalities",
+  "definition": "非对称不等式先对称化（轮换求和、取平均），化为对称不等式再用 uvw/pqr——“先抹平，再碾压”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 4,
+  "prereq_names": [
+   "NEW:对称化",
+   "NEW:轮换对称求和"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 Nesbitt 不等式 Σa/(b+c)≥3/2：原式全对称，设 p=a+b+c 后通分硬算。",
+  "formulas": []
+ },
+ {
+  "cn": "不变量的寻找",
+  "en": "Finding Invariants",
+  "definition": "操作题先找“变中之不变”：奇偶、余数、和、积、染色数——“先找不变量，再谈可能性”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对称与不变",
+  "level": 2,
+  "prereq_names": [
+   "NEW:模不变量"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "15 谜题（数字华容道）：逆序数奇偶性是操作不变量，故一半排列无解。",
+  "formulas": []
+ },
+ {
+  "cn": "上下界分开证",
+  "en": "Separate Upper and Lower Bounds",
+  "definition": "证“等于/收敛到 L”时拆成“≤ L+ε”和“≥ L−ε”两半——“夹”字诀的通用版。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 2,
+  "prereq_names": [
+   "NEW:夹逼论证"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 lim n^{1/n}=1：先证 ≥1（显然），再用二项式定理证 ≤1+ε。",
+  "formulas": []
+ },
+ {
+  "cn": "紧界匹配",
+  "en": "Matching Bounds",
+  "definition": "上界和下界做到“同一个量级/同一个常数”才算完——“上下一合，方为紧界”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 3,
+  "prereq_names": [
+   "NEW:上下界分开证",
+   "NEW:极端例子"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "估 Σ_{k=1}ⁿ 1/k²：上界用 1+∫dx/x²，下界用 ∫dx/x²，两边都 ~π²/6。",
+  "formulas": []
+ },
+ {
+  "cn": "主项分析",
+  "en": "Dominant Term Analysis",
+  "definition": "和式/表达式中只看最大的那一项，其余是“小量”——“擒贼先擒王”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "n³+100n²+1000 当 n 很大时行为由 n³ 主导：(n³+100n²+1000)/n³ → 1。",
+  "formulas": []
+ },
+ {
+  "cn": "量级估计",
+  "en": "Order-of-magnitude Estimation",
+  "definition": "先估出“大概多大”（10 的几次方），再决定精细化方向——“先知量级，再谈精确”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 2,
+  "prereq_names": [
+   "NEW:主项分析"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "估 100! 的位数：用斯特林公式得约 158 位，不用真去乘。",
+  "formulas": []
+ },
+ {
+  "cn": "粗糙估计先行",
+  "en": "Crude Estimate First",
+  "definition": "先用最粗糙的放缩（如每项 ≤1）拿到“有界/收敛”的定性结论，定量精度以后再说——“先定性，后定量”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 Σ1/2ⁿ 收敛：每项 ≤1/n²？不——直接 Σ1/2ⁿ ≤ Σ1/2ⁿ⁻¹…其实等比求和一步到位；粗糙版：部分和 ≤2。",
+  "formulas": []
+ },
+ {
+  "cn": "精细化估计",
+  "en": "Refining Estimates",
+  "definition": "粗糙估计不够用时，逐项精细化：分段、加权、引入参数——“粗估开路，细估收网”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 3,
+  "prereq_names": [
+   "NEW:粗糙估计先行"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "估素数定理余项：粗估 π(x)≪x/log x 后，用分部求和把余项磨细。",
+  "formulas": []
+ },
+ {
+  "cn": "求和的积分估计",
+  "en": "Integral Estimates for Sums",
+  "definition": "单调函数求和夹在两个积分之间：∫₁ⁿ⁺¹f ≤ Σ₁ⁿf(k) ≤ f(1)+∫₁ⁿf——“和是积分的离散影子”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 3,
+  "prereq_names": [
+   "NEW:离散转连续"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "Σ_{k=1}ⁿ 1/k 在 ln(n+1) 与 1+ln n 之间，故调和级数发散如 ln n。",
+  "formulas": [
+   "∫₁ⁿ⁺¹f ≤ Σₖ₌₁ⁿ f(k) ≤ f(1) + ∫₁ⁿ f"
+  ]
+ },
+ {
+  "cn": "分段估计",
+  "en": "Piecewise Estimation",
+  "definition": "把求和/积分按“主部”和“尾部”切开，分别用不同方法估计——“分而估之”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 3,
+  "prereq_names": [
+   "NEW:精细化估计"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 Σ_{n≤x}1/n=ln x+γ+O(1/x)：n≤√x 直接加，n>√x 用积分夹。",
+  "formulas": []
+ },
+ {
+  "cn": "极大项控制",
+  "en": "Controlling by the Largest Term",
+  "definition": "n 项和 ≤ n × 最大项：当最大项本身很小时，项数再多也不怕——“以大制多”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 (1+1/n)ⁿ < 3：二项展开每项 C(n,k)/nᵏ ≤ 1/k!，求和 ≤ Σ1/k! < 3。",
+  "formulas": []
+ },
+ {
+  "cn": "尾部估计",
+  "en": "Tail Estimation",
+  "definition": "级数/积分的尾部单独估计：尾部可任意小 ⟺ 收敛——“管住尾巴，就管住收敛”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "估计放缩",
+  "level": 3,
+  "prereq_names": [
+   "NEW:分段估计"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 Σ1/n² 收敛：尾部 Σ_{k>N}1/k² < Σ_{k>N}1/(k(k−1)) = 1/N。",
+  "formulas": []
+ },
+ {
+  "cn": "化整为零",
+  "en": "Divide into Pieces",
+  "definition": "把大问题切成小块：区间切分、集合划分、情形分类——“大事化小”是第一生产力。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "证“连续函数在闭区间有界”：先在每点的小邻域有界，再用有限子覆盖拼起来。",
+  "formulas": []
+ },
+ {
+  "cn": "各个击破",
+  "en": "Conquer Each Piece",
+  "definition": "切分后每块用最适合它的方法，最后拼结果——“分块用兵，合力攻坚”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 2,
+  "prereq_names": [
+   "NEW:化整为零"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证“可数个可数集之并可数”：第 n 个集合编号为 (n,k)，再把 (n,k) 对角线排成一列。",
+  "formulas": []
+ },
+ {
+  "cn": "先证引理",
+  "en": "Prove Lemmas First",
+  "definition": "把证明中最难的一步抽出来先证成引理，主定理瞬间变短——“难关前置，主路畅通”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 2,
+  "prereq_names": [
+   "NEW:引理提炼"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证算术基本定理：先证欧几里得引理“p|ab 则 p|a 或 p|b”，唯一分解水到渠成。",
+  "formulas": []
+ },
+ {
+  "cn": "递归分解",
+  "en": "Recursive Decomposition",
+  "definition": "把问题分解成“同类型的更小问题”：分治算法、归纳证明的共同骨架——“小即是大”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 2,
+  "prereq_names": [
+   "NEW:化整为零"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "归并排序：数组分成两半各自排好，再合并——O(n log n) 的来源。",
+  "formulas": []
+ },
+ {
+  "cn": "分层处理",
+  "en": "Layered Processing",
+  "definition": "按“规模/难度/重要性”分层，每层用不同精度处理——“好钢用在刀刃上”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证实数完备性诸命题等价：按“确界→单调收敛→区间套→有限覆盖→聚点”分层推进。",
+  "formulas": []
+ },
+ {
+  "cn": "按大小分类",
+  "en": "Classification by Size",
+  "definition": "按元素的大小/指标的范围分类讨论：大指标用渐近，小指标暴力验算——“大小分流”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 n! > 2ⁿ (n≥4)：n=4 直接验算 24>16，n>4 时每乘一个 ≥5 的数保持不等式。",
+  "formulas": []
+ },
+ {
+  "cn": "按奇偶分类",
+  "en": "Parity-based Case Split",
+  "definition": "按奇偶分两种情形：奇偶性常决定公式的形态——“奇偶分家，各算各的”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 1,
+  "prereq_names": [
+   "NEW:奇偶性论证"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "求 1−2+3−…+(−1)ⁿ⁺¹n：n 偶时配对得 −n/2，n 奇时得 (n+1)/2。",
+  "formulas": []
+ },
+ {
+  "cn": "局部化",
+  "en": "Localization",
+  "definition": "全局问题先在每点的邻域解决，再用紧致性/单位分解拼成全局——“局部好办，全局拼盘”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 3,
+  "prereq_names": [
+   "NEW:化整为零"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "流形上定义积分：每个坐标卡上定义，再用单位分解粘起来。",
+  "formulas": []
+ },
+ {
+  "cn": "整体与局部",
+  "en": "Global vs Local",
+  "definition": "整体性质（紧致、连通）与局部性质（每点有邻域…）互相制约：局部信息 + 紧致 = 整体结论——“局部开花，紧致结果”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 3,
+  "prereq_names": [
+   "NEW:局部化"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证紧集上连续函数一致连续：每点有邻域上一致连续，有限子覆盖拼成整体。",
+  "formulas": []
+ },
+ {
+  "cn": "归纳结构",
+  "en": "Inductive Structure",
+  "definition": "发现对象有“去掉一点还是同类”的自相似结构，归纳法立刻可用——“自相似是归纳的邀请函”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "结构分解",
+  "level": 2,
+  "prereq_names": [
+   "数学归纳法"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "n 个点的完全图删一点还是完全图——图论归纳的起点。",
+  "formulas": []
+ },
+ {
+  "cn": "对偶问题",
+  "en": "Dual Problem",
+  "definition": "把“求最小”换成“求最大”的对偶版本：原问题难，对偶问题可能简单，且两者最优值相等（强对偶）——“难的正面，简单的反面”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "最短路 vs 最大流最小割：求 s−t 最小割 ⟺ 求最大流。",
+  "formulas": []
+ },
+ {
+  "cn": "补问题",
+  "en": "Complementary Problem",
+  "definition": "把“存在好对象”换成“坏对象都不存在”，或把集合换成补集——“反面想，正面解”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 2,
+  "prereq_names": [
+   "NEW:补形法"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "求“至少一门及格”的概率：转求“全不及格”的补事件概率再用 1 相减。",
+  "formulas": []
+ },
+ {
+  "cn": "逆向思维解题法",
+  "en": "Working Backward",
+  "definition": "从结论倒推需要什么：要证 A，先问“什么能推出 A”——“倒着走，路自现”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 2,
+  "prereq_names": [
+   "NEW:综合法与分析法"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "证 √a+√b < √(a+b+2√ab)：两边平方倒推到 (√a−√b)² ≥ 0，显然成立。",
+  "formulas": []
+ },
+ {
+  "cn": "取对数化乘为加",
+  "en": "Logarithm Turns Products into Sums",
+  "definition": "乘积/幂的估计取对数变成求和：ln(∏aᵢ) = Σln aᵢ——“乘法太难，加法来帮”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "估 n! 大小：ln(n!) = Σln k，再用积分估计求和。",
+  "formulas": [
+   "ln(∏aᵢ) = Σ ln aᵢ"
+  ]
+ },
+ {
+  "cn": "生成函数视角",
+  "en": "Generating Function Viewpoint",
+  "definition": "把数列看成幂级数的系数：递推变函数方程，卷积变乘法——“数列穿上函数的衣服”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 4,
+  "prereq_names": [
+   "NEW:生成函数计数法"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "解斐波那契递推：普通生成函数 F(x)=x/(1−x−x²)，部分分式展开得通项公式。",
+  "formulas": []
+ },
+ {
+  "cn": "线性化",
+  "en": "Linearization",
+  "definition": "在一点附近用切线/线性映射代替非线性对象：微分、泰勒一阶项都是线性化——“近看皆直线”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "牛顿法求根：每步用切线近似曲线，xₙ₊₁ = xₙ − f(xₙ)/f′(xₙ)。",
+  "formulas": [
+   "f(x) ≈ f(a) + f′(a)(x−a)"
+  ]
+ },
+ {
+  "cn": "对偶计数",
+  "en": "Dual Counting",
+  "definition": "数“满足性质的”难，就数“不满足的”再相减；或交换求和次序——“换个角度数”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 2,
+  "prereq_names": [
+   "NEW:计数两次",
+   "NEW:补形法"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 Σ_{d|n}φ(d)=n：左边按“分数 k/n 化简后分母”分类计数，右边直接数 1..n。",
+  "formulas": []
+ },
+ {
+  "cn": "命题取逆否",
+  "en": "Contrapositive as Problem Transformation",
+  "definition": "把“证 p→q”换成“证 ¬q→¬p”：改写命题本身就是一种转化——“换个说法，柳暗花明”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 2,
+  "prereq_names": [
+   "NEW:逆否命题证明法"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证“n² 被 3 整除则 n 被 3 整除”：转证逆否“3∤n 则 3∤n²”，设 n=3k±1 直接验算。",
+  "formulas": []
+ },
+ {
+  "cn": "集合取补集",
+  "en": "Complement as Transformation",
+  "definition": "集合恒等式两边取补集：并交互换，复杂变简单——“取个补，换个天”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 2,
+  "prereq_names": [
+   "NEW:集合的德摩根律"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "由 (A∪B)ᶜ=Aᶜ∩Bᶜ 取补得 A∩B=(Aᶜ∪Bᶜ)ᶜ：取补把交变并，化归为已证版本。",
+  "formulas": []
+ },
+ {
+  "cn": "函数取逆",
+  "en": "Inversion as Transformation",
+  "definition": "研究 f 难，研究 f⁻¹ 可能简单：单调函数的逆保持单调，双射的逆还是双射——“反着看”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "对偶变换",
+  "level": 2,
+  "prereq_names": [
+   "NEW:双射"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证单调函数不连续点至多可数：每个不连续点对应值域中互不相交的开区间，用有理数代表故可数。",
+  "formulas": []
+ },
+ {
+  "cn": "图论建模",
+  "en": "Graph Modeling",
+  "definition": "把“对象”画成顶点、“关系”画成边：二元关系的问题几乎都能画成图——“画出来，关系自现”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "握手问题：n 个人互相握手 → 完全图 Kₙ 的边数 = n(n−1)/2。",
+  "formulas": []
+ },
+ {
+  "cn": "染色建模",
+  "en": "Coloring Model",
+  "definition": "给对象染色使“冲突”变成“同色相邻”：染色数、色数都是冲突的度量——“冲突即颜色”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 2,
+  "prereq_names": [
+   "NEW:染色不变量",
+   "NEW:图论建模"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "课程排考：冲突课程连边，染色数 = 所需的最少考场时段数。",
+  "formulas": []
+ },
+ {
+  "cn": "二分图视角",
+  "en": "Bipartite Viewpoint",
+  "definition": "把“两类对象之间的关系”看成二分图：左边一类、右边一类，边是关系——“两类分开，关系成边”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 2,
+  "prereq_names": [
+   "NEW:图论建模"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "工人-任务分配：左边工人、右边任务，边表示“能胜任”，匹配即分配方案。",
+  "formulas": []
+ },
+ {
+  "cn": "概率建模",
+  "en": "Probabilistic Modeling",
+  "definition": "把确定性问题随机化：随机选、随机排、随机染色，再算期望/概率——“随机是最好的构造器”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 3,
+  "prereq_names": [
+   "NEW:概率法"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证存在 Ramsey(3,3) 下界图：随机图 G(n,1/2) 中单色 K₃ 期望 <1，故好染色存在。",
+  "formulas": []
+ },
+ {
+  "cn": "期望建模",
+  "en": "Expectation Modeling",
+  "definition": "把“计数”写成“期望”：E[计数器] = 所求量，再用期望的线性性拆解——“数数变算期望”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 3,
+  "prereq_names": [
+   "NEW:期望论证"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "随机排列的期望不动点数 = 1：指示变量 Iᵢ（i 在原位），E[ΣIᵢ] = ΣE[Iᵢ] = n·(1/n) = 1。",
+  "formulas": [
+   "E[ΣXᵢ] = ΣE[Xᵢ]"
+  ]
+ },
+ {
+  "cn": "状态图建模",
+  "en": "State Graph Modeling",
+  "definition": "把“过程”画成状态图：顶点是状态、边是转移——动态规划、自动机的共同底盘。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 3,
+  "prereq_names": [
+   "NEW:图论建模"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "斐波那契数列：状态是 (Fₙ₋₁, Fₙ)，转移是矩阵乘法。",
+  "formulas": []
+ },
+ {
+  "cn": "赋权建模",
+  "en": "Weighted Modeling",
+  "definition": "给对象赋权重，把“计数”升级为“加权计数”：权重选得好，恒等式自己冒出来——“权重是计数的调料”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 Caro-Wei 独立数下界：顶点随机排序，贪心取独立集，期望大小即下界。",
+  "formulas": []
+ },
+ {
+  "cn": "几何建模",
+  "en": "Geometric Modeling",
+  "definition": "把代数/组合条件翻译成几何图形：不等式变区域、方程变曲线——“给条件画张像”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 2,
+  "prereq_names": [
+   "NEW:代数问题几何化"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证柯西不等式：把 (aᵢ),(bᵢ) 看成向量，|a·b|≤|a||b| 即夹角余弦 ≤1。",
+  "formulas": []
+ },
+ {
+  "cn": "向量建模",
+  "en": "Vector Modeling",
+  "definition": "把“和/差”写成向量：长度用模、夹角用内积——“向量是几何的代数”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 |a+b| ≤ |a|+|b|：看成向量模的三角不等式，一眼显然。",
+  "formulas": []
+ },
+ {
+  "cn": "矩阵建模",
+  "en": "Matrix Modeling",
+  "definition": "把线性递推/状态转移写成矩阵乘法：Aⁿ 算快速幂——“递推穿上矩阵的衣服”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 3,
+  "prereq_names": [
+   "NEW:状态图建模"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "斐波那契：[Fₙ₊₁,Fₙ]ᵀ = [[1,1],[1,0]]ⁿ[1,0]ᵀ，快速幂 O(log n)。",
+  "formulas": []
+ },
+ {
+  "cn": "多项式建模",
+  "en": "Polynomial Modeling",
+  "definition": "把组合/数论条件编码成多项式的根或系数：多项式恒等定理是“照妖镜”——“条件变多项式”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 3,
+  "prereq_names": [
+   "NEW:多项式方法"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证组合零点定理应用：把“和集受限”编码成多项式系数非零，用次数压出非零点。",
+  "formulas": []
+ },
+ {
+  "cn": "博弈建模",
+  "en": "Game Modeling",
+  "definition": "把“交替选择”过程看成博弈：一方想达成目标，另一方阻挠——“对手”是最好的分析工具。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "建模",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "分析“抢 30”游戏：标出必胜/必败位置倒推，先手取 2 后恒取“凑 5”，必胜。",
+  "formulas": []
+ },
+ {
+  "cn": "取极限",
+  "en": "Taking Limits",
+  "definition": "有限公式令 n→∞：求和变积分、递推变方程——“极限是通往无限的桥”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 2,
+  "prereq_names": [
+   "NEW:有限转无限"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "(1+1/n)ⁿ → e：有限公式取极限得到新常数。",
+  "formulas": []
+ },
+ {
+  "cn": "扰动取极限",
+  "en": "Perturbation then Limit",
+  "definition": "先加个 ε 扰动避开“坏点”（分母为零、不可导），证完再令 ε→0——“绕开暗礁，再回正道”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 4,
+  "prereq_names": [
+   "NEW:扰动构造"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证魏尔斯特拉斯逼近定理：先对折线函数用伯恩斯坦多项式逼近，再磨光取极限。",
+  "formulas": []
+ },
+ {
+  "cn": "紧性取子列",
+  "en": "Extracting Convergent Subsequences",
+  "definition": "有界序列必有收敛子列：从“乱”中取出“收敛”的子列，极限点就是要找的对象——“乱中取静”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 4,
+  "prereq_names": [
+   "NEW:紧致性论证法"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证闭区间上连续函数取到最大值：取 f(xₙ)→上确界，紧致取收敛子列 xₙₖ→x*，连续得 f(x*)=上确界。",
+  "formulas": []
+ },
+ {
+  "cn": "单调收敛",
+  "en": "Monotone Convergence",
+  "definition": "单调有界序列必收敛：构造单调列逼近目标，“单调”是收敛的免费门票——“单调有界，必有所往”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 3,
+  "prereq_names": [
+   "NEW:单调量法"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 e 存在：(1+1/n)ⁿ 单调增有上界，故收敛。",
+  "formulas": []
+ },
+ {
+  "cn": "迭代逼近",
+  "en": "Iterative Approximation",
+  "definition": "从初值出发反复套用同一个操作，序列收敛到不动点——“一遍遍来，直到不动”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "牛顿法、定点迭代 xₙ₊₁=cos(xₙ) 收敛到不动点。",
+  "formulas": [
+   "xₙ₊₁ = F(xₙ)"
+  ]
+ },
+ {
+  "cn": "压缩映射思想",
+  "en": "Contraction Mapping Idea",
+  "definition": "若每步距离至少缩小为 q<1 倍（压缩），则迭代必收敛到唯一不动点——“越走越近，必有归宿”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 4,
+  "prereq_names": [
+   "NEW:迭代逼近"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "思路",
+  "example": "证微分方程解的存在唯一：积分算子是压缩映射，Picard 迭代收敛。",
+  "formulas": [
+   "d(F(x),F(y)) ≤ q·d(x,y), q<1"
+  ]
+ },
+ {
+  "cn": "逐次逼近法",
+  "en": "Successive Approximation",
+  "definition": "先猜个粗糙解，代入方程得更好的解，循环往复——“好解是迭代出来的”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 3,
+  "prereq_names": [
+   "NEW:迭代逼近"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "求 √2：迭代 xₙ₊₁=(xₙ+2/xₙ)/2，从 x₀=1 出发 5 步得 1.41421。",
+  "formulas": []
+ },
+ {
+  "cn": "离散逼近连续",
+  "en": "Discrete Approximating Continuous",
+  "definition": "用离散和逼近积分、用折线逼近曲线：黎曼和、欧拉折线法都是这个思想——“离散是连续的素描”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 2,
+  "prereq_names": [
+   "NEW:离散转连续"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "定义定积分：黎曼和 Σf(ξᵢ)Δxᵢ 令分划 mesh→0，离散和变成连续积分。",
+  "formulas": []
+ },
+ {
+  "cn": "无穷小量分析",
+  "en": "Infinitesimal Analysis",
+  "definition": "比较无穷小量的“阶”：高阶可忽略，低阶定乾坤——“阶数是无穷小的身份证”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 3,
+  "prereq_names": [
+   "NEW:主项分析"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "x→0 时 sin x ~ x，x−sin x ~ x³/6：后者在求极限时主导。",
+  "formulas": []
+ },
+ {
+  "cn": "渐近展开",
+  "en": "Asymptotic Expansion",
+  "definition": "把函数写成“主项 + 修正项 + …”：斯特林公式、泰勒展开都是渐近展开——“一层层剥”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "极限与过程",
+  "level": 4,
+  "prereq_names": [
+   "NEW:无穷小量分析"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "估 n!：斯特林公式 n!~√(2πn)(n/e)ⁿ，主项 (n/e)ⁿ，修正因子 √(2πn)。",
+  "formulas": []
+ },
+ {
+  "cn": "公理系统",
+  "en": "Axiom System",
+  "definition": "从少数不证自明的命题（公理）出发，用逻辑规则推出一切定理的体系——“地基 + 施工规范”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 2,
+  "prereq_names": [
+   "NEW:形式系统"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "欧几里得几何五公设、ZFC、皮亚诺公理都是公理系统。",
+  "formulas": []
+ },
+ {
+  "cn": "公理与定理的区别",
+  "en": "Axiom vs Theorem",
+  "definition": "公理是系统内不加证明的出发点，定理是由公理逻辑推出的结论——“起点”与“到达点”的区别。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 1,
+  "prereq_names": [
+   "NEW:公理系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“两点确定一条直线”是欧氏几何的公理；“勾股定理”是定理。",
+  "formulas": []
+ },
+ {
+  "cn": "公理模式",
+  "en": "Axiom Schema",
+  "definition": "一条“模板”代表无穷多条公理（如分离公理模式：对每个公式 φ 有一条实例）——“一条顶无穷条”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 3,
+  "prereq_names": [
+   "NEW:公理系统",
+   "分离公理模式"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "PA 的归纳公理模式：每个公式 φ 对应一条归纳公理。",
+  "formulas": []
+ },
+ {
+  "cn": "有限公理化问题",
+  "en": "Finite Axiomatizability",
+  "definition": "一个理论能否被有限条公理刻画？ZFC 不能（Montague–Vaught 定理）——“有限说不清”的理论。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 4,
+  "prereq_names": [
+   "NEW:公理模式",
+   "ZFC公理系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "相对相容性",
+  "en": "Relative Consistency",
+  "definition": "理论 T₁ 相对于 T₂ 相容，指“若 T₂ 相容则 T₁ 相容”——“把信任传递下去”，通常用模型/解释证明。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 4,
+  "prereq_names": [
+   "NEW:相容性"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "哥德尔：若 ZF 相容则 ZFC+CH 相容（在可构造宇宙 L 中）。",
+  "formulas": [
+   "Con(T₂) ⟹ Con(T₁)"
+  ]
+ },
+ {
+  "cn": "模型蕴含相容",
+  "en": "Model Implies Consistency",
+  "definition": "若理论 T 有模型，则 T 相容——“有实例的东西不会自相矛盾”，相对相容性证明的标准路线。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 3,
+  "prereq_names": [
+   "NEW:相对相容性",
+   "NEW:解释与赋值"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "双曲几何有庞加莱圆盘模型，故它相对于欧氏几何相容。",
+  "formulas": []
+ },
+ {
+  "cn": "公理独立性的证明法",
+  "en": "Proving Independence of Axioms",
+  "definition": "证公理 A 独立于其余公理：造一个满足其余公理但 A 不成立的模型——“独立性 = 有反例模型”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 4,
+  "prereq_names": [
+   "NEW:模型蕴含相容",
+   "NEW:独立性"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "平行公设独立于前四公设：双曲几何模型满足前四条但平行公设不成立。",
+  "formulas": []
+ },
+ {
+  "cn": "等价公理化",
+  "en": "Equivalent Axiomatizations",
+  "definition": "同一理论可由不同公理组刻画（如欧氏几何的希尔伯特公理 vs 伯克霍夫公理）——“条条大路通罗马”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 3,
+  "prereq_names": [
+   "NEW:公理系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "公理系统的强度比较",
+  "en": "Comparing Strength of Axiom Systems",
+  "definition": "T₁ 强于 T₂ 指 T₁ 能证明 T₂ 的每条定理（通常还多）：PA < ZFC < ZFC+大基数——“地基越厚，盖得越高”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 4,
+  "prereq_names": [
+   "NEW:相对相容性"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "ZFC 证 PA 的相容性（形式化算术），故 ZFC 强于 PA。",
+  "formulas": []
+ },
+ {
+  "cn": "保守扩张",
+  "en": "Conservative Extension",
+  "definition": "理论 T′ 是 T 的保守扩张，指 T′ 证出的原语言定理 T 也能证——“加了新词，没多说旧话”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 4,
+  "prereq_names": [
+   "NEW:公理系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "给 PA 加定义（如加法交换律的定义）是保守的。",
+  "formulas": []
+ },
+ {
+  "cn": "定义扩张",
+  "en": "Extension by Definitions",
+  "definition": "引入新符号并用旧语言定义它：定义扩张恒为保守扩张——“起外号不改变事实”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 3,
+  "prereq_names": [
+   "NEW:保守扩张"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "范畴性",
+  "en": "Categoricity",
+  "definition": "理论范畴指它在给定基数下只有一个模型（差同构）：二阶 PA 范畴，故“自然数”是唯一的。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "元概念",
+  "level": 4,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "完备有序域在同构意义下唯一（就是 ℝ）——ℝ 被公理“钉死”了。",
+  "formulas": []
+ },
+ {
+  "cn": "欧几里得第五公设",
+  "en": "Euclid's Fifth Postulate",
+  "definition": "过直线外一点恰有一条平行线——前四公设两千年无人能证它，悬案催生了非欧几何。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 2,
+  "prereq_names": [
+   "NEW:公理与定理的区别"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "非欧几何的诞生",
+  "en": "Birth of Non-Euclidean Geometry",
+  "definition": "罗巴切夫斯基/鲍耶否定第五公设得到“过一点有无穷多平行线”的相容几何——“公理改一条，世界换一个”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 3,
+  "prereq_names": [
+   "NEW:欧几里得第五公设",
+   "NEW:公理独立性的证明法"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "双曲几何中三角形内角和 < 180°。",
+  "formulas": []
+ },
+ {
+  "cn": "希尔伯特几何公理",
+  "en": "Hilbert's Axioms for Geometry",
+  "definition": "希尔伯特 1899 年给欧氏几何的 20 条严格公理（关联、顺序、合同、平行、连续）——堵住了欧几里得原文的所有逻辑漏洞。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 4,
+  "prereq_names": [
+   "NEW:欧几里得第五公设"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "皮亚诺算术PA",
+  "en": "Peano Arithmetic",
+  "definition": "一阶逻辑中的自然数理论：皮亚诺公理＋归纳公理模式——“数论的形式化地基”，哥德尔定理的主战场。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 3,
+  "prereq_names": [
+   "皮亚诺公理",
+   "NEW:公理模式"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "罗宾逊算术Q",
+  "en": "Robinson Arithmetic Q",
+  "definition": "PA 去掉归纳模式、只留 7 条有限公理的弱算术——弱到不能证归纳，强到仍有哥德尔不完备性。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 4,
+  "prereq_names": [
+   "NEW:皮亚诺算术PA"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "普雷斯伯格算术",
+  "en": "Presburger Arithmetic",
+  "definition": "只有加法的自然数理论（无乘法）：它是完备且可判定的——“去掉乘法，判定变易”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 4,
+  "prereq_names": [
+   "NEW:皮亚诺算术PA",
+   "NEW:判定问题"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "实数公理",
+  "en": "Axioms of Real Numbers",
+  "definition": "ℝ 是完备有序域：域公理＋序公理＋上确界公理——“数轴”的全部性质就这三组。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "完备有序域的唯一性",
+  "en": "Uniqueness of Complete Ordered Field",
+  "definition": "任意两个完备有序域必同构——“实数”在同构意义下只有一个，ℝ 的定义是范畴的。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 4,
+  "prereq_names": [
+   "NEW:实数公理",
+   "NEW:范畴性"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "戴德金对自然数的范畴性",
+  "en": "Dedekind's Categoricity of Naturals",
+  "definition": "二阶逻辑的皮亚诺公理范畴：任何模型都同构于标准 ℕ——“自然数”被二阶公理唯一钉死。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 4,
+  "prereq_names": [
+   "皮亚诺公理",
+   "NEW:范畴性"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "二阶算术",
+  "en": "Second-order Arithmetic",
+  "definition": "允许对“自然数集”量化的算术：强度介于 PA 与 ZFC 之间，是反向数学的舞台。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 5,
+  "prereq_names": [
+   "NEW:皮亚诺算术PA"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "反向数学",
+  "en": "Reverse Mathematics",
+  "definition": "问“证这个定理到底需要多强的公理”：在二阶算术的子系统中校准定理的强度——“定理的公理指纹”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "经典公理系统",
+  "level": 5,
+  "prereq_names": [
+   "NEW:二阶算术"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "Bolzano–Weierstrass 定理恰等价于 ACA₀（算术理解公理）。",
+  "formulas": []
+ },
+ {
+  "cn": "NBG公理系统",
+  "en": "von Neumann–Bernays–Gödel Set Theory",
+  "definition": "把“类”作为基本对象、有限公理化的集合论：与 ZFC 等价（保守扩张），但“真类”可合法谈论。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 4,
+  "prereq_names": [
+   "ZFC公理系统",
+   "NEW:有限公理化问题"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "“所有序数的类 Ord”是真类，在 NBG 中可谈，在 ZFC 中只能元语言说。",
+  "formulas": []
+ },
+ {
+  "cn": "策梅洛集合论Z",
+  "en": "Zermelo Set Theory",
+  "definition": "ZFC 去掉替换公理和选择公理的版本：日常数学几乎够用，但证“ℵ_ω 的共尾性”等需要替换。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 4,
+  "prereq_names": [
+   "ZFC公理系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "冯诺依曼宇宙",
+  "en": "von Neumann Universe V",
+  "definition": "V₀=∅，V_{α+1}=P(V_α)，极限步取并：所有集合按“秩”分层排进这个累积宇宙——集合论的“全景图”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 4,
+  "prereq_names": [
+   "NEW:幂集",
+   "NEW:后继序数与极限序数"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "V_ω 是“遗传有限集”的全体；每个集合都属于某个 V_α。",
+  "formulas": [
+   "V₀ = ∅",
+   "V_{α+1} = P(V_α)"
+  ]
+ },
+ {
+  "cn": "集合的秩",
+  "en": "Rank of a Set",
+  "definition": "集合 x 的秩是使 x ∈ V_α 的最小 α：度量集合的“复杂度/出生层级”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 4,
+  "prereq_names": [
+   "NEW:冯诺依曼宇宙"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "rank(∅)=0，rank({∅})=1，rank(n)=n（n 为冯诺依曼自然数）。",
+  "formulas": []
+ },
+ {
+  "cn": "可构造宇宙L",
+  "en": "Gödel's Constructible Universe L",
+  "definition": "哥德尔把 V 的“幂集”换成“可定义幂集”得到的瘦宇宙：L ⊨ ZFC + GCH——CH 相容性的见证。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 5,
+  "prereq_names": [
+   "NEW:冯诺依曼宇宙",
+   "NEW:相对相容性"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "GCH在L中成立",
+  "en": "GCH Holds in L",
+  "definition": "哥德尔证明可构造宇宙 L 满足广义连续统假设：若 ZF 相容则 ZFC+GCH 相容——“CH 杀不死 ZFC”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 5,
+  "prereq_names": [
+   "NEW:可构造宇宙L"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "力迫法入门",
+  "en": "Introduction to Forcing",
+  "definition": "Cohen 的技术：往可数传递模型 M 里“添加”一个通用集 G，得到 M[G] 使某命题变真/变假——“给宇宙做手术”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 5,
+  "prereq_names": [
+   "NEW:相对相容性"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "往 M 中添加 ℵ₂ 个 Cohen 实数，得到 M[G] ⊨ ¬CH。",
+  "formulas": []
+ },
+ {
+  "cn": "CH的独立性",
+  "en": "Independence of the Continuum Hypothesis",
+  "definition": "哥德尔（L 模型）证 CH 不能被 ZFC 否定，Cohen（力迫）证 CH 不能被 ZFC 证明——希尔伯特第一问题尘埃落定。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 5,
+  "prereq_names": [
+   "NEW:力迫法入门",
+   "NEW:GCH在L中成立",
+   "NEW:独立性"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "可数传递模型",
+  "en": "Countable Transitive Model",
+  "definition": "可数且传递的 ZFC 模型：力迫法的“手术台”——可数故有外部通用滤子，传递故 ∈ 关系真实。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 5,
+  "prereq_names": [
+   "NEW:力迫法入门",
+   "NEW:传递集"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "决定性公理AD",
+  "en": "Axiom of Determinacy",
+  "definition": "ℕ^ℕ 的每场博弈都有必胜策略——它蕴含“一切实数集可测”，但与选择公理矛盾。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 5,
+  "prereq_names": [
+   "选择公理简介"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "AD与AC的矛盾",
+  "en": "AD Contradicts AC",
+  "definition": "决定性公理 AD 与选择公理 AC 不能共存：AC 造出不可测集，AD 禁止不可测集——“鱼与熊掌”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 5,
+  "prereq_names": [
+   "NEW:决定性公理AD"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "巴拿赫塔斯基悖论",
+  "en": "Banach–Tarski Paradox",
+  "definition": "（用 AC）实心球可分成有限块，经旋转平移拼成两个与原来一样的球——“体积”在选择公理下崩坏。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "选择公理家族",
+  "level": 4,
+  "prereq_names": [
+   "选择公理简介"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "关键在于分块不可测：可测集的体积守恒，悖论的分块全不可测。",
+  "formulas": []
+ },
+ {
+  "cn": "维塔利不可测集",
+  "en": "Vitali Non-measurable Set",
+  "definition": "用 AC 从每个 ℝ/ℚ 等价类挑一个代表组成的集合：它不可测——“选择公理制造的第一只怪物”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "选择公理家族",
+  "level": 4,
+  "prereq_names": [
+   "选择公理简介",
+   "NEW:等价类与商集"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "选择公理的常见等价形式",
+  "en": "Common Equivalents of AC",
+  "definition": "佐恩引理、良序定理、豪斯多夫极大原理、“每满射有右逆”、“基数可比”——都是选择公理的“马甲”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "选择公理家族",
+  "level": 4,
+  "prereq_names": [
+   "佐恩引理",
+   "良序定理",
+   "NEW:豪斯多夫极大原理"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "选择公理在分析中的应用",
+  "en": "AC in Analysis",
+  "definition": "没有 AC 连“可数个可数集之并可数”都证不出；“每个向量空间有基”、“ℝ 作为 ℚ 向量空间有基”都依赖 AC。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "选择公理家族",
+  "level": 4,
+  "prereq_names": [
+   "NEW:选择公理的常见等价形式",
+   "NEW:可数并定理"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "索洛维模型",
+  "en": "Solovay's Model",
+  "definition": "索洛维造出 ZF + DC + “一切实数集勒贝格可测”的模型——“不要全 AC，也能保住分析学”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "选择公理家族",
+  "level": 5,
+  "prereq_names": [
+   "NEW:维塔利不可测集",
+   "NEW:依赖选择公理"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "连续统假设CH",
+  "en": "Continuum Hypothesis",
+  "definition": "𝔠 = ℵ₁：不存在基数严格介于 |ℕ| 与 |ℝ| 之间的集合——“可数和连续统之间没有中间层”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "大基数与独立性",
+  "level": 4,
+  "prereq_names": [
+   "NEW:连续统",
+   "NEW:阿列夫数"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "𝔠 = ℵ₁"
+  ]
+ },
+ {
+  "cn": "广义连续统假设GCH",
+  "en": "Generalized Continuum Hypothesis",
+  "definition": "对一切无穷基数 κ 有 2^κ = κ⁺：幂集操作“只升一级”——CH 的全面推广。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "大基数与独立性",
+  "level": 4,
+  "prereq_names": [
+   "NEW:连续统假设CH"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "2^κ = κ⁺"
+  ]
+ },
+ {
+  "cn": "不可达基数",
+  "en": "Inaccessible Cardinal",
+  "definition": "不可达基数 κ 是“从下面够不着”的正则极限基数：V_κ ⊨ ZFC——“小宇宙”的基数。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "大基数与独立性",
+  "level": 5,
+  "prereq_names": [
+   "NEW:冯诺依曼宇宙"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "可测基数",
+  "en": "Measurable Cardinal",
+  "definition": "存在 κ-完备非主超滤的基数 κ：第一个“真正大”的大基数，蕴含 V ≠ L。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "大基数与独立性",
+  "level": 5,
+  "prereq_names": [
+   "NEW:不可达基数"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "大基数层级",
+  "en": "Large Cardinal Hierarchy",
+  "definition": "不可达 < 马洛 < 弱紧 < 可测 < 强 < 超强 < 巨大…：基数越大，蕴含的相容性强度越高——“无穷的鄙视链”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "大基数与独立性",
+  "level": 5,
+  "prereq_names": [
+   "NEW:可测基数"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "马丁公理",
+  "en": "Martin's Axiom",
+  "definition": "MA：对 < 𝔠 个稠密集的 ccc 偏序，存在相交所有稠密集的滤子——“CH 的弱替代”，决定了很多组合命题。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "大基数与独立性",
+  "level": 5,
+  "prereq_names": [
+   "NEW:连续统假设CH"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "MA 蕴含：小于连续统的实数集都是零测集？不——MA 蕴含 𝔠 的共尾性 > ω。",
+  "formulas": []
+ },
+ {
+  "cn": "类型论入门",
+  "en": "Introduction to Type Theory",
+  "definition": "每个对象都有“类型”，类型分层杜绝“集合属于自己”——罗素悖论的另一种解法，证明助手的理论基础。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 4,
+  "prereq_names": [
+   "罗素悖论"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "Coq、Lean 的内核都是依赖类型论。",
+  "formulas": [
+   "a : A"
+  ]
+ },
+ {
+  "cn": "简单类型论",
+  "en": "Simple Type Theory",
+  "definition": "丘奇的类型论：类型由基本类型经 → 生成，λ 演算的类型版——“函数也有类型身份证”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 4,
+  "prereq_names": [
+   "NEW:类型论入门"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "同伦类型论",
+  "en": "Homotopy Type Theory",
+  "definition": "把“相等”看成“路径”、类型看成空间： univalence 公理说“等价即相等”——21 世纪的新基础。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 5,
+  "prereq_names": [
+   "NEW:类型论入门"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "非良基集合论",
+  "en": "Non-well-founded Set Theory",
+  "definition": "Aczel 用反基础公理 AFA 代替正则公理，允许 x ∈ x 这样的“循环集合”——“集合可以自指”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 5,
+  "prereq_names": [
+   "正则公理"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "计算机科学的循环数据结构、共同归纳的语义模型。",
+  "formulas": []
+ },
+ {
+  "cn": "ETCS",
+  "en": "Elementary Theory of the Category of Sets",
+  "definition": "劳维尔用范畴语言公理化集合：集合是“态射可复合的对象”，∈ 关系被泛性质取代——“无元素的集合论”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 5,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "希尔伯特计划",
+  "en": "Hilbert's Program",
+  "definition": "用有穷方法证明数学的相容性与完备性——哥德尔不完备定理宣告其原初形态破产，但证明论由此诞生。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 4,
+  "prereq_names": [
+   "哥德尔不完备定理",
+   "NEW:相容性"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "希尔伯特第二问题",
+  "en": "Hilbert's Second Problem",
+  "definition": "算术公理的相容性：希尔伯特 1900 年 23 问题之二；哥德尔第二定理说“系统证不了自身的相容性”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 4,
+  "prereq_names": [
+   "NEW:希尔伯特计划",
+   "哥德尔第二不完备定理"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "直觉主义集合论",
+  "en": "Intuitionistic Set Theory",
+  "definition": "基于直觉主义逻辑的集合论（如 IZF）：排中律失效，“存在”必须构造——“构造主义者的 ZFC”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 5,
+  "prereq_names": [
+   "NEW:直觉主义逻辑入门"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "新基础NF",
+  "en": "New Foundations",
+  "definition": "蒯因的集合论：概括公理只允许“分层公式”，全集 V 存在——“罗素悖论”的另类解法，至今仍神秘。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 5,
+  "prereq_names": [
+   "罗素悖论"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "斯科伦悖论",
+  "en": "Skolem's Paradox",
+  "definition": "ZFC 有可数模型（下行 Löwenheim–Skolem），但 ZFC 证“存在不可数集”——“可数模型里的不可数集”，相对化消解。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "其他基础",
+  "level": 4,
+  "prereq_names": [
+   "NEW:可数传递模型"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "一阶语言",
+  "en": "First-order Language",
+  "definition": "由关系符号、函数符号、常数符号加逻辑联结词构成的“语法工具箱”——谈论结构的语言。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 2,
+  "prereq_names": [
+   "NEW:个体词与谓词"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "群的语言：一个二元函数符号 ·，一个常数 e；序的语言：一个二元关系 <。",
+  "formulas": []
+ },
+ {
+  "cn": "关系符号与函数符号",
+  "en": "Relation and Function Symbols",
+  "definition": "关系符号表“关系”（如 <、∈），函数符号表“运算”（如 +、·），常数符号表“特指对象”（如 0）——语言的“词汇”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 2,
+  "prereq_names": [
+   "NEW:一阶语言"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "结构",
+  "en": "Structure",
+  "definition": "论域配上各符号的解释：(ℕ, +, ·, 0) 是算术语言的结构——“语言”穿上“含义”就成了结构。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 2,
+  "prereq_names": [
+   "NEW:一阶语言",
+   "NEW:解释与赋值"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "(ℤ, <) 和 (ℝ, <) 是同一语言的两个不同结构。",
+  "formulas": []
+ },
+ {
+  "cn": "论域",
+  "en": "Domain of Discourse",
+  "definition": "结构中量词跑遍的集合，叫论域——“谈论的范围”，∀x 的 x 就取自这里。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 1,
+  "prereq_names": [
+   "NEW:结构"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "∃x(x²=2) 在论域 ℚ 中假，在论域 ℝ 中真。",
+  "formulas": []
+ },
+ {
+  "cn": "同构",
+  "en": "Isomorphism of Structures",
+  "definition": "两个结构间的双射，且保持所有关系和运算——“结构完全相同，只是换了名字”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 2,
+  "prereq_names": [
+   "NEW:结构",
+   "NEW:双射"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "(ℕ, +) 与 (偶数, +) 经 n↦2n 同构。",
+  "formulas": []
+ },
+ {
+  "cn": "同构的例子",
+  "en": "Examples of Isomorphism",
+  "definition": "同构即“看不出区别”：(ℝ,+) 与 (ℝ⁺,×) 经指数映射同构；n 阶循环群都与 ℤ/nℤ 同构。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 2,
+  "prereq_names": [
+   "NEW:同构"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "子结构",
+  "en": "Substructure",
+  "definition": "论域是子集、运算关系都“继承”的结构：(ℕ,+) 是 (ℤ,+) 的子结构——“小结构，大结构的缩影”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 3,
+  "prereq_names": [
+   "NEW:结构"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "(ℚ, <) 是 (ℝ, <) 的子结构。",
+  "formulas": []
+ },
+ {
+  "cn": "生成子结构",
+  "en": "Generated Substructure",
+  "definition": "包含给定集合的最小子结构：从集合出发反复用函数符号“封闭”得到——“星星之火，封闭燎原”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 3,
+  "prereq_names": [
+   "NEW:子结构"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "(ℝ,+,·) 中由 {π} 生成的子结构是 ℚ(π)。",
+  "formulas": []
+ },
+ {
+  "cn": "同态",
+  "en": "Homomorphism",
+  "definition": "保持运算和关系的映射（不要求双射）：f(x+y)=f(x)+f(y)——“结构保持者”，同构是双射的同态。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 3,
+  "prereq_names": [
+   "NEW:同构"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "行列式 det: (Mₙ,×) → (ℝ,×) 是同态：det(AB)=det(A)det(B)。",
+  "formulas": [
+   "f(x+y) = f(x) + f(y)"
+  ]
+ },
+ {
+  "cn": "嵌入",
+  "en": "Embedding",
+  "definition": "单的强同态：把一个结构“原样复制”进另一个——“小世界在大世界里的忠实拷贝”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 3,
+  "prereq_names": [
+   "NEW:同态",
+   "NEW:单射"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "ℕ 经 n↦n 嵌入 ℤ；ℚ 经 q↦q 嵌入 ℝ。",
+  "formulas": []
+ },
+ {
+  "cn": "初等嵌入",
+  "en": "Elementary Embedding",
+  "definition": "保持“一切一阶真理”的嵌入：M 初等嵌入 N，则 M 与 N 初等等价——“真理的搬运工”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 4,
+  "prereq_names": [
+   "NEW:嵌入",
+   "NEW:初等等价"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "自同构群",
+  "en": "Automorphism Group",
+  "definition": "结构到自身的同构全体构成群：对称性越多，结构越“均匀”——“结构的对称群”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 4,
+  "prereq_names": [
+   "NEW:同构",
+   "群作用"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "(ℚ, <) 的自同构群巨大（任何保序双射）；(ℕ, <) 的自同构只有恒等。",
+  "formulas": []
+ },
+ {
+  "cn": "可定义集",
+  "en": "Definable Set",
+  "definition": "能用一阶公式（含参数）“说出来”的子集：模型论研究“语言能看见多少”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 4,
+  "prereq_names": [
+   "NEW:结构"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "(ℝ,+,·) 中“≥0 的数”可定义：∃y(y²=x)。",
+  "formulas": []
+ },
+ {
+  "cn": "参数可定义",
+  "en": "Definable with Parameters",
+  "definition": "允许公式里出现结构中的固定元素作参数：参数越多，能“看见”的集合越多。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "语言与结构",
+  "level": 4,
+  "prereq_names": [
+   "NEW:可定义集"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "满足关系",
+  "en": "Satisfaction Relation",
+  "definition": "M ⊨ φ[a] 表示“在结构 M 中按赋值 a，公式 φ 成立”——“语义”的核心记号，读作“满足”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "满足与真",
+  "level": 3,
+  "prereq_names": [
+   "NEW:结构",
+   "NEW:解释与赋值"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "(ℕ,+) ⊨ ∀x∃y(y = x+x)：每 x 都有“双倍”。",
+  "formulas": [
+   "M ⊨ φ"
+  ]
+ },
+ {
+  "cn": "理论",
+  "en": "Theory",
+  "definition": "一集一阶句子（常要求演绎封闭）叫理论：群论 = 群公理的理论，PA = 皮亚诺公理的理论——“一堆句子的名字”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "满足与真",
+  "level": 3,
+  "prereq_names": [
+   "NEW:形式系统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "理论的模型",
+  "en": "Model of a Theory",
+  "definition": "使理论中每句话都成立的结构，叫该理论的模型——“理论的实例”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "满足与真",
+  "level": 3,
+  "prereq_names": [
+   "NEW:理论",
+   "NEW:满足关系"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "(ℤ,+) 是群论的模型；标准 ℕ 是 PA 的模型（还有非标准的！）。",
+  "formulas": []
+ },
+ {
+  "cn": "完全理论",
+  "en": "Complete Theory",
+  "definition": "对每个句子 φ，T 证明 φ 或证明 ¬φ 的理论叫完全的——“无悬案”的理论。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "满足与真",
+  "level": 3,
+  "prereq_names": [
+   "NEW:理论",
+   "NEW:理论的完全性"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "代数闭域理论 ACF 完全；PA 不完全。",
+  "formulas": []
+ },
+ {
+  "cn": "有限可满足性",
+  "en": "Finite Satisfiability",
+  "definition": "理论的每个有限子集都有模型——紧致性定理说它等价于整个理论有模型。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "满足与真",
+  "level": 4,
+  "prereq_names": [
+   "NEW:理论的模型",
+   "NEW:一阶逻辑的紧致性定理"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "图方法",
+  "en": "Diagram Method",
+  "definition": "把结构 M 的“原子真理”全写成句子集 Diag(M)：N ⊨ Diag(M) 当且仅当 M 可嵌入 N——“结构的说明书”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "满足与真",
+  "level": 4,
+  "prereq_names": [
+   "NEW:理论的模型",
+   "NEW:嵌入"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "亨金构造",
+  "en": "Henkin Construction",
+  "definition": "给相容理论“造模型”的标准手法：加常数见证存在量词，极大化得完全理论，再商出模型——完备性定理的证明。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "满足与真",
+  "level": 5,
+  "prereq_names": [
+   "NEW:有限可满足性",
+   "完备性定理"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "初等等价",
+  "en": "Elementary Equivalence",
+  "definition": "M ≡ N 指两者满足完全相同的一阶句子：同构则初等等价，反之不然——“一阶语言看不出区别”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 3,
+  "prereq_names": [
+   "NEW:满足关系",
+   "NEW:同构"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "(ℚ,<) 与 (ℝ,<) 初等等价（都是无端点稠密线性序）但基数不同故不同构。",
+  "formulas": [
+   "M ≡ N"
+  ]
+ },
+ {
+  "cn": "初等等价与同构的区分",
+  "en": "Elementary Equivalence vs Isomorphism",
+  "definition": "同构是“结构相同”，初等等价是“一阶真理相同”：前者强后者弱，基数不同即不同构但可初等等价。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 3,
+  "prereq_names": [
+   "NEW:初等等价"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "量词消去法",
+  "en": "Quantifier Elimination",
+  "definition": "理论 T 有量词消去，指每个公式都等值于无量词公式——“量词都是纸老虎”，判定问题迎刃而解。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 4,
+  "prereq_names": [
+   "NEW:初等等价"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "稠密线性序的量词消去",
+  "en": "QE for Dense Linear Orders",
+  "definition": "无端点稠密线性序理论 DLO 有量词消去：∃x(a<x<b) 等值于 a<b——“序的真理都是显然的”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 4,
+  "prereq_names": [
+   "NEW:量词消去法"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "实闭域的量词消去",
+  "en": "QE for Real Closed Fields",
+  "definition": "Tarski 定理：实闭域理论 RCF 有量词消去——“实数域的一阶真理可判定”，初等几何可判定性的根源。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 5,
+  "prereq_names": [
+   "NEW:量词消去法"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "代数闭域的量词消去",
+  "en": "QE for Algebraically Closed Fields",
+  "definition": "Chevalley–Tarski：ACF 有量词消去，可定义集都是构造集——“代数几何的逻辑地基”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 5,
+  "prereq_names": [
+   "NEW:量词消去法",
+   "NEW:可定义集"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "模型完备",
+  "en": "Model Completeness",
+  "definition": "理论 T 模型完备指：M ⊆ N 都是 T 的模型则 M ≺ N（初等子结构）——“子模型自动初等”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 4,
+  "prereq_names": [
+   "NEW:子结构"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "ACF、RCF、DLO 都模型完备。",
+  "formulas": []
+ },
+ {
+  "cn": "量词消去蕴含量词模型完备",
+  "en": "QE Implies Model Completeness",
+  "definition": "有量词消去的理论必模型完备：子结构间的真理差异只能来自量词，而量词可消——“消去量词，差异自无”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 4,
+  "prereq_names": [
+   "NEW:量词消去法",
+   "NEW:模型完备"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "存在闭模型",
+  "en": "Existentially Closed Model",
+  "definition": "M 存在闭指：在扩模型中用参数可解的方程组，在 M 中已有解——“方程有解不必往外找”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 5,
+  "prereq_names": [
+   "NEW:模型完备"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "代数闭域恰是域的存在闭模型。",
+  "formulas": []
+ },
+ {
+  "cn": "下行勒文海姆斯科伦定理",
+  "en": "Downward Löwenheim–Skolem Theorem",
+  "definition": "无穷结构必有可数的初等子结构——“大结构里藏着可数的小影子”，斯科伦悖论的来源。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "可数模型",
+  "level": 4,
+  "prereq_names": [
+   "NEW:初等等价",
+   "NEW:子结构"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "上行勒文海姆斯科伦定理",
+  "en": "Upward Löwenheim–Skolem Theorem",
+  "definition": "无穷理论若有无穷模型，则有任意大基数的模型——“有无穷大，就有任意大”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "可数模型",
+  "level": 4,
+  "prereq_names": [
+   "NEW:下行勒文海姆斯科伦定理",
+   "NEW:一阶逻辑的紧致性定理"
+  ],
+  "tags": [
+   "核心"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "斯科伦闭包",
+  "en": "Skolem Hull",
+  "definition": "加进所有斯科伦函数后取生成子结构：下行 LS 定理证明中“造可数初等子结构”的机器。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "可数模型",
+  "level": 4,
+  "prereq_names": [
+   "NEW:斯科伦化",
+   "NEW:生成子结构"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "ℵ₀范畴",
+  "en": "ℵ₀-categoricity",
+  "definition": "理论恰有一个可数模型（差同构）叫 ℵ₀-范畴：DLO（稠密无端点线性序）ℵ₀-范畴——“可数世界唯一”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "可数模型",
+  "level": 4,
+  "prereq_names": [
+   "NEW:范畴性"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "(ℚ,<) 是 DLO 的唯一可数模型。",
+  "formulas": []
+ },
+ {
+  "cn": "莫利范畴定理",
+  "en": "Morley's Categoricity Theorem",
+  "definition": "可数语言理论若在某个不可数基数上范畴，则在一切不可数基数上范畴——“一个不可数，全部不可数”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "可数模型",
+  "level": 5,
+  "prereq_names": [
+   "NEW:ℵ₀范畴"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "ACF（代数闭域理论）在每个不可数基数上范畴。",
+  "formulas": []
+ },
+ {
+  "cn": "完全类型的省略",
+  "en": "Omitting Types Theorem",
+  "definition": "可数语言的理论若“局部”省略一集非主类型，则有模型同时省略它们——“非主要求可以不满足”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "可数模型",
+  "level": 5,
+  "prereq_names": [
+   "NEW:主类型与非主类型"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "类型",
+  "en": "Type",
+  "definition": "n-类型是“关于 n 个变元的一集协调的描述”：p(x) 说“x 长什么样”，实现即找到这样的 x——“元素的简历”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "类型与饱和",
+  "level": 4,
+  "prereq_names": [
+   "NEW:满足关系"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "(ℝ,<) 中“x 比一切有理数大”的类型在 ℝ 中未被实现（在 *ℝ 中实现）。",
+  "formulas": []
+ },
+ {
+  "cn": "完全类型",
+  "en": "Complete Type",
+  "definition": "对每个公式 φ，要么 φ∈p 要么 ¬φ∈p 的类型叫完全的——“对一切问题都有答案的简历”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "类型与饱和",
+  "level": 4,
+  "prereq_names": [
+   "NEW:类型"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "主类型与非主类型",
+  "en": "Principal vs Non-principal Types",
+  "definition": "被单个公式“钉死”的类型叫主的，否则非主：主类型必被实现，非主类型可能被省略。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "类型与饱和",
+  "level": 4,
+  "prereq_names": [
+   "NEW:完全类型"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "饱和模型",
+  "en": "Saturated Model",
+  "definition": "κ-饱和模型实现一切“小参数集”上的类型：足够大、足够“丰富”，是模型论的“通用舞台”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "类型与饱和",
+  "level": 5,
+  "prereq_names": [
+   "NEW:类型"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "超积",
+  "en": "Ultraproduct",
+  "definition": "用超滤把一族结构“平均”成一个新结构：∏Mᵢ/U——紧致性、非标准模型的“批量生产机”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "类型与饱和",
+  "level": 5,
+  "prereq_names": [],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "∏ᵢ Mᵢ / U"
+  ]
+ },
+ {
+  "cn": "沃什定理",
+  "en": "Łoś's Theorem",
+  "definition": "超积满足 φ 当且仅当“几乎处处”（按超滤大集）满足 φ：一阶真理在超积下“投票通过”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "类型与饱和",
+  "level": 5,
+  "prereq_names": [
+   "NEW:超积",
+   "NEW:满足关系"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "超积证紧致性",
+  "en": "Compactness via Ultraproducts",
+  "definition": "用超积直接证紧致性定理：有限可满足的理论取模型的超积即得模型——“紧致性的模型论证明”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "类型与饱和",
+  "level": 5,
+  "prereq_names": [
+   "NEW:沃什定理",
+   "NEW:有限可满足性"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "非标准模型",
+  "en": "Nonstandard Model",
+  "definition": "与标准模型初等等价但不同构的模型：PA 的非标准模型含“无穷大整数”，ℝ 的非标准扩张含无穷小——“初等看不出区别”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "类型与饱和",
+  "level": 4,
+  "prereq_names": [
+   "NEW:初等等价",
+   "NEW:一阶逻辑的紧致性定理"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "非标准分析",
+  "en": "Nonstandard Analysis",
+  "definition": "鲁滨逊用非标准模型 *ℝ 复活无穷小：dx 是真无穷小，导数 = 标准部分(st(Δy/Δx))——“莱布尼茨的复仇”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "应用与前沿",
+  "level": 4,
+  "prereq_names": [
+   "NEW:非标准模型"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "f′(x) = st((f(x+dx)−f(x))/dx)，dx 为无穷小。",
+  "formulas": []
+ },
+ {
+  "cn": "超实数",
+  "en": "Hyperreal Numbers",
+  "definition": "*ℝ：ℝ 的非标准扩张，含无穷小（0<ε<一切正实数）和无穷大——“数轴的加厚版”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "应用与前沿",
+  "level": 4,
+  "prereq_names": [
+   "NEW:非标准分析"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "转移原理",
+  "en": "Transfer Principle",
+  "definition": "一阶语句在 ℝ 成立 ⟺ 在 *ℝ 成立：无穷小论证“合法”的通行证——“标准真则非标准真”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "应用与前沿",
+  "level": 4,
+  "prereq_names": [
+   "NEW:超实数",
+   "NEW:初等等价"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "内集与外集",
+  "en": "Internal vs External Sets",
+  "definition": "*ℝ 的子集中，可定义的叫内集（如无穷小集是外集！）——“看得见”与“看不见”的分界。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "应用与前沿",
+  "level": 5,
+  "prereq_names": [
+   "NEW:超实数",
+   "NEW:可定义集"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "单子 μ(0)（0 的无穷小邻域）是外集：它不可定义。",
+  "formulas": []
+ },
+ {
+  "cn": "代数闭域的模型论",
+  "en": "Model Theory of ACF",
+  "definition": "ACF（代数闭域理论）完全、量词消去、不可数范畴——“代数几何的逻辑骨架”，Chevalley 定理即量词消去。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "应用与前沿",
+  "level": 5,
+  "prereq_names": [
+   "NEW:代数闭域的量词消去",
+   "NEW:莫利范畴定理"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "实闭域RCF",
+  "en": "Real Closed Fields",
+  "definition": "满足“奇次多项式有根、正元有平方根”的有序域理论：ℝ 是其首要模型，Tarski 量词消去使其可判定。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "应用与前沿",
+  "level": 5,
+  "prereq_names": [
+   "NEW:实闭域的量词消去"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "o极小结构",
+  "en": "o-minimal Structures",
+  "definition": "每可定义子集都是有限个区间之并的有序结构： tame 几何的框架，排除“病态”集合。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "应用与前沿",
+  "level": 5,
+  "prereq_names": [
+   "NEW:可定义集"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "(ℝ,+,·) 是 o-极小的（Tarski–Seidenberg）。",
+  "formulas": []
+ },
+ {
+  "cn": "稳定性理论一瞥",
+  "en": "Glimpse of Stability Theory",
+  "definition": "Shelah 按“类型数”给理论分类：稳定 ⇒ 单纯 ⇒ NIP 的层级， tame 与 wild 的分水岭。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "应用与前沿",
+  "level": 5,
+  "prereq_names": [
+   "NEW:类型"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "ACF 稳定；(ℤ,+,·) 不稳定（可定义序）。",
+  "formulas": []
+ },
+ {
+  "cn": "什么是模型论",
+  "en": "What is Model Theory",
+  "definition": "模型论 = 数理逻辑的语义学：研究“形式语言”与“数学结构”的关系，核心问题是“语言能区分什么”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "入门直观",
+  "level": 1,
+  "prereq_names": [],
+  "tags": [
+   "核心"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "语法与语义",
+  "en": "Syntax vs Semantics",
+  "definition": "语法是“符号怎么拼”（证明），语义是“符号什么意思”（模型）；可靠完备定理是两者的桥。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "入门直观",
+  "level": 1,
+  "prereq_names": [
+   "NEW:什么是模型论"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "⊢ 是语法（能证），⊨ 是语义（为真）。",
+  "formulas": [
+   "⊢ vs ⊨"
+  ]
+ },
+ {
+  "cn": "模型论的基本问题",
+  "en": "Basic Questions of Model Theory",
+  "definition": "给定语言/理论：它有多少模型？模型长什么样？语言能表达什么？——“数、形、力”三问。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "入门直观",
+  "level": 1,
+  "prereq_names": [
+   "NEW:什么是模型论"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "结构举例",
+  "en": "Examples of Structures",
+  "definition": "图（顶点+边关系）、群（集合+运算）、序（集合+小于关系）都是结构——“集合穿上关系/运算的衣服”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "入门直观",
+  "level": 1,
+  "prereq_names": [
+   "NEW:什么是模型论"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "同构即看不出区别",
+  "en": "Isomorphism Means Indistinguishable",
+  "definition": "同构的结构满足完全相同的一阶句子：一阶语言是“色盲”，看不出同构结构的差别。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "入门直观",
+  "level": 2,
+  "prereq_names": [
+   "NEW:同构",
+   "NEW:初等等价"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "紧致性的威力",
+  "en": "Power of Compactness",
+  "definition": "紧致性定理是模型论的“印钞机”：无穷公理、非标准模型、上行 LS，几乎都从它印出来。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "入门直观",
+  "level": 2,
+  "prereq_names": [
+   "NEW:一阶逻辑的紧致性定理"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "非标准数的直观",
+  "en": "Intuition of Nonstandard Numbers",
+  "definition": "非标准模型里有“比一切标准自然数都大”的数：它满足 PA 的每条公理，只是“长”得不标准。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "入门直观",
+  "level": 2,
+  "prereq_names": [
+   "NEW:非标准模型"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "模型论在数学中的位置",
+  "en": "Model Theory in Mathematics",
+  "definition": "模型论是“逻辑的几何”：用几何直觉（可定义集、维数）研究逻辑问题，反哺代数与数论。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "入门直观",
+  "level": 2,
+  "prereq_names": [
+   "NEW:什么是模型论"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "Hrushovski 用模型论证明 Mordell–Lang 猜想的函数域情形。",
+  "formulas": []
+ },
+ {
+  "cn": "基数的幂运算",
+  "en": "Cardinal Exponentiation",
+  "definition": "κ^λ 是“λ 个 κ 相乘”的基数：2^{ℵ₀}=𝔠，而 (2^{ℵ₀})⁺ 的值 ZFC 决定不了——幂运算是基数算术的“深水区”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 4,
+  "prereq_names": [
+   "NEW:函数集的基数",
+   "NEW:连续统"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "2^{ℵ₀} = 𝔠"
+  ]
+ },
+ {
+  "cn": "共尾性",
+  "en": "Cofinality",
+  "definition": "基数 κ 的共尾性 cf(κ) 是“爬上 κ”的最短无界序列长度：cf(ℵ_ω)=ω——“多高”与“多陡”是两回事。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 5,
+  "prereq_names": [
+   "NEW:阿列夫数"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "cf(ℵ₀)=ℵ₀；cf(𝔠) > ω（Kőnig 定理的推论）。",
+  "formulas": []
+ },
+ {
+  "cn": "正则基数与奇异基数",
+  "en": "Regular vs Singular Cardinals",
+  "definition": "cf(κ)=κ 的叫正则基数（如 ℵ₀, ℵ₁），cf(κ)<κ 的叫奇异基数（如 ℵ_ω）——“自己爬自己”vs“别人爬上来”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 5,
+  "prereq_names": [
+   "NEW:共尾性"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "柯尼希定理",
+  "en": "Kőnig's Theorem",
+  "definition": "cf(2^κ) > κ：连续统的共尾性必大于 ω，故 𝔠 ≠ ℵ_ω——“幂集把共尾性撑大”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "集合论",
+  "topic_cn": "基数",
+  "level": 5,
+  "prereq_names": [
+   "NEW:共尾性",
+   "NEW:基数的幂运算"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": [
+   "cf(2^κ) > κ"
+  ]
+ },
+ {
+  "cn": "可枚举集",
+  "en": "Recursively Enumerable Set",
+  "definition": "有算法能“逐个列出”其元素的集合叫递归可枚举（半可判定）：停机问题的“是”实例集即是。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 3,
+  "prereq_names": [
+   "NEW:可判定与半可判定"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "图灵归约",
+  "en": "Turing Reduction",
+  "definition": "允许调用 B 的“神谕”来解 A，记 A ≤_T B：比多一归约更强，是“相对可计算性”的语言。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 4,
+  "prereq_names": [
+   "NEW:归约"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": [
+   "A ≤_T B"
+  ]
+ },
+ {
+  "cn": "波斯特对应问题",
+  "en": "Post Correspondence Problem",
+  "definition": "给定多米诺骨牌（上下字符串），能否排出上下读数相同的序列？——不可判定的经典问题，长得像拼图。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "可计算性",
+  "level": 4,
+  "prereq_names": [
+   "停机问题",
+   "NEW:归约"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "线性逻辑一瞥",
+  "en": "Glimpse of Linear Logic",
+  "definition": "Girard 的逻辑：命题是“资源”，用一次就消耗——“假设不能随便复制”，刻画计算的资源敏感性。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "数理逻辑",
+  "topic_cn": "非经典逻辑",
+  "level": 5,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "最小数原理",
+  "en": "Least Number Principle",
+  "definition": "每非空自然数集有最小元——良序原理的算术版，极小反例法的“官方授权”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "归纳法家族",
+  "level": 2,
+  "prereq_names": [
+   "良序原理",
+   "NEW:极小反例法"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "存在性证明的分类",
+  "en": "Taxonomy of Existence Proofs",
+  "definition": "存在性证明四大家族：构造式（交出实例）、反证式（设无则矛盾）、计数式（好多于坏）、概率式（随机则有）——“四条腿走路”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "存在性高级方法",
+  "level": 3,
+  "prereq_names": [
+   "NEW:存在命题的见证构造",
+   "NEW:概率法"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "介值性论证",
+  "en": "Intermediate Value Argument",
+  "definition": "连续函数在两点异号则中间必有零点：把“存在零点”变成“找变号点”——“变号即有根”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "方法",
+  "example": "证 x³−x−1=0 有实根：f(1)=−1<0<f(2)=5，故 (1,2) 内有根。",
+  "formulas": []
+ },
+ {
+  "cn": "离散中间值定理",
+  "en": "Discrete Intermediate Value Theorem",
+  "definition": "整数列每步至多变 1，若 aₘ<0<aₙ 则中间必有零点——“步子小，必路过”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "证明方法",
+  "topic_cn": "分析式证明",
+  "level": 2,
+  "prereq_names": [
+   "NEW:介值性论证"
+  ],
+  "tags": [],
+  "kind": "定理",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "特殊到一般",
+  "en": "From Special to General",
+  "definition": "先啃下特殊情形，提炼出“可迁移”的论证，再推广——“特殊是一般的草稿”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 2,
+  "prereq_names": [
+   "NEW:特殊情形先行"
+  ],
+  "tags": [],
+  "kind": "思路",
+  "example": "先对 2×2 矩阵直接验算凯莱-哈密顿定理，再提炼出适用于 n×n 的伴随矩阵论证。",
+  "formulas": []
+ },
+ {
+  "cn": "一般到特殊",
+  "en": "From General to Special",
+  "definition": "把问题嵌入更一般的框架：一般定理的特例可能比直接证更容易——“站高一层，看得更清”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 3,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 1+2+…+n=n(n+1)/2：看成等差数列求和公式的特例。",
+  "formulas": []
+ },
+ {
+  "cn": "类比",
+  "en": "Reasoning by Analogy",
+  "definition": "把陌生问题类比成熟悉问题，照搬解法框架：“有限群”类比“有限集”、“理想”类比“子群”——“熟悉是陌生的向导”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "由“子群→商群”类比出“理想→商环”：陪集论证框架照搬，只把加法换成环运算。",
+  "formulas": []
+ },
+ {
+  "cn": "化归的终点",
+  "en": "End Point of Reduction",
+  "definition": "每次化归都要问“化到哪算完”：已知的定理、平凡的情形、定义本身——“化归要有刹车”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "解题思路",
+  "topic_cn": "化归转化",
+  "level": 2,
+  "prereq_names": [],
+  "tags": [],
+  "kind": "思路",
+  "example": "证 √2 无理化归到“正整数无穷递降不可能”：终点是良序原理，再化就循环了。",
+  "formulas": []
+ },
+ {
+  "cn": "力迫法的直观",
+  "en": "Intuition of Forcing",
+  "definition": "力迫 = “往宇宙里添加一个”通用“的缺失对象”：偏序条件是“有限信息”，通用滤子是“理想极限”——“用有限逼近无限”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 5,
+  "prereq_names": [
+   "NEW:力迫法入门"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "可数链条件",
+  "en": "Countable Chain Condition",
+  "definition": "偏序的每个反链都可数（ccc）：力迫中“保基数”的常用条件——“不太宽的偏序不塌基数”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "集合论公理",
+  "level": 5,
+  "prereq_names": [
+   "NEW:力迫法入门"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "Cohen 力迫满足 ccc，故不塌缩基数。",
+  "formulas": []
+ },
+ {
+  "cn": "大基数的相容性强度",
+  "en": "Consistency Strength of Large Cardinals",
+  "definition": "大基数公理按“蕴含 Con(ZFC+…)”排成层级：基数越大，系统越强——“无穷即力量”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "大基数与独立性",
+  "level": 5,
+  "prereq_names": [
+   "NEW:大基数层级",
+   "NEW:公理系统的强度比较"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "内模型计划",
+  "en": "Inner Model Program",
+  "definition": "为每个大基数找“最小”的内模型（如 L[U]），校准其精确强度——“大基数的指纹鉴定”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "公理系统",
+  "topic_cn": "大基数与独立性",
+  "level": 5,
+  "prereq_names": [
+   "NEW:可构造宇宙L",
+   "NEW:可测基数"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "埃伦弗赫特博弈",
+  "en": "Ehrenfeucht–Fraïssé Game",
+  "definition": "两个结构上的“挑点游戏”：挑战者挑点，应对者配点；应对者能撑 n 轮 ⟺ 两结构 n 轮初等等价——“初等等价的游戏版”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 4,
+  "prereq_names": [
+   "NEW:初等等价"
+  ],
+  "tags": [
+   "重要"
+  ],
+  "kind": "概念",
+  "example": "(ℚ,<) 与 (ℝ,<) 中应对者总能赢：稠密无端点，随便配。",
+  "formulas": []
+ },
+ {
+  "cn": "部分同构",
+  "en": "Partial Isomorphism",
+  "definition": "有限定义域上的同构：EF 博弈中应对者的“应对策略”就是维持部分同构——“局部的同构”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 4,
+  "prereq_names": [
+   "NEW:埃伦弗赫特博弈",
+   "NEW:同构"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ },
+ {
+  "cn": "来回方法",
+  "en": "Back-and-forth Method",
+  "definition": "Cantor 的证法：ℚ 与可数稠密无端点序同构，靠“来回”挑点配对——“你挑我配，终成同构”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 4,
+  "prereq_names": [
+   "NEW:部分同构"
+  ],
+  "tags": [],
+  "kind": "方法",
+  "example": "证任意两个可数无端点稠密线性序同构（Cantor 定理）。",
+  "formulas": []
+ },
+ {
+  "cn": "博弈语义",
+  "en": "Game Semantics",
+  "definition": "公式的真假 = 验证者与反驳者的博弈胜负：∃ 是验证者选，∀ 是反驳者选——“逻辑即博弈”。",
+  "domain_cn": "数学基础",
+  "domain_en": "Foundations",
+  "branch_cn": "模型论入门",
+  "topic_cn": "初等等价",
+  "level": 4,
+  "prereq_names": [
+   "NEW:埃伦弗赫特博弈",
+   "NEW:全称量词与存在量词"
+  ],
+  "tags": [],
+  "kind": "概念",
+  "example": "",
+  "formulas": []
+ }
+]

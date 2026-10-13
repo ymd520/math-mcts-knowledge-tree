@@ -248,7 +248,11 @@ class CollisionProblem(Problem):
                              {cid for cid in curated if tree.get(cid)})
 
     def _cands_for(self, cid: str) -> list[str]:
-        """某概念的跨领域候选搭档(标签优先级截断到 CAND_CAP), 懒计算+缓存."""
+        """某概念的跨领域候选搭档(标签优先级截断到 CAND_CAP), 懒计算+缓存.
+
+        curated 碰撞涉及的搭档永不截断: 人工精选对必须可达,
+        不随规模增长被稀释(9417 规模下 835 个"核心", PR07 曾被挤出 top-600).
+        """
         if cid not in self._cands:
             me = self.tree.get(cid)
             rank = {"核心": 0, "重要": 1}
@@ -256,7 +260,18 @@ class CollisionProblem(Problem):
                     if o.id != cid and o.domain_cn != me.domain_cn]
             pool.sort(key=lambda o: (rank.get(o.tags[0] if o.tags else "",
                                               2), o.id))
-            self._cands[cid] = [o.id for o in pool[:self.CAND_CAP]]
+            cands = [o.id for o in pool[:self.CAND_CAP]]
+            curated_partners = set()
+            for col in self.tree.collisions:
+                if col["a"] == cid:
+                    curated_partners.add(col["b"])
+                elif col["b"] == cid:
+                    curated_partners.add(col["a"])
+            for other in curated_partners:
+                if (other not in cands
+                        and self.tree.get(other).domain_cn != me.domain_cn):
+                    cands.append(other)
+            self._cands[cid] = cands
         return self._cands[cid]
 
     def initial_state(self):

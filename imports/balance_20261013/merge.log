@@ -1,0 +1,563 @@
+DROP-exists-cn foundations.json "鸽巢原理" (id DM02)
+DROP-exists-en foundations.json "消解推理规则" en=Resolution Principle
+DROP-exists-en foundations.json "演绎系统的可靠性" en=Soundness Theorem
+DROP-exists-cn foundations.json "独立性" (id PR04)
+DROP-exists-en foundations.json "塔斯基不可定义定理" en=Tarski's Undefinability Theorem
+DROP-exists-cn foundations.json "图灵机" (id DM137)
+DROP-exists-en foundations.json "根岑相继式演算" en=Sequent Calculus
+DROP-exists-en foundations.json "直觉主义逻辑入门" en=Intuitionistic Logic
+DROP-exists-en foundations.json "2-SAT" en=2-Satisfiability
+DROP-exists-en foundations.json "费马无穷递降法" en=Infinite Descent
+DROP-exists-cn foundations.json "容斥原理" (id DM12)
+DROP-exists-en foundations.json "计数两次" en=Double Counting
+DROP-exists-en foundations.json "势能函数法" en=Potential Function Method
+DROP-exists-en foundations.json "齐次化技巧" en=Homogenization
+DROP-exists-en foundations.json "归一化技巧" en=Normalization
+DROP-exists-en foundations.json "离散转连续" en=Discrete to Continuous
+DROP-exists-en foundations.json "不变量的寻找" en=Finding Invariants
+DROP-exists-cn foundations.json "局部化" (id AL125)
+DROP-exists-cn foundations.json "渐近展开" (id AN130)
+DROP-exists-en foundations.json "连续统假设CH" en=Continuum Hypothesis
+DROP-exists-cn foundations.json "自同构群" (id AL105)
+DROP-exists-en foundations.json "量词消去法" en=Quantifier Elimination
+DROP probability.json#256 中心极限定理的特征函数证明: ['思路 missing example']
+DROP probability.json#422 渐近正态的证明思路: ['思路 missing example']
+DROP-exists-cn probability.json "条件概率" (id PR02)
+DROP-exists-cn probability.json "容斥原理" (id DM12)
+DROP-exists-cn probability.json "混合分布" (id PR56)
+DROP-exists-cn probability.json "概率积分变换" (id PR64)
+DROP-exists-cn probability.json "伯努利分布" (id PR20)
+DROP-exists-cn probability.json "几何分布" (id PR21)
+DROP-exists-cn probability.json "负二项分布" (id PR22)
+DROP-exists-cn probability.json "超几何分布" (id PR23)
+DROP-exists-cn probability.json "多项分布" (id PR44)
+DROP-exists-cn probability.json "离散均匀分布" (id PR55)
+DROP-exists-cn probability.json "指数分布" (id PR24)
+DROP-exists-cn probability.json "正态分布" (id PR25)
+DROP-exists-cn probability.json "伽马分布" (id PR30)
+DROP-exists-cn probability.json "贝塔分布" (id PR29)
+DROP-exists-cn probability.json "卡方分布" (id PR26)
+DROP-exists-en probability.json "t 分布" en=Student's t Distribution
+DROP-exists-en probability.json "F 分布" en=F Distribution
+DROP-exists-cn probability.json "威布尔分布" (id PR46)
+DROP-exists-cn probability.json "对数正态分布" (id PR45)
+DROP-exists-cn probability.json "柯西分布" (id PR48)
+DROP-exists-cn probability.json "拉普拉斯分布" (id PR52)
+DROP-exists-cn probability.json "帕累托分布" (id PR47)
+DROP-exists-cn probability.json "逆伽马分布" (id PR51)
+DROP-exists-cn probability.json "位置-尺度族" (id PR60)
+DROP-exists-cn probability.json "多元正态分布" (id PR131)
+DROP-exists-en probability.json "Copula函数" en=Copula
+DROP-exists-cn probability.json "次序统计量" (id PR62)
+DROP-exists-cn probability.json "矩母函数" (id PR16)
+DROP-exists-cn probability.json "特征函数" (id PR32)
+DROP-exists-en probability.json "逆变换采样法" en=Inverse Transform Sampling
+DROP-exists-en probability.json "逻辑分布" en=Logistic Distribution
+DROP-exists-en probability.json "耿贝尔分布" en=Gumbel Distribution
+DROP-exists-en probability.json "单调收敛定理" en=Monotone Convergence Theorem
+DROP-exists-cn probability.json "马氏距离" (id PR138)
+DROP-exists-cn probability.json "偏相关系数" (id PR139)
+DROP-exists-cn probability.json "矩方法" (id PR43)
+DROP-exists-cn probability.json "条件期望" (id PR18)
+DROP-exists-cn probability.json "马尔可夫不等式" (id PR161)
+DROP-exists-cn probability.json "切比雪夫不等式" (id PR162)
+DROP-exists-en probability.json "詹森不等式" en=Jensen's Inequality
+DROP-exists-en probability.json "柯西-施瓦茨不等式" en=Cauchy-Schwarz Inequality (Probabilistic)
+DROP-exists-cn probability.json "依概率收敛" (id PR76)
+DROP-exists-cn probability.json "几乎必然收敛" (id PR77)
+DROP-exists-cn probability.json "强大数定律" (id PR71)
+DROP-exists-cn probability.json "重对数律" (id PR74)
+DROP-exists-cn probability.json "中心极限定理" (id PR10)
+DROP-exists-en probability.json "林德伯格条件" en=Lindeberg Condition
+DROP-exists-en probability.json "李雅普诺夫条件" en=Lyapunov Condition
+DROP-exists-en probability.json "Delta 方法" en=Delta Method
+DROP-exists-en probability.json "Slutsky 定理" en=Slutsky's Theorem
+DROP-exists-cn probability.json "连续映射定理" (id PR78)
+DROP-exists-cn probability.json "依分布收敛" (id PR31)
+DROP-exists-cn probability.json "弱收敛" (id AN168)
+DROP-exists-en probability.json "切尔诺夫界" en=Chernoff Bound
+DROP-exists-en probability.json "霍夫丁不等式" en=Hoeffding's Inequality
+DROP-exists-cn probability.json "次高斯分布" (id PR168)
+DROP-exists-cn probability.json "随机游走" (id PR148)
+DROP-exists-cn probability.json "贝叶斯估计" (id PR37)
+DROP-exists-cn probability.json "偏差-方差分解" (id CA104)
+DROP-exists-cn probability.json "因子分解定理" (id PR82)
+DROP-exists-cn probability.json "完备性" (id PR83)
+DROP-exists-en probability.json "Rao-Blackwell 定理" en=Rao-Blackwell Theorem
+DROP-exists-en probability.json "Lehmann-Scheffé 定理" en=Lehmann-Scheffé Theorem
+DROP-exists-cn probability.json "UMVUE" (id PR85)
+DROP-exists-en probability.json "Basu 定理" en=Basu's Theorem
+DROP-exists-en probability.json "Cramer-Rao 下界" en=Cramér-Rao Lower Bound
+DROP-exists-en probability.json "Jeffreys 先验" en=Jeffreys Prior
+DROP-exists-cn probability.json "置信区间" (id PR13)
+DROP-exists-cn probability.json "枢轴量法" (id PR184)
+DROP-exists-cn probability.json "经验分布" (id PR58)
+DROP-exists-cn probability.json "交叉验证" (id PR122)
+DROP-exists-cn probability.json "缺失数据机制" (id PR191)
+DROP-exists-en probability.json "KM 估计量" en=Kaplan-Meier Estimator
+DROP-exists-cn probability.json "卷积定理" (id AN112)
+DROP-exists-cn probability.json "假设检验" (id PR12)
+DROP-exists-cn probability.json "功效函数" (id PR94)
+DROP-exists-cn probability.json "一致最优势检验" (id PR93)
+DROP-exists-en probability.json "Neyman-Pearson 引理" en=Neyman-Pearson Lemma
+DROP-exists-cn probability.json "似然比检验" (id PR90)
+DROP-exists-en probability.json "Wald 检验" en=Wald Test
+DROP-exists-en probability.json "t 检验" en=t-test
+DROP-exists-cn probability.json "方差分析" (id PR35)
+DROP-exists-cn probability.json "符号检验" (id PR98)
+DROP-exists-en probability.json "Kolmogorov-Smirnov 检验" en=Kolmogorov-Smirnov Test
+DROP-exists-cn probability.json "置换检验" (id PR97)
+DROP-exists-cn probability.json "效应量" (id PR104)
+DROP-exists-cn probability.json "贝叶斯定理" (id PR03)
+DROP-exists-cn probability.json "后验预测分布" (id PR109)
+DROP-exists-cn probability.json "岭回归的贝叶斯解释" (id PR119)
+DROP-exists-cn probability.json "贝叶斯因子" (id PR114)
+DROP-exists-en probability.json "BIC 准则" en=Bayesian Information Criterion
+DROP-exists-cn probability.json "蒙特卡洛积分" (id CA29)
+DROP-exists-cn probability.json "拒绝采样" (id PR67)
+DROP-exists-cn probability.json "MCMC" (id PR110)
+DROP-exists-en probability.json "Metropolis-Hastings 算法" en=Metropolis-Hastings Algorithm
+DROP-exists-en probability.json "Gibbs 采样" en=Gibbs Sampling
+DROP-exists-cn probability.json "变分推断" (id PR113)
+DROP-exists-cn probability.json "贝叶斯优化" (id CA183)
+DROP-exists-cn probability.json "高斯过程" (id PR160)
+DROP-exists-cn probability.json "白噪声" (id PR147)
+DROP-exists-cn probability.json "泊松过程" (id PR19)
+DROP-exists-cn probability.json "更新过程" (id PR151)
+DROP-exists-cn probability.json "马尔可夫链" (id PR15)
+DROP-exists-cn probability.json "耦合方法" (id PR179)
+DROP-exists-en probability.json "PageRank" en=PageRank
+DROP-exists-cn probability.json "隐马尔可夫模型" (id PR159)
+DROP-exists-cn probability.json "生灭过程" (id PR157)
+DROP-exists-cn probability.json "布朗运动" (id PR41)
+DROP-exists-cn probability.json "随机微分方程" (id PR156)
+DROP-exists-cn probability.json "鞅" (id PR42)
+DROP-exists-en probability.json "可选停时定理" en=Optional Stopping Theorem
+DROP-exists-cn probability.json "鞅收敛定理" (id PR154)
+DROP-exists-en probability.json "Little 定律" en=Little's Law
+DROP-exists-en probability.json "M/M/1 队列" en=M/M/1 Queue
+DROP-exists-cn probability.json "自相关函数" (id PR142)
+DROP-exists-en probability.json "AR 模型" en=Autoregressive Model
+DROP-exists-en probability.json "MA 模型" en=Moving Average Model
+DROP-exists-en probability.json "ARMA 模型" en=ARMA Model
+DROP-exists-en probability.json "ARIMA 模型" en=ARIMA Model
+DROP-exists-cn probability.json "残差诊断" (id PR129)
+DROP-exists-cn probability.json "过拟合与欠拟合" (id PR130)
+DROP-exists-en probability.json "GARCH 模型" en=GARCH Model
+DROP-exists-cn probability.json "多项式回归" (id PR126)
+DROP-exists-cn probability.json "异方差" (id PR124)
+DROP-exists-cn probability.json "加权最小二乘" (id PR125)
+DROP-exists-cn probability.json "多重共线性" (id PR123)
+DROP-exists-cn probability.json "岭回归" (id PR39)
+DROP-exists-en probability.json "Lasso 回归" en=Lasso Regression
+DROP-exists-en probability.json "AIC 准则" en=Akaike Information Criterion
+DROP-exists-cn probability.json "广义线性模型" (id PR118)
+DROP-exists-en probability.json "logistic 回归" en=Logistic Regression
+DROP-exists-cn probability.json "泊松回归" (id PR128)
+DROP-exists-cn probability.json "分位数回归" (id PR127)
+DROP-exists-cn probability.json "最大熵原理" (id PR172)
+DROP-exists-cn probability.json "微分熵" (id PR174)
+DROP-exists-cn probability.json "交叉熵" (id PR173)
+DROP-exists-en probability.json "KL 散度" en=Kullback-Leibler Divergence
+DROP-exists-cn probability.json "互信息" (id PR171)
+DROP-exists-en probability.json "Huffman 编码" en=Huffman Coding
+DROP-exists-cn probability.json "汉明码" (id DM148)
+DROP-exists-cn probability.json "线性码" (id DM150)
+KEEP-cross-branch analysis.json "Young 不等式" x2 branches=['实分析', '调和分析']
+KEEP-cross-branch analysis.json "卷积" x2 branches=['实分析', '调和分析']
+KEEP-cross-branch analysis.json "Marcinkiewicz 插值定理" x2 branches=['实分析', '调和分析']
+KEEP-cross-branch analysis.json "Lebesgue 微分定理" x2 branches=['实分析', '调和分析']
+KEEP-cross-branch analysis.json "Lebesgue 点" x2 branches=['实分析', '调和分析']
+KEEP-cross-branch analysis.json "Vitali 覆盖引理" x2 branches=['实分析', '调和分析']
+KEEP-cross-branch analysis.json "平均值性质" x2 branches=['偏微分方程', '复分析']
+KEEP-cross-branch analysis.json "开映射定理" x2 branches=['复分析', '泛函分析']
+KEEP-cross-branch analysis.json "Fresnel 积分" x2 branches=['复分析', '积分变换与特殊函数']
+KEEP-cross-branch analysis.json "调和函数" x2 branches=['偏微分方程', '复分析']
+KEEP-cross-branch analysis.json "Laplace 方程" x2 branches=['偏微分方程', '复分析']
+KEEP-cross-branch analysis.json "Poisson 积分公式" x2 branches=['偏微分方程', '复分析']
+KEEP-cross-branch analysis.json "Poisson 核" x3 branches=['偏微分方程', '复分析', '调和分析']
+KEEP-cross-branch analysis.json "Dirichlet 问题" x2 branches=['偏微分方程', '复分析']
+KEEP-cross-branch analysis.json "Phragmén–Lindelöf 原理" x2 branches=['偏微分方程', '复分析']
+KEEP-cross-branch analysis.json "Bessel 不等式" x2 branches=['泛函分析', '调和分析']
+KEEP-cross-branch analysis.json "Parseval 等式" x2 branches=['泛函分析', '调和分析']
+KEEP-cross-branch analysis.json "紧性论证" x2 branches=['偏微分方程', '泛函分析']
+KEEP-cross-branch analysis.json "对偶论证" x2 branches=['泛函分析', '调和分析']
+KEEP-cross-branch analysis.json "Plancherel 定理" x2 branches=['积分变换与特殊函数', '调和分析']
+KEEP-cross-branch analysis.json "Poisson 求和公式" x2 branches=['积分变换与特殊函数', '调和分析']
+KEEP-cross-branch analysis.json "Sobolev 嵌入定理" x2 branches=['偏微分方程', '调和分析']
+KEEP-cross-branch analysis.json "能量估计" x2 branches=['偏微分方程', '常微分方程']
+KEEP-cross-branch analysis.json "Green 函数" x2 branches=['偏微分方程', '常微分方程']
+KEEP-cross-branch analysis.json "Bessel 方程" x2 branches=['常微分方程', '积分变换与特殊函数']
+KEEP-cross-branch analysis.json "Bessel 函数" x2 branches=['常微分方程', '积分变换与特殊函数']
+KEEP-cross-branch analysis.json "Legendre 多项式" x2 branches=['常微分方程', '积分变换与特殊函数']
+KEEP-cross-branch analysis.json "上下解方法" x2 branches=['偏微分方程', '常微分方程']
+KEEP-cross-branch analysis.json "传递函数" x2 branches=['常微分方程', '积分变换与特殊函数']
+DEDUP-intra analysis.json "传输方程" x2 -> keep L1 偏微分方程
+DEDUP-intra analysis.json "Burgers 方程" x2 -> keep L2 偏微分方程
+DEDUP-intra analysis.json "守恒律" x2 -> keep L2 偏微分方程
+DEDUP-intra analysis.json "稀疏波" x2 -> keep L3 偏微分方程
+DROP-exists-en analysis.json "Cantor 集" en=Cantor Set
+DROP-exists-cn analysis.json "Tietze 扩张定理" (id GE156)
+DROP-exists-en analysis.json "Lebesgue 积分" en=Lebesgue Integral
+DROP-exists-en analysis.json "Chebyshev 不等式" en=Chebyshev's Inequality
+DROP-exists-en analysis.json "Markov 不等式" en=Markov's Inequality
+DROP-exists-en analysis.json "换元积分公式" en=Change of Variables Formula
+DROP-exists-en analysis.json "分部积分公式" en=Integration by Parts
+DROP-exists-en analysis.json "反常积分" en=Improper Integral
+DROP-exists-en analysis.json "单调收敛定理" en=Monotone Convergence Theorem
+DROP-cross-batch analysis.json "控制收敛定理" dup of B7P0126
+DROP-cross-batch analysis.json "一致可积" dup of B7P0220
+DROP-cross-batch analysis.json "Vitali 收敛定理" dup of B7P0221
+DROP-exists-cn analysis.json "截断法" (id BS119)
+DROP-exists-en analysis.json "Jensen 不等式" en=Jensen's Inequality
+DROP-exists-cn analysis.json "卷积" (id PR61)
+DROP-exists-cn analysis.json "卷积" (id PR61)
+DROP-exists-cn analysis.json "有界变差函数" (id AN76)
+DROP-exists-cn analysis.json "绝对连续函数" (id AN77)
+DROP-exists-cn analysis.json "不定积分" (id AN05)
+DROP-exists-cn analysis.json "复数" (id AN13)
+DROP-exists-cn analysis.json "解析函数" (id AN14)
+DROP-exists-cn analysis.json "恒等定理" (id AN102)
+DROP-exists-cn analysis.json "柯西积分定理" (id AN96)
+DROP-exists-cn analysis.json "柯西积分公式" (id AN95)
+DROP-exists-en analysis.json "Liouville 定理" en=Liouville's Theorem
+DROP-exists-en analysis.json "Morera 定理" en=Morera's Theorem
+DROP-exists-cn analysis.json "最大模原理" (id AN98)
+DROP-exists-en analysis.json "Schwarz 引理" en=Schwarz Lemma
+DROP-exists-en analysis.json "平均值性质" en=Mean Value Property
+DROP-exists-en analysis.json "平均值性质" en=Mean value property
+DROP-exists-cn analysis.json "开映射定理" (id AN108)
+DROP-exists-cn analysis.json "开映射定理" (id AN108)
+DROP-exists-cn analysis.json "辐角原理" (id AN99)
+DROP-exists-en analysis.json "Rouché 定理" en=Rouché's Theorem
+DROP-exists-en analysis.json "收敛半径" en=Radius of Convergence
+DROP-exists-en analysis.json "Abel 定理" en=Abel's Theorem
+DROP-exists-en analysis.json "Weierstrass M 判别法" en=Weierstrass M-Test
+DROP-exists-cn analysis.json "一致收敛" (id AN23)
+DROP-exists-cn analysis.json "留数定理" (id AN15)
+DROP-exists-en analysis.json "主值积分" en=Cauchy Principal Value
+DROP-exists-cn analysis.json "可去奇点" (id AN104)
+DROP-exists-cn analysis.json "解析延拓" (id AN97)
+DROP-exists-cn analysis.json "共形映射" (id AN109)
+DROP-exists-cn analysis.json "交比" (id GE82)
+DROP-exists-en analysis.json "Cayley 变换" en=Cayley Transform
+DROP-exists-cn analysis.json "多项式" (id AL01)
+DROP-exists-en analysis.json "有理函数" en=Rational Functions
+DROP-exists-cn analysis.json "巴拿赫空间" (id AN159)
+DROP-exists-cn analysis.json "等距同构" (id GE73)
+DROP-exists-cn analysis.json "希尔伯特空间" (id AN160)
+DROP-exists-en analysis.json "投影定理" en=Projection theorem
+DROP-exists-en analysis.json "Bessel 不等式" en=Bessel's inequality
+DROP-exists-en analysis.json "Bessel 不等式" en=Bessel's Inequality
+DROP-exists-en analysis.json "完备标准正交系" en=Complete orthonormal system
+DROP-exists-en analysis.json "等距算子" en=Isometry
+DROP-exists-cn analysis.json "对偶空间" (id AL22)
+DROP-exists-en analysis.json "Baire 纲定理" en=Baire category theorem
+DROP-exists-cn analysis.json "一致有界原理" (id AN162)
+DROP-exists-en analysis.json "谱半径" en=Spectral radius
+DROP-exists-cn analysis.json "弱收敛" (id AN168)
+DROP-exists-en analysis.json "Gibbs 现象" en=Gibbs Phenomenon
+DROP-exists-en analysis.json "傅里叶变换（定义）" en=Fourier Transform
+DROP-exists-en analysis.json "Plancherel 定理" en=Plancherel Theorem
+DROP-exists-en analysis.json "Plancherel 定理" en=Plancherel Theorem
+DROP-exists-cn analysis.json "卷积定理" (id AN112)
+DROP-exists-cn analysis.json "采样定理" (id AN119)
+DROP-exists-en analysis.json "Heaviside 阶跃函数" en=Heaviside Step Function
+DROP-exists-en analysis.json "分布的卷积" en=Convolution of Distributions
+DROP-exists-cn analysis.json "基本解" (id AN151)
+DROP-exists-cn analysis.json "分离变量法" (id AN56)
+DROP-exists-en analysis.json "Picard 逐次逼近法" en=Picard Iteration
+DROP-exists-en analysis.json "Bernoulli 方程" en=Bernoulli Equation
+DROP-exists-cn analysis.json "降阶法" (id AN142)
+DROP-exists-cn analysis.json "常数变易法" (id AN53)
+DROP-exists-cn analysis.json "常系数齐次线性方程" (id AN52)
+DROP-exists-cn analysis.json "待定系数法" (id AL53)
+DROP-exists-en analysis.json "Liouville 公式（矩阵版 Abel）" en=Liouville's Formula
+DROP-exists-cn analysis.json "矩阵指数" (id AL52)
+DROP-exists-cn analysis.json "自治系统" (id AN144)
+DROP-exists-en analysis.json "Green 函数" en=Green's Function
+DROP-exists-en analysis.json "Green 函数" en=Green's function
+DROP-exists-cn analysis.json "幂级数解法" (id AN133)
+DROP-exists-en analysis.json "Frobenius 方法" en=Frobenius Method
+DROP-exists-en analysis.json "Bessel 函数" en=Bessel Functions
+DROP-exists-en analysis.json "Bessel 函数" en=Bessel Functions
+DROP-exists-en analysis.json "Legendre 多项式" en=Legendre Polynomials
+DROP-exists-en analysis.json "Legendre 多项式" en=Legendre Polynomials
+DROP-exists-cn analysis.json "恰当方程" (id AN140)
+DROP-exists-en analysis.json "数值解法：Runge-Kutta 法" en=Runge-Kutta Methods
+DROP-exists-en analysis.json "误差函数与不完全 Gamma" en=Error Function
+DROP-exists-cn analysis.json "特征线法" (id AN146)
+DROP-exists-en analysis.json "传输方程" en=Transport Equation
+DROP-exists-cn analysis.json "热方程" (id AN145)
+DROP-exists-cn analysis.json "能量方法" (id AN148)
+DROP-exists-cn analysis.json "波动方程" (id AN54)
+DROP-exists-en analysis.json "d'Alembert 公式" en=d'Alembert's Formula
+DROP-exists-cn analysis.json "变分法入门" (id AN29)
+DROP-exists-en analysis.json "Dirichlet 原理" en=Dirichlet's Principle
+DROP-exists-en analysis.json "Gamma 函数" en=Gamma Function
+DROP-exists-en analysis.json "Beta 函数" en=Beta Function
+DROP-exists-cn analysis.json "误差函数" (id AN84)
+DROP-exists-cn analysis.json "椭圆积分" (id AN89)
+DROP-exists-cn analysis.json "正交多项式系" (id AN83)
+DROP-exists-cn analysis.json "球谐函数" (id AN91)
+DROP-exists-en analysis.json "Chebyshev 多项式" en=Chebyshev Polynomials
+DROP-exists-en analysis.json "Stirling 公式" en=Stirling's Formula
+DROP-exists-en analysis.json "最速下降法" en=Method of Steepest Descent
+DROP geometry_topology.json#1006 实射影空间的基本群: ['formulas not list']
+DROP geometry_topology.json#1009 法向量: ['formulas not list']
+DROP geometry_topology.json#1012 欧氏空间的黎曼度量: ['formulas not list']
+DROP-exists-cn geometry_topology.json "同胚" (id GE10)
+DROP-cross-batch geometry_topology.json "商映射" dup of B7A0308
+DROP-exists-cn geometry_topology.json "商拓扑" (id GE162)
+DROP-exists-en geometry_topology.json "Zariski 拓扑" en=Zariski Topology
+DROP-exists-en geometry_topology.json "粘合引理" en=Pasting Lemma
+DROP-exists-cn geometry_topology.json "Hausdorff 空间" (id GE153)
+DROP-exists-en geometry_topology.json "Urysohn 引理" en=Urysohn's Lemma
+DROP-exists-cn geometry_topology.json "Tietze 扩张定理" (id GE156)
+DROP-exists-cn geometry_topology.json "可度量化" (id GE157)
+DROP-exists-cn geometry_topology.json "单点紧化" (id GE166)
+DROP-exists-cn geometry_topology.json "列紧" (id GE158)
+DROP-exists-cn geometry_topology.json "局部紧" (id GE165)
+DROP-exists-cn geometry_topology.json "道路连通" (id GE99)
+DROP-cross-batch geometry_topology.json "商空间" dup of B7A0307
+DROP-exists-cn geometry_topology.json "基本群" (id GE23)
+DROP-exists-en geometry_topology.json "van Kampen 定理" en=Seifert–van Kampen Theorem
+DROP-exists-en geometry_topology.json "Brouwer 不动点定理" en=Brouwer Fixed Point Theorem
+DROP-exists-cn geometry_topology.json "覆叠变换群" (id GE143)
+DROP-exists-cn geometry_topology.json "万有覆叠" (id GE142)
+DROP-exists-cn geometry_topology.json "约化同调" (id GE136)
+DROP-exists-cn geometry_topology.json "同伦不变性" (id GE137)
+DROP-exists-cn geometry_topology.json "切除定理" (id GE138)
+DROP-exists-cn geometry_topology.json "Mayer-Vietoris 序列" (id GE139)
+DROP-exists-cn geometry_topology.json "球面的同调" (id GE140)
+DROP-exists-cn geometry_topology.json "单纯复形" (id GE132)
+DROP-exists-cn geometry_topology.json "单纯同调" (id GE134)
+DROP-exists-en geometry_topology.json "Euler 示性数" en=Euler Characteristic
+DROP-exists-en geometry_topology.json "Betti 数" en=Betti Numbers
+DROP-exists-cn geometry_topology.json "同伦" (id GE22)
+DROP-exists-cn geometry_topology.json "同伦等价" (id GE95)
+DROP-exists-en geometry_topology.json "形变收缩" en=Deformation Retraction
+DROP-cross-batch geometry_topology.json "嵌入" dup of B7F0348
+DROP-cross-batch geometry_topology.json "临界点" dup of B7A0748
+DROP-exists-en geometry_topology.json "Poincaré 猜想" en=Poincaré Conjecture
+DROP-exists-en geometry_topology.json "Baire 纲定理" en=Baire Category Theorem
+DROP-exists-en geometry_topology.json "Cantor 集" en=Cantor Set
+DROP-exists-cn geometry_topology.json "链复形" (id GE133)
+DROP-exists-cn geometry_topology.json "和乐群" (id GE130)
+DROP-exists-en geometry_topology.json "Frenet 标架" en=Frenet Frame
+DROP-cross-batch geometry_topology.json "悬链线" dup of B7A0633
+DROP-exists-cn geometry_topology.json "第一基本形式" (id GE20)
+DROP-exists-cn geometry_topology.json "第二基本形式" (id GE64)
+DROP-exists-cn geometry_topology.json "主曲率" (id GE65)
+DROP-exists-en geometry_topology.json "Gauss 曲率" en=Gaussian Curvature
+DROP-exists-cn geometry_topology.json "平均曲率" (id GE66)
+DROP-exists-cn geometry_topology.json "极小曲面" (id GE75)
+DROP-exists-cn geometry_topology.json "脐点" (id GE67)
+DROP-exists-en geometry_topology.json "Gauss 映射" en=Gauss Map
+DROP-exists-cn geometry_topology.json "可展曲面" (id GE74)
+DROP-exists-cn geometry_topology.json "直纹面" (id GE62)
+DROP-exists-cn geometry_topology.json "测地线" (id GE15)
+DROP-exists-cn geometry_topology.json "测地曲率" (id GE69)
+DROP-exists-en geometry_topology.json "Liouville 公式" en=Liouville's Formula
+DROP-exists-cn geometry_topology.json "Gauss 引理" (id GE127)
+DROP-exists-cn geometry_topology.json "法坐标" (id GE121)
+DROP-exists-cn geometry_topology.json "Jacobi 场" (id GE122)
+DROP-exists-cn geometry_topology.json "共轭点" (id GE123)
+DROP-exists-cn geometry_topology.json "渐近线" (id AN194)
+DROP-exists-en geometry_topology.json "曲率张量" en=Riemann Curvature Tensor
+DROP-exists-cn geometry_topology.json "平行移动" (id GE70)
+DROP-exists-cn geometry_topology.json "测地线方程" (id GE115)
+DROP-exists-cn geometry_topology.json "指数映射" (id GE120)
+DROP-exists-en geometry_topology.json "Darboux 定理" en=Darboux's Theorem
+DROP-exists-en geometry_topology.json "等距映射" en=Isometry
+DROP-exists-en geometry_topology.json "等距群" en=Isometry Group
+DROP-exists-cn geometry_topology.json "对称性降维" (id GE185)
+DROP-exists-cn geometry_topology.json "黎曼度量" (id GE112)
+DROP-exists-cn geometry_topology.json "Hopf-Rinow 定理" (id GE126)
+DROP-exists-cn geometry_topology.json "散度定理" (id AN208)
+DROP-cross-batch geometry_topology.json "调和函数" dup of B7A0260
+DROP-exists-en geometry_topology.json "平均值性质" en=Mean Value Property
+DROP-exists-cn geometry_topology.json "截面曲率" (id GE117)
+DROP-exists-cn geometry_topology.json "Ricci 曲率" (id GE118)
+DROP-exists-cn geometry_topology.json "数量曲率" (id GE119)
+DROP-exists-cn geometry_topology.json "Cartan-Hadamard 定理" (id GE129)
+DROP-cross-batch geometry_topology.json "能量泛函" dup of B7A0743
+DROP-cross-batch geometry_topology.json "能量恒等式" dup of B7A0691
+DROP-cross-batch geometry_topology.json "Harnack 不等式" dup of B7A0272
+DROP-cross-batch geometry_topology.json "热核" dup of B7A0459
+DROP-exists-cn geometry_topology.json "热方程" (id AN145)
+DROP-cross-batch geometry_topology.json "连续性方法" dup of B7A0698
+DROP-cross-batch geometry_topology.json "先验估计" dup of B7A0692
+DROP-cross-batch geometry_topology.json "Hopf 引理" dup of B7A0663
+DROP-exists-en geometry_topology.json "Hausdorff 维数" en=Hausdorff Dimension
+DROP-exists-en geometry_topology.json "Sierpinski 三角形" en=Sierpinski Triangle
+DROP-exists-en geometry_topology.json "Koch 雪花" en=Koch Snowflake
+DROP-exists-en geometry_topology.json "Möbius 带" en=Möbius Strip
+DROP-exists-en computing.json "LU 分解" en=LU Decomposition
+DROP-exists-en computing.json "QR 分解" en=QR Decomposition
+DROP-exists-cn computing.json "奇异值分解" (id AL30)
+DROP-exists-cn computing.json "极分解" (id AL56)
+DROP-exists-en computing.json "Schur 分解" en=Schur Decomposition
+DROP-exists-cn computing.json "矩阵范数" (id AL58)
+DROP-cross-batch computing.json "正规方程" dup of B7P0630
+DROP-exists-cn computing.json "岭回归" (id PR39)
+DROP-exists-cn computing.json "加权最小二乘" (id PR125)
+DROP-exists-en computing.json "Rayleigh 商" en=Rayleigh Quotient
+DROP-exists-en computing.json "Weyl 不等式" en=Weyl's Inequalities
+DROP-exists-cn computing.json "广义特征值问题" (id AL69)
+DROP-cross-batch computing.json "相容性" dup of B7F0098
+DROP-cross-batch computing.json "打靶法" dup of B7A0583
+DROP-cross-batch computing.json "极点" dup of B7A0226
+DROP-cross-batch computing.json "渐近锥" dup of B7G0878
+DROP-exists-cn computing.json "Jensen不等式" (id PR163)
+DROP-cross-batch computing.json "半范数" dup of B7A0301
+DROP-exists-cn computing.json "方向导数" (id AN57)
+DROP-cross-batch computing.json "算子范数" dup of B7A0343
+DROP-exists-en computing.json "半定规划SDP" en=Semidefinite Programming
+DROP-exists-en computing.json "线性矩阵不等式LMI" en=Linear Matrix Inequality
+DROP-exists-cn computing.json "分位数回归" (id PR127)
+DROP-cross-batch computing.json "核密度估计" dup of B7P0331
+DROP-cross-batch computing.json "高斯过程回归" dup of B7P0488
+DROP-cross-batch computing.json "Bochner 定理" dup of B7G0639
+DROP-cross-batch computing.json "变分自编码器" dup of B7P0485
+DROP-cross-batch computing.json "拉普拉斯近似" dup of B7P0481
+DROP-cross-batch computing.json "期望传播" dup of B7P0486
+DROP-exists-cn computing.json "一致收敛" (id AN23)
+DROP-exists-cn computing.json "最大流最小割定理" (id DM90)
+DROP-exists-cn computing.json "Edmonds-Karp算法" (id DM92)
+DROP-exists-cn computing.json "Dinic算法" (id DM91)
+DROP-exists-cn computing.json "匈牙利算法" (id DM30)
+DROP-exists-en computing.json "Hall婚姻定理" en=Hall's Marriage Theorem
+DROP-exists-cn computing.json "Dijkstra算法" (id DM87)
+DROP-exists-cn computing.json "Bellman-Ford算法" (id DM88)
+DROP-exists-cn computing.json "Johnson算法" (id DM89)
+DROP-exists-cn computing.json "Kruskal算法" (id DM18)
+DROP-exists-cn computing.json "Prim算法" (id DM19)
+DROP-exists-cn computing.json "Boruvka算法" (id DM115)
+DROP-exists-cn computing.json "关键路径法" (id DM112)
+DROP-exists-en computing.json "马尔可夫链蒙特卡洛" en=Markov Chain Monte Carlo
+DROP-cross-batch computing.json "平稳分布" dup of B7P0521
+DROP-cross-batch computing.json "混合时间" dup of B7P0530
+DROP-exists-cn computing.json "耦合方法" (id PR179)
+DROP-exists-cn computing.json "拒绝采样" (id PR67)
+DROP-cross-batch computing.json "重要性采样" dup of B7P0468
+DROP-exists-cn discrete.json "鸽巢原理" (id DM02)
+DROP-exists-en discrete.json "球棍恒等式" en=Hockey-Stick Identity
+DROP-exists-en discrete.json "计数两次" en=Double Counting
+DROP-exists-cn discrete.json "错排数" (id DM35)
+DROP-exists-en discrete.json "默比乌斯函数" en=Möbius Function
+DROP-exists-en discrete.json "默比乌斯反演" en=Möbius Inversion
+DROP-exists-cn discrete.json "二项式级数" (id AN43)
+DROP-exists-cn discrete.json "卡特兰数" (id DM25)
+DROP-exists-cn discrete.json "指数生成函数" (id DM33)
+DROP-exists-cn discrete.json "五边形数定理" (id AL173)
+DROP-cross-batch discrete.json "差分" dup of B7P0580
+DROP-exists-cn discrete.json "贝尔数" (id DM46)
+DROP-exists-cn discrete.json "轨道-稳定子定理" (id AL87)
+DROP-exists-en discrete.json "Burnside 引理" en=Burnside's Lemma
+DROP-exists-en discrete.json "轮换指标" en=Cycle Index
+DROP-exists-cn discrete.json "欧拉数" (id DM47)
+DROP-cross-batch discrete.json "连通分支" dup of B7G0080
+DROP-exists-cn discrete.json "树" (id DM06)
+DROP-cross-batch discrete.json "同构" dup of B7F0343
+DROP-exists-en discrete.json "Menger 定理" en=Menger's Theorem
+DROP-exists-cn discrete.json "拓扑排序" (id DM17)
+DROP-exists-en discrete.json "Dijkstra 算法" en=Dijkstra's Algorithm
+DROP-exists-en discrete.json "Bellman-Ford 算法" en=Bellman-Ford Algorithm
+DROP-exists-en discrete.json "Kruskal 算法" en=Kruskal's Algorithm
+DROP-exists-en discrete.json "Prim 算法" en=Prim's Algorithm
+DROP-exists-cn discrete.json "并查集" (id DM96)
+DROP-exists-en discrete.json "Hall 婚配定理" en=Hall's Marriage Theorem
+DROP-exists-cn discrete.json "Tutte 1-因子定理" (id DM57)
+DROP-cross-batch discrete.json "指派问题" dup of B7C0751
+DROP-exists-en discrete.json "Brooks 定理" en=Brooks' Theorem
+DROP-exists-cn discrete.json "色多项式" (id DM79)
+DROP-exists-cn discrete.json "完美图" (id DM64)
+DROP-exists-cn discrete.json "强完美图定理" (id DM65)
+DROP-exists-cn discrete.json "弦图" (id DM63)
+DROP-exists-en discrete.json "Kuratowski 定理" en=Kuratowski's Theorem
+DROP-exists-cn discrete.json "交叉数" (id GE147)
+DROP-exists-en discrete.json "Ramsey 数" en=Ramsey Numbers
+DROP-cross-batch discrete.json "Schur 定理" dup of B7G0622
+DROP-exists-cn discrete.json "图灵机" (id DM137)
+DROP-exists-cn discrete.json "丘奇-图灵论题" (id BS69)
+DROP-exists-cn discrete.json "停机问题" (id BS61)
+DROP-exists-en discrete.json "空间复杂度" en=Space Complexity
+DROP-exists-en discrete.json "大 O 记号" en=Big-O Notation
+DROP-cross-batch discrete.json "归约" dup of B7F0107
+DROP-cross-batch discrete.json "图灵归约" dup of B7F0402
+DROP-exists-en discrete.json "对角化方法" en=Diagonalization
+DROP-exists-en discrete.json "Cook-Levin 定理" en=Cook-Levin Theorem
+DROP-exists-cn discrete.json "背包问题" (id CA31)
+DROP-exists-cn discrete.json "伪多项式时间" (id DM128)
+DROP-exists-en discrete.json "零知识证明" en=Zero-Knowledge Proofs
+DROP-exists-cn discrete.json "近似算法" (id DM125)
+DROP-exists-cn discrete.json "近似比" (id CA101)
+DROP-exists-cn discrete.json "集合覆盖的贪心近似" (id CA100)
+DROP-exists-en discrete.json "参数化复杂度" en=Parameterized Complexity
+DROP-exists-en discrete.json "指数时间假设" en=Exponential Time Hypothesis
+DROP-exists-en discrete.json "Miller-Rabin 素性测试" en=Miller-Rabin Primality Test
+DROP-cross-batch discrete.json "多项式恒等测试" dup of B7C0868
+DROP-cross-batch discrete.json "纠错码" dup of B7P0718
+DROP-cross-batch discrete.json "汉明距离" dup of B7P0719
+DROP-exists-cn discrete.json "线性码" (id DM150)
+DROP-exists-cn discrete.json "汉明码" (id DM148)
+DROP-exists-cn discrete.json "汉明界" (id DM158)
+DROP-cross-batch discrete.json "二元对称信道" dup of B7P0714
+DROP-cross-batch discrete.json "信道容量" dup of B7P0713
+DROP-exists-en discrete.json "RSA 正确性" en=Correctness of RSA
+DROP-exists-cn discrete.json "欧拉定理" (id AL42)
+DROP-exists-cn discrete.json "费马小定理" (id AL41)
+DROP-exists-cn discrete.json "中国剩余定理" (id AL43)
+DROP-exists-en discrete.json "Diffie-Hellman 密钥交换" en=Diffie-Hellman Key Exchange
+DROP-exists-cn discrete.json "离散对数问题" (id DM153)
+DROP-exists-en discrete.json "椭圆曲线群律" en=Group Law on Elliptic Curves
+DROP-exists-cn discrete.json "生日攻击" (id DM156)
+DROP-exists-en discrete.json "Fisher 不等式" en=Fisher's Inequality
+DROP-exists-cn discrete.json "拉丁方" (id DM39)
+DROP-exists-cn discrete.json "有限射影平面" (id DM40)
+DROP-exists-cn discrete.json "有限域" (id AL137)
+DROP-exists-cn discrete.json "有限域乘法群循环" (id AL138)
+DROP-exists-cn discrete.json "囚徒困境" (id DM161)
+DROP-exists-en discrete.json "最小最大定理" en=Minimax Theorem
+DROP-exists-cn discrete.json "纳什均衡" (id DM160)
+DROP-exists-cn discrete.json "特征函数" (id PR32)
+DROP-exists-en discrete.json "Shapley 值" en=Shapley Value
+DROP-cross-batch discrete.json "概率方法" dup of B7C0883
+DROP-cross-batch discrete.json "期望论证" dup of B7F0166
+DROP-cross-batch discrete.json "条件期望去随机化" dup of B7C0884
+DROP-cross-batch discrete.json "随机变量" dup of B7P0021
+DROP-cross-batch discrete.json "方差" dup of B7P0137
+DROP-exists-cn discrete.json "随机舍入" (id CA142)
+DROP-exists-cn discrete.json "对称性论证" (id PR178)
+DROP-cross-batch discrete.json "熵压缩法" dup of B7F0168
+DROP-exists-en discrete.json "Markov 不等式" en=Markov's Inequality
+DROP-exists-en discrete.json "Chebyshev 不等式" en=Chebyshev's Inequality
+DROP-exists-en discrete.json "Chernoff 界" en=Chernoff Bound
+DROP-exists-en discrete.json "Hoeffding 不等式" en=Hoeffding's Inequality
+DROP-cross-batch discrete.json "Azuma 不等式" dup of B7P0555
+DROP-exists-cn discrete.json "鞅" (id PR42)
+DROP-cross-batch discrete.json "鞅差序列" dup of B7P0556
+DROP-exists-cn discrete.json "矩母函数" (id PR16)
+DROP-exists-cn discrete.json "大数定律" (id PR09)
+DROP-exists-cn discrete.json "强大数定律" (id PR71)
+DROP-exists-cn discrete.json "中心极限定理" (id PR10)
+DROP-cross-batch discrete.json "随机过程" dup of B7P0491
+DROP-exists-cn discrete.json "马尔可夫链" (id PR15)
+DROP-cross-batch discrete.json "Chapman-Kolmogorov 方程" dup of B7P0514
+DROP-cross-batch discrete.json "平稳分布" dup of B7P0521
+DROP-cross-batch discrete.json "细致平衡" dup of B7P0523
+DROP-exists-cn discrete.json "随机游走" (id PR148)
+DROP-cross-batch discrete.json "赌徒破产问题" dup of B7P0245
+DROP-cross-batch discrete.json "反射原理" dup of B7P0244
+DROP-cross-batch discrete.json "随机游走的常返性" dup of B7P0246
+DROP-exists-cn discrete.json "生灭过程" (id PR157)
+DROP-exists-cn discrete.json "分支过程" (id PR152)
+DROP-exists-cn discrete.json "泊松过程" (id PR19)
+DROP-exists-en discrete.json "M/M/1 队列" en=M/M/1 Queue
+DROP-exists-cn discrete.json "蒙特卡洛方法" (id CA12)
+DROP-cross-batch discrete.json "重要性采样" dup of B7P0468
+DROP-exists-cn discrete.json "MCMC" (id PR110)
+DROP-exists-en discrete.json "Metropolis-Hastings 算法" en=Metropolis-Hastings Algorithm
+DROP-exists-en discrete.json "Gibbs 采样" en=Gibbs Sampling
+DROP-exists-cn discrete.json "模拟退火" (id CA16)
