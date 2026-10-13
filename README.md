@@ -1,5 +1,19 @@
 # 数学知识 MCTS 搜索树
 
+## v1.8.0：多前提、多层推导入口
+
+新增带对象类型、全部前提匹配、目标相关推理超图和证书重放的推导层。
+调用方明确审核的 Horn 规则才能参与推导；导入知识文本进入待验证候选区。
+原有 `collide` 仍是知识配对，新的 `derive` 才负责多层推导。
+完整架构与边界见 [REASONING.md](REASONING.md)。
+
+```sh
+python -m math_mcts derive examples/extreme_value.json --iterations 80 -o report.json
+python -m math_mcts verify-derivation examples/extreme_value.json report.json
+```
+
+此层验证相对于显式规则的推导合法性，尚未接入 Lean 内核或自动知识翻译。
+
 把**全领域数学基础与重要知识**组织成一棵**蒙特卡洛树搜索 (MCTS) 搜索树**：
 知识本身就是树（领域 → 分支 → 主题 → 概念），MCTS 在这棵树上做两种智能搜索——
 **学习路径规划**与**概念检索**。零第三方依赖，纯 Python 标准库。
@@ -9,7 +23,7 @@
 > prerequisite dependencies and retrieves concepts by searching the
 > domain → branch → topic → concept hierarchy.
 
-当前版本: v1.2.0（更新日志见文末）。
+当前代码版本: v1.8.0（下方历史知识统计未统一更新；更新日志见文末）。
 
 ---
 
@@ -207,3 +221,4 @@ collide_concepts(mixed, top_k=3)
 架构说明：`module_index.json` 让加载只读相关分片（典型 1–4 秒）；碰撞候选懒计算，
 23 万规模下初始化不再是 O(N²)；`find()` 精确查找 O(1)。结构/来源/无损/架构检查：
 `python tests/test_imported.py`。
+

@@ -1,0 +1,224 @@
+{
+  "signatures": {
+    "compact": [
+      "Space"
+    ],
+    "nonempty": [
+      "Space"
+    ],
+    "continuous": [
+      "Map",
+      "Space"
+    ],
+    "image": [
+      "Map",
+      "Space",
+      "Set"
+    ],
+    "compact_set": [
+      "Set"
+    ],
+    "nonempty_set": [
+      "Set"
+    ],
+    "real_set": [
+      "Set"
+    ],
+    "extrema": [
+      "Set"
+    ],
+    "attains": [
+      "Map",
+      "Space"
+    ]
+  },
+  "objects": {
+    "X": "Space",
+    "Y": "Space",
+    "f": "Map",
+    "I": "Set",
+    "J": "Set"
+  },
+  "assumptions": [
+    {
+      "predicate": "compact",
+      "args": [
+        "X"
+      ]
+    },
+    {
+      "predicate": "continuous",
+      "args": [
+        "f",
+        "X"
+      ]
+    },
+    {
+      "predicate": "image",
+      "args": [
+        "f",
+        "X",
+        "I"
+      ]
+    },
+    {
+      "predicate": "nonempty",
+      "args": [
+        "X"
+      ]
+    },
+    {
+      "predicate": "real_set",
+      "args": [
+        "I"
+      ]
+    }
+  ],
+  "goal": {
+    "predicate": "attains",
+    "args": [
+      "f",
+      "X"
+    ]
+  },
+  "rules": [
+    {
+      "id": "compact_image",
+      "premises": [
+        {
+          "predicate": "compact",
+          "args": [
+            "?x"
+          ]
+        },
+        {
+          "predicate": "continuous",
+          "args": [
+            "?f",
+            "?x"
+          ]
+        },
+        {
+          "predicate": "image",
+          "args": [
+            "?f",
+            "?x",
+            "?i"
+          ]
+        }
+      ],
+      "conclusion": {
+        "predicate": "compact_set",
+        "args": [
+          "?i"
+        ]
+      },
+      "variables": {
+        "?x": "Space",
+        "?f": "Map",
+        "?i": "Set"
+      },
+      "source": "REASONING.md#rules",
+      "status": "reviewed"
+    },
+    {
+      "id": "nonempty_image",
+      "premises": [
+        {
+          "predicate": "nonempty",
+          "args": [
+            "?x"
+          ]
+        },
+        {
+          "predicate": "image",
+          "args": [
+            "?f",
+            "?x",
+            "?i"
+          ]
+        }
+      ],
+      "conclusion": {
+        "predicate": "nonempty_set",
+        "args": [
+          "?i"
+        ]
+      },
+      "variables": {
+        "?x": "Space",
+        "?f": "Map",
+        "?i": "Set"
+      },
+      "source": "REASONING.md#rules",
+      "status": "reviewed"
+    },
+    {
+      "id": "compact_real_extrema",
+      "premises": [
+        {
+          "predicate": "compact_set",
+          "args": [
+            "?i"
+          ]
+        },
+        {
+          "predicate": "nonempty_set",
+          "args": [
+            "?i"
+          ]
+        },
+        {
+          "predicate": "real_set",
+          "args": [
+            "?i"
+          ]
+        }
+      ],
+      "conclusion": {
+        "predicate": "extrema",
+        "args": [
+          "?i"
+        ]
+      },
+      "variables": {
+        "?i": "Set"
+      },
+      "source": "REASONING.md#rules",
+      "status": "reviewed"
+    },
+    {
+      "id": "attainment",
+      "premises": [
+        {
+          "predicate": "extrema",
+          "args": [
+            "?i"
+          ]
+        },
+        {
+          "predicate": "image",
+          "args": [
+            "?f",
+            "?x",
+            "?i"
+          ]
+        }
+      ],
+      "conclusion": {
+        "predicate": "attains",
+        "args": [
+          "?f",
+          "?x"
+        ]
+      },
+      "variables": {
+        "?x": "Space",
+        "?f": "Map",
+        "?i": "Set"
+      },
+      "source": "REASONING.md#rules",
+      "status": "reviewed"
+    }
+  ]
+}

@@ -10,10 +10,43 @@
 from __future__ import annotations
 
 import argparse
+import json
+from dataclasses import asdict
+from pathlib import Path
 
 from .knowledge import KnowledgeTree
 from .search import (plan_learning_path, search_concepts,
                      export_path_markdown, collide_concepts)
+from .reasoning import load_reasoning_problem, load_certificate, derive, verify_certificate
+
+
+def cmd_verify(args):
+    book, assumptions, goal = load_reasoning_problem(
+        json.loads(Path(args.problem).read_text(encoding="utf-8")))
+    report = json.loads(Path(args.report).read_text(encoding="utf-8"))
+    try:
+        valid = verify_certificate(book, load_certificate(report["certificate"]), assumptions, goal)
+    except (KeyError, TypeError, ValueError):
+        valid = False
+    print(json.dumps({"valid_relative_to_rules": valid}))
+    if not valid:
+        raise SystemExit(1)
+
+
+def cmd_derive(args):
+    data = json.loads(Path(args.problem).read_text(encoding="utf-8"))
+    book, assumptions, goal = load_reasoning_problem(data)
+    result = derive(book, assumptions, goal, iterations=args.iterations,
+                    max_steps=args.max_steps, seed=args.seed,
+                    max_rounds=args.max_rounds, max_edges=args.max_edges)
+    def json_default(value):
+        if isinstance(value, frozenset):
+            return [asdict(a) for a in sorted(value)]
+        raise TypeError(type(value).__name__)
+    report = json.dumps(asdict(result), default=json_default, ensure_ascii=False, indent=2)
+    if args.output:
+        Path(args.output).write_text(report + "\n", encoding="utf-8")
+    print(report)
 
 
 def cmd_path(args):
@@ -96,6 +129,19 @@ def main():
     ap = argparse.ArgumentParser(prog="math_mcts",
                                  description="数学知识 MCTS 搜索树")
     sub = ap.add_subparsers(dest="cmd", required=True)
+    dr = sub.add_parser("derive", help="多前提多层推导（相对于显式审核规则）")
+    dr.add_argument("problem", help="带对象类型、前提、规则及目标的 JSON")
+    dr.add_argument("--iterations", type=int, default=1000)
+    dr.add_argument("--max-steps", type=int, default=50)
+    dr.add_argument("--max-rounds", type=int, default=100)
+    dr.add_argument("--max-edges", type=int, default=10000)
+    dr.add_argument("--seed", type=int, default=7)
+    dr.add_argument("-o", "--output")
+    dr.set_defaults(func=cmd_derive)
+    vr = sub.add_parser("verify-derivation", help="重放 JSON 推导证书，检查规则版本和前提")
+    vr.add_argument("problem")
+    vr.add_argument("report")
+    vr.set_defaults(func=cmd_verify)
     p = sub.add_parser("path", help="规划到目标概念的学习路径")
     p.add_argument("target", help="目标概念(中文名/英文名/id)")
     p.add_argument("--iterations", type=int, default=3000)
@@ -129,3 +175,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

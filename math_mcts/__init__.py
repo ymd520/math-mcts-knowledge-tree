@@ -11,9 +11,16 @@ from .search import (plan_learning_path, search_concepts,
                      export_path_markdown, collide_concepts,
                      collision_score)
 from .viz import to_dot
+from .reasoning import (Atom, Rule, RuleBook, Certificate, ProofGraph,
+                        DiscoveryQueue, derive, verify_certificate,
+                        load_reasoning_problem, load_certificate)
 
-__version__ = "1.7.1"
+__version__ = "1.8.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "plan_learning_path", "search_concepts",
            "export_path_markdown", "to_dot",
-           "collide_concepts", "collision_score"]
+           "collide_concepts", "collision_score",
+           "Atom", "Rule", "RuleBook", "Certificate", "ProofGraph",
+           "DiscoveryQueue", "derive", "verify_certificate", "load_reasoning_problem",
+           "load_certificate"]
+

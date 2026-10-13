@@ -1,0 +1,216 @@
+{
+  "status": "derived_relative_to_rules",
+  "certificate": {
+    "goal": {
+      "predicate": "attains",
+      "args": [
+        "f",
+        "X"
+      ]
+    },
+    "assumptions": [
+      {
+        "predicate": "compact",
+        "args": [
+          "X"
+        ]
+      },
+      {
+        "predicate": "continuous",
+        "args": [
+          "f",
+          "X"
+        ]
+      },
+      {
+        "predicate": "image",
+        "args": [
+          "f",
+          "X",
+          "I"
+        ]
+      },
+      {
+        "predicate": "nonempty",
+        "args": [
+          "X"
+        ]
+      },
+      {
+        "predicate": "real_set",
+        "args": [
+          "I"
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "rule_id": "nonempty_image",
+        "binding": [
+          [
+            "?f",
+            "f"
+          ],
+          [
+            "?i",
+            "I"
+          ],
+          [
+            "?x",
+            "X"
+          ]
+        ],
+        "premises": [
+          {
+            "predicate": "nonempty",
+            "args": [
+              "X"
+            ]
+          },
+          {
+            "predicate": "image",
+            "args": [
+              "f",
+              "X",
+              "I"
+            ]
+          }
+        ],
+        "conclusion": {
+          "predicate": "nonempty_set",
+          "args": [
+            "I"
+          ]
+        }
+      },
+      {
+        "rule_id": "compact_image",
+        "binding": [
+          [
+            "?f",
+            "f"
+          ],
+          [
+            "?i",
+            "I"
+          ],
+          [
+            "?x",
+            "X"
+          ]
+        ],
+        "premises": [
+          {
+            "predicate": "compact",
+            "args": [
+              "X"
+            ]
+          },
+          {
+            "predicate": "continuous",
+            "args": [
+              "f",
+              "X"
+            ]
+          },
+          {
+            "predicate": "image",
+            "args": [
+              "f",
+              "X",
+              "I"
+            ]
+          }
+        ],
+        "conclusion": {
+          "predicate": "compact_set",
+          "args": [
+            "I"
+          ]
+        }
+      },
+      {
+        "rule_id": "compact_real_extrema",
+        "binding": [
+          [
+            "?i",
+            "I"
+          ]
+        ],
+        "premises": [
+          {
+            "predicate": "compact_set",
+            "args": [
+              "I"
+            ]
+          },
+          {
+            "predicate": "nonempty_set",
+            "args": [
+              "I"
+            ]
+          },
+          {
+            "predicate": "real_set",
+            "args": [
+              "I"
+            ]
+          }
+        ],
+        "conclusion": {
+          "predicate": "extrema",
+          "args": [
+            "I"
+          ]
+        }
+      },
+      {
+        "rule_id": "attainment",
+        "binding": [
+          [
+            "?f",
+            "f"
+          ],
+          [
+            "?i",
+            "I"
+          ],
+          [
+            "?x",
+            "X"
+          ]
+        ],
+        "premises": [
+          {
+            "predicate": "extrema",
+            "args": [
+              "I"
+            ]
+          },
+          {
+            "predicate": "image",
+            "args": [
+              "f",
+              "X",
+              "I"
+            ]
+          }
+        ],
+        "conclusion": {
+          "predicate": "attains",
+          "args": [
+            "f",
+            "X"
+          ]
+        }
+      }
+    ],
+    "rulebook_sha256": "e3fed807d7701cab6f3ba618c157cc5e9cf8ebd2efbd5bb921955b0c53af124b"
+  },
+  "effective_depth": 3,
+  "applied_rules": 4,
+  "iterations": 80,
+  "generated_edges": 4,
+  "scope_complete": true,
+  "scope_reason": "fixed_point"
+}
