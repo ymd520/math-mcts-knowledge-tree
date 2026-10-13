@@ -1,0 +1,22 @@
+{
+  "version": "0.1.0",
+  "source_commit": "105b9b1ce126e77b467aac6f6ba36b510ac57368",
+  "source_archive_sha256": "b9043ecf0ec44b5df9f53704e6edef0a2e6b46ecd431a4299786d6e9fb393ec1",
+  "node_counts": {
+    "concept": 238,
+    "declaration": 221184,
+    "directory": 1212,
+    "field": 27,
+    "module": 8619,
+    "root": 1,
+    "source": 1
+  },
+  "edge_counts": {
+    "contains": 231281,
+    "imports": 23116,
+    "source_map": 48
+  },
+  "external_imports": 318,
+  "declaration_extractor": "comment/string aware lexical locator; not Lean elaboration",
+  "status": "broad source-backed baseline; not all mathematical knowledge"
+}

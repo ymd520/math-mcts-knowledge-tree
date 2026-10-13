@@ -172,3 +172,15 @@ python tests/test_mcts.py
 ## License
 
 MIT
+
+
+## 固定来源源码索引扩展
+
+新增 [source_index](source_index/README.md)：固定版本 mathlib4 的源模块图和真实 UCT 检索，包含来源、许可证、哈希校验和可复现构建。此层与本库知识卡分别计数，源码位置不是经过收录审核的概念卡。
+
+```sh
+python source_index/src/bootstrap.py
+python source_index/src/mcts.py --query "finite group convolution" --iterations 2000 --depth 30
+```
+
+本次本地验证覆盖 8,619 个源模块、221,184 个词法声明位置；这些位置包含辅助引理与程序基础设施，不能等同于重要数学定理数量。详情见 [SOURCE_INDEX.md](SOURCE_INDEX.md)。

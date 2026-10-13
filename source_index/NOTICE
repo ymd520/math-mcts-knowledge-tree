@@ -1,0 +1,5 @@
+Math Knowledge MCTS
+Original integration and UCT code: 2026 ymd520 / AI-assisted development.
+Contains unmodified mathlib4 source snapshot by the leanprover-community contributors.
+Upstream authors, copyright headers, and Apache-2.0 license are retained.
+See SOURCES.md and vendor/mathlib4-LICENSE.
