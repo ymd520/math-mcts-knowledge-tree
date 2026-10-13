@@ -1,0 +1,2 @@
+# 纯 Python 标准库，无第三方依赖（Python 3.9+）
+# Pure standard library, no third-party dependencies.
