@@ -6,6 +6,8 @@
 from __future__ import annotations
 
 import json
+import gzip
+import hashlib
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -35,6 +37,20 @@ class Concept:
     module: str = ""             # 来源模块(如 Mathlib.LinearAlgebra.Matrix)
     doc_url: str = ""            # 文档链接
 
+    assumptions: str = ""
+    conclusion: str = ""
+    verification_status: str = ""
+    curation_status: str = ""
+    source_url: str = ""
+    statement_sha256: str = ""
+    statement_symbol_references: list = field(default_factory=list)
+    reference_relation: str = ""
+    original_metadata: dict = field(default_factory=dict)
+    import_source_file: str = ""
+    import_card_number: str = ""
+    level_status: str = ""
+    prereq_status: str = ""
+
     def path(self) -> str:
         return f"{self.domain_cn} / {self.branch_cn} / {self.topic_cn}"
 
@@ -45,6 +61,14 @@ class Concept:
                  f"难度: {'★' * self.level}{'☆' * (5 - self.level)} "
                  f"({self.level}/5)",
                  f"定义: {self.definition}"]
+        if self.formal:
+            lines.append("形式陈述: " + self.formal)
+        if self.verification_status:
+            lines.append("核验状态: " + self.verification_status)
+        if self.curation_status:
+            lines.append("收录审核: " + self.curation_status)
+        if self.source_url:
+            lines.append("源码: " + self.source_url)
         if self.formulas:
             lines.append("公式: " + " ; ".join(self.formulas))
         if self.example:
@@ -95,6 +119,35 @@ class KnowledgeTree:
                 Path(collisions_path).read_text(encoding="utf-8")
             )["collisions"]
         return cls(concepts, raw.get("meta", {}), collisions)
+
+    @classmethod
+    def load_imported(cls, *, module_prefix: str, include_curated: bool = True) -> "KnowledgeTree":
+        """Load an explicit module scope for searching/colliding imported statements.
+
+        Imports retain pending curation status; symbol references are not prerequisites.
+        A nonempty module prefix is required to bound search and pair enumeration.
+        """
+        if not module_prefix or not module_prefix.startswith("Mathlib."):
+            raise ValueError("Specify a nonempty Mathlib module prefix")
+        root = DATA_PATH.parent / "imported"
+        manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+        base = cls.load() if include_curated else cls([])
+        concepts = list(base.concepts)
+        existing = {(c.module, c.en, c.formal) for c in concepts if c.formal}
+        for item in manifest["files"]:
+            path = root / item["shard"]
+            data = path.read_bytes()
+            if hashlib.sha256(data).hexdigest() != item["shard_sha256"]:
+                raise ValueError(f"Import shard hash mismatch: {path.name}")
+            for row in json.loads(gzip.decompress(data))["concepts"]:
+                module = row["module"]
+                if module != module_prefix and not module.startswith(module_prefix + "."):
+                    continue
+                key = (module, row["en"], row["formal"])
+                if key not in existing:
+                    concepts.append(Concept(**row))
+                    existing.add(key)
+        return cls(concepts, {**base.meta, "import_scope": module_prefix}, base.collisions)
 
     def collision_note(self, a: str, b: str) -> str | None:
         """返回概念对 (a,b) 的 curated 碰撞说明, 无则返回 None."""
@@ -176,6 +229,8 @@ class KnowledgeTree:
     def check_integrity(self) -> list[str]:
         """完整性自检: 返回问题描述列表, 为空表示通过."""
         problems: list[str] = []
+        if len(self.by_id) != len(self.concepts):
+            problems.append("Duplicate concept IDs")
         for c in self.concepts:
             if not 1 <= c.level <= 5:
                 problems.append(f"{c.id}: level 非法 ({c.level})")

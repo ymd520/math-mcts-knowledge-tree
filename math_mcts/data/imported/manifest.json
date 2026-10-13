@@ -1,0 +1,192 @@
+{
+  "expected_cards": 234576,
+  "imported_cards": 234576,
+  "errors": [],
+  "counts": {
+    "upstream_theorem": 234560,
+    "curated_standard_card": 16
+  },
+  "files": [
+    {
+      "source_file": "MCTS_数学知识_01_共20.txt",
+      "source_sha256": "ce0f35930f0d9367d3fe075647ee48f71eedf1d24cbc31eb9b725f6fdc7e91c0",
+      "source_bytes": 25068900,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_01_共20.txt.gz",
+      "shard": "MCTS_数学知识_01_共20.json.gz",
+      "card_count": 16343,
+      "shard_sha256": "d32cd8f1bbf780c0d317d75236aa236dfad93671c827920f46532397d1c005c9"
+    },
+    {
+      "source_file": "MCTS_数学知识_02_共20.txt",
+      "source_sha256": "07d97920a755bea196a270bf58fb25a0e6568dd13b82f4293dc321374979f1bb",
+      "source_bytes": 25069223,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_02_共20.txt.gz",
+      "shard": "MCTS_数学知识_02_共20.json.gz",
+      "card_count": 11284,
+      "shard_sha256": "0b681add4a41cc4a111c50910c0bfc29beacb8e4efe211bd456404820e9e5f86"
+    },
+    {
+      "source_file": "MCTS_数学知识_03_共20.txt",
+      "source_sha256": "0639812a17e1e2f2f9d9f2cbfe07f88fb93b0b5ef119d65001da66e86c1d6d2e",
+      "source_bytes": 25068477,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_03_共20.txt.gz",
+      "shard": "MCTS_数学知识_03_共20.json.gz",
+      "card_count": 15911,
+      "shard_sha256": "f9dda7402857d0ad3ea2376c75f24720455db6e7f90c6a6448b625cf06703662"
+    },
+    {
+      "source_file": "MCTS_数学知识_04_共20.txt",
+      "source_sha256": "b03eb2379b2df46cae43add5fe32959e263458d1c6a1c072ef2f559f012c3c76",
+      "source_bytes": 25067662,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_04_共20.txt.gz",
+      "shard": "MCTS_数学知识_04_共20.json.gz",
+      "card_count": 11413,
+      "shard_sha256": "6650b60770298ea7c8c93d216e68f510d95599354924642a070bd3d0e1f5bfc2"
+    },
+    {
+      "source_file": "MCTS_数学知识_05_共20.txt",
+      "source_sha256": "007d0200b3c472335765f91b37716861d8a0cffd77f08057de709c24be2fe546",
+      "source_bytes": 25068224,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_05_共20.txt.gz",
+      "shard": "MCTS_数学知识_05_共20.json.gz",
+      "card_count": 12723,
+      "shard_sha256": "237419cd7e26a18f4f5efbf1973726fcf89822ed044a47aec855a22d6db1251a"
+    },
+    {
+      "source_file": "MCTS_数学知识_06_共20.txt",
+      "source_sha256": "99cdf8e1304920b89f60e9e67f32fc5ef310083242fa5149da602bd00e84e1ca",
+      "source_bytes": 25067946,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_06_共20.txt.gz",
+      "shard": "MCTS_数学知识_06_共20.json.gz",
+      "card_count": 13541,
+      "shard_sha256": "3140e6da5176f187d7741a12157c3386c244a20625bb2faf2ef660b39e3d111f"
+    },
+    {
+      "source_file": "MCTS_数学知识_07_共20.txt",
+      "source_sha256": "b63e4ef221a99eb4dfe3227ca1f7976363089025932d9f161547cea38a19bad1",
+      "source_bytes": 25068717,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_07_共20.txt.gz",
+      "shard": "MCTS_数学知识_07_共20.json.gz",
+      "card_count": 10120,
+      "shard_sha256": "c1647e10aecfeb4fd8820d37e8fa4ae704294f1b56ea5d21a6c69acd4df688b0"
+    },
+    {
+      "source_file": "MCTS_数学知识_08_共20.txt",
+      "source_sha256": "60141eca0cd9951c65e24a31fb36580df38df0513859e4e83a6b9ad3aef2ff7b",
+      "source_bytes": 25067469,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_08_共20.txt.gz",
+      "shard": "MCTS_数学知识_08_共20.json.gz",
+      "card_count": 9935,
+      "shard_sha256": "07ce4c96f67ad26dea58fd1bd4d9ef725aab675502d28a114276a878b7de6193"
+    },
+    {
+      "source_file": "MCTS_数学知识_09_共20.txt",
+      "source_sha256": "a77b1b81b6dcdb38b74b0fd91c67af3654067d66afe50d83acd5863c056cf3d2",
+      "source_bytes": 25068010,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_09_共20.txt.gz",
+      "shard": "MCTS_数学知识_09_共20.json.gz",
+      "card_count": 9769,
+      "shard_sha256": "f785ee14c9ae6cdf7ac66db60ede54ad546bf400fade58a79aac8a8b83f38faa"
+    },
+    {
+      "source_file": "MCTS_数学知识_10_共20.txt",
+      "source_sha256": "75502ed98c77d105bd008f3015ee0f6885bf8f269d73dbb0a1f5c8a735352df4",
+      "source_bytes": 25068271,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_10_共20.txt.gz",
+      "shard": "MCTS_数学知识_10_共20.json.gz",
+      "card_count": 0,
+      "shard_sha256": "269d25db2062d4fb4a8d17e7f0b6515332a513f89a4e7712d173ef09db9be8bf"
+    },
+    {
+      "source_file": "MCTS_数学知识_11_共20.txt",
+      "source_sha256": "11409b0242b98315a11b566b856ad9400df03fe78f3acbdb06a5b4a57b9edd18",
+      "source_bytes": 24532991,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_11_共20.txt.gz",
+      "shard": "MCTS_数学知识_11_共20.json.gz",
+      "card_count": 18958,
+      "shard_sha256": "7d280b54b3d972c39ce67ef9cfd02ed038c4775a9514d9f5b7d6609753bc7123"
+    },
+    {
+      "source_file": "MCTS_数学知识_12_共20.txt",
+      "source_sha256": "1c80e5ce1ea9ab7ec0ebcb1b1acc7857e1614aa857115535f208a93f9a164418",
+      "source_bytes": 24530857,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_12_共20.txt.gz",
+      "shard": "MCTS_数学知识_12_共20.json.gz",
+      "card_count": 12034,
+      "shard_sha256": "f661248bcefe76f2b57d39c0247ac2fd8cbe6fa55d51ac9c4ba55cb5ca67fdbc"
+    },
+    {
+      "source_file": "MCTS_数学知识_13_共20.txt",
+      "source_sha256": "c12bab9ca50623d8e0c4a4a264f18c2028641ad84234f2977a3ad5de312bd46b",
+      "source_bytes": 24531510,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_13_共20.txt.gz",
+      "shard": "MCTS_数学知识_13_共20.json.gz",
+      "card_count": 13505,
+      "shard_sha256": "04fd72b265976b7f9a33ec00172a6d87986f85f0d3d47088d4fa0f5e64b933d4"
+    },
+    {
+      "source_file": "MCTS_数学知识_14_共20.txt",
+      "source_sha256": "5d3d1788fa726d70ed56f2015c30c2822605789e4581bd1f1652efbdabf4669d",
+      "source_bytes": 24532421,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_14_共20.txt.gz",
+      "shard": "MCTS_数学知识_14_共20.json.gz",
+      "card_count": 12029,
+      "shard_sha256": "b6906d6951651f555de3961f7248fa57274820816c254990ac3591755ef39740"
+    },
+    {
+      "source_file": "MCTS_数学知识_15_共20.txt",
+      "source_sha256": "15a6bcaccc7406a1ef77107321e9b9112e63befc786566b5d577908ceb995ff2",
+      "source_bytes": 24531191,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_15_共20.txt.gz",
+      "shard": "MCTS_数学知识_15_共20.json.gz",
+      "card_count": 16487,
+      "shard_sha256": "b828b6e416e6a3d19d006f5ebf7049d6d279123333089897e5a4989408a4abe4"
+    },
+    {
+      "source_file": "MCTS_数学知识_16_共20.txt",
+      "source_sha256": "9b03129735e233e3dba69e456a5aa6da82fe0669f7cfa7b6e9f0f32e2ec9da6b",
+      "source_bytes": 24532041,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_16_共20.txt.gz",
+      "shard": "MCTS_数学知识_16_共20.json.gz",
+      "card_count": 13900,
+      "shard_sha256": "2a46dc3496115ce09f60274c80a90c0944443d961ebd54b5f76cd96433a8281b"
+    },
+    {
+      "source_file": "MCTS_数学知识_17_共20.txt",
+      "source_sha256": "c9649e01cd97d7f6738614651c19c4748300be96719c63d10f25b385ba2d4a03",
+      "source_bytes": 24531625,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_17_共20.txt.gz",
+      "shard": "MCTS_数学知识_17_共20.json.gz",
+      "card_count": 14443,
+      "shard_sha256": "af4377733bd284fa36414836bb869795532aef736d871beb8a904df68a0af072"
+    },
+    {
+      "source_file": "MCTS_数学知识_18_共20.txt",
+      "source_sha256": "6105542987308f281757105d76ed8760f074f6a7144bb8c2fa23b14b9b4b88ba",
+      "source_bytes": 24533420,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_18_共20.txt.gz",
+      "shard": "MCTS_数学知识_18_共20.json.gz",
+      "card_count": 14183,
+      "shard_sha256": "6c0dda318f1821f25814a6b221eb6464b3fd60e26f4e7551477a33191b830922"
+    },
+    {
+      "source_file": "MCTS_数学知识_19_共20.txt",
+      "source_sha256": "cf76ebdf263937b00ededda99a93b5edf7e76f3b3bf28151ea0ad120d6d1ed6f",
+      "source_bytes": 24530066,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_19_共20.txt.gz",
+      "shard": "MCTS_数学知识_19_共20.json.gz",
+      "card_count": 7998,
+      "shard_sha256": "219328e789ff3ca90c7b64ac3931fa7cb379888f359e3b9c08ab04382dcffa57"
+    },
+    {
+      "source_file": "MCTS_数学知识_20_共20.txt",
+      "source_sha256": "0b7da91b02bbc8806b9a2751c2a208f5d56d81536c7af542d0e9c1045ee784f9",
+      "source_bytes": 24531674,
+      "raw_archive": "imports/mcts_text_20261013/MCTS_数学知识_20_共20.txt.gz",
+      "shard": "MCTS_数学知识_20_共20.json.gz",
+      "card_count": 0,
+      "shard_sha256": "269d25db2062d4fb4a8d17e7f0b6515332a513f89a4e7712d173ef09db9be8bf"
+    }
+  ],
+  "scope": "structural and provenance audit; no local Lean kernel run; no exhaustive semantic or importance certification"
+}

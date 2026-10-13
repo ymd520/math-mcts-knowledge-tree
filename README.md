@@ -184,3 +184,9 @@ python source_index/src/mcts.py --query "finite group convolution" --iterations 
 ```
 
 本次本地验证覆盖 8,619 个源模块、221,184 个词法声明位置；这些位置包含辅助引理与程序基础设施，不能等同于重要数学定理数量。详情见 [SOURCE_INDEX.md](SOURCE_INDEX.md)。
+
+## 全量 MCTS 文本导入
+
+[2026-10-13 导入说明](imports/mcts_text_20261013/README.md)：20份原始TXT无损归档，234,576条记录按 Concept 结构存储；假设、来源、核验状态、附录完整保留。导入语料的重要性和中文释义尚未逐条审核，不等同于234,576条重要定理。
+
+使用 `KnowledgeTree.load_imported(module_prefix="Mathlib.Algebra.GroupWithZero.Action.Basic", include_curated=False)` 显式加载模块范围，再调用既有检索和碰撞API。结构/来源/无损检查：`python tests/test_imported.py`。
