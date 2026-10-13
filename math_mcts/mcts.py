@@ -30,6 +30,21 @@ class Problem:
         """终局状态的回报, 越大越好."""
         raise NotImplementedError
 
+    def simulate(self, state, rng, max_depth: int) -> float:
+        """模拟步: 从 state 出发估计回报. 默认随机 rollout.
+
+        子类可覆盖: 若状态空间完全已知且叶节点评分廉价,
+        可用精确求值代替随机模拟(见 ConceptSearchProblem).
+        """
+        depth = 0
+        while not self.terminal(state) and depth < max_depth:
+            acts = self.actions(state)
+            if not acts:
+                break
+            state = self.step(state, acts[rng.randrange(len(acts))])
+            depth += 1
+        return self.reward(state)
+
 
 class _Node:
     __slots__ = ("state", "parent", "action", "children",
@@ -84,15 +99,8 @@ def mcts(problem: Problem, iterations: int = 1000,
             node.children.append(child)
             node = child
             depth += 1
-        # 3) 模拟: 随机 rollout 到终局
-        state = node.state
-        while not problem.terminal(state) and depth < max_depth:
-            acts = problem.actions(state)
-            if not acts:
-                break
-            state = problem.step(state, acts[rng.randrange(len(acts))])
-            depth += 1
-        value = problem.reward(state)
+        # 3) 模拟: 调用问题的 simulate 钩子(默认随机 rollout)
+        value = problem.simulate(node.state, rng, max_depth - depth)
         # 4) 回传
         while node is not None:
             node.visits += 1

@@ -18,13 +18,15 @@ from .mcts import Problem, mcts
 class LearningPathProblem(Problem):
     """状态: 已学概念 id 的有序元组. 动作: 下一个可学的概念 id."""
 
-    def __init__(self, tree: KnowledgeTree, target: str, max_steps: int = 15):
+    def __init__(self, tree: KnowledgeTree, target: str, max_steps: int = 15,
+                 known: list[str] | tuple[str, ...] = ()):
         self.tree = tree
         self.target = target
         self.max_steps = max_steps
+        self.known = tuple(k for k in known if k in tree.by_id)
 
     def initial_state(self):
-        return ()
+        return self.known
 
     def actions(self, state) -> list:
         learned = set(state)
@@ -55,19 +57,49 @@ class LearningPathProblem(Problem):
 
 def plan_learning_path(tree: KnowledgeTree, target: str,
                         max_steps: int = 15, iterations: int = 3000,
-                        seed: int = 7) -> list[Concept]:
-    """规划学习目标概念的最优路径, 返回有序的 Concept 列表."""
+                        seed: int = 7,
+                        known: list[str] | tuple[str, ...] = ()) -> list[Concept]:
+    """规划学习目标概念的最优路径, 返回有序的 Concept 列表.
+
+    known: 已掌握的概念 id 列表, 规划从这些概念之后开始.
+    """
     concept = tree.find(target)
-    problem = LearningPathProblem(tree, concept.id, max_steps)
+    known_ids = [k for k in known if k in tree.by_id]
+    problem = LearningPathProblem(tree, concept.id, max_steps, known_ids)
     seq, _ = mcts(problem, iterations=iterations, seed=seed)
     # 兜底: 若 MCTS 未走到目标, 用拓扑闭包补全
-    learned = list(seq)
+    learned = list(problem.initial_state()) + list(seq)
     if concept.id not in learned:
         for pid in tree.prereq_closure(concept.id):
             if pid not in learned:
                 learned.append(pid)
         learned.append(concept.id)
     return [tree.get(cid) for cid in learned]
+
+
+def export_path_markdown(path: list[Concept]) -> str:
+    """把学习路径导出为 Markdown 学习计划."""
+    target = path[-1]
+    lines = [f"# 学习计划: {target.cn}({target.en})",
+             "",
+             f"共 {len(path)} 步, 由 MCTS 在知识前置依赖图上规划.",
+             "",
+             "| 步骤 | 概念 | 难度 | 位置 |",
+             "|---|---|---|---|"]
+    for i, c in enumerate(path, 1):
+        mark = " 🎯" if i == len(path) else ""
+        lines.append(f"| {i} | {c.cn}({c.en}){mark} | "
+                     f"{c.level}/5 | {c.path()} |")
+    lines += ["", "## 每步详解", ""]
+    for i, c in enumerate(path, 1):
+        lines.append(f"### {i}. {c.cn}")
+        lines.append("")
+        lines.append(c.definition)
+        if c.formulas:
+            lines.append("")
+            lines.append("公式: " + " ; ".join(c.formulas))
+        lines.append("")
+    return "\n".join(lines)
 
 
 # ---------------------------------------------------------------- 概念检索
@@ -79,13 +111,32 @@ def _tokenize(text: str) -> list[str]:
 
 
 class ConceptSearchProblem(Problem):
-    """状态: 层级树节点. 动作: 下钻到子节点. 终局: 到达概念叶节点."""
+    """状态: 层级树节点. 动作: 下钻到子节点. 终局: 到达概念叶节点.
+
+    模拟步采用子树精确求值: 知识树完全已知、叶节点评分廉价,
+    直接返回该子树下所有概念的最大相关度. 此时 MCTS 等价于
+    UCB 探索引导的最优分支限界搜索, 必收敛到全局最相关概念,
+    且访问次数真实反映各分支的价值(可用于可视化).
+    """
 
     def __init__(self, tree: KnowledgeTree, query: str):
         self.tree = tree
         self.query = query
         self.qtok = Counter(_tokenize(query))
         self.qtotal = sum(self.qtok.values()) or 1
+
+    def simulate(self, state, rng, max_depth: int) -> float:
+        best = 0.0
+        stack = [state]
+        while stack:
+            s = stack.pop()
+            if self.tree.is_concept_leaf(s):
+                r = self.reward(s)
+                if r > best:
+                    best = r
+            else:
+                stack.extend(self.tree.hierarchy_children(s))
+        return best
 
     def initial_state(self):
         return ()

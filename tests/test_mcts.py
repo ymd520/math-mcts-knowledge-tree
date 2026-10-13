@@ -4,8 +4,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from math_mcts import KnowledgeTree, plan_learning_path, search_concepts
+from math_mcts import (KnowledgeTree, plan_learning_path, search_concepts,
+                        export_path_markdown, to_dot)
 from math_mcts.mcts import Problem, mcts
+from math_mcts.search import ConceptSearchProblem
 
 
 def test_integrity():
@@ -74,6 +76,43 @@ def test_mcts_on_toy_problem():
     assert seq == ["L"], f"MCTS 未收敛到最优: {seq}"
 
 
+def test_plan_with_known():
+    tree = KnowledgeTree.load()
+    known = ["AN01", "AN03"]  # 已掌握极限、导数
+    path = plan_learning_path(tree, "泰勒级数", iterations=2000,
+                              known=known)
+    ids = [c.id for c in path]
+    assert ids[:2] == known, f"路径应从已知概念开始: {ids[:3]}"
+    assert ids[-1] == "AN19"
+
+
+def test_concept_card():
+    tree = KnowledgeTree.load()
+    card = tree.find("梯度下降").card()
+    assert "梯度下降" in card and "定义" in card and "前置" in card
+
+
+def test_export_markdown():
+    tree = KnowledgeTree.load()
+    path = plan_learning_path(tree, "贝叶斯定理", iterations=1500)
+    md = export_path_markdown(path)
+    assert "# 学习计划" in md and "贝叶斯定理" in md
+
+
+def test_viz_dot():
+    tree = KnowledgeTree.load()
+    problem = ConceptSearchProblem(tree, "极限")
+    _, root = mcts(problem, iterations=300, seed=7, max_depth=6)
+    dot = to_dot(root, label_fn=lambda s: tree.hierarchy_label(s))
+    assert dot.startswith("digraph") and "访问" in dot
+
+
+def test_concept_count_grown():
+    tree = KnowledgeTree.load()
+    assert len(tree.concepts) >= 120, "v1.1 概念数应 ≥120"
+    assert tree.check_integrity() == []
+
+
 if __name__ == "__main__":
     test_integrity()
     test_prereq_closure_order()
@@ -81,4 +120,9 @@ if __name__ == "__main__":
     test_plan_reaches_with_prereq_chain()
     test_search_concepts()
     test_mcts_on_toy_problem()
+    test_plan_with_known()
+    test_concept_card()
+    test_export_markdown()
+    test_viz_dot()
+    test_concept_count_grown()
     print("ALL TESTS PASSED")

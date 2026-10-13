@@ -32,6 +32,21 @@ class Concept:
     def path(self) -> str:
         return f"{self.domain_cn} / {self.branch_cn} / {self.topic_cn}"
 
+    def card(self) -> str:
+        """概念卡片: 完整的可读信息块."""
+        lines = [f"【{self.cn}】({self.en})  [{self.id}]",
+                 f"位置: {self.path()}",
+                 f"难度: {'★' * self.level}{'☆' * (5 - self.level)} "
+                 f"({self.level}/5)",
+                 f"定义: {self.definition}"]
+        if self.formulas:
+            lines.append("公式: " + " ; ".join(self.formulas))
+        pre = "、".join(self.prereq) if self.prereq else "无"
+        lines.append(f"前置: {pre}")
+        if self.tags:
+            lines.append("标签: " + "、".join(self.tags))
+        return "\n".join(lines)
+
     def text_blob(self) -> str:
         parts = [self.cn, self.en, self.definition, self.branch_cn,
                  self.topic_cn] + list(self.tags) + list(self.formulas)

@@ -2,6 +2,8 @@
 
     python -m math_mcts path "傅里叶变换"      # 规划学习路径
     python -m math_mcts search "贝叶斯 定理"   # 检索相关概念
+    python -m math_mcts show "梯度下降"        # 查看概念卡片
+    python -m math_mcts export-path "傅里叶变换" -o plan.md  # 导出学习计划
     python -m math_mcts info                  # 知识库概览
 """
 from __future__ import annotations
@@ -9,25 +11,28 @@ from __future__ import annotations
 import argparse
 
 from .knowledge import KnowledgeTree
-from .search import plan_learning_path, search_concepts
+from .search import (plan_learning_path, search_concepts,
+                     export_path_markdown)
 
 
 def cmd_path(args):
     tree = KnowledgeTree.load()
+    known = [tree.find(k.strip()).id
+             for k in args.known.split(",")] if args.known else []
     concepts = plan_learning_path(tree, args.target,
-                                  iterations=args.iterations)
+                                  iterations=args.iterations,
+                                  known=known)
     print(f"学习目标: {concepts[-1].cn} ({concepts[-1].en})")
+    if known:
+        print(f"已掌握: {', '.join(tree.get(k).cn for k in known)}")
     print(f"规划路径(共 {len(concepts)} 步):")
     for i, c in enumerate(concepts, 1):
-        pre = " <- ".join(c.prereq) if c.prereq else "无"
         mark = "★目标" if i == len(concepts) else ""
         print(f"  {i:2d}. [{c.id}] {c.cn} | 难度{c.level}级 | "
               f"{c.path()}{mark}")
         print(f"       定义: {c.definition}")
         if c.formulas:
             print(f"       公式: {' ; '.join(c.formulas)}")
-        if i < len(concepts):
-            _ = pre  # 前置已隐含在路径顺序中
 
 
 def cmd_search(args):
@@ -39,6 +44,21 @@ def cmd_search(args):
         print(f"  {i}. [{c.id}] {c.cn} ({c.en})")
         print(f"     路径: {c.path()} | 访问{visits}次 | 相关度{mean:.2f}")
         print(f"     定义: {c.definition}")
+
+
+def cmd_show(args):
+    tree = KnowledgeTree.load()
+    print(tree.find(args.name).card())
+
+
+def cmd_export_path(args):
+    tree = KnowledgeTree.load()
+    concepts = plan_learning_path(tree, args.target,
+                                  iterations=args.iterations)
+    md = export_path_markdown(concepts)
+    with open(args.output, "w", encoding="utf-8") as f:
+        f.write(md)
+    print(f"学习计划已导出: {args.output} (共 {len(concepts)} 步)")
 
 
 def cmd_info(args):
@@ -63,7 +83,17 @@ def main():
     p = sub.add_parser("path", help="规划到目标概念的学习路径")
     p.add_argument("target", help="目标概念(中文名/英文名/id)")
     p.add_argument("--iterations", type=int, default=3000)
+    p.add_argument("--known", default="",
+                   help="已掌握的概念(逗号分隔), 规划从此之后开始")
     p.set_defaults(func=cmd_path)
+    sh = sub.add_parser("show", help="查看概念卡片")
+    sh.add_argument("name", help="概念(中文名/英文名/id)")
+    sh.set_defaults(func=cmd_show)
+    ep = sub.add_parser("export-path", help="导出学习计划为 Markdown")
+    ep.add_argument("target", help="目标概念(中文名/英文名/id)")
+    ep.add_argument("-o", "--output", default="学习计划.md")
+    ep.add_argument("--iterations", type=int, default=3000)
+    ep.set_defaults(func=cmd_export_path)
     s = sub.add_parser("search", help="关键词检索相关概念")
     s.add_argument("query", help="检索关键词")
     s.add_argument("--top_k", type=int, default=5)
