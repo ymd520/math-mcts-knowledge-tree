@@ -31,6 +31,9 @@ class Concept:
     tags: list = field(default_factory=list)       # 如 ["核心"]
     kind: str = "概念"            # 知识类型: 概念/定理/推论/思路/公式/算法/分布…
     example: str = ""            # 一句话经典例子或适用场景(思路类必填)
+    formal: str = ""             # 形式化陈述原文(如 Lean 定理语句)
+    module: str = ""             # 来源模块(如 Mathlib.LinearAlgebra.Matrix)
+    doc_url: str = ""            # 文档链接
 
     def path(self) -> str:
         return f"{self.domain_cn} / {self.branch_cn} / {self.topic_cn}"
@@ -46,6 +49,10 @@ class Concept:
             lines.append("公式: " + " ; ".join(self.formulas))
         if self.example:
             lines.append(f"例子: {self.example}")
+        if self.module:
+            lines.append(f"模块: {self.module}")
+        if self.doc_url:
+            lines.append(f"文档: {self.doc_url}")
         pre = "、".join(self.prereq) if self.prereq else "无"
         lines.append(f"前置: {pre}")
         if self.tags:

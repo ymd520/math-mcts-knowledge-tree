@@ -240,6 +240,17 @@ class CollisionProblem(Problem):
             pool.sort(key=lambda o: (rank.get(o.tags[0] if o.tags else "",
                                               2), o.id))
             self._cands[c.id] = [o.id for o in pool[:self.CAND_CAP]]
+        # 根层候选也截断: 概念数上千后全量根动作会让 MCTS 在 4000 次迭代内
+        # 一次也到不了第二层(4588 规模实测返回 0 对). 取标签优先级 top-K,
+        # 再并上 curated 碰撞涉及的概念, 保证人工精选对仍可被发现.
+        rank = {"核心": 0, "重要": 1}
+        roots = sorted(tree.concepts,
+                       key=lambda o: (rank.get(o.tags[0] if o.tags else "",
+                                               2), o.id))
+        curated = {col["a"] for col in tree.collisions} | \
+                  {col["b"] for col in tree.collisions}
+        self._roots = sorted({o.id for o in roots[:self.CAND_CAP]} |
+                             {cid for cid in curated if tree.get(cid)})
 
     def initial_state(self):
         return ()
@@ -248,7 +259,7 @@ class CollisionProblem(Problem):
         if len(state) == 0:
             if self.seed:
                 return [self.seed]
-            return sorted(c.id for c in self.tree.concepts)
+            return self._roots
         if len(state) == 1:
             return self._cands[state[0]]
         return []
