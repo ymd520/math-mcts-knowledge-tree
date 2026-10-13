@@ -189,4 +189,21 @@ python source_index/src/mcts.py --query "finite group convolution" --iterations 
 
 [2026-10-13 导入说明](imports/mcts_text_20261013/README.md)：20份原始TXT无损归档，234,576条记录按 Concept 结构存储；假设、来源、核验状态、附录完整保留。导入语料的重要性和中文释义尚未逐条审核，不等同于234,576条重要定理。
 
-使用 `KnowledgeTree.load_imported(module_prefix="Mathlib.Algebra.GroupWithZero.Action.Basic", include_curated=False)` 显式加载模块范围，再调用既有检索和碰撞API。结构/来源/无损检查：`python tests/test_imported.py`。
+v1.6.0 起导入语料为引擎一等公民（默认精选库仍保持 4588 条不变）：
+
+```python
+from math_mcts import KnowledgeTree, search_concepts, collide_concepts
+# 单模块检索
+tree = KnowledgeTree.load_imported(
+    module_prefix="Mathlib.Algebra.GroupWithZero.Action.Basic",
+    include_curated=False)
+# 多模块跨领域碰撞（导入领域已映射到 7 域中文体系）
+mixed = KnowledgeTree.load_imported(
+    module_prefix=["Mathlib.Algebra.Ring", "Mathlib.Analysis.SpecialFunctions.Log"],
+    include_curated=False)
+collide_concepts(mixed, top_k=3)
+```
+
+架构说明：`module_index.json` 让加载只读相关分片（典型 1–4 秒）；碰撞候选懒计算，
+23 万规模下初始化不再是 O(N²)；`find()` 精确查找 O(1)。结构/来源/无损/架构检查：
+`python tests/test_imported.py`。

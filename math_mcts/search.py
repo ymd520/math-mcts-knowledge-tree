@@ -230,16 +230,11 @@ class CollisionProblem(Problem):
     def __init__(self, tree: KnowledgeTree, seed: str | None = None):
         self.tree = tree
         self.seed = tree.find(seed).id if seed else None
+        # 规模优化: 候选搭档改为懒计算. 原先 __init__ 里对每个概念全量配对
+        # 是 O(N²)(4588 规模约 2100 万次比较, 23 万规模则不可行);
+        # 现在只在 MCTS 实际访问到某个概念时才计算其候选, 并缓存.
         self._cands: dict[str, list[str]] = {}
         self._best_cache: dict[str, float] = {}
-        for c in tree.concepts:
-            pool = [o for o in tree.concepts
-                    if o.id != c.id and o.domain_cn != c.domain_cn]
-            # 核心优先, 其次重要, 最后按 id 稳定排序
-            rank = {"核心": 0, "重要": 1}
-            pool.sort(key=lambda o: (rank.get(o.tags[0] if o.tags else "",
-                                              2), o.id))
-            self._cands[c.id] = [o.id for o in pool[:self.CAND_CAP]]
         # 根层候选也截断: 概念数上千后全量根动作会让 MCTS 在 4000 次迭代内
         # 一次也到不了第二层(4588 规模实测返回 0 对). 取标签优先级 top-K,
         # 再并上 curated 碰撞涉及的概念, 保证人工精选对仍可被发现.
@@ -252,6 +247,18 @@ class CollisionProblem(Problem):
         self._roots = sorted({o.id for o in roots[:self.CAND_CAP]} |
                              {cid for cid in curated if tree.get(cid)})
 
+    def _cands_for(self, cid: str) -> list[str]:
+        """某概念的跨领域候选搭档(标签优先级截断到 CAND_CAP), 懒计算+缓存."""
+        if cid not in self._cands:
+            me = self.tree.get(cid)
+            rank = {"核心": 0, "重要": 1}
+            pool = [o for o in self.tree.concepts
+                    if o.id != cid and o.domain_cn != me.domain_cn]
+            pool.sort(key=lambda o: (rank.get(o.tags[0] if o.tags else "",
+                                              2), o.id))
+            self._cands[cid] = [o.id for o in pool[:self.CAND_CAP]]
+        return self._cands[cid]
+
     def initial_state(self):
         return ()
 
@@ -261,7 +268,7 @@ class CollisionProblem(Problem):
                 return [self.seed]
             return self._roots
         if len(state) == 1:
-            return self._cands[state[0]]
+            return self._cands_for(state[0])
         return []
 
     def step(self, state, action):
@@ -279,7 +286,7 @@ class CollisionProblem(Problem):
         if cid not in self._best_cache:
             self._best_cache[cid] = max(
                 (collision_score(self.tree, cid, o)
-                 for o in self._cands[cid]),
+                 for o in self._cands_for(cid)),
                 default=0.0)
         return self._best_cache[cid]
 
