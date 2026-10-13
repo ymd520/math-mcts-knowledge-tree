@@ -98,6 +98,7 @@ def cmd_path(args):
 
 def cmd_search(args):
     tree = KnowledgeTree.load()
+    tree = apply_catalog_scope(tree, args)
     results = search_concepts(tree, args.query, top_k=args.top_k,
                               iterations=args.iterations)
     print(f"检索: {args.query!r} (MCTS 迭代 {args.iterations} 次)")
@@ -124,6 +125,7 @@ def cmd_export_path(args):
 
 def cmd_collide(args):
     tree = KnowledgeTree.load()
+    tree = apply_catalog_scope(tree, args)
     results = collide_concepts(tree, seed=args.seed, top_k=args.top_k,
                                iterations=args.iterations)
     title = f"围绕「{args.seed}」" if args.seed else "全局"
@@ -150,6 +152,22 @@ def cmd_info(args):
     print("完整性自检:", "通过" if not problems else f"{len(problems)} 个问题")
     for p in problems[:10]:
         print("   !", p)
+    print("等级/重要性统计:")
+    print(json.dumps(tree.inventory(), ensure_ascii=False, indent=2))
+
+
+def apply_catalog_scope(tree, args):
+    levels = [int(v) for v in args.levels.split(",")] if args.levels else None
+    domains = [args.domain] if args.domain else None
+    if levels is not None or args.important or domains:
+        return tree.select(levels=levels, important_only=args.important, domains=domains)
+    return tree
+
+
+def add_catalog_scope(parser):
+    parser.add_argument("--levels", help="逗号分隔的难度等级，例如1,2,3,4")
+    parser.add_argument("--important", action="store_true", help="仅核心或重要知识")
+    parser.add_argument("--domain", help="仅指定中文领域")
 
 
 def main():
@@ -194,12 +212,14 @@ def main():
     ep.add_argument("--iterations", type=int, default=3000)
     ep.set_defaults(func=cmd_export_path)
     co = sub.add_parser("collide", help="知识碰撞: 找最值得组合的概念对")
+    add_catalog_scope(co)
     co.add_argument("seed", nargs="?", default=None,
                     help="围绕哪个概念碰撞(省略=全局最优碰撞对)")
     co.add_argument("--top_k", type=int, default=5)
     co.add_argument("--iterations", type=int, default=3000)
     co.set_defaults(func=cmd_collide)
     s = sub.add_parser("search", help="关键词检索相关概念")
+    add_catalog_scope(s)
     s.add_argument("query", help="检索关键词")
     s.add_argument("--top_k", type=int, default=5)
     s.add_argument("--iterations", type=int, default=2000)
@@ -212,4 +232,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

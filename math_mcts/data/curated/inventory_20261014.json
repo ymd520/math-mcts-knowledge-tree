@@ -1,0 +1,373 @@
+{
+  "before": {
+    "total": 9417,
+    "levels": {
+      "1": 258,
+      "2": 1276,
+      "3": 2957,
+      "4": 3069,
+      "5": 1857
+    },
+    "important_levels": {
+      "1": 87,
+      "2": 544,
+      "3": 1671,
+      "4": 1442,
+      "5": 924
+    },
+    "domains": {
+      "数学基础": 1178,
+      "代数": 2742,
+      "分析": 1093,
+      "几何与拓扑": 1113,
+      "概率与统计": 1059,
+      "离散数学": 1080,
+      "计算与优化": 1152
+    },
+    "verification_statuses": {
+      "unspecified": 9417
+    },
+    "duplicate_name_groups": 72
+  },
+  "after": {
+    "total": 9807,
+    "levels": {
+      "1": 394,
+      "2": 1379,
+      "3": 3028,
+      "4": 3151,
+      "5": 1855
+    },
+    "important_levels": {
+      "1": 290,
+      "2": 802,
+      "3": 1927,
+      "4": 1734,
+      "5": 922
+    },
+    "domains": {
+      "数学基础": 1193,
+      "代数": 2898,
+      "分析": 1144,
+      "几何与拓扑": 1185,
+      "概率与统计": 1110,
+      "离散数学": 1098,
+      "计算与优化": 1179
+    },
+    "verification_statuses": {
+      "unspecified": 9358,
+      "editorial_statement_review_not_formal": 449
+    },
+    "duplicate_name_groups": 72
+  },
+  "regraded_count": 51,
+  "regraded": [
+    {
+      "id": "AN63",
+      "name": "海涅-博雷尔定理",
+      "before": 4,
+      "after": 3
+    },
+    {
+      "id": "AN69",
+      "name": "魏尔斯特拉斯M判别法",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "AN197",
+      "name": "介值定理",
+      "before": 2,
+      "after": 3
+    },
+    {
+      "id": "AL90",
+      "name": "类方程",
+      "before": 5,
+      "after": 4
+    },
+    {
+      "id": "PR161",
+      "name": "马尔可夫不等式",
+      "before": 2,
+      "after": 3
+    },
+    {
+      "id": "PR165",
+      "name": "Hoeffding不等式",
+      "before": 5,
+      "after": 4
+    },
+    {
+      "id": "DM35",
+      "name": "错排数",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "DM44",
+      "name": "范德蒙恒等式",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "ML0342",
+      "name": "有限整环是域",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "B7F0025",
+      "name": "单射",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "id": "B7F0026",
+      "name": "满射",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "id": "B7F0127",
+      "name": "空真",
+      "before": 2,
+      "after": 1
+    },
+    {
+      "id": "B7P0030",
+      "name": "中位数",
+      "before": 2,
+      "after": 1
+    },
+    {
+      "id": "B7P0120",
+      "name": "期望的线性性质",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "id": "B7P0123",
+      "name": "全期望公式",
+      "before": 2,
+      "after": 3
+    },
+    {
+      "id": "B7P0234",
+      "name": "联合界",
+      "before": 2,
+      "after": 3
+    },
+    {
+      "id": "B7A0002",
+      "name": "可测空间",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0004",
+      "name": "概率测度",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0005",
+      "name": "测度空间",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0009",
+      "name": "零测集",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0010",
+      "name": "几乎处处",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0012",
+      "name": "次可数可加性",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0013",
+      "name": "测度的单调性",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0037",
+      "name": "开集的 Lebesgue 测度",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0038",
+      "name": "可测函数",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0041",
+      "name": "简单函数的标准表示",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0043",
+      "name": "连续函数皆可测",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0047",
+      "name": "可测函数的正部与负部",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0048",
+      "name": "几乎处处相等的函数",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0050",
+      "name": "几乎处处收敛",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0061",
+      "name": "简单函数的积分",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0066",
+      "name": "零测集不影响积分",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0077",
+      "name": "Lebesgue 积分的几何意义",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7A0082",
+      "name": "Borel–Cantelli 引理",
+      "before": 2,
+      "after": 4
+    },
+    {
+      "id": "B7A0083",
+      "name": "Borel–Cantelli 第二引理",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "B7A0152",
+      "name": "Tonelli 定理",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "B7A0153",
+      "name": "Fubini 定理",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "B7G0014",
+      "name": "子空间拓扑",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7G0016",
+      "name": "离散拓扑",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7G0017",
+      "name": "平凡拓扑",
+      "before": 1,
+      "after": 3
+    },
+    {
+      "id": "B7G0062",
+      "name": "Weierstrass 极值定理",
+      "before": 2,
+      "after": 3
+    },
+    {
+      "id": "B7G0338",
+      "name": "拓扑和",
+      "before": 1,
+      "after": 4
+    },
+    {
+      "id": "B7C0003",
+      "name": "Cholesky 分解",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "B7C0296",
+      "name": "弱对偶定理",
+      "before": 2,
+      "after": 4
+    },
+    {
+      "id": "B7C0302",
+      "name": "Slater强对偶充分条件",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "B7C0348",
+      "name": "投影的非扩张性",
+      "before": 3,
+      "after": 4
+    },
+    {
+      "id": "B7D0001",
+      "name": "加法原理",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "id": "B7D0002",
+      "name": "乘法原理",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "id": "B7D0019",
+      "name": "隔板法",
+      "before": 2,
+      "after": 4
+    },
+    {
+      "id": "B7Z0007",
+      "name": "罗尔定理",
+      "before": 2,
+      "after": 3
+    },
+    {
+      "id": "B7Z0009",
+      "name": "勒贝格积分",
+      "before": 3,
+      "after": 4
+    }
+  ],
+  "scope": "counts and editorial metadata; no formal theorem certification"
+}

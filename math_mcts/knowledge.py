@@ -10,6 +10,7 @@ import gzip
 import hashlib
 from dataclasses import dataclass, field
 from pathlib import Path
+from .catalog import assemble, inventory, name_key
 
 DATA_PATH = Path(__file__).with_name("data") / "knowledge.json"
 COLLISIONS_PATH = Path(__file__).with_name("data") / "collisions.json"
@@ -104,6 +105,9 @@ class Concept:
     import_card_number: str = ""
     level_status: str = ""
     prereq_status: str = ""
+    aliases: list = field(default_factory=list)
+    importance_reason: str = ""
+    source_locator: str = ""
 
     def path(self) -> str:
         return f"{self.domain_cn} / {self.branch_cn} / {self.topic_cn}"
@@ -123,6 +127,16 @@ class Concept:
             lines.append("收录审核: " + self.curation_status)
         if self.source_url:
             lines.append("源码: " + self.source_url)
+        if self.assumptions:
+            lines.append("适用条件: " + self.assumptions)
+        if self.conclusion:
+            lines.append("结论: " + self.conclusion)
+        if self.importance_reason:
+            lines.append("重要性依据: " + self.importance_reason)
+        if self.source_locator:
+            lines.append("参考定位: " + self.source_locator)
+        if self.prereq_status:
+            lines.append("前置编码状态: " + self.prereq_status)
         if self.formulas:
             lines.append("公式: " + " ; ".join(self.formulas))
         if self.example:
@@ -140,7 +154,7 @@ class Concept:
     def text_blob(self) -> str:
         parts = [self.cn, self.en, self.definition, self.branch_cn,
                  self.topic_cn, self.kind,
-                 self.example] + list(self.tags) + list(self.formulas)
+                 self.example, self.assumptions, self.conclusion, self.module] + list(self.tags) + list(self.formulas) + list(self.aliases)
         return " ".join(parts)
 
 
@@ -161,23 +175,33 @@ class KnowledgeTree:
         self._build_hierarchy()
         # 名称索引: 精确查找 O(1). 23 万规模下线性扫描不可接受.
         self._name_index: dict[str, Concept] = {}
+        self._all_names: dict[str, list[Concept]] = {}
         for c in concepts:
             self._name_index.setdefault(c.cn, c)
             self._name_index.setdefault(c.en.lower(), c)
+            for name in (c.cn, c.en, *c.aliases):
+                if name:
+                    self._all_names.setdefault(name_key(name), []).append(c)
 
     # -- 加载 ------------------------------------------------------------
     @classmethod
     def load(cls, path: str | Path = DATA_PATH,
-             collisions_path: str | Path = COLLISIONS_PATH
+             collisions_path: str | Path = COLLISIONS_PATH,
+             *, include_supplements: bool = True
              ) -> "KnowledgeTree":
         raw = json.loads(Path(path).read_text(encoding="utf-8"))
-        concepts = [Concept(**item) for item in raw["concepts"]]
+        rows, stats = (assemble(raw["concepts"]) if include_supplements and
+                       Path(path).resolve() == DATA_PATH.resolve() else (raw["concepts"], {}))
+        concepts = [Concept(**item) for item in rows]
         collisions: list[dict] = []
         if Path(collisions_path).exists():
             collisions = json.loads(
                 Path(collisions_path).read_text(encoding="utf-8")
             )["collisions"]
-        return cls(concepts, raw.get("meta", {}), collisions)
+        metadata = {**raw.get("meta", {}), **stats}
+        if stats:
+            metadata.update(base_version=metadata.get("version"), version=stats["catalog_version"])
+        return cls(concepts, metadata, collisions)
 
     @classmethod
     def load_imported(cls, *, module_prefix: str | list[str],
@@ -248,12 +272,43 @@ class KnowledgeTree:
         hit = self._name_index.get(key) or self._name_index.get(key.lower())
         if hit is not None:
             return hit
+        matches = self.find_all(key)
+        if matches:
+            return matches[0]
         # 模糊: 名称包含
         low = key.lower()
         for c in self.concepts:
             if key in c.cn or low in c.en.lower():
                 return c
         raise KeyError(f"未找到概念: {name!r}")
+
+    def find_all(self, name: str) -> list[Concept]:
+        """Return all exact/normalized alias matches without silently merging meanings."""
+        if name.strip() in self.by_id:
+            return [self.by_id[name.strip()]]
+        return list({c.id: c for c in self._all_names.get(name_key(name), [])}.values())
+
+    def inventory(self):
+        return inventory(self.concepts)
+
+    def select(self, *, levels=None, important_only=False, domains=None):
+        """Search/collision view; retain true prerequisite IDs, including external ones.
+
+        Use the full tree for learning paths. This view does not claim closure.
+        """
+        level_set = set(levels) if levels is not None else None
+        domain_set = set(domains) if domains is not None else None
+        if level_set is not None and not level_set <= {1, 2, 3, 4, 5}:
+            raise ValueError("Levels must be 1..5")
+        selected = [c for c in self.concepts if
+                    (level_set is None or c.level in level_set) and
+                    (not important_only or {"核心", "重要"} & set(c.tags)) and
+                    (domain_set is None or c.domain_cn in domain_set)]
+        ids = {c.id for c in selected}
+        collisions = [r for r in self.collisions if r["a"] in ids and r["b"] in ids]
+        external = sorted({p for c in selected for p in c.prereq if p not in ids})
+        return type(self)(selected, {**self.meta, "search_view": True,
+                                    "external_prerequisites": external}, collisions)
 
     def domains(self) -> list[tuple[str, str]]:
         seen: dict[str, str] = {}
@@ -266,6 +321,7 @@ class KnowledgeTree:
         # key: () -> domain -> branch -> topic -> concept id
         self._kids: dict[tuple, list[tuple]] = {}
         self._label: dict[tuple, str] = {(): "数学"}
+        seen_children = {}
         for c in self.concepts:
             d = ("d", c.domain_cn)
             b = ("d", c.domain_cn, "b", c.branch_cn)
@@ -276,8 +332,10 @@ class KnowledgeTree:
                 (b, t, c.topic_cn), (t, leaf, c.cn),
             ]:
                 self._kids.setdefault(parent, [])
-                if child not in self._kids[parent]:
+                seen_children.setdefault(parent, set())
+                if child not in seen_children[parent]:
                     self._kids[parent].append(child)
+                    seen_children[parent].add(child)
                 self._label.setdefault(child, label)
 
     def hierarchy_children(self, node: tuple) -> list[tuple]:
@@ -342,3 +400,4 @@ class KnowledgeTree:
             if color.get(c.id) != 2:
                 dfs(c.id, [])
         return problems
+

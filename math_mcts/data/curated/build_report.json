@@ -1,0 +1,3323 @@
+{
+  "base_count": 9417,
+  "authored_statements": 449,
+  "added": 390,
+  "authored_enrichments": 59,
+  "dependency_priority_updates": 603,
+  "editorial_overlays": 674,
+  "authored_levels": {
+    "1": 162,
+    "2": 122,
+    "3": 68,
+    "4": 97
+  },
+  "level_rubric": {
+    "1": "初中基础",
+    "2": "高中与微积分入门",
+    "3": "大学基础",
+    "4": "大学进阶",
+    "5": "研究生与前沿"
+  },
+  "source_relation": "originally worded mathematical facts; URLs are topic references, not line-by-line proof certification",
+  "authored": [
+    {
+      "id": "C14L1_73bef3f56186",
+      "title": "加法交换律",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_371b4147d6d0",
+      "title": "加法结合律",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_40c35203f2ac",
+      "title": "乘法交换律",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_a211ccfcefdb",
+      "title": "乘法结合律",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_456d64534dbf",
+      "title": "乘法分配律",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_714f05c042c1",
+      "title": "加法单位元",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_fa43919e0420",
+      "title": "乘法单位元",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_c83155b1f8a3",
+      "title": "相反数消去",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_89bb666f03e9",
+      "title": "倒数消去",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_560650017080",
+      "title": "零乘法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_c161ff70e429",
+      "title": "除零无定义",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_6ae6ff043476",
+      "title": "零除非零数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_ba359da69323",
+      "title": "负负得正",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_8e5b0bfb55a6",
+      "title": "减法改写加法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_0e55bda06e78",
+      "title": "商的乘法验证",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_0ed03d3a214d",
+      "title": "运算优先级",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3ae8af034ec8",
+      "title": "整数带余除法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_e497e3fbc787",
+      "title": "偶数的定义",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_a1b2b24a6ae0",
+      "title": "奇数的定义",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_a83e4359349a",
+      "title": "偶数加法封闭",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_82846d2f0cc3",
+      "title": "奇偶加法规则",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_b997d03a6a1a",
+      "title": "奇偶乘法规则",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_f262a37e6c02",
+      "title": "十进制位值",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_290dd03ab5d7",
+      "title": "科学记数法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_484c4953cb4e",
+      "title": "整除的传递性",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_d47055fa1fbc",
+      "title": "整除线性组合",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_62143ebcf4c1",
+      "title": "正因数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_00580df32cf9",
+      "title": "公倍数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_fdcf7f33fa18",
+      "title": "互质的定义",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_62d8926e4c06",
+      "title": "分数等值变换",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_e627a12c7499",
+      "title": "分数约分",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_e995b7d81008",
+      "title": "同分母分数加法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_560429bf79bf",
+      "title": "异分母分数加法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_1da6e98847c5",
+      "title": "分数乘法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_6bd084542fb1",
+      "title": "分数除法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3d1043ac187c",
+      "title": "正分数交叉比较",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_dafa909fbad0",
+      "title": "单位分数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_ce6ebf75bac0",
+      "title": "有限小数转分数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_a10265a9a4f0",
+      "title": "百分数定义",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_06ebec1b228a",
+      "title": "百分比增加",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_14106d054108",
+      "title": "百分比减少",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_7a6f464df0f6",
+      "title": "连续百分比变化",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_40794b8ec914",
+      "title": "比例式交叉乘积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_552d021b1acc",
+      "title": "正比例关系",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_d446e93a257d",
+      "title": "反比例关系",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_8bfafe7b7a86",
+      "title": "单位率",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_abcb0081b134",
+      "title": "速率距离时间",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3fdf0dae7494",
+      "title": "平均速度定义",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_7abc407592b5",
+      "title": "算术平均数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_0d06d3982f7b",
+      "title": "加权平均数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_53fdf280cbbf",
+      "title": "数轴距离",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3347fcdb3b6b",
+      "title": "绝对值非负性",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_084105bd27a4",
+      "title": "绝对值对称性",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_1937ad17b788",
+      "title": "平方非负性",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_939fdf154f25",
+      "title": "平方根与绝对值",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_86e556b5096e",
+      "title": "平方根乘法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_ef6d6d0676ac",
+      "title": "平方根除法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_dc15fb9cb94b",
+      "title": "整数次幂乘法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_c1dc00586c27",
+      "title": "整数次幂除法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_6ba24e024b23",
+      "title": "幂的乘方",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_ba0db55bd475",
+      "title": "积的整数次幂",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_546a9604b3f9",
+      "title": "零指数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_22b6354926fa",
+      "title": "负指数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3c5ce6dc68c1",
+      "title": "等式同加法则",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_7dfa07cad868",
+      "title": "等式非零同除法则",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_98a9ae0df987",
+      "title": "不等式同加法则",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_e192287fd9fe",
+      "title": "不等式正数同乘",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_2af1b10f6bbf",
+      "title": "不等式负数同乘",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_428da162580e",
+      "title": "不等式传递性",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_5c07d1f21b90",
+      "title": "一元一次方程解",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_10c501a61364",
+      "title": "零系数线性方程",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_c5a9a7ecfa49",
+      "title": "零乘积法则",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_454ab3d6f1f9",
+      "title": "合并同类项",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3ea5a69f2f9d",
+      "title": "平方和展开",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_dfc4b54c804d",
+      "title": "平方差展开",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_714930152b3a",
+      "title": "平方差因式分解",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_ea57fc5a2d4b",
+      "title": "提公因式",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_c13ac16462f3",
+      "title": "平方比较非负数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_fc8f53703bb1",
+      "title": "相反数反转次序",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3ffb55997d18",
+      "title": "正数倒数反转次序",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_c72111383f9f",
+      "title": "开区间",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_cd0b46b8b316",
+      "title": "闭区间",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_81ee4053cf41",
+      "title": "区间长度",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_0dff3ac62cbd",
+      "title": "等差数列递推",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_bf3702211397",
+      "title": "等比数列递推",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_c1eeb0aebf93",
+      "title": "对顶角相等",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_872e80285447",
+      "title": "邻补角",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_f10285b30562",
+      "title": "周角",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_5c261afc314c",
+      "title": "余角",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_addd429c08f9",
+      "title": "三角形外角定理",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_c5724c1a1a6a",
+      "title": "三角形面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_54003eec040b",
+      "title": "矩形面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_f81a955b2980",
+      "title": "矩形周长",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_18b8ed5bd822",
+      "title": "平行四边形面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_bbaca9afe12e",
+      "title": "梯形面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_badf4033d248",
+      "title": "菱形对角线面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_2b7c8ea184c7",
+      "title": "圆周长",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_a65cabb5c0c4",
+      "title": "圆面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_b9c29270686f",
+      "title": "圆弧长度",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_6697ead7d0c9",
+      "title": "扇形面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_ebf51fcf8f80",
+      "title": "角度弧度换算",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3af611b4a7f5",
+      "title": "长方体体积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_d56b55d69aab",
+      "title": "长方体表面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_ea22b2c41a8e",
+      "title": "圆柱体积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_c5ea688c7b50",
+      "title": "圆柱侧面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_d0eb05572375",
+      "title": "圆锥体积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_700ab64572f8",
+      "title": "球体积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_4462a4105f6f",
+      "title": "球表面积",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_4ce222d3f8d3",
+      "title": "相似图形长度比例",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3729b4d97f96",
+      "title": "相似图形面积比例",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_029903c186cd",
+      "title": "相似立体体积比例",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_905730de2035",
+      "title": "等腰三角形底角",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_ba6d637c2221",
+      "title": "等边三角形内角",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_5db6cfe69cf4",
+      "title": "直角三角形锐角和",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_897f077e5f1f",
+      "title": "平行线内错角",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_17d4e98e1a4f",
+      "title": "平行线同旁内角",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_510c06b2f560",
+      "title": "三角形中位线",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_a0c89fcdc154",
+      "title": "圆的直径与半径",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_0a6de5a3d56d",
+      "title": "同圆等弦等距",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_91ce9166aa56",
+      "title": "圆切线垂直半径",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_6dcc8281baa2",
+      "title": "二维坐标中点",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3aba5e312743",
+      "title": "二维两点距离",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_589596fab94e",
+      "title": "直线斜率",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_8e7445f99fd4",
+      "title": "直线点斜式",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_3e001380a65b",
+      "title": "平行非竖直直线斜率",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_341e842abfd9",
+      "title": "垂直非竖直直线斜率",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_b4cdc8b87828",
+      "title": "图形平移坐标",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_b79edaa220a7",
+      "title": "关于横轴反射",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_50b05b731777",
+      "title": "关于原点中心对称",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_157478f49633",
+      "title": "全称量词否定",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_69eab5ccdf25",
+      "title": "存在量词否定",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_774cbd257218",
+      "title": "充分条件与必要条件",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_63dcd4b7d6b9",
+      "title": "命题逆否等价",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_e7931872bc41",
+      "title": "逆命题不自动成立",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_625c30ecc935",
+      "title": "集合双向包含",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_a16843113cd9",
+      "title": "空集是任意集合的子集",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_554faf705fb4",
+      "title": "交集的元素判据",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_164971162264",
+      "title": "并集的元素判据",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_47e9e9138b40",
+      "title": "差集的元素判据",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_61cf591fb824",
+      "title": "映射像与原像区别",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_4214c7206c09",
+      "title": "函数相等的判据",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "B7F0127",
+      "title": "空真命题",
+      "level": 1,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L1_1aefca1e5058",
+      "title": "反例否定全称命题",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_1cba0c7f315b",
+      "title": "存在性与唯一性分离",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_2d52a59e4d06",
+      "title": "有限检验不等于全称证明",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "B7P0030",
+      "title": "中位数定义",
+      "level": 1,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L1_eb78ee3c26e4",
+      "title": "极差",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_2d4795f760e5",
+      "title": "样本相对频率",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_089da5c130b9",
+      "title": "概率非负性",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_122be5d85e7d",
+      "title": "必然事件概率",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_f56de695bd4a",
+      "title": "空事件概率",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_8b6fac1fa558",
+      "title": "概率的补事件公式",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_edca3c574162",
+      "title": "互斥事件加法",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_34833f9abd37",
+      "title": "等可能有限样本计数",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_b3e0f54a890d",
+      "title": "独立不等于互斥",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_e2cd3a923311",
+      "title": "零概率不等于不可能",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_eaf8afe79318",
+      "title": "概率一不等于处处成立",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_5a7fb4d3dd72",
+      "title": "样本与总体",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_b93a92230520",
+      "title": "统计相关不蕴含因果",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_435c50e56be1",
+      "title": "单位转换保持物理量",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_f3acec681412",
+      "title": "平方单位换算",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L1_869752e9d777",
+      "title": "立方单位换算",
+      "level": 1,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_4d72dc0583cf",
+      "title": "完全平方配方",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_0b92f0d32648",
+      "title": "一元二次方程判别式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_4eaf61d00e39",
+      "title": "韦达二次根关系",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_06eb78ac7243",
+      "title": "立方和分解",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_18e9d8137d89",
+      "title": "立方差分解",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_09688d921c84",
+      "title": "二项平方非负证均值界",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_90efb8fa482c",
+      "title": "三角不等式实数版",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_fa56e9058b3c",
+      "title": "反三角不等式实数版",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_652f37775c42",
+      "title": "绝对值小于界的区间",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_382909925f23",
+      "title": "有理式约分的定义域",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_b3bf4cdda33a",
+      "title": "分式方程增根检查",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_6461cb2cd5df",
+      "title": "平方运算的增解风险",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_f2a685ca3de7",
+      "title": "指数函数单调性",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_21c8d26b7f43",
+      "title": "对数定义",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_55be96412552",
+      "title": "对数乘积法则",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_eac360fcd115",
+      "title": "对数商法则",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_39222c4b0b6d",
+      "title": "对数幂法则",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_4ad6cea711b6",
+      "title": "对数换底公式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_45dfb3f65acc",
+      "title": "函数复合的定义域",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "B7F0025",
+      "title": "单射函数定义",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "B7F0026",
+      "title": "满射函数定义",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "B7F0027",
+      "title": "双射与逆映射",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L2_485c1360ae2d",
+      "title": "偶函数对称性",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_9d38368a1397",
+      "title": "奇函数对称性",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_6ced2a0c69b4",
+      "title": "奇函数原点取值",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_6bcb32fc14f1",
+      "title": "周期函数定义",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_8ec040c9a82d",
+      "title": "等差数列通项",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_959b08accacf",
+      "title": "等差数列求和",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_8e80bf630502",
+      "title": "有限等比级数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_a71f6e828347",
+      "title": "无限等比级数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_f3ad9fd18e7a",
+      "title": "多项式余式定理",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "AL50",
+      "title": "多项式因式定理",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L2_877b12b458e3",
+      "title": "非零多项式根数界",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_62565ab441ff",
+      "title": "复数共轭乘积",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_44364d7667c4",
+      "title": "复数倒数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_431f96e013aa",
+      "title": "复数乘积的模",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_2e1821676190",
+      "title": "正弦余弦平方恒等式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_27f664f50ec4",
+      "title": "正切的正弦余弦表示",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_18633d6eba00",
+      "title": "正弦和角公式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_c8ecf2e15445",
+      "title": "余弦和角公式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_e887c5c4c817",
+      "title": "正切和角公式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_235d2c7044e0",
+      "title": "正弦二倍角",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_35b5cde60082",
+      "title": "余弦二倍角",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_4df63f5dca39",
+      "title": "正弦平方降幂",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_afdc29179b33",
+      "title": "余弦平方降幂",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_6687e7b646f7",
+      "title": "正弦积化和差",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_1d320e445b27",
+      "title": "余弦积化和差",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_d62ac41b67fd",
+      "title": "正弦余弦积化和差",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_b3f0c4e22ce4",
+      "title": "正弦定理",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_addd717e2aef",
+      "title": "余弦定理",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_837fd97046d0",
+      "title": "海伦公式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_9388fde14658",
+      "title": "向量点积坐标式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_223d2ec6af8f",
+      "title": "向量模长",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_2cc1f051015c",
+      "title": "向量垂直判据",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_af381e6aa7d4",
+      "title": "向量夹角",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_8670161e031b",
+      "title": "向量标量投影",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_eb8a7635050b",
+      "title": "向量正交投影",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_87ce80a7437c",
+      "title": "向量平行判据二维版",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_8690eadc3c96",
+      "title": "常数函数导数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_77058a9c4302",
+      "title": "幂函数求导",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_66ebefbe316f",
+      "title": "指数函数求导",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_4173da0308fd",
+      "title": "自然对数求导",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_befa5e9038cb",
+      "title": "正弦函数求导",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_87c9d169fafc",
+      "title": "余弦函数求导",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_59194895d372",
+      "title": "正切函数求导",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_086e2193a500",
+      "title": "反正弦求导",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_4ea6096a7f28",
+      "title": "反正切求导",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_df22c21bc143",
+      "title": "导数线性法则",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_d63d3e99cb0f",
+      "title": "导数乘积法则",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_e63343f564a4",
+      "title": "导数商法则",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "AN30",
+      "title": "导数链式法则",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L2_e45c343b8b8d",
+      "title": "切线方程",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_591b52af9d21",
+      "title": "可导蕴含连续",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_111e1031b78f",
+      "title": "连续不保证可导",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_39b9079db18c",
+      "title": "驻点必要条件",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_62f6615d8df7",
+      "title": "正导数推出递增",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_f23794f86345",
+      "title": "负导数推出递减",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_601d52985348",
+      "title": "幂函数原函数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_509658413540",
+      "title": "倒数函数原函数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_b5777034257d",
+      "title": "指数函数原函数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_371947b10f49",
+      "title": "正弦函数原函数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_a1f3b1e5cd8e",
+      "title": "余弦函数原函数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_24977cef68cc",
+      "title": "定积分交换上下限",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_1a4d3ea31d2c",
+      "title": "定积分区间可加性",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_91c6acc1be61",
+      "title": "定积分线性性",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_d32428ecbb63",
+      "title": "定积分大小比较",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_f999f4806f9d",
+      "title": "奇函数对称积分",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_8d14ca4c804e",
+      "title": "偶函数对称积分",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "B7D0001",
+      "title": "有限集合加法原理",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "B7D0002",
+      "title": "有限集合乘法原理",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L2_777613aa66a6",
+      "title": "有限集合容斥二项式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_6636b276cfaf",
+      "title": "无重复排列计数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_731c03a35df6",
+      "title": "无重复组合计数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_d8a502f5e42a",
+      "title": "有重复有序选择",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_c4691ebae82e",
+      "title": "二项系数对称性",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_a748ccb44727",
+      "title": "帕斯卡递推",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "B7D0011",
+      "title": "二项系数总和",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "DM02",
+      "title": "鸽巢原理基础版",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "B7D0013",
+      "title": "二项式定理有限版",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L2_89714179b502",
+      "title": "阶乘递推",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_42b67c045672",
+      "title": "欧几里得算法不变量",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_189abf5277ad",
+      "title": "最小公倍数与最大公约数",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_71e9c7b9362e",
+      "title": "同余的加法保持",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_87de328319cf",
+      "title": "同余的乘法保持",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_a4ad9539671e",
+      "title": "有限简单图度数和",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "B7D0200",
+      "title": "树的边数",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "PR02",
+      "title": "条件概率定义",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L2_5c623485c29b",
+      "title": "独立事件乘法",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_fd128ed41450",
+      "title": "全概率有限划分",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_3bed76084dad",
+      "title": "贝叶斯二事件公式",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_2cc5884a9a5c",
+      "title": "离散期望",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "B7P0120",
+      "title": "期望线性性",
+      "level": 2,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L2_2e38cc62606e",
+      "title": "方差平移不变",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_91201f51c704",
+      "title": "方差缩放",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_514ec4c287a7",
+      "title": "独立变量和的方差",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_58b5cf221924",
+      "title": "伯努利均值与方差",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_d73e3dc21f90",
+      "title": "二项分布均值与方差",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_ce7683ce44f0",
+      "title": "均匀区间分布矩",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_f65605cd0f87",
+      "title": "概率质量归一化",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_9b994957d142",
+      "title": "概率密度归一化",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_f71509c5db3a",
+      "title": "密度值不是点概率",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L2_e1de21e27ede",
+      "title": "累积分布函数区间概率",
+      "level": 2,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_d8766be4b462",
+      "title": "线性方程可解判据",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_57399355538b",
+      "title": "齐次线性解空间维数",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_08685398f8d5",
+      "title": "方阵可逆等价条件",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_1a343efc140d",
+      "title": "矩阵乘积秩上界",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_88729249316c",
+      "title": "转置保持秩",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_fc81f15e8e22",
+      "title": "逆矩阵乘积次序",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_8117322e22c7",
+      "title": "转置乘积次序",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_9f88b07899b7",
+      "title": "行列式乘法性",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_5c00906d7666",
+      "title": "相似保持特征多项式",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_51459483c203",
+      "title": "迹的循环性质",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_ab27c01bedfc",
+      "title": "正交矩阵保持范数",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_716fc19ade13",
+      "title": "正交投影幂等性",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "B7P0630",
+      "title": "正规方程",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L3_eb8331f1a8c5",
+      "title": "满列秩最小二乘解",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_324ecad5d985",
+      "title": "正交最小二乘残差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_07b805a0d410",
+      "title": "格拉姆矩阵半正定",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_5e18ea9b1fbf",
+      "title": "正定矩阵可逆",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_4302f7148ee6",
+      "title": "瑞利商范围",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_61d1bf19dcf0",
+      "title": "秩一外积",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_edb885e96bc1",
+      "title": "特征向量不同特征值独立",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_bdbd8d0a2520",
+      "title": "收敛数列有界",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_1c21bb001878",
+      "title": "收敛极限唯一",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_722872bd1eba",
+      "title": "单调有界收敛",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_b6f646af7902",
+      "title": "有界实数列子列收敛",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "AN66",
+      "title": "实数柯西判据",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L3_9c670e6f6eb1",
+      "title": "级数收敛项趋零",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_c5c7e14933d2",
+      "title": "通项趋零不足收敛",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_f64eafb83c12",
+      "title": "绝对收敛推出收敛",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "AN44",
+      "title": "正项级数比较判别",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L3_8c2bca0ee24e",
+      "title": "p级数收敛条件",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_3837f45744fc",
+      "title": "交错级数误差界",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_6a5932ae7e5a",
+      "title": "连续像保持紧性",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "B7G0062",
+      "title": "紧域连续函数取极值",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L3_a399333c1065",
+      "title": "紧域连续函数一致连续",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_30a48b5423fb",
+      "title": "连续像保持连通",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "AN197",
+      "title": "连续函数介值性",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "AN04",
+      "title": "拉格朗日中值定理",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "B7Z0007",
+      "title": "罗尔定理完整条件",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L3_96665c5a8f22",
+      "title": "一致极限保持连续",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_8995bee4ecaa",
+      "title": "一致收敛积分换序",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "AN63",
+      "title": "闭有界欧氏紧性",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L3_075727679ca1",
+      "title": "连续映射保持序列极限",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "PR161",
+      "title": "马尔可夫不等式",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "PR162",
+      "title": "切比雪夫不等式",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "B7P0234",
+      "title": "概率并集上界",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L3_b728e40dae4f",
+      "title": "协方差展开",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_0c101586348f",
+      "title": "方差二阶矩展开",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_62c18dc6c6da",
+      "title": "相关系数范围",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_3e7471864c3d",
+      "title": "独立推出零协方差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_618fad1cc263",
+      "title": "零协方差不足独立",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "B7P0123",
+      "title": "全期望公式",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "B7P0143",
+      "title": "全方差公式",
+      "level": 3,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L3_a8ef2b586227",
+      "title": "样本均值无偏性",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_b8ce741b8a45",
+      "title": "独立样本均值方差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_7999f5a7b193",
+      "title": "样本方差无偏修正",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_feb2821f4a82",
+      "title": "似然与概率区别",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_c2b9cc9ee26e",
+      "title": "似然取对数保留最大点",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_029db475e2dd",
+      "title": "极大似然伯努利估计",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_efd9d295f424",
+      "title": "绝对误差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_7847c943671a",
+      "title": "相对误差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_8f6fdbb82a04",
+      "title": "二分法区间误差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_22885ac1bb70",
+      "title": "浮点加法不结合",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_fc6afec3d965",
+      "title": "减法消去风险",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_a14eba045c92",
+      "title": "稳定求二次根",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_7a4e995aa3d5",
+      "title": "梯形求积误差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_f04ec9f2c339",
+      "title": "辛普森求积误差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_e889d4d9fda2",
+      "title": "有限差分前向误差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L3_f92bdbc6b7da",
+      "title": "有限差分中心误差",
+      "level": 3,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_9638ff3dac03",
+      "title": "拉格朗日群阶整除",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_cfa65c278121",
+      "title": "群元素阶整除群阶",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_2df8ec9480c9",
+      "title": "素数阶群循环",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_14a92a9a7ec0",
+      "title": "循环群子群循环",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_609912c5992d",
+      "title": "核是正规子群",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_01cba2e2cc77",
+      "title": "群同态单射核判据",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_3bff4171166c",
+      "title": "群第一同构定理",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "AL87",
+      "title": "轨道稳定子公式",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_734fa96241ec",
+      "title": "共轭类中心化子公式",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "AL90",
+      "title": "群类方程",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_5a6348370543",
+      "title": "柯西有限群定理",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_400b4b1f22ce",
+      "title": "有限p群中心非平凡",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_2af4be1d272c",
+      "title": "正规子群商映射",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_8c5a8e7c6a31",
+      "title": "整环消去律",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "ML0342",
+      "title": "有限整环是域",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_0a84219333a8",
+      "title": "域上的多项式欧几里得除法",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_de5def6d1e6c",
+      "title": "不可约多项式商域",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_9e938c2da122",
+      "title": "最小多项式整除特征多项式",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "AL33",
+      "title": "凯莱哈密顿代入",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_51baa9671e6e",
+      "title": "对角化最小多项式判据",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_89c2eb8d2226",
+      "title": "幂零算子谱",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_025275f4afb1",
+      "title": "幂零指数维数界",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_c0fbcd69c9c9",
+      "title": "实对称谱定理",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "AL79",
+      "title": "正规复矩阵谱定理",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "AL30",
+      "title": "奇异值分解",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_03c34c533777",
+      "title": "谱范数奇异值",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "B7C0008",
+      "title": "最优低秩逼近",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "AN161",
+      "title": "巴拿赫压缩映射定理",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_99e3e7335b9e",
+      "title": "一致柯西判据",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "AN69",
+      "title": "魏尔斯特拉斯M判别",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_7712033d9a39",
+      "title": "逐点极限不保持连续",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_5e3facea298c",
+      "title": "单调收敛积分定理",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "B7P0127",
+      "title": "法图引理",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_a5c1df461f28",
+      "title": "支配收敛定理",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "B7A0152",
+      "title": "托内利非负换序",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "B7A0153",
+      "title": "富比尼绝对可积换序",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_09c90c280d2a",
+      "title": "L1范数积分控制",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "B7P0173",
+      "title": "赫尔德不等式",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "B7P0174",
+      "title": "闵可夫斯基不等式",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_6e478532f9fa",
+      "title": "有限测度Lp包含",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_96b89f454922",
+      "title": "Lp收敛推出概率收敛",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_9eb3c8282b95",
+      "title": "紧度量空间全有界",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_be31763dee50",
+      "title": "完备全有界推出紧",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_22ec117547e3",
+      "title": "紧集在Hausdorff空间闭",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_b49b0b29c510",
+      "title": "紧到Hausdorff双射",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_920a74232e6a",
+      "title": "有限交性质与紧性",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_8aa7da99ad52",
+      "title": "可数紧集交定理",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_b282f0a0a2b2",
+      "title": "弱大数定律有限方差版",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "PR10",
+      "title": "经典中心极限定理",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "PR165",
+      "title": "霍夫丁有界和尾界",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_8d4ad922adf6",
+      "title": "伯努利样本均值尾界",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_5805640bff4c",
+      "title": "切尔诺夫矩母函数方法",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "B7A0082",
+      "title": "第一BorelCantelli引理",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "B7A0083",
+      "title": "独立第二BorelCantelli引理",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "PR163",
+      "title": "Jensen期望不等式",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_b2c1e5b5a3aa",
+      "title": "条件Jensen不等式",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_28f35c2f8b5a",
+      "title": "离散KL散度非负",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_12dd0b056ac7",
+      "title": "有限熵最大值",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_49b6c5bccb57",
+      "title": "互信息非负",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_c139efa0e941",
+      "title": "置信区间频率解释",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_8e6a1c716dd2",
+      "title": "正态已知方差均值区间",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_badc340e39f4",
+      "title": "正态未知方差t区间",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_4c7ef6134e53",
+      "title": "Bonferroni多重检验控制",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_42d4a4329ef2",
+      "title": "零失败样本单侧上界",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_1821572c7f99",
+      "title": "正态样本均值方差独立",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_bc5bd7b6c265",
+      "title": "凸函数一阶下界",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_0271b005caa2",
+      "title": "凸可微驻点最优",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_d1ef3df4ef32",
+      "title": "严格凸最小点唯一",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_87bc4a3ed9c3",
+      "title": "凸函数二阶判据",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_6f7ab151800b",
+      "title": "强凸二阶下界",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_1497761293fe",
+      "title": "光滑函数下降引理",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_dd3a6ddcc608",
+      "title": "梯度步下降保证",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "B7C0296",
+      "title": "弱对偶性",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "B7C0302",
+      "title": "Slater强对偶条件",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_f957ed332447",
+      "title": "凸问题KKT充分性",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_6386bdbb911d",
+      "title": "凸集投影唯一性",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "B7C0348",
+      "title": "凸投影非扩张",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_db5e039c9955",
+      "title": "正规方程条件数平方",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_1a0770f4f11e",
+      "title": "线性系统相对扰动界",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_d18fb51f0ccc",
+      "title": "谱半径与稳定迭代",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "B7C0003",
+      "title": "对称正定Cholesky分解",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_3bd428e98fa9",
+      "title": "牛顿法局部二次收敛",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_76366a6e2bb9",
+      "title": "误差与残差区别",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "DM22",
+      "title": "Hall匹配条件",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "B7D0243",
+      "title": "二部图匹配顶点覆盖",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "DM90",
+      "title": "最大流最小割",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_2499ea3be766",
+      "title": "欧拉回路度数判据",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_04c1bd67727c",
+      "title": "欧拉路径度数判据",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_15948d43e546",
+      "title": "平面图边数上界",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_03b897928059",
+      "title": "平面二部图边数界",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "C14L4_7ab1ac2760be",
+      "title": "无环图是森林",
+      "level": 4,
+      "action": "added"
+    },
+    {
+      "id": "DM85",
+      "title": "Cayley标号树计数",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "DM26",
+      "title": "Burnside轨道计数",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "DM44",
+      "title": "组合数Vandermonde恒等式",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "B7D0019",
+      "title": "整数非负分拆星棒法",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "DM35",
+      "title": "错排容斥公式",
+      "level": 4,
+      "action": "enriched"
+    },
+    {
+      "id": "C14L4_4202241b35f8",
+      "title": "递推生成函数转换",
+      "level": 4,
+      "action": "added"
+    }
+  ],
+  "structural_priority_ids": [
+    "BS14",
+    "AN11",
+    "DM04",
+    "DM09",
+    "BS16",
+    "AN23",
+    "PR16",
+    "DM13",
+    "BS19",
+    "AL22",
+    "AN26",
+    "AN28",
+    "GE15",
+    "GE16",
+    "PR18",
+    "PR19",
+    "DM14",
+    "CA17",
+    "AL52",
+    "PR22",
+    "PR23",
+    "PR28",
+    "PR29",
+    "PR30",
+    "PR35",
+    "GE19",
+    "GE30",
+    "DM22",
+    "DM26",
+    "DM29",
+    "CA21",
+    "CA30",
+    "BS22",
+    "AN80",
+    "AN82",
+    "AN102",
+    "AN110",
+    "AN130",
+    "AN140",
+    "AN144",
+    "AN164",
+    "AN165",
+    "PR98",
+    "PR124",
+    "PR128",
+    "PR144",
+    "PR148",
+    "PR151",
+    "PR157",
+    "PR172",
+    "PR173",
+    "GE67",
+    "GE121",
+    "GE131",
+    "GE132",
+    "GE133",
+    "GE136",
+    "GE140",
+    "GE143",
+    "DM47",
+    "DM150",
+    "CA80",
+    "CA83",
+    "CA86",
+    "CA97",
+    "CA101",
+    "CA112",
+    "CA116",
+    "CA132",
+    "CA134",
+    "CA160",
+    "CA163",
+    "CA170",
+    "CA174",
+    "CA175",
+    "CA176",
+    "CA177",
+    "CA180",
+    "BS36",
+    "BS62",
+    "B7F0004",
+    "B7F0006",
+    "B7F0018",
+    "B7F0034",
+    "B7F0048",
+    "B7F0070",
+    "B7F0072",
+    "B7F0076",
+    "B7F0084",
+    "B7F0086",
+    "B7F0089",
+    "B7F0093",
+    "B7F0099",
+    "B7F0103",
+    "B7F0129",
+    "B7F0148",
+    "B7F0150",
+    "B7F0158",
+    "B7F0166",
+    "B7F0186",
+    "B7F0198",
+    "B7F0203",
+    "B7F0230",
+    "B7F0237",
+    "B7F0280",
+    "B7F0287",
+    "B7F0345",
+    "B7F0348",
+    "B7F0353",
+    "B7F0356",
+    "B7F0364",
+    "B7F0382",
+    "B7P0001",
+    "B7P0002",
+    "B7P0003",
+    "B7P0025",
+    "B7P0029",
+    "B7P0030",
+    "B7P0031",
+    "B7P0033",
+    "B7P0061",
+    "B7P0064",
+    "B7P0080",
+    "B7P0081",
+    "B7P0083",
+    "B7P0085",
+    "B7P0088",
+    "B7P0093",
+    "B7P0102",
+    "B7P0107",
+    "B7P0126",
+    "B7P0134",
+    "B7P0136",
+    "B7P0150",
+    "B7P0151",
+    "B7P0152",
+    "B7P0153",
+    "B7P0164",
+    "B7P0206",
+    "B7P0215",
+    "B7P0244",
+    "B7P0253",
+    "B7P0254",
+    "B7P0258",
+    "B7P0259",
+    "B7P0262",
+    "B7P0263",
+    "B7P0265",
+    "B7P0266",
+    "B7P0269",
+    "B7P0273",
+    "B7P0283",
+    "B7P0307",
+    "B7P0326",
+    "B7P0355",
+    "B7P0357",
+    "B7P0359",
+    "B7P0362",
+    "B7P0365",
+    "B7P0377",
+    "B7P0386",
+    "B7P0388",
+    "B7P0389",
+    "B7P0397",
+    "B7P0409",
+    "B7P0412",
+    "B7P0423",
+    "B7P0436",
+    "B7P0448",
+    "B7P0466",
+    "B7P0482",
+    "B7P0513",
+    "B7P0514",
+    "B7P0515",
+    "B7P0523",
+    "B7P0526",
+    "B7P0533",
+    "B7P0579",
+    "B7P0580",
+    "B7P0581",
+    "B7P0583",
+    "B7P0598",
+    "B7P0599",
+    "B7P0610",
+    "B7P0619",
+    "B7P0624",
+    "B7P0628",
+    "B7P0629",
+    "B7P0630",
+    "B7P0643",
+    "B7P0644",
+    "B7P0656",
+    "B7P0671",
+    "B7P0680",
+    "B7P0701",
+    "B7P0704",
+    "B7P0712",
+    "B7P0718",
+    "B7P0719",
+    "B7P0722",
+    "B7A0009",
+    "B7A0010",
+    "B7A0017",
+    "B7A0019",
+    "B7A0024",
+    "B7A0028",
+    "B7A0042",
+    "B7A0050",
+    "B7A0056",
+    "B7A0057",
+    "B7A0095",
+    "B7A0130",
+    "B7A0140",
+    "B7A0148",
+    "B7A0168",
+    "B7A0171",
+    "B7A0176",
+    "B7A0181",
+    "B7A0189",
+    "B7A0191",
+    "B7A0220",
+    "B7A0226",
+    "B7A0227",
+    "B7A0237",
+    "B7A0253",
+    "B7A0260",
+    "B7A0262",
+    "B7A0268",
+    "B7A0271",
+    "B7A0275",
+    "B7A0282",
+    "B7A0302",
+    "B7A0308",
+    "B7A0309",
+    "B7A0328",
+    "B7A0332",
+    "B7A0341",
+    "B7A0350",
+    "B7A0367",
+    "B7A0380",
+    "B7A0418",
+    "B7A0420",
+    "B7A0446",
+    "B7A0480",
+    "B7A0505",
+    "B7A0514",
+    "B7A0515",
+    "B7A0517",
+    "B7A0518",
+    "B7A0520",
+    "B7A0541",
+    "B7A0554",
+    "B7A0557",
+    "B7A0568",
+    "B7A0571",
+    "B7A0633",
+    "B7A0642",
+    "B7A0659",
+    "B7A0661",
+    "B7A0662",
+    "B7A0663",
+    "B7A0664",
+    "B7A0665",
+    "B7A0667",
+    "B7A0671",
+    "B7A0676",
+    "B7A0691",
+    "B7A0692",
+    "B7A0712",
+    "B7A0739",
+    "B7A0745",
+    "B7A0748",
+    "B7A0870",
+    "B7G0004",
+    "B7G0005",
+    "B7G0007",
+    "B7G0017",
+    "B7G0026",
+    "B7G0027",
+    "B7G0028",
+    "B7G0029",
+    "B7G0030",
+    "B7G0032",
+    "B7G0033",
+    "B7G0035",
+    "B7G0052",
+    "B7G0056",
+    "B7G0078",
+    "B7G0080",
+    "B7G0081",
+    "B7G0082",
+    "B7G0086",
+    "B7G0102",
+    "B7G0105",
+    "B7G0106",
+    "B7G0108",
+    "B7G0118",
+    "B7G0119",
+    "B7G0121",
+    "B7G0122",
+    "B7G0124",
+    "B7G0143",
+    "B7G0145",
+    "B7G0154",
+    "B7G0163",
+    "B7G0166",
+    "B7G0167",
+    "B7G0171",
+    "B7G0178",
+    "B7G0184",
+    "B7G0188",
+    "B7G0212",
+    "B7G0213",
+    "B7G0214",
+    "B7G0216",
+    "B7G0235",
+    "B7G0236",
+    "B7G0251",
+    "B7G0252",
+    "B7G0253",
+    "B7G0254",
+    "B7G0255",
+    "B7G0256",
+    "B7G0257",
+    "B7G0259",
+    "B7G0268",
+    "B7G0269",
+    "B7G0273",
+    "B7G0276",
+    "B7G0277",
+    "B7G0278",
+    "B7G0279",
+    "B7G0283",
+    "B7G0285",
+    "B7G0288",
+    "B7G0289",
+    "B7G0297",
+    "B7G0298",
+    "B7G0306",
+    "B7G0308",
+    "B7G0310",
+    "B7G0311",
+    "B7G0314",
+    "B7G0323",
+    "B7G0324",
+    "B7G0326",
+    "B7G0353",
+    "B7G0358",
+    "B7G0368",
+    "B7G0403",
+    "B7G0407",
+    "B7G0415",
+    "B7G0428",
+    "B7G0432",
+    "B7G0441",
+    "B7G0467",
+    "B7G0468",
+    "B7G0475",
+    "B7G0477",
+    "B7G0492",
+    "B7G0498",
+    "B7G0500",
+    "B7G0516",
+    "B7G0524",
+    "B7G0526",
+    "B7G0527",
+    "B7G0551",
+    "B7G0563",
+    "B7G0566",
+    "B7G0567",
+    "B7G0579",
+    "B7G0588",
+    "B7G0605",
+    "B7G0610",
+    "B7G0614",
+    "B7G0621",
+    "B7G0637",
+    "B7G0640",
+    "B7G0666",
+    "B7G0693",
+    "B7G0698",
+    "B7G0715",
+    "B7G0717",
+    "B7G0731",
+    "B7G0789",
+    "B7G0823",
+    "B7G0824",
+    "B7G0828",
+    "B7G0831",
+    "B7G0834",
+    "B7G0860",
+    "B7C0001",
+    "B7C0009",
+    "B7C0025",
+    "B7C0028",
+    "B7C0032",
+    "B7C0040",
+    "B7C0046",
+    "B7C0051",
+    "B7C0053",
+    "B7C0057",
+    "B7C0079",
+    "B7C0083",
+    "B7C0090",
+    "B7C0100",
+    "B7C0113",
+    "B7C0117",
+    "B7C0123",
+    "B7C0127",
+    "B7C0128",
+    "B7C0139",
+    "B7C0141",
+    "B7C0170",
+    "B7C0181",
+    "B7C0194",
+    "B7C0198",
+    "B7C0200",
+    "B7C0204",
+    "B7C0208",
+    "B7C0221",
+    "B7C0232",
+    "B7C0233",
+    "B7C0238",
+    "B7C0250",
+    "B7C0264",
+    "B7C0275",
+    "B7C0277",
+    "B7C0279",
+    "B7C0292",
+    "B7C0295",
+    "B7C0296",
+    "B7C0312",
+    "B7C0327",
+    "B7C0329",
+    "B7C0331",
+    "B7C0342",
+    "B7C0354",
+    "B7C0358",
+    "B7C0368",
+    "B7C0374",
+    "B7C0381",
+    "B7C0385",
+    "B7C0388",
+    "B7C0392",
+    "B7C0411",
+    "B7C0413",
+    "B7C0428",
+    "B7C0433",
+    "B7C0443",
+    "B7C0457",
+    "B7C0459",
+    "B7C0474",
+    "B7C0482",
+    "B7C0493",
+    "B7C0497",
+    "B7C0507",
+    "B7C0510",
+    "B7C0516",
+    "B7C0522",
+    "B7C0533",
+    "B7C0549",
+    "B7C0563",
+    "B7C0578",
+    "B7C0586",
+    "B7C0599",
+    "B7C0617",
+    "B7C0632",
+    "B7C0633",
+    "B7C0634",
+    "B7C0639",
+    "B7C0660",
+    "B7C0694",
+    "B7C0697",
+    "B7C0698",
+    "B7C0701",
+    "B7C0710",
+    "B7C0744",
+    "B7C0749",
+    "B7C0751",
+    "B7C0761",
+    "B7C0767",
+    "B7C0774",
+    "B7C0785",
+    "B7C0790",
+    "B7C0791",
+    "B7C0794",
+    "B7C0798",
+    "B7C0813",
+    "B7C0819",
+    "B7C0820",
+    "B7C0830",
+    "B7C0834",
+    "B7C0837",
+    "B7C0849",
+    "B7C0883",
+    "B7C0886",
+    "B7C0888",
+    "B7C0890",
+    "B7C0891",
+    "B7C0894",
+    "B7C0920",
+    "B7C0922",
+    "B7C0923",
+    "B7C0928",
+    "B7C0930",
+    "B7C0931",
+    "B7C0940",
+    "B7C0953",
+    "B7D0006",
+    "B7D0018",
+    "B7D0074",
+    "B7D0090",
+    "B7D0116",
+    "B7D0121",
+    "B7D0137",
+    "B7D0158",
+    "B7D0161",
+    "B7D0168",
+    "B7D0172",
+    "B7D0173",
+    "B7D0174",
+    "B7D0182",
+    "B7D0184",
+    "B7D0191",
+    "B7D0196",
+    "B7D0201",
+    "B7D0202",
+    "B7D0216",
+    "B7D0217",
+    "B7D0236",
+    "B7D0237",
+    "B7D0240",
+    "B7D0243",
+    "B7D0271",
+    "B7D0277",
+    "B7D0278",
+    "B7D0281",
+    "B7D0303",
+    "B7D0305",
+    "B7D0312",
+    "B7D0331",
+    "B7D0332",
+    "B7D0369",
+    "B7D0373",
+    "B7D0382",
+    "B7D0384",
+    "B7D0386",
+    "B7D0388",
+    "B7D0390",
+    "B7D0391",
+    "B7D0394",
+    "B7D0400",
+    "B7D0418",
+    "B7D0434",
+    "B7D0438",
+    "B7D0456",
+    "B7D0462",
+    "B7D0466",
+    "B7D0479",
+    "B7D0495",
+    "B7D0510",
+    "B7D0515",
+    "B7D0520",
+    "B7D0545",
+    "B7D0566",
+    "B7D0577",
+    "B7D0585",
+    "B7D0590",
+    "B7D0621",
+    "B7D0624",
+    "B7D0628",
+    "B7D0632",
+    "B7D0633",
+    "B7D0637",
+    "B7D0660",
+    "B7D0661",
+    "B7D0675",
+    "B7D0689",
+    "B7D0716",
+    "B7D0718",
+    "B7D0719",
+    "B7D0720",
+    "B7D0727",
+    "B7D0742",
+    "B7D0744",
+    "B7D0755",
+    "B7D0758",
+    "B7D0771",
+    "B7D0778",
+    "B7D0793",
+    "B7D0796",
+    "B7D0809",
+    "B7D0813",
+    "B7D0814",
+    "B7D0820",
+    "B7D0827",
+    "B7D0828",
+    "B7D0830",
+    "B7D0834",
+    "B7D0839",
+    "B7D0853",
+    "B7D0855",
+    "B7D0856"
+  ]
+}

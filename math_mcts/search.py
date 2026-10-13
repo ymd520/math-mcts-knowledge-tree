@@ -121,9 +121,8 @@ class ConceptSearchProblem(Problem):
     """状态: 层级树节点. 动作: 下钻到子节点. 终局: 到达概念叶节点.
 
     模拟步采用子树精确求值: 知识树完全已知、叶节点评分廉价,
-    直接返回该子树下所有概念的最大相关度. 此时 MCTS 等价于
-    UCB 探索引导的最优分支限界搜索, 必收敛到全局最相关概念,
-    且访问次数真实反映各分支的价值(可用于可视化).
+    直接返回该子树下所有概念的最大相关度，作为UCB探索的评分信号。
+    没有实现分支限界剪枝；有限迭代不保证找到全局最相关概念。
 
     回传方式为 max(见 Problem.value_op): 精确求值下均值回传会
     稀释父节点价值, 导致 UCB 错过藏着最优叶的分支.
@@ -217,7 +216,7 @@ class CollisionProblem(Problem):
 
     动作=追加一个不同领域的概念, 终局=凑成一对.
     搜索树: 根 -> 第一个概念 -> 第二个概念(跨领域) -> 叶=碰撞对.
-    模拟步用精确求值(该分支下最优碰撞分), MCTS 做 UCB 分支限界,
+    模拟步用候选集合内精确求值，MCTS 做有界候选探索，
     回传方式为 max(同 ConceptSearchProblem 的理由).
     """
 
@@ -240,8 +239,7 @@ class CollisionProblem(Problem):
         # 再并上 curated 碰撞涉及的概念, 保证人工精选对仍可被发现.
         rank = {"核心": 0, "重要": 1}
         roots = sorted(tree.concepts,
-                       key=lambda o: (rank.get(o.tags[0] if o.tags else "",
-                                               2), o.id))
+                       key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
         curated = {col["a"] for col in tree.collisions} | \
                   {col["b"] for col in tree.collisions}
         self._roots = sorted({o.id for o in roots[:self.CAND_CAP]} |
@@ -258,8 +256,7 @@ class CollisionProblem(Problem):
             rank = {"核心": 0, "重要": 1}
             pool = [o for o in self.tree.concepts
                     if o.id != cid and o.domain_cn != me.domain_cn]
-            pool.sort(key=lambda o: (rank.get(o.tags[0] if o.tags else "",
-                                              2), o.id))
+            pool.sort(key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
             cands = [o.id for o in pool[:self.CAND_CAP]]
             curated_partners = set()
             for col in self.tree.collisions:
@@ -355,7 +352,7 @@ def search_concepts(tree: KnowledgeTree, query: str, top_k: int = 5,
                     iterations: int = 2000, seed: int = 7):
     """用 MCTS 在知识树上检索与 query 最相关的 top_k 个概念.
 
-    返回 [(Concept, 访问次数, 平均回报)] 列表, 按访问次数降序.
+    返回 [(Concept, 访问次数, 价值)] 列表，按价值降序，访问次数打破并列。
     """
     problem = ConceptSearchProblem(query=query, tree=tree)
     _, root = mcts(problem, iterations=iterations, seed=seed,
@@ -375,3 +372,4 @@ def search_concepts(tree: KnowledgeTree, query: str, top_k: int = 5,
     # 访问次数仅作并列时的 tie-break.
     leaves.sort(key=lambda x: (x[2], x[1]), reverse=True)
     return [(tree.leaf_concept(s), v, m) for s, v, m in leaves[:top_k]]
+

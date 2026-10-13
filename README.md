@@ -1,231 +1,115 @@
 # 数学知识 MCTS 搜索树
 
-## v1.9.0：每层至少20知识点、至少20层
+当前代码与整合目录版本：**v1.10.0**。纯Python标准库，Python3.9+。
 
-新增同步分层碰撞：每层由至少20个不同前提参与推导，上一层结果进入下一层；
-成功证书还要求每层目标相关前提数至少20、目标实际依赖深度至少20。
-支持更宽、更深配置，并明确报告预算截断与知识不足。
-调用与测试见 [LAYERED_COLLISION.md](LAYERED_COLLISION.md)。
+将数学知识组织为领域→分支→主题→概念，支持知识检索、学习路径、知识配对，
+以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
+搜索次数和深度不代表数学原创性或证明真实性。
 
-## v1.8.0：多前提、多层推导入口
+## 当前知识数量
 
-新增带对象类型、全部前提匹配、目标相关推理超图和证书重放的推导层。
-调用方明确审核的 Horn 规则才能参与推导；导入知识文本进入待验证候选区。
-原有 `collide` 仍是知识配对，新的 `derive` 才负责多层推导。
-完整架构与边界见 [REASONING.md](REASONING.md)。
+原始基础库9417条；补充390条；默认统一加载9807条。
+59条旧知识补充条件、结论和参考来源；603条按依赖引用标为结构上重要，
+这两类不是新增知识。原始导入语料234576条另行统计，不等于同样数量的
+重要定理或已经审核的概念。
+
+| 难度 | 重要/核心知识：之前 | 当前 |
+|---|---:|---:|
+| level1 初中基础 | 87 | 290 |
+| level2 高中与微积分入门 | 544 | 802 |
+| level3 大学基础 | 1671 | 1927 |
+| level4 大学进阶 | 1442 | 1734 |
+
+重要性、难度、内容核验程度分别记录。部分旧等级尚待重评；新卡片的编辑检查
+不是Lean验证，来源网址为主题参考，不是逐条定理证明定位。
+详见[目录架构](CATALOG_ARCHITECTURE.md)和[收录规范](CURATION.md)。
+
+## 快速调用
+
+```sh
+git clone https://github.com/ymd520/math-mcts-knowledge-tree.git
+cd math-mcts-knowledge-tree
+python -m math_mcts info
+python -m math_mcts search "分数除法" --levels 1,2 --important
+python -m math_mcts search "支配收敛" --levels 3,4 --important --domain 分析
+python -m math_mcts show "概率一不等于处处成立"
+python -m math_mcts path "傅里叶变换"
+python -m math_mcts collide --levels 1,2,3,4 --important --top_k 10
+```
+
+```python
+from math_mcts import KnowledgeTree, search_concepts, collide_concepts
+
+tree = KnowledgeTree.load()  # 基础库+哈希校验补充包+绑定原内容的覆盖层
+scope = tree.select(levels=[1,2,3,4], important_only=True)
+print(scope.inventory())
+results = search_concepts(scope, "概率 零事件", top_k=10)
+pairs = collide_concepts(scope, top_k=10)
+print(tree.find_all("Addition commutativity"))
+```
+
+检索视图保留原先修ID，可能存在视图外依赖；学习路径应使用完整树。
+`find_all`保留同名多义条目，不盲目删除或合并。
+
+## 导入知识模块
+
+```python
+tree = KnowledgeTree.load_imported(
+    module_prefix=["Mathlib.Algebra.Ring", "Mathlib.Analysis.SpecialFunctions.Log"],
+    include_curated=True)
+```
+
+模块索引只读取相关压缩分片，校验来源哈希。导入声明保留原始来源、假设和
+审核状态；符号引用不当作已确认的先修依赖。参见
+[导入说明](imports/mcts_text_20261013/README.md)。
+
+## 多前提和多层推导
 
 ```sh
 python -m math_mcts derive examples/extreme_value.json --iterations 80 -o report.json
 python -m math_mcts verify-derivation examples/extreme_value.json report.json
+
+python examples/layered_collision.py --width 20 --layers 20 -o layered_problem.json
+python -m math_mcts derive-layers layered_problem.json --iterations 5 -o layered_report.json
+python -m math_mcts verify-layers layered_problem.json layered_report.json
 ```
 
-此层验证相对于显式规则的推导合法性，尚未接入 Lean 内核或自动知识翻译。
+`collide`是知识配对检索；`derive`和`derive-layers`是相对于明确审核Horn规则
+的可重放推导。分层模式要求每层至少20个不同目标相关前提、至少20层、
+目标实际依赖深度至少20。条件不足时明确失败，不用重复知识或无关分支凑数。
+20×20示例是合成架构测试，不是400条新数学定理。
 
-把**全领域数学基础与重要知识**组织成一棵**蒙特卡洛树搜索 (MCTS) 搜索树**：
-知识本身就是树（领域 → 分支 → 主题 → 概念），MCTS 在这棵树上做两种智能搜索——
-**学习路径规划**与**概念检索**。零第三方依赖，纯 Python 标准库。
-
-> English: A Monte Carlo Tree Search over an integrated mathematics knowledge
-> tree (7 domains, 122 concepts). MCTS plans optimal learning paths through
-> prerequisite dependencies and retrieves concepts by searching the
-> domain → branch → topic → concept hierarchy.
-
-当前代码版本: v1.9.0（下方历史知识统计未统一更新；更新日志见文末）。
-
----
-
-## 知识树覆盖（122 个概念，7 大领域）
-
-| 领域 | 概念数 | 分支举例 |
-|---|---|---|
-| 数学基础 Foundations | 19 | 集合论、数理逻辑、证明方法 |
-| 代数 Algebra | 23 | 初等代数、线性代数、抽象代数、数论 |
-| 分析 Analysis | 29 | 微积分、实分析、复分析、微分方程、级数与变换 |
-| 几何与拓扑 Geometry & Topology | 17 | 欧氏几何、解析几何、微分几何、拓扑学 |
-| 概率与统计 Probability & Statistics | 19 | 概率论、随机变量、统计推断 |
-| 离散数学 Discrete Mathematics | 15 | 组合数学、图论、离散结构 |
-| 计算与优化 Computation & Optimization | 20 | 数值分析、最优化、算法数学 |
-
-每个概念包含：中英名称、一句话定义（零基础可读）、关键公式（纯 Unicode）、
-难度等级（1 入门–5 博士）、前置依赖、核心/重要标签。
-
-## MCTS 在这里做什么
-
-标准 MCTS 四步循环——**选择（UCB1）→ 扩展 → 模拟（随机 rollout）→ 回传**，
-实现于 `math_mcts/mcts.py`，通过统一的 `Problem` 接口驱动两种搜索：
-
-1. **学习路径规划**（`plan_learning_path`）
-   在"前置依赖图"上搜索：状态 = 已学概念序列，动作 = 下一个可学的概念
-   （前置已满足）。回报函数奖励"到达目标"，惩罚"难度跳跃过大"和"路径过长"。
-   结果是一条**每一步的前置都已学过**的最优学习路径。
-
-2. **概念检索**（`search_concepts`）
-   在"领域 → 分支 → 主题 → 概念"层级树上搜索：动作 = 沿层级下钻，
-   叶节点回报 = 查询与概念的相关度（文本重叠 + 名称命中加权 + 核心标签加成）。
-   MCTS 的 UCB 机制自动把算力集中到最相关的分支——知识树**就是**搜索树。
-   实现细节：知识树完全已知、叶节点评分廉价，因此模拟步采用**子树精确求值**
-   （返回子树内最大相关度，而非随机 rollout）。此时 MCTS 等价于 UCB 探索引导的
-   最优分支限界搜索，必收敛到全局最相关概念；`Problem.simulate` 钩子保留默认的
-   随机 rollout 供其他问题使用。
-
-3. **知识碰撞**（`collide_concepts`）
-   让 MCTS 高效地做"数学知识碰撞"：搜索树为"根 → 第一个概念 → 跨领域第二个概念"，
-   叶节点回报 = 碰撞价值分（curated 碰撞记录 +2.0、跨领域 +0.5、双核心 +0.3、
-   难度接近加分）。`data/collisions.json` 收录已知的经典碰撞（如特征函数、
-   正交展开、PageRank），未知的高分对则标记为"待探索"——那往往是值得深挖的
-   交叉方向。同样使用精确求值 + max 回传的 UCB 分支限界。
-
-## 安装
-
-```bash
-git clone https://github.com/ymd520/math-mcts-knowledge-tree.git
-cd math-mcts-knowledge-tree
-# 无第三方依赖，Python 3.9+ 直接运行
-```
-
-## 快速开始
-
-```bash
-# 知识库概览 + 完整性自检
-python -m math_mcts info
-
-# 规划学习路径：从零基础到"傅里叶变换"怎么学
-python -m math_mcts path "傅里叶变换"
-
-# 已掌握"条件概率"，从此之后开始规划
-python -m math_mcts path "马尔可夫链" --known "条件概率"
-
-# 检索相关概念
-python -m math_mcts search "贝叶斯定理" --top_k 5
-
-# 查看概念卡片
-python -m math_mcts show "蒙特卡洛树搜索"
-
-# 导出学习计划为 Markdown
-python -m math_mcts export-path "傅里叶变换" -o 学习计划.md
-
-# 知识碰撞：找最值得组合的概念对
-python -m math_mcts collide "傅里叶变换" --top_k 5
-```
-
-Python API：
-
-```python
-from math_mcts import (KnowledgeTree, plan_learning_path, search_concepts,
-                       export_path_markdown, to_dot)
-
-tree = KnowledgeTree.load()          # 加载内置知识库（142 概念）
-
-# 1. 学习路径规划（known=已掌握的概念）
-path = plan_learning_path(tree, "梯度下降", iterations=3000,
-                          known=["AN01", "AN03"])
-for c in path:
-    print(c.cn, "| 难度", c.level, "|", c.path())
-
-# 2. 概念检索
-for c, visits, score in search_concepts(tree, "机器学习 优化", top_k=5):
-    print(c.cn, c.definition)
-
-# 3. 前置依赖闭包（拓扑有序）
-print(tree.prereq_closure("AN21"))   # 学傅里叶变换之前要先学什么
-
-# 4. 导出学习计划 / 可视化某次 MCTS 搜索树
-open("plan.md", "w").write(export_path_markdown(path))
-
-from math_mcts.mcts import mcts
-from math_mcts.search import ConceptSearchProblem
-_, root = mcts(ConceptSearchProblem(tree, "极限"), iterations=800)
-open("tree.dot", "w").write(
-    to_dot(root, label_fn=lambda s: tree.hierarchy_label(s)))
-# dot -Tpng tree.dot -o tree.png   （需安装 graphviz）
-```
+知识文本可进入`DiscoveryQueue`候选区，精确翻译并审核后才可成为RuleBook规则。
+尚未接入全库自动翻译、Lean内核、通用猜想发现或自动反例后端。
+详见[推导架构](REASONING.md)与[分层碰撞](LAYERED_COLLISION.md)。
 
 ## 项目结构
 
-```
-math-mcts-knowledge-tree/
-├── math_mcts/
-│   ├── __init__.py        # 对外 API
-│   ├── __main__.py        # CLI：path / search / info
-│   ├── knowledge.py       # 概念节点、知识树加载、层级浏览、前置依赖图
-│   ├── mcts.py            # MCTS 引擎（选择/扩展/模拟/回传，UCB1）
-│   ├── search.py          # 两种搜索问题 + 高层 API
-│   └── data/
-│       └── knowledge.json # 102 个概念的全部知识数据
-├── tests/test_mcts.py     # 完整性 + 路径合法性 + 检索 + MCTS 收敛性测试
-├── examples/demo.py       # 演示脚本
-└── README.md
-```
+| 路径 | 职责 |
+|---|---|
+| math_mcts/knowledge.py | Concept、统一加载、别名、层级与先修依赖 |
+| math_mcts/catalog.py | 补充分片、哈希绑定覆盖层和数量统计 |
+| math_mcts/search.py | 学习路径、概念检索、知识配对 |
+| math_mcts/mcts.py | 通用MCTS调度接口 |
+| math_mcts/reasoning.py | 类型化多前提规则与证书重放 |
+| math_mcts/layered.py | 同步批次碰撞、真实宽度/深度检查 |
+| math_mcts/data/curated/ | level1–4补充包、清单与审计记录 |
+| tools/build_curated_catalog.py | 从独立编写的文本可复现构建补充包 |
+| source_index/ | 固定版本mathlib4源码索引，与编辑知识卡分别计数 |
 
-## 扩充知识库
-
-`math_mcts/data/knowledge.json` 是纯数据文件，欢迎按以下格式追加概念：
-
-```json
-{
-  "id": "AN22",
-  "domain_cn": "分析", "domain_en": "Analysis",
-  "branch_cn": "微积分", "topic_cn": "一元微积分",
-  "cn": "洛必达法则", "en": "L'Hôpital's Rule",
-  "definition": "0/0 或 ∞/∞ 型极限等于分子分母分别求导后的极限。",
-  "formulas": ["lim f/g = lim f′/g′"],
-  "level": 2,
-  "prereq": ["AN03"],
-  "tags": ["重要"]
-}
-```
-
-追加后运行自检：`python -m math_mcts info`（自动检查前置是否存在、有无循环依赖），
-再跑测试：`python tests/test_mcts.py`。
-
-## 测试
-
-```bash
-python tests/test_mcts.py
-# ALL TESTS PASSED
-```
-
-## 更新日志
-
-详见 [CHANGELOG.md](CHANGELOG.md)（遵循 Keep a Changelog 规范，每次发版同步更新）。
-
-
-## License
-
-MIT
-
-
-## 固定来源源码索引扩展
-
-新增 [source_index](source_index/README.md)：固定版本 mathlib4 的源模块图和真实 UCT 检索，包含来源、许可证、哈希校验和可复现构建。此层与本库知识卡分别计数，源码位置不是经过收录审核的概念卡。
+## 验证与维护
 
 ```sh
-python source_index/src/bootstrap.py
-python source_index/src/mcts.py --query "finite group convolution" --iterations 2000 --depth 30
+python tests/test_catalog.py
+python tests/test_mcts.py
+python tests/test_reasoning.py
+python tests/test_layered.py
+python tests/test_imported.py  # 需要完整导入压缩分片
 ```
 
-本次本地验证覆盖 8,619 个源模块、221,184 个词法声明位置；这些位置包含辅助引理与程序基础设施，不能等同于重要数学定理数量。详情见 [SOURCE_INDEX.md](SOURCE_INDEX.md)。
+覆盖层绑定原条目哈希。基础库发生相关变化后，应检查差异并重建，
+不能只刷新哈希让旧审核自动生效。新增源码见
+`math_mcts/data/curated_seed_20261014.txt`；构建器保持新增ID稳定。
 
-## 全量 MCTS 文本导入
-
-[2026-10-13 导入说明](imports/mcts_text_20261013/README.md)：20份原始TXT无损归档，234,576条记录按 Concept 结构存储；假设、来源、核验状态、附录完整保留。导入语料的重要性和中文释义尚未逐条审核，不等同于234,576条重要定理。
-
-v1.6.0 起导入语料为引擎一等公民（默认精选库仍保持 4588 条不变）：
-
-```python
-from math_mcts import KnowledgeTree, search_concepts, collide_concepts
-# 单模块检索
-tree = KnowledgeTree.load_imported(
-    module_prefix="Mathlib.Algebra.GroupWithZero.Action.Basic",
-    include_curated=False)
-# 多模块跨领域碰撞（导入领域已映射到 7 域中文体系）
-mixed = KnowledgeTree.load_imported(
-    module_prefix=["Mathlib.Algebra.Ring", "Mathlib.Analysis.SpecialFunctions.Log"],
-    include_curated=False)
-collide_concepts(mixed, top_k=3)
-```
-
-架构说明：`module_index.json` 让加载只读相关分片（典型 1–4 秒）；碰撞候选懒计算，
-23 万规模下初始化不再是 O(N²)；`find()` 精确查找 O(1)。结构/来源/无损/架构检查：
-`python tests/test_imported.py`。
-
+更新历史：[CHANGELOG.md](CHANGELOG.md)。项目代码采用MIT许可；
+外部来源的许可和原始来源记录分别保留。独立编写的数学陈述没有复制外部教材段落。
