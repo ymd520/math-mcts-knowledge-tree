@@ -2,7 +2,7 @@
   "meta": {
     "name": "全领域数学基础与重要知识 MCTS 搜索树",
     "name_en": "Math Knowledge MCTS Search Tree",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "structure": "领域 -> 分支 -> 主题 -> 概念",
     "note": "每条概念: 一句话定义(零基础可读) + 关键公式(纯Unicode) + 难度1-5 + 前置依赖"
   },
@@ -134,5 +134,26 @@
     {"id": "CA14", "domain_cn": "计算与优化", "domain_en": "Computation & Optimization", "branch_cn": "最优化", "topic_cn": "无约束优化", "cn": "反向传播的数学", "en": "Backpropagation", "definition": "链式法则+动态规划:梯度从输出层反向流回每一层,一次前向一次反向算出全部参数梯度。", "formulas": ["∂L/∂w = (∂L/∂y)·(∂y/∂w)"], "level": 4, "prereq": ["CA13", "AN07"], "tags": ["重要"]},
     {"id": "CA15", "domain_cn": "计算与优化", "domain_en": "Computation & Optimization", "branch_cn": "算法数学", "topic_cn": "随机算法", "cn": "蒙特卡洛树搜索", "en": "Monte Carlo Tree Search", "definition": "选择(UCB)→扩展→模拟→回传:用随机模拟评估走法,AlphaGo的核心算法;本项目用它搜索数学知识树。", "formulas": ["UCB = Q + c·√(ln N/n)"], "level": 4, "prereq": ["CA12", "PR02"], "tags": ["核心"]},
     {"id": "CA16", "domain_cn": "计算与优化", "domain_en": "Computation & Optimization", "branch_cn": "最优化", "topic_cn": "无约束优化", "cn": "模拟退火", "en": "Simulated Annealing", "definition": "以一定概率接受变差的解,温度越低概率越小;'退火'的隐喻帮助算法跳出局部最优。", "formulas": [], "level": 3, "prereq": ["CA05"], "tags": []}
+  ,
+    {"id": "BS18", "domain_cn": "数学基础", "domain_en": "Foundations", "branch_cn": "集合论", "topic_cn": "映射", "cn": "函数复合与逆函数", "en": "Function Composition and Inverse", "definition": "先f后g记作g∘f;f可逆当且仅当f是双射,逆函数把映射关系整个翻转过来。", "formulas": ["(g∘f)(x) = g(f(x))"], "level": 2, "prereq": ["BS05", "BS06"], "tags": []},
+    {"id": "BS19", "domain_cn": "数学基础", "domain_en": "Foundations", "branch_cn": "集合论", "topic_cn": "无穷", "cn": "选择公理简介", "en": "Axiom of Choice", "definition": "从一族非空集合中各选一个元素——听起来显然,却独立于其他公理,且等价于良序定理。", "formulas": [], "level": 4, "prereq": ["BS08"], "tags": []},
+    {"id": "AL21", "domain_cn": "代数", "domain_en": "Algebra", "branch_cn": "线性代数", "topic_cn": "空间与变换", "cn": "若尔当标准型", "en": "Jordan Canonical Form", "definition": "不能对角化时最接近对角的形态: Jordan块拼成,特征值上对角线、1上次对角线。", "formulas": [], "level": 5, "prereq": ["AL18"], "tags": []},
+    {"id": "AL22", "domain_cn": "代数", "domain_en": "Algebra", "branch_cn": "线性代数", "topic_cn": "空间与变换", "cn": "对偶空间", "en": "Dual Space", "definition": "V上全体线性函数组成的空间V*;有限维时dimV*=dimV,行向量与列向量的对偶视角。", "formulas": [], "level": 4, "prereq": ["AL08"], "tags": []},
+    {"id": "AL23", "domain_cn": "代数", "domain_en": "Algebra", "branch_cn": "抽象代数", "topic_cn": "群环域", "cn": "模简介", "en": "Module", "definition": "环上的向量空间: 标量换成环元素;阿贝尔群就是ℤ-模,模论统一了线性代数与群论。", "formulas": [], "level": 5, "prereq": ["AL14"], "tags": []},
+    {"id": "AN26", "domain_cn": "分析", "domain_en": "Analysis", "branch_cn": "实分析基础", "topic_cn": "级数", "cn": "幂级数收敛半径", "en": "Radius of Convergence", "definition": "幂级数在收敛圆内收敛、圆外发散;半径由根值/比值公式算出,边界点要另行检验。", "formulas": ["R = 1/limsup ⁿ√|aₙ|"], "level": 3, "prereq": ["AN12"], "tags": []},
+    {"id": "AN27", "domain_cn": "分析", "domain_en": "Analysis", "branch_cn": "微积分", "topic_cn": "多元微积分", "cn": "隐函数定理", "en": "Implicit Function Theorem", "definition": "F(x,y)=0在∂F/∂y≠0处局部解出y=f(x);反函数定理的兄弟,微分几何的开门钥匙。", "formulas": [], "level": 4, "prereq": ["AN07"], "tags": []},
+    {"id": "AN28", "domain_cn": "分析", "domain_en": "Analysis", "branch_cn": "微积分", "topic_cn": "一元微积分", "cn": "广义积分", "en": "Improper Integral", "definition": "积分区间无穷或被积函数无界时的极限式积分;∫₁^∞ dx/xᵖ 收敛当且仅当p>1。", "formulas": ["∫₁^∞ dx/xᵖ 收敛 ⟺ p>1"], "level": 3, "prereq": ["AN06"], "tags": []},
+    {"id": "AN29", "domain_cn": "分析", "domain_en": "Analysis", "branch_cn": "微积分", "topic_cn": "多元微积分", "cn": "变分法入门", "en": "Calculus of Variations", "definition": "求泛函的极值: 最速降线、悬链线都是欧拉-拉格朗日方程的解,最小作用量原理的数学。", "formulas": [], "level": 5, "prereq": ["AN08"], "tags": []},
+    {"id": "GE15", "domain_cn": "几何与拓扑", "domain_en": "Geometry & Topology", "branch_cn": "微分几何", "topic_cn": "曲线与曲面", "cn": "测地线", "en": "Geodesic", "definition": "曲面上局部最短的曲线: 球面上的大圆弧;广义相对论中自由粒子沿测地线运动。", "formulas": [], "level": 4, "prereq": ["GE07"], "tags": []},
+    {"id": "GE16", "domain_cn": "几何与拓扑", "domain_en": "Geometry & Topology", "branch_cn": "拓扑学", "topic_cn": "拓扑不变量", "cn": "欧拉示性数", "en": "Euler Characteristic", "definition": "χ=V−E+F: 多面体的拓扑指纹,球面为2、环面为0;高斯-博内定理的另一半主角。", "formulas": ["χ = V − E + F"], "level": 4, "prereq": ["GE13"], "tags": []},
+    {"id": "GE17", "domain_cn": "几何与拓扑", "domain_en": "Geometry & Topology", "branch_cn": "拓扑学", "topic_cn": "拓扑基础", "cn": "双曲几何入门", "en": "Hyperbolic Geometry", "definition": "平行公设不成立的几何: 三角形内角和小于180°,庞加莱圆盘是它的模型。", "formulas": [], "level": 5, "prereq": ["GE12"], "tags": []},
+    {"id": "PR18", "domain_cn": "概率与统计", "domain_en": "Probability & Statistics", "branch_cn": "随机变量", "topic_cn": "数字特征", "cn": "条件期望", "en": "Conditional Expectation", "definition": "E[X|Y]: 已知Y的条件下X的平均;回归、鞅论、贝叶斯估计的共同语言。", "formulas": ["E[E[X|Y]] = E[X]"], "level": 4, "prereq": ["PR07"], "tags": []},
+    {"id": "PR19", "domain_cn": "概率与统计", "domain_en": "Probability & Statistics", "branch_cn": "随机变量", "topic_cn": "极限定理", "cn": "泊松过程", "en": "Poisson Process", "definition": "稀有事件在时间上的流: 独立增量、无记忆性;电话呼入、放射性衰变都用它建模。", "formulas": [], "level": 4, "prereq": ["PR15"], "tags": []},
+    {"id": "DM14", "domain_cn": "离散数学", "domain_en": "Discrete Mathematics", "branch_cn": "图论", "topic_cn": "图基础", "cn": "平面图与四色定理", "en": "Planar Graph and Four Color Theorem", "definition": "画在平面上边不交叉的图;任何地图只用四种颜色可染——计算机辅助证明的里程碑。", "formulas": ["e ≤ 3v − 6 (v≥3)"], "level": 3, "prereq": ["DM05"], "tags": []},
+    {"id": "DM15", "domain_cn": "离散数学", "domain_en": "Discrete Mathematics", "branch_cn": "组合数学", "topic_cn": "计数", "cn": "组合恒等式", "en": "Combinatorial Identity", "definition": "C(n,k)=C(n,n−k)等;好的证明是两边数同一件事,组合解释胜过代数硬算。", "formulas": ["C(n,k) = C(n,n−k)"], "level": 3, "prereq": ["DM01"], "tags": ["重要"]},
+    {"id": "CA17", "domain_cn": "计算与优化", "domain_en": "Computation & Optimization", "branch_cn": "最优化", "topic_cn": "无约束优化", "cn": "共轭梯度法", "en": "Conjugate Gradient", "definition": "沿共轭方向搜索,二次函数n步收敛;解大型稀疏线性方程组的迭代主力。", "formulas": [], "level": 4, "prereq": ["CA06"], "tags": []},
+    {"id": "CA18", "domain_cn": "计算与优化", "domain_en": "Computation & Optimization", "branch_cn": "最优化", "topic_cn": "无约束优化", "cn": "EM算法", "en": "Expectation-Maximization", "definition": "有隐变量时的极大似然: E步算期望、M步做最大化,交替爬升;混合高斯聚类的标准解法。", "formulas": [], "level": 5, "prereq": ["PR17", "CA06"], "tags": ["重要"]},
+    {"id": "CA19", "domain_cn": "计算与优化", "domain_en": "Computation & Optimization", "branch_cn": "算法数学", "topic_cn": "随机算法", "cn": "PageRank的数学", "en": "PageRank", "definition": "网页重要性=随机游走的平稳分布: 解π=πP,幂迭代收敛,阻尼因子d=0.85防陷阱。", "formulas": ["π = πP"], "level": 3, "prereq": ["PR15", "AL10"], "tags": ["重要"]},
+    {"id": "CA20", "domain_cn": "计算与优化", "domain_en": "Computation & Optimization", "branch_cn": "算法数学", "topic_cn": "算法设计", "cn": "快速傅里叶变换", "en": "Fast Fourier Transform", "definition": "分治算离散傅里叶变换: O(n²)→O(n log n);没有FFT就没有现代数字信号处理。", "formulas": [], "level": 4, "prereq": ["AN21", "CA10"], "tags": ["核心"]}
   ]
 }

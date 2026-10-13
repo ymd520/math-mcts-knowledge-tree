@@ -5,7 +5,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from math_mcts import (KnowledgeTree, plan_learning_path, search_concepts,
-                        export_path_markdown, to_dot)
+                        export_path_markdown, to_dot, collide_concepts,
+                        collision_score)
 from math_mcts.mcts import Problem, mcts
 from math_mcts.search import ConceptSearchProblem
 
@@ -109,8 +110,40 @@ def test_viz_dot():
 
 def test_concept_count_grown():
     tree = KnowledgeTree.load()
-    assert len(tree.concepts) >= 120, "v1.1 概念数应 ≥120"
+    assert len(tree.concepts) >= 140, "v1.2 概念数应 ≥140"
     assert tree.check_integrity() == []
+
+
+def test_collisions_integrity():
+    tree = KnowledgeTree.load()
+    assert len(tree.collisions) >= 10
+    for col in tree.collisions:
+        assert col["a"] in tree.by_id and col["b"] in tree.by_id
+        ca, cb = tree.get(col["a"]), tree.get(col["b"])
+        assert ca.domain_cn != cb.domain_cn, "碰撞应跨领域"
+
+
+def test_collide_around_seed():
+    tree = KnowledgeTree.load()
+    res = collide_concepts(tree, seed="傅里叶变换", top_k=5,
+                           iterations=3000)
+    assert len(res) == 5
+    # 特征函数(AN21×PR07)是 curated 碰撞, 应排第一
+    (a, b, score, note) = res[0]
+    assert {a.id, b.id} == {"AN21", "PR07"}, \
+        f"最优碰撞应为特征函数: {a.cn}×{b.cn}"
+    assert note and "特征函数" in note
+    # 所有返回对必须跨领域
+    for x, y, _, _ in res:
+        assert x.domain_cn != y.domain_cn
+
+
+def test_collide_global():
+    tree = KnowledgeTree.load()
+    res = collide_concepts(tree, seed=None, top_k=3, iterations=4000)
+    assert len(res) == 3
+    scores = [s for _, _, s, _ in res]
+    assert scores == sorted(scores, reverse=True)
 
 
 if __name__ == "__main__":
@@ -125,4 +158,7 @@ if __name__ == "__main__":
     test_export_markdown()
     test_viz_dot()
     test_concept_count_grown()
+    test_collisions_integrity()
+    test_collide_around_seed()
+    test_collide_global()
     print("ALL TESTS PASSED")

@@ -10,6 +10,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 DATA_PATH = Path(__file__).with_name("data") / "knowledge.json"
+COLLISIONS_PATH = Path(__file__).with_name("data") / "collisions.json"
 
 
 @dataclass
@@ -56,18 +57,36 @@ class Concept:
 class KnowledgeTree:
     """整棵数学知识树: 查询、层级浏览、前置依赖闭包."""
 
-    def __init__(self, concepts: list[Concept], meta: dict | None = None):
+    def __init__(self, concepts: list[Concept], meta: dict | None = None,
+                 collisions: list[dict] | None = None):
         self.meta = meta or {}
         self.concepts: list[Concept] = concepts
         self.by_id: dict[str, Concept] = {c.id: c for c in concepts}
+        self.collisions: list[dict] = collisions or []
+        # 碰撞速查: frozenset({a,b}) -> note
+        self._collision_note: dict[frozenset, str] = {}
+        for col in self.collisions:
+            self._collision_note[frozenset((col["a"], col["b"]))] = \
+                col["note"]
         self._build_hierarchy()
 
     # -- 加载 ------------------------------------------------------------
     @classmethod
-    def load(cls, path: str | Path = DATA_PATH) -> "KnowledgeTree":
+    def load(cls, path: str | Path = DATA_PATH,
+             collisions_path: str | Path = COLLISIONS_PATH
+             ) -> "KnowledgeTree":
         raw = json.loads(Path(path).read_text(encoding="utf-8"))
         concepts = [Concept(**item) for item in raw["concepts"]]
-        return cls(concepts, raw.get("meta", {}))
+        collisions: list[dict] = []
+        if Path(collisions_path).exists():
+            collisions = json.loads(
+                Path(collisions_path).read_text(encoding="utf-8")
+            )["collisions"]
+        return cls(concepts, raw.get("meta", {}), collisions)
+
+    def collision_note(self, a: str, b: str) -> str | None:
+        """返回概念对 (a,b) 的 curated 碰撞说明, 无则返回 None."""
+        return self._collision_note.get(frozenset((a, b)))
 
     # -- 基本查询 --------------------------------------------------------
     def get(self, cid: str) -> Concept:

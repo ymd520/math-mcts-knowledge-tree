@@ -4,6 +4,7 @@
     python -m math_mcts search "贝叶斯 定理"   # 检索相关概念
     python -m math_mcts show "梯度下降"        # 查看概念卡片
     python -m math_mcts export-path "傅里叶变换" -o plan.md  # 导出学习计划
+    python -m math_mcts collide "傅里叶变换"   # 知识碰撞
     python -m math_mcts info                  # 知识库概览
 """
 from __future__ import annotations
@@ -12,7 +13,7 @@ import argparse
 
 from .knowledge import KnowledgeTree
 from .search import (plan_learning_path, search_concepts,
-                     export_path_markdown)
+                     export_path_markdown, collide_concepts)
 
 
 def cmd_path(args):
@@ -61,6 +62,21 @@ def cmd_export_path(args):
     print(f"学习计划已导出: {args.output} (共 {len(concepts)} 步)")
 
 
+def cmd_collide(args):
+    tree = KnowledgeTree.load()
+    results = collide_concepts(tree, seed=args.seed, top_k=args.top_k,
+                               iterations=args.iterations)
+    title = f"围绕「{args.seed}」" if args.seed else "全局"
+    print(f"知识碰撞 ({title}, MCTS 迭代 {args.iterations} 次):")
+    for i, (a, b, score, note) in enumerate(results, 1):
+        print(f"  {i}. {a.cn} × {b.cn}  (碰撞分 {score:.2f})")
+        print(f"     {a.domain_cn} / {b.domain_cn}")
+        if note:
+            print(f"     💡 {note}")
+        else:
+            print(f"     待探索: {a.definition[:40]}… + {b.definition[:40]}…")
+
+
 def cmd_info(args):
     tree = KnowledgeTree.load()
     problems = tree.check_integrity()
@@ -94,6 +110,12 @@ def main():
     ep.add_argument("-o", "--output", default="学习计划.md")
     ep.add_argument("--iterations", type=int, default=3000)
     ep.set_defaults(func=cmd_export_path)
+    co = sub.add_parser("collide", help="知识碰撞: 找最值得组合的概念对")
+    co.add_argument("seed", nargs="?", default=None,
+                    help="围绕哪个概念碰撞(省略=全局最优碰撞对)")
+    co.add_argument("--top_k", type=int, default=5)
+    co.add_argument("--iterations", type=int, default=3000)
+    co.set_defaults(func=cmd_collide)
     s = sub.add_parser("search", help="关键词检索相关概念")
     s.add_argument("query", help="检索关键词")
     s.add_argument("--top_k", type=int, default=5)

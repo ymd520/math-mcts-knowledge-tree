@@ -117,7 +117,12 @@ class ConceptSearchProblem(Problem):
     直接返回该子树下所有概念的最大相关度. 此时 MCTS 等价于
     UCB 探索引导的最优分支限界搜索, 必收敛到全局最相关概念,
     且访问次数真实反映各分支的价值(可用于可视化).
+
+    回传方式为 max(见 Problem.value_op): 精确求值下均值回传会
+    稀释父节点价值, 导致 UCB 错过藏着最优叶的分支.
     """
+
+    value_op = "max"
 
     def __init__(self, tree: KnowledgeTree, query: str):
         self.tree = tree
@@ -171,6 +176,115 @@ class ConceptSearchProblem(Problem):
         return score
 
 
+def collision_score(tree: KnowledgeTree, a: str, b: str) -> float:
+    """概念对 (a,b) 的碰撞价值分.
+
+    curated 碰撞记录 +2.0; 跨领域 +0.5; 双核心 +0.3;
+    难度接近加分(同层概念更易组合出成果); 共享标签加分.
+    """
+    ca, cb = tree.get(a), tree.get(b)
+    score = 0.0
+    if tree.collision_note(a, b):
+        score += 2.0
+    if ca.domain_cn != cb.domain_cn:
+        score += 0.5
+    if "核心" in ca.tags and "核心" in cb.tags:
+        score += 0.3
+    score += 0.2 * (1 - abs(ca.level - cb.level) / 4)
+    shared = set(ca.tags) & set(cb.tags) - {"核心"}
+    score += 0.1 * min(2, len(shared))
+    return round(score, 3)
+
+
+class CollisionProblem(Problem):
+    """知识碰撞: 状态=已选概念元组(长度0/1/2).
+
+    动作=追加一个不同领域的概念, 终局=凑成一对.
+    搜索树: 根 -> 第一个概念 -> 第二个概念(跨领域) -> 叶=碰撞对.
+    模拟步用精确求值(该分支下最优碰撞分), MCTS 做 UCB 分支限界,
+    回传方式为 max(同 ConceptSearchProblem 的理由).
+    """
+
+    value_op = "max"
+
+    def __init__(self, tree: KnowledgeTree, seed: str | None = None):
+        self.tree = tree
+        self.seed = tree.find(seed).id if seed else None
+
+    def initial_state(self):
+        return ()
+
+    def actions(self, state) -> list:
+        if len(state) == 0:
+            if self.seed:
+                return [self.seed]
+            return sorted(c.id for c in self.tree.concepts)
+        if len(state) == 1:
+            first = self.tree.get(state[0])
+            return sorted(c.id for c in self.tree.concepts
+                          if c.id != state[0]
+                          and c.domain_cn != first.domain_cn)
+        return []
+
+    def step(self, state, action):
+        return state + (action,)
+
+    def terminal(self, state) -> bool:
+        return len(state) == 2
+
+    def reward(self, state) -> float:
+        if len(state) != 2:
+            return 0.0
+        return collision_score(self.tree, state[0], state[1])
+
+    def simulate(self, state, rng, max_depth: int) -> float:
+        best = 0.0
+        stack = [state]
+        while stack:
+            s = stack.pop()
+            if self.terminal(s):
+                r = self.reward(s)
+                if r > best:
+                    best = r
+            else:
+                stack.extend(self.step(s, a) for a in self.actions(s))
+        return best
+
+
+def collide_concepts(tree: KnowledgeTree, seed: str | None = None,
+                     top_k: int = 5, iterations: int = 3000,
+                     seed_rng: int = 7):
+    """知识碰撞: 找与 seed(或全局)最值得碰撞的概念.
+
+    seed: 围绕哪个概念碰撞(中文名/英文名/id), None=全局最优碰撞对.
+    返回 [(ConceptA, ConceptB, 碰撞分, curated说明或None)].
+    """
+    problem = CollisionProblem(tree, seed)
+    _, root = mcts(problem, iterations=iterations, seed=seed_rng,
+                   max_depth=4)
+    pairs: list[tuple] = []
+
+    def collect(node):
+        if problem.terminal(node.state):
+            a, b = node.state
+            pairs.append((a, b, node.visits, problem.node_value(node),
+                          tree.collision_note(a, b)))
+        for ch in node.children:
+            collect(ch)
+
+    collect(root)
+    # 去重(无序对)后按价值排序
+    seen: dict[frozenset, tuple] = {}
+    for a, b, v, m, note in pairs:
+        key = frozenset((a, b))
+        if key not in seen or seen[key][3] < m:
+            seen[key] = (a, b, v, m, note)
+    ranked = sorted(seen.values(), key=lambda x: (x[3], x[2]),
+                    reverse=True)
+    return [(tree.get(a), tree.get(b), m, note)
+            for a, b, _, m, note in ranked[:top_k]]
+
+
 def search_concepts(tree: KnowledgeTree, query: str, top_k: int = 5,
                     iterations: int = 2000, seed: int = 7):
     """用 MCTS 在知识树上检索与 query 最相关的 top_k 个概念.
@@ -185,7 +299,8 @@ def search_concepts(tree: KnowledgeTree, query: str, top_k: int = 5,
 
     def collect(node):
         if tree.is_concept_leaf(node.state):
-            leaves.append((node.state, node.visits, node.mean))
+            leaves.append((node.state, node.visits,
+                           problem.node_value(node)))
         for ch in node.children:
             collect(ch)
 

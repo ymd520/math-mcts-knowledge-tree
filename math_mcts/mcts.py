@@ -45,10 +45,31 @@ class Problem:
             depth += 1
         return self.reward(state)
 
+    # -- 价值回传方式 --------------------------------------------------
+    # "mean": 回传均值, 适合序贯决策(学习路径规划);
+    # "max":  回传子树最优值, 适合"找最优叶节点"类搜索(概念检索/知识碰撞),
+    #         此时 MCTS 为 UCB 分支限界, 均值回传会稀释父节点价值导致错过最优分支.
+    value_op = "mean"
+
+    def node_value(self, node) -> float:
+        if node.visits == 0:
+            return 0.0
+        if self.value_op == "max":
+            return node.best
+        return node.total / node.visits
+
+    def accumulate(self, node, value: float) -> None:
+        node.visits += 1
+        if self.value_op == "max":
+            if node.best is None or value > node.best:
+                node.best = value
+        else:
+            node.total += value
+
 
 class _Node:
     __slots__ = ("state", "parent", "action", "children",
-                 "untried", "visits", "total")
+                 "untried", "visits", "total", "best")
 
     def __init__(self, state, parent=None, action=None, actions=()):
         self.state = state
@@ -58,15 +79,16 @@ class _Node:
         self.untried: list = list(actions)
         self.visits = 0
         self.total = 0.0
+        self.best = None              # max 回传时的子树最优值
 
     @property
     def mean(self) -> float:
         return self.total / self.visits if self.visits else 0.0
 
-    def uct(self, c: float) -> float:
+    def uct(self, c: float, problem: "Problem") -> float:
         if self.visits == 0:
             return float("inf")
-        return (self.mean
+        return (problem.node_value(self)
                 + c * math.sqrt(math.log(self.parent.visits) / self.visits))
 
 
@@ -87,7 +109,8 @@ def mcts(problem: Problem, iterations: int = 1000,
         # 1) 选择: 沿 UCB1 下行到可扩展/终局节点
         while node.untried == [] and node.children and \
                 not problem.terminal(node.state) and depth < max_depth:
-            node = max(node.children, key=lambda ch: ch.uct(exploration))
+            node = max(node.children,
+                       key=lambda ch: ch.uct(exploration, problem))
             depth += 1
         # 2) 扩展: 尝试一个未试过的动作
         if node.untried and not problem.terminal(node.state) \
@@ -101,17 +124,17 @@ def mcts(problem: Problem, iterations: int = 1000,
             depth += 1
         # 3) 模拟: 调用问题的 simulate 钩子(默认随机 rollout)
         value = problem.simulate(node.state, rng, max_depth - depth)
-        # 4) 回传
+        # 4) 回传(按问题的 value_op: 均值或最优值)
         while node is not None:
-            node.visits += 1
-            node.total += value
+            problem.accumulate(node, value)
             node = node.parent
 
     # 提取最优动作序列(每层选访问次数最多的子节点)
     actions_seq: list = []
     node = root
     while node.children:
-        node = max(node.children, key=lambda ch: (ch.visits, ch.mean))
+        node = max(node.children,
+                   key=lambda ch: (ch.visits, problem.node_value(ch)))
         actions_seq.append(node.action)
         if problem.terminal(node.state):
             break

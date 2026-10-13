@@ -7,12 +7,15 @@
 from __future__ import annotations
 
 
-def to_dot(root, label_fn=None, max_nodes: int = 300) -> str:
+def to_dot(root, label_fn=None, value_fn=None, max_nodes: int = 300) -> str:
     """将 MCTS 搜索树导出为 DOT 字符串.
 
     label_fn: 状态 -> 显示文本, 默认 str(state).
+    value_fn: 节点 -> 显示价值, 默认用均值; max 回传的问题请传
+              problem.node_value.
     """
     label_fn = label_fn or (lambda s: str(s)[:28])
+    value_fn = value_fn or (lambda n: n.mean)
     lines = ["digraph MCTSTree {",
              '  node [shape=box, fontname="sans-serif"];',
              '  edge [fontname="sans-serif"];']
@@ -25,7 +28,7 @@ def to_dot(root, label_fn=None, max_nodes: int = 300) -> str:
         if count[0] >= max_nodes:
             return
         text = (f"{esc(label_fn(node.state))}\\n"
-                f"访问{node.visits}次 均值{node.mean:.2f}")
+                f"访问{node.visits}次 价值{value_fn(node):.2f}")
         lines.append(f'  n{nid} [label="{text}"];')
         # 按访问次数排序, 只展开最值得看的子节点
         kids = sorted(node.children,

@@ -17,13 +17,13 @@
 
 | 领域 | 概念数 | 分支举例 |
 |---|---|---|
-| 数学基础 Foundations | 17 | 集合论、数理逻辑、证明方法 |
-| 代数 Algebra | 20 | 初等代数、线性代数、抽象代数、数论 |
-| 分析 Analysis | 25 | 微积分、实分析、复分析、微分方程、级数与变换 |
-| 几何与拓扑 Geometry & Topology | 14 | 欧氏几何、解析几何、微分几何、拓扑学 |
-| 概率与统计 Probability & Statistics | 17 | 概率论、随机变量、统计推断 |
-| 离散数学 Discrete Mathematics | 13 | 组合数学、图论、离散结构 |
-| 计算与优化 Computation & Optimization | 16 | 数值分析、最优化、算法数学 |
+| 数学基础 Foundations | 19 | 集合论、数理逻辑、证明方法 |
+| 代数 Algebra | 23 | 初等代数、线性代数、抽象代数、数论 |
+| 分析 Analysis | 29 | 微积分、实分析、复分析、微分方程、级数与变换 |
+| 几何与拓扑 Geometry & Topology | 17 | 欧氏几何、解析几何、微分几何、拓扑学 |
+| 概率与统计 Probability & Statistics | 19 | 概率论、随机变量、统计推断 |
+| 离散数学 Discrete Mathematics | 15 | 组合数学、图论、离散结构 |
+| 计算与优化 Computation & Optimization | 20 | 数值分析、最优化、算法数学 |
 
 每个概念包含：中英名称、一句话定义（零基础可读）、关键公式（纯 Unicode）、
 难度等级（1 入门–5 博士）、前置依赖、核心/重要标签。
@@ -46,6 +46,13 @@
    （返回子树内最大相关度，而非随机 rollout）。此时 MCTS 等价于 UCB 探索引导的
    最优分支限界搜索，必收敛到全局最相关概念；`Problem.simulate` 钩子保留默认的
    随机 rollout 供其他问题使用。
+
+3. **知识碰撞**（`collide_concepts`）
+   让 MCTS 高效地做"数学知识碰撞"：搜索树为"根 → 第一个概念 → 跨领域第二个概念"，
+   叶节点回报 = 碰撞价值分（curated 碰撞记录 +2.0、跨领域 +0.5、双核心 +0.3、
+   难度接近加分）。`data/collisions.json` 收录已知的经典碰撞（如特征函数、
+   正交展开、PageRank），未知的高分对则标记为"待探索"——那往往是值得深挖的
+   交叉方向。同样使用精确求值 + max 回传的 UCB 分支限界。
 
 ## 安装
 
@@ -75,6 +82,9 @@ python -m math_mcts show "蒙特卡洛树搜索"
 
 # 导出学习计划为 Markdown
 python -m math_mcts export-path "傅里叶变换" -o 学习计划.md
+
+# 知识碰撞：找最值得组合的概念对
+python -m math_mcts collide "傅里叶变换" --top_k 5
 ```
 
 Python API：
@@ -83,7 +93,7 @@ Python API：
 from math_mcts import (KnowledgeTree, plan_learning_path, search_concepts,
                        export_path_markdown, to_dot)
 
-tree = KnowledgeTree.load()          # 加载内置知识库（122 概念）
+tree = KnowledgeTree.load()          # 加载内置知识库（142 概念）
 
 # 1. 学习路径规划（known=已掌握的概念）
 path = plan_learning_path(tree, "梯度下降", iterations=3000,
@@ -156,6 +166,7 @@ python tests/test_mcts.py
 
 ## 更新日志
 
+- **v1.2.0**（2026-10-13）：新增**知识碰撞引擎**——16 条 curated 跨领域碰撞记录（如特征函数 = 傅里叶变换 × 期望与方差），MCTS 在"概念 → 跨领域概念"搜索树上找最值得碰撞的概念对（`collide_concepts` / `collide` CLI，支持围绕指定概念或全局）；回传改用 max（UCB 分支限界，修复均值回传稀释父节点价值的问题）；概念 122 → 142。
 - **v1.1.0**（2026-10-13）：概念 102 → 122（新增对角化、伽罗瓦理论、PDE、马尔可夫链、SGD、反向传播、MCTS 自身等 20 个）；学习路径支持已知概念（`known` / `--known`）；新增 `show` 概念卡片、`export-path` 导出 Markdown 学习计划；新增 `viz.to_dot` 搜索树可视化；概念检索改用子树精确求值的模拟步（UCB 分支限界，必收敛全局最优）；`Concept.card()`。
 - **v1.0.0**（2026-10-13）：首版，102 概念 / 7 领域，MCTS 学习路径规划 + 概念检索，CLI 与测试。
 

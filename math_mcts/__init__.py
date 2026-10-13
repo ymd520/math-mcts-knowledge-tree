@@ -8,10 +8,12 @@ MCTS 引擎对这棵树做两种搜索:
 from .knowledge import Concept, KnowledgeTree
 from .mcts import mcts, Problem
 from .search import (plan_learning_path, search_concepts,
-                     export_path_markdown)
+                     export_path_markdown, collide_concepts,
+                     collision_score)
 from .viz import to_dot
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "plan_learning_path", "search_concepts",
-           "export_path_markdown", "to_dot"]
+           "export_path_markdown", "to_dot",
+           "collide_concepts", "collision_score"]
