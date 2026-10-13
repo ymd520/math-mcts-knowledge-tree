@@ -131,11 +131,13 @@ class RuleBook:
         return hashlib.sha256(json.dumps(payload, sort_keys=True,
                                         ensure_ascii=False).encode()).hexdigest()
 
-    def matches(self, rule: Rule, facts: frozenset[Atom]):
+    def matches(self, rule: Rule, facts: frozenset[Atom], *, fact_index=None):
         """Join all premises, preserving repeated-variable equality."""
-        index = {}
-        for atom in sorted(facts):
-            index.setdefault(atom.predicate, []).append(atom)
+        index = fact_index
+        if index is None:
+            index = {}
+            for atom in sorted(facts):
+                index.setdefault(atom.predicate, []).append(atom)
         def join(position, binding):
             if position == len(rule.premises):
                 yield binding

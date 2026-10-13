@@ -14,13 +14,16 @@ from .viz import to_dot
 from .reasoning import (Atom, Rule, RuleBook, Certificate, ProofGraph,
                         DiscoveryQueue, derive, verify_certificate,
                         load_reasoning_problem, load_certificate)
+from .layered import (LayerConfig, LayerCertificate, derive_layers, replay_layers,
+                      load_layered_problem, load_layer_certificate)
 
-__version__ = "1.8.0"
+__version__ = "1.9.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "plan_learning_path", "search_concepts",
            "export_path_markdown", "to_dot",
            "collide_concepts", "collision_score",
            "Atom", "Rule", "RuleBook", "Certificate", "ProofGraph",
            "DiscoveryQueue", "derive", "verify_certificate", "load_reasoning_problem",
-           "load_certificate"]
+           "load_certificate", "LayerConfig", "LayerCertificate", "derive_layers",
+           "replay_layers", "load_layered_problem", "load_layer_certificate"]
 

@@ -1,5 +1,12 @@
 # 数学知识 MCTS 搜索树
 
+## v1.9.0：每层至少20知识点、至少20层
+
+新增同步分层碰撞：每层由至少20个不同前提参与推导，上一层结果进入下一层；
+成功证书还要求每层目标相关前提数至少20、目标实际依赖深度至少20。
+支持更宽、更深配置，并明确报告预算截断与知识不足。
+调用与测试见 [LAYERED_COLLISION.md](LAYERED_COLLISION.md)。
+
 ## v1.8.0：多前提、多层推导入口
 
 新增带对象类型、全部前提匹配、目标相关推理超图和证书重放的推导层。
@@ -23,7 +30,7 @@ python -m math_mcts verify-derivation examples/extreme_value.json report.json
 > prerequisite dependencies and retrieves concepts by searching the
 > domain → branch → topic → concept hierarchy.
 
-当前代码版本: v1.8.0（下方历史知识统计未统一更新；更新日志见文末）。
+当前代码版本: v1.9.0（下方历史知识统计未统一更新；更新日志见文末）。
 
 ---
 

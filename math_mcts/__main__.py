@@ -18,6 +18,33 @@ from .knowledge import KnowledgeTree
 from .search import (plan_learning_path, search_concepts,
                      export_path_markdown, collide_concepts)
 from .reasoning import load_reasoning_problem, load_certificate, derive, verify_certificate
+from .layered import (load_layered_problem, load_layer_certificate, derive_layers,
+                      replay_layers, report_json)
+
+
+def cmd_layers(args):
+    book, assumptions, goals, cfg = load_layered_problem(
+        json.loads(Path(args.problem).read_text(encoding="utf-8")))
+    result = derive_layers(book, assumptions, goals, config=cfg,
+                           iterations=args.iterations, seed=args.seed)
+    if args.output:
+        Path(args.output).write_text(report_json(result) + "\n", encoding="utf-8")
+    # Full certificate goes to file; terminal receives concise actual metrics.
+    print(report_json({k: v for k, v in result.items() if k != "certificate"}))
+
+
+def cmd_verify_layers(args):
+    book, assumptions, goals, cfg = load_layered_problem(
+        json.loads(Path(args.problem).read_text(encoding="utf-8")))
+    report = json.loads(Path(args.report).read_text(encoding="utf-8"))
+    try:
+        metrics = replay_layers(book, load_layer_certificate(report["certificate"]),
+                                assumptions, goals, cfg)
+    except (KeyError, ValueError, TypeError, IndexError):
+        metrics = None
+    print(report_json({"valid_relative_to_rules": metrics is not None, "metrics": metrics}))
+    if metrics is None:
+        raise SystemExit(1)
 
 
 def cmd_verify(args):
@@ -129,6 +156,16 @@ def main():
     ap = argparse.ArgumentParser(prog="math_mcts",
                                  description="数学知识 MCTS 搜索树")
     sub = ap.add_subparsers(dest="cmd", required=True)
+    lr = sub.add_parser("derive-layers", help="每层至少20条知识参与、至少20层的同步推导")
+    lr.add_argument("problem")
+    lr.add_argument("--iterations", type=int, default=50)
+    lr.add_argument("--seed", type=int, default=7)
+    lr.add_argument("-o", "--output")
+    lr.set_defaults(func=cmd_layers)
+    lv = sub.add_parser("verify-layers", help="重放分层证书并核验每层宽度与目标实际深度")
+    lv.add_argument("problem")
+    lv.add_argument("report")
+    lv.set_defaults(func=cmd_verify_layers)
     dr = sub.add_parser("derive", help="多前提多层推导（相对于显式审核规则）")
     dr.add_argument("problem", help="带对象类型、前提、规则及目标的 JSON")
     dr.add_argument("--iterations", type=int, default=1000)
