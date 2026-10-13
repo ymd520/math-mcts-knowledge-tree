@@ -1,0 +1,5978 @@
+[
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "基本概念",
+  "cn": "算法",
+  "en": "Algorithm",
+  "kind": "概念",
+  "definition": "解决一类问题的明确步骤序列：输入→有限步操作→输出。",
+  "formulas": [],
+  "example": "菜谱就是算法：按步骤放料、翻炒、出锅。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "基本概念",
+  "cn": "数据结构",
+  "en": "Data Structure",
+  "kind": "概念",
+  "definition": "组织和存储数据的方式，决定存取效率。",
+  "formulas": [],
+  "example": "书架按类别摆书，找书更快。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "基本概念",
+  "cn": "伪代码",
+  "en": "Pseudocode",
+  "kind": "概念",
+  "definition": "用接近自然语言的文字描述算法，不纠结语法细节。",
+  "formulas": [],
+  "example": "\"对 i 从 1 到 n：累加 a[i]\"即求和伪代码。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:算法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "排序",
+  "en": "Sorting",
+  "kind": "概念",
+  "definition": "把一组数据按从小到大（或从大到小）排列好。",
+  "formulas": [],
+  "example": "考试排名就是把分数从高到低排序。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "比较",
+  "en": "Comparison",
+  "kind": "概念",
+  "definition": "比一比两个元素的大小，是排序最基本的操作。",
+  "formulas": [],
+  "example": "比身高排队：每次两人比一比。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "交换",
+  "en": "Swap",
+  "kind": "概念",
+  "definition": "互换两个元素的位置，排序中调整顺序的手段。",
+  "formulas": [],
+  "example": "排座位时两人互换椅子。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "冒泡排序",
+  "en": "Bubble Sort",
+  "kind": "算法",
+  "definition": "相邻两两比较，大的往后冒泡，一轮定一个最大值。",
+  "formulas": [
+   "时间复杂度 O(n²)"
+  ],
+  "example": "[5,3,8]→[3,5,8]→[3,5,8]，8 冒到最后。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:排序",
+   "NEW:比较",
+   "NEW:交换"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "选择排序",
+  "en": "Selection Sort",
+  "kind": "算法",
+  "definition": "每轮从剩下元素中选最小的，放到已排好的末尾。",
+  "formulas": [
+   "时间复杂度 O(n²)"
+  ],
+  "example": "[5,3,8]选 3 放首位→[3,5,8]。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:排序",
+   "NEW:比较"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "插入排序",
+  "en": "Insertion Sort",
+  "kind": "算法",
+  "definition": "逐个把新元素插入前面已排好的序列中的合适位置。",
+  "formulas": [
+   "时间复杂度 O(n²)，近乎有序时接近 O(n)"
+  ],
+  "example": "整理扑克牌：摸一张插到手牌合适处。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "归并排序",
+  "en": "Merge Sort",
+  "kind": "算法",
+  "definition": "把数组分半、分别排好，再把两个有序段合并。",
+  "formulas": [
+   "时间复杂度 O(n log n)"
+  ],
+  "example": "[5,3,8,1]分半→[3,5]与[1,8]→合并[1,3,5,8]。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:排序",
+   "NEW:分治思想"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "快速排序",
+  "en": "Quicksort",
+  "kind": "算法",
+  "definition": "选一个主元，小的放左、大的放右，两边再递归排。",
+  "formulas": [
+   "平均时间复杂度 O(n log n)"
+  ],
+  "example": "[5,3,8]选 5 为主元→[3]与[8]。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:排序",
+   "NEW:主元",
+   "NEW:划分"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "主元",
+  "en": "Pivot",
+  "kind": "概念",
+  "definition": "快速排序中选定的基准元素，比它小的放左、大的放右。",
+  "formulas": [],
+  "example": "[5,3,8]选 5 作主元，3 放左、8 放右。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:快速排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "划分",
+  "en": "Partition",
+  "kind": "概念",
+  "definition": "按主元把数组分成“小/大”两部分的操作。",
+  "formulas": [],
+  "example": "[5,3,8,1]按主元 5 划分→[3,1]与[8]。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:主元"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "合并",
+  "en": "Merge",
+  "kind": "概念",
+  "definition": "把两个有序序列合成一个有序序列。",
+  "formulas": [],
+  "example": "[1,5]与[2,4]合并→[1,2,4,5]。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:归并排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "计数排序",
+  "en": "Counting Sort",
+  "kind": "算法",
+  "definition": "数出每个值出现几次，再按次数铺开，适合小整数。",
+  "formulas": [
+   "时间复杂度 O(n+k)，k 为值域大小"
+  ],
+  "example": "分数 0–100：数每个分数几人，再铺开。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "桶排序",
+  "en": "Bucket Sort",
+  "kind": "算法",
+  "definition": "把数据分到若干桶里，各桶内排序后再拼接。",
+  "formulas": [],
+  "example": "0–100 分按十位分 10 个桶，各桶内排好。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "排序的稳定性",
+  "en": "Stability of Sorting",
+  "kind": "概念",
+  "definition": "值相等的元素，排序后相对顺序不变，叫稳定。",
+  "formulas": [],
+  "example": "按成绩排序后，同分同学仍按学号先后。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "逆序对",
+  "en": "Inversion",
+  "kind": "概念",
+  "definition": "前面比后面大的数对，衡量数组“有多乱”。",
+  "formulas": [],
+  "example": "[3,1,2]的逆序对是(3,1)、(3,2)，共 2 个。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "排序算法",
+  "cn": "原地排序",
+  "en": "In-Place Sorting",
+  "kind": "概念",
+  "definition": "只用常数额外空间完成排序，不占用大片新内存。",
+  "formulas": [
+   "空间复杂度 O(1)"
+  ],
+  "example": "冒泡排序只用一个临时变量交换。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:排序",
+   "NEW:空间复杂度"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "查找算法",
+  "cn": "查找",
+  "en": "Searching",
+  "kind": "概念",
+  "definition": "在一堆数据中找到目标元素（或确认不存在）。",
+  "formulas": [],
+  "example": "通讯录里找“张三”的电话。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "查找算法",
+  "cn": "线性查找",
+  "en": "Linear Search",
+  "kind": "算法",
+  "definition": "从头到尾逐个比较，直到找到或找完。",
+  "formulas": [
+   "时间复杂度 O(n)"
+  ],
+  "example": "在名单上从上往下逐个找名字。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:查找",
+   "NEW:比较"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "查找算法",
+  "cn": "二分查找",
+  "en": "Binary Search",
+  "kind": "算法",
+  "definition": "有序数组中每次取中点比较，砍掉一半继续找。",
+  "formulas": [
+   "时间复杂度 O(log n)"
+  ],
+  "example": "猜 1–100 的数：每次猜中间，范围减半。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "查找算法",
+  "cn": "查找表",
+  "en": "Lookup Table",
+  "kind": "概念",
+  "definition": "预先算好存起来，用时直接查，不用现算。",
+  "formulas": [],
+  "example": "乘法口诀表：3×7 直接查得 21。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "数组",
+  "en": "Array",
+  "kind": "概念",
+  "definition": "连续存放的一串数据，用下标直接定位第几个。",
+  "formulas": [
+   "访问第 i 个元素 O(1)"
+  ],
+  "example": "a[0]是第一个同学的成绩。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "顺序表",
+  "en": "Sequential List",
+  "kind": "概念",
+  "definition": "用数组实现的线性表，逻辑上排成一队。",
+  "formulas": [],
+  "example": "班级花名册按学号存在连续格子里。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数组"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "链表",
+  "en": "Linked List",
+  "kind": "概念",
+  "definition": "节点用指针串成链，插入删除快、随机访问慢。",
+  "formulas": [],
+  "example": "寻宝游戏：每张纸条写着下一张的藏处。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数据结构"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "双向链表",
+  "en": "Doubly Linked List",
+  "kind": "概念",
+  "definition": "每个节点同时记住前驱和后继，可前后双向走。",
+  "formulas": [],
+  "example": "MP3 播放列表可上一首、下一首切换。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:链表"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "栈",
+  "en": "Stack",
+  "kind": "概念",
+  "definition": "后进先出：最后放进去的最先拿出来。",
+  "formulas": [],
+  "example": "摞盘子：先拿最上面那个；浏览器后退键。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "队列",
+  "en": "Queue",
+  "kind": "概念",
+  "definition": "先进先出：最先排进去的最先出来。",
+  "formulas": [],
+  "example": "食堂排队打饭；打印机任务排队。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "循环队列",
+  "en": "Circular Queue",
+  "kind": "概念",
+  "definition": "队尾连回队首的环形队列，空间循环利用。",
+  "formulas": [],
+  "example": "环形跑道接力：跑完一圈回到起点继续。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:队列"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "优先队列",
+  "en": "Priority Queue",
+  "kind": "概念",
+  "definition": "每次取出优先级最高的，不按先来后到。",
+  "formulas": [],
+  "example": "急诊分诊：病情重的先看，不管排队顺序。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:队列"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "二叉树",
+  "en": "Binary Tree",
+  "kind": "概念",
+  "definition": "每个节点最多有两个孩子（左、右）的树形结构。",
+  "formulas": [],
+  "example": "家谱中每人最多记父母两人，倒过来看像树。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "满二叉树",
+  "en": "Full Binary Tree",
+  "kind": "概念",
+  "definition": "每层都长满节点的二叉树，一点空位没有。",
+  "formulas": [
+   "n 层满二叉树共 2ⁿ−1 个节点"
+  ],
+  "example": "3 层满二叉树有 7 个节点。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "完全二叉树",
+  "en": "Complete Binary Tree",
+  "kind": "概念",
+  "definition": "节点从上到下、从左到右紧凑排列的二叉树。",
+  "formulas": [],
+  "example": "堆就用完全二叉树存，数组下标直接算父子。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "二叉搜索树",
+  "en": "Binary Search Tree",
+  "kind": "概念",
+  "definition": "左子树都小、右子树都大的二叉树，查找像二分。",
+  "formulas": [
+   "平均查找 O(log n)"
+  ],
+  "example": "查 7：根 5→右 8→左 7，两步找到。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉树",
+   "NEW:二分查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "树的遍历",
+  "en": "Tree Traversal",
+  "kind": "概念",
+  "definition": "按某种顺序把树中每个节点恰好访问一遍。",
+  "formulas": [],
+  "example": "点名册：按固定顺序把全班点一遍。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "先序遍历",
+  "en": "Preorder Traversal",
+  "kind": "概念",
+  "definition": "根→左→右的顺序访问，先看自己再看孩子。",
+  "formulas": [],
+  "example": "复制家谱：先记本人，再记子女。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:树的遍历"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "中序遍历",
+  "en": "Inorder Traversal",
+  "kind": "概念",
+  "definition": "左→根→右的顺序，二叉搜索树这样走出来有序。",
+  "formulas": [],
+  "example": "二叉搜索树中序走一遍得到从小到大序列。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:树的遍历"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "后序遍历",
+  "en": "Postorder Traversal",
+  "kind": "概念",
+  "definition": "左→右→根的顺序，先处理孩子最后处理自己。",
+  "formulas": [],
+  "example": "算目录大小：先算子文件夹，最后汇总。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:树的遍历"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "层序遍历",
+  "en": "Level-order Traversal",
+  "kind": "概念",
+  "definition": "一层一层从上往下、从左往右访问。",
+  "formulas": [],
+  "example": "公司架构图：先总经理，再各部门经理。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:树的遍历",
+   "NEW:队列"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "数据结构",
+  "cn": "二叉树的深度",
+  "en": "Depth of Binary Tree",
+  "kind": "概念",
+  "definition": "从根到最远叶子经过的节点数，衡量树有多“高”。",
+  "formulas": [],
+  "example": "单链状的树深度等于节点数，最“高”。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "算法思想",
+  "cn": "递归",
+  "en": "Recursion",
+  "kind": "概念",
+  "definition": "函数自己调用自己，把大问题化成小问题。",
+  "formulas": [
+   "n! = n×(n−1)!，0! = 1"
+  ],
+  "example": "算 5!：5×4!，4×3!……直到 0!=1。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "算法思想",
+  "cn": "递归出口",
+  "en": "Base Case",
+  "kind": "概念",
+  "definition": "递归中不再继续调用自己的终止条件，没有它会无限套娃。",
+  "formulas": [],
+  "example": "算阶乘时 0!=1 就是出口，到 0 停下。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递归"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "算法思想",
+  "cn": "递归深度",
+  "en": "Recursion Depth",
+  "kind": "概念",
+  "definition": "递归套娃的最大层数，太深会把调用栈撑爆。",
+  "formulas": [],
+  "example": "算 fib(10000)递归太深会栈溢出。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递归"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "算法思想",
+  "cn": "栈溢出",
+  "en": "Stack Overflow",
+  "kind": "概念",
+  "definition": "递归太深或局部变量太多，调用栈装不下而崩溃。",
+  "formulas": [],
+  "example": "没写递归出口的程序一跑就栈溢出。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递归深度",
+   "NEW:栈"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "算法思想",
+  "cn": "尾递归",
+  "en": "Tail Recursion",
+  "kind": "概念",
+  "definition": "递归调用是函数最后一句的递归，可被优化成循环。",
+  "formulas": [],
+  "example": "累加器版阶乘：f(n,acc)=f(n−1,n×acc)。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递归"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "算法思想",
+  "cn": "递推",
+  "en": "Recurrence",
+  "kind": "概念",
+  "definition": "从已知小规模结果一步步推出大规模结果。",
+  "formulas": [
+   "fib(n) = fib(n−1)+fib(n−2)"
+  ],
+  "example": "斐波那契：1,1,2,3,5……后项是前两项和。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "算法思想",
+  "cn": "分治思想",
+  "en": "Divide and Conquer",
+  "kind": "思路",
+  "definition": "分而治之：大问题拆成小问题，解好再合并。",
+  "formulas": [],
+  "example": "归并排序：分半排好再合并。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:递归"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "算法思想",
+  "cn": "枚举法",
+  "en": "Enumeration",
+  "kind": "方法",
+  "definition": "把所有可能一个个试过去，笨但一定找得到。",
+  "formulas": [],
+  "example": "百钱买百鸡：公鸡母鸡小鸡只数逐个试。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "算法思想",
+  "cn": "模拟法",
+  "en": "Simulation",
+  "kind": "方法",
+  "definition": "按题目描述的过程一步步模仿执行。",
+  "formulas": [],
+  "example": "时钟走字：按秒针分针时针规则推进。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "时间复杂度",
+  "cn": "常数时间",
+  "en": "Constant Time",
+  "kind": "概念",
+  "definition": "耗时不随输入变大而增加，记作 O(1)。",
+  "formulas": [
+   "T(n) = O(1)"
+  ],
+  "example": "数组取 a[0]，1 个还是 1 亿个都一样快。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "时间复杂度",
+  "cn": "对数时间",
+  "en": "Logarithmic Time",
+  "kind": "概念",
+  "definition": "每次砍掉一半，输入翻倍只多一步，记作 O(log n)。",
+  "formulas": [
+   "T(n) = O(log n)"
+  ],
+  "example": "二分查找 100 万个数只需约 20 次比较。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二分查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "时间复杂度",
+  "cn": "线性时间",
+  "en": "Linear Time",
+  "kind": "概念",
+  "definition": "耗时和输入规模成正比，记作 O(n)。",
+  "formulas": [
+   "T(n) = O(n)"
+  ],
+  "example": "线性查找：100 个数最多比 100 次。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:线性查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "时间复杂度",
+  "cn": "平方时间",
+  "en": "Quadratic Time",
+  "kind": "概念",
+  "definition": "两层嵌套循环，输入翻倍耗时变 4 倍，记作 O(n²)。",
+  "formulas": [
+   "T(n) = O(n²)"
+  ],
+  "example": "冒泡排序：n 个数要比约 n²/2 次。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:冒泡排序",
+   "NEW:循环嵌套与复杂度"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "时间复杂度",
+  "cn": "立方时间",
+  "en": "Cubic Time",
+  "kind": "概念",
+  "definition": "三层嵌套循环，记作 O(n³)，n 稍大就很慢。",
+  "formulas": [
+   "T(n) = O(n³)"
+  ],
+  "example": "朴素矩阵乘法：n=1000 时要算 10 亿次。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:平方时间"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "时间复杂度",
+  "cn": "n log n 时间",
+  "en": "Linearithmic Time",
+  "kind": "概念",
+  "definition": "比线性略慢、比平方快得多，好排序算法的复杂度。",
+  "formulas": [
+   "T(n) = O(n log n)"
+  ],
+  "example": "归并排序、快速排序都是这个量级。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:归并排序",
+   "NEW:对数时间"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "时间复杂度",
+  "cn": "阶乘时间",
+  "en": "Factorial Time",
+  "kind": "概念",
+  "definition": "试遍所有排列，n=20 就算不动，记作 O(n!)。",
+  "formulas": [
+   "T(n) = O(n!)"
+  ],
+  "example": "暴力解 TSP：20 个城市要试 20! 条路线。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:枚举法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "空间复杂度",
+  "cn": "空间复杂度",
+  "en": "Space Complexity",
+  "kind": "概念",
+  "definition": "算法运行中额外占用多少内存，随输入规模怎么涨。",
+  "formulas": [],
+  "example": "归并排序要 O(n) 临时数组，快速排序约 O(log n)。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "最坏情况",
+  "en": "Worst Case",
+  "kind": "概念",
+  "definition": "输入最“刁难”时的耗时，算法分析默认看这个。",
+  "formulas": [],
+  "example": "快速排序最坏 O(n²)：每次主元都选到最小。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:快速排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "最好情况",
+  "en": "Best Case",
+  "kind": "概念",
+  "definition": "输入最“配合”时的耗时，通常只是个安慰。",
+  "formulas": [],
+  "example": "冒泡排序遇到已排好的数组，一轮就结束。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:冒泡排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "平均情况",
+  "en": "Average Case",
+  "kind": "概念",
+  "definition": "随机输入下的期望耗时，比最坏更贴近实际。",
+  "formulas": [],
+  "example": "快速排序平均 O(n log n)，实际很快。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:最坏情况"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "输入规模",
+  "en": "Input Size",
+  "kind": "概念",
+  "definition": "用 n 表示输入有多大，是复杂度分析的自变量。",
+  "formulas": [],
+  "example": "排序 n 个数、查 n 行表，n 就是输入规模。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "基本操作",
+  "en": "Basic Operation",
+  "kind": "概念",
+  "definition": "算法里最耗时的那个操作，数它执行了几次。",
+  "formulas": [],
+  "example": "排序数“比较”几次，查找数“访问”几次。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:输入规模"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "算法效率",
+  "en": "Algorithm Efficiency",
+  "kind": "概念",
+  "definition": "同样的问题，哪个算法更快更省，就是效率更高。",
+  "formulas": [],
+  "example": "100 万个数：二分 20 次 vs 线性 100 万次。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二分查找",
+   "NEW:线性查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "复杂度比较",
+  "en": "Comparing Complexities",
+  "kind": "思路",
+  "definition": "n 很大时只看最高阶：指数碾压多项式，多项式碾压对数。",
+  "formulas": [],
+  "example": "n=1000 时 n²=10⁶ 而 2ⁿ 天文数字，不可算。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:平方时间",
+   "NEW:阶乘时间"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "时空权衡",
+  "en": "Time-Space Tradeoff",
+  "kind": "思路",
+  "definition": "时间不够就花空间（预处理、查表），空间不够就花时间重算。",
+  "formulas": [],
+  "example": "查找表：乘法口诀背下来，3×7 脱口而出。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:查找表",
+   "NEW:空间复杂度"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "复杂度量级排序",
+  "en": "Ordering Growth Rates",
+  "kind": "思路",
+  "definition": "常见量级从小到大：1 < log n < n < n log n < n² < n³ < 2ⁿ < n!。",
+  "formulas": [],
+  "example": "选算法先看量级：n log n 的排序 beats n² 的。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:复杂度比较"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "循环嵌套与复杂度",
+  "en": "Loops and Complexity",
+  "kind": "思路",
+  "definition": "数循环嵌套层数：一层常是 n，两层常是 n²，三层 n³。",
+  "formulas": [],
+  "example": "for i…for j…里做一次比较 → O(n²)。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:平方时间",
+   "NEW:循环"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度入门",
+  "topic_cn": "复杂度分析",
+  "cn": "二分与对数",
+  "en": "Halving and Logarithm",
+  "kind": "思路",
+  "definition": "凡是每次砍掉一半的，复杂度里就有个 log n。",
+  "formulas": [],
+  "example": "猜数、查字典、二分查找都是 O(log n)。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:对数时间"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法入门",
+  "topic_cn": "基本概念",
+  "cn": "循环",
+  "en": "Loop",
+  "kind": "概念",
+  "definition": "重复执行一段代码，直到条件不满足为止。",
+  "formulas": [],
+  "example": "for i=1..n 累加：把 1 到 n 加一遍。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "浮点与误差",
+  "cn": "浮点数",
+  "en": "Floating-Point Number",
+  "kind": "概念",
+  "definition": "计算机里表示小数的方式：精度有限，不是真正的实数。",
+  "formulas": [],
+  "example": "0.1+0.2 在电脑里≠0.3，差一点点。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "浮点与误差",
+  "cn": "舍入误差",
+  "en": "Rounding Error",
+  "kind": "概念",
+  "definition": "小数位数存不下，被四舍五入掉的那部分误差。",
+  "formulas": [],
+  "example": "π 存成 3.14159，丢掉的部分就是舍入误差。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:浮点数"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "浮点与误差",
+  "cn": "有效数字",
+  "en": "Significant Digits",
+  "kind": "概念",
+  "definition": "真正可靠的数字位数，后面的都是“凑数”。",
+  "formulas": [],
+  "example": "3.14159 有 6 位有效数字，第 7 位不可信。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:舍入误差"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "浮点与误差",
+  "cn": "上溢",
+  "en": "Overflow",
+  "kind": "概念",
+  "definition": "数太大存不下，超出浮点数表示范围。",
+  "formulas": [],
+  "example": "双精度最大约 1.8×10³⁰⁸，再大就上溢成 inf。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:浮点数"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "浮点与误差",
+  "cn": "下溢",
+  "en": "Underflow",
+  "kind": "概念",
+  "definition": "数太小被当成 0，在浮点数最小范围之下。",
+  "formulas": [],
+  "example": "1e−320 在双精度里直接变成 0。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:浮点数"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "浮点与误差",
+  "cn": "误差",
+  "en": "Error",
+  "kind": "概念",
+  "definition": "算出来的值和真实值的差距。",
+  "formulas": [
+   "误差 = 近似值 − 真值"
+  ],
+  "example": "真值 2，算出 1.99，误差 −0.01。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "浮点与误差",
+  "cn": "误差积累",
+  "en": "Error Accumulation",
+  "kind": "概念",
+  "definition": "每步的小误差越积越多，最后可能淹没真结果。",
+  "formulas": [],
+  "example": "循环加 0.1 一万次，误差越滚越大。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:误差",
+   "NEW:舍入误差"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "迭代思想",
+  "cn": "迭代法",
+  "en": "Iterative Method",
+  "kind": "概念",
+  "definition": "从猜测出发，反复改进，一步步逼近答案。",
+  "formulas": [
+   "xₖ₊₁ = g(xₖ)"
+  ],
+  "example": "猜平方根：猜→平方→偏大就调小→再猜。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "迭代思想",
+  "cn": "收敛",
+  "en": "Convergence",
+  "kind": "概念",
+  "definition": "迭代越走离答案越近，最终“定”在答案上。",
+  "formulas": [],
+  "example": "二分法区间越缩越小，收敛到根。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "迭代思想",
+  "cn": "发散",
+  "en": "Divergence",
+  "kind": "概念",
+  "definition": "迭代越走离答案越远，永远到不了。",
+  "formulas": [],
+  "example": "xₖ₊₁=2xₖ 从 1 出发：1,2,4,8……越跑越远。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "迭代思想",
+  "cn": "稳定性",
+  "en": "Stability",
+  "kind": "概念",
+  "definition": "初始小误差在迭代中不被放大，方法才可靠。",
+  "formulas": [],
+  "example": "多米诺骨牌：推一下全倒＝不稳定。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:误差积累"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "解的类型",
+  "cn": "精确解",
+  "en": "Exact Solution",
+  "kind": "概念",
+  "definition": "笔算能写出的准确答案，没有误差。",
+  "formulas": [],
+  "example": "x²=4 的精确解是 x=±2。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "解的类型",
+  "cn": "近似解",
+  "en": "Approximate Solution",
+  "kind": "概念",
+  "definition": "和真值差一点点、但够用的答案。",
+  "formulas": [],
+  "example": "√2≈1.414，够工程用就是近似解。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:精确解"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "解的类型",
+  "cn": "数值解",
+  "en": "Numerical Solution",
+  "kind": "概念",
+  "definition": "用计算机算出来的一串数字（近似解）。",
+  "formulas": [],
+  "example": "解方程组算出 x≈1.002，y≈−0.998。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:近似解"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值计算入门",
+  "topic_cn": "解的类型",
+  "cn": "解析解",
+  "en": "Analytical Solution",
+  "kind": "概念",
+  "definition": "用公式笔算写出的精确表达式。",
+  "formulas": [
+   "一元二次方程求根公式"
+  ],
+  "example": "x=(−b±√Δ)/2a 就是解析解。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:精确解"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "目标函数",
+  "en": "Objective Function",
+  "kind": "概念",
+  "definition": "想让它最小（或最大）的那个函数。",
+  "formulas": [
+   "min f(x)"
+  ],
+  "example": "花最少的钱：总花费就是目标函数。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "决策变量",
+  "en": "Decision Variable",
+  "kind": "概念",
+  "definition": "能自己做主调整的量，优化就是调它。",
+  "formulas": [],
+  "example": "进货量：进多少由你定，它就是决策变量。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:目标函数"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "约束条件",
+  "en": "Constraint",
+  "kind": "概念",
+  "definition": "必须遵守的限制，框住变量的活动范围。",
+  "formulas": [
+   "如 x ≥ 0，x₁+x₂ ≤ 10"
+  ],
+  "example": "预算只有 100 块：花销 ≤100 就是约束。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "可行域",
+  "en": "Feasible Region",
+  "kind": "概念",
+  "definition": "满足所有约束的点的集合，只能在这里面挑答案。",
+  "formulas": [],
+  "example": "100 块预算下所有买得起的组合。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:约束条件"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "可行解",
+  "en": "Feasible Solution",
+  "kind": "概念",
+  "definition": "落在可行域里的一个解，满足全部约束。",
+  "formulas": [],
+  "example": "花 80 块买了一堆：满足预算，是可行解。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:可行域"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "最优解",
+  "en": "Optimal Solution",
+  "kind": "概念",
+  "definition": "可行解中让目标函数最好（最小/最大）的那个。",
+  "formulas": [],
+  "example": "100 块预算下买到东西最多的那单。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:可行解",
+   "NEW:目标函数"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "最小值",
+  "en": "Minimum",
+  "kind": "概念",
+  "definition": "函数能取到的最小的那个值。",
+  "formulas": [
+   "min f(x)"
+  ],
+  "example": "抛物线 y=x² 的最小值是 0。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "最大值",
+  "en": "Maximum",
+  "kind": "概念",
+  "definition": "函数能取到的最大的那个值。",
+  "formulas": [
+   "max f(x)"
+  ],
+  "example": "y=−x²+1 的最大值是 1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:最小值"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "局部最优",
+  "en": "Local Optimum",
+  "kind": "概念",
+  "definition": "附近一圈里最好，但放眼全局未必最好。",
+  "formulas": [],
+  "example": "山谷里最低处是局部最优，隔壁山谷更低。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:最优解"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "优化直观",
+  "cn": "全局最优",
+  "en": "Global Optimum",
+  "kind": "概念",
+  "definition": "放眼全部可行解中最好的那个。",
+  "formulas": [],
+  "example": "所有山谷中最深的那个谷底。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:局部最优"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "梯度下降直观",
+  "cn": "学习率",
+  "en": "Learning Rate",
+  "kind": "概念",
+  "definition": "每步迈多大：太大越过头，太小走得慢。",
+  "formulas": [
+   "x ← x − α∇f(x)，α 即学习率"
+  ],
+  "example": "下山步子太大直接跨过山谷。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "梯度下降直观",
+  "cn": "损失函数",
+  "en": "Loss Function",
+  "kind": "概念",
+  "definition": "衡量“猜得有多错”的函数，越小越好。",
+  "formulas": [],
+  "example": "考试错一题扣一分：扣分总数即损失。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:目标函数"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "梯度下降直观",
+  "cn": "迭代优化",
+  "en": "Iterative Optimization",
+  "kind": "概念",
+  "definition": "从初值出发，一步步走下坡，直到走不动为止。",
+  "formulas": [],
+  "example": "蒙眼下山：摸最陡方向迈一步，重复。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:迭代法",
+   "NEW:学习率"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "梯度下降直观",
+  "cn": "步长",
+  "en": "Step Size",
+  "kind": "概念",
+  "definition": "一次迭代走的距离，常由学习率决定。",
+  "formulas": [],
+  "example": "学习率 0.1、梯度 2 → 步长 0.2。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:学习率"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化入门",
+  "topic_cn": "梯度下降直观",
+  "cn": "等高线",
+  "en": "Contour Line",
+  "kind": "概念",
+  "definition": "函数值相等的点连成的线，优化在图上就是穿等高线下山。",
+  "formulas": [],
+  "example": "地图等高线密的地方坡陡。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:目标函数"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "高级排序",
+  "cn": "堆排序",
+  "en": "Heapsort",
+  "kind": "算法",
+  "definition": "建堆后反复取堆顶（最大元）放末尾，原地完成排序。",
+  "formulas": [
+   "时间复杂度 O(n log n)，空间 O(1)"
+  ],
+  "example": "[5,3,8]建堆→取 8 放末→[3,5,8]。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:堆",
+   "NEW:建堆"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "高级排序",
+  "cn": "希尔排序",
+  "en": "Shell Sort",
+  "kind": "算法",
+  "definition": "按间隔分组做插入排序，间隔逐步缩小到 1。",
+  "formulas": [],
+  "example": "间隔 3 先排 a[0],a[3],a[6]……最后间隔 1 精排。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:插入排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "高级排序",
+  "cn": "堆",
+  "en": "Heap",
+  "kind": "概念",
+  "definition": "父节点总不小于（或不大于）孩子的完全二叉树。",
+  "formulas": [],
+  "example": "大顶堆的根永远是最大值，取 O(1)。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:完全二叉树",
+   "NEW:优先队列"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "高级排序",
+  "cn": "建堆",
+  "en": "Build Heap",
+  "kind": "算法",
+  "definition": "把无序数组线性时间整理成堆，自底向上调整。",
+  "formulas": [
+   "时间复杂度 O(n)"
+  ],
+  "example": "[5,3,8,1]自底向上调整→[8,3,5,1]。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:堆",
+   "NEW:堆调整"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "高级排序",
+  "cn": "堆调整",
+  "en": "Heapify",
+  "kind": "算法",
+  "definition": "把一个节点沿树下沉（或上浮）到合适位置，恢复堆性质。",
+  "formulas": [
+   "单次调整 O(log n)"
+  ],
+  "example": "根 1 下沉：和较大的孩子交换直到合适。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:堆"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "高级排序",
+  "cn": "外部排序",
+  "en": "External Sorting",
+  "kind": "算法",
+  "definition": "数据放不进内存时：分块排好，再多路归并。",
+  "formulas": [],
+  "example": "100G 日志：切成 1G 块排好，再 100 路归并。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:归并排序",
+   "NEW:多路归并"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "高级排序",
+  "cn": "多路归并",
+  "en": "K-Way Merge",
+  "kind": "算法",
+  "definition": "用最小堆同时合并 k 个有序段，每次取最小。",
+  "formulas": [
+   "时间复杂度 O(n log k)"
+  ],
+  "example": "100 个有序块用堆合并成一个大有序文件。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:合并",
+   "NEW:堆"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数论算法",
+  "cn": "快速幂",
+  "en": "Fast Exponentiation",
+  "kind": "算法",
+  "definition": "把指数拆成二进制，平方迭代相乘，O(log n) 算幂。",
+  "formulas": [
+   "a¹³ = a⁸·a⁴·a¹"
+  ],
+  "example": "算 2¹⁰：平方得 2²,2⁴,2⁸ 再组合。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:递归"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数论算法",
+  "cn": "矩阵快速幂",
+  "en": "Matrix Fast Exponentiation",
+  "kind": "算法",
+  "definition": "把快速幂用在矩阵乘法上，O(log n) 求线性递推第 n 项。",
+  "formulas": [
+   "[fib(n+1),fib(n)]ᵀ = Mⁿ·[1,0]ᵀ"
+  ],
+  "example": "fib(10⁹)：矩阵 M 做快速幂，毫秒级。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:快速幂",
+   "NEW:递推"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数论算法",
+  "cn": "质数判定",
+  "en": "Primality Test",
+  "kind": "概念",
+  "definition": "判断一个数是不是素数，最朴素的是试除法。",
+  "formulas": [],
+  "example": "判 97：试除到 √97≈9.8，都不整除→是素数。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:枚举法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数论算法",
+  "cn": "试除法",
+  "en": "Trial Division",
+  "kind": "算法",
+  "definition": "用 2 到 √n 的数逐个试除，整除则为合数。",
+  "formulas": [
+   "时间复杂度 O(√n)"
+  ],
+  "example": "判 101：试除 2..10，无整除→素数。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:质数判定"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数论算法",
+  "cn": "质因数分解",
+  "en": "Prime Factorization",
+  "kind": "概念",
+  "definition": "把合数拆成素数乘积，如 12=2²×3。",
+  "formulas": [
+   "n = p₁^e₁·p₂^e₂·…"
+  ],
+  "example": "试除法分解 84：84=2²×3×7。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:试除法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数论算法",
+  "cn": "组合数取模",
+  "en": "Binomial Coefficient Modulo",
+  "kind": "算法",
+  "definition": "算 C(n,k) mod p：预处理阶乘+逆元，O(1) 回答。",
+  "formulas": [
+   "C(n,k) = n!/(k!(n−k)!)"
+  ],
+  "example": "C(10,3)=120：预处理阶乘后直接算。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:同余方程"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "区间技巧",
+  "cn": "前缀和",
+  "en": "Prefix Sum",
+  "kind": "算法",
+  "definition": "预处理 s[i]=a[1]+…+a[i]，区间和 O(1) 查。",
+  "formulas": [
+   "sum(l,r) = s[r]−s[l−1]"
+  ],
+  "example": "查 3..7 天销量：s[7]−s[2] 秒出。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:数组"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "区间技巧",
+  "cn": "差分数组",
+  "en": "Difference Array",
+  "kind": "算法",
+  "definition": "d[i]=a[i]−a[i−1]，区间加 v 只需改 d[l],d[r+1]。",
+  "formulas": [
+   "区间[l,r]+=v ⟺ d[l]+=v, d[r+1]−=v"
+  ],
+  "example": "全班 3..7 号各加 5 分：改两处即完成。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:前缀和"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "区间技巧",
+  "cn": "树上差分",
+  "en": "Tree Difference",
+  "kind": "算法",
+  "definition": "差分搬到树上：路径加值只改端点，子树求和还原。",
+  "formulas": [],
+  "example": "树上 u–v 路径加 1：d[u]++,d[v]++,d[lca]−=2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:差分数组",
+   "NEW:LCA"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "区间技巧",
+  "cn": "DFS序",
+  "en": "DFS Order",
+  "kind": "概念",
+  "definition": "深搜给节点编号，子树变成连续区间。",
+  "formulas": [],
+  "example": "子树查询变区间查询，配线段树秒解。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:树的遍历"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "分治优化",
+  "cn": "三分法",
+  "en": "Ternary Search",
+  "kind": "算法",
+  "definition": "单峰函数上取两个三等分点，舍掉一侧，找极值。",
+  "formulas": [
+   "时间复杂度 O(log n)"
+  ],
+  "example": "找抛物线顶点：不断掐掉不可能的一侧。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二分查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "分治优化",
+  "cn": "分块算法",
+  "en": "Sqrt Decomposition",
+  "kind": "算法",
+  "definition": "把数组切成 √n 块，块内预处理，查询拼块。",
+  "formulas": [
+   "查询/修改 O(√n)"
+  ],
+  "example": "区间求和：整块用预处理，散块暴力。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:前缀和"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "分治优化",
+  "cn": "莫队算法",
+  "en": "Mo's Algorithm",
+  "kind": "算法",
+  "definition": "离线排序查询顺序，让区间端点移动总距离最小。",
+  "formulas": [
+   "时间复杂度 O((n+q)√n)"
+  ],
+  "example": "一堆区间众数查询：排好序逐个挪端点。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:分块算法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "字符串算法",
+  "cn": "KMP算法",
+  "en": "KMP Algorithm",
+  "kind": "算法",
+  "definition": "失配时按 next 数组跳，不回退文本，O(n+m) 匹配。",
+  "formulas": [
+   "时间复杂度 O(n+m)"
+  ],
+  "example": "文本“ababa”找“aba”：失配跳 next，不回头。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:模式串",
+   "NEW:失配"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "字符串算法",
+  "cn": "模式串",
+  "en": "Pattern String",
+  "kind": "概念",
+  "definition": "要在文本里找的那段短字符串。",
+  "formulas": [],
+  "example": "文本“ababa”中找“aba”，“aba”即模式串。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "字符串算法",
+  "cn": "失配",
+  "en": "Mismatch",
+  "kind": "概念",
+  "definition": "匹配过程中字符对不上，需要调整位置重来。",
+  "formulas": [],
+  "example": "“aba”对“abb”：第三个字符 b≠a，失配。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:模式串"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "字符串算法",
+  "cn": "字典树",
+  "en": "Trie",
+  "kind": "概念",
+  "definition": "按字符共用前缀的树，查单词、前缀统计都快。",
+  "formulas": [
+   "查长 m 单词 O(m)"
+  ],
+  "example": "存 apple/app：a→p→p 共用，再分叉。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "图算法",
+  "cn": "SPFA算法",
+  "en": "SPFA",
+  "kind": "算法",
+  "definition": "队列优化的 Bellman-Ford，只松弛被更新的点。",
+  "formulas": [
+   "平均较快，最坏 O(nm)"
+  ],
+  "example": "有负权图求最短路：Bellman-Ford 的加速版。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "图算法",
+  "cn": "双向BFS",
+  "en": "Bidirectional BFS",
+  "kind": "算法",
+  "definition": "起点终点同时搜，相遇即停，搜索树小得多。",
+  "formulas": [],
+  "example": "社交网络找两人关系：两头一起扩散更快相遇。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "图算法",
+  "cn": "多源BFS",
+  "en": "Multi-Source BFS",
+  "kind": "算法",
+  "definition": "多个起点同时入队，一次求出离谁最近。",
+  "formulas": [
+   "时间复杂度 O(n+m)"
+  ],
+  "example": "多座粮仓求每户最近粮仓：一起扩散。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:双向BFS"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "图算法",
+  "cn": "0-1BFS",
+  "en": "0-1 BFS",
+  "kind": "算法",
+  "definition": "边权只有 0/1 时用双端队列代替堆，O(n+m)。",
+  "formulas": [
+   "时间复杂度 O(n+m)"
+  ],
+  "example": "0 权边走队首，1 权边走队尾。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:双向BFS"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "图算法",
+  "cn": "泛洪填充",
+  "en": "Flood Fill",
+  "kind": "算法",
+  "definition": "从一点出发把连通的同色区域全部染色。",
+  "formulas": [],
+  "example": "画图工具的油漆桶：一点整片变色。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "图算法",
+  "cn": "连通分量",
+  "en": "Connected Component",
+  "kind": "概念",
+  "definition": "无向图中互相可达的最大顶点集合。",
+  "formulas": [],
+  "example": "社交网里互有好友的最大圈子。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:泛洪填充"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "图算法",
+  "cn": "LCA",
+  "en": "Lowest Common Ancestor",
+  "kind": "概念",
+  "definition": "两节点最近的公共祖先。",
+  "formulas": [],
+  "example": "家谱中你和堂弟的 LCA 是爷爷。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "图算法",
+  "cn": "倍增法",
+  "en": "Binary Lifting",
+  "kind": "算法",
+  "definition": "预处理 2^k 级祖先，跳跃式求 LCA，O(log n)。",
+  "formulas": [
+   "up[k][v] = up[k−1][up[k−1][v]]"
+  ],
+  "example": "求 LCA：先把深的跳到同层，再一起跳。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:LCA",
+   "NEW:快速幂"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "ST表",
+  "en": "Sparse Table",
+  "kind": "概念",
+  "definition": "预处理区间最值/ gcd，查询 O(1)，不支持修改。",
+  "formulas": [
+   "查询 O(1)，预处理 O(n log n)"
+  ],
+  "example": "RMQ：区间最小值秒查，建表稍贵。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:倍增法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "红黑树",
+  "en": "Red-Black Tree",
+  "kind": "概念",
+  "definition": "用红黑染色保持近似平衡的二叉搜索树。",
+  "formulas": [
+   "查找/插入/删除 O(log n)"
+  ],
+  "example": "C++ map、Java TreeMap 底层即红黑树。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉搜索树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "动态规划",
+  "cn": "最长递增子序列",
+  "en": "Longest Increasing Subsequence",
+  "kind": "算法",
+  "definition": "序列中最长的严格递增子序列，O(n log n) 可解。",
+  "formulas": [
+   "dp[i] = 1+max{dp[j]: j<i, a[j]<a[i]}"
+  ],
+  "example": "[3,1,4,1,5]的 LIS 是[1,4,5]，长 3。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递推"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "动态规划",
+  "cn": "最长公共子序列",
+  "en": "Longest Common Subsequence",
+  "kind": "算法",
+  "definition": "两个序列最长的公共子序列，经典二维 DP。",
+  "formulas": [
+   "dp[i][j] = dp[i−1][j−1]+1（若相等）"
+  ],
+  "example": "“abcde”与“ace”的 LCS 是“ace”。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递推"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "动态规划",
+  "cn": "记忆化搜索",
+  "en": "Memoization",
+  "kind": "方法",
+  "definition": "递归+备忘录：算过的结果存表，重复调用直接查。",
+  "formulas": [],
+  "example": "fib 递归加备忘：fib(100) 瞬间算出。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递归",
+   "NEW:查找表"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "动态规划",
+  "cn": "DAG上的DP",
+  "en": "DP on DAG",
+  "kind": "方法",
+  "definition": "按拓扑序在 DAG 上递推，无后效性天然成立。",
+  "formulas": [],
+  "example": "DAG 最长路：拓扑序走一遍 dp 即得。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递推"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "贪心",
+  "cn": "活动选择问题",
+  "en": "Activity Selection",
+  "kind": "算法",
+  "definition": "选最多互不冲突的活动：按结束时间贪心取。",
+  "formulas": [],
+  "example": "会议室排会：先排结束早的，能排最多场。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "算法分析",
+  "cn": "逆序对计数",
+  "en": "Counting Inversions",
+  "kind": "算法",
+  "definition": "归并排序的合并阶段顺手数逆序对，O(n log n)。",
+  "formulas": [
+   "时间复杂度 O(n log n)"
+  ],
+  "example": "[3,1,2]归并时数出 2 个逆序对。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:归并排序",
+   "NEW:逆序对",
+   "NEW:合并"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "算法分析",
+  "cn": "循环不变量",
+  "en": "Loop Invariant",
+  "kind": "思路",
+  "definition": "循环中恒成立的断言，用它证明算法正确。",
+  "formulas": [],
+  "example": "插入排序：a[0..i−1]恒有序，即不变量。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:循环",
+   "NEW:插入排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "算法分析",
+  "cn": "旋转数组的二分查找",
+  "en": "Binary Search on Rotated Array",
+  "kind": "算法",
+  "definition": "旋转有序数组中二分：一半必有序，判断目标在哪半。",
+  "formulas": [
+   "时间复杂度 O(log n)"
+  ],
+  "example": "[4,5,6,1,2,3]找 2：先判左半有序否。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二分查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "算法分析",
+  "cn": "寻找峰值",
+  "en": "Find Peak Element",
+  "kind": "算法",
+  "definition": "找比邻居都大的元素，二分比较中点与右邻。",
+  "formulas": [
+   "时间复杂度 O(log n)"
+  ],
+  "example": "[1,3,2]：中点 3>2，峰在左半（含 3）。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二分查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "算法分析",
+  "cn": "整数平方根",
+  "en": "Integer Square Root",
+  "kind": "算法",
+  "definition": "二分找最大整数 r 使 r² ≤ x。",
+  "formulas": [
+   "时间复杂度 O(log x)"
+  ],
+  "example": "x=10：二分得 r=3（3²=9≤10）。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二分查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "算法选型",
+  "cn": "排序算法选型",
+  "en": "Choosing a Sorting Algorithm",
+  "kind": "思路",
+  "definition": "n 小用插入、通用用快排、要稳定用归并、整数用计数。",
+  "formulas": [],
+  "example": "千万级整数排序：基数/计数 beats 快排。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:冒泡排序",
+   "NEW:快速排序",
+   "NEW:归并排序",
+   "NEW:计数排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "算法选型",
+  "cn": "数据结构选型",
+  "en": "Choosing a Data Structure",
+  "kind": "思路",
+  "definition": "随机访问用数组、频繁增删用链表、先进先出用队列、查最值用堆。",
+  "formulas": [],
+  "example": "滑动窗口最大：双端队列 O(n) 搞定。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数组",
+   "NEW:链表",
+   "NEW:队列",
+   "NEW:堆"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "双端队列",
+  "en": "Deque",
+  "kind": "概念",
+  "definition": "两头都能进出的队列，单调栈/队列的好搭档。",
+  "formulas": [],
+  "example": "滑动窗口最大：队首始终是窗口最大值。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:队列"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "单调栈",
+  "en": "Monotonic Stack",
+  "kind": "概念",
+  "definition": "保持单调性的栈，元素出入各一次，找“下一个更大”神器。",
+  "formulas": [
+   "每个元素入栈出栈各一次，均摊 O(n)"
+  ],
+  "example": "找每人右边第一个更高的人，一遍扫描搞定。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:栈"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "单调队列",
+  "en": "Monotonic Queue",
+  "kind": "概念",
+  "definition": "保持单调的双端队列，滑动窗口最值的 O(n) 解法。",
+  "formulas": [
+   "均摊 O(n)"
+  ],
+  "example": "长度 k 窗口最大值：k=3 在[1,3,-1]上得[3,3]。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:双端队列",
+   "NEW:单调栈"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "滑动窗口最大值",
+  "en": "Sliding Window Maximum",
+  "kind": "算法",
+  "definition": "单调队列维护窗口最值，整体 O(n)。",
+  "formulas": [
+   "时间复杂度 O(n)"
+  ],
+  "example": "[1,3,-1,-3,5],k=3 → [3,3,5,5]。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:单调队列"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "柱状图中最大的矩形",
+  "en": "Largest Rectangle in Histogram",
+  "kind": "算法",
+  "definition": "单调栈找每根柱子左右第一个更矮的，算最大面积。",
+  "formulas": [
+   "时间复杂度 O(n)"
+  ],
+  "example": "[2,1,5,6,2,3]最大矩形面积 10。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:单调栈"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "接雨水问题",
+  "en": "Trapping Rain Water",
+  "kind": "算法",
+  "definition": "双指针/单调栈算每格左右最高柱，差值即水量。",
+  "formulas": [
+   "水量 = min(左最高,右最高) − 高度"
+  ],
+  "example": "[0,1,0,2]能接 1 单位雨水。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:单调栈"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "有效的括号",
+  "en": "Valid Parentheses",
+  "kind": "算法",
+  "definition": "栈匹配括号：左括号入栈，右括号看栈顶配不配。",
+  "formulas": [
+   "时间复杂度 O(n)"
+  ],
+  "example": "“()[]{}”合法，“([)]”不合法。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:栈"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "逆波兰表达式求值",
+  "en": "Evaluate Reverse Polish Notation",
+  "kind": "算法",
+  "definition": "后缀表达式用栈求值：数入栈，符弹出两数运算。",
+  "formulas": [],
+  "example": "“2 1 + 3 *”→(2+1)×3=9。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:栈"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "最小栈",
+  "en": "Min Stack",
+  "kind": "概念",
+  "definition": "支持 O(1) 取最小值的栈：另存每个状态的最小值。",
+  "formulas": [
+   "push/pop/top/getMin 均为 O(1)"
+  ],
+  "example": "push 3,5,2：getMin 依次 3,3,2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:栈"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "用栈实现队列",
+  "en": "Queue using Stacks",
+  "kind": "思路",
+  "definition": "两栈倒腾：入队进 s1，出队把 s1 倒进 s2 再弹。",
+  "formulas": [
+   "均摊 O(1)"
+  ],
+  "example": "面试经典：两个栈拼出队列行为。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:栈",
+   "NEW:队列"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "用队列实现栈",
+  "en": "Stack using Queues",
+  "kind": "思路",
+  "definition": "入栈时把队列老元素轮转到新元素之后。",
+  "formulas": [],
+  "example": "push 1,2：队列变[2,1]，pop 得 2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:栈",
+   "NEW:队列"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "渐近分析",
+  "cn": "主定理",
+  "en": "Master Theorem",
+  "kind": "定理",
+  "definition": "分治递归 T(n)=aT(n/b)+f(n) 的复杂度直接查表可得。",
+  "formulas": [
+   "T(n) = aT(n/b) + f(n)"
+  ],
+  "example": "归并排序 T(n)=2T(n/2)+O(n) → O(n log n)。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:递归式",
+   "NEW:分治思想"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "渐近分析",
+  "cn": "主定理情形一",
+  "en": "Master Theorem Case 1",
+  "kind": "概念",
+  "definition": "f(n) 比 n^{log_b a} 低一阶：递归部分主导。",
+  "formulas": [
+   "f(n) = O(n^{log_b a − ε}) ⟹ T(n) = Θ(n^{log_b a})"
+  ],
+  "example": "T(n)=4T(n/2)+n → Θ(n²)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:主定理"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "渐近分析",
+  "cn": "主定理情形二",
+  "en": "Master Theorem Case 2",
+  "kind": "概念",
+  "definition": "f(n) 与 n^{log_b a} 同阶：多一个 log 因子。",
+  "formulas": [
+   "f(n) = Θ(n^{log_b a}) ⟹ T(n) = Θ(n^{log_b a} log n)"
+  ],
+  "example": "归并 T(n)=2T(n/2)+Θ(n) → Θ(n log n)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:主定理"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "渐近分析",
+  "cn": "主定理情形三",
+  "en": "Master Theorem Case 3",
+  "kind": "概念",
+  "definition": "f(n) 高一阶且满足正则条件：f(n) 主导。",
+  "formulas": [
+   "f(n) = Ω(n^{log_b a + ε}) ⟹ T(n) = Θ(f(n))"
+  ],
+  "example": "T(n)=2T(n/2)+n² → Θ(n²)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:主定理"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "渐近分析",
+  "cn": "递归式",
+  "en": "Recurrence",
+  "kind": "概念",
+  "definition": "用更小规模的自己定义自己的等式，刻画递归算法耗时。",
+  "formulas": [
+   "T(n) = 2T(n/2) + O(n)"
+  ],
+  "example": "归并排序的耗时满足上式。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递归"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "渐近分析",
+  "cn": "代入法",
+  "en": "Substitution Method",
+  "kind": "方法",
+  "definition": "猜一个复杂度界，代入递归式用归纳法验证。",
+  "formulas": [],
+  "example": "猜 T(n)=O(n log n)，代入归纳证归并排序。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递归式"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "渐近分析",
+  "cn": "递归式展开法",
+  "en": "Recursion Tree Method",
+  "kind": "方法",
+  "definition": "把递归展开成树，逐层求和得总复杂度。",
+  "formulas": [],
+  "example": "T(n)=2T(n/2)+n：每层和为 n，共 log n 层。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递归式"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "渐近记号",
+  "cn": "大Θ记号",
+  "en": "Big-Theta Notation",
+  "kind": "概念",
+  "definition": "上下界一样紧：既是 O 也是 Ω，记作 Θ。",
+  "formulas": [
+   "T(n) = Θ(n²) ⟺ c₁n² ≤ T(n) ≤ c₂n²"
+  ],
+  "example": "冒泡排序最坏和平均都是 Θ(n²)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "渐近记号",
+  "cn": "大Ω记号",
+  "en": "Big-Omega Notation",
+  "kind": "概念",
+  "definition": "渐近下界：n 很大时至少这么慢。",
+  "formulas": [
+   "T(n) = Ω(n²) 表示不比 n² 慢"
+  ],
+  "example": "比较排序至少 Ω(n log n)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:大Θ记号"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "下界",
+  "cn": "比较排序下界",
+  "en": "Sorting Lower Bound",
+  "kind": "定理",
+  "definition": "只靠比较的排序，最坏至少 Ω(n log n) 次比较。",
+  "formulas": [
+   "Ω(n log n)"
+  ],
+  "example": "n! 种排列，决策树高至少 log(n!)≈n log n。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:决策树模型",
+   "NEW:排序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "下界",
+  "cn": "决策树模型",
+  "en": "Decision Tree Model",
+  "kind": "概念",
+  "definition": "把比较算法看成二叉决策树，树高即比较次数。",
+  "formulas": [],
+  "example": "3 个数排序的决策树至少高 3。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:比较"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "下界",
+  "cn": "信息论下界",
+  "en": "Information-Theoretic Lower Bound",
+  "kind": "思路",
+  "definition": "log(可能性总数) 是比较次数的下界：信息不够就分不清。",
+  "formulas": [
+   "比较次数 ≥ log₂(候选数)"
+  ],
+  "example": "12 球找次品：3ⁿ 种结果，称 k 次 3ᵏ≥3ⁿ。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:决策树模型"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "下界",
+  "cn": "对抗论证",
+  "en": "Adversary Argument",
+  "kind": "思路",
+  "definition": "设想一个“捣蛋鬼”总给最不利的答案，逼出下界。",
+  "formulas": [],
+  "example": "找最大最小：捣蛋鬼让每次比较信息最少。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:最坏情况"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "平摊分析",
+  "cn": "聚合分析",
+  "en": "Aggregate Analysis",
+  "kind": "方法",
+  "definition": "n 次操作总代价除以 n，得平均每次的平摊代价。",
+  "formulas": [
+   "平摊代价 = 总代价/n"
+  ],
+  "example": "动态数组扩容：n 次 push 平摊 O(1)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:平均情况"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "实例分析",
+  "cn": "二分查找复杂度分析",
+  "en": "Complexity of Binary Search",
+  "kind": "思路",
+  "definition": "T(n)=T(n/2)+O(1)，主定理情形二（a=1）：O(log n)。",
+  "formulas": [
+   "T(n) = T(n/2)+O(1) → O(log n)"
+  ],
+  "example": "100 万个数 20 次比较即得。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二分查找",
+   "NEW:主定理情形二"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "实例分析",
+  "cn": "归并排序复杂度分析",
+  "en": "Complexity of Merge Sort",
+  "kind": "思路",
+  "definition": "T(n)=2T(n/2)+O(n)，主定理情形二：Θ(n log n)。",
+  "formulas": [
+   "T(n) = 2T(n/2)+Θ(n) → Θ(n log n)"
+  ],
+  "example": "n 翻倍，耗时略多于翻倍（多 log 因子）。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:归并排序",
+   "NEW:主定理情形二"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "实例分析",
+  "cn": "快速排序平均复杂度",
+  "en": "Average Complexity of Quicksort",
+  "kind": "思路",
+  "definition": "随机主元下期望 O(n log n)：好坏划分概率平衡。",
+  "formulas": [
+   "E[T(n)] = O(n log n)"
+  ],
+  "example": "随机打乱后快排，实际总比归并快（常数小）。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:快速排序",
+   "NEW:平均情况"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "实例分析",
+  "cn": "动态规划复杂度分析",
+  "en": "Complexity of DP",
+  "kind": "思路",
+  "definition": "状态数 × 单个转移代价，即为 DP 总复杂度。",
+  "formulas": [
+   "O(状态数 × 转移代价)"
+  ],
+  "example": "LCS：n×m 个状态，每态 O(1) → O(nm)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:最长公共子序列"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "非线性方程",
+  "cn": "牛顿迭代法",
+  "en": "Newton's Method",
+  "kind": "算法",
+  "definition": "用切线零点逼近函数零点：xₖ₊₁ = xₖ − f(xₖ)/f′(xₖ)。",
+  "formulas": [
+   "xₖ₊₁ = xₖ − f(xₖ)/f′(xₖ)"
+  ],
+  "example": "求√2：xₖ₊₁=(xₖ+2/xₖ)/2，5 步 15 位精度。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:迭代法",
+   "NEW:收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "非线性方程",
+  "cn": "牛顿迭代法的几何直观",
+  "en": "Geometric View of Newton's Method",
+  "kind": "思路",
+  "definition": "在当前点作切线，用切线与 x 轴交点作下一点。",
+  "formulas": [],
+  "example": "y=x²−2 在 (1,−1) 作切线交 x 轴于 1.5。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "非线性方程",
+  "cn": "弦截法",
+  "en": "Secant Method",
+  "kind": "算法",
+  "definition": "用两点连线代替切线，不用求导的牛顿法。",
+  "formulas": [
+   "xₖ₊₁ = xₖ − f(xₖ)(xₖ−xₖ₋₁)/(f(xₖ)−f(xₖ₋₁))"
+  ],
+  "example": "f 难求导时用弦截法，超线性收敛。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "非线性方程",
+  "cn": "割线法",
+  "en": "Chord Method",
+  "kind": "算法",
+  "definition": "固定一点作割线迭代，比牛顿慢但每步便宜。",
+  "formulas": [],
+  "example": "固定左端点，割线交点逐步逼近根。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:弦截法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "非线性方程",
+  "cn": "弦截法的几何直观",
+  "en": "Geometric View of Secant Method",
+  "kind": "思路",
+  "definition": "两点连一条弦，用弦的零点代替切线零点。",
+  "formulas": [],
+  "example": "弦比切线好画：只需两个函数值。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:弦截法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "收敛性",
+  "cn": "收敛阶",
+  "en": "Order of Convergence",
+  "kind": "概念",
+  "definition": "误差缩小的速度等级：p 阶即误差约变为 p 次方。",
+  "formulas": [
+   "|eₖ₊₁| ≈ C|eₖ|ᵖ"
+  ],
+  "example": "p=2 时有效数字每步翻倍。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "收敛性",
+  "cn": "线性收敛",
+  "en": "Linear Convergence",
+  "kind": "概念",
+  "definition": "误差每步乘以固定比例 q<1 缩小，p=1。",
+  "formulas": [
+   "|eₖ₊₁| ≈ q|eₖ|，q<1"
+  ],
+  "example": "二分法：误差每步减半，线性收敛。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:收敛阶"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "收敛性",
+  "cn": "超线性收敛",
+  "en": "Superlinear Convergence",
+  "kind": "概念",
+  "definition": "比线性快、比二次慢：1<p<2。",
+  "formulas": [
+   "|eₖ₊₁| ≈ C|eₖ|ᵖ，1<p<2"
+  ],
+  "example": "弦截法 p≈1.618（黄金分割率）！",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:收敛阶",
+   "NEW:弦截法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "收敛性",
+  "cn": "二次收敛",
+  "en": "Quadratic Convergence",
+  "kind": "概念",
+  "definition": "误差平方级缩小，有效数字每步翻倍，p=2。",
+  "formulas": [
+   "|eₖ₊₁| ≈ C|eₖ|²"
+  ],
+  "example": "牛顿法近根时：3 位→6 位→12 位。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:收敛阶",
+   "NEW:牛顿迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "收敛性",
+  "cn": "收敛速度的直观比较",
+  "en": "Comparing Convergence Speeds",
+  "kind": "思路",
+  "definition": "线性如走路、超线性如骑车、二次如开车：越往后差距越大。",
+  "formulas": [],
+  "example": "要 12 位精度：线性 40 步，二次 4 步。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:线性收敛",
+   "NEW:二次收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "迭代实践",
+  "cn": "迭代初值的选择",
+  "en": "Choice of Initial Guess",
+  "kind": "思路",
+  "definition": "初值离根越近越易收敛；画个图先定位再迭代。",
+  "formulas": [],
+  "example": "求√2初值取 1.5 而非 1000，少走弯路。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿迭代法",
+   "NEW:收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "迭代实践",
+  "cn": "发散的诊断与处理",
+  "en": "Diagnosing Divergence",
+  "kind": "思路",
+  "definition": "残差不降反增即发散：换初值、加阻尼或换方法。",
+  "formulas": [],
+  "example": "牛顿法震荡时改弦截法或缩小步长。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:发散",
+   "NEW:牛顿迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "迭代实践",
+  "cn": "迭代停机准则",
+  "en": "Stopping Criterion",
+  "kind": "思路",
+  "definition": "|xₖ₊₁−xₖ| 或 |f(xₖ)| 小于容差就停，别空转。",
+  "formulas": [
+   "|xₖ₊₁−xₖ| < tol 或 |f(xₖ)| < tol"
+  ],
+  "example": "tol=1e−8：差小于它就认为找到了。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "线性方程组",
+  "cn": "迭代精化",
+  "en": "Iterative Refinement",
+  "kind": "算法",
+  "definition": "先粗解，再算残差、解误差方程修正，循环提精度。",
+  "formulas": [
+   "r = b−Ax̃，解 Aδ=r，x̃+=δ"
+  ],
+  "example": "单精度解+双精度修正→双精度解。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "线性方程组",
+  "cn": "松弛迭代",
+  "en": "Relaxation Method",
+  "kind": "算法",
+  "definition": "新旧值加权平均：x_new = ωx*+(1−ω)x_old，加速收敛。",
+  "formulas": [
+   "x⁽ᵏ⁺¹⁾ = ωx* + (1−ω)x⁽ᵏ⁾"
+  ],
+  "example": "ω=1.2 超松弛常比 Gauss-Seidel 快。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "线性方程组",
+  "cn": "残差",
+  "en": "Residual",
+  "kind": "概念",
+  "definition": "r = b − Ax̃：近似解代入后还差多少。",
+  "formulas": [
+   "r = b − Ax̃"
+  ],
+  "example": "x̃=[1,1]代入 2x+y=5 得 r=2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "非线性方程",
+  "cn": "重根",
+  "en": "Multiple Root",
+  "kind": "概念",
+  "definition": "f(r)=f′(r)=0 的根，牛顿法在重根处退化为线性收敛。",
+  "formulas": [
+   "f(r) = f′(r) = 0"
+  ],
+  "example": "f=(x−1)² 在 x=1 是二重根。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿迭代法",
+   "NEW:线性收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "非线性方程",
+  "cn": "收敛域",
+  "en": "Basin of Attraction",
+  "kind": "概念",
+  "definition": "从哪些初值出发能收敛到该根的区域。",
+  "formulas": [],
+  "example": "牛顿法求√2：初值>0 都收敛到 √2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿迭代法",
+   "NEW:收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "迭代实践",
+  "cn": "迭代函数的选择",
+  "en": "Choice of Iteration Function",
+  "kind": "思路",
+  "definition": "把方程改写成 x=g(x) 时，要选 |g′|<1 的 g 才收敛。",
+  "formulas": [
+   "|g′(x)| < 1 则局部收敛"
+  ],
+  "example": "x²=2 写成 x=2/x 发散，写成 x=(x+2/x)/2 收敛。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:迭代法",
+   "NEW:收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值方法",
+  "topic_cn": "非线性方程",
+  "cn": "不动点迭代",
+  "en": "Fixed-Point Iteration",
+  "kind": "算法",
+  "definition": "把方程写成 x=g(x)，反复代入：xₖ₊₁=g(xₖ)。",
+  "formulas": [
+   "xₖ₊₁ = g(xₖ)"
+  ],
+  "example": "x=cos x：从 0.5 出发迭代收敛到 0.739。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "聚类优化",
+  "cn": "K-means算法",
+  "en": "K-Means Clustering",
+  "kind": "算法",
+  "definition": "定 k 个中心：分堆→重算中心→再分堆，直到不动。",
+  "formulas": [
+   "min Σ‖x−μ_{c(x)}‖²"
+  ],
+  "example": "顾客按消费分 3 群：随机中心迭代 10 轮。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:迭代优化"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "聚类优化",
+  "cn": "交替优化",
+  "en": "Alternating Optimization",
+  "kind": "方法",
+  "definition": "多组变量轮流固定、轮流优化，单调下降。",
+  "formulas": [],
+  "example": "K-means：固定中心分堆，固定分堆算中心。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:K-means算法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "优化基础",
+  "cn": "光滑与非光滑优化",
+  "en": "Smooth vs Nonsmooth Optimization",
+  "kind": "概念",
+  "definition": "目标可微用梯度法；有“尖角”（如 |x|）要用次梯度等特殊方法。",
+  "formulas": [],
+  "example": "Lasso 的 |x| 在 0 处不可微，不能直接梯度下降。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:目标函数"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "优化基础",
+  "cn": "优化问题的分类",
+  "en": "Classification of Optimization Problems",
+  "kind": "概念",
+  "definition": "按连续/离散、凸/非凸、有无约束划分，方法各不同。",
+  "formulas": [],
+  "example": "线性规划用单纯形，深度学习用 Adam。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:目标函数",
+   "NEW:约束条件"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "优化基础",
+  "cn": "无约束与约束优化",
+  "en": "Unconstrained vs Constrained Optimization",
+  "kind": "概念",
+  "definition": "无约束随便走；有约束要在可行域里走，方法更复杂。",
+  "formulas": [],
+  "example": "min x² 无约束；min x² s.t. x≥1 约束。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:优化问题的分类"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "梯度方法",
+  "cn": "梯度下降的步长选择",
+  "en": "Step Size in Gradient Descent",
+  "kind": "思路",
+  "definition": "固定步长简单但可能震荡；线搜索每步试最优步长。",
+  "formulas": [
+   "xₖ₊₁ = xₖ − αₖ∇f(xₖ)"
+  ],
+  "example": "α 太大在谷底来回跳，太小爬半年。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:学习率",
+   "NEW:步长"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "梯度方法",
+  "cn": "学习率过大的发散",
+  "en": "Divergence from Large Learning Rate",
+  "kind": "概念",
+  "definition": "步子太大越过谷底，越跳越高，直接发散。",
+  "formulas": [],
+  "example": "f=x²，α=1.5：1→−0.5→1.25……越跳越大。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:学习率",
+   "NEW:发散"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "梯度方法",
+  "cn": "学习率过小的缓慢",
+  "en": "Slow Convergence from Small Learning Rate",
+  "kind": "概念",
+  "definition": "步子太小走不动，迭代上万次还在半山腰。",
+  "formulas": [],
+  "example": "α=1e−6 解 f=x²：走 100 万步才到 0.01。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:学习率",
+   "NEW:线性收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "梯度方法",
+  "cn": "归一化加速优化",
+  "en": "Normalization Accelerates Optimization",
+  "kind": "思路",
+  "definition": "特征尺度差太大优化慢：先标准化到同一量级。",
+  "formulas": [
+   "x′ = (x−μ)/σ"
+  ],
+  "example": "房价（万）与面积（百）：标准化后梯度下降快 10 倍。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:学习率"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "梯度方法",
+  "cn": "条件数与优化难度",
+  "en": "Condition Number and Optimization Difficulty",
+  "kind": "思路",
+  "definition": "Hessian 条件数越大，等高线越扁长，梯度下降越慢。",
+  "formulas": [],
+  "example": "κ=1000 的二次型：梯度下降走“之”字上千步。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:之字形收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "梯度方法",
+  "cn": "之字形收敛",
+  "en": "Zigzag Convergence",
+  "kind": "概念",
+  "definition": "病态问题上梯度下降左右横跳、缓慢下移的锯齿路线。",
+  "formulas": [],
+  "example": "窄山谷里：梯度总指着对面山壁，来回弹。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:学习率"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "梯度方法",
+  "cn": "梯度噪声",
+  "en": "Gradient Noise",
+  "kind": "概念",
+  "definition": "随机梯度是真梯度加噪声：有偏无？无偏但方差大。",
+  "formulas": [
+   "E[g̃] = ∇f"
+  ],
+  "example": "小批量梯度：方向大致对，每步都抖。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:损失函数"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "约束优化",
+  "cn": "可行方向法",
+  "en": "Feasible Direction Method",
+  "kind": "方法",
+  "definition": "每步沿既下降又不跑出可行域的方向走。",
+  "formulas": [],
+  "example": "在边界上：梯度指向域外就沿边界滑。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:可行域",
+   "NEW:可行解"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "约束优化",
+  "cn": "简约梯度法",
+  "en": "Reduced Gradient Method",
+  "kind": "方法",
+  "definition": "用等式约束消去部分变量，在剩余变量上做梯度下降。",
+  "formulas": [],
+  "example": "x+y=1：代入 y=1−x，变一元无约束问题。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:约束条件"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "对偶理论",
+  "cn": "对偶间隙",
+  "en": "Duality Gap",
+  "kind": "概念",
+  "definition": "原问题值与对偶问题值的差：零间隙即最优性证书。",
+  "formulas": [
+   "gap = f(x) − g(λ) ≥ 0"
+  ],
+  "example": "gap<1e−6 就停：已几乎最优。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "大规模优化",
+  "cn": "分布式优化",
+  "en": "Distributed Optimization",
+  "kind": "概念",
+  "definition": "数据/计算分到多机，各算各的再聚合，处理超大规模问题。",
+  "formulas": [],
+  "example": "100 台机器各算梯度，平均后更新。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:梯度噪声"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "调参",
+  "cn": "超参数优化",
+  "en": "Hyperparameter Optimization",
+  "kind": "概念",
+  "definition": "调学习率、层数等超参数：本身也是个优化问题。",
+  "formulas": [],
+  "example": "学习率从 {0.1,0.01,0.001} 里挑最好的。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:学习率"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "调参",
+  "cn": "网格搜索",
+  "en": "Grid Search",
+  "kind": "算法",
+  "definition": "超参数笛卡尔积全试一遍，笨但全面。",
+  "formulas": [],
+  "example": "3 种学习率×2 种批量=6 组全训一遍。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:超参数优化",
+   "NEW:枚举法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "调参",
+  "cn": "随机搜索",
+  "en": "Random Search",
+  "kind": "算法",
+  "definition": "超参数随机采样试：比网格搜索更高效（Bergstra 结论）。",
+  "formulas": [],
+  "example": "60 次随机采样有 95% 概率进前 5% 好参数。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:超参数优化"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "优化方法",
+  "topic_cn": "非凸优化",
+  "cn": "非凸优化的挑战",
+  "en": "Challenges of Nonconvex Optimization",
+  "kind": "概念",
+  "definition": "局部最优、鞍点、平坦区遍地：只能求平稳点，无全局保证。",
+  "formulas": [],
+  "example": "神经网络训练：卡在鞍点比卡在局部最优更常见。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:局部最优",
+   "NEW:全局最优"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "字符串进阶",
+  "cn": "AC自动机",
+  "en": "Aho-Corasick Automaton",
+  "kind": "算法",
+  "definition": "多模式串匹配：Trie 加失配跳转，一遍文本全找出。",
+  "formulas": [
+   "时间复杂度 O(n+m+z)"
+  ],
+  "example": "敏感词过滤：上万个词一次扫描全命中。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:字典树",
+   "NEW:KMP算法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "字符串进阶",
+  "cn": "KMP自动机",
+  "en": "KMP Automaton",
+  "kind": "概念",
+  "definition": "把 KMP 的 next 跳转建成自动机，匹配即状态转移。",
+  "formulas": [],
+  "example": "文本字符逐个喂自动机，到接受态即匹配。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:KMP算法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "字符串进阶",
+  "cn": "后缀数组",
+  "en": "Suffix Array",
+  "kind": "概念",
+  "definition": "所有后缀按字典序排好的名次数组，配 LCP 解众多串问题。",
+  "formulas": [],
+  "example": "“banana”的后缀数组为[5,3,1,0,4,2]。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:字典树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "字符串进阶",
+  "cn": "后缀自动机",
+  "en": "Suffix Automaton",
+  "kind": "概念",
+  "definition": "接受所有子串的最小 DFA，状态数 O(n)。",
+  "formulas": [
+   "状态数 ≤ 2n−1"
+  ],
+  "example": "查子串出现次数：SAM 上走一遍即得。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:后缀数组"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "字符串进阶",
+  "cn": "Manacher算法",
+  "en": "Manacher's Algorithm",
+  "kind": "算法",
+  "definition": "利用回文对称性 O(n) 求最长回文子串。",
+  "formulas": [
+   "时间复杂度 O(n)"
+  ],
+  "example": "“babad”最长回文“bab”，线性扫出。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "字符串进阶",
+  "cn": "最小表示法",
+  "en": "Minimal String Representation",
+  "kind": "算法",
+  "definition": "O(n) 求循环串的最小字典序表示（Booth 算法）。",
+  "formulas": [
+   "时间复杂度 O(n)"
+  ],
+  "example": "“baca”的最小表示是“abac”。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:KMP算法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "字符串进阶",
+  "cn": "字符串周期",
+  "en": "String Period",
+  "kind": "概念",
+  "definition": "s[i]=s[i+p] 对一长段成立，p 即周期；KMP 的 next 蕴含最小周期。",
+  "formulas": [
+   "最小周期 = n − next[n−1]"
+  ],
+  "example": "“abcab”的 next 推出周期 3。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:KMP算法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "字符串进阶",
+  "cn": "树哈希",
+  "en": "Tree Hashing",
+  "kind": "算法",
+  "definition": "给子树算哈希判同构：AHU 算法 O(n)。",
+  "formulas": [],
+  "example": "两棵无根树同构否：找重心+哈希比较。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:树的遍历"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "图算法进阶",
+  "cn": "2-SAT",
+  "en": "2-Satisfiability",
+  "kind": "算法",
+  "definition": "每子句 2 个文字的可满足性：蕴含图+SCC，O(n+m)。",
+  "formulas": [
+   "时间复杂度 O(n+m)"
+  ],
+  "example": "(a∨b)∧(¬a∨c)：建图缩点判可满足。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:连通分量"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "图算法进阶",
+  "cn": "差分约束",
+  "en": "Difference Constraints",
+  "kind": "算法",
+  "definition": "x_v − x_u ≤ w 转成最短路：判负圈即判无解。",
+  "formulas": [
+   "x_v ≤ x_u + w"
+  ],
+  "example": "排课时间约束：转图跑 Bellman-Ford。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:SPFA算法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "图算法进阶",
+  "cn": "树链剖分",
+  "en": "Heavy-Light Decomposition",
+  "kind": "算法",
+  "definition": "重链剖分把树上路径拆成 O(log n) 段，配线段树。",
+  "formulas": [
+   "路径查询 O(log²n)"
+  ],
+  "example": "树上路径求和：跳重链逐段查。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:DFS序"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "图算法进阶",
+  "cn": "虚树",
+  "en": "Virtual Tree",
+  "kind": "概念",
+  "definition": "只保留关键点及 LCA 的压缩树，多次查询复用。",
+  "formulas": [],
+  "example": "k 个查询点建虚树，DP 只跑 O(k log k)。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:树链剖分",
+   "NEW:LCA"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "图算法进阶",
+  "cn": "圆方树",
+  "en": "Cactus Round-Square Tree",
+  "kind": "概念",
+  "definition": "仙人掌图的块树：圆点原点、方点双连通分量。",
+  "formulas": [],
+  "example": "仙人掌上两点间必经点：圆方树上查。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:连通分量"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "图算法进阶",
+  "cn": "最小树形图",
+  "en": "Minimum Arborescence",
+  "kind": "算法",
+  "definition": "有向图的最小生成树：朱刘算法 O(nm)。",
+  "formulas": [
+   "时间复杂度 O(nm)"
+  ],
+  "example": "有向广播网最小代价：朱刘算法求解。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "分治进阶",
+  "cn": "点分治",
+  "en": "Centroid Decomposition",
+  "kind": "算法",
+  "definition": "找重心分治处理树上路径问题，O(n log n)。",
+  "formulas": [
+   "时间复杂度 O(n log n)"
+  ],
+  "example": "树上距离 ≤K 的点对数：重心分治统计。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:分治思想"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "分治进阶",
+  "cn": "整体二分",
+  "en": "Parallel Binary Search",
+  "kind": "算法",
+  "definition": "多个二分查询一起做：按 mid 分组递归，O((n+q) log n log V)。",
+  "formulas": [],
+  "example": "q 个第 k 小查询：整体二分一次全解。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二分查找"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "分治进阶",
+  "cn": "CDQ分治",
+  "en": "CDQ Divide and Conquer",
+  "kind": "算法",
+  "definition": "分治处理三维偏序：左半贡献右半，O(n log²n)。",
+  "formulas": [
+   "时间复杂度 O(n log²n)"
+  ],
+  "example": "三维偏序计数：CDQ+树状数组。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:分治思想"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "数据结构进阶",
+  "cn": "可持久化线段树",
+  "en": "Persistent Segment Tree",
+  "kind": "概念",
+  "definition": "每次修改只新建 O(log n) 节点，保留所有历史版本。",
+  "formulas": [
+   "单次修改新增 O(log n) 节点"
+  ],
+  "example": "区间第 k 小：建 n 个版本，前缀相减查询。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "动态规划进阶",
+  "cn": "树形DP",
+  "en": "Tree DP",
+  "kind": "方法",
+  "definition": "在树上做 DP：子树结果合并到父节点。",
+  "formulas": [],
+  "example": "树上最大独立集：dp[u][0/1] 表选不选 u。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:DAG上的DP"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "动态规划进阶",
+  "cn": "区间DP",
+  "en": "Interval DP",
+  "kind": "方法",
+  "definition": "按区间长度递增 DP，合并左右子区间。",
+  "formulas": [
+   "O(n³) 常见"
+  ],
+  "example": "石子合并：dp[l][r]=min(dp[l][k]+dp[k+1][r])+和。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:DAG上的DP"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "动态规划进阶",
+  "cn": "状压DP",
+  "en": "Bitmask DP",
+  "kind": "方法",
+  "definition": "用二进制位表示集合状态，n≤20 时的利器。",
+  "formulas": [
+   "状态数 O(n·2ⁿ)"
+  ],
+  "example": "TSP：dp[mask][i] 表走过集合停在 i。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:DAG上的DP"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "动态规划进阶",
+  "cn": "数位DP",
+  "en": "Digit DP",
+  "kind": "方法",
+  "definition": "按数位从高到低 DP，tight 标记管上界。",
+  "formulas": [],
+  "example": "1..10⁹ 中含“7”的数：数位 DP 一遍。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:记忆化搜索"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "动态规划进阶",
+  "cn": "斜率优化DP",
+  "en": "Convex Hull Optimization for DP",
+  "kind": "方法",
+  "definition": "dp[i]=min(mⱼxᵢ+bⱼ) 化成直线求交，单调队列/李超树优化。",
+  "formulas": [
+   "dp[i] = min_j(m_j·x_i + b_j)"
+  ],
+  "example": "批任务调度：斜率优化把 O(n²) 降到 O(n)。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:区间DP"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "动态规划进阶",
+  "cn": "四边形不等式优化",
+  "en": "Quadrangle Inequality Optimization",
+  "kind": "方法",
+  "definition": "满足四边形不等式+单调性时，决策单调，DP 降一维。",
+  "formulas": [],
+  "example": "石子合并（直线版）：决策单调→O(n²)。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:区间DP"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "高级算法",
+  "topic_cn": "动态规划进阶",
+  "cn": "决策单调性优化",
+  "en": "Divide and Conquer DP Optimization",
+  "kind": "方法",
+  "definition": "最优决策点单调：分治求每层，O(n log n)。",
+  "formulas": [
+   "时间复杂度 O(n log n)"
+  ],
+  "example": "dp[i]=min_{j<i}(dp[j]+C[j][i]) 且决策单调。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:四边形不等式优化"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "迭代加速",
+  "cn": "埃特金加速",
+  "en": "Aitken's Delta-Squared Process",
+  "kind": "算法",
+  "definition": "用三项外推把线性收敛提速：x̂ = xₖ − (Δxₖ)²/Δ²xₖ。",
+  "formulas": [
+   "x̂ₖ = xₖ − (Δxₖ)²/Δ²xₖ"
+  ],
+  "example": "xₖ₊₁=cos xₖ 线性收敛，加速后快数倍。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:线性收敛",
+   "NEW:不动点迭代"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "迭代加速",
+  "cn": "Steffensen迭代",
+  "en": "Steffensen's Method",
+  "kind": "算法",
+  "definition": "把埃特金加速嵌入不动点迭代，达到二次收敛。",
+  "formulas": [
+   "二阶收敛"
+  ],
+  "example": "x=cos x：Steffensen 3 步达 1e−8。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:埃特金加速",
+   "NEW:二次收敛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "特征值计算",
+  "cn": "逆迭代",
+  "en": "Inverse Iteration",
+  "kind": "算法",
+  "definition": "对 (A−σI) 做幂迭代，收敛到靠近 σ 的特征对。",
+  "formulas": [
+   "(A−σI)yₖ₊₁ = xₖ，xₖ₊₁ = yₖ₊₁/‖yₖ₊₁‖"
+  ],
+  "example": "σ 取近似特征值：几步锁定该特征向量。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:迭代法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "特征值计算",
+  "cn": "瑞利商迭代",
+  "en": "Rayleigh Quotient Iteration",
+  "kind": "算法",
+  "definition": "σ 用瑞利商自适应更新，局部三次收敛。",
+  "formulas": [
+   "σₖ = xₖᵀAxₖ/xₖᵀxₖ，三次收敛"
+  ],
+  "example": "对称矩阵：3 步得 10 位精度特征对。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:逆迭代",
+   "NEW:收敛阶"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "线性方程组",
+  "cn": "SOR迭代",
+  "en": "Successive Over-Relaxation",
+  "kind": "算法",
+  "definition": "带松弛因子 ω 的 Gauss-Seidel：1<ω<2 常大幅加速。",
+  "formulas": [
+   "x⁽ᵏ⁺¹⁾ = (D+ωL)⁻¹[(1−ω)D−ωU]x⁽ᵏ⁾+ω(D+ωL)⁻¹b"
+  ],
+  "example": "Poisson 方程：ω≈1.9 比 GS 快 10 倍。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:松弛迭代"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "特征值计算",
+  "cn": "Jacobi特征值法",
+  "en": "Jacobi Eigenvalue Method",
+  "kind": "算法",
+  "definition": "反复用 Givens 旋转消去最大非对角元，对称矩阵经典算法。",
+  "formulas": [
+   "二次收敛（经典 Jacobi）"
+  ],
+  "example": "小规模对称特征值：简单可靠。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:正交矩阵的数值优点"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "特征值计算",
+  "cn": "QR迭代法",
+  "en": "QR Iteration",
+  "kind": "算法",
+  "definition": "Aₖ=QₖRₖ，Aₖ₊₁=RₖQₖ：迭代收敛到 Schur 形，特征值浮现。",
+  "formulas": [
+   "Aₖ₊₁ = RₖQₖ"
+  ],
+  "example": "通用稠密特征值算法（LAPACK 核心）。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:化为上Hessenberg形"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "随机算法",
+  "cn": "拟蒙特卡洛",
+  "en": "Quasi-Monte Carlo",
+  "kind": "方法",
+  "definition": "用低差异序列代替随机点，误差 O((log n)ᵈ/n) 优于蒙特卡洛。",
+  "formulas": [
+   "误差 O((log n)ᵈ/n)"
+  ],
+  "example": "高维积分：Halton 序列比随机点收敛快。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "随机算法",
+  "cn": "低差异序列",
+  "en": "Low-Discrepancy Sequence",
+  "kind": "概念",
+  "definition": "比随机更均匀的点列，填满空间不留“空洞”。",
+  "formulas": [],
+  "example": "Halton(2,3)：二维均匀铺点。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:拟蒙特卡洛"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "常微分方程",
+  "cn": "A稳定性",
+  "en": "A-Stability",
+  "kind": "概念",
+  "definition": "方法对一切 Re(λh)<0 的模型问题都稳定：刚性方程的入场券。",
+  "formulas": [
+   "对 y′=λy，Re(λh)<0 恒稳定"
+  ],
+  "example": "后向 Euler A 稳定，显式 Euler 不是。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:稳定性"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "常微分方程",
+  "cn": "BDF方法",
+  "en": "Backward Differentiation Formula",
+  "kind": "算法",
+  "definition": "用过去多步导数信息的多步隐式法，刚性方程主力。",
+  "formulas": [
+   "Σαⱼyₙ₊ⱼ = hβfₙ₊ₖ"
+  ],
+  "example": "电路仿真（刚性）：BDF 是默认求解器。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:A稳定性"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "常微分方程",
+  "cn": "Rosenbrock方法",
+  "en": "Rosenbrock Method",
+  "kind": "算法",
+  "definition": "线性化隐式 Runge-Kutta：每步只解线性方程组。",
+  "formulas": [],
+  "example": "中等刚性问题：比全隐式便宜，比显式稳。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:BDF方法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "常微分方程",
+  "cn": "分裂步法",
+  "en": "Splitting Method",
+  "kind": "算法",
+  "definition": "把算子拆成易解部分交替推进：Strang 分裂二阶精度。",
+  "formulas": [
+   "e^{h(A+B)} ≈ e^{hA/2}e^{hB}e^{hA/2}"
+  ],
+  "example": "反应-扩散：反应半步→扩散一步→反应半步。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:隐式方法的代价"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "偏微分方程",
+  "cn": "配点法",
+  "en": "Collocation Method",
+  "kind": "方法",
+  "definition": "让数值解在配点上精确满足方程，定系数求解。",
+  "formulas": [],
+  "example": "Chebyshev 配点解边值问题：谱精度。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:谱精度"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "偏微分方程",
+  "cn": "谱元法",
+  "en": "Spectral Element Method",
+  "kind": "方法",
+  "definition": "单元内用高阶多项式：有限元的几何灵活性＋谱精度。",
+  "formulas": [],
+  "example": "地震波模拟：谱元法是工业标准。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:配点法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "偏微分方程",
+  "cn": "水平集方法",
+  "en": "Level Set Method",
+  "kind": "方法",
+  "definition": "用隐函数零等值面追踪界面演化，拓扑变化自动处理。",
+  "formulas": [
+   "φ_t + v·∇φ = 0"
+  ],
+  "example": "两泡合并：水平集自动处理拓扑变化。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:后验误差估计"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "并行计算",
+  "cn": "并行加速比",
+  "en": "Parallel Speedup",
+  "kind": "概念",
+  "definition": "p 个核相对单核快多少：S(p)=T₁/Tₚ。",
+  "formulas": [
+   "S(p) = T₁/Tₚ，效率 E = S(p)/p"
+  ],
+  "example": "8 核跑 5 倍快：加速比 5，效率 62%。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "并行计算",
+  "cn": "Amdahl定律",
+  "en": "Amdahl's Law",
+  "kind": "定理",
+  "definition": "串行部分占比 s 时，加速比上限 1/s，加核也白搭。",
+  "formulas": [
+   "S ≤ 1/(s+(1−s)/p)"
+  ],
+  "example": "10% 串行：再多核也超不过 10 倍。",
+  "level": 3,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:并行加速比"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "并行计算",
+  "cn": "Gustafson定律",
+  "en": "Gustafson's Law",
+  "kind": "定理",
+  "definition": "问题规模随核数放大时，加速比可达 s+(1−s)p。",
+  "formulas": [
+   "S = s+(1−s)p"
+  ],
+  "example": "弱扩展：核翻倍、问题也翻倍，加速近线性。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:Amdahl定律"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "并行计算",
+  "cn": "区域分解法",
+  "en": "Domain Decomposition",
+  "kind": "方法",
+  "definition": "区域切块各算各的，交界面迭代协调，并行解 PDE。",
+  "formulas": [],
+  "example": "1000 核解 Poisson：每核一块，界面 Schwarz 迭代。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:并行加速比"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "线搜索理论",
+  "cn": "Wolfe条件",
+  "en": "Wolfe Conditions",
+  "kind": "概念",
+  "definition": "充分下降＋曲率条件：步长既降够又别太短。",
+  "formulas": [
+   "f(x+αd)≤f+ c₁α∇fᵀd",
+   "|∇f(x+αd)ᵀd| ≤ c₂|∇fᵀd|"
+  ],
+  "example": "拟牛顿法标配：c₁=1e−4，c₂=0.9。",
+  "level": 3,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "线搜索理论",
+  "cn": "强Wolfe条件",
+  "en": "Strong Wolfe Conditions",
+  "kind": "概念",
+  "definition": "曲率条件取绝对值：防止步长跑到上升段太远。",
+  "formulas": [
+   "|∇f(x+αd)ᵀd| ≤ c₂|∇fᵀd|"
+  ],
+  "example": "共轭梯度法用强 Wolfe 保证下降性。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:Wolfe条件"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "一阶加速",
+  "cn": "Nesterov加速梯度法",
+  "en": "Nesterov's Accelerated Gradient",
+  "kind": "算法",
+  "definition": "先往动量方向“试探”再算梯度：光滑凸 O(1/k²)，最优。",
+  "formulas": [
+   "O(1/k²)，不可再改进"
+  ],
+  "example": "y=x−α∇f(x+β(x−x_prev))：多看一步。",
+  "level": 3,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:一阶方法复杂度下界"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "一阶加速",
+  "cn": "一阶方法复杂度下界",
+  "en": "Lower Bound for First-Order Methods",
+  "kind": "定理",
+  "definition": "只用梯度信息：光滑凸最快 O(1/k²)，非光滑 O(1/√k)。",
+  "formulas": [
+   "光滑凸 Ω(1/k²)，非光滑 Ω(1/√k)"
+  ],
+  "example": "Nesterov 方法达到下界，故最优。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:梯度下降的步长选择"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "一阶加速",
+  "cn": "Nesterov最优性",
+  "en": "Optimality of Nesterov's Method",
+  "kind": "概念",
+  "definition": "Nesterov 加速达到一阶方法复杂度下界，不能再快。",
+  "formulas": [],
+  "example": "O(1/k²) 既是下界又是 Nesterov 的上界。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:Nesterov加速梯度法",
+   "NEW:一阶方法复杂度下界"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "拟牛顿法",
+  "cn": "BFGS公式",
+  "en": "BFGS Formula",
+  "kind": "公式",
+  "definition": "最流行的拟牛顿更新：秩二修正逼近 Hessian 逆。",
+  "formulas": [
+   "Hₖ₊₁ = (I−ρsyᵀ)Hₖ(I−ρysᵀ)+ρssᵀ"
+  ],
+  "example": "无约束优化默认拟牛顿：MATLAB fminunc。",
+  "level": 3,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:Wolfe条件"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "非欧几何",
+  "cn": "镜像下降法",
+  "en": "Mirror Descent",
+  "kind": "算法",
+  "definition": "用 Bregman 距离代替欧氏距离的梯度法，适配几何。",
+  "formulas": [
+   "xₖ₊₁ = argmin{⟨gₖ,x⟩ + D_φ(x,xₖ)/α}"
+  ],
+  "example": "单纯形上用熵镜像：即指数梯度法。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "非欧几何",
+  "cn": "对偶平均法",
+  "en": "Dual Averaging",
+  "kind": "算法",
+  "definition": "平均历史次梯度再投影：非光滑随机优化利器。",
+  "formulas": [],
+  "example": "在线学习：对偶平均 Regret O(√T)。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:镜像下降法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "算子分裂",
+  "cn": "PDHG",
+  "en": "Primal-Dual Hybrid Gradient",
+  "kind": "算法",
+  "definition": "原始对偶混合梯度：解鞍点问题，图像处理标配。",
+  "formulas": [
+   "Chambolle-Pock 算法"
+  ],
+  "example": "TV 去噪：PDHG 比次梯度法快得多。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:凸复合问题的求解框架"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "算子分裂",
+  "cn": "邻近点算法",
+  "en": "Proximal Point Algorithm",
+  "kind": "算法",
+  "definition": "反复解正则化子问题：x⁺ = prox_{c f}(x)，概念简单威力大。",
+  "formulas": [
+   "xₖ₊₁ = argmin{f(x)+‖x−xₖ‖²/2cₖ}"
+  ],
+  "example": "诸多算法的“祖师爷”：近端点即其特例。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "约束优化",
+  "cn": "SQP",
+  "en": "Sequential Quadratic Programming",
+  "kind": "算法",
+  "definition": "序列二次规划：每步解 QP 近似，非线性约束优化主力。",
+  "formulas": [],
+  "example": "SNOPT 求解器：SQP 解飞机翼型优化。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:BFGS公式"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "约束优化",
+  "cn": "逐次凸逼近",
+  "en": "Successive Convex Approximation",
+  "kind": "方法",
+  "definition": "每步用凸函数局部逼近非凸问题，求解后迭代。",
+  "formulas": [],
+  "example": "无线资源分配：SCA 把非凸变凸序列。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:SQP"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "非凸优化",
+  "cn": "DC规划",
+  "en": "DC Programming",
+  "kind": "概念",
+  "definition": "目标写成两凸函数之差：f = g − h，用 DCA 求解。",
+  "formulas": [
+   "min g(x) − h(x)，g,h 凸"
+  ],
+  "example": "稀疏优化：ℓ0 近似写成 DC 形式。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:非凸优化的挑战"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "非凸优化",
+  "cn": "MM算法",
+  "en": "Majorization-Minimization",
+  "kind": "算法",
+  "definition": "构造上界函数再最小化：EM 算法是其特例。",
+  "formulas": [
+   "Q(x|xₖ) ≥ f(x)，min Q"
+  ],
+  "example": "EM：E 步构造 Q，M 步最小化。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:交替优化"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "变分分析",
+  "cn": "变分不等式",
+  "en": "Variational Inequality",
+  "kind": "概念",
+  "definition": "找 x* 使 ⟨F(x*), x−x*⟩ ≥ 0 ∀x∈K：统一优化与博弈。",
+  "formulas": [
+   "⟨F(x*), x−x*⟩ ≥ 0"
+  ],
+  "example": "KKT、纳什均衡都可写成变分不等式。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "变分分析",
+  "cn": "互补问题",
+  "en": "Complementarity Problem",
+  "kind": "概念",
+  "definition": "x ≥ 0, F(x) ≥ 0, xᵀF(x) = 0：三者“互补”。",
+  "formulas": [
+   "0 ≤ x ⊥ F(x) ≥ 0"
+  ],
+  "example": "接触力学：间隙与压力互补。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:变分不等式"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "多层优化",
+  "cn": "双层优化",
+  "en": "Bilevel Optimization",
+  "kind": "概念",
+  "definition": "上层优化含下层最优解：超参数调优的数学模型。",
+  "formulas": [
+   "min F(x,y) s.t. y ∈ argmin f(x,·)"
+  ],
+  "example": "调正则系数：下层训模型，上层选参数。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:超参数优化"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "整数规划",
+  "cn": "分支定界法",
+  "en": "Branch and Bound",
+  "kind": "算法",
+  "definition": "分支松弛定界、剪枝：整数规划精确求解框架。",
+  "formulas": [],
+  "example": "0-1 背包：LP 松弛定界，整数分支。",
+  "level": 3,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:枚举法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "稀疏优化",
+  "cn": "矩阵补全",
+  "en": "Matrix Completion",
+  "kind": "概念",
+  "definition": "从少量观测恢复低秩矩阵：核范数凸松弛。",
+  "formulas": [
+   "min ‖X‖_* s.t. 观测一致"
+  ],
+  "example": "Netflix 推荐：用户-电影矩阵补全。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "稀疏优化",
+  "cn": "相位恢复",
+  "en": "Phase Retrieval",
+  "kind": "概念",
+  "definition": "只测到傅里叶幅度，反推信号相位：非凸经典难题。",
+  "formulas": [
+   "找 x 使 |Ax| = b"
+  ],
+  "example": "X 射线晶体学：衍射图样反推结构。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:矩阵补全"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "稀疏优化",
+  "cn": "字典学习",
+  "en": "Dictionary Learning",
+  "kind": "概念",
+  "definition": "从数据中学一组基，使信号可稀疏表示。",
+  "formulas": [
+   "min ‖X−DA‖² s.t. A 稀疏"
+  ],
+  "example": "图像块学字典：边缘、纹理基自动出现。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:交替优化"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "稀疏优化",
+  "cn": "稀疏编码",
+  "en": "Sparse Coding",
+  "kind": "概念",
+  "definition": "信号表成字典原子的稀疏组合：非零元尽量少。",
+  "formulas": [
+   "min ‖x−Dα‖² + λ‖α‖₁"
+  ],
+  "example": "去噪：稀疏编码去高频噪声。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:字典学习"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数论算法",
+  "cn": "同余方程",
+  "en": "Congruence Equation",
+  "kind": "概念",
+  "definition": "求 a·x ≡ b (mod m) 的整数解，有解当且仅当 gcd(a,m)|b。",
+  "formulas": [
+   "a·x ≡ b (mod m)"
+  ],
+  "example": "3x≡2(mod 7)：x=3，因 3×3=9≡2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "B+树",
+  "en": "B+ Tree",
+  "kind": "概念",
+  "definition": "数据全在叶子、叶子链表相连的 B 树变体，范围查询快。",
+  "formulas": [],
+  "example": "数据库索引：范围查“10–20岁”沿叶子链表走。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉搜索树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "算法设计",
+  "topic_cn": "数据结构进阶",
+  "cn": "二叉搜索树的退化",
+  "en": "Degeneration of BST",
+  "kind": "概念",
+  "definition": "有序插入使 BST 退化成链表，查找从 O(log n) 跌到 O(n)。",
+  "formulas": [
+   "退化时查找 O(n)"
+  ],
+  "example": "按 1,2,3,…,n 插入：树成一条链。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二叉搜索树"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "复杂度分析",
+  "cn": "复杂度分析的三个视角",
+  "en": "Three Views of Complexity",
+  "kind": "思路",
+  "definition": "最坏保底线、平均看日常、最好别当真：按需选用。",
+  "formulas": [],
+  "example": "快排：最坏 O(n²) 保底，平均 O(n log n) 预期。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:最坏情况",
+   "NEW:平均情况",
+   "NEW:最好情况"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "复杂度分析",
+  "topic_cn": "递归求解",
+  "cn": "线性递归式的通解结构",
+  "en": "Structure of Linear Recurrence Solution",
+  "kind": "概念",
+  "definition": "常系数线性递归：通解 = 齐次通解 + 一个特解。",
+  "formulas": [
+   "aₙ = c₁aₙ₋₁+c₂aₙ₋₂ 的通解含两个待定常数"
+  ],
+  "example": "fib：特征根定出 A,B 得通项公式。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:递归式"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "矩阵分解",
+  "cn": "正交矩阵的数值优点",
+  "en": "Numerical Advantages of Orthogonal Matrices",
+  "kind": "概念",
+  "definition": "正交变换条件数为 1：不放大误差，数值计算的“安全操作”。",
+  "formulas": [
+   "κ₂(Q) = 1"
+  ],
+  "example": "QR 解最小二乘：比正规方程稳定得多。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "特征值计算",
+  "cn": "化为上Hessenberg形",
+  "en": "Reduction to Hessenberg Form",
+  "kind": "概念",
+  "definition": "正交相似化为次对角线下全零：QR 迭代的预处理，省 90% 计算。",
+  "formulas": [],
+  "example": "QR 迭代前先化 Hessenberg：每步 O(n²) 而非 O(n³)。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:正交矩阵的数值优点"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "常微分方程",
+  "cn": "隐式方法的代价",
+  "en": "Cost of Implicit Methods",
+  "kind": "概念",
+  "definition": "隐式每步要解非线性方程组：稳定但贵，刚性问题才划算。",
+  "formulas": [],
+  "example": "后向 Euler 每步一次牛顿迭代，换来 A 稳定。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:A稳定性"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "偏微分方程",
+  "cn": "谱精度",
+  "en": "Spectral Accuracy",
+  "kind": "概念",
+  "definition": "光滑问题误差随 N 指数下降：N 翻倍误差平方级缩小。",
+  "formulas": [
+   "误差 ~ O(e^{−cN})"
+  ],
+  "example": "谱方法解光滑 PDE：N=32 即达机器精度。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:配点法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "数值分析",
+  "topic_cn": "偏微分方程",
+  "cn": "后验误差估计",
+  "en": "A Posteriori Error Estimate",
+  "kind": "概念",
+  "definition": "用已算出的解估计误差：指导哪里加密网格。",
+  "formulas": [],
+  "example": "残差大的单元标红，下轮加密。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:残差"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "算子分裂",
+  "cn": "凸复合问题的求解框架",
+  "en": "Framework for Composite Convex Problems",
+  "kind": "概念",
+  "definition": "min f+g（光滑+非光滑）：梯度步处理 f，近端步处理 g。",
+  "formulas": [
+   "min f(x)+g(x)"
+  ],
+  "example": "Lasso：f 为平方损失，g 为 ℓ1。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "算子分裂",
+  "cn": "ADMM与DR的关系",
+  "en": "Relation between ADMM and Douglas-Rachford",
+  "kind": "概念",
+  "definition": "ADMM 即 Douglas-Rachford 作用于对偶问题：本质同一算法。",
+  "formulas": [],
+  "example": "理解 ADMM 收敛：看 DR 的不动点理论。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:凸复合问题的求解框架"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "一阶加速",
+  "cn": "重启动加速",
+  "en": "Restart Acceleration",
+  "kind": "概念",
+  "definition": "周期性清零动量重启：恢复线性收敛，实践中奇效。",
+  "formulas": [],
+  "example": "FISTA 每 100 步重启：锯齿消失，收敛更快。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:Nesterov加速梯度法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "非光滑分析",
+  "cn": "广义导数",
+  "en": "Generalized Derivative",
+  "kind": "概念",
+  "definition": "不可微点的“导数”替代：Clarke 次微分、BD 可微等。",
+  "formulas": [],
+  "example": "|x| 在 0 的广义导数是区间 [−1,1]。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:光滑与非光滑优化"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "不确定性",
+  "cn": "不确定性建模",
+  "en": "Modeling Uncertainty",
+  "kind": "概念",
+  "definition": "三分法：随机规划（知分布）、鲁棒（只知范围）、分布鲁棒（知邻域）。",
+  "formulas": [],
+  "example": "选模型前先问：分布知道多少？",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "线性规划",
+  "cn": "参数线性规划",
+  "en": "Parametric Linear Programming",
+  "kind": "概念",
+  "definition": "目标/右端含参数 t：最优解随 t 分段变化，转折点即灵敏度。",
+  "formulas": [],
+  "example": "t 从 0 增到 10：最优基在 t=3,7 处切换。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "整数规划",
+  "cn": "割平面管理",
+  "en": "Cut Management",
+  "kind": "概念",
+  "definition": "割太多拖慢 LP：删松弛割、留紧割，池子常清常新。",
+  "formulas": [],
+  "example": "分支切割法：每轮只加最violated 的几条割。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:分支定界法"
+  ],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ },
+ {
+  "branch_cn": "最优化理论",
+  "topic_cn": "罚函数",
+  "cn": "罚函数的病态",
+  "en": "Ill-Conditioning of Penalty Functions",
+  "kind": "概念",
+  "definition": "ρ 越大越精确，但 Hessian 条件数 ~ρ：精度与病态两难。",
+  "formulas": [
+   "κ ~ ρ → ∞"
+  ],
+  "example": "ρ=10⁶：解准了，但牛顿法步步维艰。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [],
+  "domain_cn": "计算与优化",
+  "domain_en": "Computing and Optimization"
+ }
+]

@@ -17,7 +17,7 @@ from .reasoning import (Atom, Rule, RuleBook, Certificate, ProofGraph,
 from .layered import (LayerConfig, LayerCertificate, derive_layers, replay_layers,
                       load_layered_problem, load_layer_certificate)
 
-__version__ = "1.10.0"
+__version__ = "1.11.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "plan_learning_path", "search_concepts",
            "export_path_markdown", "to_dot",

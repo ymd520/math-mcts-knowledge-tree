@@ -1,0 +1,4596 @@
+[
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "无限接近的直观",
+  "en": "Intuition of Approaching",
+  "kind": "概念",
+  "definition": "极限思想的源头：一个量可以无限接近某个固定值，却不一定等于它。",
+  "formulas": [],
+  "example": "0.9，0.99，0.999，…越来越接近 1，但每一项都不等于 1。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": []
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "数列极限的直观",
+  "en": "Intuition of Sequence Limit",
+  "kind": "概念",
+  "definition": "当 n 越来越大时，数列的项 aₙ 无限接近某个数 A，就说数列收敛于 A。",
+  "formulas": [
+   "n→∞ 时 aₙ→A"
+  ],
+  "example": "1，1/2，1/3，…越来越小，极限是 0。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:无限接近的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "0.999…等于1",
+  "en": "0.999… Equals 1",
+  "kind": "概念",
+  "definition": "0.999…不是“差一点的 1”，它就是 1：两者之差可以比任何正数都小。",
+  "formulas": [
+   "0.999…=1"
+  ],
+  "example": "1/3=0.333…，两边同乘 3 得 1=0.999…。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "函数在一点的极限直观",
+  "en": "Intuition of Function Limit at a Point",
+  "kind": "概念",
+  "definition": "x 越来越接近 x₀（但不等于 x₀）时 f(x) 无限接近 A，则 x→x₀ 时 f(x)→A。",
+  "formulas": [
+   "x→x₀ 时 f(x)→A"
+  ],
+  "example": "x→2 时 x²→4，即使 f(2) 没定义也不影响。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "左极限与右极限",
+  "en": "Left-hand and Right-hand Limits",
+  "kind": "概念",
+  "definition": "从左边或右边接近 x₀ 时的极限；左右极限都存在且相等，极限才存在。",
+  "formulas": [
+   "lim(x→x₀⁻)f(x)=lim(x→x₀⁺)f(x)⟺极限存在"
+  ],
+  "example": "|x|/x 在 0 处左极限 −1、右极限 1，故极限不存在。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:函数在一点的极限直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "极限的唯一性",
+  "en": "Uniqueness of Limit",
+  "kind": "定理",
+  "definition": "如果极限存在，它只能是一个值，不会同时无限接近两个不同的数。",
+  "formulas": [],
+  "example": "1/n 的极限只能是 0，不可能是 0.001。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "无穷小的直观",
+  "en": "Intuition of Infinitesimal",
+  "kind": "概念",
+  "definition": "极限为 0 的量叫无穷小：它不是 0，而是“可以任意小”的量。",
+  "formulas": [],
+  "example": "x→0 时，x 和 sin x 都是无穷小。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "无穷大的直观",
+  "en": "Intuition of Infinity",
+  "kind": "概念",
+  "definition": "绝对值可以任意大的量叫无穷大，记作→∞，它不是一个数。",
+  "formulas": [],
+  "example": "x→0 时 1/x²→+∞，越来越大没有头。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:无穷小的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "无穷小与无穷大的关系",
+  "en": "Relation between Infinitesimal and Infinity",
+  "kind": "定理",
+  "definition": "同一变化过程中，非零无穷小的倒数是无穷大，无穷大的倒数是无穷小。",
+  "formulas": [
+   "α→0(α≠0)⟹1/α→∞"
+  ],
+  "example": "x→0 时 x 是无穷小，1/x 是无穷大。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无穷小的直观",
+   "NEW:无穷大的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "极限的四则运算法则",
+  "en": "Arithmetic Rules of Limits",
+  "kind": "定理",
+  "definition": "两个收敛量相加减乘除（除数极限不为 0），极限就等于极限的加减乘除。",
+  "formulas": [
+   "lim(f±g)=limf±limg",
+   "lim(f·g)=limf·limg"
+  ],
+  "example": "lim(x→1)(x²+2x)=1+2=3，直接代入算。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:函数在一点的极限直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "1/n 趋于 0",
+  "en": "1/n Tends to 0",
+  "kind": "公式",
+  "definition": "最基本的数列极限：n 越大 1/n 越小，极限为 0。",
+  "formulas": [
+   "lim(n→∞)1/n=0"
+  ],
+  "example": "1/1000000 已经小到可以忽略不计。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "分母趋零则趋向无穷大",
+  "en": "Blow-up When Denominator Tends to Zero",
+  "kind": "概念",
+  "definition": "分子趋向非零常数、分母趋向 0 时，整个分式趋向无穷大。",
+  "formulas": [],
+  "example": "x→0 时 (1+x)/x²→+∞，分母越小值越大。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无穷大的直观",
+   "NEW:极限的四则运算法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "0/0 型未定式",
+  "en": "0/0 Indeterminate Form",
+  "kind": "概念",
+  "definition": "分子分母同时趋向 0 时极限不定：可能是有限数、0 或无穷大，要具体算。",
+  "formulas": [],
+  "example": "x→0 时 x/x²→∞，而 x²/x→0，结果各不相同。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无穷小的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "有界数列",
+  "en": "Bounded Sequence",
+  "kind": "概念",
+  "definition": "所有项都被关在一个固定区间里的数列：存在 M 使 |aₙ|≤M 恒成立。",
+  "formulas": [],
+  "example": "(−1)ⁿ 有界（|aₙ|≤1），n² 无界。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": []
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "收敛数列必有界",
+  "en": "Convergent Sequence is Bounded",
+  "kind": "定理",
+  "definition": "收敛的数列一定有界；反过来不对，有界数列也可能发散。",
+  "formulas": [],
+  "example": "(−1)ⁿ 有界但在 −1 和 1 之间跳，不收敛。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观",
+   "NEW:有界数列"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "单调数列的直观",
+  "en": "Intuition of Monotone Sequence",
+  "kind": "概念",
+  "definition": "一直递增（或一直递减）的数列叫单调数列；有上界的递增数列必收敛。",
+  "formulas": [],
+  "example": "1，1.4，1.41，1.414，…递增有上界，收敛于 √2。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "割圆术的极限思想",
+  "en": "Limit Idea in Circle Approximation",
+  "kind": "概念",
+  "definition": "用正多边形逼近圆：边数越多周长越接近圆周长，这就是刘徽“割圆术”。",
+  "formulas": [],
+  "example": "正 6 边形→正 12 边形→…→圆，边数翻倍逼近。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无限接近的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "极限保号性的直观",
+  "en": "Intuition of Sign Preservation",
+  "kind": "定理",
+  "definition": "极限为正（负）的量，在接近的过程中最终恒为正（负）。",
+  "formulas": [],
+  "example": "极限是 2 的函数，在 x₀ 附近函数值都大于 1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:函数在一点的极限直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "极限与不等式",
+  "en": "Limits Preserve Inequalities",
+  "kind": "定理",
+  "definition": "f(x)≤g(x) 且两者极限都存在，则极限也保持≤（但<可能变成≤）。",
+  "formulas": [],
+  "example": "1−1/n<1 恒成立，但两边极限都是 1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:函数在一点的极限直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "极限直观",
+  "cn": "ε-N 的直观讲法",
+  "en": "Intuitive Reading of Epsilon-N",
+  "kind": "思路",
+  "definition": "“任意给误差 ε>0，总能找到 N 使 n>N 后 |aₙ−A|<ε”：就是想多接近就能多接近。",
+  "formulas": [
+   "∀ε>0,∃N:n>N⟹|aₙ−A|<ε"
+  ],
+  "example": "证 1/n→0：给定 ε，取 N>1/ε，则 n>N 时 1/n<ε。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "连续的一笔画直观",
+  "en": "One-stroke Intuition of Continuity",
+  "kind": "概念",
+  "definition": "函数在一点连续，直观就是图像在那一点“不断开”、能一笔画过去。",
+  "formulas": [],
+  "example": "y=x² 处处能一笔画；y=1/x 在 0 处断开。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:函数在一点的极限直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "连续的定义",
+  "en": "Definition of Continuity",
+  "kind": "概念",
+  "definition": "f 在 x₀ 连续⟺lim(x→x₀)f(x)=f(x₀)：极限值等于函数值，“名副其实”。",
+  "formulas": [
+   "lim(x→x₀)f(x)=f(x₀)"
+  ],
+  "example": "多项式在每一点都满足这个等式，故处处连续。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:连续的一笔画直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "先有定义再谈连续",
+  "en": "Defined Before Continuous",
+  "kind": "概念",
+  "definition": "谈连续的前提是函数在该点有定义：没定义的地方，不谈连续，只谈极限。",
+  "formulas": [],
+  "example": "f(x)=1/x 在 0 处没有定义，连续性无从谈起。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:连续的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "可去间断点",
+  "en": "Removable Discontinuity",
+  "kind": "概念",
+  "definition": "极限存在但不等于函数值（或无定义）的断点：把那一点“补上”就能变连续。",
+  "formulas": [],
+  "example": "f(x)=(x²−1)/(x−1) 在 x=1 处可去，补 f(1)=2 即连续。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:连续的定义",
+   "NEW:0/0 型未定式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "跳跃间断点",
+  "en": "Jump Discontinuity",
+  "kind": "概念",
+  "definition": "左右极限都存在但不相等：图像在该点“跳”了一下，补不回来。",
+  "formulas": [],
+  "example": "符号函数 sgn x 在 0 处从 −1 跳到 1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:左极限与右极限",
+   "NEW:连续的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "无穷间断点",
+  "en": "Infinite Discontinuity",
+  "kind": "概念",
+  "definition": "在该点附近函数趋向无穷大：图像有一条竖直渐近线。",
+  "formulas": [],
+  "example": "1/x 在 0 处，tan x 在 π/2 处，都是无穷间断点。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无穷大的直观",
+   "NEW:连续的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "分段函数连续吗",
+  "en": "Checking Continuity of Piecewise Functions",
+  "kind": "思路",
+  "definition": "检查分段点：算左右极限和函数值，三者相等才连续。",
+  "formulas": [],
+  "example": "f(x)=x²(x<1),2x−1(x≥1)：在 1 处三者都等于 1，连续。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:左极限与右极限",
+   "NEW:连续的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "多项式处处连续",
+  "en": "Polynomials are Continuous Everywhere",
+  "kind": "定理",
+  "definition": "任何多项式函数在全体实数上都连续：加减乘保持连续性。",
+  "formulas": [],
+  "example": "x³−2x+1 在 x=5 处连续，极限就是函数值。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:连续的定义",
+   "NEW:极限的四则运算法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "有理函数连续",
+  "en": "Continuity of Rational Functions",
+  "kind": "定理",
+  "definition": "两个多项式相除（分母不为 0 处）连续：分母为 0 的点是间断点。",
+  "formulas": [],
+  "example": "(x+1)/(x−2) 在 x=2 处间断，其余点都连续。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:多项式处处连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "根式与幂函数连续",
+  "en": "Continuity of Roots and Powers",
+  "kind": "概念",
+  "definition": "√x 在 x>0 连续，xⁿ（n 为正整数）处处连续：基本初等函数在其定义域内都连续。",
+  "formulas": [],
+  "example": "³√x 在全体实数上连续，没有断点。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:连续的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "连续函数的四则运算",
+  "en": "Arithmetic of Continuous Functions",
+  "kind": "定理",
+  "definition": "在同一点连续的两个函数，相加减乘除（除数不为 0）后仍连续。",
+  "formulas": [],
+  "example": "sin x+x² 处处连续：连续加连续仍连续。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:连续的定义",
+   "NEW:极限的四则运算法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "连续直观",
+  "cn": "连续与极限的关系",
+  "en": "Continuity Commutes with Limits",
+  "kind": "定理",
+  "definition": "f 连续⟺对任何收敛到 x₀ 的数列 xₙ，都有 f(xₙ)→f(x₀)：极限号可以进函数。",
+  "formulas": [
+   "f连续⟺limf(xₙ)=f(limxₙ)"
+  ],
+  "example": "lim(n→∞)sin(1/n)=sin0=0，直接把极限代入。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:连续的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "平均变化率",
+  "en": "Average Rate of Change",
+  "kind": "概念",
+  "definition": "函数在区间上的平均变化快慢=函数值增量/自变量增量，即割线斜率。",
+  "formulas": [
+   "Δy/Δx=(f(x₀+h)−f(x₀))/h"
+  ],
+  "example": "小车 2 小时走 120 公里，平均速度 60 公里/小时。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": []
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "瞬时变化率",
+  "en": "Instantaneous Rate of Change",
+  "kind": "概念",
+  "definition": "让区间缩到 0，平均变化率的极限就是瞬时变化率：某一刻到底有多快。",
+  "formulas": [],
+  "example": "汽车仪表盘显示的时速就是瞬时速度。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:平均变化率",
+   "NEW:函数在一点的极限直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "导数的几何意义",
+  "en": "Geometric Meaning of Derivative",
+  "kind": "概念",
+  "definition": "f′(x₀)就是曲线在点(x₀,f(x₀))处切线的斜率：导数是“切线的陡峭程度”。",
+  "formulas": [],
+  "example": "y=x² 在点(1,1)处切线斜率为 2。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数",
+   "NEW:平均变化率"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "切线方程",
+  "en": "Equation of Tangent Line",
+  "kind": "公式",
+  "definition": "点(x₀,f(x₀))处的切线为 y=f(x₀)+f′(x₀)(x−x₀)：用切线近似曲线。",
+  "formulas": [
+   "y=f(x₀)+f′(x₀)(x−x₀)"
+  ],
+  "example": "y=x² 在(1,1)处切线为 y=2x−1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:导数的几何意义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "瞬时速度",
+  "en": "Instantaneous Velocity",
+  "kind": "概念",
+  "definition": "位移对时间的导数就是瞬时速度：s′(t)=v(t)。",
+  "formulas": [
+   "v(t)=s′(t)"
+  ],
+  "example": "s=t² 时 t=3 的瞬时速度为 6。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "加速度是二阶导数",
+  "en": "Acceleration as Second Derivative",
+  "kind": "概念",
+  "definition": "速度再求导就是加速度：a(t)=v′(t)=s″(t)，“变化的变化”。",
+  "formulas": [
+   "a(t)=s″(t)"
+  ],
+  "example": "自由落体 s=½gt²，加速度恒为 g。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:瞬时速度"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "可导必连续",
+  "en": "Differentiable Implies Continuous",
+  "kind": "定理",
+  "definition": "函数在一点可导，则在该点一定连续；反过来不对。",
+  "formulas": [],
+  "example": "|x|在 0 处连续但不可导：连续是可导的必要条件。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数",
+   "NEW:连续的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "尖点不可导",
+  "en": "Cusp is Not Differentiable",
+  "kind": "概念",
+  "definition": "图像在某点有个“尖角”（如|x|在 0），左右切线斜率不同，该点不可导。",
+  "formulas": [],
+  "example": "f(x)=|x|在 0 处左导数 −1、右导数 1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数",
+   "NEW:左极限与右极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "常数的导数为零",
+  "en": "Derivative of Constant is Zero",
+  "kind": "公式",
+  "definition": "常数函数图像是水平线，斜率为 0：C′=0。",
+  "formulas": [
+   "C′=0"
+  ],
+  "example": "f(x)=5 的导数恒为 0。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "幂函数的导数",
+  "en": "Derivative of Power Function",
+  "kind": "公式",
+  "definition": "(xⁿ)′=nxⁿ⁻¹：指数“落下来”再减 1，最常用的求导公式。",
+  "formulas": [
+   "(xⁿ)′=nxⁿ⁻¹"
+  ],
+  "example": "(x³)′=3x²，(√x)′=1/(2√x)。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "正弦余弦的导数",
+  "en": "Derivatives of Sine and Cosine",
+  "kind": "公式",
+  "definition": "(sin x)′=cos x，(cos x)′=−sin x：两者求导“轮流转”。",
+  "formulas": [
+   "(sinx)′=cosx",
+   "(cosx)′=−sinx"
+  ],
+  "example": "(sin x)′在 0 处为 1：正弦在原点最陡。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "指数函数的导数",
+  "en": "Derivative of Exponential",
+  "kind": "公式",
+  "definition": "(eˣ)′=eˣ：eˣ 求导不变，是“最自然”的指数函数。",
+  "formulas": [
+   "(eˣ)′=eˣ"
+  ],
+  "example": "eˣ 在 x=0 处切线斜率为 1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "对数函数的导数",
+  "en": "Derivative of Logarithm",
+  "kind": "公式",
+  "definition": "(ln x)′=1/x（x>0)：对数增长越来越慢，斜率不断变小。",
+  "formulas": [
+   "(lnx)′=1/x"
+  ],
+  "example": "ln x 在 x=1 处切线斜率为 1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "和差的导数",
+  "en": "Derivative of Sum and Difference",
+  "kind": "定理",
+  "definition": "(f±g)′=f′±g′：和的导数等于导数的和，逐项求导即可。",
+  "formulas": [
+   "(f±g)′=f′±g′"
+  ],
+  "example": "(x²+sin x)′=2x+cos x。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "常数倍的导数",
+  "en": "Constant Multiple Rule",
+  "kind": "定理",
+  "definition": "(Cf)′=Cf′：常数因子可以直接“提出来”再求导。",
+  "formulas": [
+   "(Cf)′=Cf′"
+  ],
+  "example": "(3x²)′=3·2x=6x。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "导数也是函数",
+  "en": "Derivative as a Function",
+  "kind": "概念",
+  "definition": "f′本身也是一个函数：输入 x，输出该点切线斜率，可以画图像、可以再求导。",
+  "formulas": [],
+  "example": "f(x)=x³ 的导函数是 f′(x)=3x²。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "二阶导数的直观",
+  "en": "Intuition of Second Derivative",
+  "kind": "概念",
+  "definition": "f″是“斜率的变化率”：f″>0 图像下凸（碗形），f″<0 上凸（帽形）。",
+  "formulas": [],
+  "example": "y=x² 的二阶导数恒为 2>0，开口向上。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:导数也是函数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "边际的直观",
+  "en": "Intuition of Marginal",
+  "kind": "概念",
+  "definition": "经济学“边际”就是导数：多生产一件的额外成本/收益，即成本函数的导数。",
+  "formulas": [],
+  "example": "边际成本 C′(100)≈生产第 101 件的额外成本。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "左右导数",
+  "en": "Left and Right Derivatives",
+  "kind": "概念",
+  "definition": "从左侧/右侧算的导数；左右导数都存在且相等，导数才存在。",
+  "formulas": [],
+  "example": "|x|在 0 处左导数 −1、右导数 1，故不可导。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数",
+   "NEW:左极限与右极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "导数的物理意义总结",
+  "en": "Physical Meanings of Derivatives",
+  "kind": "概念",
+  "definition": "位移→速度→加速度是一级级求导；“变化率”思想贯穿物理：电流是电量的导数。",
+  "formulas": [],
+  "example": "电量为 Q(t) 时，电流 I=Q′(t)。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:瞬时速度",
+   "NEW:加速度是二阶导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "用定义求导数",
+  "en": "Differentiating from Definition",
+  "kind": "方法",
+  "definition": "按“作差—除以 h—取极限”三步用定义算导数：理解导数本质的基本功。",
+  "formulas": [],
+  "example": "f(x)=1/x：[1/(x+h)−1/x]/h 取极限得 −1/x²。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "导数直观",
+  "cn": "以直代曲",
+  "en": "Linear Approximation",
+  "kind": "思路",
+  "definition": "用切线代替曲线做近似：x 接近 x₀ 时 f(x)≈f(x₀)+f′(x₀)(x−x₀)。",
+  "formulas": [
+   "f(x)≈f(x₀)+f′(x₀)(x−x₀)"
+  ],
+  "example": "√1.02≈1+0.02/2=1.01（对√x 在 1 处线性化）。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:切线方程"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "定积分的面积直观",
+  "en": "Area Intuition of Definite Integral",
+  "kind": "概念",
+  "definition": "∫ₐᵇf(x)dx 是曲线与 x 轴、直线 x=a,x=b 围成的“有向面积”：上正下负。",
+  "formulas": [],
+  "example": "∫₀¹x dx=1/2，就是底 1 高 1 的三角形面积。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": []
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "曲边梯形",
+  "en": "Curvilinear Trapezoid",
+  "kind": "概念",
+  "definition": "一边是曲线、其余三边是直线的“梯形”：定积分要算的就是它的面积。",
+  "formulas": [],
+  "example": "y=x² 与 x=0、x=1 及 x 轴围成曲边梯形。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:定积分的面积直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "分割-近似-求和-取极限",
+  "en": "Partition-Approximate-Sum-Limit",
+  "kind": "思路",
+  "definition": "算曲边梯形面积四步：切成小条→每条用矩形近似→加起来→让条数趋向无穷。",
+  "formulas": [],
+  "example": "算∫₀¹x²dx：n 等分求和得(n−1)(2n−1)/6n²→1/3。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:曲边梯形",
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "黎曼和的直观",
+  "en": "Intuition of Riemann Sum",
+  "kind": "概念",
+  "definition": "用小矩形面积之和近似定积分：取左端点/右端点/中点，得到不同近似值。",
+  "formulas": [],
+  "example": "n=4 时用右端点估计∫₀¹x²dx≈0.46875。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:分割-近似-求和-取极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "原函数的直观",
+  "en": "Intuition of Antiderivative",
+  "kind": "概念",
+  "definition": "F′=f，则 F 是 f 的一个原函数：原函数就是“求导能得到 f”的函数。",
+  "formulas": [],
+  "example": "x² 是 2x 的原函数，x²+5 也是。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "不定积分加 C",
+  "en": "Plus C in Indefinite Integral",
+  "kind": "定理",
+  "definition": "f 的全体原函数=F(x)+C：相差一个常数的函数求导都一样。",
+  "formulas": [
+   "∫f(x)dx=F(x)+C"
+  ],
+  "example": "∫2x dx=x²+C，C 是任意常数。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:原函数的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "积分是求导的逆运算",
+  "en": "Integration Inverts Differentiation",
+  "kind": "概念",
+  "definition": "微分和积分互逆：先积后导回到 f，先导后积回到 f（差个常数）。",
+  "formulas": [],
+  "example": "(∫x²dx)′=x²，积分号被导数“吃掉”。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:原函数的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "幂函数的积分",
+  "en": "Integral of Power Function",
+  "kind": "公式",
+  "definition": "幂函数的积分：指数加 1 再除以新指数（n≠−1）。",
+  "formulas": [
+   "∫xⁿdx=xⁿ⁺¹/(n+1)+C(n≠−1)"
+  ],
+  "example": "∫x²dx=x³/3+C。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:不定积分加 C",
+   "NEW:幂函数的导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "1/x 的积分是对数",
+  "en": "Integral of 1/x is Logarithm",
+  "kind": "公式",
+  "definition": "幂公式在 n=−1 时失效：1/x 的原函数是对数函数。",
+  "formulas": [
+   "∫(1/x)dx=ln|x|+C"
+  ],
+  "example": "∫₁ᵉ(1/x)dx=ln e−ln 1=1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:不定积分加 C",
+   "NEW:对数函数的导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "eˣ 的积分",
+  "en": "Integral of e^x",
+  "kind": "公式",
+  "definition": "eˣ 积分不变：求导积分都保持原样。",
+  "formulas": [
+   "∫eˣdx=eˣ+C"
+  ],
+  "example": "∫₀¹eˣdx=e−1。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:不定积分加 C",
+   "NEW:指数函数的导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "正弦余弦的积分",
+  "en": "Integrals of Sine and Cosine",
+  "kind": "公式",
+  "definition": "∫sin x dx=−cos x+C，∫cos x dx=sin x+C：求导公式反过来用。",
+  "formulas": [
+   "∫sinxdx=−cosx+C",
+   "∫cosxdx=sinx+C"
+  ],
+  "example": "∫₀^π sin x dx=−cosπ+cos0=2。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:不定积分加 C",
+   "NEW:正弦余弦的导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "定积分的线性性质",
+  "en": "Linearity of Definite Integral",
+  "kind": "定理",
+  "definition": "积分保持加法和数乘：∫(f+g)=∫f+∫g，∫(kf)=k∫f。",
+  "formulas": [
+   "∫ₐᵇ(f+g)=∫ₐᵇf+∫ₐᵇg"
+  ],
+  "example": "∫₀¹(x+x²)dx=1/2+1/3=5/6。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:定积分的面积直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "积分区间可加性",
+  "en": "Additivity over Intervals",
+  "kind": "定理",
+  "definition": "∫ₐᵇf=∫ₐᶜf+∫_cᵇf：区间拆开算再相加，结果不变。",
+  "formulas": [
+   "∫ₐᵇf=∫ₐᶜf+∫_cᵇf"
+  ],
+  "example": "分段函数分段积分再相加。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:定积分的面积直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "牛顿-莱布尼茨公式的直观",
+  "en": "Intuition of Newton-Leibniz Formula",
+  "kind": "定理",
+  "definition": "∫ₐᵇf(x)dx=F(b)−F(a)：定积分等于原函数在端点的差，“面积不用数格子了”。",
+  "formulas": [
+   "∫ₐᵇf(x)dx=F(b)−F(a)"
+  ],
+  "example": "∫₀¹x²dx=1/3−0=1/3。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:原函数的直观",
+   "NEW:定积分的面积直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "变上限积分的直观",
+  "en": "Intuition of Variable Upper Limit Integral",
+  "kind": "概念",
+  "definition": "Φ(x)=∫ₐˣf(t)dt 是“面积随右端点变化”的函数，它的导数就是 f(x)。",
+  "formulas": [
+   "d/dx∫ₐˣf(t)dt=f(x)"
+  ],
+  "example": "d/dx∫₀ˣt²dt=x²：面积的增长速度就是高。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "变上限积分",
+   "NEW:牛顿-莱布尼茨公式的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "微元法",
+  "en": "Method of Differentials",
+  "kind": "思路",
+  "definition": "“化整为零再积零为整”：先写出微小部分的量 dU，再积分得到总量。",
+  "formulas": [
+   "dU=f(x)dx⟹U=∫dU"
+  ],
+  "example": "旋转体体积：dV=π[f(x)]²dx，再从 a 积到 b。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:定积分的面积直观",
+   "NEW:牛顿-莱布尼茨公式的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "面积有正负",
+  "en": "Signed Area",
+  "kind": "概念",
+  "definition": "定积分是“有向面积”：x 轴上方的面积为正、下方为负，两者相减。",
+  "formulas": [],
+  "example": "∫₀^{2π}sin x dx=0：上下两块面积抵消。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:定积分的面积直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "定积分的比较性质",
+  "en": "Comparison Property of Integral",
+  "kind": "定理",
+  "definition": "f≤g 则∫f≤∫g：函数大，面积就大。",
+  "formulas": [],
+  "example": "[0,1]上 x²≤x，故∫₀¹x²dx≤∫₀¹xdx。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:定积分的面积直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "积分的绝对值不等式",
+  "en": "Absolute Value Inequality for Integrals",
+  "kind": "定理",
+  "definition": "|∫f|≤∫|f|：先取绝对值再积分，结果更大（三角不等式的积分版）。",
+  "formulas": [
+   "|∫ₐᵇf|≤∫ₐᵇ|f|"
+  ],
+  "example": "|∫₀^π sin x dx|≤∫₀^π|sin x|dx。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:定积分的面积直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "积分直观",
+  "cn": "速度-路程",
+  "en": "Velocity and Distance",
+  "kind": "概念",
+  "definition": "路程是速度的定积分：s=∫v(t)dt，“速度曲线下的面积就是走过的路”。",
+  "formulas": [
+   "s=∫v(t)dt"
+  ],
+  "example": "v=2t 时 0 到 3 秒走过∫₀³2t dt=9。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿-莱布尼茨公式的直观",
+   "NEW:瞬时速度"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "无穷级数的直观",
+  "en": "Intuition of Infinite Series",
+  "kind": "概念",
+  "definition": "把无穷多个数加起来 a₁+a₂+…：它的“和”要用部分和的极限来定义。",
+  "formulas": [],
+  "example": "1+1/2+1/4+…=2：越加越接近 2。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "部分和",
+  "en": "Partial Sum",
+  "kind": "概念",
+  "definition": "Sₙ=a₁+…+aₙ 是前 n 项的和：级数收敛⟺部分和数列收敛。",
+  "formulas": [
+   "Sₙ=a₁+…+aₙ"
+  ],
+  "example": "几何级数的部分和 Sₙ=2−(1/2)ⁿ⁻¹→2。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无穷级数的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "几何级数的和",
+  "en": "Sum of Geometric Series",
+  "kind": "公式",
+  "definition": "|q|<1 时 a+aq+aq²+…=a/(1−q)：最常用的求和公式。",
+  "formulas": [
+   "|q|<1时Σaqⁿ=a/(1−q)"
+  ],
+  "example": "1+1/2+1/4+…=1/(1−1/2)=2。",
+  "level": 1,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:部分和"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "调和级数发散的直观",
+  "en": "Intuition of Harmonic Series Divergence",
+  "kind": "概念",
+  "definition": "1+1/2+1/3+…发散：分组后每组和都超过 1/2，加起来可以任意大。",
+  "formulas": [],
+  "example": "1/3+1/4>1/2，1/5+…+1/8>1/2，组组超半。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "调和级数发散",
+   "NEW:无穷级数的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "通项趋零是必要条件",
+  "en": "Terms Must Tend to Zero",
+  "kind": "定理",
+  "definition": "级数收敛则通项必趋于 0；但通项→0 时级数不一定收敛。",
+  "formulas": [],
+  "example": "调和级数通项→0 但发散：必要非充分。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无穷级数的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "发散级数不能乱算",
+  "en": "No Arithmetic on Divergent Series",
+  "kind": "概念",
+  "definition": "发散级数没有“和”，硬算会得到荒谬结果：1−1+1−1+…不能说等于 1/2。",
+  "formulas": [],
+  "example": "设 S=1−1+1−…，则 S=1−S 得 S=1/2，谬误在 S 根本不存在。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无穷级数的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "交错级数的直观",
+  "en": "Intuition of Alternating Series",
+  "kind": "概念",
+  "definition": "正负交替的级数 1−1/2+1/3−…：通项单调趋于 0 则收敛。",
+  "formulas": [],
+  "example": "1−1/2+1/3−…收敛到 ln 2。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无穷级数的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "收敛级数的余项",
+  "en": "Remainder of Convergent Series",
+  "kind": "概念",
+  "definition": "收敛级数的“尾巴”Rₙ=S−Sₙ→0：算前 n 项近似时，误差就是余项。",
+  "formulas": [
+   "Rₙ=S−Sₙ→0"
+  ],
+  "example": "用前 10 项算 ln 2，误差小于 1/11。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:部分和"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "正项级数的直观",
+  "en": "Intuition of Positive Series",
+  "kind": "概念",
+  "definition": "各项非负的级数：部分和单调递增，收敛⟺部分和有界。",
+  "formulas": [],
+  "example": "Σ1/2ⁿ 的部分和恒小于 2，故收敛。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:部分和",
+   "NEW:单调数列的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "级数直观",
+  "cn": "级数是离散的积分",
+  "en": "Series as Discrete Integral",
+  "kind": "思路",
+  "definition": "Σf(n)与∫f(x)dx 常常同敛散：把级数想成“阶梯函数下的面积”。",
+  "formulas": [],
+  "example": "∫₁^∞(1/x²)dx 收敛，故Σ1/n² 收敛（积分判别法的直观）。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:无穷级数的直观",
+   "NEW:定积分的面积直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "生活中的微积分",
+  "cn": "影子问题",
+  "en": "Shadow Problem",
+  "kind": "概念",
+  "definition": "用相似三角形加导数求影子长度的变化率：相关变化率的经典例子。",
+  "formulas": [],
+  "example": "路灯下人走路，影子顶端速度是人的 H/(H−h) 倍。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "生活中的微积分",
+  "cn": "水箱注水问题",
+  "en": "Water Filling Problem",
+  "kind": "概念",
+  "definition": "体积对时间的导数是流量：已知 dV/dt，求水深变化率 dh/dt。",
+  "formulas": [],
+  "example": "球形水箱注水，水深上升速度随水深变化。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "生活中的微积分",
+  "cn": "最大利润问题",
+  "en": "Profit Maximization",
+  "kind": "思路",
+  "definition": "利润最大时边际利润为 0：令 P′(x)=0 找最优产量。",
+  "formulas": [],
+  "example": "P(x)=−x²+100x−2400，P′=0 得 x=50 为最优产量。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:边际的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "生活中的微积分",
+  "cn": "复利与 e",
+  "en": "Compound Interest and e",
+  "kind": "概念",
+  "definition": "(1+1/n)ⁿ→e：利息越分越细，1 元一年最多变成 e≈2.718 元。",
+  "formulas": [
+   "lim(n→∞)(1+1/n)ⁿ=e"
+  ],
+  "example": "年利率 100%，每月复利得(1+1/12)¹²≈2.613。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数列极限的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "生活中的微积分",
+  "cn": "切线法解方程",
+  "en": "Tangent Method for Equations",
+  "kind": "思路",
+  "definition": "牛顿法的直观：用切线与 x 轴的交点逼近方程的根，一步步更准。",
+  "formulas": [],
+  "example": "求√2：从 1.5 出发，x₁=1.5−(1.5²−2)/(2·1.5)≈1.4167。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:切线方程"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分入门",
+  "topic_cn": "生活中的微积分",
+  "cn": "优化问题的三步",
+  "en": "Three Steps of Optimization",
+  "kind": "思路",
+  "definition": "建函数→求导找驻点→比较端点：求最值的通用流程。",
+  "formulas": [],
+  "example": "周长固定的矩形中，正方形面积最大。",
+  "level": 1,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:导数的几何意义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "ε-N 定义证数列极限",
+  "en": "Proving Sequence Limits by Epsilon-N",
+  "kind": "方法",
+  "definition": "三步：先化简|aₙ−A|，反解出 n 与 ε 的关系，再取 N。",
+  "formulas": [],
+  "example": "证(2n+1)/(n+1)→2：差为 1/(n+1)<ε，取 N=1/ε。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "ε-δ语言的写法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "海涅定理",
+  "en": "Heine Theorem",
+  "kind": "定理",
+  "definition": "lim(x→x₀)f(x)=A⟺对一切收敛到 x₀ 的数列 xₙ（xₙ≠x₀）都有 f(xₙ)→A。",
+  "formulas": [],
+  "example": "取 xₙ=1/(2nπ)与 1/(2nπ+π/2)，证 sin(1/x) 在 0 处极限不存在。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "ε-δ语言的写法",
+   "极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "函数极限的局部有界性",
+  "en": "Local Boundedness of Function Limit",
+  "kind": "定理",
+  "definition": "极限存在的函数在 x₀ 附近一定有界。",
+  "formulas": [],
+  "example": "lim(x→0)sin(1/x) 不存在，但函数本身有界。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "ε-δ语言的写法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "极限的保号性",
+  "en": "Sign Preservation of Limits",
+  "kind": "定理",
+  "definition": "lim f=A>0 则在 x₀ 附近 f(x)>0；A<0 则 f(x)<0。",
+  "formulas": [],
+  "example": "极限为 −3 的函数，在 x₀ 附近恒为负。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "ε-δ语言的写法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "极限的保不等式性",
+  "en": "Limits Preserve Non-strict Inequalities",
+  "kind": "定理",
+  "definition": "f≤g 且极限存在，则 limf≤limg（严格小于可能变成等于）。",
+  "formulas": [],
+  "example": "1−1/n<1 恒成立，但两边极限都是 1。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:极限的保号性"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "极限四则运算法则的条件",
+  "en": "Conditions for Limit Arithmetic Rules",
+  "kind": "定理",
+  "definition": "用法则的前提：limf、limg 都存在；除法还要求分母极限不为 0。",
+  "formulas": [],
+  "example": "lim sin(1/x) 不存在，不能拆成商的极限。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "ε-δ语言的写法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "复合函数的极限",
+  "en": "Limit of Composite Function",
+  "kind": "定理",
+  "definition": "内层极限 b 存在、外层在 b 连续，则 lim f(g(x))=f(b)。",
+  "formulas": [],
+  "example": "lim(x→0)e^{sin x}=e⁰=1：内层→0，外层连续。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "夹逼定理",
+  "en": "Squeeze Theorem",
+  "kind": "定理",
+  "definition": "g≤f≤h 且 g、h 极限都是 A，则 f 的极限也是 A：“两面夹，中间跑不掉”。",
+  "formulas": [
+   "g≤f≤h, limg=limh=A⟹limf=A"
+  ],
+  "example": "证 lim(x→0)x·sin(1/x)=0：被 ±x 夹住。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:极限的保不等式性"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "重要极限 sin x/x",
+  "en": "Important Limit sin x over x",
+  "kind": "公式",
+  "definition": "lim(x→0)sin x/x=1：第一个重要极限，用夹逼定理证明。",
+  "formulas": [
+   "lim(x→0)sinx/x=1"
+  ],
+  "example": "lim(x→0)sin 3x/x=3·(sin 3x)/(3x)→3。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:夹逼定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "重要极限 (1+1/n)ⁿ",
+  "en": "Important Limit (1+1/n)^n",
+  "kind": "公式",
+  "definition": "lim(n→∞)(1+1/n)ⁿ=e：第二个重要极限，用它定义 e。",
+  "formulas": [
+   "lim(n→∞)(1+1/n)ⁿ=e"
+  ],
+  "example": "lim(n→∞)(1+2/n)ⁿ=[(1+2/n)^{n/2}]²→e²。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "无穷小的阶",
+  "en": "Order of Infinitesimals",
+  "kind": "概念",
+  "definition": "比较两个无穷小趋零的快慢：比值→0 是高阶，→c≠0 是同阶，→1 是等价。",
+  "formulas": [
+   "α=o(β)⟺α/β→0"
+  ],
+  "example": "x→0 时 x² 是 x 的高阶无穷小。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "等价无穷小替换",
+  "en": "Equivalent Infinitesimal Substitution",
+  "kind": "方法",
+  "definition": "乘除极限中，无穷小因子可换成等价的：sin x~x，eˣ−1~x，ln(1+x)~x，1−cos x~x²/2。",
+  "formulas": [
+   "sinx~x",
+   "eˣ−1~x",
+   "1−cosx~x²/2(x→0)"
+  ],
+  "example": "lim(x→0)(eˣ−1)/x=lim x/x=1。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:无穷小的阶"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "洛必达法则的其他未定式",
+  "en": "L'Hôpital for Other Indeterminate Forms",
+  "kind": "方法",
+  "definition": "0·∞、∞−∞、1^∞ 等先化为 0/0 或 ∞/∞ 型，再用洛必达法则。",
+  "formulas": [],
+  "example": "lim(x→0⁺)x ln x：化为 ln x/(1/x) 后得 0。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "洛必达法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "洛必达用前先检查",
+  "en": "Checklist Before L'Hôpital",
+  "kind": "思路",
+  "definition": "三查：是 0/0 或 ∞/∞ 吗？分子分母可导吗？右端极限存在吗？",
+  "formulas": [],
+  "example": "lim(x→∞)(x+sin x)/x 不能用洛必达（右端极限不存在），直接得 1。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "洛必达法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "无穷大量级的比较",
+  "en": "Growth Rates at Infinity",
+  "kind": "概念",
+  "definition": "x→∞ 时 ln x≪xᵃ≪aˣ≪x!：“对数慢、幂次中、指数快、阶乘最快”。",
+  "formulas": [],
+  "example": "lim(x→∞)x¹⁰⁰/eˣ=0：指数碾压任何幂。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "数列极限的运算法则",
+  "en": "Arithmetic Rules of Sequence Limits",
+  "kind": "定理",
+  "definition": "数列版四则运算法则，条件同函数极限：极限都存在，分母不为零。",
+  "formulas": [],
+  "example": "lim(n²+1)/(2n²)=1/2：分子分母同除 n²。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "单调有界定理的应用",
+  "en": "Applying Monotone Bounded Theorem",
+  "kind": "方法",
+  "definition": "证数列收敛：先证单调、再证有界，设极限为 A 列方程求解。",
+  "formulas": [],
+  "example": "a₁=√2，aₙ₊₁=√(2+aₙ)：单调有界，A=√(2+A)得 A=2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "单调有界定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "归结原则证极限不存在",
+  "en": "Heine Principle for Nonexistence",
+  "kind": "思路",
+  "definition": "证函数极限不存在：找两个收敛到 x₀ 的数列，使函数值趋向不同。",
+  "formulas": [],
+  "example": "狄利克雷函数在每点取有理列→1、无理列→0，故处处极限不存在。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:海涅定理",
+   "狄利克雷函数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "分段函数求极限",
+  "en": "Limits of Piecewise Functions",
+  "kind": "方法",
+  "definition": "分段点处分别算左右极限：相等则极限存在，不等则不存在。",
+  "formulas": [],
+  "example": "f(x)=(x²−1)/(x−1)(x≠1)，3(x=1)：x→1 时左右极限都是 2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "极限理论",
+  "cn": "渐近线的求法",
+  "en": "Finding Asymptotes",
+  "kind": "方法",
+  "definition": "铅直渐近线看分母为 0 的点；水平看 x→±∞ 的极限；斜设 y=kx+b。",
+  "formulas": [],
+  "example": "y=(2x+1)/(x−1)：铅直 x=1，水平 y=2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "极限",
+   "渐近线"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "连续的 ε-δ 定义",
+  "en": "Epsilon-Delta Definition of Continuity",
+  "kind": "概念",
+  "definition": "∀ε>0 ∃δ>0 使|x−x₀|<δ 时|f(x)−f(x₀)|<ε：自变量小变，函数值也小变。",
+  "formulas": [
+   "∀ε>0,∃δ>0:|x−x₀|<δ⟹|f(x)−f(x₀)|<ε"
+  ],
+  "example": "证 f(x)=x² 在 x₀ 连续：取 δ=min(1,ε/(2|x₀|+1))。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "ε-δ语言的写法",
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "左连续与右连续",
+  "en": "Left and Right Continuity",
+  "kind": "概念",
+  "definition": "左极限等于函数值则左连续；左右都连续，才在该点连续。",
+  "formulas": [],
+  "example": "符号函数在 0 处既不左连续也不右连续。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "间断点的完整分类",
+  "en": "Classification of Discontinuities",
+  "kind": "概念",
+  "definition": "第一类（左右极限都存在：可去/跳跃）、第二类（至少一侧不存在或无穷：无穷/振荡）。",
+  "formulas": [],
+  "example": "sin(1/x)在 0 处是振荡间断点（第二类）。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "闭区间连续函数的有界性",
+  "en": "Boundedness on Closed Intervals",
+  "kind": "定理",
+  "definition": "[a,b]上连续则必有界：“关起门来不会跑到无穷去”。",
+  "formulas": [],
+  "example": "sin x 在[0,100]上有界，|sin x|≤1。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "最值定理",
+  "en": "Extreme Value Theorem",
+  "kind": "定理",
+  "definition": "闭区间上的连续函数一定能取到最大值和最小值。",
+  "formulas": [],
+  "example": "x² 在[−1,2]上最小值 0（x=0）、最大值 4（x=2）。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:闭区间连续函数的有界性"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "介值定理的应用",
+  "en": "Applying Intermediate Value Theorem",
+  "kind": "方法",
+  "definition": "证方程有根：找两点函数值异号，则两点之间必有零点。",
+  "formulas": [],
+  "example": "证 x³−x−1=0 在(1,2)内有根：f(1)=−1<0<f(2)=5。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "介值定理",
+   "零点定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "反函数连续",
+  "en": "Continuity of Inverse Function",
+  "kind": "定理",
+  "definition": "区间上严格单调连续的函数，反函数也连续。",
+  "formulas": [],
+  "example": "y=x³ 的反函数 ³√x 在全体实数上连续。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "复合函数连续",
+  "en": "Continuity of Composite Function",
+  "kind": "定理",
+  "definition": "f 在 g(x₀)连续、g 在 x₀ 连续，则 f∘g 在 x₀ 连续。",
+  "formulas": [],
+  "example": "e^{sin x}处处连续：指数与正弦都连续。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "一致连续与连续的区别",
+  "en": "Uniform vs Pointwise Continuity",
+  "kind": "概念",
+  "definition": "一致连续的 δ 只与 ε 有关、与点无关：“全场统一标准”。",
+  "formulas": [],
+  "example": "y=x² 在ℝ上连续但非一致连续，在[0,1]上一致连续。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "一致连续",
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "康托尔定理",
+  "en": "Cantor Theorem on Uniform Continuity",
+  "kind": "定理",
+  "definition": "闭区间上的连续函数自动一致连续。",
+  "formulas": [],
+  "example": "√x 在[0,1]上一致连续：δ 只与 ε 有关。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:一致连续与连续的区别"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "初等函数的连续性",
+  "en": "Continuity of Elementary Functions",
+  "kind": "定理",
+  "definition": "基本初等函数在其定义区间内都连续；初等函数在其定义域内都连续。",
+  "formulas": [],
+  "example": "ln x 在(0,∞)连续：求极限可直接代入。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "连续理论",
+  "cn": "连续函数的零点集",
+  "en": "Zero Set of Continuous Function",
+  "kind": "概念",
+  "definition": "连续函数的零点集是闭集：f(xₙ)=0 且 xₙ→x₀，则 f(x₀)=0。",
+  "formulas": [],
+  "example": "二分法找零点时，极限点仍然是零点。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "导数四则运算法则",
+  "en": "Differentiation Rules",
+  "kind": "定理",
+  "definition": "(u±v)′=u′±v′，(uv)′=u′v+uv′，(u/v)′=(u′v−uv′)/v²。",
+  "formulas": [
+   "(uv)′=u′v+uv′",
+   "(u/v)′=(u′v−uv′)/v²"
+  ],
+  "example": "(x²sin x)′=2x sin x+x²cos x。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "乘积求导的直观",
+  "en": "Intuition of Product Rule",
+  "kind": "概念",
+  "definition": "(uv)′=u′v+uv′：想象矩形面积 u×v，两边各伸长一点，增量≈两块小矩形。",
+  "formulas": [],
+  "example": "(x²sin x)′：x² 变的部分加 sin x 变的部分。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:导数四则运算法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "商求导的记忆法",
+  "en": "Mnemonic for Quotient Rule",
+  "kind": "思路",
+  "definition": "“上导下不导减上不导下导，除以下平方”：口诀记住商的求导公式。",
+  "formulas": [],
+  "example": "(sin x/x)′=(x cos x−sin x)/x²。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:导数四则运算法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "链式法则的直观",
+  "en": "Intuition of Chain Rule",
+  "kind": "概念",
+  "definition": "复合函数求导“一层层剥”：dy/dx=dy/du·du/dx。",
+  "formulas": [
+   "dy/dx=dy/du·du/dx"
+  ],
+  "example": "(sin x²)′=cos x²·2x：外层导数乘内层导数。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "链式法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "反函数求导法则",
+  "en": "Derivative of Inverse Function",
+  "kind": "定理",
+  "definition": "dx/dy=1/(dy/dx)：反函数的导数是原函数导数的倒数。",
+  "formulas": [
+   "(f⁻¹)′(y)=1/f′(x)"
+  ],
+  "example": "(arcsin x)′=1/√(1−x²)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "反三角函数的导数",
+  "en": "Derivatives of Inverse Trig Functions",
+  "kind": "公式",
+  "definition": "(arcsin x)′=1/√(1−x²)，(arctan x)′=1/(1+x²)。",
+  "formulas": [
+   "(arcsinx)′=1/√(1−x²)",
+   "(arctanx)′=1/(1+x²)"
+  ],
+  "example": "(arctan x)′在 0 处为 1。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:反函数求导法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "幂指函数求导",
+  "en": "Differentiating Power-Exponential Functions",
+  "kind": "方法",
+  "definition": "u(x)^v(x)=e^{v ln u}：化成指数形式再用链式法则。",
+  "formulas": [],
+  "example": "y=xˣ=e^{x ln x}，得 y′=xˣ(ln x+1)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "链式法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "隐函数求导法",
+  "en": "Implicit Differentiation",
+  "kind": "方法",
+  "definition": "方程 F(x,y)=0 两边对 x 求导，把 y 看成 x 的函数。",
+  "formulas": [],
+  "example": "x²+y²=1：2x+2yy′=0，得 y′=−x/y。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "隐函数求导"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "参数方程的二阶导数",
+  "en": "Second Derivative of Parametric Equations",
+  "kind": "公式",
+  "definition": "d²y/dx²=[d/dt(dy/dx)]/(dx/dt)：先求一阶，再对 t 求导除以 x′(t)。",
+  "formulas": [
+   "d²y/dx²=(d/dt)(dy/dx)/(dx/dt)"
+  ],
+  "example": "摆线 x=a(t−sin t)，y=a(1−cos t) 的二阶导数。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "参数方程求导"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "高阶导数的莱布尼茨公式",
+  "en": "Leibniz Formula for Higher Derivatives",
+  "kind": "公式",
+  "definition": "(uv)^{(n)}=ΣC(n,k)u^{(k)}v^{(n−k)}：形式像二项式展开。",
+  "formulas": [
+   "(uv)⁽ⁿ⁾=ΣₖC(n,k)u⁽ᵏ⁾v⁽ⁿ⁻ᵏ⁾"
+  ],
+  "example": "(x²eˣ)^{(n)}=eˣ(x²+2nx+n(n−1))。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "高阶导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "微分的定义",
+  "en": "Definition of Differential",
+  "kind": "概念",
+  "definition": "dy=f′(x)dx：自变量增量 dx 时，函数增量的线性主部。",
+  "formulas": [
+   "dy=f′(x)dx"
+  ],
+  "example": "y=x³ 时 dy=3x²dx。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "可微与可导等价",
+  "en": "Differentiability Equals Derivability",
+  "kind": "定理",
+  "definition": "一元函数：可微⟺可导，且 dy=f′(x)dx。",
+  "formulas": [],
+  "example": "y=|x|在 0 处不可导，也不可微。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:微分的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "微分的几何意义",
+  "en": "Geometric Meaning of Differential",
+  "kind": "概念",
+  "definition": "dy 是切线上纵坐标的增量：Δy≈dy，误差是高阶无穷小。",
+  "formulas": [],
+  "example": "Δx=0.01 时√4.01≈2+0.01/4=2.0025。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:微分的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "微分的运算法则",
+  "en": "Rules of Differentials",
+  "kind": "定理",
+  "definition": "d(u±v)=du±dv，d(uv)=vdu+udv：一阶微分形式不变性。",
+  "formulas": [],
+  "example": "d(sin x²)=cos x²·d(x²)=2x cos x²dx。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:微分的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "一阶微分形式不变性",
+  "en": "Invariance of First Differential Form",
+  "kind": "定理",
+  "definition": "无论 u 是自变量还是中间变量，dF=F′du 形式不变：链式法则的微分版。",
+  "formulas": [],
+  "example": "d(sin u)=cos u du，对 u=x² 照样成立。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:微分的运算法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "近似计算三公式",
+  "en": "Three Approximation Formulas",
+  "kind": "公式",
+  "definition": "x→0 时 sin x≈x，eˣ≈1+x，ln(1+x)≈x：微分近似的常用公式。",
+  "formulas": [
+   "sinx≈x",
+   "eˣ≈1+x",
+   "ln(1+x)≈x(x→0)"
+  ],
+  "example": "sin 0.01≈0.01，误差不到 10⁻⁶。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:微分的几何意义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "误差估计",
+  "en": "Error Estimation",
+  "kind": "概念",
+  "definition": "绝对误差|Δy|≈|dy|，相对误差|Δy/y|≈|dy/y|：微分用来估计测量误差。",
+  "formulas": [],
+  "example": "测球半径 r 有误差 dr，体积相对误差≈3dr/r。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:微分的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "极值点的必要条件",
+  "en": "Necessary Condition for Extremum",
+  "kind": "定理",
+  "definition": "f 在 x₀ 取极值且可导，则 f′(x₀)=0：极值点是“驻点候选”。",
+  "formulas": [],
+  "example": "f(x)=x³ 在 0 处导数为 0 但不是极值点：必要非充分。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "驻点与临界点",
+  "en": "Stationary and Critical Points",
+  "kind": "概念",
+  "definition": "驻点：f′=0 的点；临界点：驻点加不可导点；极值只可能在临界点取得。",
+  "formulas": [],
+  "example": "|x|的极小值点 0 是临界点而非驻点。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:极值点的必要条件"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数理论",
+  "cn": "单调性判定定理",
+  "en": "Monotonicity Test",
+  "kind": "定理",
+  "definition": "区间内 f′>0 则递增，f′<0 则递减：导数的符号决定升降。",
+  "formulas": [],
+  "example": "f(x)=x³−3x 在(−1,1)上 f′<0，故递减。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "费马定理",
+  "en": "Fermat Theorem",
+  "kind": "定理",
+  "definition": "可导函数在极值点处导数为 0：f′(x₀)=0。",
+  "formulas": [],
+  "example": "f(x)=x² 在极小值点 0 处导数为 0。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "罗尔定理的几何意义",
+  "en": "Geometric Meaning of Rolle Theorem",
+  "kind": "概念",
+  "definition": "f(a)=f(b)时(a,b)内必有水平切线：“两端一样高，中间必有平的地方”。",
+  "formulas": [],
+  "example": "f(x)=sin x 在[0,π]上，ξ=π/2 处导数为 0。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "罗尔定理",
+   "NEW:费马定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "拉格朗日中值定理的推论",
+  "en": "Corollaries of Lagrange Mean Value Theorem",
+  "kind": "定理",
+  "definition": "f′≡0 则 f 为常数；f′≥0 则 f 递增：导数定“形状”。",
+  "formulas": [],
+  "example": "(arctan x+arccot x)′=0，故和为常数 π/2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "微分中值定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "柯西中值定理",
+  "en": "Cauchy Mean Value Theorem",
+  "kind": "定理",
+  "definition": "[f(b)−f(a)]/[g(b)−g(a)]=f′(ξ)/g′(ξ)：拉格朗日的“参数版”，洛必达的理论基础。",
+  "formulas": [
+   "[f(b)−f(a)]/[g(b)−g(a)]=f′(ξ)/g′(ξ)"
+  ],
+  "example": "用它证明洛必达法则的 0/0 型。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "罗尔定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "洛必达法则的证明思路",
+  "en": "Proof Idea of L'Hôpital Rule",
+  "kind": "思路",
+  "definition": "0/0 型：由柯西中值定理 f/g=f′(ξ)/g′(ξ)，令 x→a 则 ξ→a。",
+  "formulas": [],
+  "example": "lim(x→0)(eˣ−1)/x：ξ∈(0,x)，比值=e^ξ→1。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:柯西中值定理",
+   "洛必达法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "泰勒公式",
+  "en": "Taylor Formula",
+  "kind": "定理",
+  "definition": "f(x)=Pₙ(x)+Rₙ：用 n 次多项式逼近光滑函数，余项可控。",
+  "formulas": [
+   "f(x)=Σₖ₌₀ⁿf⁽ᵏ⁾(a)(x−a)ᵏ/k!+Rₙ"
+  ],
+  "example": "eˣ≈1+x+x²/2，x 越小越准。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "泰勒级数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "麦克劳林公式",
+  "en": "Maclaurin Formula",
+  "kind": "定理",
+  "definition": "泰勒公式在 a=0 的特例：f(x)=Σf^{(k)}(0)xᵏ/k!+Rₙ。",
+  "formulas": [
+   "f(x)=Σf⁽ᵏ⁾(0)xᵏ/k!+Rₙ"
+  ],
+  "example": "sin x=x−x³/6+o(x³)。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:泰勒公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "拉格朗日余项",
+  "en": "Lagrange Remainder",
+  "kind": "公式",
+  "definition": "Rₙ=f^{(n+1)}(ξ)(x−a)^{n+1}/(n+1)!：余项长得像“下一项”。",
+  "formulas": [
+   "Rₙ=f⁽ⁿ⁺¹⁾(ξ)(x−a)ⁿ⁺¹/(n+1)!"
+  ],
+  "example": "eˣ 用 3 次多项式在[0,1]逼近，误差≤e/24。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:泰勒公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "常用麦克劳林展开表",
+  "en": "Common Maclaurin Expansions",
+  "kind": "公式",
+  "definition": "eˣ、sin x、cos x、ln(1+x)、(1+x)^α 的前几项（带佩亚诺余项）。",
+  "formulas": [
+   "eˣ=1+x+x²/2!+…",
+   "ln(1+x)=x−x²/2+x³/3−…"
+  ],
+  "example": "用展开算 lim(x→0)(eˣ−1−x)/x²=1/2。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:麦克劳林公式",
+   "泰勒展开的佩亚诺余项"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "泰勒展开求极限进阶",
+  "en": "Advanced Limits via Taylor",
+  "kind": "方法",
+  "definition": "0/0 型极限：分子分母展开到“第一个非零项”，系数比即极限。",
+  "formulas": [],
+  "example": "lim(x→0)(sin x−x)/x³=−1/6（展开到 x³ 项）。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:麦克劳林公式",
+   "泰勒展开求极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "存在 ξ 型命题",
+  "en": "Existence-of-xi Problems",
+  "kind": "思路",
+  "definition": "要证“存在 ξ 使…”：想中值定理；等式含 f′(ξ) 想罗尔/拉格朗日。",
+  "formulas": [],
+  "example": "证 x³−3x+1=0 在(0,1)有根：f(0)=1>0>f(1)=−1，用零点定理。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "罗尔定理",
+   "零点定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "不等式证明三板斧",
+  "en": "Three Tools for Inequalities",
+  "kind": "思路",
+  "definition": "单调性、中值定理、凹凸性：证 f>g 的常用套路。",
+  "formulas": [],
+  "example": "证 x>0 时 eˣ>1+x：设 f=eˣ−1−x，f′=eˣ−1>0。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:单调性判定定理",
+   "单调性证不等式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "凹凸性判定",
+  "en": "Concavity Test",
+  "kind": "定理",
+  "definition": "f″>0 则下凸（碗形），f″<0 则上凸（帽形）：二阶导数定形状。",
+  "formulas": [],
+  "example": "y=ln x，f″=−1/x²<0，故上凸。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "高阶导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "中值定理与泰勒",
+  "cn": "拐点的判定",
+  "en": "Inflection Point Test",
+  "kind": "定理",
+  "definition": "凹凸性发生变化的点：f″变号则为拐点（f″=0 只是必要条件）。",
+  "formulas": [],
+  "example": "y=x³ 的拐点是(0,0)：二阶导数变号。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:凹凸性判定"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "极值的第一判别法",
+  "en": "First Derivative Test",
+  "kind": "定理",
+  "definition": "f′在 x₀ 两侧变号：+→−为极大，−→+为极小，不变号则不是极值。",
+  "formulas": [],
+  "example": "f(x)=x³−3x²：x=0 极大，x=2 极小。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:驻点与临界点",
+   "NEW:单调性判定定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "极值的第二判别法回顾",
+  "en": "Second Derivative Test Revisited",
+  "kind": "定理",
+  "definition": "f′(x₀)=0 且 f″(x₀)>0 则极小，<0 则极大，=0 时失效。",
+  "formulas": [],
+  "example": "f(x)=x⁴ 在 0 处二阶导为 0，须用第一判别法。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:极值的第一判别法",
+   "极值的第二判别法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "闭区间上求最值",
+  "en": "Extrema on Closed Intervals",
+  "kind": "方法",
+  "definition": "三步：求驻点和不可导点→算端点值→比较大小。",
+  "formulas": [],
+  "example": "f(x)=x³−3x 在[−2,2]上最大值 2（x=2）、最小值 −2（x=−2）。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:极值的第一判别法",
+   "NEW:最值定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "函数作图五步",
+  "en": "Five Steps of Curve Sketching",
+  "kind": "方法",
+  "definition": "定义域→单调极值→凹凸拐点→渐近线→描点连线。",
+  "formulas": [],
+  "example": "y=x³−3x：极大(−1,2)、极小(1,−2)、拐点(0,0)。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:单调性判定定理",
+   "NEW:凹凸性判定",
+   "NEW:渐近线的求法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "最大最小值应用题",
+  "en": "Applied Max-Min Problems",
+  "kind": "思路",
+  "definition": "设变量→列函数→求导找最值→检验：实际问题的标准流程。",
+  "formulas": [],
+  "example": "周长一定的矩形中，正方形面积最大。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:闭区间上求最值"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "牛顿-莱布尼茨公式",
+  "en": "Newton-Leibniz Formula",
+  "kind": "定理",
+  "definition": "∫ₐᵇf(x)dx=F(b)−F(a)（F′=f)：微积分基本定理，连接微分与积分。",
+  "formulas": [
+   "∫ₐᵇf(x)dx=F(b)−F(a)"
+  ],
+  "example": "∫₁²x³dx=16/4−1/4=15/4。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "原函数存在定理",
+   "Riemann 积分"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "定积分的性质",
+  "en": "Properties of Definite Integral",
+  "kind": "定理",
+  "definition": "线性、区间可加、保号、比较、估值：|∫f|≤M(b−a)。",
+  "formulas": [],
+  "example": "∫₀¹e^{x²}dx 介于 1 与 e 之间（估值性质）。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿-莱布尼茨公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "积分中值定理",
+  "en": "Mean Value Theorem for Integrals",
+  "kind": "定理",
+  "definition": "连续 f 在[a,b]上必有 ξ 使∫ₐᵇf=f(ξ)(b−a)：“平均高度”必在某点取到。",
+  "formulas": [
+   "∫ₐᵇf(x)dx=f(ξ)(b−a)"
+  ],
+  "example": "∫₀^π sin x dx=2=sin(ξ)·π。",
+  "level": 2,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:牛顿-莱布尼茨公式",
+   "介值定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "奇偶函数的定积分",
+  "en": "Integrals of Even and Odd Functions",
+  "kind": "公式",
+  "definition": "偶函数：∫₋ₐᵃf=2∫₀ᵃf；奇函数：∫₋ₐᵃf=0：对称区间先看奇偶。",
+  "formulas": [
+   "∫₋ₐᵃf=2∫₀ᵃf(偶)",
+   "∫₋ₐᵃf=0(奇)"
+  ],
+  "example": "∫₋₁¹x³dx=0：奇函数对称抵消。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿-莱布尼茨公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "周期函数的定积分",
+  "en": "Integral of Periodic Functions",
+  "kind": "定理",
+  "definition": "周期 T 的函数在任意长度 T 的区间上积分相等。",
+  "formulas": [],
+  "example": "∫₀^{2π}sin x dx=∫_{π}^{3π}sin x dx=0。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿-莱布尼茨公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "第一换元法",
+  "en": "First Substitution Method",
+  "kind": "方法",
+  "definition": "凑微分：把被积式凑成 f(g(x))g′(x) 的形式，关键是“凑出 d(g(x))”。",
+  "formulas": [],
+  "example": "∫x·e^{x²}dx=½∫e^{x²}d(x²)=½e^{x²}+C。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "换元积分法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "第二换元法",
+  "en": "Second Substitution Method",
+  "kind": "方法",
+  "definition": "令 x=φ(t)去根号：√(a²−x²)用 x=a sin t。",
+  "formulas": [],
+  "example": "∫dx/√(1−x²)：x=sin t，得 arcsin x+C。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:第一换元法",
+   "三角换元"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "分部积分进阶",
+  "en": "Advanced Integration by Parts",
+  "kind": "方法",
+  "definition": "∫udv=uv−∫vdu：选 u 的口诀“反对幂指三”（反三角>对数>幂>指数>三角）。",
+  "formulas": [],
+  "example": "∫x eˣdx=xeˣ−eˣ+C：u 取 x。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "分部积分法",
+   "分部积分法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "微积分",
+  "topic_cn": "导数应用与积分",
+  "cn": "三角有理式积分",
+  "en": "Integration of Trigonometric Rationals",
+  "kind": "方法",
+  "definition": "万能换元 t=tan(x/2)：sin x=2t/(1+t²)，cos x=(1−t²)/(1+t²)，dx=2dt/(1+t²)。",
+  "formulas": [
+   "sinx=2t/(1+t²)",
+   "cosx=(1−t²)/(1+t²)"
+  ],
+  "example": "∫dx/(1+sin x)：万能换元化为有理函数积分。",
+  "level": 2,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "万能换元"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "区间套定理",
+  "en": "Nested Interval Theorem",
+  "kind": "定理",
+  "definition": "闭区间套[aₙ,bₙ]长度→0，则交集恰为一点：不断对分必收敛到一点。",
+  "formulas": [],
+  "example": "用区间套证零点定理：每次取异号的一半。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "确界原理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "有限覆盖定理",
+  "en": "Heine-Borel Covering Theorem",
+  "kind": "定理",
+  "definition": "闭区间[a,b]的任一开覆盖都有有限子覆盖：“有限个开区间就能盖住”。",
+  "formulas": [],
+  "example": "证闭区间上连续函数一致连续的关键引理。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "确界原理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "致密性定理",
+  "en": "Bolzano-Weierstrass Theorem",
+  "kind": "定理",
+  "definition": "有界数列必有收敛子列：“挤一挤总能找出收敛的一串”。",
+  "formulas": [],
+  "example": "(−1)ⁿ 有收敛子列：全取奇数项得 −1。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "确界原理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "上极限与下极限的应用",
+  "en": "Applying limsup and liminf",
+  "kind": "方法",
+  "definition": "limsup/liminf 判定收敛：两者相等则数列收敛。",
+  "formulas": [],
+  "example": "limsup(−1)ⁿ=1，liminf=−1，两者不等故发散。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "上极限与下极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "一致连续的序列判据",
+  "en": "Sequential Criterion for Uniform Continuity",
+  "kind": "定理",
+  "definition": "f 在区间上一致连续⟺对任意 xₙ−yₙ→0 都有 f(xₙ)−f(yₙ)→0。",
+  "formulas": [],
+  "example": "证 x² 在ℝ上非一致连续：取 xₙ=n+1/n，yₙ=n。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "一致连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "函数极限的柯西准则",
+  "en": "Cauchy Criterion for Function Limits",
+  "kind": "定理",
+  "definition": "lim(x→x₀)f(x)存在⟺∀ε>0 ∃δ>0 使|x₁−x₀|,|x₂−x₀|<δ 时|f(x₁)−f(x₂)|<ε。",
+  "formulas": [],
+  "example": "证 lim(x→0)sin(1/x)不存在：取两列点函数值差恒为 2。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "ε-δ语言的写法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "反函数存在定理",
+  "en": "Inverse Function Existence Theorem",
+  "kind": "定理",
+  "definition": "区间上连续严格单调的函数有反函数，且反函数也连续严格单调。",
+  "formulas": [],
+  "example": "y=eˣ 在ℝ上严格递增连续，反函数 ln x 在(0,∞)连续。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续",
+   "介值定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "初等函数的统一连续性",
+  "en": "Continuity of Elementary Functions",
+  "kind": "概念",
+  "definition": "基本初等函数在定义区间内连续，初等函数在定义域内连续：求极限可直接代入。",
+  "formulas": [],
+  "example": "lim(x→1)ln(x²+1)=ln 2：对数连续直接代入。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "振荡间断点的判定",
+  "en": "Identifying Oscillating Discontinuity",
+  "kind": "方法",
+  "definition": "左右极限至少一侧不存在（振荡）：找两个子列使函数值趋向不同。",
+  "formulas": [],
+  "example": "sin(1/x)在 0 处：xₙ=1/(2nπ+π/2)时值为 1，yₙ=1/(2nπ)时值为 0。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "实数与极限",
+  "cn": "不动点的迭代法",
+  "en": "Fixed Point Iteration",
+  "kind": "方法",
+  "definition": "解 x=g(x)：任取 x₀，令 xₙ₊₁=g(xₙ)，压缩映射下必收敛到唯一不动点。",
+  "formulas": [
+   "xₙ₊₁=g(xₙ)"
+  ],
+  "example": "求√2：xₙ₊₁=(xₙ+2/xₙ)/2，几步就收敛。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "压缩映射原理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "柯西中值定理的几何意义",
+  "en": "Geometric Meaning of Cauchy MVT",
+  "kind": "概念",
+  "definition": "参数曲线(g(t),f(t))的割线斜率等于某点切线斜率：拉格朗日的参数版。",
+  "formulas": [],
+  "example": "同一运动的 x-t 与 y-t 曲线：平均斜率=某时刻切线斜率。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:柯西中值定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "达布定理的证明思路",
+  "en": "Proof Idea of Darboux Theorem",
+  "kind": "思路",
+  "definition": "导函数有介值性：对辅助函数 g=f−λx 用极值点导数为 0。",
+  "formulas": [],
+  "example": "f(x)=x²sin(1/x)的导函数在 0 附近取遍中间值。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "达布定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "高阶导数的物理意义",
+  "en": "Physical Meaning of Higher Derivatives",
+  "kind": "概念",
+  "definition": "三阶导 jolt（加加速度）：加速度的变化率，电梯“顿挫感”就来自它。",
+  "formulas": [],
+  "example": "高铁启动追求加速度连续变化，就是控制三阶导。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "高阶导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "曲率公式",
+  "en": "Curvature Formula",
+  "kind": "公式",
+  "definition": "K=|y″|/(1+y′²)^{3/2}：量化曲线“弯得有多厉害”，曲率半径 R=1/K。",
+  "formulas": [
+   "K=|y″|/(1+y′²)^{3/2}",
+   "R=1/K"
+  ],
+  "example": "抛物线 y=x² 在顶点处曲率 K=2。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "高阶导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "曲率圆",
+  "en": "Osculating Circle",
+  "kind": "概念",
+  "definition": "在该点与曲线“最贴合”的圆：半径 R=1/K，圆心在法线上。",
+  "formulas": [],
+  "example": "y=x² 在(0,0)处曲率圆为 x²+(y−1/2)²=(1/2)²。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:曲率公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "弧微分",
+  "en": "Differential of Arc Length",
+  "kind": "公式",
+  "definition": "ds=√(1+y′²)dx：弧长的微分，ds²=dx²+dy² 的勾股形式。",
+  "formulas": [
+   "ds=√(1+y′²)dx"
+  ],
+  "example": "圆的参数方程下 ds=R dθ：弧长=半径×圆心角。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "渐屈线与渐伸线的直观",
+  "en": "Intuition of Evolute and Involute",
+  "kind": "概念",
+  "definition": "渐屈线=曲率圆圆心的轨迹；渐伸线=把线从渐屈线上“展开”得到的曲线。",
+  "formulas": [],
+  "example": "摆线的渐屈线仍是摆线：惠更斯的发现。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:曲率圆"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "相关变化率",
+  "en": "Related Rates",
+  "kind": "方法",
+  "definition": "x、y 都随 t 变：dy/dt=dy/dx·dx/dt，找“同时变”的两个量。",
+  "formulas": [],
+  "example": "气球充气：dV/dt 已知，求 dr/dt=(dV/dt)/(4πr²)。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "链式法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "极坐标入门",
+  "en": "Introduction to Polar Coordinates",
+  "kind": "概念",
+  "definition": "用(ρ,θ)定位点：ρ 是到原点的距离，θ 是极角；x=ρcosθ，y=ρsinθ。",
+  "formulas": [
+   "x=ρcosθ,y=ρsinθ"
+  ],
+  "example": "圆 x²+y²=4 化为 ρ=2：一句话写完。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": []
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "对数微分法的适用情形",
+  "en": "When to Use Logarithmic Differentiation",
+  "kind": "方法",
+  "definition": "连乘除、幂指、根式：取对数把乘除变加减，再求导。",
+  "formulas": [],
+  "example": "y=√[(x−1)(x−2)]/[(x−3)(x−4)]：取对数后逐项求导。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "链式法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "反函数的高阶导数",
+  "en": "Higher Derivatives of Inverse Functions",
+  "kind": "公式",
+  "definition": "d²x/dy²=−y″/(y′)³：反函数二阶导用原函数表示。",
+  "formulas": [
+   "d²x/dy²=−y″/(y′)³"
+  ],
+  "example": "y=x³ 的反函数在 y=1 处二阶导为 −2/27。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:反函数求导法则"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "隐函数的二阶导数",
+  "en": "Second Derivative of Implicit Functions",
+  "kind": "方法",
+  "definition": "对一阶导结果再求导（注意 y′里还含 y，继续用链式法则）。",
+  "formulas": [],
+  "example": "x²+y²=R²：y′=−x/y，再求导得 y″=−R²/y³。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "隐函数求导"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "泰勒公式的积分余项",
+  "en": "Integral Remainder of Taylor",
+  "kind": "公式",
+  "definition": "Rₙ=1/n!∫ₐˣ(x−t)ⁿf^{(n+1)}(t)dt：余项的积分形式，估计更精细。",
+  "formulas": [
+   "Rₙ=1/n!∫ₐˣ(x−t)ⁿf⁽ⁿ⁺¹⁾(t)dt"
+  ],
+  "example": "交错级数余项估计的理论基础。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:泰勒公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "微分学进阶",
+  "cn": "佩亚诺余项与拉格朗日余项的选用",
+  "en": "Choosing Taylor Remainders",
+  "kind": "思路",
+  "definition": "求极限用佩亚诺（局部），证不等式、估计误差用拉格朗日（带 ξ）。",
+  "formulas": [],
+  "example": "求极限用 o(xⁿ)；证 eˣ>1+x+x²/2 用拉格朗日余项。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:拉格朗日余项",
+   "泰勒展开的佩亚诺余项"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "无穷限反常积分的计算",
+  "en": "Computing Improper Integrals over Infinite Intervals",
+  "kind": "方法",
+  "definition": "按定义取极限：先算定积分，再让上限趋向无穷。",
+  "formulas": [],
+  "example": "∫₀^∞e^{−x}dx=lim(b→∞)(1−e^{−b})=1。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "反常积分审敛",
+   "NEW:牛顿-莱布尼茨公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "瑕积分的审敛",
+  "en": "Convergence Test for Singular Integrals",
+  "kind": "方法",
+  "definition": "瑕点处与 p-积分比较：∫₀¹(1/xᵖ)dx 收敛⟺p<1。",
+  "formulas": [],
+  "example": "∫₀¹dx/√x=2：p=1/2<1，故收敛。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "瑕积分",
+   "NEW:比较审敛法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "比较审敛法",
+  "en": "Comparison Test for Improper Integrals",
+  "kind": "定理",
+  "definition": "0≤f≤g：∫g 收敛则∫f 收敛；∫f 发散则∫g 发散。",
+  "formulas": [],
+  "example": "∫₁^∞dx/(x²+1)≤∫₁^∞dx/x²，故收敛。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "反常积分审敛"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "极限审敛法",
+  "en": "Limit Comparison Test for Integrals",
+  "kind": "定理",
+  "definition": "lim xᵖf(x)=c：p>1 且 c 有限则收敛；p≤1 且 c>0 则发散。",
+  "formulas": [],
+  "example": "∫₁^∞(sin x)/x²dx：用|sin x|/x²≤1/x²比较得收敛。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:比较审敛法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "反常积分的绝对收敛",
+  "en": "Absolute Convergence of Improper Integrals",
+  "kind": "概念",
+  "definition": "∫|f|收敛则∫f 收敛：绝对收敛蕴含收敛，反之不对。",
+  "formulas": [],
+  "example": "∫₁^∞(sin x)/x²dx 绝对收敛。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:比较审敛法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "Γ 函数的性质",
+  "en": "Properties of Gamma Function",
+  "kind": "定理",
+  "definition": "Γ(s)=∫₀^∞x^{s−1}e^{−x}dx，Γ(s+1)=sΓ(s)，Γ(n+1)=n!：阶乘推广到实数。",
+  "formulas": [
+   "Γ(s+1)=sΓ(s)",
+   "Γ(n+1)=n!"
+  ],
+  "example": "Γ(1/2)=√π：半整数的阶乘。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "Γ函数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "Wallis 公式",
+  "en": "Wallis Formula",
+  "kind": "公式",
+  "definition": "π/2 的无穷乘积：用积分递推公式得到，取有限项可近似 π。",
+  "formulas": [
+   "π/2=limₙ[(2·4…2n)²/((1·3…(2n−1))²(2n+1))]"
+  ],
+  "example": "取 n=5 得 π≈3.17：项数越多越准。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "积分递推公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "旋转体的侧面积",
+  "en": "Surface Area of Revolution",
+  "kind": "公式",
+  "definition": "S=2π∫ₐᵇf(x)√(1+f′²)dx：用弧微分 ds 乘圆周长。",
+  "formulas": [
+   "S=2π∫ₐᵇf√(1+f′²)dx"
+  ],
+  "example": "球面面积：对半圆旋转得 4πR²。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "旋转体体积",
+   "NEW:弧微分"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "平面曲线的弧长",
+  "en": "Arc Length of Plane Curves",
+  "kind": "公式",
+  "definition": "s=∫ₐᵇ√(1+y′²)dx；参数方程 s=∫√(x′²+y′²)dt。",
+  "formulas": [
+   "s=∫ₐᵇ√(1+y′²)dx"
+  ],
+  "example": "y=x^{3/2} 在[0,1]上的弧长≈1.44。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:弧微分"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "变力做功",
+  "en": "Work by Variable Force",
+  "kind": "公式",
+  "definition": "W=∫ₐᵇF(x)dx：力随位置变化时，功是力对位移的积分。",
+  "formulas": [
+   "W=∫ₐᵇF(x)dx"
+  ],
+  "example": "弹簧 F=kx，拉伸到 a 做功 ka²/2。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:牛顿-莱布尼茨公式"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "静水压力",
+  "en": "Hydrostatic Pressure",
+  "kind": "公式",
+  "definition": "压强随深度线性增大，总压力=∫(压强×条带面积)：F=ρg∫h·w dh。",
+  "formulas": [],
+  "example": "竖直矩形闸门：水深越深处压强越大，积分求总压力。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:变力做功"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "形心公式",
+  "en": "Centroid Formula",
+  "kind": "公式",
+  "definition": "x̄=∫x·dm/∫dm：质量（或面积）的“平均位置”，对称图形形心在对称轴上。",
+  "formulas": [
+   "x̄=∫ₐᵇxf(x)dx/∫ₐᵇf(x)dx"
+  ],
+  "example": "半圆薄板的形心在(0,4R/3π)。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:变力做功"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "定积分的换元法",
+  "en": "Substitution in Definite Integrals",
+  "kind": "方法",
+  "definition": "换元必换限：∫ₐᵇf(x)dx=[x=φ(t)]=∫_α^βf(φ(t))φ′(t)dt。",
+  "formulas": [],
+  "example": "∫₀¹√(1−x²)dx：x=sin t，化为∫₀^{π/2}cos²t dt=π/4。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "换元积分法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "积分学进阶",
+  "cn": "对称性简化定积分",
+  "en": "Symmetry Tricks for Integrals",
+  "kind": "思路",
+  "definition": "先看奇偶、对称、周期：能省一半计算量。",
+  "formulas": [],
+  "example": "∫₋₂²(x³+sin x)dx=0：奇函数对称抵消。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:奇偶函数的定积分"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "数项级数收敛的定义",
+  "en": "Definition of Series Convergence",
+  "kind": "概念",
+  "definition": "Σuₙ 收敛⟺部分和 Sₙ 收敛：级数的“和”就是部分和的极限。",
+  "formulas": [],
+  "example": "Σ1/2ⁿ 的部分和→1，故级数的和为 1。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "极限"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "级数收敛的必要条件",
+  "en": "Necessary Condition for Series Convergence",
+  "kind": "定理",
+  "definition": "Σuₙ 收敛⟹uₙ→0；逆命题不成立（调和级数）。",
+  "formulas": [],
+  "example": "Σn/(n+1)通项→1≠0，故发散。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:数项级数收敛的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "正项级数审敛总览",
+  "en": "Roadmap for Positive Series Tests",
+  "kind": "思路",
+  "definition": "先看通项→0？再试比值/根值，不行用比较/积分：审敛路线图。",
+  "formulas": [],
+  "example": "Σn²/2ⁿ：比值法得 1/2<1，收敛。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "比值判别法",
+   "根值判别法",
+   "比较判别法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "交错级数的余项估计",
+  "en": "Remainder Estimate for Alternating Series",
+  "kind": "定理",
+  "definition": "莱布尼茨型级数用前 n 项近似，误差不超过第 n+1 项的绝对值。",
+  "formulas": [
+   "|Rₙ|≤uₙ₊₁"
+  ],
+  "example": "算 ln 2 取前 10 项，误差<1/11。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "莱布尼茨判别法"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "绝对收敛与一致收敛",
+  "en": "Absolute vs Uniform Convergence",
+  "kind": "概念",
+  "definition": "绝对收敛是“每项取绝对值后收敛”；一致收敛是函数项级数的“整体”收敛。",
+  "formulas": [],
+  "example": "Σ(−1)ⁿxⁿ/n 在(0,1]逐点收敛但非一致收敛。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "绝对收敛与条件收敛",
+   "一致收敛"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "黎曼重排定理",
+  "en": "Riemann Rearrangement Theorem",
+  "kind": "定理",
+  "definition": "条件收敛级数重排求和可以得到任何实数（或发散）：“条件收敛的和看顺序”。",
+  "formulas": [],
+  "example": "1−1/2+1/3−…重排后可以收敛到任意实数。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "绝对收敛与条件收敛"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "幂级数的收敛域",
+  "en": "Interval of Convergence",
+  "kind": "概念",
+  "definition": "收敛半径 R 内的(−R,R)收敛，端点另判：先求 R，再查端点。",
+  "formulas": [],
+  "example": "Σxⁿ/n 的收敛域是[−1,1)：左端收敛右端发散。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "幂级数收敛半径",
+   "阿贝尔定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "收敛半径的计算",
+  "en": "Computing Radius of Convergence",
+  "kind": "方法",
+  "definition": "R=1/limsup|aₙ|^{1/n}，常用比值法：R=lim|aₙ/aₙ₊₁|。",
+  "formulas": [],
+  "example": "Σn!xⁿ：比值→∞，R=0，只在 x=0 收敛。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "幂级数收敛半径"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "和函数的求法",
+  "en": "Finding Sum Functions",
+  "kind": "方法",
+  "definition": "幂级数求和：认出已知展开，或先微后积/先积后微。",
+  "formulas": [],
+  "example": "Σ(n+1)xⁿ=(Σxⁿ⁺¹)′=[x/(1−x)]′=1/(1−x)²。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "幂级数",
+   "阿贝尔定理"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "常用函数的幂级数展开",
+  "en": "Power Series of Common Functions",
+  "kind": "公式",
+  "definition": "eˣ、sin x、cos x、ln(1+x)、1/(1−x)、(1+x)^α 的展开与收敛域。",
+  "formulas": [
+   "1/(1−x)=Σxⁿ(|x|<1)",
+   "(1+x)^α=ΣC(α,n)xⁿ"
+  ],
+  "example": "arctan x=x−x³/3+…（|x|≤1)。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "幂级数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "欧拉公式",
+  "en": "Euler Formula",
+  "kind": "公式",
+  "definition": "e^{ix}=cos x+i sin x：指数与三角的桥梁，e^{iπ}+1=0。",
+  "formulas": [
+   "e^{ix}=cosx+i sinx"
+  ],
+  "example": "e^{iπ}=−1：五个常数的一句话。",
+  "level": 3,
+  "tags": [
+   "核心"
+  ],
+  "prereq_names": [
+   "NEW:常用函数的幂级数展开"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "级数进阶",
+  "cn": "函数展开成幂级数",
+  "en": "Expanding Functions into Power Series",
+  "kind": "方法",
+  "definition": "直接展开（求各阶导数）或间接展开（代入/四则/微积分）。",
+  "formulas": [],
+  "example": "f(x)=1/(2−x)=½Σ(x/2)ⁿ：代入几何级数。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:常用函数的幂级数展开"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "偏导数的几何意义",
+  "en": "Geometric Meaning of Partial Derivatives",
+  "kind": "概念",
+  "definition": "∂f/∂x 是沿 x 方向切线的斜率：“固定 y，只让 x 变”。",
+  "formulas": [],
+  "example": "f=x²y，∂f/∂x=2xy：y 看成常数求导。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "偏导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "全微分的定义",
+  "en": "Definition of Total Differential",
+  "kind": "概念",
+  "definition": "dz=A dx+B dy 是 Δz 的线性主部；可微则 A=f_x，B=f_y。",
+  "formulas": [
+   "dz=f_xdx+f_ydy"
+  ],
+  "example": "z=x²y 的全微分 dz=2xy dx+x²dy。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "偏导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "可微的充分条件",
+  "en": "Sufficient Condition for Differentiability",
+  "kind": "定理",
+  "definition": "偏导数存在且连续⟹可微：连续的偏导数保证“摸得平”。",
+  "formulas": [],
+  "example": "初等函数在其定义域内偏导连续，故都可微。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:全微分的定义"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "梯度的直观",
+  "en": "Intuition of Gradient",
+  "kind": "概念",
+  "definition": "∇f 是“上山最快的方向”：方向导数在梯度方向取最大值。",
+  "formulas": [
+   "∇f=(f_x,f_y)"
+  ],
+  "example": "f=x²+y² 的梯度(2x,2y)指向外侧：最陡上升方向。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "偏导数",
+   "方向导数"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "隐函数存在定理",
+  "en": "Implicit Function Existence Theorem",
+  "kind": "定理",
+  "definition": "F(x₀,y₀)=0 且 F_y≠0，则附近能解出 y=y(x)：“方程局部可解”。",
+  "formulas": [],
+  "example": "x²+y²=1 在(0,1)附近可解出 y=√(1−x²)。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "连续"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "二重积分的直观",
+  "en": "Intuition of Double Integrals",
+  "kind": "概念",
+  "definition": "∬_D f dA 是曲顶柱体的体积：先切条、再求和、取极限。",
+  "formulas": [],
+  "example": "∬_{[0,1]²}1 dA=1：底面积 1、高 1 的柱体。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:定积分的面积直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "累次积分",
+  "en": "Iterated Integrals",
+  "kind": "方法",
+  "definition": "二重积分化两次定积分：先对 y 积再对 x 积（X 型区域）。",
+  "formulas": [],
+  "example": "∬_{[0,1]²}x²y dA=∫₀¹x²dx·∫₀¹y dy=1/6。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:二重积分的直观"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "二重积分的极坐标换元",
+  "en": "Polar Change of Variables",
+  "kind": "方法",
+  "definition": "x=ρcosθ，y=ρsinθ，dA=ρdρdθ：圆形区域用极坐标。",
+  "formulas": [],
+  "example": "∬_{x²+y²≤R²}dA=∫₀^{2π}dθ∫₀^Rρdρ=πR²。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:累次积分",
+   "NEW:极坐标入门"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "多元函数极值的必要条件",
+  "en": "Necessary Condition for Multivariate Extrema",
+  "kind": "定理",
+  "definition": "内点取极值⟹梯度为零（驻点）：f_x=f_y=0。",
+  "formulas": [],
+  "example": "f=x²+y² 在(0,0)取极小，梯度为 0。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:梯度的直观",
+   "多元函数极值"
+  ]
+ },
+ {
+  "domain_cn": "分析",
+  "domain_en": "Analysis",
+  "branch_cn": "分析进阶",
+  "topic_cn": "多元微积分入门",
+  "cn": "二元函数的 Hessian 判别",
+  "en": "Hessian Test for Two Variables",
+  "kind": "定理",
+  "definition": "驻点处看 H=AC−B²：>0 且 A>0 极小，>0 且 A<0 极大，<0 鞍点。",
+  "formulas": [
+   "H=f_xxf_yy−f_xy²"
+  ],
+  "example": "f=x²−y² 在(0,0)：H=−4<0，鞍点。",
+  "level": 3,
+  "tags": [
+   "重要"
+  ],
+  "prereq_names": [
+   "NEW:多元函数极值的必要条件"
+  ]
+ }
+]

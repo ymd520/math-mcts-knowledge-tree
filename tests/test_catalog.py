@@ -23,10 +23,11 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual(len(self.tree.concepts), len(self.base.concepts) + self.report["added"])
         self.assertEqual(self.tree.check_integrity(), [])
         a, b = self.base.inventory(), self.tree.inventory()
-        self.assertGreaterEqual(b["important_levels"][1], 3 * a["important_levels"][1])
+        self.assertGreaterEqual(b["important_levels"][1], a["important_levels"][1])
+        self.assertGreaterEqual(b["important_levels"][1], 700)
         for level in range(2, 5):
             self.assertGreater(b["important_levels"][level], a["important_levels"][level])
-        self.assertEqual(self.tree.meta["version"], "1.10.0")
+        self.assertEqual(self.tree.meta["version"], "1.11.0")
 
     def test_level_and_importance_are_separate(self):
         view = self.tree.select(levels=[1, 2], important_only=True)
