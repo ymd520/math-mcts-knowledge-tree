@@ -9,7 +9,7 @@
 > prerequisite dependencies and retrieves concepts by searching the
 > domain → branch → topic → concept hierarchy.
 
-当前版本: v1.1.0（更新日志见文末）。
+当前版本: v1.2.0（更新日志见文末）。
 
 ---
 
@@ -166,9 +166,8 @@ python tests/test_mcts.py
 
 ## 更新日志
 
-- **v1.2.0**（2026-10-13）：新增**知识碰撞引擎**——16 条 curated 跨领域碰撞记录（如特征函数 = 傅里叶变换 × 期望与方差），MCTS 在"概念 → 跨领域概念"搜索树上找最值得碰撞的概念对（`collide_concepts` / `collide` CLI，支持围绕指定概念或全局）；回传改用 max（UCB 分支限界，修复均值回传稀释父节点价值的问题）；概念 122 → 142。
-- **v1.1.0**（2026-10-13）：概念 102 → 122（新增对角化、伽罗瓦理论、PDE、马尔可夫链、SGD、反向传播、MCTS 自身等 20 个）；学习路径支持已知概念（`known` / `--known`）；新增 `show` 概念卡片、`export-path` 导出 Markdown 学习计划；新增 `viz.to_dot` 搜索树可视化；概念检索改用子树精确求值的模拟步（UCB 分支限界，必收敛全局最优）；`Concept.card()`。
-- **v1.0.0**（2026-10-13）：首版，102 概念 / 7 领域，MCTS 学习路径规划 + 概念检索，CLI 与测试。
+详见 [CHANGELOG.md](CHANGELOG.md)（遵循 Keep a Changelog 规范，每次发版同步更新）。
+
 
 ## License
 
