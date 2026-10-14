@@ -268,8 +268,10 @@
         "条件边界"
       ],
       "example": "边界：只知道复合单射不推出g在整个定义域单射",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0006"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -432,8 +434,10 @@
         "条件边界"
       ],
       "example": "边界：像f(A∩D)一般只包含于两像交集",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0001"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -473,8 +477,10 @@
         "条件边界"
       ],
       "example": "边界：单射仅给出至多关系而非必然等势",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0007"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -555,8 +561,10 @@
         "条件边界"
       ],
       "example": "边界：缺少传递性时关系类不能保证形成划分",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0010"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -596,8 +604,10 @@
         "条件边界"
       ],
       "example": "边界：极大元未必是支配一切元素的最大元",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0010"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -883,8 +893,10 @@
         "条件边界"
       ],
       "example": "边界：模意义消去乘子需要互素条件",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0019"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
@@ -1006,8 +1018,10 @@
         "条件边界"
       ],
       "example": "边界：模数不互素时不存在乘法逆元",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0022"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
@@ -1088,8 +1102,10 @@
         "条件边界"
       ],
       "example": "边界：同一特征值下任意选的特征向量未必独立",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0026"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://hefferon.net/linearalgebra/",
@@ -1129,8 +1145,10 @@
         "条件边界"
       ],
       "example": "边界：无限维情形不能照搬有限维整数计算",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0026"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://hefferon.net/linearalgebra/",
@@ -1211,8 +1229,10 @@
         "条件边界"
       ],
       "example": "边界：无限群中不适用有限群的整除推论",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0018"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
@@ -1457,8 +1477,10 @@
         "条件边界"
       ],
       "example": "边界：分母趋于0时商的连续性不保证",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0033"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -1498,8 +1520,10 @@
         "条件边界"
       ],
       "example": "边界：只有连续性不保证乘积可导",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0036"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -1662,8 +1686,10 @@
         "条件边界"
       ],
       "example": "边界：逐点收敛不足，例如xⁿ在[0,1]的极限不连续",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0036"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -1703,8 +1729,10 @@
         "条件边界"
       ],
       "example": "边界：需确保绝对值积分在同一区间定义",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0031"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -1744,8 +1772,10 @@
         "条件边界"
       ],
       "example": "边界：仅逐点连续不保证全局Lipschitz",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0031"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -1826,8 +1856,10 @@
         "条件边界"
       ],
       "example": "边界：条件收敛级数可能因重排改变和",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0040"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -2072,8 +2104,10 @@
         "条件边界"
       ],
       "example": "边界：零向量没有通常定义的夹角",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0050"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
@@ -2113,8 +2147,10 @@
         "条件边界"
       ],
       "example": "边界：斜投影不保证残差正交",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0051"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
@@ -2154,8 +2190,10 @@
         "条件边界"
       ],
       "example": "边界：一般线性变换不必保距",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0050"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
@@ -2277,8 +2315,10 @@
         "条件边界"
       ],
       "example": "边界：不同度量可产生不同拓扑",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0050"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -2318,8 +2358,10 @@
         "条件边界"
       ],
       "example": "边界：非第一可数一般拓扑空间不能仅凭序列刻画闭性",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0056"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -2359,8 +2401,10 @@
         "条件边界"
       ],
       "example": "边界：连续映射的闭集正像不一定闭",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0057"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -2400,8 +2444,10 @@
         "条件边界"
       ],
       "example": "边界：一般拓扑紧性不必等价于序列紧性",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0056"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -2441,8 +2487,10 @@
         "条件边界"
       ],
       "example": "边界：连续双射若逆不连续则不一定是同胚",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0058"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.jirka.org/ra/",
@@ -2687,8 +2735,10 @@
         "条件边界"
       ],
       "example": "边界：P(B)=0时不能直接用该比值定义",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0061"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -2728,8 +2778,10 @@
         "条件边界"
       ],
       "example": "边界：互斥且正概率的事件通常不独立",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0061"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -2769,8 +2821,10 @@
         "条件边界"
       ],
       "example": "边界：整体平移只改变均值不改变方差",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0065"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -2810,8 +2864,10 @@
         "条件边界"
       ],
       "example": "边界：方差加法一般需要协方差项",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0065"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -2851,8 +2907,10 @@
         "条件边界"
       ],
       "example": "边界：相关观测会改变此公式",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0065"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -2892,8 +2950,11 @@
         "条件边界"
       ],
       "example": "边界：混杂变量可能改变依赖结构",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0066",
+        "C26D0067"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -2933,8 +2994,10 @@
         "条件边界"
       ],
       "example": "边界：X对称且Y=X²时可零协方差但不独立",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0067"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -2974,8 +3037,10 @@
         "条件边界"
       ],
       "example": "边界：X有负值时不适用此形式",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0069"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -3015,8 +3080,10 @@
         "条件边界"
       ],
       "example": "边界：有限n不会保证经验概率精确等于p",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0070"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -3056,8 +3123,10 @@
         "条件边界"
       ],
       "example": "边界：不能用大数律断言下一次伯努利试验必成功",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0074"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://www.probabilitycourse.com/",
@@ -3302,8 +3371,10 @@
         "条件边界"
       ],
       "example": "边界：仅满射不必双射，可能有不同数量",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0078"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -3384,8 +3455,10 @@
         "条件边界"
       ],
       "example": "边界：仅有m=n−1不一定是树，仍需连通",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0080"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -3425,8 +3498,10 @@
         "条件边界"
       ],
       "example": "边界：带任意非单位权重时应使用其他算法",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0080"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -3507,8 +3582,10 @@
         "条件边界"
       ],
       "example": "边界：偶环允许二分，不意味着图必须无环",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0080"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -3548,8 +3625,10 @@
         "条件边界"
       ],
       "example": "边界：有些图严格大于最大团大小",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0086"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -3589,8 +3668,10 @@
         "条件边界"
       ],
       "example": "边界：欧拉回路与访问每个顶点一次的哈密顿回路不同",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0077"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -3630,8 +3711,10 @@
         "条件边界"
       ],
       "example": "边界：漏掉三重交集会低估并集",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0078"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -3671,8 +3754,10 @@
         "条件边界"
       ],
       "example": "边界：只检查单个顶点邻居数不足以保证匹配",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0086"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -3917,8 +4002,10 @@
         "条件边界"
       ],
       "example": "边界：谓词来回变化会破坏二分定位",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0094"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -3958,8 +4045,10 @@
         "条件边界"
       ],
       "example": "边界：分半成本不为常数时总耗时可能不同",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0096"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
@@ -4040,8 +4129,10 @@
         "条件边界"
       ],
       "example": "边界：最小化平方残差不能保证不受离群值影响",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0093"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
@@ -4122,8 +4213,10 @@
         "条件边界"
       ],
       "example": "边界：非凸可微函数驻点可能是鞍点",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0100"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
@@ -4163,8 +4256,10 @@
         "条件边界"
       ],
       "example": "边界：缺少全局L光滑条件时该步长无保证",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0043"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
@@ -4204,8 +4299,10 @@
         "条件边界"
       ],
       "example": "边界：非凸闭集最近点可能不唯一",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0100"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
@@ -4245,8 +4342,10 @@
         "条件边界"
       ],
       "example": "边界：只看矩阵各元素绝对值小于1不足以判断",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0027"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://math.mit.edu/~stevenj/18.335/",
@@ -4286,8 +4385,10 @@
         "条件边界"
       ],
       "example": "边界：一般凸函数可有多个全局最优点",
-      "prereq": [],
-      "prereq_status": "not_inferred_from_topic_or_name",
+      "prereq": [
+        "C26D0101"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
       "curation_status": "cross_domain_manual_seed_20261014",
       "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
