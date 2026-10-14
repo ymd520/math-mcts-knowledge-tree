@@ -52,9 +52,23 @@ def run_worker(plan_path: Path,mathlib_root: Path,out: Path, *,
             break
         bid=batch["batch_id"]
         module=batch["module"]
+        prior=output/(bid+".receipt.json")
+        prior_export=output/(bid+".jsonl")
+        if prior.exists() and prior_export.exists():
+            old=json.loads(prior.read_text(encoding="utf-8"))
+            if (old.get("batch_sha256")==batch["batch_sha256"] and
+                old.get("source_commit")==SOURCE_COMMIT and
+                old.get("status")=="executed" and
+                hashlib.sha256(prior_export.read_bytes()).hexdigest()==old.get("export_sha256") and
+                set(old.get("expected_ids",[]))==
+                    {x["source_id"] for x in batch["registered_declarations"]}):
+                summaries.append(old)
+                done+=1
+                continue
         receipt={"batch_id":bid, "batch_sha256":batch["batch_sha256"],
                  "module":module,"source_commit":SOURCE_COMMIT,
                  "expected_ids":[x["source_id"] for x in batch["registered_declarations"]],
+                 "github_run_id":os.getenv("GITHUB_RUN_ID","unattested_external"),
                  "status":"not_executed", "exported_ids":[],
                  "missing_ids":[], "unresolved_reason":None}
         try:
