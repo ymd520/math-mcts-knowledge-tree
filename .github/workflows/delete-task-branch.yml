@@ -1,4 +1,4 @@
-name: Delete completed task branches
+name: Delete merged task branches
 
 on:
   pull_request:
@@ -10,17 +10,22 @@ permissions:
 jobs:
   delete-task-branch:
     if: >-
+      github.event.pull_request.merged == true &&
       github.event.pull_request.head.repo.full_name == github.repository &&
       github.event.pull_request.head.ref != github.event.repository.default_branch &&
       (startsWith(github.event.pull_request.head.ref, 'task/') ||
        startsWith(github.event.pull_request.head.ref, 'textbook-based-'))
     runs-on: ubuntu-latest
     steps:
-      - name: Delete closed task branch
+      - name: Delete merged task branch
         uses: actions/github-script@v7
         with:
           script: |
             const pr = context.payload.pull_request;
+            if (!pr.merged) {
+              core.info("Pull request was closed without merging; keeping the branch.");
+              return;
+            }
             const branch = pr.head.ref;
             const repo = context.repo;
             if (pr.head.repo.full_name !== `${repo.owner}/${repo.repo}`) {
