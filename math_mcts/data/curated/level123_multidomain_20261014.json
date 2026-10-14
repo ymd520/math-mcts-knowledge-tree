@@ -501,25 +501,25 @@
     {
       "id": "C26D0013",
       "level": 3,
-      "cn": "量词顺序不可随意交换",
-      "en": "Quantifier order is not generally interchangeable",
+      "cn": "实数上量词交换的无上界反例",
+      "en": "Quantifier interchange counterexample on unbounded reals",
       "domain_cn": "数学基础",
       "domain_en": "Foundations",
       "branch_cn": "集合与逻辑",
       "topic_cn": "条件·结论·失效边界",
       "kind": "定理",
-      "definition": "P(x,y)为二元谓词；∀x∃y P(x,y)一般不能推出∃y∀x P(x,y)",
+      "definition": "实数域的谓词P(x,y)定义为y>x；对每个x可选更大的y，但没有单个y大于所有实数x",
       "formulas": [
-        "∀x∃yP(x,y) ⇏ ∃y∀xP(x,y)"
+        "∀x∈R∃y∈R(y>x) 且 ¬∃y∈R∀x∈R(y>x)"
       ],
-      "assumptions": "P(x,y)为二元谓词",
-      "conclusion": "∀x∃y P(x,y)一般不能推出∃y∀x P(x,y)",
+      "assumptions": "实数域的谓词P(x,y)定义为y>x",
+      "conclusion": "对每个x可选更大的y，但没有单个y大于所有实数x",
       "tags": [
         "重要",
         "课程支撑",
         "条件边界"
       ],
-      "example": "边界：例：实数上y=x满足前者但后者失败",
+      "example": "边界：不能把依赖x选出的y误认为统一的y",
       "prereq": [],
       "prereq_status": "not_inferred_from_topic_or_name",
       "verification_status": "editorial_mathematical_statement_not_formal_proof",
@@ -530,14 +530,14 @@
       "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
       "level_status": "education_stage_rubric_20261014",
       "original_metadata": {
-        "边界/反例": "例：实数上y=x满足前者但后者失败",
+        "边界/反例": "在实数无上界情况下统一的y不存在；其他论域需按量词语义判断",
         "跨领域应用": "博弈与优化极小极大",
         "来源性质": "改写的常见数学知识；未确认最早发现者",
         "历史原作者": "待逐条核对"
       },
       "statement_symbol_references": [],
       "aliases": [],
-      "statement_sha256": "4d53b838e7789d3b7ac72582aa05964354dd350062196fb4a05357dd5020520f"
+      "statement_sha256": "d335c67de6504e1921da3d8b5ea86cb8f0058709f869c3eb7e763e35a41f7726"
     },
     {
       "id": "C26D0014",
