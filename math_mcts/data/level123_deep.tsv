@@ -18,10 +18,10 @@
 @1|分析|函数与极限|定义域和极限检查|RA
 函数定义域的先验排除|Function domain precedes manipulation|函数由含根号与分母的实数表达式给出|在求导、取极限前先确定式子在哪些实数上有定义|1/(x-2) 的定义域为 R\{2}|先分别检查分母和偶次根号|公式化简后可能掩盖原来的空点|约分(x²-1)/(x-1)仍不允许x=1|
 函数值与极限值分离|Function value need not equal limit|讨论x趋于a时f(x)的极限|极限由附近函数值控制，f(a)可能不存在或不同|lim_(x→a) f(x)=L 不推出 f(a)=L|构造分段函数在单点修改函数值|忽略单点定义会误判连续|令f(x)=x对x≠0，f(0)=5，极限为0|函数定义域的先验排除
-收敛数列必有界的单向性|Convergent sequence boundedness is one way|实数数列a_n收敛到有限L|整列有界；有界不保证收敛|a_n→L ⇒ sup_n |a_n|<∞|尾部落在L附近，前面有限项各有界|(-1)^n有界却不收敛|序列n/(n+1)收敛且有界|
+收敛数列必有界的单向性|Convergent sequence boundedness is one way|实数数列a_n收敛到有限L|整列有界；有界不保证收敛|a_n→L ⇒ sup_n abs(a_n)<∞|尾部落在L附近，前面有限项各有界|(-1)^n有界却不收敛|序列n/(n+1)收敛且有界|
 极限有限和差封闭|Finite sum limit preservation|实数函数f,g在a处均有有限极限|和与差的极限等于极限之和差|lim(f±g)=lim f±lim g|以ε/2分配误差控制|无穷大减无穷大不能直接套有限极限法则|lim(x²+3x)=1+3 当x→1|函数值与极限值分离
 连续复合函数的取值范围条件|Composition continuity needs domain|g在a连续，f在g(a)连续且g邻近值落入f定义域|复合f∘g在a连续|f(g(x))→f(g(a))|先利用g连续再在f处使用ε-δ定义|若f在g(a)不连续则不能直接推出|sqrt(1+x²)处处连续|函数定义域的先验排除
-导数定义的差商条件|Derivative is limit of difference quotient|f在a附近有定义且差商有限极限存在|导数是沿h趋零的增量比极限|f'(a)=lim_(h→0)(f(a+h)-f(a))/h|在差商中保持h≠0并先求极限|单侧差商不一致时普通导数不存在|f(x)=|x|在0左右导数不同|函数值与极限值分离
+导数定义的差商条件|Derivative is limit of difference quotient|f在a附近有定义且差商有限极限存在|导数是沿h趋零的增量比极限|f'(a)=lim_(h→0)(f(a+h)-f(a))/h|在差商中保持h≠0并先求极限|单侧差商不一致时普通导数不存在|f(x)=abs(x)在0左右导数不同|函数值与极限值分离
 @1|几何与拓扑|欧氏几何|坐标几何的不变量|ALG
 坐标平移不改变欧氏距离|Translation preserves Euclidean distance|p,q,t为同维欧氏空间向量|两点同时平移后距离保持不变|‖(p+t)-(q+t)‖=‖p-q‖|相减时公共平移向量消去|平移不同向量不保证距离不变|地图整体移坐标原点不改变两城间距离|
 正交向量的零内积判据|Orthogonality via dot product|u,v为实欧氏空间向量|内积为零当且仅当两向量垂直，零向量需按定义处理|u·v=0|利用余弦公式或正交投影|对任意内积换成坐标乘积不一定成立|向量(1,1)与(1,-1)正交|
