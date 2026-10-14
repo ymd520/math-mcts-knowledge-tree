@@ -96,8 +96,13 @@ def review_signals(db_path: str | Path) -> dict:
             body = statement_body(formal, name)
             status = str(registration)
             raw_kind = str((row.get("original_metadata") or {}).get("类型") or "")
-            if status == "source_statement_registered" and raw_kind != "upstream_theorem":
-                raise ValueError("Source registry type mismatch")
+            if status == "source_statement_registered":
+                if raw_kind != "upstream_theorem":
+                    raise ValueError("Source registry type mismatch")
+                digest = hashlib.sha256(body.encode("utf-8")).hexdigest()
+                original = str((row.get("original_metadata") or {}).get("陈述SHA256") or "")
+                if digest != fingerprint or original != fingerprint or not body:
+                    raise ValueError("Stale or tampered registered source statement: " + cid)
             if status == "standard_card_source_pending" and raw_kind != "curated_standard_card":
                 raise ValueError("Standard card type mismatch")
             if status not in {"source_statement_registered", "standard_card_source_pending"}:
