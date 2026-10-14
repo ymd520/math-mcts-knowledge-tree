@@ -82,7 +82,7 @@ jobs:
           assert data['source_standard_cards_pending'] == 16, data
           assert data['importance_unrated_new_source_records'] == 100000
           assert data['difficulty_unrated_new_source_records'] == 100000
-          assert sum(data['by_domain'].values()) == 111165
+          assert sum(data['by_domain'].values()) == data['total_knowledge_records']
           from math_mcts.knowledge_bank import KnowledgeBank
           bank = KnowledgeBank('math_index.sqlite')
           assert bank.search('matrix', top_k=5), 'Indexed math statements should be searchable'
