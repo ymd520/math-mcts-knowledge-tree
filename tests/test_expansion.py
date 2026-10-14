@@ -57,6 +57,12 @@ class ExternalImportTests(unittest.TestCase):
         self.assertEqual(row["curation_status"], "unreviewed_external_source")
         self.assertEqual(inventory(self.db)["external_candidates"], 1)
 
+    def test_normalization_collapses_whitespace_not_semantics(self):
+        a = source("alpha", "For each number, n plus 0 equals n.")
+        b = source("beta", "For each number,   n plus 0 equals n.")
+        import_jsonl(self.db, self.write(a, b))
+        self.assertEqual(inventory(self.db)["lexical_duplicate_groups"], 1)
+
     def test_gzip_idempotency(self):
         path = self.write(source(), zipped=True)
         import_jsonl(self.db, path)
