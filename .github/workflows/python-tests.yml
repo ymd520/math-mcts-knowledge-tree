@@ -29,3 +29,14 @@ jobs:
         run: python tests/test_catalog.py
       - name: Imported knowledge adapter tests
         run: python tests/test_imported.py
+      - name: Semantic mappings and structural audit tests
+        run: python tests/test_semantic_audit.py
+      - name: Full catalog audit
+        run: python -m math_mcts.audit -o catalog_audit.json --fail-on-errors
+      - name: Publish audit results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-audit-python-${{ matrix.python-version }}
+          path: catalog_audit.json
+          if-no-files-found: ignore
