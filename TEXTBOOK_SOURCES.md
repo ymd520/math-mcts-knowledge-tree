@@ -28,7 +28,7 @@
 | 几何与拓扑 | 进阶拓扑 | MIT 18.901, *Introduction to Topology* | [课程主页](https://ocw.mit.edu/courses/18-901-introduction-to-topology-fall-2004/)；商拓扑、连通、紧致、分离公理 | MIT 课程资料；逐份遵守资料页标注的许可 |
 | 几何与拓扑 | 专业几何 | John M. Lee, *Introduction to Smooth Manifolds* | [Springer](https://link.springer.com/book/10.1007/978-1-4419-9982-5)；光滑流形、切空间、微分形式 | 出版社版权教材；仅作书目参考 |
 | 概率与统计 | 入门/大学基础 | OpenIntro, *OpenIntro Statistics* | [作者项目书页](https://www.openintro.org/book/os/)；描述统计、抽样分布、推断 | OpenIntro 指出多数统计教材采用 CC BY-SA 3.0；核对所用文件的具体许可和署名要求 |
-| 概率与统计 | 大学基础 | Hossein Pishro-Nik, *Introduction to Probability, Statistics, and Random Processes* | [作者课程书页](https://www.probabilitycourse.com/)；概率、条件期望、随机过程 | 可在线阅读；网站未明确的复用许可按仅供参考处理 |
+| 概率与统计 | 大学基础 | Hossein Pishro-Nik, *Introduction to Probability, Statistics, and Random Processes* | [作者课程书页](https://www.probabilitycourse.com/)；概率、条件期望、随机过程 | CC BY-NC-ND 3.0；来源仅用于定位数学事实，不复制或改写其文字 |
 | 概率与统计 | 进阶 | Geoffrey Grimmett & David Stirzaker, *Probability and Random Processes* | [Oxford University Press](https://global.oup.com/academic/product/probability-and-random-processes-9780198847595)；测度概率与随机过程 | 出版社版权教材；仅作书目参考 |
 | 离散数学 | 入门/大学基础 | Oscar Levin, *Discrete Mathematics: An Open Introduction*, 4e | [作者教材站](https://discrete.openmathbooks.org/dmoi4.html)；证明、图论、计数、递推 | CC BY-NC-SA 4.0；署名、非商业、相同方式共享 |
 | 离散数学 | 进阶图论 | Reinhard Diestel, *Graph Theory*, 6e | [作者书页](https://diestel-graph-theory.com/)；图论 | 在线阅读入口；许可与可下载版本范围需逐项核验，卡片只作原创概述 |
