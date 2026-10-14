@@ -10,6 +10,8 @@ import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from math_mcts.method_library import all_operators, recommend
+from math_mcts.research_prioritizer import prioritize
+from math_mcts.fast_index import terms_for
 from math_mcts.source_expansion import (
     import_jsonl, inventory, mathlib_review_snapshot, search,
 )
@@ -140,5 +142,70 @@ class OperatorTests(unittest.TestCase):
         self.assertEqual(recommend("xyzabsenttrigger"), [])
 
 
+class FocusPriorityTests(unittest.TestCase):
+    def test_rank_provenance_candidates_without_promotion(self):
+        with tempfile.TemporaryDirectory() as d:
+            dbpath = Path(d) / "math.db"
+            with sqlite3.connect(dbpath) as db:
+                db.execute("CREATE TABLE documents(id TEXT PRIMARY KEY, tier TEXT, record TEXT)")
+                db.execute("CREATE VIRTUAL TABLE term_index USING fts5(terms)")
+                db.execute("""CREATE TABLE classified_knowledge(
+                    id TEXT, domain_cn TEXT, knowledge_kind TEXT,
+                    registration_status TEXT, importance_status TEXT,
+                    difficulty_level INTEGER)""")
+                db.execute("""CREATE TABLE knowledge_review_signals(
+                    id TEXT, review_priority INTEGER, anomaly_score INTEGER,
+                    reason_codes TEXT, same_name_count INTEGER,
+                    same_statement_count INTEGER)""")
+                for idx, title, priority in ((1, "Noncommutative convolution", 45),
+                                              (2, "General convolution theorem", 5)):
+                    cid = f"T{idx}"
+                    entry = {"id": cid, "en": title,
+                             "module": "Mathlib.Algebra.Group",
+                             "original_metadata": {"陈述SHA256": str(idx)}}
+                    db.execute("INSERT INTO documents VALUES(?,?,?)",
+                               (cid, "unreviewed_import", json.dumps(entry)))
+                    rid = db.execute("SELECT rowid FROM documents WHERE id=?", (cid,)).fetchone()[0]
+                    db.execute("INSERT INTO term_index(rowid,terms) VALUES(?,?)",
+                               (rid, " ".join(terms_for(title))))
+                    db.execute("INSERT INTO classified_knowledge VALUES(?,?,?,?,?,?)",
+                               (cid, "代数", "定理声明", "source_statement_registered",
+                                "importance_unrated", None))
+                    db.execute("INSERT INTO knowledge_review_signals VALUES(?,?,?,?,?,?)",
+                               (cid, priority, 0, "[]", 1, 1))
+            found = prioritize(dbpath, "convolution", limit=10)
+            self.assertEqual(len(found), 2)
+            self.assertEqual(found[0]["id"], "T1")
+            self.assertFalse(found[0]["score_is_mathematical_importance"])
+            self.assertIsNone(found[0]["level"])
+            self.assertFalse(found[0]["mathematical_proof_verified_this_run"])
+
+    def test_bad_grade_flag_is_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "math.db"
+            with sqlite3.connect(p) as db:
+                db.execute("CREATE TABLE documents(id TEXT PRIMARY KEY, tier TEXT, record TEXT)")
+                db.execute("CREATE VIRTUAL TABLE term_index USING fts5(terms)")
+                db.execute("""CREATE TABLE classified_knowledge(
+                    id TEXT, domain_cn TEXT, knowledge_kind TEXT,
+                    registration_status TEXT, importance_status TEXT,
+                    difficulty_level INTEGER)""")
+                db.execute("""CREATE TABLE knowledge_review_signals(
+                    id TEXT, review_priority INTEGER, anomaly_score INTEGER,
+                    reason_codes TEXT, same_name_count INTEGER,
+                    same_statement_count INTEGER)""")
+                db.execute("INSERT INTO documents VALUES(?,?,?)",
+                           ("bad", "unreviewed_import", json.dumps({"id": "bad", "en": "Convolution"})))
+                db.execute("INSERT INTO term_index(rowid,terms) VALUES(?,?)", (1, "convolution"))
+                db.execute("INSERT INTO classified_knowledge VALUES(?,?,?,?,?,?)",
+                           ("bad", "代数", "定理声明", "source_statement_registered",
+                            "existing_important_tag", 3))
+                db.execute("INSERT INTO knowledge_review_signals VALUES(?,?,?,?,?,?)",
+                           ("bad", 0, 0, "[]", 1, 1))
+            with self.assertRaisesRegex(ValueError, "incorrectly promoted"):
+                prioritize(p, "convolution")
+
+
 if __name__ == "__main__":
     unittest.main()
+
