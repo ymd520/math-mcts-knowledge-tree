@@ -11,7 +11,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from math_mcts.fast_index import build_index, fast_search, index_stats, terms_for
-from math_mcts.knowledge import KnowledgeTree
+from math_mcts.knowledge import Concept, KnowledgeTree
 from math_mcts.reasoning import Atom, Rule, RuleBook, derive, verify_certificate
 from math_mcts.semantic import catalog_statement_sha256, load_catalog_reasoning_problem
 from math_mcts.semantic_links import compatible_atoms, find_composable_rules
@@ -91,6 +91,21 @@ class ScaleTests(unittest.TestCase):
         altered["rules"][0]["mapping_review"] += " extra"
         book3, _, _ = load_catalog_reasoning_problem(altered, tree)
         self.assertNotEqual(book1.fingerprint(), book3.fingerprint())
+
+    def test_long_prerequisite_chain_is_iterative(self):
+        cards = [Concept(id=f"N{i}", domain_cn="数学基础",
+                         domain_en="Foundations", branch_cn="test",
+                         topic_cn="test", cn=f"n{i}", en=f"n{i}",
+                         definition="synthetic", level=1,
+                         prereq=[f"N{i-1}"] if i else [])
+                 for i in range(2000)]
+        tree = KnowledgeTree(cards)
+        self.assertEqual(len(tree.prereq_closure("N1999")), 1999)
+        self.assertEqual(tree.check_integrity(), [])
+        tree.get("N0").prereq = ["N1999"]
+        self.assertTrue(any("环:" in row for row in tree.check_integrity()))
+        with self.assertRaisesRegex(ValueError, "Cycle"):
+            tree.prereq_closure("N1999")
 
     def test_known_target_is_terminal(self):
         tree = KnowledgeTree.load()
