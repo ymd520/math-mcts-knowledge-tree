@@ -150,3 +150,31 @@ QR最小二乘避免正规方程|QR least squares stable approach|A为实满列�
 共轭梯度法有限步性质|Conjugate gradient finite termination in exact arithmetic|A为n×n实对称正定矩阵，按标准共轭梯度求Ax=b且使用精确算术|最多n次迭代得到精确解|CG terminates in ≤n iterations|每步生成A共轭搜索方向并在Krylov子空间优化|浮点舍入下不保证严格n步终止|大型稀疏SPD方程用CG迭代|线性系统误差的条件数放大
 最佳秩k近似的奇异值截断|Eckart Young low rank approximation|A为实或复m×n矩阵，0≤k<rank(A)|截断SVD给出Frobenius范数最佳秩≤k近似|argmin_(rank B≤k)norm_F(A-B)=UΣ_kV*|正交不变范数下投影到最大奇异值方向|若存在重复奇异值则最优矩阵未必唯一|数据矩阵降维保留主要能量|正规方程平方条件数陷阱
 奇异值控制线性残差到误差|Smallest singular value error certificate|A实方阵可逆且x̂近似解，r=b-Ax̂|二范数解误差受最小奇异值的倒数控制|norm₂(x-x̂)≤norm₂(r)/σ_min(A)|由e=A⁻¹r和谱范数公式|σ_min很小时小残差不保证小误差|诊断病态标定矩阵的误差上界|线性系统误差的条件数放大;剩余量不等于真实误差
+
+# Gap-focused wave: 15 candidate cards selected after exact-title duplicate screening.
+@1|数学基础|论证中的类型约束|对象与谓词|MIT
+数学对象类型检查|Type Checking Mathematical Objects|表达式中的对象属于指定集合D|运算及谓词必须对D中的对象有定义|x∈D 才能代入定义域D上的谓词|先核对对象类型再套用结论|以非整数反例不能否定整数域命题|整数命题的证人必须先是整数|
+@3|数学基础|集合论与无穷|无限基数的构造|MIT
+可数无限集合的无限笛卡尔幂|Infinite Product of Countable Sets|每个A_n预先指定不同元素a_n,b_n，n∈ℕ|∏A_n不可数|{0,1}^ℕ ↪ ∏A_n|把每个二进制序列映到对应的a_n或b_n序列|不能据此说有限个可数集的乘积不可数|二进制无限串集合不可数|
+@3|代数|有限群与表示|群结构定理|AATA
+Burnside p^aq^b定理|Burnside's p^aq^b Theorem|有限群G的阶只含两个不同素因子p、q|G可解|order(G)=p^a q^b ⇒ G solvable|利用有限群的Sylow结构与表示理论证明|含三个不同素因子的群不由该定理覆盖|阶为12的有限群可解|
+马施克定理|Maschke's Theorem|G为有限群，F为域且char(F)不整除order(G)|F上的有限维G表示完全可约|表示可分解为不可约表示直和|对投影作群平均化，得到不变补空间|特征整除群阶时结论可能失败|复数域上的有限群表示可分解为不可约直和|
+@3|分析|紧性与逼近|函数族及连续函数逼近|RA
+阿尔泽拉—阿斯科利定理的紧区间形式|Arzelà–Ascoli on a Compact Interval|函数族在紧区间上一致有界且等度连续|其闭包在一致范数下紧|有界+等度连续 ⇒ 相对紧|以共同连续尺度配合有限网证明全有界|点态有界不等于一致有界|等度连续函数列可抽出一致收敛子列|
+有限测度空间上的富比尼定理|Fubini Theorem on Finite Measure Spaces|两个有限测度空间及其乘积上的函数f可积|几乎处处截面可积且迭代积分等于乘积积分|∫∫f d(μ×ν)=∫(∫f dν)dμ|先对abs(f)用Tonelli，再分解正负部|非绝对可积时迭代积分可能不相等|有限概率空间乘积上可交换求和次序|
+实Stone–Weierstrass定理|Real Stone–Weierstrass Theorem|X紧Hausdorff，A是含常数并分离点的实函数代数|A在一致范数下稠密于C(X,ℝ)|∀f∈C(X),∀ε>0 ∃g∈A:‖f−g‖∞<ε|用点分离性质构造一致逼近|缺少点分离条件不能直接套用|多项式在紧区间上一致逼近连续函数|
+@2|几何与拓扑|球面几何|球面面积与角度|TOP
+球面三角形盈余公式|Spherical Excess Formula|单位球面上的非退化大圆三角形且角以弧度计|面积等于内角和减π|面积=A+B+C−π|由球面角盈余定理得到面积|平面三角形面积公式不能直接代入球面|球面三角形内角和超过π的部分就是面积|
+@3|几何与拓扑|拓扑不变量|连续单射的局部性质|TOP
+不变域定理|Invariance of Domain|U是ℝⁿ的开集且f:U→ℝⁿ连续单射|f(U)为开集且f是到像的同胚|f连续单射 ⇒ f(U)开|应用不变域定理的局部形式|维数不同或定义域非开时不能直接套用|平面到平面连续单射保持局部开放性|
+@2|概率与统计|条件期望|二阶矩控制|PRO
+条件期望的L²收缩|Conditional Expectation is an L² Contraction|X∈L²且𝒢为子σ代数|条件期望的二阶矩不超过X的二阶矩|‖E[X given 𝒢]‖₂≤‖X‖₂|条件期望是L²上的正交投影|不能把条件期望误当作逐点等于X|只观测粗化信息时均方预测误差不增|
+@3|概率与统计|集中与渐近|高维极限及有界差分|PRO
+McDiarmid有界差分不等式|McDiarmid's Bounded Differences Inequality|独立输入X_i且改变第i坐标使f最多变化c_i|f的上尾有指数集中界|P(f−Ef≥t)≤exp(−2t²/Σc_i²)|对逐坐标条件期望鞅应用Hoeffding引理|仅有输入独立而无有界差分条件不足|样本中少量数据改变时统计量仍稳定|
+Cramér–Wold判据|Cramér–Wold Device|X_n、X为ℝᵈ值随机向量|X_n依分布收敛到X当且仅当所有线性投影收敛|X_n⇒X ⇔ 对所有t∈ℝᵈ，tᵀX_n⇒tᵀX|用特征函数在所有方向识别联合分布|逐坐标边缘收敛本身不足以确定联合收敛|多维中心极限定理常通过任意投影验证|
+@3|离散数学|无限组合结构|有限分支树|DIS
+König无限引理|König's Infinity Lemma|根树无限且每个顶点只有有限个子节点|树中存在一条无限根路径|无限有限分支树 ⇒ 有无限枝|每层保留仍有无限多后代的子节点|没有有限分支条件时无限树可能无无限枝|有限分支搜索树无限深必有无限分支|
+@1|计算与优化|浮点数值|区间算法稳定实现|NUM
+带符号分支的浮点中点|Sign-Split Floating-Point Midpoint|a≤b为有限浮点数且采用舍入到最近|同号取差值式，异号取和值式以避免中间溢出|m=a+(b−a)/2（同号）；m=(a+b)/2（异号）|按端点符号选择不会溢出的中间量|直接用(a+b)/2可能溢出|二分搜索极端端点时按符号求中点|
+@2|计算与优化|数值逼近|多项式插值误差|NUM
+插值节点的Runge现象|Runge Phenomenon in Polynomial Interpolation|在[-1,1]等距节点插值f(x)=1/(1+25x²)|次数增加时端点附近振荡，最大误差不趋于零|‖f−p_n‖∞↛0|检查节点分布与端点附近振荡|更多等距节点不自动带来更好逼近|Runge函数的等距插值在端点附近振荡|
