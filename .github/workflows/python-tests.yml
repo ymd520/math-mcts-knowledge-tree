@@ -56,6 +56,8 @@ jobs:
                          and layer['new_conclusions']==20 for layer in m['layers'])
           print('Set transport 20x20 proof replay and missing-premise attack passed')
           PY
+      - name: Live Lean worker progress and hard deadline tests
+        run: python tests/test_lean_heartbeat.py
       - name: Lean source-reference graph and adversarial tests
         run: python tests/test_lean_reference_index.py
       - name: Full corpus Lean planning and false-completion adversarial tests
