@@ -19,6 +19,7 @@ from .semantic import catalog_statement_sha256, load_catalog_reasoning_problem
 from .fast_index import build_index, fast_search, index_stats
 from .semantic_links import compatible_atoms, find_composable_rules
 from .scale_plan import expansion_status
+from .knowledge_bank import KnowledgeBank, classify_knowledge
 
 __version__ = "1.11.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
@@ -31,6 +32,7 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "replay_layers", "load_layered_problem", "load_layer_certificate",
            "catalog_statement_sha256", "load_catalog_reasoning_problem",
            "build_index", "fast_search", "index_stats",
-           "compatible_atoms", "find_composable_rules", "expansion_status"]
+           "compatible_atoms", "find_composable_rules", "expansion_status",
+           "KnowledgeBank", "classify_knowledge"]
 
 
