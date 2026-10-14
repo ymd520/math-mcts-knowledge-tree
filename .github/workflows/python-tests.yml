@@ -1,0 +1,31 @@
+name: Python regression tests
+
+on:
+  push:
+    branches: [main, "fix/**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile modules
+        run: python -m compileall -q math_mcts tests
+      - name: Core MCTS tests
+        run: python tests/test_mcts.py
+      - name: Reasoning and certificates
+        run: python tests/test_reasoning.py
+      - name: Layered collision tests
+        run: python tests/test_layered.py
+      - name: Catalog integration tests
+        run: python tests/test_catalog.py
+      - name: Imported knowledge adapter tests
+        run: python tests/test_imported.py
