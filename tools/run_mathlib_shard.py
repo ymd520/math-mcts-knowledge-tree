@@ -22,8 +22,21 @@ from math_mcts.source_registry import SOURCE_COMMIT
 def _one_batch_script(batch: dict) -> str:
     module=batch["module"]
     # Exactly the structure already proven in the 6-theorem pinned Lean job.
-    lines=[f"import {module}", "open Lean Elab Command Meta",
-           "#eval liftTermElabM do","  let env ← getEnv"]
+    lines=[
+        f"import {module}", "open Lean Elab Command Meta",
+        "partial def mctsForallBinders : Expr → Array Json",
+        "  | .forallE nm dom rest bi =>",
+        "    #[Json.mkObj [",
+        '        ("name", toJson nm.toString),',
+        '        ("domain_ast", toJson (reprStr dom)),',
+        '        ("domain_constants", toJson (dom.getUsedConstants.map (·.toString))),',
+        '        ("binder_info", toJson (reprStr bi))',
+        "      ]] ++ mctsForallBinders rest",
+        "  | _ => #[]",
+        "partial def mctsForallBody : Expr → Expr",
+        "  | .forallE _ _ rest _ => mctsForallBody rest",
+        "  | e => e",
+        "#eval liftTermElabM do","  let env ← getEnv"]
     for record in batch["records"]:
         name=record["name"]
         if not VALID_NAME.fullmatch(name):
@@ -50,6 +63,10 @@ def _one_batch_script(batch: dict) -> str:
             f'        ("mathlib_commit", toJson {json.dumps(SOURCE_COMMIT)}),',
             f'        ("source_statement_sha256", toJson {json.dumps(record["source_sha256"])}),',
             '        ("type_expression", toJson formatted.pretty),',
+            '        ("type_binders", toJson (mctsForallBinders info.type)),',
+            '        ("conclusion_ast", toJson (reprStr (mctsForallBody info.type))),',
+            '        ("conclusion_constants", toJson ((mctsForallBody info.type).getUsedConstants.map (·.toString))),',
+            '        ("type_structure_source", toJson "actual_elaborated_lean_expr"),',
             '        ("type_references", toJson typeRefs),',
             '        ("proof_references", toJson proofRefs),',
             f'        ("lean_version", toJson {json.dumps(PINNED_TOOLCHAIN)})',
