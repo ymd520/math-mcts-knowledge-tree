@@ -132,12 +132,7 @@ class SemanticGraph:
         """Conservative predicate reachability; cannot certify a theorem."""
         if self.metadata["rulebook_sha256"] != book.fingerprint():
             raise ValueError("Graph fingerprint mismatch")
-        return [r.id for r in book.backward_rules(
-            __import__("math_mcts.reasoning", fromlist=["Atom"]).Atom(
-                goal_predicate,
-                tuple(next(iter(book.objects_by_sort.get(s, [])), "")
-                      for s in book.signatures[goal_predicate]))
-        ))] if False else _backward_predicates(book, goal_predicate)
+        return _backward_predicates(book, goal_predicate)
 
 
 def _backward_predicates(book: RuleBook, goal: str) -> list[str]:
