@@ -1,0 +1,34 @@
+name: Delete completed task branches
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  delete-task-branch:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.head.ref != github.event.repository.default_branch &&
+      (startsWith(github.event.pull_request.head.ref, 'task/') ||
+       startsWith(github.event.pull_request.head.ref, 'textbook-based-'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete closed task branch
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const branch = pr.head.ref;
+            const repo = context.repo;
+            if (pr.head.repo.full_name !== `${repo.owner}/${repo.repo}`) {
+              core.info("Head branch is in a fork; leaving it untouched.");
+              return;
+            }
+            await github.rest.git.deleteRef({
+              owner: repo.owner,
+              repo: repo.repo,
+              ref: `heads/${branch}`,
+            });
