@@ -20,6 +20,51 @@ from tools.generate_full_lean_batch import generate_batch_script
 PINNED_TOOLCHAIN="leanprover/lean4:v4.35.0-rc4"
 
 
+def _progress(worker: int, event: str, **details):
+    """Emit immediately visible, machine-readable worker telemetry."""
+    print(json.dumps({"worker": worker, "event": event, **details},
+                     ensure_ascii=False, sort_keys=True), flush=True)
+
+
+def _run_with_heartbeat(command, *, cwd, worker: int, phase: str,
+                        timeout: int, interval: float = 20.0):
+    """Communicate safely with both output pipes while reporting liveness.
+
+    Timeout is global for this one process; the periodic progress message does
+    not reset its deadline. Both streams are returned separately so only stdout
+    can be parsed as Lean JSON evidence.
+    """
+    if timeout <= 0 or interval <= 0:
+        raise ValueError("Positive subprocess time limits required")
+    started = time.monotonic()
+    _progress(worker, "subprocess_start", phase=phase,
+              timeout_seconds=timeout)
+    proc = subprocess.Popen(command, cwd=cwd, text=True,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    try:
+        while True:
+            elapsed = time.monotonic() - started
+            remaining = timeout - elapsed
+            if remaining <= 0:
+                raise subprocess.TimeoutExpired(command, timeout)
+            try:
+                stdout, stderr = proc.communicate(timeout=min(remaining, interval))
+                _progress(worker, "subprocess_end", phase=phase,
+                          elapsed_seconds=round(time.monotonic()-started,1),
+                          exit_code=proc.returncode)
+                return subprocess.CompletedProcess(command, proc.returncode,
+                                                   stdout, stderr)
+            except subprocess.TimeoutExpired:
+                elapsed=time.monotonic()-started
+                _progress(worker, "heartbeat", phase=phase,
+                          elapsed_seconds=round(elapsed,1),
+                          timeout_seconds=timeout)
+    except BaseException:
+        proc.kill()
+        proc.communicate()
+        raise
+
+
 def _pinned_checkout(repo: Path):
     sha=subprocess.run(["git","-C",str(repo),"rev-parse","HEAD"],
        capture_output=True,text=True,check=True).stdout.strip()
@@ -45,6 +90,9 @@ def run_worker(plan_path: Path,mathlib_root: Path,out: Path, *,
     started=time.monotonic()
     prepared=set()
     summaries=[]
+    _progress(worker, "worker_start", planned_batches=len(tasks),
+              max_seconds=max_seconds, max_batches=max_batches,
+              source_commit=SOURCE_COMMIT)
     for batch in tasks:
         if max_batches and done>=max_batches:
             break
@@ -52,6 +100,9 @@ def run_worker(plan_path: Path,mathlib_root: Path,out: Path, *,
             break
         bid=batch["batch_id"]
         module=batch["module"]
+        _progress(worker, "batch_start", batch_id=bid, module=module,
+                  batch_position=done+1, total_batches=len(tasks),
+                  expected_declarations=len(batch["registered_declarations"]))
         prior=output/(bid+".receipt.json")
         prior_export=output/(bid+".jsonl")
         if prior.exists() and prior_export.exists():
@@ -64,6 +115,9 @@ def run_worker(plan_path: Path,mathlib_root: Path,out: Path, *,
                     {x["source_id"] for x in batch["registered_declarations"]}):
                 summaries.append(old)
                 done+=1
+                _progress(worker, "batch_resume", batch_id=bid, module=module,
+                          completed_batches=done,
+                          matched_source_declarations=len(old.get("exported_ids", [])))
                 continue
         receipt={"batch_id":bid, "batch_sha256":batch["batch_sha256"],
                  "module":module,"source_commit":SOURCE_COMMIT,
@@ -73,10 +127,11 @@ def run_worker(plan_path: Path,mathlib_root: Path,out: Path, *,
                  "missing_ids":[], "unresolved_reason":None}
         try:
             if module not in prepared:
-                setup=subprocess.run(
+                setup=_run_with_heartbeat(
                     ["bash",str(Path(__file__).resolve().with_name("bootstrap_pinned_mathlib.sh")),
                      batch["module_path"]],
-                    cwd=mathlib_root,text=True,capture_output=True,timeout=min(800,max_seconds))
+                    cwd=mathlib_root, worker=worker, phase="prepare:"+module,
+                    timeout=min(800,max_seconds))
                 (output/(bid+"-prepare.log")).write_text(
                     (setup.stdout+"\n"+setup.stderr)[-100000:],encoding="utf-8")
                 if setup.returncode:
@@ -86,8 +141,8 @@ def run_worker(plan_path: Path,mathlib_root: Path,out: Path, *,
                 prepared.add(module)
             script=mathlib_root/("FullBatch"+bid+".lean")
             generate_batch_script(plan_path,bid,script)
-            proc=subprocess.run(["lake","env","lean",script.name],
-                cwd=mathlib_root,text=True,capture_output=True,timeout=240)
+            proc=_run_with_heartbeat(["lake","env","lean",script.name],
+                cwd=mathlib_root, worker=worker, phase="extract:"+bid, timeout=240)
             (output/(bid+"-lean.log")).write_text(
                 (proc.stdout+"\n"+proc.stderr)[-100000:],encoding="utf-8")
             if proc.returncode:
@@ -126,6 +181,12 @@ def run_worker(plan_path: Path,mathlib_root: Path,out: Path, *,
                 json.dumps(receipt,sort_keys=True,ensure_ascii=False,indent=2)+"\n")
             summaries.append(receipt)
             done+=1
+            _progress(worker, "batch_end", batch_id=bid, module=module,
+                      status=receipt["status"], completed_batches=done,
+                      total_batches=len(tasks),
+                      matched_source_declarations=len(receipt["exported_ids"]),
+                      unresolved_declarations=len(receipt["missing_ids"]),
+                      worker_elapsed_seconds=round(time.monotonic()-started,1))
     summary={"worker":worker,"workers":workers,"planned_batches":len(tasks),
              "attempted_batches":done,"not_attempted_batches":len(tasks)-done,
              "executed_batches":sum(x["status"]=="executed" for x in summaries),
@@ -135,6 +196,7 @@ def run_worker(plan_path: Path,mathlib_root: Path,out: Path, *,
              "status":"partial" if done<len(tasks) or
                        any(x["status"]!="executed" for x in summaries) else "complete"}
     (output/"worker_summary.json").write_text(json.dumps(summary,indent=2)+"\n")
+    _progress(worker, "worker_end", **{k:v for k,v in summary.items() if k!="worker"})
     return summary
 
 
