@@ -20,10 +20,10 @@ class DeepLevel123Tests(unittest.TestCase):
 
     def test_all_seven_domains_all_three_levels_even_coverage(self):
         report=self.tree.meta
-        self.assertEqual(report["deep_core_added"],148)
-        self.assertEqual(report["deep_core_by_level"],{1:45,2:46,3:57})
+        self.assertEqual(report["deep_core_added"],169)
+        self.assertEqual(report["deep_core_by_level"],{1:51,2:52,3:66})
         self.assertEqual(len(report["deep_core_by_domain"]),7)
-        self.assertEqual(report["deep_core_by_domain"],{"数学基础":21,"代数":21,"分析":22,"几何与拓扑":21,"概率与统计":22,"离散数学":20,"计算与优化":21})
+        self.assertEqual(report["deep_core_by_domain"],{"数学基础":24,"代数":24,"分析":25,"几何与拓扑":24,"概率与统计":25,"离散数学":23,"计算与优化":24})
         self.assertEqual(report["catalog_version"],"1.14.0")
         self.assertEqual(report["deep_core_seed_sha256"],
                          hashlib.sha256(SEED_PATH.read_bytes()).hexdigest())
@@ -31,7 +31,7 @@ class DeepLevel123Tests(unittest.TestCase):
 
     def test_proof_idea_counterexample_and_source_in_every_card(self):
         deep=[c for c in self.tree.concepts if c.id.startswith("D123_")]
-        self.assertEqual(len(deep),148)
+        self.assertEqual(len(deep),169)
         names=[name_key(c.cn) for c in self.tree.concepts]
         self.assertEqual(len(names)-len(set(names)),
                          len([name_key(c.cn) for c in self.base.concepts])-
