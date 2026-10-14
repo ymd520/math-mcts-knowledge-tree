@@ -8,9 +8,9 @@ These rules apply whenever ChatGPT or another coding agent changes this reposito
 - Historical release labels in `CHANGELOG.md` are immutable history; add new work under `Unreleased` unless a release is explicitly cut.
 
 ## Branch lifecycle
-- Use one task branch for a change.
+- Use one task branch for a change, named `task/<short-name>` (the current `textbook-based-*` prefix is also recognized by the cleanup workflow).
 - Keep the branch while its pull request is open so the reviewed change remains updateable.
-- Delete the task branch as soon as its pull request is merged or closed. Also remove other stale task branches once their work is integrated or abandoned.
+- `.github/workflows/delete-task-branch.yml` deletes same-repository `task/` and `textbook-based-` branches when their PR is closed, merged or abandoned. Remove other stale task branches once their work is integrated or abandoned.
 - Before cleanup, verify that every intended change is committed and preserved in the pull request or target branch.
 
 ## Numerical claims and documentation
