@@ -16,7 +16,7 @@ import sqlite3
 from .source_registry import SOURCE_COMMIT
 from .attribution import module_source_path
 
-_NAME = re.compile(r"^[A-Za-z_][A-Za-z_0-9'.]*(?:\.[A-Za-z_0-9']+)*$")
+_NAME = re.compile(r"^[^\\s\\x00-\\x1f\\x7f.]+(?:\\.[^\\s\\x00-\\x1f\\x7f.]+)*$")
 
 
 def build_full_plan(db_path: str | Path, output_path: str | Path,
