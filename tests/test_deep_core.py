@@ -10,6 +10,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from math_mcts.knowledge import KnowledgeTree
 from math_mcts.catalog import name_key
 from math_mcts.deep_core import SEED_PATH,load_deep_core
+from math_mcts.search import search_concepts
 
 
 class DeepLevel123Tests(unittest.TestCase):
@@ -28,6 +29,13 @@ class DeepLevel123Tests(unittest.TestCase):
         self.assertEqual(report["deep_core_seed_sha256"],
                          hashlib.sha256(SEED_PATH.read_bytes()).hexdigest())
         self.assertEqual(self.tree.check_integrity(),[])
+
+    def test_important_level123_card_is_retrievable_from_important_view(self):
+        view=self.tree.select(levels=[1,2,3],important_only=True)
+        target=view.find("有限树顶点边数关系")
+        self.assertIn("重要",target.tags)
+        results=search_concepts(view,target.cn,top_k=5)
+        self.assertIn(target.id,[concept.id for concept,visits,score in results])
 
     def test_proof_idea_counterexample_and_source_in_every_card(self):
         deep=[c for c in self.tree.concepts if c.id.startswith("D123_")]
