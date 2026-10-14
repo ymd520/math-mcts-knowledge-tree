@@ -24,24 +24,24 @@ def generate(db_path: Path, script_path: Path, *, limit: int=20,
              module_prefix: str | None=None) -> dict:
     if limit<1 or limit>200:
         raise ValueError("Use 1..200 requests in a controlled sample")
-    with sqlite3.connect(db_path) as cx:
-        rows=cx.execute("""SELECT d.record, sr.source_sha256
-              FROM source_registry sr JOIN documents d ON d.id=sr.id
-              ORDER BY sr.id""").fetchall()
     requests=[]
     unsupported=0
-    for raw,sha in rows:
-        row=json.loads(raw)
-        module=row.get("module","")
-        if module_prefix and not module.startswith(module_prefix):
-            continue
-        name=row.get("en","")
-        if not _IDENT.fullmatch(name):
-            unsupported+=1
-            continue
-        requests.append((row["id"],name,module,sha))
-        if len(requests)>=limit:
-            break
+    with sqlite3.connect(db_path) as cx:
+        cursor=cx.execute("""SELECT d.record, sr.source_sha256
+              FROM source_registry sr JOIN documents d ON d.id=sr.id
+              ORDER BY sr.id""")
+        for raw,sha in cursor:
+            row=json.loads(raw)
+            module=row.get("module","")
+            if module_prefix and not module.startswith(module_prefix):
+                continue
+            name=row.get("en","")
+            if not _IDENT.fullmatch(name):
+                unsupported+=1
+                continue
+            requests.append((row["id"],name,module,sha))
+            if len(requests)>=limit:
+                break
     if not requests:
         raise ValueError("No admissible source declarations for the sample")
 
@@ -56,13 +56,16 @@ def generate(db_path: Path, script_path: Path, *, limit: int=20,
     for source_id,name,module,sha in requests:
         # Antiquoted syntax identifier produces the exact Lean Name requested;
         # never assume a source display name has a matching environment entry.
-        quoted=json.dumps([source_id,name,module,sha],ensure_ascii=False)
         pieces += [
             f"  -- {source_id}: {module}",
             f"  let requested := ``{name}",
             "  match env.find? requested with",
             "  | none =>",
-            f'      IO.println s!"{{\"missing_declaration\":{json.dumps(name)},\"source_id\":{json.dumps(source_id)}}}"',
+            "      let missing := Json.mkObj [",
+            f'        ("missing_declaration", toJson {json.dumps(name)}),',
+            f'        ("source_id", toJson {json.dumps(source_id)})',
+            "      ]",
+            "      IO.println missing.compress",
             "  | some info =>",
             "      let typeRefs := info.type.getUsedConstants.map (·.toString)",
             "      let proofRefs := match info.value? true with",
