@@ -41,8 +41,13 @@ def generate_batch_script(plan_path: Path, batch_id: str, target: Path) -> dict:
         name = request["declaration"]
         sid = request["source_id"]
         sha = request["source_statement_sha256"]
+        # Construct a Lean.Name AST, not untrusted Lean source identifiers:
+        # this also supports Unicode names not accepted by ASCII-only syntax.
+        lean_name = "Lean.Name.anonymous"
+        for part in name.split("."):
+            lean_name = f"Lean.Name.str ({lean_name}) {json.dumps(part, ensure_ascii=False)}"
         lines.extend([
-            f"  let requested := ``{name}",
+            f"  let requested : Lean.Name := {lean_name}",
             "  match env.find? requested with",
             "  | none =>",
             "      let missing := Json.mkObj [",
