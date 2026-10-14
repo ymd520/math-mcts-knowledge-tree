@@ -2,7 +2,7 @@
 
 # 数学知识 MCTS 搜索树
 
-当前正式知识目录版本以 `math_mcts/version.py` 为唯一来源；运行 `python -c "import math_mcts; print(math_mcts.__version__)"` 查看。新增十万规模未审来源候选索引能力。纯 Python 标准库，Python 3.10+。
+当前正式知识目录版本以 `math_mcts/data/curated/manifest.json` 为唯一来源；运行 `python -c "import math_mcts; print(math_mcts.__version__)"` 查看。新增十万规模未审来源候选索引能力。纯 Python 标准库，Python 3.10+。
 
 将数学知识组织为领域→分支→主题→概念，支持知识检索、学习路径、知识配对，
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
