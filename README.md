@@ -4,7 +4,7 @@
 
 将数学知识组织为领域→分支→主题→概念，支持知识检索、学习路径、知识配对，
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
-搜索次数和深度不代表数学原创性或证明真实性。静态概念检索采用全量精确评分排序（不再声称检索访问次数来自 MCTS）；MCTS 仍用于学习路径、知识配对和规则调度。
+搜索次数和深度不代表数学原创性或证明真实性。静态概念检索采用全量精确评分排序（不再声称检索访问次数来自 MCTS）；MCTS 仍用于知识配对和规则调度；学习路径已改为完整先修拓扑规划，避免无关随机绕路。
 
 ## 当前知识数量
 
@@ -89,7 +89,7 @@ python -m math_mcts verify-layers layered_problem.json layered_report.json
 |---|---|
 | math_mcts/knowledge.py | Concept、统一加载、别名、层级与先修依赖 |
 | math_mcts/catalog.py | 补充分片、哈希绑定覆盖层和数量统计 |
-| math_mcts/search.py | 学习路径、概念检索、知识配对 |
+| math_mcts/search.py | 拓扑学习路径、精确概念检索、启发式知识配对 |
 | math_mcts/mcts.py | 通用MCTS调度接口 |
 | math_mcts/reasoning.py | 类型化多前提规则与证书重放 |
 | math_mcts/layered.py | 同步批次碰撞、真实宽度/深度检查 |
