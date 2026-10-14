@@ -75,6 +75,17 @@ jobs:
           assert entries[0]['proof_of_remaining_conditions'] is False
           print('Actual Lean Meta defeq on closed propositions PASS; no full proof claim')
           PY
+      - name: Resolve actual Lean theorem using constructor-built Name
+        run: |
+          set -o pipefail
+          lean lean/NameFromStringSmoke.lean 2>&1 | tee lean_name_from_string_smoke.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          rows=[json.loads(x) for x in Path('lean_name_from_string_smoke.log').read_text().splitlines() if x.startswith('{')]
+          assert len(rows)==1 and rows[0]['resolved'],rows
+          assert rows[0]['method']=='Lean.Name.fromString'
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -83,4 +94,5 @@ jobs:
             lean_core_extract.log
             lean_type_structure_smoke.log
             lean_defeq_smoke.log
+            lean_name_from_string_smoke.log
           if-no-files-found: ignore
