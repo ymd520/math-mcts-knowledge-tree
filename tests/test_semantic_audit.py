@@ -1,6 +1,10 @@
 """Adversarial audit and explicit card-to-rule mapping tests."""
 import copy
 import unittest
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from math_mcts.audit import audit_catalog
 from math_mcts.knowledge import Concept, KnowledgeTree
