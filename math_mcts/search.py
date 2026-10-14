@@ -188,6 +188,8 @@ class ConceptSearchProblem(Problem):
         score += 0.3 * hit / max(1, len(self.qtok))
         if "核心" in c.tags:
             score += 0.15
+        if "重要" in c.tags:
+            score += 0.10
         return score
 
     def reward(self, state) -> float:
