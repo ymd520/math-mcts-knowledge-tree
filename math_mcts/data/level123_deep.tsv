@@ -44,9 +44,59 @@
 简单路径与可重复游走的区别|Simple path versus walk|无向或有向图给定顶点和边|游走可重复顶点，简单路径顶点不重复|简单路径⇒游走；逆向不成立|以顶点序列是否重复判别|游走长度大不能推出不同顶点多|A-B-A-C为游走但非简单路径|
 数学归纳基步不可省略|Induction requires base case|命题P(n)定义于n≥n₀的整数|验证P(n₀)及P(n)⇒P(n+1)才可推出全部|P(n₀)∧∀n≥n₀(P(n)⇒P(n+1))|先固定起始下标再构建归纳步|仅有P(n)⇒P(n+1)不能排除所有P均假的情况|证明前n个奇数之和为n²|全称命题反例的证伪门槛
 @1|计算与优化|数值与算法基础|正确性和舍入条件|NUM
-绝对误差与相对误差的分母|Absolute versus relative error|真实值x及近似值x̂，计算相对误差时x≠0|绝对误差是差的绝对值，相对误差除以真实值尺度|E_abs=|x̂-x|；E_rel=E_abs/|x||相对误差必须先检查基准不为零|真实值0时相对误差通常不能照公式计算|100近似成101相对误差1%|
+绝对误差与相对误差的分母|Absolute versus relative error|真实值x及近似值x̂，计算相对误差时x≠0|绝对误差是差的绝对值，相对误差除以真实值尺度|E_abs=abs(x̂-x)；E_rel=E_abs/abs(x)|相对误差必须先检查基准不为零|真实值0时相对误差通常不能照公式计算|100近似成101相对误差1%|
 循环不变量需覆盖初始化保持终止|Loop invariant three checkpoints|算法在循环入口具有谓词I且终止条件已知|初始化成立且每步保持，终止时I配合退出条件推出后置条件|Init⇒I；I∧guard⇒I'；I∧¬guard⇒Post|分开证明三处逻辑关系|只测试了几次循环不等于证明不变量|累加数组时已处理前k项之和等于当前累加器|等价命题双方向核验
 二分搜索必须固定单调谓词|Binary search requires monotone predicate|有序有限索引域上的布尔谓词由假过渡到真|每次保留跨越临界点的一半区间可找到边界|P(i)=false(i<k),true(i≥k)|维护已知假下界和真上界|谓词在区间内反复真假则二分可漏解|求数组第一个≥阈值的位置|循环不变量需覆盖初始化保持终止
-浮点相等检验不能代替误差模型|Floating-point equality versus tolerance|舍入运算下比较近似计算输出|近似误差应按量纲与误差预算处理，不能机械使用固定阈值| |x̂-x|≤atol+rtol·|x||先识别尺度与绝对误差下限|很小和很大数用同一绝对容差不稳妥|比较两个迭代求解结果|绝对误差与相对误差的分母
+浮点相等检验不能代替误差模型|Floating-point equality versus tolerance|舍入运算下比较近似计算输出|近似误差应按量纲与误差预算处理，不能机械使用固定阈值| abs(x̂-x)≤atol+rtol·abs(x)|先识别尺度与绝对误差下限|很小和很大数用同一绝对容差不稳妥|比较两个迭代求解结果|绝对误差与相对误差的分母
 数值微分步长双重误差|Finite difference step-size tradeoff|函数光滑且使用有舍入的浮点计算|步长过大截断误差大，过小舍入放大|中心差分截断O(h²)，舍入约O(ε_machine/h)|将截断和舍入两个误差项同时估计|步长越小并不总越精确|估计发动机传感器平滑信号的局部斜率|绝对误差与相对误差的分母
 剩余量不等于真实误差|Residual is not necessarily solution error|Ax=b且A可逆，近似解x̂|残差r=b-Ax̂与误差e=x-x̂由A逆联系|e=A⁻¹r|通过条件数判断残差到误差的放大|病态矩阵可能残差小却误差大|线性方程残差10⁻⁶不一定有10⁻⁶的解精度|绝对误差与相对误差的分母
+
+@2|数学基础|逻辑关系与构造|有界证明与构造工具|MIT
+集合补集的德摩根律双向检查|De Morgan set complement equivalence|A,B为同一全集U内集合|并的补等于补的交，交的补等于补的并|(A∪B)ᶜ=Aᶜ∩Bᶜ|任取x用成员谓词逐层展开|全集改变时补集运算不能混用|不在A或B的任何一者等于既不在A又不在B|等价命题双方向核验
+二元关系传递性与对称性区分|Transitive versus symmetric relations|R是集合X上的二元关系|传递与对称是独立公理，不存在一般蕴含|(xRy∧yRz)⇒xRz|分别对调顺序和串接两条关系检验|实数≤传递但不对称|年龄不大于关系传递但不对称|蕴含与逆命题的非对称性
+函数复合单射的充分条件|Composition of injective functions|f:A→B与g:B→C均单射|g∘f:A→C单射|g(f(x))=g(f(y))⇒x=y|先消去g，再消去f|复合单射不能推断g在整个B上单射|两次无损编码复合仍不丢失输入|等价命题双方向核验
+强归纳先前所有项的使用范围|Strong induction uses all previous cases|命题P(n)定义于n≥n₀的整数|初始项与全部前项可推出下一项，则P对所有n成立|[∀k∈[n₀,n]P(k)]⇒P(n+1)|在第n+1步明确调用哪一个更小指标|强归纳不允许循环依赖未来项|整数素因子分解可对较小因子使用假设|数学归纳基步不可省略
+逆否命题与反证法的目标边界|Contrapositive versus contradiction|需要证明P⇒Q|可改证明¬Q⇒¬P；反证可假定P∧¬Q导矛盾|P⇒Q ⇔ ¬Q⇒¬P|明确否定的对象包括量词及定义域|假设¬P推矛盾并不一定证明P⇒Q|证明n²奇则n奇可证n偶推出n²偶|全称命题反例的证伪门槛;等价命题双方向核验
+有限集合上的单射与满射等价|Finite equal-size injection surjection|有限集合A,B且card(A)=card(B)|f:A→B单射当且仅当满射|injective(f)⇔surjective(f)|单射像的基数是card(A)，用有限大小比较|无限集上自然数后继映射单射但不满射|在n个元素之间验证排列|函数复合单射的充分条件
+@2|代数|数论与线性代数|可逆性及结构映射|AATA
+贝祖恒等式刻画最大公约数|Bezout identity for gcd|整数a,b不全为零|存在整数s,t满足sa+tb=gcd(a,b)|sa+tb=gcd(a,b)|由欧几里得算法逐步回代|仅知道gcd值不能擅自使用非整数系数|30和18满足30(-1)+18(2)=6|整除与线性组合的闭合
+模乘法消去的互素门槛|Modular cancellation requires coprimality|m≥1且gcd(c,m)=1|ac≡bc模m推出a≡b模m|ac≡bc (mod m)⇒a≡b (mod m)|用贝祖系数构造c模m的逆元|模8里4·1≡4·3而1不≡3|模7中3·a≡3·b可消去3|贝祖恒等式刻画最大公约数;模同余乘法的保持性
+线性映射核与单射等价|Linear map injective iff kernel trivial|T:V→W为域上线性映射|T单射当且仅当ker T={0}|T injective ⇔ ker T={0}|由T(v)=T(w)改写T(v-w)=0|对非线性函数不能直接定义线性核|矩阵A列向量线性无关当且仅当Ax=0只有零解|矩阵乘法尺寸审查
+有限维秩零化度定理|Rank nullity identity|T:V→W线性且V有限维|维数分解为核维数与像维数之和|dim V=dim ker T+dim im T|先取核的一组基并扩充成V的基|无限维或非线性情形不可照用该维数式|3×4矩阵秩3则零空间维数1|线性映射核与单射等价
+行列式非零与方阵可逆性|Determinant invertibility criterion|A为n×n域上方阵|det A≠0当且仅当A可逆|det A≠0⇔rank A=n|用行列式乘法性与线性方程组唯一解|非方阵没有通常意义的det A|二维方阵[[1,2],[3,4]]的行列式-2|矩阵乘法尺寸审查
+不同特征值特征向量线性独立|Eigenvectors for distinct eigenvalues|T为域上有限维线性算子，v_i非零且特征值两两不同|这些特征向量线性无关|T v_i=λ_i v_i, λ_i≠λ_j⇒{v_i}独立|对最短非平凡线性关系施加T-λ_1 I做归纳|重根对应特征向量不一定独立|对角矩阵各坐标轴上的特征向量独立|线性映射核与单射等价
+@2|分析|连续性与微积分|中值与一致收敛基础|RA
+中值定理导数符号推出单调|Mean value theorem implies monotonicity|f在闭区间连续且开区间可导，f'≥0|f在区间上非减|f(b)-f(a)=f'(c)(b-a)≥0|对任意a<b应用中值定理|导数偶有零点不影响非减，但不足以推出严格递增|f(x)=x³的导数非负，函数严格递增|导数定义的差商条件
+介值定理需要闭区间连续|Intermediate value theorem needs continuity|f:[a,b]→R连续且f(a)≤t≤f(b)或反向|存在c∈[a,b]使f(c)=t|∃c∈[a,b],f(c)=t|利用连续性与实数完备性构造分割点|存在跳跃时端点夹住目标不保证中间取值|求连续方程根先检查端点异号|连续复合函数的取值范围条件
+点态收敛不保证连续极限|Pointwise limit may be discontinuous|连续函数f_n逐点收敛到f|极限f不一定连续|f_n(x)=xⁿ on [0,1]|在每个固定x取极限并检查端点|把每点收敛当作一致收敛会错误推出连续|xⁿ在[0,1]的极限于x=1不连续|收敛数列必有界的单向性
+一致收敛保证连续性|Uniform limit preserves continuity|f_n均连续且在同一集合E上一致收敛至f|极限f在E上连续|sup_(x∈E)abs(f_n(x)-f(x))→0|用三项三角不等式分别控制两端一致误差与中间项|只点态收敛不足够|多项式列一致趋于某函数则极限连续|点态收敛不保证连续极限
+黎曼和收敛前提|Riemann sum convergence criterion|f在[a,b]上黎曼可积，网格最大长度趋0|任意对应分割与取样点的黎曼和趋于积分|Σ f(ξ_i)Δx_i→∫_a^b f(x)dx|以积分的黎曼和定义控制分割细度|有界但不可黎曼可积时该结论不成立|连续函数矩形面积和趋于曲边面积|极限有限和差封闭
+微积分基本定理的连续性版本|Fundamental theorem of calculus at continuous point|f在[a,b]连续且F(x)=∫_a^x f(t)dt|F可导且F'(x)=f(x)在(a,b)成立|d/dx ∫_a^x f(t)dt=f(x)|差商是短区间函数值平均，用连续性取极限|仅可积而不连续时不保证在每点可导且等于f|速度对时间积分得到位移再微分回速度|黎曼和收敛前提;导数定义的差商条件
+@2|几何与拓扑|度量与连续映射|拓扑语义的局部与整体|TOP
+度量空间三角不等式证明路径|Metric distance upper bound via intermediate point|d为集合X上的度量且x,y,z∈X|途经中间点的路径不短于两端直距|d(x,z)≤d(x,y)+d(y,z)|利用度量的公理而非坐标公式|任意相似度函数不必满足三角不等式|行车路径总长至少两端直线距离|二维两点距离平方公式
+开球内部仍可放更小开球|Open balls are open|在度量空间(X,d)中取B(x,r)，r>0|任意y在B(x,r)内存在ε>0使B(y,ε)包含于B(x,r)|ε=r-d(x,y)>0|两次使用三角不等式|边界点距离恰等于r时不能取正ε|开区间(0,1)内点周围可取较小区间|度量空间三角不等式证明路径
+闭集序列极限保留性|Closed set contains sequence limits|F为度量空间中的闭集，x_n∈F且x_n→x|x仍属于F|x_n∈F, x_n→x⇒x∈F|若x在补集开球内则尾部无法在F中|若集合不是闭集则(0,1)内x_n=1/n趋0出界|闭区间[0,1]内序列极限仍在区间|开球内部仍可放更小开球
+连续映射的开集逆像判据|Continuity via inverse images|f:X→Y为拓扑空间之间的映射|f连续当且仅当Y中每个开集逆像在X中开|f⁻¹(U) open for every U open|证明从点邻域定义到逆像定义等价|连续映射不要求所有开集的像都开|常值映射连续但未必为开映射|开球内部仍可放更小开球
+欧氏空间收敛的坐标逐一判据|Coordinatewise convergence in Euclidean space|x_n,x∈R^d，d有限|向量收敛当且仅当每个坐标收敛|x_n→x⇔∀i x_(n,i)→x_i|利用欧氏范数与坐标绝对值上界|无穷维空间不能直接沿用有限维坐标等价|二维轨迹各坐标都趋点则向量趋点|二维两点距离平方公式;闭集序列极限保留性
+紧集连续像仍紧的前提|Continuous image of compact set|K是拓扑空间的紧子集且f连续|f(K)为目标拓扑空间中的紧子集|K compact∧f continuous⇒f(K) compact|把像的开覆盖逆像拉回K再取有限子覆盖|非紧集的连续像可能非紧|闭区间经连续函数映射得到紧集|连续映射的开集逆像判据
+@2|概率与统计|全概率与风险|分解、尾界与混杂条件|PRO
+贝叶斯后验基率的分母|Bayes posterior includes base rate|P(B)>0且P(A)>0|P(A∣B)=P(B∣A)P(A)/P(B)|P(A∣B)=P(B∣A)P(A)/P(B)|将联合概率按两方向分解|忽略罕见事件先验会高估阳性预测值|筛查阳性时先看疾病患病率|条件概率先查分母
+全概率公式事件分割条件|Law of total probability over a partition|B_i两两不交，联合覆盖Ω，且P(B_i)>0|事件A概率是各条件概率按组权重之和|P(A)=Σ_i P(A∣B_i)P(B_i)|将A分解为互不相交的A∩B_i|类别没有覆盖所有样本空间会漏概率|设备按供应商分组求总体不良率|事件并集重叠扣除
+指示变量期望的组合计数|Indicator method for expected counts|I_i为事件A_i的指示变量，有限多项|发生事件的总数期望等于各事件概率之和|E[Σ_i I_i]=Σ_i P(A_i)|把组合计数写成指示变量求和|事件不独立也可以使用|随机图中边数的期望按每条边出现概率相加|期望线性不要求独立
+协方差项决定方差可加性|Variance of sums with covariance|X,Y二阶矩有限|和的方差包含两倍协方差|Var(X+Y)=Var X+Var Y+2Cov(X,Y)|将中心化平方展开再取期望|X与Y相同则方差并非简单加倍|相同噪声叠加时波动可能放大四倍|期望线性不要求独立
+马尔可夫尾界仅需非负|Markov bound requires nonnegative variable|随机变量X≥0几乎处处且t>0，E X有限|尾事件概率不超过均值除阈值|P(X≥t)≤E[X]/t|比较t·1_{X≥t}与X的逐点大小|X允许显著负值时不能直接套用|平均维修费用100元时费用≥1000元概率≤0.1|期望线性不要求独立
+全期望法则条件期望版本|Law of iterated expectation|X可积，G为子σ代数|条件期望再取期望等于原期望|E[E[X∣G]]=E[X]|用条件期望定义在全空间上积分|条件期望是随机变量，不是固定条件概率|先按设备温区求平均再按温区概率加权|全概率公式事件分割条件
+@2|离散数学|图结构与组合计数|保持结构的算法和恒等式|MIT
+两集合容斥计数的交集修正|Two-set inclusion exclusion|A,B为有限集合|并的大小等于分别大小之和减交集大小|card(A∪B)=card A+card B-card(A∩B)|每个交集成员在前两项重复出现一次|交集为空才能直接相加|既会英语又会数学的人不能被重复计数|分类计数必须互斥
+连通无向树的边数固定|Finite tree edge count|G为n≥1顶点有限简单无向树|边数恰为n-1|m=n-1|删去一片叶子后对剩余树归纳|m=n-1的图若不连通不一定是树|5个顶点的路径有4条边|数学归纳基步不可省略
+无权图广度优先层次最短|BFS shortest paths in unweighted graphs|有限图边权均按1计且从源s按BFS访问|第一次发现顶点时的层数为源到该点最短边数|dist(s,v)=BFS_level(v)|按边数k归纳第k层先于第k+1层到达|带任意非负权时BFS不能替代Dijkstra|网格最少移动步数|简单路径与可重复游走的区别
+二部图不含奇环的判据|Bipartite iff no odd cycle|有限无向图G|G二部图当且仅当不存在奇长度环|bipartite(G)⇔no odd cycle|从任一点按奇偶距离染色并排除冲突|三角形有奇环不能二染色|检查任务冲突图能否分配给两班|无权图广度优先层次最短
+普通生成函数乘积的卷积意义|Generating function product is convolution|a_n,b_n为非负整数指标序列的系数，形式幂级数|积的第n项系数是所有i+j=n的乘积和|[x^n]A(x)B(x)=Σ_(i+j=n)a_i b_j|展开多项式/形式幂级数并收集同次项|不是点对点序列相乘|两部分对象总权值为n的组合计数|分步计数需要纤维数量固定
+归纳不变量与递归终止分离|Invariant proof separate from termination|算法使用循环或递归且有不变量I|I保持只保证部分正确性；还需终止度量下降|partial correctness + termination⇒total correctness|构造良基非负整数度量并证明每次下降|无限循环可以一直保持不变量却不返回答案|欧几里得算法余数严格下降保证终止|循环不变量需覆盖初始化保持终止
+@2|计算与优化|线性数值与最优化|尺度、条件数与下降界|NUM
+线性系统误差的条件数放大|Condition number bounds relative error|A可逆且b≠0，扰动仅在右端|相对解误差至多由κ(A)倍相对右端误差|norm(δx)/norm(x)≤κ(A)norm(δb)/norm(b)|用norm(A⁻¹)和norm(A)分别上界和下界|不能把κ大直接推断每个方向实际误差都很大|条件数10⁶表示最坏方向可放大误差|剩余量不等于真实误差
+正规方程平方条件数陷阱|Normal equations square conditioning|A为实满列秩矩阵|使用AᵀA解最小二乘时二范数条件数平方|κ₂(AᵀA)=κ₂(A)²|由奇异值平方组成AᵀA的特征值|若A列不满秩则AᵀA奇异|原条件数10³，正规方程条件数10⁶|线性系统误差的条件数放大
+L光滑函数的梯度下降一步界|Smooth descent lemma for gradient step|f可微且梯度L-Lipschitz，0<η≤1/L|沿负梯度走一步至少下降η/2倍梯度范数平方|f(x-η∇f(x))≤f(x)-ηnorm(∇f(x))²/2|将y=x-η∇f代入下降引理|步长任意大时下降不保证|二次函数迭代小步可降低目标|数值微分步长双重误差
+凸函数一阶最优性充分条件|First-order convex global optimality|f为定义在开凸集上的可微凸函数且∇f(x*)=0|x*是全局最小点|f(y)≥f(x*)+∇f(x*)·(y-x*)=f(x*)|用凸函数切平面下界|非凸函数驻点可能是鞍点|f(x)=x²在0处全局最小|L光滑函数的梯度下降一步界
+区间二分根法的符号条件|Bisection root sign change condition|f在[a,b]连续且f(a)f(b)<0|至少有一根且二分保留异号子区间|f(a)f(b)<0 ⇒∃c∈(a,b), f(c)=0|用介值定理维持两端异号不变量|没有异号可能仍有偶重根，但无法靠此保证|二分求x³-2的根|二分搜索必须固定单调谓词;介值定理需要闭区间连续
+QR最小二乘避免正规方程|QR least squares stable approach|A为实满列秩矩阵，A=QR且Q列正交、R可逆上三角|最小二乘可解Rx=Qᵀb|argmin norm(Ax-b)⇒Rx=Qᵀb|利用正交投影保留二范数并解三角系统|显式构造AᵀA可能放大条件数|用薄QR拟合传感器校准系数|正规方程平方条件数陷阱
