@@ -204,7 +204,7 @@ class CandidateRuleBridgeTests(unittest.TestCase):
             "source_url": "https://example.org/source", "license": "review-required",
             "locator": "Analysis.some_theorem", "name": "Some theorem",
             "kind": "theorem", "statement": "If P(x) holds, then Q(x) holds."
-        }) + "\\n", encoding="utf-8")
+        }) + "\n", encoding="utf-8")
         import_jsonl(self.db, p)
         with sqlite3.connect(self.db) as db:
             self.entry = json.loads(db.execute(
