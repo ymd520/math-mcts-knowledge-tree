@@ -190,6 +190,19 @@ def build():
         manifest["packs"].append({"file": filename, "count": len(pack_rows),
                                   "overlays": len(overlays),
                                   "sha256": hashlib.sha256((out / filename).read_bytes()).hexdigest()})
+    # Keep independently authored condition-boundary cards when rebuilding
+    # historic curated packs; never silently discard this reviewed seed pack.
+    extension = out / "level123_multidomain_20261014.json"
+    if extension.exists():
+        payload = extension.read_bytes()
+        parsed = json.loads(payload)
+        if len(parsed.get("concepts", [])) != 105 or parsed.get("overlays", []) != []:
+            raise ValueError("Unexpected Level 1–3 deep extension shape")
+        manifest["packs"].append({
+            "file": extension.name, "count": 105, "overlays": 0,
+            "sha256": hashlib.sha256(payload).hexdigest(),
+        })
+        manifest["version"] = "1.13.0"
     write_json(out / "manifest.json", manifest)
     report = {"base_count": len(originals), "authored_statements": len(authored),
               "added": len(added), "authored_enrichments": sum(r["action"] == "enriched" for r in authored),
