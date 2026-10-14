@@ -141,7 +141,7 @@ def run_shard(plan_root: Path, shard_index: int, *, mathlib_root: Path,
                  if row["status"]=="extracted" or cid in blocked}
         temporary=status_path.with_suffix(".retry")
         temporary.write_text("".join(
-            json.dumps(row,ensure_ascii=False,sort_keys=True)+"\\n"
+            json.dumps(row,ensure_ascii=False,sort_keys=True)+"\n"
             for _,row in sorted(journal.items())),encoding="utf-8")
         temporary.replace(status_path)
     started=time.monotonic()
