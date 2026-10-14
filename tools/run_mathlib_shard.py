@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import time
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from math_mcts.lean_fullscale import (PINNED_TOOLCHAIN, VALID_NAME,
@@ -81,7 +82,9 @@ def run_shard(plan_root: Path, shard_index: int, *, mathlib_root: Path,
               output_root: Path, dry_run: bool = False,
               max_batches: int | None = None,
               timeout_sec: int = 720,
-              cache_timeout_sec: int = 360) -> dict:
+              cache_timeout_sec: int = 360,
+              budget_seconds: int = 0,
+              retry_failed: bool = False) -> dict:
     verify_manifest(plan_root)
     manifest=json.loads((plan_root/"manifest.json").read_text())
     if not 0 <= shard_index < manifest["shard_count"]:
@@ -131,6 +134,17 @@ def run_shard(plan_root: Path, shard_index: int, *, mathlib_root: Path,
     if any(item["status"]=="extracted" and cid not in successes
            for cid,item in journal.items()):
         raise ValueError("Missing extracted payload for a successful checkpoint")
+    if retry_failed:
+        # Reuse exact successful SHA-bound exports; reattempt only terminal
+        # missing/failed records. Rewriting the old ledger is atomic.
+        journal={cid:row for cid,row in journal.items()
+                 if row["status"]=="extracted" or cid in blocked}
+        temporary=status_path.with_suffix(".retry")
+        temporary.write_text("".join(
+            json.dumps(row,ensure_ascii=False,sort_keys=True)+"\\n"
+            for _,row in sorted(journal.items())),encoding="utf-8")
+        temporary.replace(status_path)
+    started=time.monotonic()
     def checkpoint(row):
         cid=row["source_id"]
         if cid in journal:
@@ -151,6 +165,9 @@ def run_shard(plan_root: Path, shard_index: int, *, mathlib_root: Path,
         if not unprocessed:
             continue
         if max_batches is not None and attempted_batches >= max_batches:
+            break
+        if budget_seconds and time.monotonic()-started >= max(
+                1,budget_seconds-cache_timeout_sec-timeout_sec-90):
             break
         attempted_batches+=1
         mod=batch["module"]
@@ -257,11 +274,14 @@ def main():
     p.add_argument("--max-batches",type=int)
     p.add_argument("--timeout-sec",type=int,default=720)
     p.add_argument("--cache-timeout-sec",type=int,default=360)
+    p.add_argument("--budget-seconds",type=int,default=0)
+    p.add_argument("--retry-failed",action="store_true")
     a=p.parse_args()
     r=run_shard(a.plan,a.shard,mathlib_root=a.mathlib_root,
                 output_root=a.output,dry_run=a.dry_run,
                 max_batches=a.max_batches,timeout_sec=a.timeout_sec,
-                cache_timeout_sec=a.cache_timeout_sec)
+                cache_timeout_sec=a.cache_timeout_sec,
+                budget_seconds=a.budget_seconds,retry_failed=a.retry_failed)
     print(json.dumps(r,ensure_ascii=False))
 
 
