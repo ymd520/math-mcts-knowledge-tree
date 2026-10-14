@@ -54,6 +54,8 @@ def find_composable_rules(book, *, limit: int = 100,
     """
     if limit < 0:
         raise ValueError("limit must be nonnegative")
+    if limit == 0:
+        return []
     consumer_index = defaultdict(list)
     for rule in book.rules.values():
         for index, atom in enumerate(rule.premises):
