@@ -27,6 +27,22 @@ jobs:
         run: python tests/test_mcts.py
       - name: Ground Horn closure and guided MCTS adversarial tests
         run: python tests/test_mcts_v2.py
+      - name: Compare proven closure to bounded UCT and guided PUCT
+        run: |
+          python tools/benchmark_mcts_v2.py --iterations 180 --output mcts_v2_benchmark.json
+          python - <<'PY'
+          import json
+          report=json.load(open("mcts_v2_benchmark.json"))
+          for name,case in report["cases"].items():
+              assert case["graph_complete"], name
+              result={item["method"]: item for item in case["results"]}
+              assert result["event_driven_closure"]["solved"], name
+              for method in ("plain_uct","guided_puct"):
+                  if result[method]["solved"]:
+                      assert result[method]["certificate_replayed"],(name,method)
+                  assert result[method]["actual_simulations"]<=180
+          print("MCTS-v2 measured baselines and replay checks passed")
+          PY
       - name: Evidence-first knowledge expansion and research-operator tests
         run: python tests/test_expansion.py
       - name: Reasoning and certificates
