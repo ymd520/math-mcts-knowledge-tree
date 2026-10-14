@@ -16,8 +16,8 @@
 | 领域 | 阶段 | 教材/课程 | 来源与范围 | 访问与使用状态 |
 |---|---|---|---|---|
 | 数学基础 | 入门证明 | Richard Hammack, *Book of Proof* | [作者主页](https://www.people.vcu.edu/~rhammack/BookOfProof/)；逻辑、集合、证明方法 | 开放教材；使用前按作者页许可署名 |
-| 数学基础 | 大学进阶 | Daniel J. Velleman, *How to Prove It* | [Cambridge University Press](https://www.cambridge.org/highereducation/books/how-to-prove-it/6B2B4D7F3D20F7BB2D233B5A93FCE7B8)；逻辑、量词、集合与证明 | 出版社版权教材；仅作书目参考 |
-| 数学基础 | 专业逻辑 | *forall x: Calgary Remix* | [Open Logic Project](https://forallx.openlogicproject.org/)；命题逻辑、谓词逻辑与证明 | 开放课程教材；具体版本许可逐项核验后再复用 |
+| 数学基础 | 大学进阶 | Daniel J. Velleman, *How to Prove It* | [Cambridge University Press](https://www.cambridge.org/highereducation/books/how-to-prove-it/6D2965D625C6836CD4A785A2C843B3DA)；逻辑、量词、集合与证明 | 出版社版权教材；仅作书目参考 |
+| 数学基础 | 专业逻辑 | *forall x: Calgary Remix* | [Open Logic Project](https://forallx.openlogicproject.org/)；命题逻辑、谓词逻辑与证明 | 开放课程教材；CC BY 4.0；核验各章节来源标记后再复用 |
 | 代数 | 入门 | OpenStax, *College Algebra 2e* | [官方书页](https://openstax.org/details/books/college-algebra-2e)；代数函数、方程与多项式 | 开放许可但含明确 AI 摄取限制；未经书面许可不从正文派生卡片 |
 | 代数 | 大学基础/进阶 | Thomas W. Judson, *Abstract Algebra: Theory and Applications* | [作者书页](https://judsonbooks.org/abstract-algebra-theory-and-applications/)；群、环、域、同态 | 作者说明采用 GNU Free Documentation License；遵守该许可的署名和共享条款 |
 | 代数 | 进阶 | Dummit & Foote, *Abstract Algebra* | [Wiley](https://www.wiley.com/en-us/Abstract+Algebra%2C+3rd+Edition-p-9780471433347)；群、环、域与表示 | 出版社版权教材；仅作书目参考 |
