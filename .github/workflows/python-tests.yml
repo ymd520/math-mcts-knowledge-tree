@@ -31,6 +31,8 @@ jobs:
         run: python tests/test_layered.py
       - name: Catalog integration tests
         run: python tests/test_catalog.py
+      - name: Level1–3 deep knowledge proof-path and attribution audits
+        run: python tests/test_deep_core.py
       - name: Imported knowledge adapter tests
         run: python tests/test_imported.py
       - name: Semantic mappings and structural audit tests
