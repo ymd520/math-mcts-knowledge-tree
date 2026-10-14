@@ -153,10 +153,10 @@ def mathematical_task_fixtures() -> dict[str, dict]:
     return {
         "divisibility_transitivity": {
             "signatures": {"divides": ["Nat","Nat"]},
-            "objects": {"2":"Nat","4":"Nat","6":"Nat","12":"Nat"},
-            "assumptions": [a("divides","2","4"),a("divides","4","6"),
-                            a("divides","6","12")],
-            "goal": a("divides","2","12"),
+            "objects": {"2":"Nat","4":"Nat","8":"Nat","16":"Nat"},
+            "assumptions": [a("divides","2","4"),a("divides","4","8"),
+                            a("divides","8","16")],
+            "goal": a("divides","2","16"),
             "rules": [rule("div_trans",
                 [a("divides","?a","?b"),a("divides","?b","?c")],
                 a("divides","?a","?c"),
