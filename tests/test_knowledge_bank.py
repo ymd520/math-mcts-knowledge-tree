@@ -20,12 +20,14 @@ def fixture_db(path):
          "branch_cn": "集合论", "topic_cn": "基础运算", "module": ""},
         {"id": "MTH01", "cn": "mathlib example", "en": "smul_theorem",
          "formal": "theorem smul_theorem : True := trivial", "level": 5,
-         "module": "Mathlib.Algebra.Group.Basic", "domain_en": "Algebra",
-         "domain_cn": "Algebra", "original_metadata": {
+         "definition": "synthetic grouped statement", "branch_cn": "Group",
+         "topic_cn": "Basic", "module": "Mathlib.Algebra.Group.Basic",
+         "domain_en": "Algebra", "domain_cn": "Algebra", "original_metadata": {
              "类型": "upstream_theorem", "陈述SHA256": "testsha"}},
         {"id": "STD01", "cn": "标准知识卡", "en": "standard",
          "definition": "有限集合的定义", "level": 5,
-         "module": "Mathlib.Data.Finset.Basic", "domain_en": "Data",
+         "branch_cn": "Finset", "topic_cn": "Basic",
+         "domain_cn": "Data", "module": "Mathlib.Data.Finset.Basic", "domain_en": "Data",
          "original_metadata": {"类型": "curated_standard_card",
                                "陈述SHA256": "referencehash"}},
     ]
@@ -85,6 +87,23 @@ class KnowledgeClassificationTests(unittest.TestCase):
                               bank.browse(after_id="MTH01", limit=5)], ["STD01"])
             # Rebuilding the view is stable and does not modify source data.
             self.assertEqual(report, classify_knowledge(path))
+
+    def test_index_shortlist_enters_mcts_without_fake_grade(self):
+        from math_mcts.search import collision_score, collide_concepts
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "knowledge.sqlite"
+            fixture_db(path)
+            classify_knowledge(path)
+            scope = KnowledgeBank(path).mcts_scope("basic", max_concepts=2)
+            self.assertEqual(len(scope.concepts), 2)
+            self.assertTrue(all(c.level_status == "ungraded_source_placeholder"
+                                for c in scope.concepts))
+            a, b = scope.concepts
+            self.assertEqual(collision_score(scope, a.id, b.id), 0.5)
+            combinations = collide_concepts(scope, iterations=20, top_k=2)
+            self.assertTrue(combinations)
+            self.assertEqual({combinations[0][0].id, combinations[0][1].id},
+                             {a.id, b.id})
 
     def test_registry_missing_fails_closed(self):
         with tempfile.TemporaryDirectory() as folder:
