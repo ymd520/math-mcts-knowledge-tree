@@ -31,6 +31,11 @@ jobs:
         run: python tests/test_layered.py
       - name: Catalog integration tests
         run: python tests/test_catalog.py
+      - name: Level1–3 deep knowledge proof-path and attribution audits
+        run: python tests/test_deep_core.py
+      - name: Publish seven-domain Level1–3 reviewed-state coverage
+        if: matrix.python-version == '3.12'
+        run: python tools/audit_level123_depth.py --output level123_deep_audit.json
       - name: Imported knowledge adapter tests
         run: python tests/test_imported.py
       - name: Semantic mappings and structural audit tests
@@ -220,6 +225,7 @@ jobs:
             full_source_review_backlog_report.json
             knowledge_classification.json
             source_attribution_report.json
+            level123_deep_audit.json
             quality_triage_report.json
             quality_review_top1000.jsonl.gz
             quality_anomaly_top1000.jsonl.gz

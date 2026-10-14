@@ -57,8 +57,23 @@ def assemble(base_rows, directory=PACK_DIR):
                 raise ValueError("Overlay cannot rename IDs")
             rows[cid] = {**old, **changes}
             enriched += 1
+    # Deep Level 1–3 curriculum cards are independently versioned source
+    # summaries, never automatic promotions of imported Lean declarations.
+    # Only the real curated pack directory loads this supplementary seed;
+    # adversarial/temp assembly fixtures retain exact isolation.
+    extra = {}
+    if directory.resolve() == PACK_DIR.resolve():
+        from .deep_core import load_deep_core
+        deep, extra = load_deep_core(existing_rows=[rows[cid] for cid in order])
+        for card in deep:
+            if card["id"] in rows:
+                raise ValueError("Duplicate Level 1–3 supplement ID")
+            rows[card["id"]] = card
+            order.append(card["id"])
+        added += len(deep)
     return [rows[cid] for cid in order], {"catalog_added": added, "catalog_enriched": enriched,
-                                          "catalog_version": manifest["version"]}
+                                          "catalog_version": "1.13.0" if extra else manifest["version"],
+                                          **extra}
 
 
 def inventory(concepts):

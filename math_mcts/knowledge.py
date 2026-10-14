@@ -108,6 +108,9 @@ class Concept:
     aliases: list = field(default_factory=list)
     importance_reason: str = ""
     source_locator: str = ""
+    proof_idea: str = ""
+    misuse_counterexample: str = ""
+    knowledge_origin: str = ""
 
     def path(self) -> str:
         return f"{self.domain_cn} / {self.branch_cn} / {self.topic_cn}"
@@ -143,6 +146,12 @@ class Concept:
             lines.append("前置编码状态: " + self.prereq_status)
         if self.formulas:
             lines.append("公式: " + " ; ".join(self.formulas))
+        if self.proof_idea:
+            lines.append("证明/求解思路: " + self.proof_idea)
+        if self.misuse_counterexample:
+            lines.append("误用与反例: " + self.misuse_counterexample)
+        if self.knowledge_origin:
+            lines.append("数学成果归属: 引用既有数学，知识库负责教学整理（非新定理）")
         if self.example:
             lines.append(f"例子: {self.example}")
         if self.module:
@@ -158,7 +167,8 @@ class Concept:
     def text_blob(self) -> str:
         parts = [self.cn, self.en, self.definition, self.branch_cn,
                  self.topic_cn, self.kind,
-                 self.example, self.assumptions, self.conclusion, self.module] + list(self.tags) + list(self.formulas) + list(self.aliases)
+                 self.example, self.assumptions, self.conclusion, self.module,
+                 self.proof_idea, self.misuse_counterexample] + list(self.tags) + list(self.formulas) + list(self.aliases)
         return " ".join(parts)
 
 
