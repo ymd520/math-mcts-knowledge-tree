@@ -1,3 +1,5 @@
+> **数学成果来源与署名说明：** 本仓库的 Math-MCTS 软件、知识整理及索引工作，与被收录数学定理的原创发现是不同贡献。来自 mathlib4 的导入声明归属 mathlib 社区及其上游原始数学来源，并保留固定源码模块、提交指纹及 Apache-2.0 许可；具体定理的最早发现者未逐条核实时应标为未知。详情：[来源、署名与引用规则](ATTRIBUTION_AND_SOURCES.md)。
+
 # 数学知识 MCTS 搜索树
 
 当前正式知识目录版本：**v1.11.0**；新增十万规模未审来源候选索引能力。纯 Python 标准库，Python 3.10+。
@@ -241,3 +243,19 @@ python tests/test_semantic_audit.py
 有效数学规则，提供 20 层×每层 20 条的受控初等证明容量测试，
 包含缺少必要包含前提的负面验证。该测试不证明研究级复杂推理或搜索优势。
 详情：[LEAN_STRUCTURE_PIPELINE.md](LEAN_STRUCTURE_PIPELINE.md)。
+
+## Lean 环境获取与来源引用（2026-10-14）
+
+Lean Core 测试和固定版本 Mathlib 提取是两个独立的验证级别。现有固定版
+Mathlib 缓存获取已调整为 **模块级下载（含其依赖）→ 限时重试 → 上游旧端点 → 单模块源码编译**，
+避免一开始下载全库导致资源浪费。
+
+```sh
+python tools/build_attribution.py --db math_index.sqlite --report source_attribution_report.json
+python tools/build_attribution.py --db math_index.sqlite --id KNOWLEDGE_ID
+# mathlib4 源代码必须位于固定 SHA 且已有对应 Lean 环境
+bash tools/bootstrap_pinned_mathlib.sh Mathlib/Algebra/Group/Basic.lean
+```
+
+索引与知识卡会显示固定来源链接；仅凭模块不能推断单条定理的发现者。
+详见 [来源说明](ATTRIBUTION_AND_SOURCES.md) 和 [Lean 提取流程](LEAN_STRUCTURE_PIPELINE.md)。
