@@ -1,5 +1,9 @@
 name: Python regression tests
 
+concurrency:
+  group: math-mcts-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches: [main]
@@ -31,6 +35,27 @@ jobs:
         run: python tests/test_imported.py
       - name: Semantic mappings and structural audit tests
         run: python tests/test_semantic_audit.py
+      - name: Large-index and typed-composition unit tests
+        run: python tests/test_scale.py
+      - name: Build a real 100k mathlib candidate index
+        if: matrix.python-version == '3.12'
+        run: python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000 --summary index_status.json
+      - name: Export 100k source-backed candidate review queue
+        if: matrix.python-version == '3.12'
+        run: python tools/export_review_queue.py --db math_index.sqlite --output source_review_queue.jsonl.gz --summary scale_status.json
+      - name: Benchmark indexed retrieval
+        if: matrix.python-version == '3.12'
+        run: python tools/benchmark_fast_index.py --db math_index.sqlite --output fts_benchmark.json
+      - name: Publish 100k scale data
+        if: matrix.python-version == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-candidates-100k
+          path: |
+            index_status.json
+            source_review_queue.jsonl.gz
+            scale_status.json
+            fts_benchmark.json
       - name: Full catalog audit
         run: python -m math_mcts.audit -o catalog_audit.json --fail-on-errors
       - name: Publish audit results

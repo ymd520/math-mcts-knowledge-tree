@@ -75,15 +75,18 @@ def plan_learning_path(tree: KnowledgeTree, target: str,
     """
     concept = tree.find(target)
     known_ids = list(dict.fromkeys(k for k in known if k in tree.by_id))
-    learned = list(known_ids)
-    already = set(known_ids)
+    if concept.id in known_ids:
+        # Already mastered: preserve the requested target for rendering.
+        return [concept]
+    # Retain the public API contract: user-supplied mastered cards come first.
+    # The deterministic suffix is exactly the target's prerequisite closure.
+    visited = set(known_ids)
+    sequence = list(known_ids)
     for cid in [*tree.prereq_closure(concept.id), concept.id]:
-        if cid not in already:
-            learned.append(cid)
-            already.add(cid)
-    # If target was in the explicitly known set, keep the requested learning
-    # sequence as-is; otherwise the final element is always the target.
-    return [tree.get(cid) for cid in learned]
+        if cid not in visited:
+            sequence.append(cid)
+            visited.add(cid)
+    return [tree.get(cid) for cid in sequence]
 
 
 def export_path_markdown(path: list[Concept]) -> str:
@@ -244,6 +247,13 @@ class CollisionProblem(Problem):
                        key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
         curated = {col["a"] for col in tree.collisions} | \
                   {col["b"] for col in tree.collisions}
+        # Ranking and curated adjacency are immutable for this search scope.
+        # Build once: individual roots must not re-sort the full 100k corpus.
+        self._ranked = roots
+        self._curated_partners = {}
+        for pair in tree.collisions:
+            self._curated_partners.setdefault(pair["a"], set()).add(pair["b"])
+            self._curated_partners.setdefault(pair["b"], set()).add(pair["a"])
         domains = {}
         for concept in roots:
             domains.setdefault(concept.domain_cn, []).append(concept.id)
@@ -259,22 +269,14 @@ class CollisionProblem(Problem):
         """
         if cid not in self._cands:
             me = self.tree.get(cid)
-            rank = {"核心": 0, "重要": 1}
-            pool = [o for o in self.tree.concepts
+            pool = [o for o in self._ranked
                     if o.id != cid and o.domain_cn != me.domain_cn]
-            pool.sort(key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
             if len(pool) <= self.CAND_CAP:
                 cands = [o.id for o in pool]
             else:
                 cands = [pool[i * len(pool) // self.CAND_CAP].id
                          for i in range(self.CAND_CAP)]
-            curated_partners = set()
-            for col in self.tree.collisions:
-                if col["a"] == cid:
-                    curated_partners.add(col["b"])
-                elif col["b"] == cid:
-                    curated_partners.add(col["a"])
-            for other in curated_partners:
+            for other in sorted(self._curated_partners.get(cid, ())):
                 if (other not in cands
                         and self.tree.get(other).domain_cn != me.domain_cn):
                     cands.append(other)

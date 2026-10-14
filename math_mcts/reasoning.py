@@ -37,6 +37,11 @@ class Rule:
     variables: tuple[tuple[str, str], ...] = ()
     source: str = ""
     status: str = "candidate"
+    # Explicit knowledge provenance participates in RuleBook.fingerprint().
+    # Legacy stand-alone rules may leave these fields empty.
+    concept_id: str = ""
+    concept_sha256: str = ""
+    mapping_review: str = ""
 
     def __post_init__(self):
         object.__setattr__(self, "premises", tuple(self.premises))
@@ -96,6 +101,8 @@ class RuleBook:
             if set(variables) != bound:
                 raise ValueError("All variables must occur in premises")
             if rule.status == "reviewed":
+                if rule.concept_id and not (rule.concept_sha256 and rule.mapping_review):
+                    raise ValueError("Mapped reviewed rule requires concept snapshot and review")
                 if not rule.source:
                     raise ValueError("Reviewed rule requires provenance")
                 self.rules[rule.id] = rule
@@ -332,7 +339,9 @@ def load_reasoning_problem(data: dict):
         return Atom(row["predicate"], tuple(row.get("args", ())))
     rules = [Rule(r["id"], tuple(atom(p) for p in r["premises"]), atom(r["conclusion"]),
                   tuple(sorted(r.get("variables", {}).items())),
-                  r.get("source", ""), r.get("status", "candidate"))
+                  r.get("source", ""), r.get("status", "candidate"),
+                  r.get("concept_id", ""), r.get("concept_sha256", ""),
+                  r.get("mapping_review", ""))
              for r in data["rules"]]
     book = RuleBook(data["signatures"], data["objects"], rules)
     return book, frozenset(atom(a) for a in data["assumptions"]), atom(data["goal"])

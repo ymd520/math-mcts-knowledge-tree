@@ -16,6 +16,9 @@ from .reasoning import (Atom, Rule, RuleBook, Certificate, ProofGraph,
 from .layered import (LayerConfig, LayerCertificate, derive_layers, replay_layers,
                       load_layered_problem, load_layer_certificate)
 from .semantic import catalog_statement_sha256, load_catalog_reasoning_problem
+from .fast_index import build_index, fast_search, index_stats
+from .semantic_links import compatible_atoms, find_composable_rules
+from .scale_plan import expansion_status
 
 __version__ = "1.11.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
@@ -26,6 +29,8 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "DiscoveryQueue", "derive", "verify_certificate", "load_reasoning_problem",
            "load_certificate", "LayerConfig", "LayerCertificate", "derive_layers",
            "replay_layers", "load_layered_problem", "load_layer_certificate",
-           "catalog_statement_sha256", "load_catalog_reasoning_problem"]
+           "catalog_statement_sha256", "load_catalog_reasoning_problem",
+           "build_index", "fast_search", "index_stats",
+           "compatible_atoms", "find_composable_rules", "expansion_status"]
 
 

@@ -1,6 +1,6 @@
 # 数学知识 MCTS 搜索树
 
-当前知识目录版本：**v1.11.0**；本分支修复 MCTS 搜索与覆盖问题。纯Python标准库，Python3.10+。
+当前正式知识目录版本：**v1.11.0**；新增十万规模未审来源候选索引能力。纯 Python 标准库，Python 3.10+。
 
 将数学知识组织为领域→分支→主题→概念，支持知识检索、学习路径、知识配对，
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
@@ -8,7 +8,7 @@
 
 ## 当前知识数量
 
-原始基础库现为10775条；补充分片390条；默认统一加载11165条。
+原始基础库现为10775条；补充分片390条；默认统一加载11165条。\nLevel 1–4 已标记重要/核心的正式知识合计 6111 条，平均扩充至十万条（每级约25000）仍是目标。
 59条旧知识补充条件、结论和参考来源；603条按依赖引用标为结构上重要，
 这两类不是新增知识。原始导入语料234576条另行统计，不等于同样数量的
 重要定理或已经审核的概念。
@@ -23,6 +23,31 @@
 重要性、难度、内容核验程度分别记录。部分旧等级尚待重评；新卡片的编辑检查
 不是Lean验证，来源网址为主题参考，不是逐条定理证明定位。
 详见[目录架构](CATALOG_ARCHITECTURE.md)和[收录规范](CURATION.md)。
+
+## 十万条来源候选与快速检索（不同于正式重要知识）
+
+已有 mathlib 来源索引 234,576 条未经逐条核验的数学声明；其中原始 level5
+为“未评级”占位，不能按字面计算为难度5、也不能凭配额改为 Level1–4 重要。
+构建器现已通过 GitHub CI 实测：**正式卡 11,165 + 来源候选 100,000 = 索引记录 111,165**。
+十万条候选在索引中标记为 `unreviewed_import`、`level=NULL`；
+正式重要知识仍为 6111 条，距离目标还有 93889 条审核缺口。
+
+```sh
+python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000 --summary index_status.json
+python -m math_mcts search-index "convolution" --db math_index.sqlite --top-k 10
+python -m math_mcts search-index "矩阵" --db math_index.sqlite --tier curated
+python tools/export_review_queue.py --db math_index.sqlite --summary scale_status.json
+python -m math_mcts scale-status --db math_index.sqlite
+python tools/benchmark_fast_index.py --db math_index.sqlite
+```
+
+搜索采用 SQLite FTS5 中文一、二、三字索引及英语词汇倒排；小候选集重新排序，
+不需要每次反序列化全部知识。数据库是可再生缓存，不与正式补充包混放。
+详见 [SCALING_100K.md](SCALING_100K.md)，含真实数量、分级审核门槛及限制。
+
+人工审核规则可以用 `python -m math_mcts semantic-links <problem.json>`
+寻找类型、变量及常量不冲突的前提—结论接边；
+结果只是**待满足前提的组合候选**，不是数学证明。
 
 ## 快速调用
 
