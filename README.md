@@ -49,6 +49,20 @@ python tools/benchmark_fast_index.py --db math_index.sqlite
 寻找类型、变量及常量不冲突的前提—结论接边；
 结果只是**待满足前提的组合候选**，不是数学证明。
 
+## 正式来源数学声明登记
+
+可对已完成 SHA256 来源校验的 mathlib 候选运行单条声明重算，
+产生可重复构建的正式来源登记清单。它不会自动把所有导入声明标记为
+Level 1–4 重要知识（这一评级仍需内容审查）。
+
+```sh
+python tools/register_source_statements.py --db math_index.sqlite --manifest official_source_registry.jsonl.gz
+python -m math_mcts search-index "matrix" --db math_index.sqlite --registered-only
+```
+
+详见 [SOURCE_REGISTRY.md](SOURCE_REGISTRY.md)，CI 实际登记数量以
+`source_registration_report.json` 为准。
+
 ## 快速调用
 
 ```sh
