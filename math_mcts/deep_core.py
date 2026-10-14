@@ -25,6 +25,7 @@ REFERENCES={
     "PRO":("Pishro-Nik, Introduction to Probability, Statistics, and Random Processes","https://www.probabilitycourse.com/"),
     "NUM":("MIT 18.335, Introduction to Numerical Methods","https://math.mit.edu/~stevenj/18.335/"),
     "OPT":("Boyd and Vandenberghe, Convex Optimization","https://web.stanford.edu/~boyd/cvxbook/"),
+    "MIRA":("Sheldon Axler, Measure, Integration & Real Analysis","https://measure.axler.net/"),
 }
 REQUIRED_FIELDS=9
 
