@@ -41,9 +41,9 @@ python -m math_mcts semantic-graph my_reviewed_problem.json --output semantic_ru
 ```
 
 **限制**：MCTS 迭代、BFS 状态扩展、束搜索生成状态不是完全相同的
-计算单位。MCTS 当前重新构图而 BFS/束搜索共享预构图；
-报告会分别保留图构造时间、搜索耗时、有效深度和是否证书通过，
-**不能直接宣称 MCTS 相比 BFS 的算法加速比**。任务样本只有三个
+计算单位。三种求解器现已共享同一张预构建推导图，并单独记录图构建时间。
+报告会分别保留搜索耗时、状态扩展/树节点数、有效深度和是否证书通过；
+**仍不能直接宣称 MCTS 相比 BFS 的算法加速比**，需要等效工作量和多种随机种子测量。任务样本只有三个
 人工复核数学原则场景；不代表研究级定理证明能力。
 真正的综合性能结论需要更广泛、公开、预先登记的任务集与重复运行。
 
@@ -73,3 +73,18 @@ python -m math_mcts semantic-graph my_reviewed_problem.json --output semantic_ru
 
 发布前必须通过 Python 3.10/3.12 回归、新语义图攻击测试、
 具体数学任务证书重放和十万级来源知识分类审计。
+
+## 新增搜索性能实现
+
+`DerivationProblem.actions` 现在使用每条推理超边的稀有前提原子
+建立倒排索引，仅访问当前事实中可能被启用的边；一个未满足的前提仍然
+会被严格筛除。等价性回归测试枚举小型数学规则图的所有事实子集，
+比对**原全量扫描结果与新倒排实现的动作序列逐项完全相同**。
+状态动作缓存使用有界 LRU（最多 4096 个状态），避免无界内存增长。
+`ProofGraph.build` 的推理边生成本身仍可能在高分支对象域增长很快，
+其预算上限及完整性标志保持显式；本次不承诺十万声明全自动推导。
+
+人工审定记录可运行：`python tools/apply_editorial_reviews.py
+--db math_index.sqlite --decisions reviewed.json --output editorial_coverage.json`。
+不能从质量信号自动生成 `reviewed.json`。本次没有假造审核人或
+将未评级来源批量提升为“重要”。
