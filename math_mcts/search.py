@@ -63,24 +63,26 @@ class LearningPathProblem(Problem):
 
 
 def plan_learning_path(tree: KnowledgeTree, target: str,
-                        max_steps: int = 15, iterations: int = 3000,
-                        seed: int = 7,
-                        known: list[str] | tuple[str, ...] = ()) -> list[Concept]:
-    """规划学习目标概念的最优路径, 返回有序的 Concept 列表.
+                         max_steps: int = 15, iterations: int = 3000,
+                         seed: int = 7,
+                         known: list[str] | tuple[str, ...] = ()) -> list[Concept]:
+    """Return an exact prerequisite-closed learning sequence without detours.
 
-    known: 已掌握的概念 id 列表, 规划从这些概念之后开始.
+    The target dependency graph is known in full; a topological closure is
+    deterministic, sound and cheaper than stochastic MCTS. The retained
+    max_steps/iterations/seed parameters preserve the historical API but
+    do not truncate required prerequisites or affect this exact plan.
     """
     concept = tree.find(target)
-    known_ids = [k for k in known if k in tree.by_id]
-    problem = LearningPathProblem(tree, concept.id, max_steps, known_ids)
-    seq, _ = mcts(problem, iterations=iterations, seed=seed)
-    # 兜底: 若 MCTS 未走到目标, 用拓扑闭包补全
-    learned = list(problem.initial_state()) + list(seq)
-    if concept.id not in learned:
-        for pid in tree.prereq_closure(concept.id):
-            if pid not in learned:
-                learned.append(pid)
-        learned.append(concept.id)
+    known_ids = list(dict.fromkeys(k for k in known if k in tree.by_id))
+    learned = list(known_ids)
+    already = set(known_ids)
+    for cid in [*tree.prereq_closure(concept.id), concept.id]:
+        if cid not in already:
+            learned.append(cid)
+            already.add(cid)
+    # If target was in the explicitly known set, keep the requested learning
+    # sequence as-is; otherwise the final element is always the target.
     return [tree.get(cid) for cid in learned]
 
 
@@ -89,7 +91,7 @@ def export_path_markdown(path: list[Concept]) -> str:
     target = path[-1]
     lines = [f"# 学习计划: {target.cn}({target.en})",
              "",
-             f"共 {len(path)} 步, 由 MCTS 在知识前置依赖图上规划.",
+             f"共 {len(path)} 步, 按目标先修依赖拓扑顺序规划.",
              "",
              "| 步骤 | 概念 | 难度 | 位置 |",
              "|---|---|---|---|"]
