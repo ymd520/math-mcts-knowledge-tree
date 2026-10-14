@@ -242,8 +242,12 @@ class CollisionProblem(Problem):
                        key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
         curated = {col["a"] for col in tree.collisions} | \
                   {col["b"] for col in tree.collisions}
-        self._roots = sorted({o.id for o in roots[:self.CAND_CAP]} |
-                             {cid for cid in curated if tree.get(cid)})
+        domains = {}
+        for concept in roots:
+            domains.setdefault(concept.domain_cn, []).append(concept.id)
+        per_domain = max(1, self.CAND_CAP // max(1, len(domains)))
+        selected = {cid for group in domains.values() for cid in group[:per_domain]}
+        self._roots = sorted(selected | {cid for cid in curated if cid in tree.by_id})
 
     def _cands_for(self, cid: str) -> list[str]:
         """某概念的跨领域候选搭档(标签优先级截断到 CAND_CAP), 懒计算+缓存.
@@ -257,7 +261,11 @@ class CollisionProblem(Problem):
             pool = [o for o in self.tree.concepts
                     if o.id != cid and o.domain_cn != me.domain_cn]
             pool.sort(key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
-            cands = [o.id for o in pool[:self.CAND_CAP]]
+            if len(pool) <= self.CAND_CAP:
+                cands = [o.id for o in pool]
+            else:
+                cands = [pool[i * len(pool) // self.CAND_CAP].id
+                         for i in range(self.CAND_CAP)]
             curated_partners = set()
             for col in self.tree.collisions:
                 if col["a"] == cid:
@@ -307,8 +315,8 @@ class CollisionProblem(Problem):
             if self.seed:
                 return self._best_partner(self.seed)
             # 全局: 懒计算各概念最优搭档的最大值
-            return max((self._best_partner(c.id)
-                        for c in self.tree.concepts), default=0.0)
+            return max((self._best_partner(cid)
+                        for cid in self._roots), default=0.0)
         if len(state) == 1:
             return self._best_partner(state[0])
         return self.reward(state)
@@ -354,22 +362,11 @@ def search_concepts(tree: KnowledgeTree, query: str, top_k: int = 5,
 
     返回 [(Concept, 访问次数, 价值)] 列表，按价值降序，访问次数打破并列。
     """
+    if top_k <= 0:
+        return []
+    # Scores are computed exactly for every leaf; no incomplete MCTS traversal.
     problem = ConceptSearchProblem(query=query, tree=tree)
-    _, root = mcts(problem, iterations=iterations, seed=seed,
-                   max_depth=6)
-
-    leaves: list[tuple] = []
-
-    def collect(node):
-        if tree.is_concept_leaf(node.state):
-            leaves.append((node.state, node.visits,
-                           problem.node_value(node)))
-        for ch in node.children:
-            collect(ch)
-
-    collect(root)
-    # 按 MCTS 估计的平均回报(价值)排序 —— 这是 MCTS 返回最优解的标准做法;
-    # 访问次数仅作并列时的 tie-break.
-    leaves.sort(key=lambda x: (x[2], x[1]), reverse=True)
-    return [(tree.leaf_concept(s), v, m) for s, v, m in leaves[:top_k]]
+    ranked = sorted(tree.concepts,
+                    key=lambda c: (-problem._leaf_reward[c.id], c.id))
+    return [(c, 0, problem._leaf_reward[c.id]) for c in ranked[:top_k]]
 
