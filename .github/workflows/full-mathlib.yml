@@ -1,0 +1,170 @@
+name: Full pinned Mathlib corpus extraction (resource-intensive)
+
+# Explicit manual dispatch: a full private-repository CI run can consume
+# substantial runner minutes. 'all' schedules every shard, not just a sample.
+on:
+  workflow_dispatch:
+    inputs:
+      shard:
+        description: 'all or exact shard number 0-63'
+        required: true
+        default: 'all'
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: full-pinned-mathlib-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      shards: ${{ steps.matrix.outputs.shards }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconstruct, authenticate and partition all registered Mathlib source statements
+        run: |
+          python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000
+          python tools/register_source_statements.py --db math_index.sqlite
+          python tools/classify_knowledge.py --db math_index.sqlite
+          python tools/plan_full_mathlib.py --db math_index.sqlite --output full_mathlib_plan --shards 64 --batch-size 80
+          python tools/plan_full_mathlib.py --output full_mathlib_plan --verify-only
+      - name: Exact Mathlib checkout for citation and original file headers
+        run: |
+          set -euxo pipefail
+          mkdir mathlib4
+          git -C mathlib4 init
+          git -C mathlib4 remote add origin https://github.com/leanprover-community/mathlib4.git
+          git -C mathlib4 fetch --depth=1 origin 54c01c3314d33d15d77893cbe4e0472ff26bb34d
+          git -C mathlib4 checkout --detach FETCH_HEAD
+          test "$(git -C mathlib4 rev-parse HEAD)" = "54c01c3314d33d15d77893cbe4e0472ff26bb34d"
+          python tools/index_mathlib_source_credit.py --db math_index.sqlite --mathlib-root mathlib4 --report all_mathlib_source_credits.json
+      - id: matrix
+        name: Resolve complete shard range without silently skipping sources
+        env:
+          SELECTED_SHARD: ${{ inputs.shard }}
+        run: |
+          python - <<'PY'
+          import json,os
+          selected=os.environ['SELECTED_SHARD']
+          if selected=='all':
+              values=list(range(64))
+          else:
+              idx=int(selected)
+              if not 0<=idx<64: raise ValueError('shard must be all or 0-63')
+              values=[idx]
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('shards='+json.dumps(values)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-mathlib-plan
+          path: |
+            full_mathlib_plan/
+            all_mathlib_source_credits.json
+          retention-days: 90
+
+  extract:
+    needs: plan
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: full-mathlib-plan
+          path: .
+      - name: Verify exact shard manifest before any Lean execution
+        run: |
+          python tools/plan_full_mathlib.py --output full_mathlib_plan --verify-only
+      - name: Checkout original pinned Mathlib and exact toolchain
+        run: |
+          set -euxo pipefail
+          mkdir mathlib4
+          git -C mathlib4 init
+          git -C mathlib4 remote add origin https://github.com/leanprover-community/mathlib4.git
+          git -C mathlib4 fetch --depth=1 origin 54c01c3314d33d15d77893cbe4e0472ff26bb34d
+          git -C mathlib4 checkout --detach FETCH_HEAD
+          test "$(cat mathlib4/lean-toolchain)" = "leanprover/lean4:v4.35.0-rc4"
+      - name: Run actual elaborated Lean type and proof reference extraction, with checkpoints
+        run: |
+          python tools/run_mathlib_shard.py --plan full_mathlib_plan \
+            --shard ${{ matrix.shard }} --mathlib-root mathlib4 \
+            --output full_mathlib_results --timeout-sec 150 \
+            --cache-timeout-sec 500
+      - name: Upload terminal ID ledger and extracted expressions even if partial
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-lean-shard-${{ matrix.shard }}
+          path: |
+            full_mathlib_results/shard-*/status.jsonl
+            full_mathlib_results/shard-*/extracted.jsonl
+            full_mathlib_results/shard-*/report.json
+          retention-days: 90
+          if-no-files-found: warn
+
+  reconcile:
+    needs: [plan,extract]
+    if: always() && needs.plan.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: full-mathlib-plan
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: full-lean-shard-*
+          merge-multiple: true
+          path: full_mathlib_results
+      - name: Verify all planned IDs against actual Lean declarations; retain incomplete as incomplete
+        run: |
+          python tools/aggregate_mathlib_results.py --plan full_mathlib_plan \
+            --shard-root full_mathlib_results \
+            --output lean_full_coverage_report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-mathlib-coverage-report
+          path: |
+            lean_full_coverage_report.json
+            all_mathlib_source_credits.json
+          retention-days: 90
+      - name: Flag unresolved source coverage without misreporting science
+        if: ${{ inputs.shard == 'all' }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path('lean_full_coverage_report.json').read_text())
+          if not result['all_registered_extracted']:
+              raise SystemExit(
+                  f"Real Lean coverage incomplete: extracted {result['extracted']} / "
+                  f"{result['registered']}; {result['not_attempted']} not attempted; "
+                  f"{result['blocked_or_failed']} terminal failures. "
+                  "Use artifact reports for source-specific retries.")
+          PY
