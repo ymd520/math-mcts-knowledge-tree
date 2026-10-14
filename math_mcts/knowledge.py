@@ -352,20 +352,34 @@ class KnowledgeTree:
 
     # -- 前置依赖 --------------------------------------------------------
     def prereq_closure(self, cid: str) -> list[str]:
-        """返回掌握 cid 之前必须先掌握的全部前置 id (拓扑有序)."""
-        order: list[str] = []
-        seen: set[str] = set()
-
-        def visit(x: str) -> None:
-            if x in seen:
-                return
-            seen.add(x)
-            for p in self.by_id[x].prereq:
-                visit(p)
-            order.append(x)
-
-        visit(cid)
-        return order[:-1]  # 去掉自身
+        """Topological prerequisites, iterative even for 100k-long chains."""
+        if cid not in self.by_id:
+            raise KeyError(cid)
+        order = []
+        # 0=unseen, 1=active, 2=finished
+        color = {}
+        stack = [(cid, False)]
+        while stack:
+            name, done = stack.pop()
+            if done:
+                color[name] = 2
+                order.append(name)
+                continue
+            state = color.get(name, 0)
+            if state == 2:
+                continue
+            if state == 1:
+                raise ValueError("Cycle in prerequisite graph at " + name)
+            color[name] = 1
+            stack.append((name, True))
+            for p in reversed(self.by_id[name].prereq):
+                if p not in self.by_id:
+                    raise KeyError(f"Missing prerequisite {p} of {name}")
+                if color.get(p) == 1:
+                    raise ValueError(f"Cycle in prerequisite graph: {name} -> {p}")
+                if color.get(p) != 2:
+                    stack.append((p, False))
+        return order[:-1]
 
     def check_integrity(self) -> list[str]:
         """完整性自检: 返回问题描述列表, 为空表示通过."""
@@ -380,24 +394,33 @@ class KnowledgeTree:
                     problems.append(f"{c.id}: 前置 {p} 不存在")
                 elif p == c.id:
                     problems.append(f"{c.id}: 前置指向自身")
-        # 环检测
+        # Iterative cycle detection: recursive DFS exceeds Python recursion
+        # depth on long valid chains of prerequisites.
         color: dict[str, int] = {}
-
-        def dfs(x: str, stack: list[str]) -> None:
-            color[x] = 1
-            stack.append(x)
-            for p in self.by_id[x].prereq:
+        for concept in self.concepts:
+            if color.get(concept.id) == 2:
+                continue
+            trail = [concept.id]
+            stack = [(concept.id, iter(self.by_id[concept.id].prereq))]
+            color[concept.id] = 1
+            while stack:
+                name, parents = stack[-1]
+                try:
+                    p = next(parents)
+                except StopIteration:
+                    color[name] = 2
+                    stack.pop()
+                    trail.pop()
+                    continue
                 if p not in self.by_id:
                     continue
                 if color.get(p) == 1:
-                    problems.append("环: " + " -> ".join(stack + [p]))
+                    problems.append("环: " + " -> ".join(
+                        [*trail[-12:], p]))
                 elif color.get(p) != 2:
-                    dfs(p, stack)
-            stack.pop()
-            color[x] = 2
+                    color[p] = 1
+                    trail.append(p)
+                    stack.append((p, iter(self.by_id[p].prereq)))
 
-        for c in self.concepts:
-            if color.get(c.id) != 2:
-                dfs(c.id, [])
         return problems
 
