@@ -27,7 +27,7 @@ OPTIONAL = ("domain", "branch", "assumptions", "conclusion", "formula",
             "proof_hint", "counterexample_hint")
 _MAX_LINE = 100_000
 _MAX_STATEMENT = 12_000
-_SPACE = re.compile(r"\\s+")
+_SPACE = re.compile(r"\s+")
 
 
 def _digest(text: str) -> str:
