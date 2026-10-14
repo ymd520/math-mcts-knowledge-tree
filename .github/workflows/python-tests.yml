@@ -29,6 +29,8 @@ jobs:
         run: python tests/test_reasoning.py
       - name: Layered collision tests
         run: python tests/test_layered.py
+      - name: Condition-boundary audits for additional 105 sourced Level1–3 math cards
+        run: python tests/test_deep_level123.py
       - name: Catalog integration tests
         run: python tests/test_catalog.py
       - name: Level1–3 deep knowledge proof-path and attribution audits
