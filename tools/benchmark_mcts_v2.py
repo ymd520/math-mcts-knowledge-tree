@@ -39,7 +39,8 @@ def evaluate(*, iterations=180, max_steps=18, seed=7) -> dict:
                      "visited_premise_occurrences": proof.visited_premise_occurrences,
                      "proof_steps": proof.proof_steps,
                      "status": proof.status})
-        for policy, stop in (("uct", False), ("puct", True)):
+        for policy, stop in (("uct", False), ("uct", True),
+                             ("puct", False), ("puct", True)):
             problem = DerivationProblem(graph, assumptions, goal, max_steps)
             start = time.perf_counter()
             _, root = mcts(problem, iterations=iterations, max_depth=max_steps,
@@ -48,7 +49,9 @@ def evaluate(*, iterations=180, max_steps=18, seed=7) -> dict:
             cert, depth, replayed = _certificate(book, assumptions, goal, problem.best)
             if cert is not None and not replayed:
                 raise RuntimeError("MCTS produced an invalid certificate")
-            rows.append({"method": "guided_puct" if policy == "puct" else "plain_uct",
+            rows.append({"method": (("guided_puct" if stop else "guided_puct_no_stop")
+                                    if policy == "puct" else
+                                    ("plain_uct_early_stop" if stop else "plain_uct")),
                          "solved": cert is not None and replayed,
                          "certificate_replayed": replayed,
                          "search_elapsed_ms": round(elapsed, 3),
