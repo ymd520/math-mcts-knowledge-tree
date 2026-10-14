@@ -1,0 +1,4416 @@
+{
+  "concepts": [
+    {
+      "id": "C26D0001",
+      "level": 1,
+      "cn": "差集的交互斥分解",
+      "en": "Disjoint decomposition by set difference",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "集合A,B任意；A可分为A与B的交集及A减B，且二者不交",
+      "formulas": [
+        "A=(A∩B)∪(A∖B)"
+      ],
+      "assumptions": "集合A,B任意",
+      "conclusion": "A可分为A与B的交集及A减B，且二者不交",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：未区分全集时不要取补集",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "未区分全集时不要取补集",
+        "跨领域应用": "概率事件的分割",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "33142692108637d9eb1938eadb02fe40a2f1ce4499036f489080da6f1c411cdd"
+    },
+    {
+      "id": "C26D0002",
+      "level": 1,
+      "cn": "命题逆否的真值等价",
+      "en": "Contrapositive truth equivalence",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "采用经典命题逻辑，P和Q为命题；P蕴含Q与非Q蕴含非P同真同假",
+      "formulas": [
+        "(P⇒Q)⇔(¬Q⇒¬P)"
+      ],
+      "assumptions": "采用经典命题逻辑，P和Q为命题",
+      "conclusion": "P蕴含Q与非Q蕴含非P同真同假",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：逆命题Q⇒P一般不等价",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "逆命题Q⇒P一般不等价",
+        "跨领域应用": "证明与程序断言",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "8c160d28281e72daf3fd4d6f55df995fe1711fb5e0fa25fd0e1b9946edda5577"
+    },
+    {
+      "id": "C26D0003",
+      "level": 1,
+      "cn": "存在命题否定的量词范围",
+      "en": "Negation of existential statement",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "集合S给定且P(x)为谓词；并非存在一个满足P的元素等价于所有元素都不满足P",
+      "formulas": [
+        "¬(∃x∈S P(x)) ⇔ ∀x∈S ¬P(x)"
+      ],
+      "assumptions": "集合S给定且P(x)为谓词",
+      "conclusion": "并非存在一个满足P的元素等价于所有元素都不满足P",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：把非存在误写成存在非是错误的",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "把非存在误写成存在非是错误的",
+        "跨领域应用": "概率与约束不可行性",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "eacbd9f44d9b9e568cc5fffd685dce4b1fb3271fb0f3c68ebaf36e18c17e6b85"
+    },
+    {
+      "id": "C26D0004",
+      "level": 1,
+      "cn": "集合包含与成员迁移",
+      "en": "Membership transport under inclusion",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "A是B的子集且x属于A；x也必属于B",
+      "formulas": [
+        "A⊆B ∧ x∈A ⇒ x∈B"
+      ],
+      "assumptions": "A是B的子集且x属于A",
+      "conclusion": "x也必属于B",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：逆向迁移从B到A一般失败",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "逆向迁移从B到A一般失败",
+        "跨领域应用": "拓扑与证明搜索",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "11dee40703f347785220c25db22431aa6112f307de4d196a8ab3df8729de81d0"
+    },
+    {
+      "id": "C26D0005",
+      "level": 1,
+      "cn": "集合恒等式的元素证明法",
+      "en": "Elementwise proof of set identity",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "A与B是同一全集中的集合；逐个证明x属于A当且仅当属于B可确立A=B",
+      "formulas": [
+        "A=B ⇔ ∀x,(x∈A⇔x∈B)"
+      ],
+      "assumptions": "A与B是同一全集中的集合",
+      "conclusion": "逐个证明x属于A当且仅当属于B可确立A=B",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：只证明单向包含不足以得等式",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "只证明单向包含不足以得等式",
+        "跨领域应用": "逻辑与程序规格",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "7a9207d6fa07fa13bde385240a6ee8516eff85bc05bc6b7cf6eab51cb2920e03"
+    },
+    {
+      "id": "C26D0006",
+      "level": 2,
+      "cn": "函数复合的定义域兼容",
+      "en": "Composition domain compatibility",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f:A→B且g:B→C为函数；g∘f定义为A到C的函数，先应用f再应用g",
+      "formulas": [
+        "(g∘f)(x)=g(f(x))"
+      ],
+      "assumptions": "f:A→B且g:B→C为函数",
+      "conclusion": "g∘f定义为A到C的函数，先应用f再应用g",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：当f的值超出g定义域时复合不成立",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "当f的值超出g定义域时复合不成立",
+        "跨领域应用": "类型系统与算法流水线",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "56723c544e429b8d05a4323d9e699fe72c9c3a23e836967e6ca8b876580a85fa"
+    },
+    {
+      "id": "C26D0007",
+      "level": 2,
+      "cn": "单射的复合保持性",
+      "en": "Composition preserves injectivity",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f与g都是单射且复合可定义；g∘f仍是单射",
+      "formulas": [
+        "injective(f)∧injective(g)⇒injective(g∘f)"
+      ],
+      "assumptions": "f与g都是单射且复合可定义",
+      "conclusion": "g∘f仍是单射",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：只知道复合单射不推出g在整个定义域单射",
+      "prereq": [
+        "C26D0006"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "只知道复合单射不推出g在整个定义域单射",
+        "跨领域应用": "编码与逆问题",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "258c19f8db5bb9cedef427e81782e4c149d02dc69e19e93e006a4b4b4051185d"
+    },
+    {
+      "id": "C26D0008",
+      "level": 2,
+      "cn": "数学归纳法的双重门槛",
+      "en": "Induction base and successor requirements",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "命题P(n)定义在所有非负整数上；P(0)成立且任意P(n)推出P(n+1)则全体P(n)成立",
+      "formulas": [
+        "P(0)∧∀n(P(n)⇒P(n+1))⇒∀nP(n)"
+      ],
+      "assumptions": "命题P(n)定义在所有非负整数上",
+      "conclusion": "P(0)成立且任意P(n)推出P(n+1)则全体P(n)成立",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：缺少基例或归纳步都无法推出全称结论",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "缺少基例或归纳步都无法推出全称结论",
+        "跨领域应用": "程序循环不变式",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "560ed476d4038c9a6166d26e0320102c326e866929017d7f2bd8eb2f15530fd8"
+    },
+    {
+      "id": "C26D0009",
+      "level": 2,
+      "cn": "有限笛卡尔积计数条件",
+      "en": "Finite Cartesian product counting",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "A、B为有限集合；有序对全集A×B的数量为基数之积",
+      "formulas": [
+        "card(A×B)=card(A)card(B)"
+      ],
+      "assumptions": "A、B为有限集合",
+      "conclusion": "有序对全集A×B的数量为基数之积",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：无序配对不能直接使用此式",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "无序配对不能直接使用此式",
+        "跨领域应用": "组合算法复杂度",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "aeb7e9e73e89a662b6cd9ef8e7618cb02c730b4f0969977d12b92429348824b8"
+    },
+    {
+      "id": "C26D0010",
+      "level": 2,
+      "cn": "对称关系与传递关系的区别",
+      "en": "Symmetry versus transitivity",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "R为集合S上的二元关系；对称性是xRy⇒yRx，传递性是xRy且yRz⇒xRz",
+      "formulas": [
+        "symmetric(R)≠transitive(R)"
+      ],
+      "assumptions": "R为集合S上的二元关系",
+      "conclusion": "对称性是xRy⇒yRx，传递性是xRy且yRz⇒xRz",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：一个性质成立不自动保证另一个",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "一个性质成立不自动保证另一个",
+        "跨领域应用": "图与等价类",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "ae353005f2182e3b8ab443295229ed727c0d3d6aa94849a330a5e51e4e7887f6"
+    },
+    {
+      "id": "C26D0011",
+      "level": 3,
+      "cn": "函数逆像与交集交换",
+      "en": "Preimage commutes with intersections",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f:X→Y，B和C是Y的子集；交集的逆像等于两个逆像的交集",
+      "formulas": [
+        "f⁻¹(B∩C)=f⁻¹(B)∩f⁻¹(C)"
+      ],
+      "assumptions": "f:X→Y，B和C是Y的子集",
+      "conclusion": "交集的逆像等于两个逆像的交集",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：像f(A∩D)一般只包含于两像交集",
+      "prereq": [
+        "C26D0001"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "像f(A∩D)一般只包含于两像交集",
+        "跨领域应用": "测度与拓扑",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "8aa65395b07b1ad1127f06714b112c64a1142c833a7b425afefe9bd06af969e7"
+    },
+    {
+      "id": "C26D0012",
+      "level": 3,
+      "cn": "双射建立集合等势",
+      "en": "Bijection certifies equipotence",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f:A→B为双射；A与B基数相等，包括无限集情形",
+      "formulas": [
+        "A≈B ⇔ 存在双射A→B"
+      ],
+      "assumptions": "f:A→B为双射",
+      "conclusion": "A与B基数相等，包括无限集情形",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：单射仅给出至多关系而非必然等势",
+      "prereq": [
+        "C26D0007"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "单射仅给出至多关系而非必然等势",
+        "跨领域应用": "概率空间与算法状态编码",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "054f36f83c0529c82ddac17ea899c91bb8b3e3f494f7db61289cea2a29633552"
+    },
+    {
+      "id": "C26D0013",
+      "level": 3,
+      "cn": "实数上量词交换的无上界反例",
+      "en": "Quantifier interchange counterexample on unbounded reals",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "实数域的谓词P(x,y)定义为y>x；对每个x可选更大的y，但没有单个y大于所有实数x",
+      "formulas": [
+        "∀x∈R∃y∈R(y>x) 且 ¬∃y∈R∀x∈R(y>x)"
+      ],
+      "assumptions": "实数域的谓词P(x,y)定义为y>x",
+      "conclusion": "对每个x可选更大的y，但没有单个y大于所有实数x",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：不能把依赖x选出的y误认为统一的y",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "在实数无上界情况下统一的y不存在；其他论域需按量词语义判断",
+        "跨领域应用": "博弈与优化极小极大",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "d335c67de6504e1921da3d8b5ea86cb8f0058709f869c3eb7e763e35a41f7726"
+    },
+    {
+      "id": "C26D0014",
+      "level": 3,
+      "cn": "等价关系产生互不重叠的类",
+      "en": "Equivalence classes partition a set",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "R满足自反、对称及传递；等价类或完全相同或互不相交，并覆盖全集",
+      "formulas": [
+        "xRy ⇒ [x]=[y]"
+      ],
+      "assumptions": "R满足自反、对称及传递",
+      "conclusion": "等价类或完全相同或互不相交，并覆盖全集",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：缺少传递性时关系类不能保证形成划分",
+      "prereq": [
+        "C26D0010"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "缺少传递性时关系类不能保证形成划分",
+        "跨领域应用": "商空间与分类",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "528c34afdba8875b2e3d517d733b8fbda69e71a630bb46cb12769e8b93f7164f"
+    },
+    {
+      "id": "C26D0015",
+      "level": 3,
+      "cn": "有限偏序极大元的存在",
+      "en": "Maximal element in finite poset",
+      "domain_cn": "数学基础",
+      "domain_en": "Foundations",
+      "branch_cn": "集合与逻辑",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "非空有限集合带有偏序关系；必存在至少一个极大元",
+      "formulas": [
+        "finite nonempty poset ⇒ maximal exists"
+      ],
+      "assumptions": "非空有限集合带有偏序关系",
+      "conclusion": "必存在至少一个极大元",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：极大元未必是支配一切元素的最大元",
+      "prereq": [
+        "C26D0010"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "极大元未必是支配一切元素的最大元",
+        "跨领域应用": "帕累托最优与选择",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "8475bebb7d83ebd0a84994e3a9de643a22f53d7957ef3c0d5db8af2c5a66c4ee"
+    },
+    {
+      "id": "C26D0016",
+      "level": 1,
+      "cn": "带余除法余数唯一性",
+      "en": "Uniqueness of Euclidean remainder",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "整数a，正整数b>0；唯一整数q和r满足a=bq+r且0≤r<b",
+      "formulas": [
+        "a=bq+r, 0≤r<b"
+      ],
+      "assumptions": "整数a，正整数b>0",
+      "conclusion": "唯一整数q和r满足a=bq+r且0≤r<b",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：b为0时不能定义通常的欧几里得余数",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "b为0时不能定义通常的欧几里得余数",
+        "跨领域应用": "算法与模运算",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "98c847532285e061a3fab45226ac093d620cd91eb861fe9eede589a1399a16ee"
+    },
+    {
+      "id": "C26D0017",
+      "level": 1,
+      "cn": "最大公因数的差不变性",
+      "en": "GCD difference invariance",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "整数a,b且不同时为0；用a减去b的整数倍不改变最大公因数",
+      "formulas": [
+        "gcd(a,b)=gcd(a−kb,b)"
+      ],
+      "assumptions": "整数a,b且不同时为0",
+      "conclusion": "用a减去b的整数倍不改变最大公因数",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：两数同时为0时需另作约定",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "两数同时为0时需另作约定",
+        "跨领域应用": "欧几里得算法",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "37ee5575c1d088f2779867a083e83922caf5b359f54a6ed1a4cd1016f81a29e4"
+    },
+    {
+      "id": "C26D0018",
+      "level": 1,
+      "cn": "整数倍的整除传递",
+      "en": "Divisibility transitivity",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "整数a,b,c且a整除b、b整除c；a整除c",
+      "formulas": [
+        "a∣b ∧ b∣c ⇒ a∣c"
+      ],
+      "assumptions": "整数a,b,c且a整除b、b整除c",
+      "conclusion": "a整除c",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：不能把a∣b当成a<b",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "不能把a∣b当成a<b",
+        "跨领域应用": "数论与逻辑",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "0a40486d6aa87cf188f247ccfb4bb069167619cc09374251358880e41c092430"
+    },
+    {
+      "id": "C26D0019",
+      "level": 1,
+      "cn": "同余加法保留模数",
+      "en": "Congruence preservation under addition",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "整数a≡b模m、c≡d模m，m>0；两对整数相加仍同余",
+      "formulas": [
+        "a+c≡b+d (mod m)"
+      ],
+      "assumptions": "整数a≡b模m、c≡d模m，m>0",
+      "conclusion": "两对整数相加仍同余",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：两个同余若模数不同不能直接照搬结论",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "两个同余若模数不同不能直接照搬结论",
+        "跨领域应用": "密码学与状态压缩",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "3445412b00b8a3d01f4ab8e5e82c54ff52f9199efe8e661d2532512f11fcb1f4"
+    },
+    {
+      "id": "C26D0020",
+      "level": 1,
+      "cn": "负数乘积符号的奇偶判定",
+      "en": "Parity of negative factors",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "有限个非零实数相乘；负因子数为偶数时结果正，为奇数时结果负",
+      "formulas": [
+        "sign(∏aᵢ)=(-1)^k"
+      ],
+      "assumptions": "有限个非零实数相乘",
+      "conclusion": "负因子数为偶数时结果正，为奇数时结果负",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：包含0时乘积为0，不谈正负",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "包含0时乘积为0，不谈正负",
+        "跨领域应用": "多项式符号",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "02f105dde2d0cc86870cceab278cf3f15b763ed0feed72705396501fdd03a3ec"
+    },
+    {
+      "id": "C26D0021",
+      "level": 2,
+      "cn": "多项式余式的求值规则",
+      "en": "Remainder of polynomial division by x-a",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "域F上的多项式p(x)，a∈F；除以x−a所得余数是p(a)",
+      "formulas": [
+        "p(x)=(x−a)q(x)+p(a)"
+      ],
+      "assumptions": "域F上的多项式p(x)，a∈F",
+      "conclusion": "除以x−a所得余数是p(a)",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：除式不是一次首一式时该形式需调整",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "除式不是一次首一式时该形式需调整",
+        "跨领域应用": "插值与方程根",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "2e3c7a63a728d1795c9537a40c76b3e216458645853782a7fe5e1c57bdafe693"
+    },
+    {
+      "id": "C26D0022",
+      "level": 2,
+      "cn": "同余乘法保持性",
+      "en": "Congruence preservation under multiplication",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "a≡b且c≡d模m，m为正整数；ac与bd模m同余",
+      "formulas": [
+        "ac≡bd (mod m)"
+      ],
+      "assumptions": "a≡b且c≡d模m，m为正整数",
+      "conclusion": "ac与bd模m同余",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：模意义消去乘子需要互素条件",
+      "prereq": [
+        "C26D0019"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "模意义消去乘子需要互素条件",
+        "跨领域应用": "密码学与有限群",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "8d14a97cdfd1a96ed169c91ccb9f158d6292b99d127a8fb9944b7e09a2719042"
+    },
+    {
+      "id": "C26D0023",
+      "level": 2,
+      "cn": "等比数列和的例外公比",
+      "en": "Geometric sum exceptional ratio",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "首项a，项数n≥1，公比r；r≠1时有限和为a(1−rⁿ)/(1−r)，r=1时为na",
+      "formulas": [
+        "Sₙ=a(1−rⁿ)/(1−r) (r≠1)"
+      ],
+      "assumptions": "首项a，项数n≥1，公比r",
+      "conclusion": "r≠1时有限和为a(1−rⁿ)/(1−r)，r=1时为na",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：公比为1时不能除以0",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "公比为1时不能除以0",
+        "跨领域应用": "级数与递推",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "5a3cf1a2d6c57a7022283cf947dbb6408f0a8b58fa2495414d1a9acc87d67e59"
+    },
+    {
+      "id": "C26D0024",
+      "level": 2,
+      "cn": "二次方程判别式的实根分型",
+      "en": "Real roots by discriminant",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "实系数二次方程ax²+bx+c=0，a≠0；判别式正、零、负分别对应两个不同实根、一个重实根、无实根",
+      "formulas": [
+        "Δ=b²−4ac"
+      ],
+      "assumptions": "实系数二次方程ax²+bx+c=0，a≠0",
+      "conclusion": "判别式正、零、负分别对应两个不同实根、一个重实根、无实根",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：在复数域中判别式负不代表无根",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "在复数域中判别式负不代表无根",
+        "跨领域应用": "复分析与控制系统",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "4d1333924bf6e782e4850db33edd1c7e49b2ee5184afe4d0b230b1588c1e41d8"
+    },
+    {
+      "id": "C26D0025",
+      "level": 2,
+      "cn": "模逆元素存在的互素条件",
+      "en": "Modular inverse criterion",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "整数a，模数m>1；a有模m乘法逆元当且仅当gcd(a,m)=1",
+      "formulas": [
+        "ax≡1 (mod m) ⇔ gcd(a,m)=1"
+      ],
+      "assumptions": "整数a，模数m>1",
+      "conclusion": "a有模m乘法逆元当且仅当gcd(a,m)=1",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：模数不互素时不存在乘法逆元",
+      "prereq": [
+        "C26D0022"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "模数不互素时不存在乘法逆元",
+        "跨领域应用": "RSA与中国剩余定理",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "2ea46ee7f5cbac3c6f591cb6622f5dc10400c03c088cf75b1ad8f53715c2aa87"
+    },
+    {
+      "id": "C26D0026",
+      "level": 3,
+      "cn": "线性子空间的闭合判据",
+      "en": "Vector subspace closure test",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "V为域F上向量空间，非空W⊆V；W对加法及标量乘法封闭则W为子空间",
+      "formulas": [
+        "u,v∈W⇒u+v∈W; c∈F⇒cu∈W"
+      ],
+      "assumptions": "V为域F上向量空间，非空W⊆V",
+      "conclusion": "W对加法及标量乘法封闭则W为子空间",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：只有加法封闭不足以成为实向量子空间",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://hefferon.net/linearalgebra/",
+      "source_locator": "Jim Hefferon, Linear Algebra / relevant chapter topics（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "只有加法封闭不足以成为实向量子空间",
+        "跨领域应用": "线性方程解空间",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "d8718816243f6a937d4c885c25eae9bfb328653f7f6251f3158dae0f1181e0d8"
+    },
+    {
+      "id": "C26D0027",
+      "level": 3,
+      "cn": "不同特征值特征向量独立",
+      "en": "Distinct eigenvalues imply independent eigenvectors",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "同一线性算子在域F有相互不同的特征值；对应非零特征向量线性无关",
+      "formulas": [
+        "λᵢ≠λⱼ ⇒ {vᵢ}线性无关"
+      ],
+      "assumptions": "同一线性算子在域F有相互不同的特征值",
+      "conclusion": "对应非零特征向量线性无关",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：同一特征值下任意选的特征向量未必独立",
+      "prereq": [
+        "C26D0026"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://hefferon.net/linearalgebra/",
+      "source_locator": "Jim Hefferon, Linear Algebra / relevant chapter topics（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "同一特征值下任意选的特征向量未必独立",
+        "跨领域应用": "矩阵对角化",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "a88a04b81494bee07ced8f927c6ed8fce5eb9ec001b37fe0cdc63d323ed9cc24"
+    },
+    {
+      "id": "C26D0028",
+      "level": 3,
+      "cn": "秩与零空间维数互补",
+      "en": "Rank nullity dimension accounting",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限维向量空间V上线性映射T:V→W；像空间维数加核空间维数等于V的维数",
+      "formulas": [
+        "rank(T)+nullity(T)=dim(V)"
+      ],
+      "assumptions": "有限维向量空间V上线性映射T:V→W",
+      "conclusion": "像空间维数加核空间维数等于V的维数",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：无限维情形不能照搬有限维整数计算",
+      "prereq": [
+        "C26D0026"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://hefferon.net/linearalgebra/",
+      "source_locator": "Jim Hefferon, Linear Algebra / relevant chapter topics（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "无限维情形不能照搬有限维整数计算",
+        "跨领域应用": "逆问题与可观测性",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "445812b0c75cdae8e53a677b4f8e7414a918fc1a69da67318f0e6e1e9f828ef7"
+    },
+    {
+      "id": "C26D0029",
+      "level": 3,
+      "cn": "群同态的核正规性",
+      "en": "Kernel of group homomorphism is normal",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f:G→H为群同态；核ker(f)是G的正规子群",
+      "formulas": [
+        "g ker(f) g⁻¹=ker(f)"
+      ],
+      "assumptions": "f:G→H为群同态",
+      "conclusion": "核ker(f)是G的正规子群",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：任意子群一般并不正规",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "任意子群一般并不正规",
+        "跨领域应用": "商群与对称性",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "13164ae1f6c5ed5911cfe91ae3bf55e76d938cc1bbf2465ce030b225b331596d"
+    },
+    {
+      "id": "C26D0030",
+      "level": 3,
+      "cn": "有限群元素阶整除群阶",
+      "en": "Order of element divides finite group size",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "branch_cn": "算术、代数与线性结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "G有限群，g∈G；g的阶整除群的阶",
+      "formulas": [
+        "ord(g)∣card(G)"
+      ],
+      "assumptions": "G有限群，g∈G",
+      "conclusion": "g的阶整除群的阶",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：无限群中不适用有限群的整除推论",
+      "prereq": [
+        "C26D0018"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://judsonbooks.org/abstract-algebra-theory-and-applications/",
+      "source_locator": "Judson, Abstract Algebra: Theory and Applications; Hefferon, Linear Algebra / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "无限群中不适用有限群的整除推论",
+        "跨领域应用": "群作用与周期系统",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "f9f5c1b3aa48450cd03e9ca5f3378134dd28cd87bf1666ddc2056529cddaff78"
+    },
+    {
+      "id": "C26D0031",
+      "level": 1,
+      "cn": "绝对值三角不等式的方向",
+      "en": "Triangle bound for absolute values",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "实数x,y；两数和的绝对值不超过绝对值之和",
+      "formulas": [
+        "abs(x+y)≤abs(x)+abs(y)"
+      ],
+      "assumptions": "实数x,y",
+      "conclusion": "两数和的绝对值不超过绝对值之和",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：一般不能反向取不等号",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "一般不能反向取不等号",
+        "跨领域应用": "误差传播",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "561f97cc013ce611b6bac43423fd5509148ac8c61db88f3791b9944bc286d476"
+    },
+    {
+      "id": "C26D0032",
+      "level": 1,
+      "cn": "平均数落在样本极值之间",
+      "en": "Mean bounded by observations",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "有限非空实数列x₁,…,xₙ；算术平均不小于最小值且不大于最大值",
+      "formulas": [
+        "min(xᵢ)≤mean(xᵢ)≤max(xᵢ)"
+      ],
+      "assumptions": "有限非空实数列x₁,…,xₙ",
+      "conclusion": "算术平均不小于最小值且不大于最大值",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：带负权平均可能超出端点",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "带负权平均可能超出端点",
+        "跨领域应用": "统计与凸组合",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "e48f08006d85037c651eba84c746e66c8f2ecbef6eeade004607f11b89e713e4"
+    },
+    {
+      "id": "C26D0033",
+      "level": 1,
+      "cn": "分式约分的零因子边界",
+      "en": "Fraction cancellation requires nonzero factor",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "实数a,b,c且b≠0,c≠0；ac除以bc等于a除以b",
+      "formulas": [
+        "ac/(bc)=a/b"
+      ],
+      "assumptions": "实数a,b,c且b≠0,c≠0",
+      "conclusion": "ac除以bc等于a除以b",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：若c=0则约分之前的分母为0",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "若c=0则约分之前的分母为0",
+        "跨领域应用": "代数化简与数值稳定",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "6bef9f166905f4294b8f30e43c5514a8883366df52e87f0e464137dded07bde4"
+    },
+    {
+      "id": "C26D0034",
+      "level": 1,
+      "cn": "单调函数的端点比较",
+      "en": "Endpoint comparison for monotone functions",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "f在区间[a,b]单调不减；区间内任意f(x)被f(a)、f(b)夹住",
+      "formulas": [
+        "f(a)≤f(x)≤f(b)"
+      ],
+      "assumptions": "f在区间[a,b]单调不减",
+      "conclusion": "区间内任意f(x)被f(a)、f(b)夹住",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：函数不是单调时不能用端点给上下界",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "函数不是单调时不能用端点给上下界",
+        "跨领域应用": "全局优化",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "bb68d7caa7ec7d387e5b8099dffac1ec6b01fe451e43bf27444b649ea48a41db"
+    },
+    {
+      "id": "C26D0035",
+      "level": 1,
+      "cn": "非负数平方比较",
+      "en": "Squaring preserves order for nonnegative values",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "0≤a≤b的实数；平方后仍有a²≤b²",
+      "formulas": [
+        "0≤a≤b ⇒ a²≤b²"
+      ],
+      "assumptions": "0≤a≤b的实数",
+      "conclusion": "平方后仍有a²≤b²",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：负数上平方不保持原顺序",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "负数上平方不保持原顺序",
+        "跨领域应用": "能量与平方误差",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "a472b491c6cd20dc44717bceb0f7ded89111821bda5c10620e468b7233a67be0"
+    },
+    {
+      "id": "C26D0036",
+      "level": 2,
+      "cn": "连续函数四则运算的定义域",
+      "en": "Arithmetic closure of continuous functions",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f,g在x₀连续；和、积连续；当g(x₀)≠0时商也连续",
+      "formulas": [
+        "cont(f/g,x₀) if g(x₀)≠0"
+      ],
+      "assumptions": "f,g在x₀连续",
+      "conclusion": "和、积连续；当g(x₀)≠0时商也连续",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：分母趋于0时商的连续性不保证",
+      "prereq": [
+        "C26D0033"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "分母趋于0时商的连续性不保证",
+        "跨领域应用": "信号处理与微分",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "cb2ff4ac38bc2655e0a4610a902e667265484e7a61b904ae86d3ae477bf2866c"
+    },
+    {
+      "id": "C26D0037",
+      "level": 2,
+      "cn": "导数乘积法则的可导性要求",
+      "en": "Product rule hypotheses",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f与g均在同一点可导；乘积在该点可导且导数为f'g+fg'",
+      "formulas": [
+        "(fg)'=f'g+fg'"
+      ],
+      "assumptions": "f与g均在同一点可导",
+      "conclusion": "乘积在该点可导且导数为f'g+fg'",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：只有连续性不保证乘积可导",
+      "prereq": [
+        "C26D0036"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "只有连续性不保证乘积可导",
+        "跨领域应用": "敏感度与控制",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "c2050721efcf50e805d753e8ed2c88f23ecb0b013869b700ca4abcb3a9d3944d"
+    },
+    {
+      "id": "C26D0038",
+      "level": 2,
+      "cn": "局部极值必要条件非充分",
+      "en": "Stationary point is only necessary in the interior",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f在开区间内点a可导且有局部极值；f'(a)=0，但导数为0不保证极值",
+      "formulas": [
+        "local extremum ⇒ f'(a)=0"
+      ],
+      "assumptions": "f在开区间内点a可导且有局部极值",
+      "conclusion": "f'(a)=0，但导数为0不保证极值",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：f(x)=x³在0导数为0却无局部极值",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "f(x)=x³在0导数为0却无局部极值",
+        "跨领域应用": "非凸优化",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "98f1cd5a796d0ed4548da84b182e8ae9b4bc3cbedb199e618c6fcc10251d4811"
+    },
+    {
+      "id": "C26D0039",
+      "level": 2,
+      "cn": "连续性与可导性的单向关系",
+      "en": "Differentiability implies continuity",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f在实数点a可导；f在a连续",
+      "formulas": [
+        "differentiable(a)⇒continuous(a)"
+      ],
+      "assumptions": "f在实数点a可导",
+      "conclusion": "f在a连续",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：abs(x)在0连续而不可导",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "abs(x)在0连续而不可导",
+        "跨领域应用": "梯度法前置审查",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "6ac41a1502c19fe819a78dddc99e64844677fc5eb5098d309c5b8e2688d8722f"
+    },
+    {
+      "id": "C26D0040",
+      "level": 2,
+      "cn": "正项级数部分和单调性",
+      "en": "Monotone partial sums of nonnegative series",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "各项aₙ≥0；部分和单调不减；收敛还需要上界",
+      "formulas": [
+        "Sₙ₊₁≥Sₙ"
+      ],
+      "assumptions": "各项aₙ≥0",
+      "conclusion": "部分和单调不减；收敛还需要上界",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：调和级数正项但发散",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "调和级数正项但发散",
+        "跨领域应用": "概率归一化与无穷和",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "bc4b0421ad6bbf61fe37bc2b5e65a27df332f451b07ce961ed1f2863cd652c0b"
+    },
+    {
+      "id": "C26D0041",
+      "level": 3,
+      "cn": "一致收敛保持连续性",
+      "en": "Uniform limit preserves continuity",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "同一定义域上连续函数序列一致收敛至f；极限函数f连续",
+      "formulas": [
+        "uniform fₙ→f and cont(fₙ) ⇒ cont(f)"
+      ],
+      "assumptions": "同一定义域上连续函数序列一致收敛至f",
+      "conclusion": "极限函数f连续",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：逐点收敛不足，例如xⁿ在[0,1]的极限不连续",
+      "prereq": [
+        "C26D0036"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "逐点收敛不足，例如xⁿ在[0,1]的极限不连续",
+        "跨领域应用": "学习模型逼近与泛函分析",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "510d41a023e63bc0099f385b7a5b90c4ddcad6fe6f8ea96b13a01f7e8a9c4bf1"
+    },
+    {
+      "id": "C26D0042",
+      "level": 3,
+      "cn": "可积函数绝对积分上界",
+      "en": "Integral triangle inequality",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f在[a,b]上黎曼可积；积分的绝对值不超过绝对值函数的积分",
+      "formulas": [
+        "abs(∫f)≤∫abs(f)"
+      ],
+      "assumptions": "f在[a,b]上黎曼可积",
+      "conclusion": "积分的绝对值不超过绝对值函数的积分",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：需确保绝对值积分在同一区间定义",
+      "prereq": [
+        "C26D0031"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "需确保绝对值积分在同一区间定义",
+        "跨领域应用": "误差界与能量",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "6463fb6ed9e5a82787847d3fa8eb22b50ed0237e8576423ce7c8a6ffec532697"
+    },
+    {
+      "id": "C26D0043",
+      "level": 3,
+      "cn": "利普希茨连续推出一致连续",
+      "en": "Lipschitz continuity implies uniform continuity",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "度量空间上f满足统一常数L的Lipschitz条件；f在该空间一致连续",
+      "formulas": [
+        "d(f(x),f(y))≤L d(x,y)"
+      ],
+      "assumptions": "度量空间上f满足统一常数L的Lipschitz条件",
+      "conclusion": "f在该空间一致连续",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：仅逐点连续不保证全局Lipschitz",
+      "prereq": [
+        "C26D0031"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "仅逐点连续不保证全局Lipschitz",
+        "跨领域应用": "数值误差稳定性",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "a03e37b8dd9392b1535a166a10c919ca3e5e9cb8034c1f865a7fc391eaf8a5c3"
+    },
+    {
+      "id": "C26D0044",
+      "level": 3,
+      "cn": "函数列逐点极限与积分不可交换",
+      "en": "Pointwise convergence not enough for integral interchange",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "函数列仅逐点收敛；不能一般推出积分极限等于极限函数积分",
+      "formulas": [
+        "lim∫fₙ ≠ ∫lim fₙ 可发生"
+      ],
+      "assumptions": "函数列仅逐点收敛",
+      "conclusion": "不能一般推出积分极限等于极限函数积分",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：fₙ=n于(0,1/n)内其余为0，在[0,1]点态趋0但积分为1",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "fₙ=n于(0,1/n)内其余为0，在[0,1]点态趋0但积分为1",
+        "跨领域应用": "概率密度与测度论",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "6a5c8dd15ba188b9536fa9454ed375e24c0db6d3b14f466859747fa765ca4ea1"
+    },
+    {
+      "id": "C26D0045",
+      "level": 3,
+      "cn": "绝对收敛级数允许重排",
+      "en": "Rearrangement invariance under absolute convergence",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "branch_cn": "函数、极限与级数",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "实数或复数级数绝对收敛；任意重排具有相同总和",
+      "formulas": [
+        "Σabs(aₙ)<∞ ⇒ 重排不改和"
+      ],
+      "assumptions": "实数或复数级数绝对收敛",
+      "conclusion": "任意重排具有相同总和",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：条件收敛级数可能因重排改变和",
+      "prereq": [
+        "C26D0040"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis I & II / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "条件收敛级数可能因重排改变和",
+        "跨领域应用": "数值求和与傅里叶分析",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "7f7dd99972b6a99c5907e3c85196be57db86804a02e9ebcd4b01a16217e829f8"
+    },
+    {
+      "id": "C26D0046",
+      "level": 1,
+      "cn": "三角形边长不等式必要条件",
+      "en": "Strict triangle inequalities for nondegenerate triangles",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "a,b,c为非退化欧氏三角形的边长；任意边严格小于其余两边之和且大于差的绝对值",
+      "formulas": [
+        "abs(a−b)<c<a+b"
+      ],
+      "assumptions": "a,b,c为非退化欧氏三角形的边长",
+      "conclusion": "任意边严格小于其余两边之和且大于差的绝对值",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：等号对应退化情形不是通常的三角形",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "等号对应退化情形不是通常的三角形",
+        "跨领域应用": "距离空间公理",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "06572a93e172f7129c21a65e82b7c699ed33956f0e3a7704597a350aee74e2ef"
+    },
+    {
+      "id": "C26D0047",
+      "level": 1,
+      "cn": "两点间线段最短的欧氏条件",
+      "en": "Straight segment minimizes Euclidean path",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "欧氏空间任意两点A,B；任何连接两点的可求长曲线长度不小于线段长度",
+      "formulas": [
+        "length(path)≥dist(A,B)"
+      ],
+      "assumptions": "欧氏空间任意两点A,B",
+      "conclusion": "任何连接两点的可求长曲线长度不小于线段长度",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：障碍物限制通路时直线可能不可行",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "障碍物限制通路时直线可能不可行",
+        "跨领域应用": "路径规划",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "99a9173c8b9b22cdb79bfff41c298ba034b777edebc8bfccba5697f7ea1e4df7"
+    },
+    {
+      "id": "C26D0048",
+      "level": 1,
+      "cn": "相似三角形面积倍率平方律",
+      "en": "Area scaling under planar similarity",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "两非退化三角形相似，长度倍率k>0；对应面积之比是k²",
+      "formulas": [
+        "A₂/A₁=k²"
+      ],
+      "assumptions": "两非退化三角形相似，长度倍率k>0",
+      "conclusion": "对应面积之比是k²",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：并非一般仿射变换都遵循同一k²",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "并非一般仿射变换都遵循同一k²",
+        "跨领域应用": "尺度分析",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "f99fd5732c1b2e9ca5a44af853d8ed3a075b971957f06b1581a816e28d407a96"
+    },
+    {
+      "id": "C26D0049",
+      "level": 1,
+      "cn": "正多边形周长的边数乘积",
+      "en": "Perimeter of regular polygon",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "正n边形边长a≥0；周长为na",
+      "formulas": [
+        "P=na"
+      ],
+      "assumptions": "正n边形边长a≥0",
+      "conclusion": "周长为na",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：不等边多边形不可统一乘一条边长",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "不等边多边形不可统一乘一条边长",
+        "跨领域应用": "离散几何",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "62f058aebf5f3f13332df72a221ae557f5f950d8bdeeb74d712426eb4b6893d8"
+    },
+    {
+      "id": "C26D0050",
+      "level": 1,
+      "cn": "欧氏距离非负及分离性",
+      "en": "Separation by Euclidean distance",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "欧氏空间点x,y；距离非负，且距离为0当且仅当点相同",
+      "formulas": [
+        "d(x,y)=0 ⇔ x=y"
+      ],
+      "assumptions": "欧氏空间点x,y",
+      "conclusion": "距离非负，且距离为0当且仅当点相同",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：伪度量允许不同点距离为0",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "伪度量允许不同点距离为0",
+        "跨领域应用": "聚类与数据质量",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "594ff8c48d5d08705a1d2d9af46d1dc0a22646e3ea57c557d8d9da25ea1989ec"
+    },
+    {
+      "id": "C26D0051",
+      "level": 2,
+      "cn": "两向量夹角的柯西界",
+      "en": "Angle bound from Cauchy-Schwarz",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "非零欧氏向量u,v；内积绝对值不超过长度乘积，所以夹角余弦位于[-1,1]",
+      "formulas": [
+        "abs(u·v)≤norm(u)norm(v)"
+      ],
+      "assumptions": "非零欧氏向量u,v",
+      "conclusion": "内积绝对值不超过长度乘积，所以夹角余弦位于[-1,1]",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：零向量没有通常定义的夹角",
+      "prereq": [
+        "C26D0050"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "零向量没有通常定义的夹角",
+        "跨领域应用": "最小二乘与相似度",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "8895a9862989e3210225a3e4edbd1819b1bb812ee18f5ec1bd925d885f7ff735"
+    },
+    {
+      "id": "C26D0052",
+      "level": 2,
+      "cn": "正交投影消除残差内积",
+      "en": "Residual orthogonality of vector projection",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "v非零且p是u在v方向的正交投影；u−p与v正交",
+      "formulas": [
+        "(u−proj_v u)·v=0"
+      ],
+      "assumptions": "v非零且p是u在v方向的正交投影",
+      "conclusion": "u−p与v正交",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：斜投影不保证残差正交",
+      "prereq": [
+        "C26D0051"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "斜投影不保证残差正交",
+        "跨领域应用": "回归与估计",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "bdcf3f4683291da6523dbb04ff14e1d44deb3ccfcd1e484770c73e3743ac96e8"
+    },
+    {
+      "id": "C26D0053",
+      "level": 2,
+      "cn": "二维旋转保持欧氏长度",
+      "en": "Planar rotation preserves distance",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "R为二维标准旋转矩阵；任意向量长度及两点距离不变",
+      "formulas": [
+        "RᵀR=I"
+      ],
+      "assumptions": "R为二维标准旋转矩阵",
+      "conclusion": "任意向量长度及两点距离不变",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：一般线性变换不必保距",
+      "prereq": [
+        "C26D0050"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "一般线性变换不必保距",
+        "跨领域应用": "计算机图形学",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "350fb0e32fa9e1a56d04e832a80f3e2c029df689e1358f1bd2df59e2bd19e11f"
+    },
+    {
+      "id": "C26D0054",
+      "level": 2,
+      "cn": "圆与直线相交的判别距离",
+      "en": "Line-circle intersection by center distance",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "半径r>0的圆及其所在平面的一条直线；圆心到直线距离d小于、等于、大于r分别有2、1、0个交点",
+      "formulas": [
+        "d<r:2; d=r:1; d>r:0"
+      ],
+      "assumptions": "半径r>0的圆及其所在平面的一条直线",
+      "conclusion": "圆心到直线距离d小于、等于、大于r分别有2、1、0个交点",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：必须用到直线而非线段，否则交点数可能减少",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "必须用到直线而非线段，否则交点数可能减少",
+        "跨领域应用": "计算几何",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "a451ddda530b8aa9c3b9ff5fed72fe75fd04d8febefd96a58353c28f0b0705f5"
+    },
+    {
+      "id": "C26D0055",
+      "level": 2,
+      "cn": "有向面积的二维行列式",
+      "en": "Signed area from planar determinant",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "平面点A,B,C；三角形有向面积为相应叉积行列式的一半",
+      "formulas": [
+        "2S=det(B−A,C−A)"
+      ],
+      "assumptions": "平面点A,B,C",
+      "conclusion": "三角形有向面积为相应叉积行列式的一半",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：共线时面积为0；交换两点改变符号",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://openstax.org/books/precalculus-2e/pages/preface",
+      "source_locator": "OpenStax, Precalculus 2e; mathlib4 topology library / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "共线时面积为0；交换两点改变符号",
+        "跨领域应用": "姿态判断与机器人导航",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "76caf0ee2e94d037139121c7d0cbe5857a01c1d16d0bb7745ef5e11a457aff61"
+    },
+    {
+      "id": "C26D0056",
+      "level": 3,
+      "cn": "度量诱导开球的定义",
+      "en": "Open ball in metric space",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "集合X上有满足度量公理的d，r>0；以x为中心的开球由所有到x距离小于r的点组成",
+      "formulas": [
+        "B(x,r)={y:d(x,y)<r}"
+      ],
+      "assumptions": "集合X上有满足度量公理的d，r>0",
+      "conclusion": "以x为中心的开球由所有到x距离小于r的点组成",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：不同度量可产生不同拓扑",
+      "prereq": [
+        "C26D0050"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis II / metric spaces and topology（主题参考，非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "不同度量可产生不同拓扑",
+        "跨领域应用": "分析与最近邻搜索",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "0387ad159e884e1575ac99cf852308a6225c4ff064d64e2067391a216888c22b"
+    },
+    {
+      "id": "C26D0057",
+      "level": 3,
+      "cn": "闭集包含所有自身极限点",
+      "en": "Closed subsets and sequential limits in metric spaces",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "F为度量空间的子集；F闭当且仅当F内任意收敛点列的极限仍在F",
+      "formulas": [
+        "xₙ∈F, xₙ→x ⇒ x∈F"
+      ],
+      "assumptions": "F为度量空间的子集",
+      "conclusion": "F闭当且仅当F内任意收敛点列的极限仍在F",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：非第一可数一般拓扑空间不能仅凭序列刻画闭性",
+      "prereq": [
+        "C26D0056"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis II / metric spaces and topology（主题参考，非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "非第一可数一般拓扑空间不能仅凭序列刻画闭性",
+        "跨领域应用": "约束优化",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "c53477df4e368d23e31b06dd97a81a35127cd9b7a65de6c6b6bbdb0b188aac2d"
+    },
+    {
+      "id": "C26D0058",
+      "level": 3,
+      "cn": "连续映射的闭集逆像",
+      "en": "Continuous preimage of closed set",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f:X→Y连续，C⊆Y闭；f⁻¹(C)是X中的闭集",
+      "formulas": [
+        "C closed ⇒ f⁻¹(C) closed"
+      ],
+      "assumptions": "f:X→Y连续，C⊆Y闭",
+      "conclusion": "f⁻¹(C)是X中的闭集",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：连续映射的闭集正像不一定闭",
+      "prereq": [
+        "C26D0057"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis II / metric spaces and topology（主题参考，非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "连续映射的闭集正像不一定闭",
+        "跨领域应用": "可行域拓扑",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "f952805ddd9ab93653abd142c60094916245d5d4a2368f7c414073b4e2190c16"
+    },
+    {
+      "id": "C26D0059",
+      "level": 3,
+      "cn": "紧度量空间序列有收敛子列",
+      "en": "Compact metric implies sequential compactness",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "X为紧度量空间；X中每个点列都有收敛子列且极限在X内",
+      "formulas": [
+        "compact metric ⇒ subsequence converges"
+      ],
+      "assumptions": "X为紧度量空间",
+      "conclusion": "X中每个点列都有收敛子列且极限在X内",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：一般拓扑紧性不必等价于序列紧性",
+      "prereq": [
+        "C26D0056"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis II / metric spaces and topology（主题参考，非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "一般拓扑紧性不必等价于序列紧性",
+        "跨领域应用": "优化极值与收敛分析",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "c54b6c07fdda86dca4ba7f3906f2e0b23164e7057de88656c18b5c74e9c4ba9e"
+    },
+    {
+      "id": "C26D0060",
+      "level": 3,
+      "cn": "同胚保持开集结构",
+      "en": "Homeomorphism preserves topology",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "branch_cn": "欧氏几何与空间结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f:X→Y为同胚；X中开集的像在Y中仍开，连续性双向成立",
+      "formulas": [
+        "homeomorphism ⇒ open-map and inverse continuous"
+      ],
+      "assumptions": "f:X→Y为同胚",
+      "conclusion": "X中开集的像在Y中仍开，连续性双向成立",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：连续双射若逆不连续则不一定是同胚",
+      "prereq": [
+        "C26D0058"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.jirka.org/ra/",
+      "source_locator": "Jiří Lebl, Basic Analysis II / metric spaces and topology（主题参考，非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "连续双射若逆不连续则不一定是同胚",
+        "跨领域应用": "数据流形与几何变形",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "b3da9bbdaad24716ba6b131a2cf5d78916f7f78fe71ff2e4d09cf845286cfd9d"
+    },
+    {
+      "id": "C26D0061",
+      "level": 1,
+      "cn": "互斥事件概率相加",
+      "en": "Addition for mutually exclusive events",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "A与B是互斥事件；并集概率等于各概率之和",
+      "formulas": [
+        "P(A∪B)=P(A)+P(B) if A∩B=∅"
+      ],
+      "assumptions": "A与B是互斥事件",
+      "conclusion": "并集概率等于各概率之和",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：不互斥时需扣除交集概率",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "不互斥时需扣除交集概率",
+        "跨领域应用": "可靠性故障统计",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "88b6e34c4169e24b8651cd4a7759136e5db75beb7de2d45596418a2dad4b9048"
+    },
+    {
+      "id": "C26D0062",
+      "level": 1,
+      "cn": "概率补事件的完全分解",
+      "en": "Complement probability identity",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "事件A及其补事件Aᶜ构成全集划分；补事件概率等于1减去原事件概率",
+      "formulas": [
+        "P(Aᶜ)=1−P(A)"
+      ],
+      "assumptions": "事件A及其补事件Aᶜ构成全集划分",
+      "conclusion": "补事件概率等于1减去原事件概率",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：所谓补集必须相对同一个样本空间",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "所谓补集必须相对同一个样本空间",
+        "跨领域应用": "异常检测",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "86023c8884e6fe93ab0a90392a47a6f540ec8ae5d44282db1535ef91a7dafb56"
+    },
+    {
+      "id": "C26D0063",
+      "level": 1,
+      "cn": "离散事件频率不是公理概率",
+      "en": "Empirical frequency versus probability",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "重复试验n次且观察到k次事件；经验频率为k/n，是概率的估计量而非总等于P(A)",
+      "formulas": [
+        "fₙ=k/n"
+      ],
+      "assumptions": "重复试验n次且观察到k次事件",
+      "conclusion": "经验频率为k/n，是概率的估计量而非总等于P(A)",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：有限样本频率会随机偏离真实概率",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "有限样本频率会随机偏离真实概率",
+        "跨领域应用": "实验设计",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "beb7348ac14aebade8756a09bea908ad892d2061fdae5917849982a98ecfb417"
+    },
+    {
+      "id": "C26D0064",
+      "level": 1,
+      "cn": "中位数的排序位置定义",
+      "en": "Median from sorted observations",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "实数样本排序为x₍₁₎≤…≤x₍ₙ₎；奇数样本取中间项，偶数取两个中间项均值",
+      "formulas": [
+        "median= x₍(n+1)/2₎ (n奇)"
+      ],
+      "assumptions": "实数样本排序为x₍₁₎≤…≤x₍ₙ₎",
+      "conclusion": "奇数样本取中间项，偶数取两个中间项均值",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：中位数不等于样本均值且对异常值更稳健",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "中位数不等于样本均值且对异常值更稳健",
+        "跨领域应用": "鲁棒统计",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "c23f0b51a3dc4ef0f72df43c5881da151ab51d6554190f96a31e467f61d3e070"
+    },
+    {
+      "id": "C26D0065",
+      "level": 1,
+      "cn": "样本均值常数平移",
+      "en": "Mean equivariance under shift",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "样本x₁,…,xₙ，所有值加常数c；新样本均值比原均值大c",
+      "formulas": [
+        "mean(xᵢ+c)=mean(xᵢ)+c"
+      ],
+      "assumptions": "样本x₁,…,xₙ，所有值加常数c",
+      "conclusion": "新样本均值比原均值大c",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：方差则不随整体平移改变",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "方差则不随整体平移改变",
+        "跨领域应用": "传感器偏置校准",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "d90f2257385f7ce2d97a3762fd4b6aa0e233fff32ed2e5bec4b8e093eef020d2"
+    },
+    {
+      "id": "C26D0066",
+      "level": 2,
+      "cn": "条件概率分母必须正",
+      "en": "Conditional probability positive denominator",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "事件A,B且P(B)>0；P(A在B条件下)等于交集概率除以P(B)",
+      "formulas": [
+        "P(A given B)=P(A∩B)/P(B)"
+      ],
+      "assumptions": "事件A,B且P(B)>0",
+      "conclusion": "P(A在B条件下)等于交集概率除以P(B)",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：P(B)=0时不能直接用该比值定义",
+      "prereq": [
+        "C26D0061"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "P(B)=0时不能直接用该比值定义",
+        "跨领域应用": "贝叶斯诊断",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "359dd4fdb371c875bb5dcad33f4da0911a378b1a248c7b0dc2ebe0389def3b4f"
+    },
+    {
+      "id": "C26D0067",
+      "level": 2,
+      "cn": "独立事件交集乘法",
+      "en": "Intersection rule under independence",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "A和B相互独立；交集概率为概率乘积",
+      "formulas": [
+        "P(A∩B)=P(A)P(B)"
+      ],
+      "assumptions": "A和B相互独立",
+      "conclusion": "交集概率为概率乘积",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：互斥且正概率的事件通常不独立",
+      "prereq": [
+        "C26D0061"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "互斥且正概率的事件通常不独立",
+        "跨领域应用": "并联系统失效概率",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "97a32d2db383a707868264d43095368ae06ec414ea39d0cbdad50e172fda7af4"
+    },
+    {
+      "id": "C26D0068",
+      "level": 2,
+      "cn": "总体方差缩放平方律",
+      "en": "Variance scales quadratically",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "随机变量X有有限二阶矩，a,b为常数；Var(aX+b)=a²Var(X)",
+      "formulas": [
+        "Var(aX+b)=a²Var(X)"
+      ],
+      "assumptions": "随机变量X有有限二阶矩，a,b为常数",
+      "conclusion": "Var(aX+b)=a²Var(X)",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：整体平移只改变均值不改变方差",
+      "prereq": [
+        "C26D0065"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "整体平移只改变均值不改变方差",
+        "跨领域应用": "测量单位换算",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "e593b0326e462f5db0836bb6987533339d56cf95f56192e503c554da5aa938b4"
+    },
+    {
+      "id": "C26D0069",
+      "level": 2,
+      "cn": "期望线性无需独立",
+      "en": "Linearity of expectation without independence",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "X,Y可积；和的期望等于期望之和，无需X,Y独立",
+      "formulas": [
+        "E(X+Y)=E(X)+E(Y)"
+      ],
+      "assumptions": "X,Y可积",
+      "conclusion": "和的期望等于期望之和，无需X,Y独立",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：方差加法一般需要协方差项",
+      "prereq": [
+        "C26D0065"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "方差加法一般需要协方差项",
+        "跨领域应用": "风险汇总",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "70eb355e10f5921abf5ddb75f5756c50e5bb7618cd13fe53356af0498e0689cd"
+    },
+    {
+      "id": "C26D0070",
+      "level": 2,
+      "cn": "样本均值标准误的独立条件",
+      "en": "Standard error of independent sample mean",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "n个独立同分布样本，方差σ²有限；样本均值方差为σ²/n",
+      "formulas": [
+        "Var(X̄)=σ²/n"
+      ],
+      "assumptions": "n个独立同分布样本，方差σ²有限",
+      "conclusion": "样本均值方差为σ²/n",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：相关观测会改变此公式",
+      "prereq": [
+        "C26D0065"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "相关观测会改变此公式",
+        "跨领域应用": "实验精度",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "002dd10fc1df8f7b3e910b6f6aced8c89448dc56e6090748a71d58b04e47d7d8"
+    },
+    {
+      "id": "C26D0071",
+      "level": 3,
+      "cn": "条件独立不等于无条件独立",
+      "en": "Conditional versus marginal independence",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "事件或变量在给定Z后条件独立；不能一般推出边际独立，也不能从边际独立推出条件独立",
+      "formulas": [
+        "X ⫫ Y given Z ⇏ X ⫫ Y"
+      ],
+      "assumptions": "事件或变量在给定Z后条件独立",
+      "conclusion": "不能一般推出边际独立，也不能从边际独立推出条件独立",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：混杂变量可能改变依赖结构",
+      "prereq": [
+        "C26D0066",
+        "C26D0067"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "混杂变量可能改变依赖结构",
+        "跨领域应用": "因果推断与诊断",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "9fb034c260b13eff21adb2e7ffaafcc104a3d95d0d9c8eda944b2e31f080463a"
+    },
+    {
+      "id": "C26D0072",
+      "level": 3,
+      "cn": "协方差为零不推出独立",
+      "en": "Zero covariance need not mean independence",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "X,Y二阶矩有限；独立可推零协方差，反向一般不成立",
+      "formulas": [
+        "independent⇒Cov(X,Y)=0"
+      ],
+      "assumptions": "X,Y二阶矩有限",
+      "conclusion": "独立可推零协方差，反向一般不成立",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：X对称且Y=X²时可零协方差但不独立",
+      "prereq": [
+        "C26D0067"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "X对称且Y=X²时可零协方差但不独立",
+        "跨领域应用": "非线性模型与特征筛选",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "1e78b1f084d5301e2ecec28d10971db5e312f636b2a50dc89ff3cf1be5a9d0f0"
+    },
+    {
+      "id": "C26D0073",
+      "level": 3,
+      "cn": "马尔可夫尾概率界的非负要求",
+      "en": "Markov tail bound requires nonnegativity",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "X≥0且E(X)<∞，阈值a>0；P(X≥a)≤E(X)/a",
+      "formulas": [
+        "P(X≥a)≤E(X)/a"
+      ],
+      "assumptions": "X≥0且E(X)<∞，阈值a>0",
+      "conclusion": "P(X≥a)≤E(X)/a",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：X有负值时不适用此形式",
+      "prereq": [
+        "C26D0069"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "X有负值时不适用此形式",
+        "跨领域应用": "风险上界与容量规划",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "eb254dc9562abf7aec9fb4c31c0656127b468405820ac2b8345aea14b83f87d4"
+    },
+    {
+      "id": "C26D0074",
+      "level": 3,
+      "cn": "伯努利样本均值弱大数律",
+      "en": "Weak law for Bernoulli sample means",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "独立同分布Bernoulli(p)样本；样本平均以概率收敛到p",
+      "formulas": [
+        "P(abs(X̄−p)>ε)→0"
+      ],
+      "assumptions": "独立同分布Bernoulli(p)样本",
+      "conclusion": "样本平均以概率收敛到p",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：有限n不会保证经验概率精确等于p",
+      "prereq": [
+        "C26D0070"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "有限n不会保证经验概率精确等于p",
+        "跨领域应用": "蒙特卡洛采样",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "5dc750cd7bae6e52fa701caeaadcbdef85bdb9d677bda0f6095c390bca536815"
+    },
+    {
+      "id": "C26D0075",
+      "level": 3,
+      "cn": "大数律并不蕴含单次结果确定",
+      "en": "Law of large numbers concerns averages",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "branch_cn": "概率事件与统计推断",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "满足相应弱大数律条件的样本序列；样本均值集中不意味着下一次单个观测可确定",
+      "formulas": [
+        "X̄ₙ→p in probability"
+      ],
+      "assumptions": "满足相应弱大数律条件的样本序列",
+      "conclusion": "样本均值集中不意味着下一次单个观测可确定",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：不能用大数律断言下一次伯努利试验必成功",
+      "prereq": [
+        "C26D0074"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://www.probabilitycourse.com/",
+      "source_locator": "Pishro-Nik, Introduction to Probability, Statistics, and Random Processes / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "不能用大数律断言下一次伯努利试验必成功",
+        "跨领域应用": "抽样预测边界",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "e0763e5abb6d2fc1343984028fbc10cc8e946c82efb101fa38a3ebb688560864"
+    },
+    {
+      "id": "C26D0076",
+      "level": 1,
+      "cn": "重复选择与不重复选择的乘法区别",
+      "en": "Repeated choices versus injective selections",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "从n个不同对象连续有序选2次；允许重复有n²种，不允许重复有n(n−1)种",
+      "formulas": [
+        "repeat:n²; no-repeat:n(n−1)"
+      ],
+      "assumptions": "从n个不同对象连续有序选2次",
+      "conclusion": "允许重复有n²种，不允许重复有n(n−1)种",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：无序选择还需除去顺序影响",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "无序选择还需除去顺序影响",
+        "跨领域应用": "密码空间计算",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "0ba2c3a614b96de8fb0a2127c5489b55359a5651282e50c5ed8d092b7b59273e"
+    },
+    {
+      "id": "C26D0077",
+      "level": 1,
+      "cn": "简单图度数求和的偶性",
+      "en": "Handshake parity of degrees",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "有限无向简单图；所有顶点度数之和是边数的两倍",
+      "formulas": [
+        "Σdeg(v)=2m"
+      ],
+      "assumptions": "有限无向简单图",
+      "conclusion": "所有顶点度数之和是边数的两倍",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：有向图应分别统计入度和出度",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "有向图应分别统计入度和出度",
+        "跨领域应用": "网络检查",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "02c4009e2e8507ac9a123a3b1e2fc50c46f9f4bac26e6896f45b4403b57ce258"
+    },
+    {
+      "id": "C26D0078",
+      "level": 1,
+      "cn": "补集计数的全集边界",
+      "en": "Counting complements in a finite universe",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "U为有限全集，A⊆U；补集大小为全集大小减去A的大小",
+      "formulas": [
+        "card(U∖A)=card(U)−card(A)"
+      ],
+      "assumptions": "U为有限全集，A⊆U",
+      "conclusion": "补集大小为全集大小减去A的大小",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：不固定有限全集就无法用这条有限计数式",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "不固定有限全集就无法用这条有限计数式",
+        "跨领域应用": "概率事件分母",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "18648fdf02f95953e5fa4b6967d971258c14beca02b9fe4b40e6500b7df8a04a"
+    },
+    {
+      "id": "C26D0079",
+      "level": 1,
+      "cn": "乘法计数的阶段依赖限制",
+      "en": "Counting sequential decisions with variable branching",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "第一步有m种选择且每种第一步结果均允许恰好n种第二步；有序两步结果共有mn种",
+      "formulas": [
+        "N=mn"
+      ],
+      "assumptions": "第一步有m种选择且每种第一步结果均允许恰好n种第二步",
+      "conclusion": "有序两步结果共有mn种",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：第二步选项数依赖第一步时须逐项求和",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "第二步选项数依赖第一步时须逐项求和",
+        "跨领域应用": "搜索树复杂度",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "0695061f890adc58ff80c0c22250a3373dbcf0a9e186f979ad42002140503d32"
+    },
+    {
+      "id": "C26D0080",
+      "level": 1,
+      "cn": "无向图孤立点的度数",
+      "en": "Isolated vertex degree criterion",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "有限无向简单图；一个顶点孤立当且仅当度数为0",
+      "formulas": [
+        "isolated(v)⇔deg(v)=0"
+      ],
+      "assumptions": "有限无向简单图",
+      "conclusion": "一个顶点孤立当且仅当度数为0",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：度数为0不能推出整个图没有边",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "度数为0不能推出整个图没有边",
+        "跨领域应用": "图算法预处理",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "ef87a3deef09aadd5ee9e7af5ce1a3791918c7b7742e5d31617145af10b81efd"
+    },
+    {
+      "id": "C26D0081",
+      "level": 2,
+      "cn": "有限集合双射计数相等",
+      "en": "Bijection-based finite counting",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限集合A、B之间有双射；两集合元素数量相等",
+      "formulas": [
+        "A≈B ⇒ card(A)=card(B)"
+      ],
+      "assumptions": "有限集合A、B之间有双射",
+      "conclusion": "两集合元素数量相等",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：仅满射不必双射，可能有不同数量",
+      "prereq": [
+        "C26D0078"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "仅满射不必双射，可能有不同数量",
+        "跨领域应用": "组合恒等式证明",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "0c997f3ac70e2631710116dd0e8cd3aae56c8ede505325b6ec2922aa7e23f95e"
+    },
+    {
+      "id": "C26D0082",
+      "level": 2,
+      "cn": "二项系数递推的边界",
+      "en": "Pascal identity with index range",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "整数n≥1，1≤k≤n−1；选k个元素可以按是否包含固定元素拆分",
+      "formulas": [
+        "C(n,k)=C(n−1,k)+C(n−1,k−1)"
+      ],
+      "assumptions": "整数n≥1，1≤k≤n−1",
+      "conclusion": "选k个元素可以按是否包含固定元素拆分",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：边界k=0或n需要单独约定",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "边界k=0或n需要单独约定",
+        "跨领域应用": "动态规划",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "d755e200953d9f20df415c77c028658ad5e4495af578d0e68382b91165408274"
+    },
+    {
+      "id": "C26D0083",
+      "level": 2,
+      "cn": "树的边数与连通性约束",
+      "en": "Tree edge-count invariant",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限非空无向图是树；树连通且无圈，边数为顶点数减一",
+      "formulas": [
+        "m=n−1"
+      ],
+      "assumptions": "有限非空无向图是树",
+      "conclusion": "树连通且无圈，边数为顶点数减一",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：仅有m=n−1不一定是树，仍需连通",
+      "prereq": [
+        "C26D0080"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "仅有m=n−1不一定是树，仍需连通",
+        "跨领域应用": "生成树与网络设计",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "172ed8fca44d615e7a2958acf3cbba76c71a12f50598a437f6c458719f87f0e9"
+    },
+    {
+      "id": "C26D0084",
+      "level": 2,
+      "cn": "无权图广度搜索最短路",
+      "en": "BFS hop-optimality on unweighted graphs",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限无权图，从顶点s运行BFS；首次发现的距离等于从s的最少边数",
+      "formulas": [
+        "dist_BFS(s,v)=min hops"
+      ],
+      "assumptions": "有限无权图，从顶点s运行BFS",
+      "conclusion": "首次发现的距离等于从s的最少边数",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：带任意非单位权重时应使用其他算法",
+      "prereq": [
+        "C26D0080"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "带任意非单位权重时应使用其他算法",
+        "跨领域应用": "任务网络与路径规划",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "db4c970cf4a953f628e73453aff846b9926d3d1c9a91795d0e20b2806ccd50c1"
+    },
+    {
+      "id": "C26D0085",
+      "level": 2,
+      "cn": "有向无环图存在拓扑序",
+      "en": "Topological order exists for DAGs",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限有向图没有有向环；可排列顶点使每条u→v都满足u先于v",
+      "formulas": [
+        "DAG⇒topological ordering"
+      ],
+      "assumptions": "有限有向图没有有向环",
+      "conclusion": "可排列顶点使每条u→v都满足u先于v",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：有向环会阻止完整拓扑排序",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "有向环会阻止完整拓扑排序",
+        "跨领域应用": "证明依赖调度",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "51893f9c249dc0be3999a84b6e76d2029e0349a3f31cd1a633941962a42b216a"
+    },
+    {
+      "id": "C26D0086",
+      "level": 3,
+      "cn": "二分图无奇环判据",
+      "en": "Bipartiteness and odd cycles",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限无向图；图可二分染色当且仅当没有奇数长度的圈",
+      "formulas": [
+        "bipartite⇔no odd cycle"
+      ],
+      "assumptions": "有限无向图",
+      "conclusion": "图可二分染色当且仅当没有奇数长度的圈",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：偶环允许二分，不意味着图必须无环",
+      "prereq": [
+        "C26D0080"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "偶环允许二分，不意味着图必须无环",
+        "跨领域应用": "调度与约束满足",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "c950760ffbc51e2e65716d3a949a97863193beac02448dd426f25bcf985364c2"
+    },
+    {
+      "id": "C26D0087",
+      "level": 3,
+      "cn": "图着色数的团下界",
+      "en": "Clique lower bound for chromatic number",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限无向简单图G；着色数至少为最大团大小",
+      "formulas": [
+        "χ(G)≥ω(G)"
+      ],
+      "assumptions": "有限无向简单图G",
+      "conclusion": "着色数至少为最大团大小",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：有些图严格大于最大团大小",
+      "prereq": [
+        "C26D0086"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "有些图严格大于最大团大小",
+        "跨领域应用": "资源冲突分配",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "c5b9c4b35ed93439e0a2ee4bbe2411b2fc570634e2e89a2094c8129c1ed3e94e"
+    },
+    {
+      "id": "C26D0088",
+      "level": 3,
+      "cn": "欧拉回路的连通度数条件",
+      "en": "Euler circuit criterion for undirected graphs",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限无向图，忽略孤立点后非空边部分连通；存在闭合经过每条边恰好一次的行走当且仅当全部顶点度数为偶数",
+      "formulas": [
+        "Euler circuit ⇔ all deg(v) even"
+      ],
+      "assumptions": "有限无向图，忽略孤立点后非空边部分连通",
+      "conclusion": "存在闭合经过每条边恰好一次的行走当且仅当全部顶点度数为偶数",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：欧拉回路与访问每个顶点一次的哈密顿回路不同",
+      "prereq": [
+        "C26D0077"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "欧拉回路与访问每个顶点一次的哈密顿回路不同",
+        "跨领域应用": "线路巡检",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "11c19030b330e209fe77efc7d756fc496048333b1d74e068ffcecd6d0eee6ecd"
+    },
+    {
+      "id": "C26D0089",
+      "level": 3,
+      "cn": "容斥原理三集合精确项",
+      "en": "Three-set inclusion-exclusion",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限集合A,B,C；三者并集计数要减去两两交集再加三者交集",
+      "formulas": [
+        "card(A∪B∪C)=Σcard(A)−Σcard(pair intersections)+card(A∩B∩C)"
+      ],
+      "assumptions": "有限集合A,B,C",
+      "conclusion": "三者并集计数要减去两两交集再加三者交集",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：漏掉三重交集会低估并集",
+      "prereq": [
+        "C26D0078"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "漏掉三重交集会低估并集",
+        "跨领域应用": "概率联合事件",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "9bea4aa8c03439d9b59cc107ed11bdd2030fb8aa51a96d049fb6a2fbd58a1ed5"
+    },
+    {
+      "id": "C26D0090",
+      "level": 3,
+      "cn": "霍尔条件与二分图饱和匹配",
+      "en": "Hall neighborhood condition for left-side matching",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Math",
+      "branch_cn": "组合与图结构",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有限二分图(U,V,E)；能匹配覆盖U当且仅当任意S⊆U有card(N(S))≥card(S)",
+      "formulas": [
+        "∀S⊆U card(N(S))≥card(S)"
+      ],
+      "assumptions": "有限二分图(U,V,E)",
+      "conclusion": "能匹配覆盖U当且仅当任意S⊆U有card(N(S))≥card(S)",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：只检查单个顶点邻居数不足以保证匹配",
+      "prereq": [
+        "C26D0086"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction, 4th ed. / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "只检查单个顶点邻居数不足以保证匹配",
+        "跨领域应用": "资源分配与矩阵结构",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "289e237c9ec12f7d62a9e2acc851ae33e9faf7ac26c54228c4f9b3b29ef1e996"
+    },
+    {
+      "id": "C26D0091",
+      "level": 1,
+      "cn": "穷举求极值的有限性前提",
+      "en": "Finite exhaustive search correctness",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "可行集合有限且每个候选代价可计算；枚举全部可行候选并取最小必得全局最优",
+      "formulas": [
+        "argmin over finite feasible set"
+      ],
+      "assumptions": "可行集合有限且每个候选代价可计算",
+      "conclusion": "枚举全部可行候选并取最小必得全局最优",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：连续无限可行域无法直接穷尽枚举",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction / finite algorithms（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "连续无限可行域无法直接穷尽枚举",
+        "跨领域应用": "设计空间探索",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "2296dec55c8d752385a39a0bbf0e60873ebab82e63e9a7cb4c0d46e7e8383497"
+    },
+    {
+      "id": "C26D0092",
+      "level": 1,
+      "cn": "循环计数器单调增长终止性",
+      "en": "Bounded monotone counter ensures termination",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "整数计数器每次至少增加1且有有限上界；循环只能执行有限次",
+      "formulas": [
+        "0≤k≤N, k increases ⇒ terminates"
+      ],
+      "assumptions": "整数计数器每次至少增加1且有有限上界",
+      "conclusion": "循环只能执行有限次",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：计数器不单调或无上界则不保证终止",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction / finite algorithms（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "计数器不单调或无上界则不保证终止",
+        "跨领域应用": "形式化验证",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "2a86cf057fcb08b77a29f4867194b0421e479b1192be309a82eeea7ec4a7c66c"
+    },
+    {
+      "id": "C26D0093",
+      "level": 1,
+      "cn": "离散最小值比较的传递",
+      "en": "Transitive cost comparison",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "a,b,c为同一序关系上的实数成本；a≤b且b≤c则a≤c",
+      "formulas": [
+        "a≤b∧b≤c⇒a≤c"
+      ],
+      "assumptions": "a,b,c为同一序关系上的实数成本",
+      "conclusion": "a≤b且b≤c则a≤c",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：不同单位或不同目标不能直接比较",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction / finite algorithms（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "不同单位或不同目标不能直接比较",
+        "跨领域应用": "最优化与排序",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "d1a46183eca24a79a5f39be7067a4b9c85a3f99720a59db241899c74232358aa"
+    },
+    {
+      "id": "C26D0094",
+      "level": 1,
+      "cn": "线性扫描最小值的不变式",
+      "en": "Minimum invariant in linear scan",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "遍历有限非空实数列，维护此前最小值；每次更新min使变量保持已扫描元素最小值",
+      "formulas": [
+        "mₖ=min(x₁,…,xₖ)"
+      ],
+      "assumptions": "遍历有限非空实数列，维护此前最小值",
+      "conclusion": "每次更新min使变量保持已扫描元素最小值",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：跳过候选会破坏最优性保证",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction / finite algorithms（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "跳过候选会破坏最优性保证",
+        "跨领域应用": "算法正确性",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "ec50dff172ce486767df438f6352c9882bde182ab7c7bb6758cb4bf92822572c"
+    },
+    {
+      "id": "C26D0095",
+      "level": 1,
+      "cn": "二进制位数与容量的对应",
+      "en": "Bits needed for finite identifiers",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "方法",
+      "definition": "要编码n≥1个不同状态且使用定长二进制；最少需要上取整log₂n位",
+      "formulas": [
+        "bits=ceil(log₂ n)"
+      ],
+      "assumptions": "要编码n≥1个不同状态且使用定长二进制",
+      "conclusion": "最少需要上取整log₂n位",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：非定长编码及额外保留码改变需求",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics: An Open Introduction / finite algorithms（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "非定长编码及额外保留码改变需求",
+        "跨领域应用": "信息编码",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "cd1f247faf6d692df34e81588451b2387eab3c742ca62a3f78a0138cbacbd019"
+    },
+    {
+      "id": "C26D0096",
+      "level": 2,
+      "cn": "二分搜索的单调谓词前提",
+      "en": "Binary search on monotone predicates",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "有序有限序列上P(i)由假转真至多一次；可用二分搜索定位首个真位置",
+      "formulas": [
+        "P(i) 先假后真且单调 ⇒ 二分定位首个真"
+      ],
+      "assumptions": "有序有限序列上P(i)由假转真至多一次",
+      "conclusion": "可用二分搜索定位首个真位置",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：谓词来回变化会破坏二分定位",
+      "prereq": [
+        "C26D0094"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics / algorithmic discrete structures（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "谓词来回变化会破坏二分定位",
+        "跨领域应用": "参数校准",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "cda9f31492c8752997510dbf977695163810d9df00f42723e8967e29144cff47"
+    },
+    {
+      "id": "C26D0097",
+      "level": 2,
+      "cn": "对数复杂度与倍增规模",
+      "en": "Logarithmic search scaling",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "每轮将候选集合规模减少到至多一半；定位单个候选的轮数至多约log₂n",
+      "formulas": [
+        "T(n)=O(log n)"
+      ],
+      "assumptions": "每轮将候选集合规模减少到至多一半",
+      "conclusion": "定位单个候选的轮数至多约log₂n",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：分半成本不为常数时总耗时可能不同",
+      "prereq": [
+        "C26D0096"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics / algorithmic discrete structures（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "分半成本不为常数时总耗时可能不同",
+        "跨领域应用": "大规模索引",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "e4c03af8f3d73a9a997dd0a48e33f92e27bf921f6a4ce9a651a480f34d4addb6"
+    },
+    {
+      "id": "C26D0098",
+      "level": 2,
+      "cn": "稳定排序保持相等键顺序",
+      "en": "Stable sorting preserves equal-key order",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "记录按给定键排序且算法稳定；键值相同的记录相对原顺序不改变",
+      "formulas": [
+        "key(a)=key(b) ∧ a≺b ⇒ a≺b after stable sort"
+      ],
+      "assumptions": "记录按给定键排序且算法稳定",
+      "conclusion": "键值相同的记录相对原顺序不改变",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：不稳定排序可能重新排列相等键",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "source_locator": "Oscar Levin, Discrete Mathematics / algorithmic discrete structures（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "不稳定排序可能重新排列相等键",
+        "跨领域应用": "数据库和时间序列",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "d4b274ef7c972c0047494b7c34c0e5f7b44c664e9ea4830c85eb9ca7989b950c"
+    },
+    {
+      "id": "C26D0099",
+      "level": 2,
+      "cn": "向量误差的平方范数非负",
+      "en": "Nonnegative squared residual norm",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "实向量r属于Rⁿ；平方范数为分量平方和且总非负",
+      "formulas": [
+        "norm(r)²=Σrᵢ²≥0"
+      ],
+      "assumptions": "实向量r属于Rⁿ",
+      "conclusion": "平方范数为分量平方和且总非负",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：最小化平方残差不能保证不受离群值影响",
+      "prereq": [
+        "C26D0093"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
+      "source_locator": "Boyd and Vandenberghe, Convex Optimization; MIT Numerical Methods / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "最小化平方残差不能保证不受离群值影响",
+        "跨领域应用": "最小二乘",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "28251bc66c0562d6ceb0e51a498f3e642874791bd13c610e16821921ca2d82e0"
+    },
+    {
+      "id": "C26D0100",
+      "level": 2,
+      "cn": "凸组合保持凸集可行性",
+      "en": "Feasibility of convex combinations",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "C为凸集，x,y∈C，0≤λ≤1；λx+(1−λ)y仍属于C",
+      "formulas": [
+        "λx+(1−λ)y∈C"
+      ],
+      "assumptions": "C为凸集，x,y∈C，0≤λ≤1",
+      "conclusion": "λx+(1−λ)y仍属于C",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：非凸可行域的中间点可能不可行",
+      "prereq": [],
+      "prereq_status": "not_inferred_from_topic_or_name",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
+      "source_locator": "Boyd and Vandenberghe, Convex Optimization; MIT Numerical Methods / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "非凸可行域的中间点可能不可行",
+        "跨领域应用": "可行解混合",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "29e86c88c088765cda8a9bad262eb86718e05b00c2ba9fa10647f062479477d9"
+    },
+    {
+      "id": "C26D0101",
+      "level": 3,
+      "cn": "可微凸函数一阶最优条件",
+      "en": "Gradient-zero global optimum for convex functions",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f在Rn上可微且凸，不受约束；若∇f(x*)=0则x*为全局最小点",
+      "formulas": [
+        "∇f(x*)=0⇒x* global minimum"
+      ],
+      "assumptions": "f在Rn上可微且凸，不受约束",
+      "conclusion": "若∇f(x*)=0则x*为全局最小点",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：非凸可微函数驻点可能是鞍点",
+      "prereq": [
+        "C26D0100"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
+      "source_locator": "Boyd and Vandenberghe, Convex Optimization; MIT Numerical Methods / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "非凸可微函数驻点可能是鞍点",
+        "跨领域应用": "模型训练与最优化",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "743979a67b484b072fb99bc51020d63f248526ec902c48d6ebb9cb7278110915"
+    },
+    {
+      "id": "C26D0102",
+      "level": 3,
+      "cn": "L光滑梯度下降一步上界",
+      "en": "Descent lemma for L-smooth functions",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f梯度L-Lipschitz且L>0；沿负梯度步长1/L保证函数值不增",
+      "formulas": [
+        "f(x−∇f/L)≤f(x)−norm(∇f)²/(2L)"
+      ],
+      "assumptions": "f梯度L-Lipschitz且L>0",
+      "conclusion": "沿负梯度步长1/L保证函数值不增",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：缺少全局L光滑条件时该步长无保证",
+      "prereq": [
+        "C26D0043"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
+      "source_locator": "Boyd and Vandenberghe, Convex Optimization; MIT Numerical Methods / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "缺少全局L光滑条件时该步长无保证",
+        "跨领域应用": "自动控制与机器学习",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "0c88ed84688b20a36f7c531c0413008816affc7bd426d31057694c2d3e6894f4"
+    },
+    {
+      "id": "C26D0103",
+      "level": 3,
+      "cn": "凸约束集投影的唯一性",
+      "en": "Euclidean projection to closed convex sets",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "C⊆Rn非空闭凸，x∈Rn；x到C距离最小的投影点存在且唯一",
+      "formulas": [
+        "proj_C(x)=argmin_{y∈C}norm(x−y)"
+      ],
+      "assumptions": "C⊆Rn非空闭凸，x∈Rn",
+      "conclusion": "x到C距离最小的投影点存在且唯一",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：非凸闭集最近点可能不唯一",
+      "prereq": [
+        "C26D0100"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
+      "source_locator": "Boyd and Vandenberghe, Convex Optimization; MIT Numerical Methods / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "非凸闭集最近点可能不唯一",
+        "跨领域应用": "约束优化与滤波",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "dd6e9b64801a9f9b1885031bb46d18e6ea9f43cda7c4200c32401eb1ff056d25"
+    },
+    {
+      "id": "C26D0104",
+      "level": 3,
+      "cn": "迭代矩阵谱半径局部收敛",
+      "en": "Linear iteration spectral radius test",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "固定矩阵A的线性迭代eₖ₊₁=Aeₖ；任意初始误差趋零当且仅当谱半径ρ(A)<1",
+      "formulas": [
+        "ρ(A)<1 ⇔ Aᵏ→0"
+      ],
+      "assumptions": "固定矩阵A的线性迭代eₖ₊₁=Aeₖ",
+      "conclusion": "任意初始误差趋零当且仅当谱半径ρ(A)<1",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：只看矩阵各元素绝对值小于1不足以判断",
+      "prereq": [
+        "C26D0027"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://math.mit.edu/~stevenj/18.335/",
+      "source_locator": "MIT 18.335, Numerical Methods / iterative matrix methods（非逐条定位）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "只看矩阵各元素绝对值小于1不足以判断",
+        "跨领域应用": "稳定性与数值分析",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "5646ace07fec41a8bb16b073b67cbe2ad20deea83213ce93113543534c49351e"
+    },
+    {
+      "id": "C26D0105",
+      "level": 3,
+      "cn": "强凸目标最优点的唯一性",
+      "en": "Strong convexity ensures unique minimizer",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "branch_cn": "算法复杂度与数值优化",
+      "topic_cn": "条件·结论·失效边界",
+      "kind": "定理",
+      "definition": "f在凸可行域上强凸且最小点存在；若有最小点则必唯一",
+      "formulas": [
+        "strong convex + existence ⇒ unique minimizer"
+      ],
+      "assumptions": "f在凸可行域上强凸且最小点存在",
+      "conclusion": "若有最小点则必唯一",
+      "tags": [
+        "重要",
+        "课程支撑",
+        "条件边界"
+      ],
+      "example": "边界：一般凸函数可有多个全局最优点",
+      "prereq": [
+        "C26D0101"
+      ],
+      "prereq_status": "curricular_topic_link_not_formal_logic_premise",
+      "verification_status": "editorial_mathematical_statement_not_formal_proof",
+      "curation_status": "cross_domain_manual_seed_20261014",
+      "source_url": "https://web.stanford.edu/~boyd/cvxbook/",
+      "source_locator": "Boyd and Vandenberghe, Convex Optimization; MIT Numerical Methods / 相关主题（非逐条页码核验）",
+      "reference_relation": "topic_reference_not_statement_certification",
+      "importance_reason": "连接基础定理、条件审查及跨领域推导；重要性为编辑评价",
+      "level_status": "education_stage_rubric_20261014",
+      "original_metadata": {
+        "边界/反例": "一般凸函数可有多个全局最优点",
+        "跨领域应用": "辨识与参数估计",
+        "来源性质": "改写的常见数学知识；未确认最早发现者",
+        "历史原作者": "待逐条核对"
+      },
+      "statement_symbol_references": [],
+      "aliases": [],
+      "statement_sha256": "8708e3e4825285ce269a18c0e91c24ed80db9cd76b8d9c92c2590ca20804c854"
+    }
+  ],
+  "overlays": [],
+  "notes": {
+    "license": "Original mathematical facts rewritten; textbook links are topical references only. Do not claim theorem authorship or Lean validation.",
+    "verification": "editorial_not_formal",
+    "cross_domain": "application annotations are not proof prerequisites"
+  }
+}
