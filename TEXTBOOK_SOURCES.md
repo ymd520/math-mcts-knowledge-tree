@@ -7,7 +7,7 @@
 - 优先从作者、出版社、大学课程或官方开放教材页确认书名、版本、目录和许可。
 - 卡片使用原创的数学表述，只登记章节/节号作为复核入口；不复制教材段落、例题、习题或解答。
 - 许可不明或出版社受版权保护的来源仅作书目参考，不复制内容。开放许可也须遵守署名、相同方式共享、非商业等条款。
-- **OpenStax 特别限制：**其教材页面明确表示，未经 OpenStax 事先书面许可，不得将教材内容输入大型语言模型或生成式 AI。因此本项目可以登记其书目信息，但未经书面许可，不以其教材正文生成或改写卡片。
+- **OpenStax 特别限制：**[Prealgebra 2e](https://openstax.org/books/prealgebra-2e/pages/preface)、[College Algebra 2e](https://openstax.org/books/college-algebra-2e/pages/preface) 与 [Calculus Volume 1](https://openstax.org/books/calculus-volume-1/pages/preface) 的官方前言均明确要求：将教材内容输入大型语言模型或用于生成式 AI 前须取得 OpenStax 事先书面许可。因此本项目可以登记书目信息，但未经书面许可，不以这些教材正文生成或改写卡片。
 - 每张卡的来源位置写入 `source_locator`；目前来源关系仍标为主题参考，不等于逐条定理出处核实。
 - 本目录列出适合后续审核的来源，不代表这些书的全部内容均已加入知识树。
 
@@ -15,9 +15,9 @@
 
 | 领域 | 阶段 | 教材/课程 | 来源与范围 | 访问与使用状态 |
 |---|---|---|---|---|
-| 数学基础 | 入门证明 | Richard Hammack, *Book of Proof* | [作者主页](https://www.people.vcu.edu/~rhammack/BookOfProof/)；逻辑、集合、证明方法 | 开放教材；使用前按作者页许可署名 |
+| 数学基础 | 入门证明 | Richard Hammack, *Book of Proof* | [作者主页](https://www.people.vcu.edu/~rhammack/BookOfProof/)；逻辑、集合、证明方法 | 作者提供免费电子书；具体版本复用许可待核验，仅作书目参考 |
 | 数学基础 | 大学进阶 | Daniel J. Velleman, *How to Prove It* | [Cambridge University Press](https://www.cambridge.org/highereducation/books/how-to-prove-it/6D2965D625C6836CD4A785A2C843B3DA)；逻辑、量词、集合与证明 | 出版社版权教材；仅作书目参考 |
-| 数学基础 | 专业逻辑 | *forall x: Calgary Remix* | [Open Logic Project](https://forallx.openlogicproject.org/)；命题逻辑、谓词逻辑与证明 | 开放课程教材；CC BY 4.0；核验各章节来源标记后再复用 |
+| 数学基础 | 专业逻辑 | *forall x: Calgary Remix* | [Open Logic Project](https://forallx.openlogicproject.org/)；命题逻辑、谓词逻辑与证明 | 开放课程教材；开放课程教材；各来源组件许可可能不同，按该版本标记核验 |
 | 代数 | 入门 | OpenStax, *College Algebra 2e* | [官方书页](https://openstax.org/details/books/college-algebra-2e)；代数函数、方程与多项式 | 开放许可但含明确 AI 摄取限制；未经书面许可不从正文派生卡片 |
 | 代数 | 大学基础/进阶 | Thomas W. Judson, *Abstract Algebra: Theory and Applications* | [作者书页](https://judsonbooks.org/abstract-algebra-theory-and-applications/)；群、环、域、同态 | 作者说明采用 GNU Free Documentation License；遵守该许可的署名和共享条款 |
 | 代数 | 进阶 | Dummit & Foote, *Abstract Algebra* | [Wiley](https://www.wiley.com/en-us/Abstract+Algebra%2C+3rd+Edition-p-9780471433347)；群、环、域与表示 | 出版社版权教材；仅作书目参考 |
