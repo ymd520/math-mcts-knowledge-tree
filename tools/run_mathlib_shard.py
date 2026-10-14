@@ -39,10 +39,11 @@ def _one_batch_script(batch: dict) -> str:
         "#eval liftTermElabM do","  let env ← getEnv"]
     for record in batch["records"]:
         name=record["name"]
-        if not VALID_NAME.fullmatch(name):
+        if len(name)>1024 or not VALID_NAME.fullmatch(name):
             raise ValueError("Unsupported Lean declaration name")
         lines.extend([
-            f"  let requested := ``{name}",
+            '  let requested := (' + json.dumps(name,ensure_ascii=False) + '.splitOn ".").foldl', 
+            '    (fun nm part => Lean.Name.str nm part) Lean.Name.anonymous',
             "  match env.find? requested with",
             "  | none =>",
             "      let missing := Json.mkObj [",
