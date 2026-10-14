@@ -74,13 +74,19 @@ def plan_learning_path(tree: KnowledgeTree, target: str,
     do not truncate required prerequisites or affect this exact plan.
     """
     concept = tree.find(target)
-    already = {k for k in known if k in tree.by_id}
-    if concept.id in already:
-        # The target is already mastered. Keep the correct target identity for
-        # downstream renderers without adding unrelated mastered concepts.
+    known_ids = list(dict.fromkeys(k for k in known if k in tree.by_id))
+    if concept.id in known_ids:
+        # Already mastered: preserve the requested target for rendering.
         return [concept]
-    return [tree.get(cid) for cid in
-            [*tree.prereq_closure(concept.id), concept.id] if cid not in already]
+    # Retain the public API contract: user-supplied mastered cards come first.
+    # The deterministic suffix is exactly the target's prerequisite closure.
+    visited = set(known_ids)
+    sequence = list(known_ids)
+    for cid in [*tree.prereq_closure(concept.id), concept.id]:
+        if cid not in visited:
+            sequence.append(cid)
+            visited.add(cid)
+    return [tree.get(cid) for cid in sequence]
 
 
 def export_path_markdown(path: list[Concept]) -> str:
