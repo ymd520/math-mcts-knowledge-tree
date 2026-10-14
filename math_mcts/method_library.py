@@ -201,7 +201,7 @@ def recommend(goal: str, *, obstacles: str = "", limit: int = 10,
     if not 1 <= limit <= 100:
         raise ValueError("limit must be in [1,100]")
     text = (goal + " " + obstacles).casefold()
-    words = set(re.findall(r"[a-z_]+|[\\u4e00-\\u9fff]+", text))
+    words = set(re.findall(r"[a-z_]+|[\u4e00-\u9fff]+", text))
     results = []
     for op in all_operators():
         if category and op.category != category:
