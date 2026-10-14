@@ -1,9 +1,8 @@
 """math-mcts: 把全领域数学知识组织成 MCTS 搜索树.
 
 知识树: 领域 -> 分支 -> 主题 -> 概念, 数据见 data/knowledge.json.
-MCTS 引擎对这棵树做两种搜索:
-  - plan_learning_path: 规划"从基础到目标"的最优学习路径
-  - search_concepts:     关键词检索最相关的概念
+学习路径使用严格先修拓扑闭包，静态检索使用精确排序；
+MCTS 用于有界知识配对和人工审核规则下的推导调度。
 """
 from .knowledge import Concept, KnowledgeTree
 from .mcts import mcts, Problem
@@ -16,6 +15,8 @@ from .reasoning import (Atom, Rule, RuleBook, Certificate, ProofGraph,
                         load_reasoning_problem, load_certificate)
 from .layered import (LayerConfig, LayerCertificate, derive_layers, replay_layers,
                       load_layered_problem, load_layer_certificate)
+from .semantic import catalog_statement_sha256, load_catalog_reasoning_problem
+from .audit import audit_catalog
 
 __version__ = "1.11.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
@@ -25,6 +26,7 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "Atom", "Rule", "RuleBook", "Certificate", "ProofGraph",
            "DiscoveryQueue", "derive", "verify_certificate", "load_reasoning_problem",
            "load_certificate", "LayerConfig", "LayerCertificate", "derive_layers",
-           "replay_layers", "load_layered_problem", "load_layer_certificate"]
+           "replay_layers", "load_layered_problem", "load_layer_certificate",
+           "catalog_statement_sha256", "load_catalog_reasoning_problem", "audit_catalog"]
 
 
