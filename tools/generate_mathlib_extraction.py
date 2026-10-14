@@ -45,8 +45,12 @@ def generate(db_path: Path, script_path: Path, *, limit: int=20,
     if not requests:
         raise ValueError("No admissible source declarations for the sample")
 
+    # Import only source modules actually requested. Importing the umbrella
+    # Mathlib module would require a full multi-thousand-file cache, whereas
+    # targeted imports admit a significantly smaller dependency closure.
+    modules=sorted(set(module for _,_,module,_ in requests))
     pieces=[
-        "import Mathlib",
+        *(f"import {module}" for module in modules),
         "open Lean Elab Command Meta",
         "",
         "-- Auto-generated request list. This is NOT a proof.",
@@ -88,6 +92,7 @@ def generate(db_path: Path, script_path: Path, *, limit: int=20,
     script_path.parent.mkdir(parents=True,exist_ok=True)
     script_path.write_text("\n".join(pieces)+"\n",encoding="utf-8")
     return {"selected":len(requests),"ignored_unsupported_names":unsupported,
+            "selected_source_modules":modules,
             "pinned_mathlib_commit":SOURCE_COMMIT,
             "warning":"Only actual successful Lean environment output can be imported"}
 

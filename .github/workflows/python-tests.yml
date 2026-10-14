@@ -58,6 +58,8 @@ jobs:
           PY
       - name: Lean source-reference graph and adversarial tests
         run: python tests/test_lean_reference_index.py
+      - name: Mathlib source extractor request tests
+        run: python tests/test_mathlib_generator.py
       - name: Source module holdout and adaptive search tests
         run: python tests/test_lean_adaptive.py
       - name: Source-locked editorial promotion gate tests
@@ -98,9 +100,25 @@ jobs:
         run: python tests/test_source_registry.py
       - name: Classified knowledge-layer regression tests
         run: python tests/test_knowledge_bank.py
+      - name: Test pinned source attribution and originality boundaries
+        run: python tests/test_attribution.py
       - name: Classify all 100k imported mathematics records
         if: matrix.python-version == '3.12'
         run: python tools/classify_knowledge.py --db math_index.sqlite --report knowledge_classification.json
+      - name: Create citation index for all imported and curated cards
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/build_attribution.py --db math_index.sqlite --report source_attribution_report.json
+          python - <<'PY'
+          import json, sqlite3
+          result=json.load(open("source_attribution_report.json"))
+          with sqlite3.connect("math_index.sqlite") as db:
+              n=db.execute("SELECT COUNT(*) FROM documents").fetchone()[0]
+          assert result["total_attributed_records"]==n
+          assert result["by_source_kind"]["upstream_theorem"]==99984
+          assert result["mathlib_license"]=="Apache-2.0"
+          print("Full per-knowledge source citation coverage passed:",result)
+          PY
       - name: Verify category coverage and independent rating
         if: matrix.python-version == '3.12'
         run: |
@@ -163,6 +181,7 @@ jobs:
             source_registration_report.json
             lean_module_holdout.json
             knowledge_classification.json
+            source_attribution_report.json
             quality_triage_report.json
             quality_review_top1000.jsonl.gz
             quality_anomaly_top1000.jsonl.gz

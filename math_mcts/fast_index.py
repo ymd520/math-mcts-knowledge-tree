@@ -17,6 +17,7 @@ import re
 import sqlite3
 
 from .knowledge import IMPORTED_DIR, KnowledgeTree
+from .attribution import source_credit
 
 _WORD = re.compile(r"[a-z0-9_]+|[\u4e00-\u9fff]+", re.I)
 
@@ -171,7 +172,9 @@ def fast_search(db_path: str | Path, query: str, *, top_k: int = 10,
         exact = row.get("cn", "").casefold() == key or row.get("en", "").casefold() == key
         return (not exact, key not in name, item[3], row["id"])
     candidates.sort(key=ordering)
-    return [{**json.loads(blob), "index_tier": src, "indexed_level": level,
+    return [{**json.loads(blob),
+             "attribution": source_credit(json.loads(blob), tier=src),
+             "index_tier": src, "indexed_level": level,
              "lexical_score": score} for blob, src, level, score in candidates[:top_k]]
 
 
