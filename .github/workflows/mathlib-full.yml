@@ -95,7 +95,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: mathlib-full-worker-${{ matrix.worker }}
-          path: full_results/worker-${{ matrix.worker < 10 && format('0{0}', matrix.worker) || matrix.worker }}
+          path: full_results
           run-id: ${{ inputs.resume_run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Checkout EXACT original mathlib and Lean version
@@ -143,19 +143,6 @@ jobs:
           merge-multiple: false
       - name: Audit all 99984 original declarations WITHOUT faking completion
         run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          import shutil
-          src=Path('full_results')
-          for worker in src.glob('mathlib-full-worker-*'):
-              for file in worker.rglob('*'):
-                  if file.is_file():
-                      to=src/file.name
-                      if to.exists():
-                          raise ValueError('Duplicate artifact receipt filename: '+file.name)
-                      shutil.copyfile(file,to)
-          PY
           python tools/audit_full_lean.py --plan mathlib_full_plan.json --receipts full_results --report full_lean_coverage.json
       - uses: actions/upload-artifact@v4
         if: always()
