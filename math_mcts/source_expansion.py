@@ -7,7 +7,7 @@ silently delete a different source collection. Standard library only.
 """
 from __future__ import annotations
 
-from collections import Counter
+from contextlib import closing
 import gzip
 import hashlib
 import json
@@ -23,6 +23,8 @@ KINDS = frozenset({"theorem", "lemma", "definition", "method", "conjecture", "co
 FIELDS = ("source", "source_ref", "source_url", "license", "locator",
           "name", "kind", "statement")
 SCHEMA = "1"
+OPTIONAL = ("domain", "branch", "assumptions", "conclusion", "formula",
+            "proof_hint", "counterexample_hint")
 _MAX_LINE = 100_000
 _MAX_STATEMENT = 12_000
 _SPACE = re.compile(r"\\s+")
@@ -48,6 +50,14 @@ def _validate(record: object) -> dict:
         if len(value) > (_MAX_STATEMENT if field == "statement" else 1000):
             raise ValueError("Field too large: " + field)
         row[field] = value.strip()
+    for field in OPTIONAL:
+        if field in record:
+            value = record[field]
+            if not isinstance(value, str) or len(value) > _MAX_STATEMENT:
+                raise ValueError("Invalid optional note: " + field)
+            row[field] = value.strip()
+    if row["source_ref"].casefold() in {"main", "master", "head", "latest"}:
+        raise ValueError("Use a pinned source_ref rather than a moving branch")
     if row["kind"] not in KINDS:
         raise ValueError("Unsupported mathematical record kind")
     u = urlparse(row["source_url"])
@@ -137,7 +147,8 @@ def import_jsonl(db_path: str | Path, input_path: str | Path, *, max_records: in
                 rid = db.execute("SELECT rowid FROM external_candidates WHERE id=?",
                                  (row["id"],)).fetchone()[0]
                 searchable = " ".join([row["source"], row["name"], row["kind"],
-                                       row["statement"], row["locator"]])
+                                       row["statement"], row["locator"],
+                                       *(row.get(f, "") for f in OPTIONAL)])
                 db.execute("INSERT INTO external_terms(rowid,terms) VALUES(?,?)",
                            (rid, " ".join(terms_for(searchable))))
                 inserted += 1
@@ -163,7 +174,7 @@ def search(db_path: str | Path, query: str, *, limit: int = 20) -> list[dict]:
     expression = _fts_query(query)
     if not expression:
         return []
-    with _connect(db_path) as db:
+    with closing(_connect(db_path)) as db:
         rows = db.execute("""SELECT e.record,
             (SELECT COUNT(*) FROM external_candidates d
              WHERE d.normalized_statement_sha256=e.normalized_statement_sha256) AS same_text
