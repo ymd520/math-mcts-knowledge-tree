@@ -146,6 +146,76 @@ def test_collide_global():
     assert scores == sorted(scores, reverse=True)
 
 
+
+
+def test_progressive_widening_reaches_below_wide_root():
+    class Wide(Problem):
+        def initial_state(self): return ("root", 0)
+        def actions(self, state):
+            return list(range(100)) if state[0] == "root" else ([0] if state[1] == 1 else [])
+        def step(self, state, action):
+            return ("branch", 1) if state[0] == "root" else ("leaf", 2)
+        def terminal(self, state): return state[0] == "leaf"
+        def reward(self, state): return 1.0 if state[0] == "leaf" else 0.0
+    _, root = mcts(Wide(), iterations=50, seed=7, max_depth=3)
+    assert any(child.children for child in root.children), (
+        "Wide roots must not consume every iteration without descending")
+
+
+def test_initial_state_called_once():
+    class Counting(Problem):
+        def __init__(self): self.calls = 0
+        def initial_state(self):
+            self.calls += 1
+            return self.calls
+        def actions(self, state): return []
+        def step(self, state, action): raise AssertionError("no actions")
+        def terminal(self, state): return True
+        def reward(self, state): return 0.0
+    p = Counting()
+    mcts(p, iterations=2)
+    assert p.calls == 1
+
+
+def test_static_search_exact_even_without_iterations():
+    tree = KnowledgeTree.load()
+    query = "贝叶斯定理"
+    p = ConceptSearchProblem(tree, query)
+    results = search_concepts(tree, query, top_k=4, iterations=0)
+    expected = sorted(tree.concepts, key=lambda c: (-p._leaf_reward[c.id], c.id))[:4]
+    assert [x[0].id for x in results] == [c.id for c in expected]
+
+
+def test_max_extraction_uses_value_not_visits():
+    class MaxProblem(Problem):
+        value_op = "max"
+        def initial_state(self): return "root"
+        def actions(self, state):
+            return ["low", "high"] if state == "root" else []
+        def step(self, state, action): return action
+        def terminal(self, state): return state != "root"
+        def reward(self, state): return {"low": 0.2, "high": 0.9}.get(state, 0.0)
+    seq, root = mcts(MaxProblem(), iterations=100, seed=9)
+    assert seq == ["high"]
+
+
+def test_learning_plan_excludes_unrelated_detours():
+    tree = KnowledgeTree.load()
+    target = tree.find("傅里叶变换")
+    closure = set(tree.prereq_closure(target.id)) | {target.id}
+    path = plan_learning_path(tree, target.id, iterations=1)
+    assert {c.id for c in path} == closure
+    assert len(path) == len(closure)
+    assert path[-1].id == target.id
+
+
+def test_learning_plan_is_seed_and_budget_independent():
+    tree = KnowledgeTree.load()
+    a = plan_learning_path(tree, "傅里叶变换", seed=1, iterations=1)
+    b = plan_learning_path(tree, "傅里叶变换", seed=99, iterations=3000)
+    assert [c.id for c in a] == [c.id for c in b]
+
+
 if __name__ == "__main__":
     test_integrity()
     test_prereq_closure_order()
@@ -161,4 +231,10 @@ if __name__ == "__main__":
     test_collisions_integrity()
     test_collide_around_seed()
     test_collide_global()
+    test_progressive_widening_reaches_below_wide_root()
+    test_initial_state_called_once()
+    test_static_search_exact_even_without_iterations()
+    test_max_extraction_uses_value_not_visits()
+    test_learning_plan_excludes_unrelated_detours()
+    test_learning_plan_is_seed_and_budget_independent()
     print("ALL TESTS PASSED")

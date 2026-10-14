@@ -48,8 +48,13 @@ def cmd_verify_layers(args):
 
 
 def cmd_verify(args):
-    book, assumptions, goal = load_reasoning_problem(
-        json.loads(Path(args.problem).read_text(encoding="utf-8")))
+    payload = json.loads(Path(args.problem).read_text(encoding="utf-8"))
+    if getattr(args, "catalog_mapped", False):
+        from .semantic import load_catalog_reasoning_problem
+        book, assumptions, goal = load_catalog_reasoning_problem(
+            payload, KnowledgeTree.load())
+    else:
+        book, assumptions, goal = load_reasoning_problem(payload)
     report = json.loads(Path(args.report).read_text(encoding="utf-8"))
     try:
         valid = verify_certificate(book, load_certificate(report["certificate"]), assumptions, goal)
@@ -62,7 +67,12 @@ def cmd_verify(args):
 
 def cmd_derive(args):
     data = json.loads(Path(args.problem).read_text(encoding="utf-8"))
-    book, assumptions, goal = load_reasoning_problem(data)
+    if getattr(args, "catalog_mapped", False):
+        from .semantic import load_catalog_reasoning_problem
+        book, assumptions, goal = load_catalog_reasoning_problem(
+            data, KnowledgeTree.load())
+    else:
+        book, assumptions, goal = load_reasoning_problem(data)
     result = derive(book, assumptions, goal, iterations=args.iterations,
                     max_steps=args.max_steps, seed=args.seed,
                     max_rounds=args.max_rounds, max_edges=args.max_edges)
@@ -101,7 +111,7 @@ def cmd_search(args):
     tree = apply_catalog_scope(tree, args)
     results = search_concepts(tree, args.query, top_k=args.top_k,
                               iterations=args.iterations)
-    print(f"检索: {args.query!r} (MCTS 迭代 {args.iterations} 次)")
+    print(f"检索: {args.query!r} (全量精确评分排序; 不进行 MCTS 迭代)")
     for i, (c, visits, mean) in enumerate(results, 1):
         print(f"  {i}. [{c.id}] {c.cn} ({c.en})")
         print(f"     路径: {c.path()} | 访问{visits}次 | 相关度{mean:.2f}")
@@ -137,6 +147,69 @@ def cmd_collide(args):
             print(f"     💡 {note}")
         else:
             print(f"     待探索: {a.definition[:40]}… + {b.definition[:40]}…")
+
+
+def cmd_search_index(args):
+    from .fast_index import fast_search
+    results = fast_search(args.db, args.query, top_k=args.top_k,
+                          tier=args.tier, registered_only=args.registered_only)
+    print(json.dumps([{"id": item["id"], "name": item.get("cn") or item.get("en"),
+                       "module": item.get("module"), "tier": item["index_tier"],
+                       "level": item["indexed_level"],
+                       "lexical_score": item["lexical_score"]}
+                      for item in results], ensure_ascii=False, indent=2))
+
+
+def cmd_semantic_links(args):
+    from .semantic_links import find_composable_rules
+    payload = json.loads(Path(args.problem).read_text(encoding="utf-8"))
+    if args.catalog_mapped:
+        from .semantic import load_catalog_reasoning_problem
+        book, _, _ = load_catalog_reasoning_problem(payload, KnowledgeTree.load())
+    else:
+        book, _, _ = load_reasoning_problem(payload)
+    results = find_composable_rules(book, limit=args.limit,
+                                    goal_predicate=args.predicate)
+    print(json.dumps(results, ensure_ascii=False, indent=2))
+
+
+def cmd_show_registered(args):
+    from .source_registry import get_registered_statement
+    record = get_registered_statement(args.db, args.id)
+    if record is None:
+        raise SystemExit(f"Not registered or not found: {args.id}")
+    print(json.dumps(record, indent=2, ensure_ascii=False))
+
+
+def cmd_knowledge_search(args):
+    from .knowledge_bank import KnowledgeBank
+    bank = KnowledgeBank(args.db)
+    items = bank.search(args.query, domain=args.domain, kind=args.kind,
+                        source_tier=args.tier, top_k=args.top_k)
+    print(json.dumps(items, ensure_ascii=False, indent=2))
+
+
+def cmd_knowledge_browse(args):
+    from .knowledge_bank import KnowledgeBank
+    bank = KnowledgeBank(args.db)
+    items = bank.browse(domain=args.domain, kind=args.kind, source_tier=args.tier,
+                        after_id=args.after_id, limit=args.limit)
+    print(json.dumps(items, ensure_ascii=False, indent=2))
+
+
+def cmd_knowledge_show(args):
+    from .knowledge_bank import KnowledgeBank
+    print(json.dumps(KnowledgeBank(args.db).get(args.id),
+                     ensure_ascii=False, indent=2))
+
+
+def cmd_scale_status(args):
+    from .scale_plan import expansion_status
+    from .fast_index import index_stats
+    imports = int(index_stats(args.db)["metadata"]["unreviewed_candidate_count"]) if args.db else 0
+    print(json.dumps(expansion_status(KnowledgeTree.load(),
+                                      unreviewed_candidates=imports),
+                     ensure_ascii=False, indent=2))
 
 
 def cmd_info(args):
@@ -186,6 +259,7 @@ def main():
     lv.set_defaults(func=cmd_verify_layers)
     dr = sub.add_parser("derive", help="多前提多层推导（相对于显式审核规则）")
     dr.add_argument("problem", help="带对象类型、前提、规则及目标的 JSON")
+    dr.add_argument("--catalog-mapped", action="store_true", help="Require hash-bound reviewed catalog mappings")
     dr.add_argument("--iterations", type=int, default=1000)
     dr.add_argument("--max-steps", type=int, default=50)
     dr.add_argument("--max-rounds", type=int, default=100)
@@ -196,8 +270,9 @@ def main():
     vr = sub.add_parser("verify-derivation", help="重放 JSON 推导证书，检查规则版本和前提")
     vr.add_argument("problem")
     vr.add_argument("report")
+    vr.add_argument("--catalog-mapped", action="store_true", help="Require hash-bound reviewed catalog mappings")
     vr.set_defaults(func=cmd_verify)
-    p = sub.add_parser("path", help="规划到目标概念的学习路径")
+    p = sub.add_parser("path", help="按先修依赖拓扑顺序规划学习路径")
     p.add_argument("target", help="目标概念(中文名/英文名/id)")
     p.add_argument("--iterations", type=int, default=3000)
     p.add_argument("--known", default="",
@@ -218,12 +293,54 @@ def main():
     co.add_argument("--top_k", type=int, default=5)
     co.add_argument("--iterations", type=int, default=3000)
     co.set_defaults(func=cmd_collide)
-    s = sub.add_parser("search", help="关键词检索相关概念")
+    s = sub.add_parser("search", help="全量精确评分检索相关概念")
     add_catalog_scope(s)
     s.add_argument("query", help="检索关键词")
     s.add_argument("--top_k", type=int, default=5)
     s.add_argument("--iterations", type=int, default=2000)
     s.set_defaults(func=cmd_search)
+    si = sub.add_parser("search-index", help="用FTS5索引快速检索大型数学声明库")
+    si.add_argument("query")
+    si.add_argument("--db", type=Path, required=True)
+    si.add_argument("--top-k", type=int, default=10)
+    si.add_argument("--tier", choices=["curated", "unreviewed_import"])
+    si.add_argument("--registered-only", action="store_true",
+                    help="Only source statements passing source-hash registration")
+    si.set_defaults(func=cmd_search_index)
+    sl = sub.add_parser("semantic-links", help="类型化规则连接候选；不等于数学证明")
+    sl.add_argument("problem")
+    sl.add_argument("--catalog-mapped", action="store_true")
+    sl.add_argument("--predicate")
+    sl.add_argument("--limit", type=int, default=100)
+    sl.set_defaults(func=cmd_semantic_links)
+    reg = sub.add_parser("show-registered", help="显示已经通过来源指纹核对的数学声明")
+    reg.add_argument("id", help="Source concept ID")
+    reg.add_argument("--db", type=Path, required=True)
+    reg.set_defaults(func=cmd_show_registered)
+    ks = sub.add_parser("knowledge-search",
+                        help="在分类知识层快速搜索（数学知识与重要性等级分离）")
+    ks.add_argument("query")
+    ks.add_argument("--db", type=Path, required=True)
+    ks.add_argument("--domain", help="中文数学领域")
+    ks.add_argument("--kind")
+    ks.add_argument("--tier", choices=["curated", "unreviewed_import"])
+    ks.add_argument("--top-k", type=int, default=10)
+    ks.set_defaults(func=cmd_knowledge_search)
+    kb = sub.add_parser("knowledge-browse", help="按领域和类型游标浏览已分类知识")
+    kb.add_argument("--db", type=Path, required=True)
+    kb.add_argument("--domain")
+    kb.add_argument("--kind")
+    kb.add_argument("--tier", choices=["curated", "unreviewed_import"])
+    kb.add_argument("--after-id", default="")
+    kb.add_argument("--limit", type=int, default=50)
+    kb.set_defaults(func=cmd_knowledge_browse)
+    kl = sub.add_parser("knowledge-show", help="按 ID 查看分类后的数学知识")
+    kl.add_argument("id")
+    kl.add_argument("--db", type=Path, required=True)
+    kl.set_defaults(func=cmd_knowledge_show)
+    ps = sub.add_parser("scale-status", help="Level1–4十万重要知识目标与实际缺口")
+    ps.add_argument("--db", type=Path)
+    ps.set_defaults(func=cmd_scale_status)
     i = sub.add_parser("info", help="知识库概览与自检")
     i.set_defaults(func=cmd_info)
     args = ap.parse_args()

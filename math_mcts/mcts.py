@@ -89,52 +89,64 @@ class _Node:
         if self.visits == 0:
             return float("inf")
         return (problem.node_value(self)
-                + c * math.sqrt(math.log(self.parent.visits) / self.visits))
+                + c * math.sqrt(math.log(max(1, self.parent.visits)) / self.visits))
 
 
 def mcts(problem: Problem, iterations: int = 1000,
          exploration: float = 1.414, max_depth: int = 60,
-         seed: int | None = None):
-    """运行 MCTS, 返回 (最优动作序列, 根节点).
+         seed: int | None = None, *, widening_k: float = 2.0,
+         widening_alpha: float = 0.5):
+    """Bounded MCTS with progressive widening for very wide action spaces.
 
-    最优动作序列按"访问次数最多子节点"(robust child)逐层选取,
-    这是 MCTS 实践中的标准做法.
+    The number of expanded children grows as ceil(k * (visits+1)**alpha).
+    This allows the search to descend before all root actions are expanded.
+    "mean" problems use the robust-child extraction policy; "max" problems
+    extract the child with greatest backed-up value. Neither policy is a
+    proof of global optimality; rollout values may be estimates.
     """
+    if not isinstance(iterations, int) or iterations < 0:
+        raise ValueError("iterations must be a nonnegative integer")
+    if max_depth < 0 or exploration < 0 or widening_k <= 0 or not 0 < widening_alpha <= 1:
+        raise ValueError("Invalid search/depth/widening parameters")
     rng = random.Random(seed)
-    root = _Node(problem.initial_state(), actions=problem.actions(
-        problem.initial_state()))
+    initial = problem.initial_state()
+    root = _Node(initial, actions=problem.actions(initial))
 
     for _ in range(iterations):
         node, depth = root, 0
-        # 1) 选择: 沿 UCB1 下行到可扩展/终局节点
-        while node.untried == [] and node.children and \
-                not problem.terminal(node.state) and depth < max_depth:
+        # Select/expand at every depth. A large untried root no longer
+        # prevents deeper exploration under a finite iteration budget.
+        while depth < max_depth and not problem.terminal(node.state):
+            allowance = max(1, math.ceil(widening_k * (node.visits + 1) ** widening_alpha))
+            if node.untried and len(node.children) < allowance:
+                action = node.untried.pop(rng.randrange(len(node.untried)))
+                child_state = problem.step(node.state, action)
+                child = _Node(child_state, parent=node, action=action,
+                              actions=problem.actions(child_state))
+                node.children.append(child)
+                node = child
+                depth += 1
+                break
+            if not node.children:
+                break
             node = max(node.children,
                        key=lambda ch: ch.uct(exploration, problem))
             depth += 1
-        # 2) 扩展: 尝试一个未试过的动作
-        if node.untried and not problem.terminal(node.state) \
-                and depth < max_depth:
-            action = node.untried.pop(rng.randrange(len(node.untried)))
-            child_state = problem.step(node.state, action)
-            child = _Node(child_state, parent=node, action=action,
-                          actions=problem.actions(child_state))
-            node.children.append(child)
-            node = child
-            depth += 1
-        # 3) 模拟: 调用问题的 simulate 钩子(默认随机 rollout)
+        # Simulated value is not necessarily the value of the expanded node.
         value = problem.simulate(node.state, rng, max_depth - depth)
-        # 4) 回传(按问题的 value_op: 均值或最优值)
         while node is not None:
             problem.accumulate(node, value)
             node = node.parent
 
-    # 提取最优动作序列(每层选访问次数最多的子节点)
     actions_seq: list = []
     node = root
-    while node.children:
-        node = max(node.children,
-                   key=lambda ch: (ch.visits, problem.node_value(ch)))
+    while node.children and len(actions_seq) < max_depth:
+        if problem.value_op == "max":
+            node = max(node.children,
+                       key=lambda ch: (problem.node_value(ch), ch.visits))
+        else:
+            node = max(node.children,
+                       key=lambda ch: (ch.visits, problem.node_value(ch)))
         actions_seq.append(node.action)
         if problem.terminal(node.state):
             break

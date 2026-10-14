@@ -1,0 +1,103 @@
+name: Python regression tests
+
+concurrency:
+  group: math-mcts-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile modules
+        run: python -m compileall -q math_mcts tests
+      - name: Core MCTS tests
+        run: python tests/test_mcts.py
+      - name: Reasoning and certificates
+        run: python tests/test_reasoning.py
+      - name: Layered collision tests
+        run: python tests/test_layered.py
+      - name: Catalog integration tests
+        run: python tests/test_catalog.py
+      - name: Imported knowledge adapter tests
+        run: python tests/test_imported.py
+      - name: Semantic mappings and structural audit tests
+        run: python tests/test_semantic_audit.py
+      - name: Large-index and typed-composition unit tests
+        run: python tests/test_scale.py
+      - name: Build a real 100k mathlib candidate index
+        if: matrix.python-version == '3.12'
+        run: python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000 --summary index_status.json
+      - name: Validate and register imported source statements
+        if: matrix.python-version == '3.12'
+        run: python tools/register_source_statements.py --db math_index.sqlite --manifest official_source_registry.jsonl.gz --report source_registration_report.json
+      - name: Source registry integrity tests
+        run: python tests/test_source_registry.py
+      - name: Classified knowledge-layer regression tests
+        run: python tests/test_knowledge_bank.py
+      - name: Classify all 100k imported mathematics records
+        if: matrix.python-version == '3.12'
+        run: python tools/classify_knowledge.py --db math_index.sqlite --report knowledge_classification.json
+      - name: Verify category coverage and independent rating
+        if: matrix.python-version == '3.12'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('knowledge_classification.json').read_text())
+          assert data['total_knowledge_records'] == 111165, data
+          assert data['source_knowledge_imported'] == 100000, data
+          assert data['source_registered_theorems'] == 99984, data
+          assert data['source_standard_cards_pending'] == 16, data
+          assert data['importance_unrated_new_source_records'] == 100000
+          assert data['difficulty_unrated_new_source_records'] == 100000
+          assert sum(data['by_domain'].values()) == 111165
+          from math_mcts.knowledge_bank import KnowledgeBank
+          bank = KnowledgeBank('math_index.sqlite')
+          assert bank.search('matrix', top_k=5), 'Indexed math statements should be searchable'
+          assert bank.browse(domain='代数', limit=5), 'Normalized algebra category must be browsable'
+          scope = bank.mcts_scope('matrix', max_concepts=30)
+          assert 2 <= len(scope.concepts) <= 30
+          assert all(c.id in scope.by_id for c in scope.concepts)
+          print('FULL 100K CLASSIFICATION AND MCTS SCOPE PASSED', data['by_domain'])
+          PY
+      - name: Export 100k source-backed candidate review queue
+        if: matrix.python-version == '3.12'
+        run: python tools/export_review_queue.py --db math_index.sqlite --output source_review_queue.jsonl.gz --summary scale_status.json
+      - name: Benchmark indexed retrieval
+        if: matrix.python-version == '3.12'
+        run: python tools/benchmark_fast_index.py --db math_index.sqlite --output fts_benchmark.json
+      - name: Publish 100k scale data
+        if: matrix.python-version == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-candidates-100k
+          path: |
+            index_status.json
+            official_source_registry.jsonl.gz
+            source_registration_report.json
+            knowledge_classification.json
+            source_review_queue.jsonl.gz
+            scale_status.json
+            fts_benchmark.json
+      - name: Full catalog audit
+        run: python -m math_mcts.audit -o catalog_audit.json --fail-on-errors
+      - name: Publish audit results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-audit-python-${{ matrix.python-version }}
+          path: catalog_audit.json
+          if-no-files-found: ignore
