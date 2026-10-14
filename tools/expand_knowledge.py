@@ -16,6 +16,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from math_mcts.method_library import all_operators, recommend
+from math_mcts.candidate_rule_bridge import bridge_report
 from math_mcts.research_prioritizer import prioritize
 from math_mcts.source_expansion import (
     import_jsonl, inventory, mathlib_review_snapshot, search,
@@ -61,6 +62,9 @@ def main() -> None:
     rank.add_argument("--focus", required=True)
     rank.add_argument("--domain")
     rank.add_argument("--limit", type=int, default=50)
+    bridge = cmd.add_parser("bridge", help="Type-check source-bound UNREVIEWED Horn translations")
+    bridge.add_argument("--db", type=Path, default=Path("external_math.sqlite"))
+    bridge.add_argument("--mapping", type=Path, required=True)
     stats = cmd.add_parser("coverage", help="Audit existing mathlib candidate coverage")
     stats.add_argument("--index", type=Path, default=Path("math_index.sqlite"))
     args = p.parse_args()
@@ -74,6 +78,8 @@ def main() -> None:
         result = (recommend(args.goal, obstacles=args.obstacles, limit=args.limit,
                             category=args.category)
                   if args.goal else [x.__dict__ for x in all_operators()])
+    elif args.command == "bridge":
+        result = bridge_report(args.db, args.mapping)
     elif args.command == "prioritize":
         result = prioritize(args.index, args.focus, limit=args.limit, domain=args.domain)
     else:
