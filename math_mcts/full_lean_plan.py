@@ -10,6 +10,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import unicodedata
 import sqlite3
 
 from .source_registry import SOURCE_COMMIT
