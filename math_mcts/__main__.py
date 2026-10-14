@@ -149,6 +149,38 @@ def cmd_collide(args):
             print(f"     待探索: {a.definition[:40]}… + {b.definition[:40]}…")
 
 
+def cmd_search_index(args):
+    from .fast_index import fast_search
+    results = fast_search(args.db, args.query, top_k=args.top_k, tier=args.tier)
+    print(json.dumps([{"id": item["id"], "name": item.get("cn") or item.get("en"),
+                       "module": item.get("module"), "tier": item["index_tier"],
+                       "level": item["indexed_level"],
+                       "lexical_score": item["lexical_score"]}
+                      for item in results], ensure_ascii=False, indent=2))
+
+
+def cmd_semantic_links(args):
+    from .semantic_links import find_composable_rules
+    payload = json.loads(Path(args.problem).read_text(encoding="utf-8"))
+    if args.catalog_mapped:
+        from .semantic import load_catalog_reasoning_problem
+        book, _, _ = load_catalog_reasoning_problem(payload, KnowledgeTree.load())
+    else:
+        book, _, _ = load_reasoning_problem(payload)
+    results = find_composable_rules(book, limit=args.limit,
+                                    goal_predicate=args.predicate)
+    print(json.dumps(results, ensure_ascii=False, indent=2))
+
+
+def cmd_scale_status(args):
+    from .scale_plan import expansion_status
+    from .fast_index import index_stats
+    imports = int(index_stats(args.db)["metadata"]["unreviewed_candidate_count"]) if args.db else 0
+    print(json.dumps(expansion_status(KnowledgeTree.load(),
+                                      unreviewed_candidates=imports),
+                     ensure_ascii=False, indent=2))
+
+
 def cmd_info(args):
     tree = KnowledgeTree.load()
     problems = tree.check_integrity()
@@ -236,6 +268,21 @@ def main():
     s.add_argument("--top_k", type=int, default=5)
     s.add_argument("--iterations", type=int, default=2000)
     s.set_defaults(func=cmd_search)
+    si = sub.add_parser("search-index", help="用FTS5索引快速检索大型数学声明库")
+    si.add_argument("query")
+    si.add_argument("--db", type=Path, required=True)
+    si.add_argument("--top-k", type=int, default=10)
+    si.add_argument("--tier", choices=["curated", "unreviewed_import"])
+    si.set_defaults(func=cmd_search_index)
+    sl = sub.add_parser("semantic-links", help="类型化规则连接候选；不等于数学证明")
+    sl.add_argument("problem")
+    sl.add_argument("--catalog-mapped", action="store_true")
+    sl.add_argument("--predicate")
+    sl.add_argument("--limit", type=int, default=100)
+    sl.set_defaults(func=cmd_semantic_links)
+    ps = sub.add_parser("scale-status", help="Level1–4十万重要知识目标与实际缺口")
+    ps.add_argument("--db", type=Path)
+    ps.set_defaults(func=cmd_scale_status)
     i = sub.add_parser("info", help="知识库概览与自检")
     i.set_defaults(func=cmd_info)
     args = ap.parse_args()
