@@ -28,7 +28,7 @@
 
 已有 mathlib 来源索引 234,576 条未经逐条核验的数学声明；其中原始 level5
 为“未评级”占位，不能按字面计算为难度5、也不能凭配额改为 Level1–4 重要。
-构建器现已通过 GitHub CI 实测：**正式卡 11,165 + 来源候选 100,000 = 索引记录 111,165**。
+构建器现已通过 GitHub CI 实测：**正式卡 11,165 + 来源候选 100,000 = 索引记录 动态分类总量**。
 十万条候选在索引中标记为 `unreviewed_import`、`level=NULL`；
 正式重要知识仍为 6111 条，距离目标还有 93889 条审核缺口。
 
@@ -216,3 +216,15 @@ python tests/test_semantic_audit.py
 审计严格区分错误、警告、资料性提示。检查悬空/重复先修引用、环、缺失陈述、
 来源字段、内容指纹、同名条目与完全相同的陈述候选。相关文档/来源链接存在不等于
 来源逐项核实，形式化证明和自动反例搜索不属于当前验收范围。
+
+## 类型化数学语义图与独立算法基准（2026-10-14）
+
+`python -m math_mcts compare-provers --iterations 220 -o semantic_benchmark.json`
+对数学整除、包含、隶属传递给出 BFS、束搜索和 MCTS
+在同一经审核 Horn 规则图中的运行结果与证书重放。
+`python -m math_mcts semantic-graph reviewed_problem.json --output semantic_rules.sqlite`
+从**明确审核的类型化规则**建立可查询的条件连接图。
+所有新结论只表示相对这些审核规则可推导，不代表新数学成果。
+知识重要性与难度审定需人工提供源指纹与理由，
+使用 `tools/apply_editorial_reviews.py` 写独立审计覆盖层。
+详见 [SEMANTIC_V2.md](SEMANTIC_V2.md)。

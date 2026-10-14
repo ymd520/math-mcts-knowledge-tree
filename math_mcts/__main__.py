@@ -160,6 +160,31 @@ def cmd_search_index(args):
                       for item in results], ensure_ascii=False, indent=2))
 
 
+def cmd_semantic_graph(args):
+    from .semantic_graph import build_semantic_graph,SemanticGraph
+    payload=json.loads(Path(args.problem).read_text(encoding="utf-8"))
+    if args.catalog_mapped:
+        from .semantic import load_catalog_reasoning_problem
+        book, _, goal=load_catalog_reasoning_problem(payload,KnowledgeTree.load())
+    else:
+        book, _, goal=load_reasoning_problem(payload)
+    result=build_semantic_graph(book, args.output)
+    result["backward_relevant_rules"]=SemanticGraph(
+        args.output,book=book).backward_relevant_rules(book,goal.predicate)
+    print(json.dumps(result,ensure_ascii=False,indent=2))
+
+
+def cmd_compare_provers(args):
+    from .search_eval import benchmark_suite,mathematical_task_fixtures
+    report=benchmark_suite(mathematical_task_fixtures(),
+                           iterations=args.iterations,max_steps=args.max_steps,
+                           beam_width=args.beam_width,seed=args.seed)
+    output=json.dumps(report,ensure_ascii=False,indent=2)
+    if args.output:
+        Path(args.output).write_text(output+"\n",encoding="utf-8")
+    print(output)
+
+
 def cmd_semantic_links(args):
     from .semantic_links import find_composable_rules
     payload = json.loads(Path(args.problem).read_text(encoding="utf-8"))
@@ -314,6 +339,18 @@ def main():
     si.add_argument("--registered-only", action="store_true",
                     help="Only source statements passing source-hash registration")
     si.set_defaults(func=cmd_search_index)
+    sg = sub.add_parser("semantic-graph", help="从已审核类型化规则建立可校验的邻接索引")
+    sg.add_argument("problem")
+    sg.add_argument("--catalog-mapped", action="store_true")
+    sg.add_argument("--output", type=Path, default=Path("semantic_rules.sqlite"))
+    sg.set_defaults(func=cmd_semantic_graph)
+    pc = sub.add_parser("compare-provers", help="整除/集合等任务上对照BFS、束搜索与MCTS")
+    pc.add_argument("--iterations", type=int, default=200)
+    pc.add_argument("--max-steps", type=int, default=16)
+    pc.add_argument("--beam-width", type=int, default=12)
+    pc.add_argument("--seed", type=int, default=7)
+    pc.add_argument("-o", "--output", type=Path)
+    pc.set_defaults(func=cmd_compare_provers)
     sl = sub.add_parser("semantic-links", help="类型化规则连接候选；不等于数学证明")
     sl.add_argument("problem")
     sl.add_argument("--catalog-mapped", action="store_true")
