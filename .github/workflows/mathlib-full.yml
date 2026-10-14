@@ -34,6 +34,11 @@ permissions:
   contents: read
   actions: read
 
+# This continuation reuses the last full run; the main-branch concurrency
+# group waits for that run to finish uploading its receipts first.
+env:
+  FULL_RESUME_RUN_ID: ${{ github.event_name == 'workflow_dispatch' && inputs.resume_run_id || '38525137782' }}
+
 concurrency:
   group: full-mathlib-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
@@ -91,12 +96,12 @@ jobs:
         with:
           name: mathlib-full-plan
       - name: Restore verified receipts from prior run when requested
-        if: github.event_name == 'workflow_dispatch' && inputs.resume_run_id != ''
+        if: env.FULL_RESUME_RUN_ID != ''
         uses: actions/download-artifact@v4
         with:
           name: mathlib-full-worker-${{ matrix.worker }}
           path: full_results
-          run-id: ${{ inputs.resume_run_id }}
+          run-id: ${{ env.FULL_RESUME_RUN_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Checkout EXACT original mathlib and Lean version
         run: |
