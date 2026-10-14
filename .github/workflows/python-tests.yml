@@ -40,6 +40,11 @@ jobs:
       - name: Build a real 100k mathlib candidate index
         if: matrix.python-version == '3.12'
         run: python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000 --summary index_status.json
+      - name: Validate and register imported source statements
+        if: matrix.python-version == '3.12'
+        run: python tools/register_source_statements.py --db math_index.sqlite --manifest official_source_registry.jsonl.gz --report source_registration_report.json
+      - name: Source registry integrity tests
+        run: python tests/test_source_registry.py
       - name: Export 100k source-backed candidate review queue
         if: matrix.python-version == '3.12'
         run: python tools/export_review_queue.py --db math_index.sqlite --output source_review_queue.jsonl.gz --summary scale_status.json
@@ -53,6 +58,8 @@ jobs:
           name: source-candidates-100k
           path: |
             index_status.json
+            official_source_registry.jsonl.gz
+            source_registration_report.json
             source_review_queue.jsonl.gz
             scale_status.json
             fts_benchmark.json
