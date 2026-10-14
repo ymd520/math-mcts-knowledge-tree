@@ -1,0 +1,54 @@
+name: Pinned upstream credits smoke
+
+on:
+  pull_request:
+    paths:
+      - 'math_mcts/attribution.py'
+      - 'tools/verify_pinned_mathlib_credit.py'
+      - '.github/workflows/source-credit-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-original-mathlib-source-notice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch original, exact-commit Mathlib source
+        run: |
+          set -euxo pipefail
+          mkdir mathlib4
+          git -C mathlib4 init
+          git -C mathlib4 remote add origin https://github.com/leanprover-community/mathlib4.git
+          git -C mathlib4 fetch --depth=1 origin 54c01c3314d33d15d77893cbe4e0472ff26bb34d
+          git -C mathlib4 checkout --detach FETCH_HEAD
+          test "$(git -C mathlib4 rev-parse HEAD)" = "54c01c3314d33d15d77893cbe4e0472ff26bb34d"
+      - name: Prove upstream file has separate credits and its license
+        run: |
+          python tools/verify_pinned_mathlib_credit.py --mathlib-root mathlib4 --module Mathlib.Algebra.Group.Basic --output original_module_authors.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('original_module_authors.json').read_text())
+          assert x['source_commit']=='54c01c3314d33d15d77893cbe4e0472ff26bb34d'
+          authors=x['file_header']['module_header_authors']
+          assert all(name in authors for name in (
+              'Jeremy Avigad', 'Leonardo de Moura', 'Simon Hudon', 'Mario Carneiro'
+          )),authors
+          assert 'Apache License' in Path('mathlib4/LICENSE').read_text()
+          assert 'Version 2.0' in Path('mathlib4/LICENSE').read_text()
+          assert x['file_header']['attribution_scope']=='module_file_header_not_individual_theorem'
+          print('Verified original source module authors, NOT original mathematician discovery.')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-mathlib-source-credits
+          path: original_module_authors.json
+          if-no-files-found: ignore
