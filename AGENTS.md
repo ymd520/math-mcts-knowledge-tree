@@ -3,14 +3,14 @@
 These rules apply whenever ChatGPT or another coding agent changes this repository.
 
 ## Version
-- `math_mcts/version.py` is the only source of the current catalog/package version.
+- `math_mcts/data/curated/manifest.json` is the only source of the current catalog/package version. Runtime code may expose a derived accessor, but version edits belong only in the manifest.
 - Import the constant in code and tests. Do not copy the current version into the manifest, README, or test expectations.
 - Historical release labels in `CHANGELOG.md` are immutable history; add new work under `Unreleased` unless a release is explicitly cut.
 
 ## Branch lifecycle
 - Use one task branch for a change, named `task/<short-name>` (the current `textbook-based-*` prefix is also recognized by the cleanup workflow).
 - Keep the branch while its pull request is open so the reviewed change remains updateable.
-- `.github/workflows/delete-task-branch.yml` deletes same-repository `task/` and `textbook-based-` branches when their PR is closed, merged or abandoned. Remove other stale task branches once their work is integrated or abandoned.
+- `.github/workflows/delete-task-branch.yml` deletes same-repository `task/` and `textbook-based-` branches immediately after their PR is merged. Closing an unmerged PR does not delete its branch. Remove other stale task branches once their work is integrated or abandoned.
 - Before cleanup, verify that every intended change is committed and preserved in the pull request or target branch.
 
 ## Numerical claims and documentation
