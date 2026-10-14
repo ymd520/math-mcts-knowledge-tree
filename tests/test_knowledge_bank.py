@@ -99,6 +99,7 @@ class KnowledgeClassificationTests(unittest.TestCase):
             self.assertEqual(len(scope.concepts), 2)
             self.assertTrue(all(c.level_status == "ungraded_source_placeholder"
                                 for c in scope.concepts))
+            self.assertTrue(all("难度: 未评级" in c.card() for c in scope.concepts))
             a, b = scope.concepts
             self.assertEqual(collision_score(scope, a.id, b.id), 0.5)
             combinations = collide_concepts(scope, iterations=20, top_k=2)
