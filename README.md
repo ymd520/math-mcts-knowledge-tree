@@ -82,6 +82,22 @@ python -m math_mcts knowledge-browse --db math_index.sqlite --domain 代数 --ki
 语义分类；重要性与 Level 分级也不自动提高。
 详见 [KNOWLEDGE_CLASSIFICATION.md](KNOWLEDGE_CLASSIFICATION.md)。
 
+## 数学知识质量审查（十万条实际数据）
+
+对 100,000 条已导入来源知识进行逐条可复现的结构质检，
+生成重要性审核线索、同名/规范化陈述疑似重复组、来源异常排查清单。
+**审核线索并不改变知识的重要性、真实难度或证明核验状态。**
+
+```sh
+python tools/review_quality.py --db math_index.sqlite --report quality_triage_report.json
+python -m math_mcts knowledge-review --db math_index.sqlite --mode priority --limit 20
+python -m math_mcts knowledge-review --db math_index.sqlite --mode anomaly --limit 20
+python -m math_mcts knowledge-review --db math_index.sqlite --mode duplicate --limit 20
+```
+
+需先运行上节的索引、来源登记和分类生成命令。详见
+[REVIEW_PIPELINE.md](REVIEW_PIPELINE.md)。CI 会实际扫描全量十万条来源。
+
 ## 快速调用
 
 ```sh
