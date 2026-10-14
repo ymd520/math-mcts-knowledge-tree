@@ -168,17 +168,28 @@ class LayeredProblem(Problem):
             if stop:
                 break
         batches = []
-        # Bounded alternative rotations; never enumerate 2^N subsets.
-        for offset in range(min(self.config.batch_choices, len(candidates))):
+        # Alternate across the complete bounded candidate pool. Rotating only
+        # the first few offsets previously restricted 8x20 batches to the first
+        # 27 edges even when 2000 edges were available.
+        count = len(candidates)
+        offsets = []
+        if count:
+            for i in range(min(self.config.batch_choices, count)):
+                offset = (i * count // min(self.config.batch_choices, count))
+                if offset not in offsets:
+                    offsets.append(offset)
+        for offset in offsets:
             chosen, outputs = [], set()
-            for edge in candidates[offset:] + candidates[:offset]:
+            for i in range(count):
+                edge = candidates[(offset + i) % count]
                 if edge.conclusion in outputs:
                     continue
                 chosen.append(edge)
                 outputs.add(edge.conclusion)
                 if len(chosen) == self.config.batch_width:
                     break
-            batch = CollisionLayer(tuple(sorted(chosen, key=lambda e: (e.rule_id, e.binding, e.conclusion))))
+            batch = CollisionLayer(tuple(sorted(
+                chosen, key=lambda e: (e.rule_id, e.binding, e.conclusion))))
             if len(batch.inputs) >= self.config.min_knowledge and batch not in batches:
                 batches.append(batch)
         if not batches:
