@@ -8,6 +8,22 @@
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
 搜索次数和深度不代表数学原创性或证明真实性。静态概念检索采用全量精确评分排序（不再声称检索访问次数来自 MCTS）；MCTS 仍用于知识配对和规则调度；学习路径已改为完整先修拓扑规划，避免无关随机绕路。
 
+## 目标导向 MCTS v2 与确定性证明调度
+
+增加事件驱动 Horn 超图闭包、独立可重放证书、可选 PUCT 先验、
+找到见证后提前停止，以及精确来源哈希绑定的**待审**类型化知识桥接。
+对已审核并已实例化的规则，`derive` 优先运行确定性闭包，
+预算内找不到证书才回退到目标引导 MCTS。此路线不自动验证外部数学定理。
+
+```sh
+python tests/test_mcts_v2.py
+python tools/benchmark_mcts_v2.py --iterations 180 --output mcts_v2_benchmark.json
+python tools/expand_knowledge.py bridge --db external_math.sqlite --mapping candidate_translation.json
+```
+
+具体架构、证明边界、反例测试和基准限制见
+[目标导向 MCTS v2 设计](MCTS_V2_ARCHITECTURE.md)。
+
 ## 可信来源扩容与数学方法库（候选层）
 
 已新增不覆盖原精选目录的外部来源候选库、来源版本/声明哈希保护、可审计的
