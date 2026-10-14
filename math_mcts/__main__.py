@@ -151,7 +151,8 @@ def cmd_collide(args):
 
 def cmd_search_index(args):
     from .fast_index import fast_search
-    results = fast_search(args.db, args.query, top_k=args.top_k, tier=args.tier)
+    results = fast_search(args.db, args.query, top_k=args.top_k,
+                          tier=args.tier, registered_only=args.registered_only)
     print(json.dumps([{"id": item["id"], "name": item.get("cn") or item.get("en"),
                        "module": item.get("module"), "tier": item["index_tier"],
                        "level": item["indexed_level"],
@@ -170,6 +171,14 @@ def cmd_semantic_links(args):
     results = find_composable_rules(book, limit=args.limit,
                                     goal_predicate=args.predicate)
     print(json.dumps(results, ensure_ascii=False, indent=2))
+
+
+def cmd_show_registered(args):
+    from .source_registry import get_registered_statement
+    record = get_registered_statement(args.db, args.id)
+    if record is None:
+        raise SystemExit(f"Not registered or not found: {args.id}")
+    print(json.dumps(record, indent=2, ensure_ascii=False))
 
 
 def cmd_scale_status(args):
@@ -273,6 +282,8 @@ def main():
     si.add_argument("--db", type=Path, required=True)
     si.add_argument("--top-k", type=int, default=10)
     si.add_argument("--tier", choices=["curated", "unreviewed_import"])
+    si.add_argument("--registered-only", action="store_true",
+                    help="Only source statements passing source-hash registration")
     si.set_defaults(func=cmd_search_index)
     sl = sub.add_parser("semantic-links", help="类型化规则连接候选；不等于数学证明")
     sl.add_argument("problem")
@@ -280,6 +291,10 @@ def main():
     sl.add_argument("--predicate")
     sl.add_argument("--limit", type=int, default=100)
     sl.set_defaults(func=cmd_semantic_links)
+    reg = sub.add_parser("show-registered", help="显示已经通过来源指纹核对的数学声明")
+    reg.add_argument("id", help="Source concept ID")
+    reg.add_argument("--db", type=Path, required=True)
+    reg.set_defaults(func=cmd_show_registered)
     ps = sub.add_parser("scale-status", help="Level1–4十万重要知识目标与实际缺口")
     ps.add_argument("--db", type=Path)
     ps.set_defaults(func=cmd_scale_status)
