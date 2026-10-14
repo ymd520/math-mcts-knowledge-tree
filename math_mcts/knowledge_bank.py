@@ -18,6 +18,7 @@ import json
 import sqlite3
 
 from .fast_index import terms_for
+from .attribution import source_credit, module_source_url
 from .knowledge import _normalize_imported_domain
 
 SCHEMA_VERSION = "1"
@@ -302,6 +303,11 @@ class KnowledgeBank:
                 domain_cn, domain_en = _normalize_imported_domain(row)
                 row["domain_cn"], row["domain_en"] = domain_cn, domain_en
                 row["level_status"] = "ungraded_source_placeholder"
+                # Citation is a pinned MODULE locator; do not imply theorem
+                # line numbers, individual authorship or proof verification.
+                if (row.get("original_metadata") or {}).get("类型") == "upstream_theorem":
+                    row["source_url"] = module_source_url(row["module"])
+                    row["source_locator"] = "pinned mathlib module, declaration line unverified"
                 row["tags"] = [t for t in row.get("tags", [])
                                if t not in {"核心", "重要"}]
             concepts.append(Concept(**row))
@@ -316,8 +322,11 @@ class KnowledgeBank:
 def _present(row) -> dict:
     raw, domain, subfield, topic, kind, status, importance, level = row
     record = json.loads(raw)
+    source_tier = ("curated" if status == _STATUS_CURATED
+                   else "unreviewed_import")
     return {
         "id": record["id"],
+        "attribution": source_credit(record, tier=source_tier),
         "name": record.get("cn") or record.get("en"),
         "english_name": record.get("en"),
         "statement": record.get("formal") or record.get("definition"),
