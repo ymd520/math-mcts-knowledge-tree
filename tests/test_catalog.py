@@ -27,7 +27,7 @@ class CatalogTests(unittest.TestCase):
         self.assertGreaterEqual(b["important_levels"][1], 700)
         for level in range(2, 5):
             self.assertGreater(b["important_levels"][level], a["important_levels"][level])
-        self.assertEqual(self.tree.meta["version"], "1.13.0")
+        self.assertEqual(self.tree.meta["version"], "1.14.0")
 
     def test_level_and_importance_are_separate(self):
         view = self.tree.select(levels=[1, 2], important_only=True)
