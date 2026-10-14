@@ -74,7 +74,7 @@ def run_worker(plan_path: Path,mathlib_root: Path,out: Path, *,
         try:
             if module not in prepared:
                 setup=subprocess.run(
-                    ["bash",str(Path(__file__).with_name("bootstrap_pinned_mathlib.sh")),
+                    ["bash",str(Path(__file__).resolve().with_name("bootstrap_pinned_mathlib.sh")),
                      batch["module_path"]],
                     cwd=mathlib_root,text=True,capture_output=True,timeout=min(800,max_seconds))
                 (output/(bid+"-prepare.log")).write_text(
