@@ -198,6 +198,24 @@ def test_max_extraction_uses_value_not_visits():
     seq, root = mcts(MaxProblem(), iterations=100, seed=9)
     assert seq == ["high"]
 
+
+def test_learning_plan_excludes_unrelated_detours():
+    tree = KnowledgeTree.load()
+    target = tree.find("傅里叶变换")
+    closure = set(tree.prereq_closure(target.id)) | {target.id}
+    path = plan_learning_path(tree, target.id, iterations=1)
+    assert {c.id for c in path} == closure
+    assert len(path) == len(closure)
+    assert path[-1].id == target.id
+
+
+def test_learning_plan_is_seed_and_budget_independent():
+    tree = KnowledgeTree.load()
+    a = plan_learning_path(tree, "傅里叶变换", seed=1, iterations=1)
+    b = plan_learning_path(tree, "傅里叶变换", seed=99, iterations=3000)
+    assert [c.id for c in a] == [c.id for c in b]
+
+
 if __name__ == "__main__":
     test_integrity()
     test_prereq_closure_order()
@@ -217,4 +235,6 @@ if __name__ == "__main__":
     test_initial_state_called_once()
     test_static_search_exact_even_without_iterations()
     test_max_extraction_uses_value_not_visits()
+    test_learning_plan_excludes_unrelated_detours()
+    test_learning_plan_is_seed_and_budget_independent()
     print("ALL TESTS PASSED")
