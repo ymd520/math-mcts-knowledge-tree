@@ -147,11 +147,28 @@ jobs:
           python tools/aggregate_mathlib_results.py --plan full_mathlib_plan \
             --shard-root full_mathlib_results \
             --output lean_full_coverage_report.json
+      - name: Index actual elaborated binder domains and conclusions without promoting candidates to proofs
+        run: |
+          if [ -s all_lean_extracted.jsonl ]; then
+            python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000
+            python tools/register_source_statements.py --db math_index.sqlite
+            python tools/classify_knowledge.py --db math_index.sqlite
+            python tools/index_lean_type_semantics.py --db math_index.sqlite \
+              --exports all_lean_extracted.jsonl \
+              --report lean_type_semantics_report.json \
+              --candidates-output lean_type_candidates.json
+          else
+            echo '{"source_declarations_with_type_structure":0,"certified_applications":0}' > lean_type_semantics_report.json
+            echo '{"candidate_count":0,"proofs":0}' > lean_type_candidates.json
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: full-mathlib-coverage-report
           path: |
             lean_full_coverage_report.json
+            lean_type_semantics_report.json
+            lean_type_candidates.json
+            all_lean_extracted.jsonl
             all_mathlib_source_credits.json
           retention-days: 90
       - name: Flag unresolved source coverage without misreporting science
