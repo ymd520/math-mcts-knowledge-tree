@@ -25,8 +25,8 @@ def audit():
                          repr(bad))
     if tree.check_integrity():
         raise ValueError("Catalog integrity broken")
-    if len(deep)!=126:
-        raise ValueError("Expected 126 new case-and-condition annotated cards")
+    if len(deep)!=141:
+        raise ValueError("Expected 141 case-and-condition annotated cards")
     return {
         "base_catalog_count":len(base.concepts),
         "supplemented_catalog_count":len(tree.concepts),
