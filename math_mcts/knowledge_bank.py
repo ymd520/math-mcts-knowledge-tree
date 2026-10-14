@@ -94,6 +94,12 @@ def classify_knowledge(db_path: str | Path) -> dict:
         if not db.execute("SELECT 1 FROM sqlite_master WHERE type='table' "
                           "AND name='source_registry'").fetchone():
             raise ValueError("Run source registration before classifying knowledge")
+        if not db.execute("SELECT 1 FROM sqlite_master WHERE type='table' "
+                          "AND name='metadata'").fetchone():
+            raise ValueError("Missing source index metadata")
+        # BEGIN before DDL: a classification failure must roll back and retain
+        # the previous working knowledge view rather than destroying it.
+        db.execute("BEGIN IMMEDIATE")
         db.execute("DROP TABLE IF EXISTS classified_knowledge")
         db.execute("""CREATE TABLE classified_knowledge (
             id TEXT PRIMARY KEY REFERENCES documents(id),
