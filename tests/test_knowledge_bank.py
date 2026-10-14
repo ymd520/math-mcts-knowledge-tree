@@ -23,7 +23,7 @@ def fixture_db(path):
          "definition": "synthetic grouped statement", "branch_cn": "Group",
          "topic_cn": "Basic", "module": "Mathlib.Algebra.Group.Basic",
          "domain_en": "Algebra", "domain_cn": "Algebra", "original_metadata": {
-             "类型": "upstream_theorem", "陈述SHA256": "testsha"}},
+             "类型": "upstream_theorem", "陈述SHA256": hashlib.sha256(b": True := trivial").hexdigest()}},
         {"id": "STD01", "cn": "标准知识卡", "en": "standard",
          "definition": "有限集合的定义", "level": 5,
          "branch_cn": "Finset", "topic_cn": "Basic",
@@ -49,7 +49,7 @@ def fixture_db(path):
             db.execute("INSERT INTO term_index(rowid,terms) VALUES (?,?)",
                        (i, " ".join(terms_for(searchtext))))
         db.execute("INSERT INTO source_registry VALUES(?,?,?,?,?,?)",
-                   ("MTH01", "testsha", "Mathlib.Algebra.Group.Basic",
+                   ("MTH01", hashlib.sha256(b": True := trivial").hexdigest(), "Mathlib.Algebra.Group.Basic",
                     "fixed-commit", "unreviewed_importance", None))
 
 
