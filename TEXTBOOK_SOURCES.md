@@ -45,7 +45,7 @@
 | 代数 | 群同态第一同构定理 | Judson, *Abstract Algebra: Theory and Applications*, Theorem 11.10 |
 | 分析 | 单调收敛定理 | Axler, *Measure, Integration & Real Analysis*, Theorem 3.11 |
 | 几何与拓扑 | 商映射开集判据 | MIT 18.901, Session 10: Quotient Topology |
-| 概率与统计 | 全方差公式 | Pishro-Nik, Chapter 5, conditional variance and iterated expectations |
+| 概率与统计 | 二维正态条件化均值与方差 | Pishro-Nik, Chapter 5, §5.3.2 Bivariate Normal Distribution |
 | 离散数学 | Pascal 二项系数递推 | Levin, *Discrete Mathematics: An Open Introduction*, §3.1 |
 | 计算与优化 | Slater 条件与强对偶 | Boyd & Vandenberghe, *Convex Optimization*, §5.2.3 |
 
