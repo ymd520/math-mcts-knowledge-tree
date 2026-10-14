@@ -25,8 +25,8 @@ jobs:
       - name: Run Lean kernel declaration extraction on an actual elaborated theorem
         run: |
           lean --version
-          lean lean/ExtractCoreSmoke.lean > lean_core_extract.log
-          cat lean_core_extract.log
+          set -o pipefail
+          lean lean/ExtractCoreSmoke.lean 2>&1 | tee lean_core_extract.log
       - name: Validate emitted actual Lean environment references
         run: |
           python - <<'PY'
