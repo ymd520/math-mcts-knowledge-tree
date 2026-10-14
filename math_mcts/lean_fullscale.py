@@ -14,7 +14,10 @@ import sqlite3
 
 from .source_registry import SOURCE_COMMIT
 
-VALID_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_'.]*(?:\.[A-Za-z0-9_']+)*$")
+# Lean Name.str builds names from UTF-8 segments: retain legitimate Unicode
+# and quoted-name characters. Only reject controls, invalid dot segmentation
+# and pathological lengths; failed environment lookup is a *reported* outcome.
+VALID_NAME = re.compile(r"^[^.\\x00-\\x1f\\x7f]+(?:\\.[^.\\x00-\\x1f\\x7f]+)*$")
 VALID_MODULE = re.compile(r"^Mathlib(?:\.[A-Za-z_][A-Za-z0-9_']*)+$")
 PINNED_TOOLCHAIN = "leanprover/lean4:v4.35.0-rc4"
 
@@ -59,7 +62,7 @@ def plan_full_corpus(db_path: str | Path, output: str | Path, *,
                 blocked.append({"source_id":cid, "module":module,
                                 "reason":"unsupported_module_namespace"})
                 continue
-            if not VALID_NAME.fullmatch(name):
+            if len(name)>1024 or not VALID_NAME.fullmatch(name):
                 blocked.append({"source_id":cid, "module":module,
                                 "reason":"unsupported_declaration_identifier"})
                 continue
