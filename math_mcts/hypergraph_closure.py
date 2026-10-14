@@ -14,7 +14,7 @@ from __future__ import annotations
 from collections import defaultdict, deque
 from dataclasses import dataclass
 
-from .reasoning import Atom, Certificate, Hyperedge, ProofGraph, RuleBook, _goal_steps, verify_certificate
+from .reasoning import Atom, Certificate, Hyperedge, ProofGraph, RuleBook, verify_certificate
 
 
 @dataclass(frozen=True)
@@ -118,7 +118,11 @@ def forward_certificate(book: RuleBook, graph: ProofGraph,
         for parent in reversed(producer[atom].premises):
             if parent not in visited_atoms:
                 work.append((parent, False))
-    steps, depth = _goal_steps(assumptions, goal, ordered)
+    depths = {atom: 0 for atom in assumptions}
+    for edge in ordered:
+        depths[edge.conclusion] = 1 + max((depths[p] for p in edge.premises), default=0)
+    steps = tuple(ordered)
+    depth = depths[goal]
     proof = Certificate(goal, assumptions, steps, book.fingerprint())
     if not verify_certificate(book, proof, assumptions, goal):
         raise RuntimeError("Forward proof failed independent replay")
