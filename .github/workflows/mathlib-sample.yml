@@ -14,6 +14,8 @@ on:
       - '.github/workflows/mathlib-sample.yml'
       - 'tools/bootstrap_pinned_mathlib.sh'
       - 'tools/generate_mathlib_extraction.py'
+      - 'tools/generate_full_lean_batch.py'
+      - 'math_mcts/full_lean_plan.py'
   workflow_dispatch:
 
 permissions:
@@ -74,6 +76,32 @@ jobs:
         run: |
           set -o pipefail
           (cd mathlib4 && lake env lean ExtractSelected.lean) 2>&1 | tee pinned_mathlib_output.log
+      - name: Smoke test Unicode-capable full-corpus Expr AST generator in actual pinned Mathlib
+        run: |
+          python tools/plan_full_lean.py --db math_index.sqlite --output mathlib_full_plan.json --report mathlib_full_plan_report.json --batch-limit 6
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.load(open('mathlib_full_plan.json'))
+          hits=[b for b in x['batches'] if b['module']=='Mathlib.Algebra.Group.Basic']
+          assert hits, 'Pinned group module missing from full plan'
+          Path('full_smoke_batch_id.txt').write_text(hits[0]['batch_id'])
+          PY
+          python tools/generate_full_lean_batch.py --plan mathlib_full_plan.json \
+            --batch-id "$(cat full_smoke_batch_id.txt)" --output lean/FullSmoke.lean
+          cp lean/FullSmoke.lean mathlib4/FullSmoke.lean
+          set -o pipefail
+          (cd mathlib4 && lake env lean FullSmoke.lean) 2>&1 | tee full_smoke_lean.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          rows=[json.loads(x) for x in Path('full_smoke_lean.log').read_text().splitlines()
+                if x.startswith('{') and '"source_statement_sha256"' in x]
+          assert rows, 'No actual Lean source expression produced'
+          assert all(type(x['leading_pi_binders'])==int and x['leading_pi_binders']>=0 for x in rows)
+          assert all(x['elaborated_type_head'] in ('forallE','app','const','sort','other') for x in rows)
+          print('Real Mathlib Elaborated Expr structural smoke:',len(rows))
+          PY
       - name: Strictly check source-linked output and audit coverage
         run: |
           python - <<'PY'
@@ -115,4 +143,7 @@ jobs:
             mathlib_missing.json
             mathlib_alignment_report.json
             lean/ExtractSelected.lean
+            lean/FullSmoke.lean
+            full_smoke_lean.log
+            mathlib_full_plan_report.json
           if-no-files-found: ignore
