@@ -46,9 +46,26 @@ jobs:
           assert result['type_expression'].strip()
           print('Actual Lean environment type/proof reference extraction passed')
           PY
+      - name: Verify elaborated binder and conclusion AST extraction
+        run: |
+          set -o pipefail
+          lean lean/ExtractTypeStructureSmoke.lean 2>&1 | tee lean_type_structure_smoke.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          rows=[json.loads(s) for s in Path('lean_type_structure_smoke.log').read_text().splitlines() if s.startswith('{')]
+          assert len(rows)==1,rows
+          record=rows[0]
+          assert record['binder_count']>=3,record
+          assert record['source']=='actual_elaborated_lean_expr'
+          assert record['binders'][0]['domain_ast'] and record['conclusion_ast']
+          print('REAL elaborated Lean type telescope and conclusion extraction PASS')
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: lean-core-extraction-smoke
-          path: lean_core_extract.log
+          path: |
+            lean_core_extract.log
+            lean_type_structure_smoke.log
           if-no-files-found: ignore
