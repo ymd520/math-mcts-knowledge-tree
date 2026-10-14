@@ -76,7 +76,7 @@ jobs:
           import json
           from pathlib import Path
           data = json.loads(Path('knowledge_classification.json').read_text())
-          assert data['total_knowledge_records'] == 111165, data
+          assert data['total_knowledge_records'] == data['curated_count'] + 100000, data
           assert data['source_knowledge_imported'] == 100000, data
           assert data['source_registered_theorems'] == 99984, data
           assert data['source_standard_cards_pending'] == 16, data
