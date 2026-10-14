@@ -35,6 +35,7 @@ def fixture_db(path):
         db.execute("CREATE TABLE documents (id TEXT PRIMARY KEY, tier TEXT, "
                    "level INTEGER, domain TEXT, record TEXT)")
         db.execute("CREATE VIRTUAL TABLE term_index USING fts5(terms)")
+        db.execute("CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL)")
         db.execute("CREATE TABLE source_registry "
                    "(id TEXT PRIMARY KEY, source_sha256 TEXT, module TEXT, "
                    "imported_commit TEXT, importance_status TEXT, level INTEGER)")
