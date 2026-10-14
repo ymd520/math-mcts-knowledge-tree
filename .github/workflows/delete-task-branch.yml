@@ -27,8 +27,16 @@ jobs:
               core.info("Head branch is in a fork; leaving it untouched.");
               return;
             }
-            await github.rest.git.deleteRef({
-              owner: repo.owner,
-              repo: repo.repo,
-              ref: `heads/${branch}`,
-            });
+            try {
+              await github.rest.git.deleteRef({
+                owner: repo.owner,
+                repo: repo.repo,
+                ref: `heads/${branch}`,
+              });
+            } catch (error) {
+              if (error.status === 404) {
+                core.info("Task branch was already deleted.");
+                return;
+              }
+              throw error;
+            }
