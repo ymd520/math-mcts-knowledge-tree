@@ -221,7 +221,7 @@ def review_queue(db_path: str | Path, *, limit: int = 100,
     with sqlite3.connect(str(db_path)) as db:
         rows = db.execute("""SELECT r.id, r.source_module,
             r.source_statement_sha256, r.review_priority, r.anomaly_score,
-            r.same_name_count, r.same_statement_count, r.reason_codes,
+            r.review_bucket, r.same_name_count, r.same_statement_count, r.reason_codes,
             d.record
             FROM knowledge_review_signals r JOIN documents d ON d.id=r.id
             ORDER BY """ + order + " LIMIT ? OFFSET ?", (limit, offset)).fetchall()
