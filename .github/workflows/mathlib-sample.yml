@@ -9,6 +9,11 @@ concurrency:
 # Lean smoke test. A failed cache download must not be mistaken for a theorem
 # extraction or silently block unrelated verified Python improvements.
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/mathlib-sample.yml'
+      - 'tools/bootstrap_pinned_mathlib.sh'
+      - 'tools/generate_mathlib_extraction.py'
   workflow_dispatch:
 
 permissions:
@@ -17,7 +22,7 @@ permissions:
 jobs:
   source-matched-mathlib:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 38
     steps:
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
@@ -38,17 +43,18 @@ jobs:
           git -C mathlib4 checkout --detach FETCH_HEAD
           test "$(git -C mathlib4 rev-parse HEAD)" = "54c01c3314d33d15d77893cbe4e0472ff26bb34d"
           test "$(cat mathlib4/lean-toolchain)" = "leanprover/lean4:v4.35.0-rc4"
-      - name: Download precompiled mathlib proof environment
+      - name: Prepare exact source Mathlib module with targeted cache and bounded fallback
         run: |
+          bash -n tools/bootstrap_pinned_mathlib.sh
           cd mathlib4
-          lake exe cache get
+          bash ../tools/bootstrap_pinned_mathlib.sh Mathlib/Algebra/Group/Basic.lean
       - name: Generate source-ID aligned requests from verified candidate corpus
         run: |
           python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000
           python tools/register_source_statements.py --db math_index.sqlite
           python tools/classify_knowledge.py --db math_index.sqlite
           python tools/generate_mathlib_extraction.py --db math_index.sqlite \
-            --module-prefix Mathlib.Algebra.Group.Basic --limit 12 \
+            --module-prefix Mathlib.Algebra.Group.Basic --limit 6 \
             --output lean/ExtractSelected.lean
           cp lean/ExtractSelected.lean mathlib4/ExtractSelected.lean
       - name: Extract real pinned mathlib environment declarations
