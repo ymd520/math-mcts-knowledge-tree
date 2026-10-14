@@ -263,6 +263,50 @@ class KnowledgeBank:
         return [_present(x) for x in rows]
 
 
+    def mcts_scope(self, query: str, *, max_concepts: int = 200,
+                   domain: str | None = None):
+        """Create a bounded KnowledgeTree shortlist for the existing MCTS engine.
+
+        Grades remain unassessed for imported statements; source metadata is
+        retained. This does not turn colliding names into valid mathematical
+        inference. Full-catalog dependency closure is NOT claimed by the
+        reduced shortlist.
+        """
+        from .knowledge import Concept, KnowledgeTree
+        if not 2 <= max_concepts <= 500:
+            raise ValueError("MCTS shortlist must contain 2..500 concepts")
+        hits = self.search(query, domain=domain, top_k=max_concepts)
+        ids = [hit["id"] for hit in hits]
+        if not ids:
+            return KnowledgeTree([], meta={"source": "indexed_shortlist",
+                                            "query": query})
+        with sqlite3.connect(str(self.db_path)) as db:
+            raw = {}
+            for cid in ids:
+                item = db.execute("SELECT tier, record FROM documents WHERE id=?",
+                                  (cid,)).fetchone()
+                if item is None:
+                    raise ValueError("Indexed document missing: " + cid)
+                raw[cid] = item
+        concepts = []
+        for cid in ids:
+            tier, blob = raw[cid]
+            row = json.loads(blob)
+            if tier == _IMPORT_TIER:
+                domain_cn, domain_en = _normalize_imported_domain(row)
+                row["domain_cn"], row["domain_en"] = domain_cn, domain_en
+                row["level_status"] = "ungraded_source_placeholder"
+                row["tags"] = [t for t in row.get("tags", [])
+                               if t not in {"核心", "重要"}]
+            concepts.append(Concept(**row))
+        return KnowledgeTree(concepts, meta={
+            "source": "indexed_shortlist",
+            "query": query,
+            "grade_warning": "imported level 5 is an ungraded placeholder",
+            "search_view": True,
+        })
+
+
 def _present(row) -> dict:
     raw, domain, subfield, topic, kind, status, importance, level = row
     record = json.loads(raw)
