@@ -4,13 +4,11 @@ concurrency:
   group: mathlib-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+# Deliberately manually triggered: fetching the full pinned mathlib cache is
+# resource-intensive and is not required for the independently verified core
+# Lean smoke test. A failed cache download must not be mistaken for a theorem
+# extraction or silently block unrelated verified Python improvements.
 on:
-  pull_request:
-    paths:
-      - 'lean/**'
-      - 'math_mcts/lean_reference_index.py'
-      - 'tools/generate_mathlib_extraction.py'
-      - '.github/workflows/mathlib-sample.yml'
   workflow_dispatch:
 
 permissions:
