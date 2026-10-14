@@ -9,7 +9,8 @@ import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from math_mcts.reasoning import Rule, RuleBook, Atom, load_reasoning_problem
+from math_mcts.reasoning import (Rule, RuleBook, Atom, load_reasoning_problem,
+                                 ProofGraph, ProofState, DerivationProblem)
 from math_mcts.semantic_graph import build_semantic_graph, SemanticGraph
 from math_mcts.search_eval import (
     mathematical_task_fixtures, benchmark_rule_problem, solve_baseline,
@@ -106,6 +107,33 @@ class BaselineTests(unittest.TestCase):
                                max_steps=10,max_expansions=100)
         self.assertFalse(outcome.solved)
         self.assertIsNone(outcome.certificate)
+
+    def test_indexed_actions_equal_reference_full_scan(self):
+        # Compare candidate eligibility against a full scan for all 2^4
+        # subsets of four ground atoms. The index must change only speed.
+        from itertools import combinations
+        data=mathematical_task_fixtures()["membership_transport"]
+        book,assumptions,goal=load_reasoning_problem(data)
+        graph=ProofGraph.build(book,assumptions,goal)
+        problem=DerivationProblem(graph,assumptions,goal,max_steps=20)
+        universe=sorted(assumptions | {e.conclusion for e in graph.edges})
+        for size in range(len(universe)+1):
+            for group in combinations(universe,size):
+                state=ProofState(frozenset(group))
+                got=problem.actions(state)
+                expected=[e for e in graph.edges if e.conclusion not in state.facts
+                          and set(e.premises)<=state.facts] if goal not in state.facts else []
+                self.assertEqual(got,expected)
+
+    def test_action_cache_capacity_is_bounded(self):
+        data=mathematical_task_fixtures()["divisibility_transitivity"]
+        book,assumptions,goal=load_reasoning_problem(data)
+        graph=ProofGraph.build(book,assumptions,goal)
+        problem=DerivationProblem(graph,assumptions,goal,max_steps=20)
+        problem._cache_capacity=2
+        for edge in graph.edges:
+            problem.actions(ProofState(assumptions | {edge.conclusion}))
+        self.assertLessEqual(len(problem._actions),2)
 
     def test_zero_budget_and_unsupported_method_rejected(self):
         data=mathematical_task_fixtures()["subset_transitivity"]
