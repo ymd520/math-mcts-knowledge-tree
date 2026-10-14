@@ -8,6 +8,7 @@ equality rewriting or automatic parsing of natural-language/Lean statements.
 from __future__ import annotations
 
 from dataclasses import dataclass, field, asdict
+from collections import Counter, OrderedDict
 import hashlib
 import json
 from typing import Mapping
@@ -246,7 +247,23 @@ class DerivationProblem(Problem):
         self.best: ProofState | None = None
         # Share enabled-edge computations across equivalent fact states.
         # Search-tree visit statistics remain per path (no unsound DAG UCT reuse).
-        self._actions = {}
+        self._actions = OrderedDict()
+        self._cache_capacity = 4096
+        # Each hyperedge is indexed by *one* required premise (the rarest
+        # ground atom among edges); only facts present in the current state
+        # can enable that edge. Ground, premise-free rules remain globally
+        # eligible. This preserves exact enabled-action semantics.
+        frequency = Counter(
+            atom for edge in graph.edges for atom in set(edge.premises))
+        self._indexed_edges = {}
+        self._empty_premise_edges = []
+        for i, edge in enumerate(graph.edges):
+            if not edge.premises:
+                self._empty_premise_edges.append((i, edge))
+                continue
+            anchor = min(set(edge.premises),
+                         key=lambda atom: (frequency[atom], atom))
+            self._indexed_edges.setdefault(anchor, []).append((i, edge))
 
     def initial_state(self):
         return ProofState(self.assumptions)
@@ -254,11 +271,22 @@ class DerivationProblem(Problem):
     def actions(self, state):
         if self.goal in state.facts or len(state.steps) >= self.max_steps:
             return []
-        if state.facts not in self._actions:
-            self._actions[state.facts] = tuple(
-                e for e in self.graph.edges if e.conclusion not in state.facts
-                and set(e.premises) <= state.facts)
-        return list(self._actions[state.facts])
+        if state.facts in self._actions:
+            self._actions.move_to_end(state.facts)
+            return list(self._actions[state.facts])
+        possible = list(self._empty_premise_edges)
+        for fact in state.facts:
+            possible.extend(self._indexed_edges.get(fact, ()))
+        possible.sort(key=lambda pair: pair[0])
+        enabled = tuple(
+            edge for _, edge in possible
+            if edge.conclusion not in state.facts
+            and set(edge.premises) <= state.facts)
+        self._actions[state.facts] = enabled
+        self._actions.move_to_end(state.facts)
+        if len(self._actions) > self._cache_capacity:
+            self._actions.popitem(last=False)
+        return list(enabled)
 
     def step(self, state, action):
         if action not in self.actions(state):
