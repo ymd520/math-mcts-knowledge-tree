@@ -34,6 +34,12 @@ class Level123DeepTests(unittest.TestCase):
         self.assertEqual(len(self.tree.concepts),
                          self.base.inventory()["total"]+self.tree.meta["catalog_added"])
         self.assertEqual(self.tree.check_integrity(),[])
+        oldnames={name_key(c.cn):[] for c in self.base.concepts}
+        for c in self.base.concepts:
+            oldnames[name_key(c.cn)].append(c.id)
+        clashes=[(r["id"],r["cn"],oldnames[name_key(r["cn"])])
+                 for r in self.rows if name_key(r["cn"]) in oldnames]
+        self.assertEqual(clashes,[],f"New entries collide with base: {clashes!r}")
         self.assertEqual(self.tree.inventory()["duplicate_name_groups"],
                          self.base.inventory()["duplicate_name_groups"])
 
