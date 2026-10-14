@@ -139,7 +139,8 @@ def build_index(db_path: str | Path, *, candidate_limit: int = 100000,
 
 
 def fast_search(db_path: str | Path, query: str, *, top_k: int = 10,
-                candidate_pool: int = 400, tier: str | None = None) -> list[dict]:
+                candidate_pool: int = 400, tier: str | None = None,
+                registered_only: bool = False) -> list[dict]:
     """FTS retrieval in a fixed shortlist; no all-catalog Concept allocation."""
     if top_k <= 0 or not query.strip():
         return []
@@ -151,6 +152,11 @@ def fast_search(db_path: str | Path, query: str, *, top_k: int = 10,
     with sqlite3.connect(str(db_path)) as conn:
         count = min(max(top_k, candidate_pool), 10000)
         where = "AND d.tier=?" if tier else ""
+        if registered_only:
+            # Enforce the independent provenance registry, not merely the
+            # presence of a source-looking field inside the JSON payload.
+            where += (" AND EXISTS (SELECT 1 FROM source_registry sr"
+                      " WHERE sr.id=d.id)")
         sql = f"""SELECT d.record, d.tier, d.level, bm25(term_index) AS score
                   FROM term_index JOIN documents d ON d.rowid=term_index.rowid
                   WHERE term_index MATCH ? {where}
