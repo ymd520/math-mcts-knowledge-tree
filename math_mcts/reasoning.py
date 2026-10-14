@@ -8,7 +8,7 @@ equality rewriting or automatic parsing of natural-language/Lean statements.
 from __future__ import annotations
 
 from dataclasses import dataclass, field, asdict
-from collections import Counter, OrderedDict
+from collections import Counter, OrderedDict, defaultdict, deque
 import hashlib
 import json
 from typing import Mapping
@@ -75,6 +75,8 @@ class SearchResult:
     generated_edges: int
     scope_complete: bool
     scope_reason: str
+    search_method: str = "legacy_mcts"
+    simulations: int = 0
 
 
 class RuleBook:
@@ -245,6 +247,21 @@ class DerivationProblem(Problem):
         self.graph, self.assumptions, self.goal = graph, assumptions, goal
         self.max_steps = max_steps
         self.best: ProofState | None = None
+        # Backward, ground-atom reachability provides a safe search PRIOR:
+        # ignored premises never create facts or bypass checked rules.
+        by_conclusion = defaultdict(list)
+        for edge in graph.edges:
+            by_conclusion[edge.conclusion].append(edge)
+        distance = {goal: 0}
+        queue = deque([goal])
+        while queue:
+            atom = queue.popleft()
+            for edge in by_conclusion.get(atom, ()):
+                for premise in edge.premises:
+                    if premise not in distance:
+                        distance[premise] = distance[atom] + 1
+                        queue.append(premise)
+        self._goal_distance = distance
         # Share enabled-edge computations across equivalent fact states.
         # Search-tree visit statistics remain per path (no unsound DAG UCT reuse).
         self._actions = OrderedDict()
@@ -267,6 +284,19 @@ class DerivationProblem(Problem):
 
     def initial_state(self):
         return ProofState(self.assumptions)
+
+    def action_weight(self, state, action) -> float:
+        # Goal-action promotion is purely scheduling: it is enabled only if
+        # ALL premises already hold (enforced in actions/step).
+        if action.conclusion == self.goal:
+            return 100.0
+        rank = self._goal_distance.get(action.conclusion)
+        if rank is None:
+            return 0.01
+        return 1.0 / (1 + rank)
+
+    def success_found(self) -> bool:
+        return self.best is not None and self.goal in self.best.facts
 
     def actions(self, state):
         if self.goal in state.facts or len(state.steps) >= self.max_steps:
@@ -331,17 +361,38 @@ def derive(book: RuleBook, assumptions, goal: Atom, *, iterations: int = 1000,
         raise ValueError("Positive search budgets required")
     assumptions = frozenset(assumptions)
     graph = ProofGraph.build(book, assumptions, goal, max_rounds, max_edges)
+    # For ground positive Horn rules, deterministic event-driven closure is
+    # often much cheaper and gives a replayed witness with zero rollouts.
+    # It never certifies source claims or the absence of a bounded proof.
+    from .hypergraph_closure import forward_certificate
+    witness = forward_certificate(book, graph, assumptions, goal, max_steps=max_steps)
+    if witness.certificate is not None:
+        return SearchResult("derived_relative_to_rules", witness.certificate,
+                            witness.effective_depth, witness.proof_steps, 0,
+                            len(graph.edges), graph.complete, graph.reason,
+                            "event_driven_closure", 0)
+    if not witness.reached and graph.complete:
+        # Least-fixed-point completeness for this particular finite *ground*
+        # reviewed Horn graph, not for arbitrary external mathematics.
+        return SearchResult("not_derivable_from_reviewed_ground_rules", None,
+                            0, 0, 0, len(graph.edges), True, graph.reason,
+                            "event_driven_closure", 0)
     problem = DerivationProblem(graph, assumptions, goal, max_steps)
-    mcts(problem, iterations=iterations, max_depth=max_steps, seed=seed)
+    _, root = mcts(problem, iterations=iterations, max_depth=max_steps,
+                   seed=seed, policy="puct", stop_on_success=True)
     if problem.best is None:
-        return SearchResult("not_found_within_budget", None, 0, 0, iterations,
-                            len(graph.edges), graph.complete, graph.reason)
+        return SearchResult("not_found_within_budget", None, 0, 0,
+                            root.stats["simulations"], len(graph.edges),
+                            graph.complete, graph.reason, "guided_puct",
+                            root.stats["simulations"])
     steps, depth = _goal_steps(assumptions, goal, problem.best.steps)
     cert = Certificate(goal, assumptions, steps, book.fingerprint())
     if not verify_certificate(book, cert, assumptions, goal):
         raise RuntimeError("Internal certificate replay failed")
     return SearchResult("derived_relative_to_rules", cert, depth, len(steps),
-                        iterations, len(graph.edges), graph.complete, graph.reason)
+                        root.stats["simulations"], len(graph.edges),
+                        graph.complete, graph.reason, "guided_puct",
+                        root.stats["simulations"])
 
 
 @dataclass
