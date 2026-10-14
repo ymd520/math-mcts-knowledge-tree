@@ -16,7 +16,8 @@ from math_mcts.lean_fullscale import verify_manifest
 from math_mcts.source_registry import SOURCE_COMMIT
 
 
-def aggregate(plan: Path, shard_root: Path, *, output: Path) -> dict:
+def aggregate(plan: Path, shard_root: Path, *, output: Path,
+              exports_output: Path | None = None) -> dict:
     verified=verify_manifest(plan)
     manifest=json.loads((plan/"manifest.json").read_text(encoding="utf-8"))
     expected={}
@@ -73,6 +74,11 @@ def aggregate(plan: Path, shard_root: Path, *, output: Path) -> dict:
             "note":"No missing/failed/blocked entries were counted as successful."}
     output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+    if exports_output is not None:
+        exports_output.parent.mkdir(parents=True,exist_ok=True)
+        with exports_output.open("w",encoding="utf-8") as out:
+            for cid in sorted(found):
+                out.write(json.dumps(found[cid],sort_keys=True,ensure_ascii=False)+"\n")
     return result
 
 
@@ -81,5 +87,7 @@ if __name__=="__main__":
     p.add_argument("--plan",type=Path,required=True)
     p.add_argument("--shard-root",type=Path,required=True)
     p.add_argument("--output",type=Path,default=Path("lean_full_coverage_report.json"))
+    p.add_argument("--exports-output",type=Path,default=Path("all_lean_extracted.jsonl"))
     a=p.parse_args()
-    print(json.dumps(aggregate(a.plan,a.shard_root,output=a.output),ensure_ascii=False))
+    print(json.dumps(aggregate(a.plan,a.shard_root,output=a.output,
+                               exports_output=a.exports_output),ensure_ascii=False))
