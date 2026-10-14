@@ -77,7 +77,7 @@ class Problem:
 
 class _Node:
     __slots__ = ("state", "parent", "action", "children",
-                 "untried", "visits", "total", "best", "prior", "stats")
+                 "untried", "untried_priors", "visits", "total", "best", "prior", "stats")
 
     def __init__(self, state, parent=None, action=None, actions=(), prior=1.0):
         self.state = state
@@ -85,6 +85,7 @@ class _Node:
         self.action = action          # 从 parent 到本节点的动作
         self.children: list["_Node"] = []
         self.untried: list = list(actions)
+        self.untried_priors: list[float] = []
         self.visits = 0
         self.total = 0.0
         self.best = None              # max 回传时的子树最优值
@@ -127,6 +128,25 @@ def mcts(problem: Problem, iterations: int = 1000,
     rng = random.Random(seed)
     initial = problem.initial_state()
     root = _Node(initial, actions=problem.actions(initial))
+
+    def prepare_priors(node):
+        if policy != "puct" or not node.untried:
+            return
+        weights = [float(problem.action_weight(node.state, a)) for a in node.untried]
+        if any(not math.isfinite(w) or w < 0 for w in weights):
+            raise ValueError("action_weight must be finite and nonnegative")
+        if not any(weights):
+            weights = [1.0] * len(weights)
+        total = sum(weights)
+        if not math.isfinite(total):
+            raise ValueError("Action weight sum must be finite")
+        paired = list(zip(node.untried, (w / total for w in weights)))
+        rng.shuffle(paired)  # seed-controlled unbiased ties
+        paired.sort(key=lambda pair: pair[1])
+        node.untried = [action for action, _ in paired]
+        node.untried_priors = [prior for _, prior in paired]
+
+    prepare_priors(root)
     stats = {"requested_iterations": iterations, "simulations": 0,
              "created_nodes": 1, "guided_expansions": 0,
              "policy": policy, "early_stop": False}
@@ -141,18 +161,10 @@ def mcts(problem: Problem, iterations: int = 1000,
             allowance = max(1, math.ceil(widening_k * (node.visits + 1) ** widening_alpha))
             if node.untried and len(node.children) < allowance:
                 if policy == "puct":
-                    # Deterministic preference with seeded random tie-breaking.
-                    weights = [float(problem.action_weight(node.state, a))
-                               for a in node.untried]
-                    if any(not math.isfinite(w) or w < 0 for w in weights):
-                        raise ValueError("action_weight must be finite and nonnegative")
-                    if not any(weights):
-                        weights = [1.0] * len(weights)
-                    high = max(weights)
-                    options = [i for i, w in enumerate(weights) if w == high]
-                    idx = options[rng.randrange(len(options))]
-                    prior = high / sum(weights)
-                    action = node.untried.pop(idx)
+                    # Priors are normalized ONCE for the complete action set,
+                    # not renormalized after each widening expansion.
+                    action = node.untried.pop()
+                    prior = node.untried_priors.pop()
                     stats["guided_expansions"] += 1
                 else:
                     prior = 1.0
@@ -160,6 +172,7 @@ def mcts(problem: Problem, iterations: int = 1000,
                 child_state = problem.step(node.state, action)
                 child = _Node(child_state, parent=node, action=action,
                               actions=problem.actions(child_state), prior=prior)
+                prepare_priors(child)
                 stats["created_nodes"] += 1
                 node.children.append(child)
                 node = child
