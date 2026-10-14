@@ -206,8 +206,8 @@ König无限引理|König's Infinity Lemma|根树无限且每个顶点只有有�
 连续映射的紧致像定理|Continuous image of a compact space is compact|X紧致且f:X→Y连续|f(X)在Y中紧致|X紧致且f连续 ⇒ f(X)紧致|将像空间开覆盖拉回X，取有限子覆盖后再映回|像紧致不能推出原空间紧致|连续实函数在非空紧致空间上取得最大值与最小值|
 @1|几何与拓扑|欧氏空间|紧致性判别|TOP
 欧氏空间中的海涅—博雷尔定理|Heine–Borel theorem in Euclidean space|A⊆R^n采用通常欧氏拓扑|A紧致当且仅当A闭且有界|A⊆R^n紧致 ⇔ A闭且有界|有限维欧氏空间中可用序列紧致刻画证明|此结论依赖有限维欧氏空间；无限维赋范空间中不成立|R^n中的闭球紧致，开球不紧致|
-@2|几何与拓扑|连通性|连续像保持连通|TOP
-连续映射保持连通性|Continuous images preserve connectedness|X连通且f:X→Y连续|f(X)连通|X连通且f连续 ⇒ f(X)连通|若像可分为两个不交相对开集，其逆像会分离X|逆像不必连通；定理只断言正向像保持连通|连续曲线的像不能分成两个不相连的部分|
+@3|几何与拓扑|紧致性|紧致空间到豪斯多夫空间|TOP
+紧致到豪斯多夫的连续双射为同胚|Continuous bijection from compact to Hausdorff is a homeomorphism|X紧致，Y为豪斯多夫空间且f:X→Y连续双射|f为同胚，即逆映射也连续|f closed and bijective, hence f inverse continuous|闭集在X中紧致；其连续像在Y中紧致，而豪斯多夫空间中的紧集闭，因此f为闭映射|去掉紧致或豪斯多夫条件结论可失败|[0,2π)到单位圆的自然连续双射不是同胚|
 @3|几何与拓扑|点集拓扑|紧致集与闭集|TOP
 豪斯多夫空间中的紧致子集为闭集|Compact subsets of Hausdorff spaces are closed|Y为豪斯多夫空间，K⊆Y紧致|K在Y中闭|K紧致且Y豪斯多夫 ⇒ K闭|对K外每点使用豪斯多夫分离并由紧致性抽有限覆盖|豪斯多夫条件不可省；非豪斯多夫空间中紧集未必闭|实数中的紧区间是闭集|
 @3|概率与统计|条件期望|塔式性质|PRO
