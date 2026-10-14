@@ -2,7 +2,7 @@
   "meta": {
     "name": "全领域数学基础与重要知识 MCTS 搜索树",
     "name_en": "Math Knowledge MCTS Search Tree",
-    "version": "1.11.1",
+    "version": "1.11.2",
     "structure": "领域 -> 分支 -> 主题 -> 概念",
     "note": "每条概念: 一句话定义(零基础可读) + 关键公式(纯Unicode) + 难度1-5 + 前置依赖"
   },
@@ -223616,26 +223616,6 @@
       ],
       "kind": "定理",
       "example": "算出相关系数为1.2一定是算错了。"
-    },
-    {
-      "id": "LV30317",
-      "domain_cn": "概率与统计",
-      "domain_en": "Probability & Statistics",
-      "branch_cn": "方差",
-      "topic_cn": "常见分布的方差",
-      "cn": "均匀分布的方差",
-      "en": "Variance of Uniform Distribution",
-      "definition": "区间[a,b]上连续均匀分布的方差为(b−a)²/12，只与区间长度有关。",
-      "formulas": [
-        "X ~ U(a,b) ⟹ Var(X) = (b−a)²/12"
-      ],
-      "level": 2,
-      "prereq": [
-        "LV20343"
-      ],
-      "tags": [],
-      "kind": "公式",
-      "example": "[0,1]均匀分布的方差为1/12。"
     },
     {
       "id": "LV30318",
