@@ -48,8 +48,8 @@ class FullPlanTests(unittest.TestCase):
             db=self.fixture(td)
             with sqlite3.connect(db) as cx:
                 raw=json.loads(cx.execute("SELECT record FROM documents WHERE id='MTH01'").fetchone()[0])
-                raw["en"]="∀invalid"
-                raw["formal"]="theorem ∀invalid : True := trivial"
+                raw["en"]="invalid declaration"
+                raw["formal"]="theorem invalid declaration : True := trivial"
                 cx.execute("UPDATE documents SET record=? WHERE id='MTH01'",(json.dumps(raw),))
             p=Path(td)/"plan.json"
             status=build_full_plan(db,p)
@@ -57,6 +57,21 @@ class FullPlanTests(unittest.TestCase):
             self.assertEqual(status["scheduled_total"],0)
             self.assertEqual(status["unsupported_total"],1)
             self.assertEqual(status["reason_counts"]["unsupported_declaration_syntax"],1)
+
+    def test_unicode_declaration_is_planned_not_lost(self):
+        with tempfile.TemporaryDirectory() as td:
+            db=self.fixture(td)
+            with sqlite3.connect(db) as cx:
+                raw=json.loads(cx.execute("SELECT record FROM documents WHERE id='MTH01'").fetchone()[0])
+                raw["en"]="α_test"
+                raw["formal"]="theorem α_test : True := trivial"
+                cx.execute("UPDATE documents SET record=? WHERE id='MTH01'",(json.dumps(raw),))
+            p=Path(td)/"unicode.json"
+            result=build_full_plan(db,p)
+            self.assertEqual(result["scheduled_total"],1)
+            script=Path(td)/"unicode.lean"
+            generate_batch_script(p,"B000000",script)
+            self.assertIn('"α_test"',script.read_text())
 
     def test_tampered_statement_fails_early(self):
         with tempfile.TemporaryDirectory() as td:
