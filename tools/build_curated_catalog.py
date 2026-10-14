@@ -190,6 +190,24 @@ def build():
         manifest["packs"].append({"file": filename, "count": len(pack_rows),
                                   "overlays": len(overlays),
                                   "sha256": hashlib.sha256((out / filename).read_bytes()).hexdigest()})
+    # The deep Level 1–3 pack is a separately authored reviewed-conditions
+    # extension, not part of the historic curated_seed input. Retain it when
+    # rebuilding the legacy packs; never silently drop 105 sourced records.
+    extension = out / "level123_multidomain_20261014.json"
+    if extension.exists():
+        extension_data = extension.read_bytes()
+        extension_records = json.loads(extension_data)
+        if len(extension_records.get("concepts", [])) != 105:
+            raise ValueError("Unexpected Level 1–3 extension count")
+        if extension_records.get("overlays", []) != []:
+            raise ValueError("Level 1–3 extension must not override older records")
+        manifest["packs"].append({
+            "file": extension.name,
+            "count": len(extension_records["concepts"]),
+            "overlays": 0,
+            "sha256": hashlib.sha256(extension_data).hexdigest(),
+        })
+        manifest["version"] = "1.13.0"
     write_json(out / "manifest.json", manifest)
     report = {"base_count": len(originals), "authored_statements": len(authored),
               "added": len(added), "authored_enrichments": sum(r["action"] == "enriched" for r in authored),
