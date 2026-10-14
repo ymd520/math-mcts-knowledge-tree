@@ -25,6 +25,8 @@ jobs:
         run: python -m compileall -q math_mcts tests
       - name: Core MCTS tests
         run: python tests/test_mcts.py
+      - name: Evidence-first knowledge expansion and research-operator tests
+        run: python tests/test_expansion.py
       - name: Reasoning and certificates
         run: python tests/test_reasoning.py
       - name: Layered collision tests

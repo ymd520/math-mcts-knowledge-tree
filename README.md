@@ -8,6 +8,22 @@
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
 搜索次数和深度不代表数学原创性或证明真实性。静态概念检索采用全量精确评分排序（不再声称检索访问次数来自 MCTS）；MCTS 仍用于知识配对和规则调度；学习路径已改为完整先修拓扑规划，避免无关随机绕路。
 
+## 可信来源扩容与数学方法库（候选层）
+
+已新增不覆盖原精选目录的外部来源候选库、来源版本/声明哈希保护、可审计的
+焦点排序以及31种数学研究方法模板。它们只为发现提供候选，
+**不会自动晋升为重要定理或证明结论**。独立命令入口：
+
+```sh
+python tools/expand_knowledge.py coverage --index math_index.sqlite
+python tools/expand_knowledge.py methods --goal "noncommutative convolution upper bound"
+python tools/expand_knowledge.py prioritize --index math_index.sqlite --focus "finite group" --limit 20
+python tools/expand_knowledge.py import --db external_math.sqlite --input licensed_sources.jsonl.gz
+```
+
+详细输入格式、许可/来源边界、回归测试及后续路线见
+[可信数学知识大规模扩容方案](KNOWLEDGE_EXPANSION_V2.md)。
+
 ## 当前知识数量
 
 基础库现为10974条；补充分片新增495条；Level 1–3专题深化包174条；默认统一加载11643条。\nLevel 1–4 已标记重要/核心知识5785条；未审核来源候选不计入此数。
