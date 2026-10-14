@@ -48,8 +48,13 @@ def cmd_verify_layers(args):
 
 
 def cmd_verify(args):
-    book, assumptions, goal = load_reasoning_problem(
-        json.loads(Path(args.problem).read_text(encoding="utf-8")))
+    payload = json.loads(Path(args.problem).read_text(encoding="utf-8"))
+    if getattr(args, "catalog_mapped", False):
+        from .semantic import load_catalog_reasoning_problem
+        book, assumptions, goal = load_catalog_reasoning_problem(
+            payload, KnowledgeTree.load())
+    else:
+        book, assumptions, goal = load_reasoning_problem(payload)
     report = json.loads(Path(args.report).read_text(encoding="utf-8"))
     try:
         valid = verify_certificate(book, load_certificate(report["certificate"]), assumptions, goal)
@@ -62,7 +67,12 @@ def cmd_verify(args):
 
 def cmd_derive(args):
     data = json.loads(Path(args.problem).read_text(encoding="utf-8"))
-    book, assumptions, goal = load_reasoning_problem(data)
+    if getattr(args, "catalog_mapped", False):
+        from .semantic import load_catalog_reasoning_problem
+        book, assumptions, goal = load_catalog_reasoning_problem(
+            data, KnowledgeTree.load())
+    else:
+        book, assumptions, goal = load_reasoning_problem(data)
     result = derive(book, assumptions, goal, iterations=args.iterations,
                     max_steps=args.max_steps, seed=args.seed,
                     max_rounds=args.max_rounds, max_edges=args.max_edges)
@@ -186,6 +196,7 @@ def main():
     lv.set_defaults(func=cmd_verify_layers)
     dr = sub.add_parser("derive", help="多前提多层推导（相对于显式审核规则）")
     dr.add_argument("problem", help="带对象类型、前提、规则及目标的 JSON")
+    dr.add_argument("--catalog-mapped", action="store_true", help="Require hash-bound reviewed catalog mappings")
     dr.add_argument("--iterations", type=int, default=1000)
     dr.add_argument("--max-steps", type=int, default=50)
     dr.add_argument("--max-rounds", type=int, default=100)
@@ -196,6 +207,7 @@ def main():
     vr = sub.add_parser("verify-derivation", help="重放 JSON 推导证书，检查规则版本和前提")
     vr.add_argument("problem")
     vr.add_argument("report")
+    vr.add_argument("--catalog-mapped", action="store_true", help="Require hash-bound reviewed catalog mappings")
     vr.set_defaults(func=cmd_verify)
     p = sub.add_parser("path", help="规划到目标概念的学习路径")
     p.add_argument("target", help="目标概念(中文名/英文名/id)")
