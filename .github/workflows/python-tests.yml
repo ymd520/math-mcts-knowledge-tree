@@ -39,6 +39,10 @@ jobs:
         run: python tests/test_scale.py
       - name: Typed semantic graph and mathematics solver adversarial tests
         run: python tests/test_semantic_pipeline.py
+      - name: Lean source-reference graph and adversarial tests
+        run: python tests/test_lean_reference_index.py
+      - name: Source module holdout and adaptive search tests
+        run: python tests/test_lean_adaptive.py
       - name: Source-locked editorial promotion gate tests
         run: python tests/test_editorial.py
       - name: Compare mathematically sound rule-task solvers
@@ -62,6 +66,17 @@ jobs:
       - name: Validate and register imported source statements
         if: matrix.python-version == '3.12'
         run: python tools/register_source_statements.py --db math_index.sqlite --manifest official_source_registry.jsonl.gz --report source_registration_report.json
+      - name: Module-disjoint train-validation-test split of source theorems
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/build_lean_holdout.py --db math_index.sqlite --report lean_module_holdout.json
+          python - <<'PY'
+          import json
+          d=json.load(open('lean_module_holdout.json'))
+          assert d['source_theorems']==99984,d
+          assert d['source_modules_spanning_multiple_splits']==0,d
+          print('Module-disjoint source split:',d['split_counts'])
+          PY
       - name: Source registry integrity tests
         run: python tests/test_source_registry.py
       - name: Classified knowledge-layer regression tests
@@ -129,6 +144,7 @@ jobs:
             index_status.json
             official_source_registry.jsonl.gz
             source_registration_report.json
+            lean_module_holdout.json
             knowledge_classification.json
             quality_triage_report.json
             quality_review_top1000.jsonl.gz
