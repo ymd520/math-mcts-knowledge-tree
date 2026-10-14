@@ -58,6 +58,8 @@ jobs:
           PY
       - name: Lean source-reference graph and adversarial tests
         run: python tests/test_lean_reference_index.py
+      - name: Mathlib source extractor request tests
+        run: python tests/test_mathlib_generator.py
       - name: Source module holdout and adaptive search tests
         run: python tests/test_lean_adaptive.py
       - name: Source-locked editorial promotion gate tests
