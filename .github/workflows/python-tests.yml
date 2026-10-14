@@ -39,6 +39,27 @@ jobs:
         run: python tests/test_scale.py
       - name: Typed semantic graph and mathematics solver adversarial tests
         run: python tests/test_semantic_pipeline.py
+      - name: Validate genuine set-transport 20x20 mathematical rule chains
+        run: |
+          python tests/test_set_transport20.py
+          python tools/benchmark_set_transport.py --output set_transport_20x20.json --seeds 3 7 11
+          python - <<'PY'
+          import json
+          x=json.load(open('set_transport_20x20.json'))
+          assert x['missing_inclusion_rejected']
+          for r in x['trials']:
+              assert r['status']=='derived_relative_to_rules',r
+              m=r['metrics']
+              assert m['effective_goal_depth']==20
+              assert m['applied_rules']==400
+              assert all(layer['goal_relevant_knowledge']>=20
+                         and layer['new_conclusions']==20 for layer in m['layers'])
+          print('Set transport 20x20 proof replay and missing-premise attack passed')
+          PY
+      - name: Lean source-reference graph and adversarial tests
+        run: python tests/test_lean_reference_index.py
+      - name: Source module holdout and adaptive search tests
+        run: python tests/test_lean_adaptive.py
       - name: Source-locked editorial promotion gate tests
         run: python tests/test_editorial.py
       - name: Compare mathematically sound rule-task solvers
@@ -62,6 +83,17 @@ jobs:
       - name: Validate and register imported source statements
         if: matrix.python-version == '3.12'
         run: python tools/register_source_statements.py --db math_index.sqlite --manifest official_source_registry.jsonl.gz --report source_registration_report.json
+      - name: Module-disjoint train-validation-test split of source theorems
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/build_lean_holdout.py --db math_index.sqlite --report lean_module_holdout.json
+          python - <<'PY'
+          import json
+          d=json.load(open('lean_module_holdout.json'))
+          assert d['source_theorems']==99984,d
+          assert d['source_modules_spanning_multiple_splits']==0,d
+          print('Module-disjoint source split:',d['split_counts'])
+          PY
       - name: Source registry integrity tests
         run: python tests/test_source_registry.py
       - name: Classified knowledge-layer regression tests
@@ -129,6 +161,7 @@ jobs:
             index_status.json
             official_source_registry.jsonl.gz
             source_registration_report.json
+            lean_module_holdout.json
             knowledge_classification.json
             quality_triage_report.json
             quality_review_top1000.jsonl.gz
@@ -144,7 +177,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: semantic-math-bench-python-${{ matrix.python-version }}
-          path: semantic_benchmark.json
+          path: |
+            semantic_benchmark.json
+            set_transport_20x20.json
           if-no-files-found: ignore
       - name: Publish audit results
         if: always()

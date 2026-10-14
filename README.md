@@ -228,3 +228,16 @@ python tests/test_semantic_audit.py
 知识重要性与难度审定需人工提供源指纹与理由，
 使用 `tools/apply_editorial_reviews.py` 写独立审计覆盖层。
 详见 [SEMANTIC_V2.md](SEMANTIC_V2.md)。
+
+## Lean 结构提取基础与 20×20 集合论基准
+
+`lean/ExtractCoreSmoke.lean` 已在独立 CI 中成功读取真实 Lean 的
+定理类型和证明项常量引用；`lean_reference_index` 建立来源 SHA
+绑定的语法依赖索引，并防止未经审核的 JSON 假冒为已经通过内核认证。
+固定的 mathlib4 来源提交为 `54c01c3314d33d15d77893cbe4e0472ff26bb34d`，
+需要 Lean `v4.35.0-rc4`，**原来源数学声明提取尚未完成**。
+
+`examples/set_membership_20x20.py` 采用元素隶属关系在集合包含下传递的
+有效数学规则，提供 20 层×每层 20 条的受控初等证明容量测试，
+包含缺少必要包含前提的负面验证。该测试不证明研究级复杂推理或搜索优势。
+详情：[LEAN_STRUCTURE_PIPELINE.md](LEAN_STRUCTURE_PIPELINE.md)。

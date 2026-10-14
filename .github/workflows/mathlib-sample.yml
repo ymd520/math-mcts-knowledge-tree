@@ -1,0 +1,98 @@
+name: Pinned mathlib declaration sample
+
+concurrency:
+  group: mathlib-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+# Deliberately manually triggered: fetching the full pinned mathlib cache is
+# resource-intensive and is not required for the independently verified core
+# Lean smoke test. A failed cache download must not be mistaken for a theorem
+# extraction or silently block unrelated verified Python improvements.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-matched-mathlib:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Checkout pinned mathlib and verify its exact toolchain
+        run: |
+          set -euxo pipefail
+          mkdir mathlib4
+          git -C mathlib4 init
+          git -C mathlib4 remote add origin https://github.com/leanprover-community/mathlib4.git
+          git -C mathlib4 fetch --depth=1 origin 54c01c3314d33d15d77893cbe4e0472ff26bb34d
+          git -C mathlib4 checkout --detach FETCH_HEAD
+          test "$(git -C mathlib4 rev-parse HEAD)" = "54c01c3314d33d15d77893cbe4e0472ff26bb34d"
+          test "$(cat mathlib4/lean-toolchain)" = "leanprover/lean4:v4.35.0-rc4"
+      - name: Download precompiled mathlib proof environment
+        run: |
+          cd mathlib4
+          lake exe cache get
+      - name: Generate source-ID aligned requests from verified candidate corpus
+        run: |
+          python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000
+          python tools/register_source_statements.py --db math_index.sqlite
+          python tools/classify_knowledge.py --db math_index.sqlite
+          python tools/generate_mathlib_extraction.py --db math_index.sqlite \
+            --module-prefix Mathlib.Algebra.Group.Basic --limit 12 \
+            --output lean/ExtractSelected.lean
+          cp lean/ExtractSelected.lean mathlib4/ExtractSelected.lean
+      - name: Extract real pinned mathlib environment declarations
+        run: |
+          set -o pipefail
+          (cd mathlib4 && lake env lean ExtractSelected.lean) 2>&1 | tee pinned_mathlib_output.log
+      - name: Strictly check source-linked output and audit coverage
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from math_mcts.lean_reference_index import import_lean_exports
+          lines=Path('pinned_mathlib_output.log').read_text().splitlines()
+          matching=[]
+          missing=[]
+          for line in lines:
+              if not line.startswith('{'):
+                  continue
+              value=json.loads(line)
+              if 'source_statement_sha256' in value:
+                  matching.append(value)
+              elif 'missing_declaration' in value:
+                  missing.append(value)
+          Path('mathlib_extracted.jsonl').write_text(
+              ''.join(json.dumps(v,ensure_ascii=False)+'\n' for v in matching))
+          Path('mathlib_missing.json').write_text(json.dumps(missing,indent=2))
+          assert matching, ('All selected original declaration names missing; '
+                            'do not claim extracted source coverage',missing)
+          result=import_lean_exports('math_index.sqlite','mathlib_extracted.jsonl')
+          Path('mathlib_alignment_report.json').write_text(json.dumps({
+              'source_aligned':result, 'unresolved_declarations':missing,
+              'selected_total':len(matching)+len(missing),
+              'note':'Lean CI execution attested by workflow; JSON remains labeled external'
+          },indent=2))
+          print(result)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pinned-mathlib-source-sample
+          path: |
+            pinned_mathlib_output.log
+            mathlib_extracted.jsonl
+            mathlib_missing.json
+            mathlib_alignment_report.json
+            lean/ExtractSelected.lean
+          if-no-files-found: ignore
