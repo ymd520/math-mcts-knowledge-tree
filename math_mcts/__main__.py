@@ -48,8 +48,13 @@ def cmd_verify_layers(args):
 
 
 def cmd_verify(args):
-    book, assumptions, goal = load_reasoning_problem(
-        json.loads(Path(args.problem).read_text(encoding="utf-8")))
+    payload = json.loads(Path(args.problem).read_text(encoding="utf-8"))
+    if getattr(args, "catalog_mapped", False):
+        from .semantic import load_catalog_reasoning_problem
+        book, assumptions, goal = load_catalog_reasoning_problem(
+            payload, KnowledgeTree.load())
+    else:
+        book, assumptions, goal = load_reasoning_problem(payload)
     report = json.loads(Path(args.report).read_text(encoding="utf-8"))
     try:
         valid = verify_certificate(book, load_certificate(report["certificate"]), assumptions, goal)
@@ -62,7 +67,12 @@ def cmd_verify(args):
 
 def cmd_derive(args):
     data = json.loads(Path(args.problem).read_text(encoding="utf-8"))
-    book, assumptions, goal = load_reasoning_problem(data)
+    if getattr(args, "catalog_mapped", False):
+        from .semantic import load_catalog_reasoning_problem
+        book, assumptions, goal = load_catalog_reasoning_problem(
+            data, KnowledgeTree.load())
+    else:
+        book, assumptions, goal = load_reasoning_problem(data)
     result = derive(book, assumptions, goal, iterations=args.iterations,
                     max_steps=args.max_steps, seed=args.seed,
                     max_rounds=args.max_rounds, max_edges=args.max_edges)
@@ -101,7 +111,7 @@ def cmd_search(args):
     tree = apply_catalog_scope(tree, args)
     results = search_concepts(tree, args.query, top_k=args.top_k,
                               iterations=args.iterations)
-    print(f"检索: {args.query!r} (MCTS 迭代 {args.iterations} 次)")
+    print(f"检索: {args.query!r} (全量精确评分排序; 不进行 MCTS 迭代)")
     for i, (c, visits, mean) in enumerate(results, 1):
         print(f"  {i}. [{c.id}] {c.cn} ({c.en})")
         print(f"     路径: {c.path()} | 访问{visits}次 | 相关度{mean:.2f}")
@@ -186,6 +196,7 @@ def main():
     lv.set_defaults(func=cmd_verify_layers)
     dr = sub.add_parser("derive", help="多前提多层推导（相对于显式审核规则）")
     dr.add_argument("problem", help="带对象类型、前提、规则及目标的 JSON")
+    dr.add_argument("--catalog-mapped", action="store_true", help="Require hash-bound reviewed catalog mappings")
     dr.add_argument("--iterations", type=int, default=1000)
     dr.add_argument("--max-steps", type=int, default=50)
     dr.add_argument("--max-rounds", type=int, default=100)
@@ -196,8 +207,9 @@ def main():
     vr = sub.add_parser("verify-derivation", help="重放 JSON 推导证书，检查规则版本和前提")
     vr.add_argument("problem")
     vr.add_argument("report")
+    vr.add_argument("--catalog-mapped", action="store_true", help="Require hash-bound reviewed catalog mappings")
     vr.set_defaults(func=cmd_verify)
-    p = sub.add_parser("path", help="规划到目标概念的学习路径")
+    p = sub.add_parser("path", help="按先修依赖拓扑顺序规划学习路径")
     p.add_argument("target", help="目标概念(中文名/英文名/id)")
     p.add_argument("--iterations", type=int, default=3000)
     p.add_argument("--known", default="",
@@ -218,7 +230,7 @@ def main():
     co.add_argument("--top_k", type=int, default=5)
     co.add_argument("--iterations", type=int, default=3000)
     co.set_defaults(func=cmd_collide)
-    s = sub.add_parser("search", help="关键词检索相关概念")
+    s = sub.add_parser("search", help="全量精确评分检索相关概念")
     add_catalog_scope(s)
     s.add_argument("query", help="检索关键词")
     s.add_argument("--top_k", type=int, default=5)

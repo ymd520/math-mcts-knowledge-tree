@@ -63,24 +63,26 @@ class LearningPathProblem(Problem):
 
 
 def plan_learning_path(tree: KnowledgeTree, target: str,
-                        max_steps: int = 15, iterations: int = 3000,
-                        seed: int = 7,
-                        known: list[str] | tuple[str, ...] = ()) -> list[Concept]:
-    """规划学习目标概念的最优路径, 返回有序的 Concept 列表.
+                         max_steps: int = 15, iterations: int = 3000,
+                         seed: int = 7,
+                         known: list[str] | tuple[str, ...] = ()) -> list[Concept]:
+    """Return an exact prerequisite-closed learning sequence without detours.
 
-    known: 已掌握的概念 id 列表, 规划从这些概念之后开始.
+    The target dependency graph is known in full; a topological closure is
+    deterministic, sound and cheaper than stochastic MCTS. The retained
+    max_steps/iterations/seed parameters preserve the historical API but
+    do not truncate required prerequisites or affect this exact plan.
     """
     concept = tree.find(target)
-    known_ids = [k for k in known if k in tree.by_id]
-    problem = LearningPathProblem(tree, concept.id, max_steps, known_ids)
-    seq, _ = mcts(problem, iterations=iterations, seed=seed)
-    # 兜底: 若 MCTS 未走到目标, 用拓扑闭包补全
-    learned = list(problem.initial_state()) + list(seq)
-    if concept.id not in learned:
-        for pid in tree.prereq_closure(concept.id):
-            if pid not in learned:
-                learned.append(pid)
-        learned.append(concept.id)
+    known_ids = list(dict.fromkeys(k for k in known if k in tree.by_id))
+    learned = list(known_ids)
+    already = set(known_ids)
+    for cid in [*tree.prereq_closure(concept.id), concept.id]:
+        if cid not in already:
+            learned.append(cid)
+            already.add(cid)
+    # If target was in the explicitly known set, keep the requested learning
+    # sequence as-is; otherwise the final element is always the target.
     return [tree.get(cid) for cid in learned]
 
 
@@ -89,7 +91,7 @@ def export_path_markdown(path: list[Concept]) -> str:
     target = path[-1]
     lines = [f"# 学习计划: {target.cn}({target.en})",
              "",
-             f"共 {len(path)} 步, 由 MCTS 在知识前置依赖图上规划.",
+             f"共 {len(path)} 步, 按目标先修依赖拓扑顺序规划.",
              "",
              "| 步骤 | 概念 | 难度 | 位置 |",
              "|---|---|---|---|"]
@@ -242,8 +244,12 @@ class CollisionProblem(Problem):
                        key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
         curated = {col["a"] for col in tree.collisions} | \
                   {col["b"] for col in tree.collisions}
-        self._roots = sorted({o.id for o in roots[:self.CAND_CAP]} |
-                             {cid for cid in curated if tree.get(cid)})
+        domains = {}
+        for concept in roots:
+            domains.setdefault(concept.domain_cn, []).append(concept.id)
+        per_domain = max(1, self.CAND_CAP // max(1, len(domains)))
+        selected = {cid for group in domains.values() for cid in group[:per_domain]}
+        self._roots = sorted(selected | {cid for cid in curated if cid in tree.by_id})
 
     def _cands_for(self, cid: str) -> list[str]:
         """某概念的跨领域候选搭档(标签优先级截断到 CAND_CAP), 懒计算+缓存.
@@ -257,7 +263,11 @@ class CollisionProblem(Problem):
             pool = [o for o in self.tree.concepts
                     if o.id != cid and o.domain_cn != me.domain_cn]
             pool.sort(key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
-            cands = [o.id for o in pool[:self.CAND_CAP]]
+            if len(pool) <= self.CAND_CAP:
+                cands = [o.id for o in pool]
+            else:
+                cands = [pool[i * len(pool) // self.CAND_CAP].id
+                         for i in range(self.CAND_CAP)]
             curated_partners = set()
             for col in self.tree.collisions:
                 if col["a"] == cid:
@@ -307,8 +317,8 @@ class CollisionProblem(Problem):
             if self.seed:
                 return self._best_partner(self.seed)
             # 全局: 懒计算各概念最优搭档的最大值
-            return max((self._best_partner(c.id)
-                        for c in self.tree.concepts), default=0.0)
+            return max((self._best_partner(cid)
+                        for cid in self._roots), default=0.0)
         if len(state) == 1:
             return self._best_partner(state[0])
         return self.reward(state)
@@ -323,8 +333,11 @@ def collide_concepts(tree: KnowledgeTree, seed: str | None = None,
     返回 [(ConceptA, ConceptB, 碰撞分, curated说明或None)].
     """
     problem = CollisionProblem(tree, seed)
+    # Collision search relies on observing curated partners even when a node
+    # has hundreds of available actions. Disable narrow progressive widening
+    # for this bounded two-ply candidate-ranking task.
     _, root = mcts(problem, iterations=iterations, seed=seed_rng,
-                   max_depth=4)
+                   max_depth=4, widening_k=1000.0, widening_alpha=1.0)
     pairs: list[tuple] = []
 
     def collect(node):
@@ -354,22 +367,11 @@ def search_concepts(tree: KnowledgeTree, query: str, top_k: int = 5,
 
     返回 [(Concept, 访问次数, 价值)] 列表，按价值降序，访问次数打破并列。
     """
+    if top_k <= 0:
+        return []
+    # Scores are computed exactly for every leaf; no incomplete MCTS traversal.
     problem = ConceptSearchProblem(query=query, tree=tree)
-    _, root = mcts(problem, iterations=iterations, seed=seed,
-                   max_depth=6)
-
-    leaves: list[tuple] = []
-
-    def collect(node):
-        if tree.is_concept_leaf(node.state):
-            leaves.append((node.state, node.visits,
-                           problem.node_value(node)))
-        for ch in node.children:
-            collect(ch)
-
-    collect(root)
-    # 按 MCTS 估计的平均回报(价值)排序 —— 这是 MCTS 返回最优解的标准做法;
-    # 访问次数仅作并列时的 tie-break.
-    leaves.sort(key=lambda x: (x[2], x[1]), reverse=True)
-    return [(tree.leaf_concept(s), v, m) for s, v, m in leaves[:top_k]]
+    ranked = sorted(tree.concepts,
+                    key=lambda c: (-problem._leaf_reward[c.id], c.id))
+    return [(c, 0, problem._leaf_reward[c.id]) for c in ranked[:top_k]]
 

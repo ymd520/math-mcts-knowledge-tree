@@ -1,0 +1,42 @@
+name: Python regression tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile modules
+        run: python -m compileall -q math_mcts tests
+      - name: Core MCTS tests
+        run: python tests/test_mcts.py
+      - name: Reasoning and certificates
+        run: python tests/test_reasoning.py
+      - name: Layered collision tests
+        run: python tests/test_layered.py
+      - name: Catalog integration tests
+        run: python tests/test_catalog.py
+      - name: Imported knowledge adapter tests
+        run: python tests/test_imported.py
+      - name: Semantic mappings and structural audit tests
+        run: python tests/test_semantic_audit.py
+      - name: Full catalog audit
+        run: python -m math_mcts.audit -o catalog_audit.json --fail-on-errors
+      - name: Publish audit results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-audit-python-${{ matrix.python-version }}
+          path: catalog_audit.json
+          if-no-files-found: ignore
