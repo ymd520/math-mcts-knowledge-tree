@@ -159,6 +159,20 @@ jobs:
           assert all(c.id in scope.by_id for c in scope.concepts)
           print('FULL 100K CLASSIFICATION AND MCTS SCOPE PASSED', data['by_domain'])
           PY
+      - name: Exhaustive mathematician attribution and reviewer-state tests
+        run: python tests/test_review_backlog.py
+      - name: Export all 99984 source-author-credit review records
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/export_full_review_backlog.py --db math_index.sqlite --output full_source_review_backlog.jsonl.gz --report full_source_review_backlog_report.json
+          python - <<'PY'
+          import json
+          r=json.load(open("full_source_review_backlog_report.json"))
+          assert r['source_records']==99984
+          assert r['human_reviewed']+r['not_human_reviewed']==99984
+          assert r['lean_extracted']+r['lean_not_extracted']==99984
+          print("Full credited review queue; no invented author and grade",r)
+          PY
       - name: Knowledge quality review adversarial tests
         run: python tests/test_quality_review.py
       - name: Audit source knowledge and export review leads
@@ -199,6 +213,8 @@ jobs:
             lean_module_holdout.json
             mathlib_full_plan_report.json
             mathlib_full_plan.json
+            full_source_review_backlog.jsonl.gz
+            full_source_review_backlog_report.json
             knowledge_classification.json
             source_attribution_report.json
             quality_triage_report.json
