@@ -88,3 +88,33 @@ python tools/import_lean_extraction.py --db math_index.sqlite \
 十万条 mathlib 定理的真实全量形式表达式提取、依赖覆盖统计、证明目标
 完整形式化，以及与其他搜索器在大规模真实任务上的公平性能优势，
 仍需要进一步运行与独立验收。
+
+## 2026-10-14 独立运行的验收事实
+
+- **Lean Core 实际执行：通过。** GitHub Actions 的 `lean-smoke.yml` 在
+  Lean v4.34.0 中 elaboration 了 `mathMctsProofReferenceDemo`，
+  提取到 `∀ (n : Nat), n + 0 = n`，证明项引用包含 `Nat.add_zero`。
+  这是真实 Lean 运行，不是模拟 JSON。
+- **Python3.10/3.12 和十万级数据索引：通过。**
+  真实数学来源注册/分类、SHA 对齐、拒绝伪造 JSON 的内核证明标签、
+  模块级 holdout、搜索路由、回归测试均已通过。
+- **20×20 数学规则有效性：通过。**
+  使用集合包含下的成员传递这一条有效初等规则，
+  20 条独立成员关系跨 20 次包含传递，共 400 条目标相关规则应用，
+  证书可重放；故意删除某个必要包含条件则无法达成目标。
+  此案例是**构造的初等数学 benchmark**，不是现实研究论文中的证明。
+- **固定 mathlib4 的真实来源定理样本提取：未完成。**
+  CI 成功 checkout 到来源提交并核对 v4.35.0-rc4，
+  但下载对应预编译 mathlib 环境阶段失败／中断，
+  **没有执行成功的原来源定理匹配与导出**。
+  此资源密集的工作流保留 `workflow_dispatch` 手动入口，
+  不能纳入“已通过”或“已提取十万条”的计数。
+- **有确认的 mathlib 声明级语义覆盖数：仍为 0（未验证）。**
+  现有 99,984 条来源登记是原声明文本的来源指纹检查，不是 Lean
+  类型/证明项引用的完整提取覆盖率。
+
+当前架构把
+`source_registered` / `actual_lean_core_smoke` /
+`external_export_unattested` / `reviewed_horn_rule` /
+`certificate_replayed` 严格分开。
+这使后续可以增加真实依赖数据，而不会把文本来源或语法引用升级为数学证明。
