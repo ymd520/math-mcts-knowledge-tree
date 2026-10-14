@@ -87,7 +87,7 @@ class LayerTests(unittest.TestCase):
         book = RuleBook(signatures, {}, rules)
         from math_mcts.layered import LayeredProblem
         cfg = LayerConfig(batch_width=20, batch_choices=4, max_candidates=80)
-        p = LayeredProblem(book, frozenset(anchors), (Atom("out_79"),), cfg)
+        p = LayeredProblem(book, frozenset(anchors), tuple(Atom(f"out_{i}") for i in range(80)), cfg)
         batches = p.actions(p.initial_state())
         assert len(batches) == 4
         used = {edge.rule_id for batch in batches for edge in batch.edges}
