@@ -268,3 +268,10 @@ bash tools/bootstrap_pinned_mathlib.sh Mathlib/Algebra/Group/Basic.lean
 Lean 类型结构与逻辑前提判断分开存储，不自动把语法引用当作新定理。
 全库来源审核队列保留原 mathlib 社区署名和许可，不把引用的数学结论当作仓库作者原创。
 本轮根据要求暂停真实复杂数学证明的阶段 3。
+
+## Level 1–3 七领域深化专题包
+
+新增 126 条（7 域×3 层×每单元 6 条）带条件、结论、推导提示、反例和
+主题来源的教学深化卡；核心记录使用 `D123_` 稳定 ID，前置关系显式核验。
+卡片重要性与难度是**暂定编辑候选**，并非独立数学审核或 Lean 已证新成果。
+详见 [`LEVEL123_DEEP_EXPANSION.md`](LEVEL123_DEEP_EXPANSION.md)。
