@@ -6,6 +6,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from math_mcts.knowledge import KnowledgeTree
+from math_mcts.deep_core import SEED_PATH
 
 
 def audit():
@@ -25,8 +26,11 @@ def audit():
                          repr(bad))
     if tree.check_integrity():
         raise ValueError("Catalog integrity broken")
-    if len(deep)!=141:
-        raise ValueError("Expected 141 case-and-condition annotated cards")
+    seed_count=sum(1 for line in SEED_PATH.read_text(encoding="utf-8").splitlines()
+                   if line.strip() and not line.lstrip().startswith("#")
+                   and not line.lstrip().startswith("@"))
+    if len(deep)!=seed_count:
+        raise ValueError(f"Loaded {len(deep)} cards but the seed contains {seed_count}")
     return {
         "base_catalog_count":len(base.concepts),
         "supplemented_catalog_count":len(tree.concepts),

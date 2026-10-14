@@ -10,6 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from math_mcts import KnowledgeTree, search_concepts, collide_concepts, DiscoveryQueue
 from math_mcts.catalog import assemble, PACK_DIR, name_key
+from math_mcts.version import CATALOG_VERSION
 
 
 class CatalogTests(unittest.TestCase):
@@ -27,7 +28,7 @@ class CatalogTests(unittest.TestCase):
         self.assertGreaterEqual(b["important_levels"][1], 700)
         for level in range(2, 5):
             self.assertGreater(b["important_levels"][level], a["important_levels"][level])
-        self.assertEqual(self.tree.meta["version"], "1.14.0")
+        self.assertEqual(self.tree.meta["version"], CATALOG_VERSION)
 
     def test_level_and_importance_are_separate(self):
         view = self.tree.select(levels=[1, 2], important_only=True)

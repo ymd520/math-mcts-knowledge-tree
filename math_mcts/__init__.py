@@ -5,6 +5,7 @@
 MCTS 用于有界知识配对和人工审核规则下的推导调度。
 """
 from .knowledge import Concept, KnowledgeTree
+from .version import CATALOG_VERSION
 from .mcts import mcts, Problem
 from .search import (plan_learning_path, search_concepts,
                      export_path_markdown, collide_concepts,
@@ -21,7 +22,7 @@ from .semantic_links import compatible_atoms, find_composable_rules
 from .scale_plan import expansion_status
 from .knowledge_bank import KnowledgeBank, classify_knowledge
 
-__version__ = "1.14.0"
+__version__ = CATALOG_VERSION
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "plan_learning_path", "search_concepts",
            "export_path_markdown", "to_dot",
