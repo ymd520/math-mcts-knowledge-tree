@@ -5,6 +5,9 @@ from collections import deque
 from dataclasses import replace
 import math
 from pathlib import Path
+import json
+import sqlite3
+import tempfile
 import random
 import sys
 import unittest
@@ -13,6 +16,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from math_mcts.mcts import Problem, mcts
 from math_mcts.reasoning import Atom, Hyperedge, Rule, RuleBook, ProofGraph, derive, verify_certificate
 from math_mcts.hypergraph_closure import forward_certificate
+from math_mcts.source_expansion import import_jsonl
+from math_mcts.candidate_rule_bridge import candidate_rules, bridge_report
 
 
 def atom(name):
@@ -185,6 +190,76 @@ class GuidedMCTSTests(unittest.TestCase):
                 return 0.0
         _, root = mcts(Zero(), iterations=3, policy="puct", seed=4)
         self.assertEqual(root.stats["simulations"], 3)
+
+
+class CandidateRuleBridgeTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.db = self.root / "external.sqlite"
+        p = self.root / "records.jsonl"
+        p.write_text(json.dumps({
+            "source": "example-project", "source_ref": "version-2026-verified-by-curator",
+            "source_url": "https://example.org/source", "license": "review-required",
+            "locator": "Analysis.some_theorem", "name": "Some theorem",
+            "kind": "theorem", "statement": "If P(x) holds, then Q(x) holds."
+        }) + "\\n", encoding="utf-8")
+        import_jsonl(self.db, p)
+        with sqlite3.connect(self.db) as db:
+            self.entry = json.loads(db.execute(
+                "SELECT record FROM external_candidates").fetchone()[0])
+        self.spec = {"candidates": [self.mapping()],
+                     "signatures": {"P": ["T"], "Q": ["T"]},
+                     "objects": {"a": "T"}}
+
+    def mapping(self):
+        return {
+            "candidate_id": self.entry["id"],
+            "statement_sha256": self.entry["statement_sha256"],
+            "variables": {"?x": "T"},
+            "premises": [{"predicate": "P", "args": ["?x"]}],
+            "conclusion": {"predicate": "Q", "args": ["?x"]},
+            "status": "candidate"
+        }
+
+    def test_typed_translation_is_not_executable(self):
+        rules = candidate_rules(self.db, self.spec["candidates"],
+                                self.spec["signatures"], self.spec["objects"])
+        self.assertEqual(len(rules), 1)
+        book = RuleBook(self.spec["signatures"], self.spec["objects"], list(rules))
+        self.assertFalse(book.rules)
+        self.assertEqual(len(book.candidates), 1)
+        self.assertIsNone(derive(book, [Atom("P", ("a",))],
+                                 Atom("Q", ("a",)), iterations=2).certificate)
+        path = self.root / "mapping.json"
+        path.write_text(json.dumps(self.spec), encoding="utf-8")
+        report = bridge_report(self.db, path)
+        self.assertEqual(report["active_reviewed_rules"], 0)
+        self.assertFalse(report["semantic_translation_verified"])
+
+    def test_reject_fake_proof_grade_and_bad_type(self):
+        m = self.mapping()
+        m["status"] = "reviewed"
+        with self.assertRaisesRegex(ValueError, "self-promote"):
+            candidate_rules(self.db, [m], self.spec["signatures"], self.spec["objects"])
+        m = self.mapping()
+        m["statement_sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "fingerprint"):
+            candidate_rules(self.db, [m], self.spec["signatures"], self.spec["objects"])
+        m = self.mapping()
+        m["conclusion"] = {"predicate": "Q", "args": ["a", "a"]}
+        with self.assertRaises(ValueError):
+            candidate_rules(self.db, [m], self.spec["signatures"], self.spec["objects"])
+        m = self.mapping()
+        m["premises"] = []
+        with self.assertRaises(ValueError):
+            candidate_rules(self.db, [m], self.spec["signatures"], self.spec["objects"])
+
+    def test_duplicate_mapping_rejected(self):
+        m = self.mapping()
+        with self.assertRaisesRegex(ValueError, "Duplicate"):
+            candidate_rules(self.db, [m, m], self.spec["signatures"], self.spec["objects"])
 
 
 if __name__ == "__main__":
