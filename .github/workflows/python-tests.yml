@@ -56,6 +56,8 @@ jobs:
                          and layer['new_conclusions']==20 for layer in m['layers'])
           print('Set transport 20x20 proof replay and missing-premise attack passed')
           PY
+      - name: Full mathlib shard, type-structure and source-credit adversarial tests
+        run: python tests/test_full_mathlib_pipeline.py
       - name: Lean source-reference graph and adversarial tests
         run: python tests/test_lean_reference_index.py
       - name: Mathlib source extractor request tests
@@ -105,6 +107,22 @@ jobs:
       - name: Classify all 100k imported mathematics records
         if: matrix.python-version == '3.12'
         run: python tools/classify_knowledge.py --db math_index.sqlite --report knowledge_classification.json
+      - name: Exhaustively plan all source-registered Lean theorem extraction requests
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/plan_full_mathlib.py --db math_index.sqlite --output full_mathlib_plan --shards 64 --batch-size 80
+          python tools/plan_full_mathlib.py --output full_mathlib_plan --verify-only
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('full_mathlib_plan/manifest.json').read_text())
+          assert d['registered_total']==99984
+          assert d['renderable_total']+d['blocked_identifiers_or_modules']==99984
+          assert len(d['shards'])==64
+          assert sum(x['candidate_count']+x['blocked_count'] for x in d['shards'])==99984
+          assert d['plan_is_not_lean_extraction']
+          print('ALL 99984 THEOREMS ACCOUNTED IN SOURCE-LOCKED SHARD PLAN; NOT CLAIMED EXTRACTED')
+          PY
       - name: Create citation index for all imported and curated cards
         if: matrix.python-version == '3.12'
         run: |
@@ -182,6 +200,7 @@ jobs:
             lean_module_holdout.json
             knowledge_classification.json
             source_attribution_report.json
+            full_mathlib_plan/
             quality_triage_report.json
             quality_review_top1000.jsonl.gz
             quality_anomaly_top1000.jsonl.gz
