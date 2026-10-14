@@ -16,7 +16,6 @@ from .reasoning import (Atom, Rule, RuleBook, Certificate, ProofGraph,
 from .layered import (LayerConfig, LayerCertificate, derive_layers, replay_layers,
                       load_layered_problem, load_layer_certificate)
 from .semantic import catalog_statement_sha256, load_catalog_reasoning_problem
-from .audit import audit_catalog
 
 __version__ = "1.11.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
@@ -27,6 +26,6 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "DiscoveryQueue", "derive", "verify_certificate", "load_reasoning_problem",
            "load_certificate", "LayerConfig", "LayerCertificate", "derive_layers",
            "replay_layers", "load_layered_problem", "load_layer_certificate",
-           "catalog_statement_sha256", "load_catalog_reasoning_problem", "audit_catalog"]
+           "catalog_statement_sha256", "load_catalog_reasoning_problem"]
 
 
