@@ -58,6 +58,10 @@ jobs:
           PY
       - name: Lean source-reference graph and adversarial tests
         run: python tests/test_lean_reference_index.py
+      - name: Full corpus Lean planning and false-completion adversarial tests
+        run: |
+          python tests/test_full_lean_plan.py
+          python tests/test_full_lean_coverage.py
       - name: Mathlib source extractor request tests
         run: python tests/test_mathlib_generator.py
       - name: Source module holdout and adaptive search tests
@@ -95,6 +99,19 @@ jobs:
           assert d['source_theorems']==99984,d
           assert d['source_modules_spanning_multiple_splits']==0,d
           print('Module-disjoint source split:',d['split_counts'])
+          PY
+      - name: Plan ALL source-registered Lean theorems without exclusions hidden
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/plan_full_lean.py --db math_index.sqlite --output mathlib_full_plan.json --report mathlib_full_plan_report.json --batch-limit 60
+          python - <<'PY'
+          import json
+          plan=json.load(open('mathlib_full_plan.json'))
+          assert plan["registered_total"] == 99984
+          assert plan["scheduled_total"] + plan["unsupported_total"] == 99984
+          assert plan["execution_status"] == "not_executed"
+          assert sum(len(x["registered_declarations"]) for x in plan["batches"]) == plan["scheduled_total"]
+          print("FULL mathlib planned; no unsupported source silently omitted:", plan["unsupported_total"])
           PY
       - name: Source registry integrity tests
         run: python tests/test_source_registry.py
@@ -180,6 +197,8 @@ jobs:
             official_source_registry.jsonl.gz
             source_registration_report.json
             lean_module_holdout.json
+            mathlib_full_plan_report.json
+            mathlib_full_plan.json
             knowledge_classification.json
             source_attribution_report.json
             quality_triage_report.json
