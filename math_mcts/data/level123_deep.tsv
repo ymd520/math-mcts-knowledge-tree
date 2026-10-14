@@ -100,3 +100,53 @@ L光滑函数的梯度下降一步界|Smooth descent lemma for gradient step|f�
 凸函数一阶最优性充分条件|First-order convex global optimality|f为定义在开凸集上的可微凸函数且∇f(x*)=0|x*是全局最小点|f(y)≥f(x*)+∇f(x*)·(y-x*)=f(x*)|用凸函数切平面下界|非凸函数驻点可能是鞍点|f(x)=x²在0处全局最小|L光滑函数的梯度下降一步界
 区间二分根法的符号条件|Bisection root sign change condition|f在[a,b]连续且f(a)f(b)<0|至少有一根且二分保留异号子区间|f(a)f(b)<0 ⇒∃c∈(a,b), f(c)=0|用介值定理维持两端异号不变量|没有异号可能仍有偶重根，但无法靠此保证|二分求x³-2的根|二分搜索必须固定单调谓词;介值定理需要闭区间连续
 QR最小二乘避免正规方程|QR least squares stable approach|A为实满列秩矩阵，A=QR且Q列正交、R可逆上三角|最小二乘可解Rx=Qᵀb|argmin norm(Ax-b)⇒Rx=Qᵀb|利用正交投影保留二范数并解三角系统|显式构造AᵀA可能放大条件数|用薄QR拟合传感器校准系数|正规方程平方条件数陷阱
+
+@3|数学基础|结构论证与集合论|集合结构和无穷证明|MIT
+等价关系构造商集的分割性|Equivalence classes form a partition|R在非空集合X上自反对称传递|各等价类要么相等要么不交，类的并为X|X=⊔_(C∈X/R) C|用传递性证明两个类相交即相等|只对称而不传递的关系不会必然形成分割|整数模m同余形成m个剩余类|二元关系传递性与对称性区分
+康托幂集严格大于原集|Cantor theorem for powersets|A为任意集合|不存在从A到P(A)的满射，幂集基数严格大于A|card(A)<card(P(A))|假设满射f构造D={x∈A:x∉f(x)}|有限枚举直觉不能代替任意无穷集证明|自然数全部子集无法用自然数逐一列全|全称存在量词换序风险
+自然数子集最小元的强归纳基础|Well-ordering and strong induction|非空S⊆N并使用自然数通常顺序|S存在最小元素，这与自然数强归纳原理联系紧密|S≠∅⇒∃min S|反设有反例集合，取最小反例完成强归纳|整数Z的任意非空子集未必有最小整数|求最小使整除性质失败的自然数|强归纳先前所有项的使用范围
+可数集合枚举映射的必要前提|Countability via enumerations|A为有限或与N存在单射的集合|可数性可通过单射A→N或存在合适枚举验证|A countable ⇔∃ injective f:A→N|将元素编码为可区分的自然数|任意无限集不能直接假设有枚举|有理数可用分子分母对编码并去重复|有限集合上的单射与满射等价
+可数并可数需要选择约定|Countable union of countable sets|在通常ZFC集合论下，A_n均为可数集合|并集∪_n A_n可数|countable(A_n) for all n⇒countable(∪_n A_n)|对每集合选枚举并对(n,k)对角编码|一般弱集合论无可数选择时该命题需额外注意|将每年有限记录的历史数据合并仍可数|可数集合枚举映射的必要前提
+σ代数的可数并与补集封闭|Sigma algebra countable closure|Σ为Ω上的σ代数，A_n∈Σ|补集、可数并与可数交仍在Σ|A_n∈Σ⇒∪_n A_n∈Σ 且 ∩_n A_n∈Σ|用德摩根律将可数交写成可数并的补|有限并闭合不能代替可数并闭合|概率事件集合可以进行可数次或运算|集合补集的德摩根律双向检查
+@3|代数|群环与线性结构|同构和有限结构不变量|AATA
+有限群子群阶整除定理|Lagrange subgroup divisibility|G为有限群且H≤G|H的阶整除G的阶|card(G)=[G:H]·card(H)|用左右陪集划分G且每陪集与H等势|从整除关系不能反推出每个因数都有对应子群|阶6群不能存在阶4子群|等价关系构造商集的分割性
+轨道稳定子计数与群作用|Orbit stabilizer counting|有限群G作用在集合X上且x∈X|轨道大小乘稳定子大小等于群阶|card(Orb(x))·card(Stab(x))=card(G)|群元素到轨道点的映射纤维大小相等|若忘记稳定子可能将轨道大小误写成群阶|正方形旋转作用于顶点，稳定子平凡|有限群子群阶整除定理
+中国剩余定理互素模数版本|Chinese remainder theorem coprime moduli|正整数m_i两两互素且给定整数余数a_i|同余组在模M=∏m_i意义下存在唯一解|x≡a_i (mod m_i), M=∏m_i|为每个模数构造其余模数乘积的逆元并求和|模数不互素时任意余数组未必相容|x≡1模3与x≡2模5得x≡7模15|贝祖恒等式刻画最大公约数;模乘法消去的互素门槛
+线性映射第一同构定理|Linear first isomorphism theorem|T:V→W为域上线性映射|商空间V/ker T与像空间im T线性同构|V/ker T ≅ im T|将v的等价类映为T(v)，检验良定义单射满射|不按ker T取商时映射未必良定义|投影R³→R²的核为第三坐标轴|线性映射核与单射等价;有限维秩零化度定理
+凯莱哈密顿定理的矩阵代入|Cayley Hamilton for finite matrices|A为域上n×n矩阵，χ_A(t)=det(tI-A)|A代入自身特征多项式得到零矩阵|χ_A(A)=0|可借助伴随矩阵恒等式或线性代数标准证明|该结论不意味着任意多项式代入都为零|二维矩阵A满足A²-tr(A)A+det(A)I=0|行列式非零与方阵可逆性
+特征多项式与最小多项式的整除|Minimal polynomial divides characteristic polynomial|A为域上有限维方阵且m_A为使m_A(A)=0的首一最小次数多项式|m_A整除χ_A|m_A(t)∣χ_A(t)|利用多项式带余除法和凯莱哈密顿|不同矩阵可有同特征多项式但不同最小多项式|单位矩阵的最小多项式t-1|凯莱哈密顿定理的矩阵代入
+@3|分析|完备性与泛函估计|收敛原理的严格应用|RA
+实数柯西准则的完备性|Cauchy criterion in real numbers|实数数列满足任意ε>0最终任意两项距离小于ε|该数列收敛到某个实数|∀ε>0 ∃N ∀m,n≥N abs(x_n-x_m)<ε|利用实数完备性而非预设极限值|有理数中的柯西列可能只收敛到无理数|用柯西准则先证明迭代序列存在极限|收敛数列必有界的单向性
+欧氏闭有界紧性定理|Heine Borel in Euclidean space|K⊆R^n且n为有限正整数|K紧当且仅当K闭且有界|compact(K)⇔closed(K)∧bounded(K)|由实数完备性和有限维性质构造有限子覆盖|无限维赋范空间中闭有界通常不推出紧|闭立方体可在任意开覆盖中取有限子覆盖|闭集序列极限保留性;欧氏空间收敛的坐标逐一判据
+紧集上连续函数一致连续|Heine Cantor uniform continuity|K为紧度量空间且f:K→Y连续，Y为度量空间|f在K上一致连续|∀ε>0∃δ>0∀x,y∈K,d(x,y)<δ⇒d(fx,fy)<ε|若不一致连续，取相互趋近点列并利用紧性取收敛子列|在非紧域如(0,1)上1/x连续但不一致连续|温度传感器在封闭标定区间连续时有统一误差阈值|欧氏闭有界紧性定理;连续映射的开集逆像判据
+巴拿赫压缩映射固定点|Banach contraction fixed point theorem|X为非空完备度量空间，T:X→X且存在0≤q<1满足d(Tx,Ty)≤q d(x,y)|T存在唯一不动点，任意初值迭代收敛|d(x_n,x*)≤q^n d(x_0,x*)|利用几何级数证明迭代柯西，再用连续性取极限|非完备空间(0,1)的T(x)=x/2无域内不动点|迭代求解含反馈控制的稳定固定点|实数柯西准则的完备性;度量空间三角不等式证明路径
+一致收敛函数列可交换积分|Uniform limit commutes with Riemann integral|连续函数f_n在[a,b]一致收敛到f|极限可与定积分交换|lim_n∫_a^b f_n=∫_a^b f|积分差绝对值不超过(b-a)乘一致范数|仅逐点收敛不保证积分换序|近似响应函数一致收敛时积分能量收敛|一致收敛保证连续性;黎曼和收敛前提
+受控收敛与积分换序|Dominated convergence under integrable bound|可测函数f_n几乎处处收敛至f，且存在g≥0可积使abs(f_n)≤g|f可积且积分极限可交换|lim_n ∫f_n dμ=∫f dμ|利用共同可积上界和测度收敛定理|只有点态收敛但无可积控制会失败|集中窄脉冲f_n=n1_(0,1/n)点态趋0但积分恒为1|一致收敛函数列可交换积分
+@3|几何与拓扑|紧性与连通性|拓扑不变量与连续映射|TOP
+度量空间紧与序列紧等价|Metric compactness sequential characterization|X为度量空间|X紧当且仅当每个序列有收敛到X中点的子列|compact(X)⇔sequentially compact(X)|证明有限子覆盖与有限网构造之间的联系|一般非度量拓扑空间不可直接使用序列紧等价|封闭有限维球内任意点列有收敛子列|紧集连续像仍紧的前提
+紧子集在豪斯多夫空间中闭|Compact sets closed in Hausdorff spaces|X为Hausdorff空间且K⊆X紧|K在X中为闭集|compact(K)∧Hausdorff(X)⇒closed(K)|对外点和每个紧集点分离邻域再取有限子覆盖|非Hausdorff空间中紧集不一定闭|实数空间紧集必闭|紧集连续像仍紧的前提
+连续映射保持连通性|Continuous maps preserve connectedness|C为连通拓扑空间且f:C→Y连续|像f(C)连通|connected(C)⇒connected(f(C))|反设像可分离，逆像给出C的非平凡开闭分割|连续映射并不保证保持不连通性|区间的连续像仍为区间|连续映射的开集逆像判据
+路径连通推出连通|Path connected implies connected|X为拓扑空间且任意两点由连续路径连接|X连通|path_connected(X)⇒connected(X)|若可分离，任何连接两侧点的路径在[0,1]上的逆像将矛盾|连通空间一般未必路径连通|二维凸集合路径连通，因此连通|连续映射保持连通性
+紧到豪斯多夫的连续双射是同胚|Compact to Hausdorff continuous bijection|X紧，Y Hausdorff，f:X→Y连续且为双射|f的逆映射连续，因此f为同胚|continuous bijective compact→Hausdorff⇒homeomorphism|用紧集在Hausdorff空间中闭推出f为闭映射|未要求紧和Hausdorff时连续双射不保证逆连续|紧曲面的连续双射到Hausdorff像给出同胚|紧集连续像仍紧的前提;紧子集在豪斯多夫空间中闭
+连续映射不增加拓扑连通分支数量的条件|Connected image stays within one component|C为连通子集且f连续|f(C)包含于目标空间某个连通分支|f(C)⊆component_Y(f(x₀))|像连通而连通分支按最大连通子集定义|将连续像横跨两个独立连通分支是不可能的|把连通轨迹映到离散两点空间时必为常值|连续映射保持连通性
+@3|概率与统计|极限定理与信息|收敛、集中与信息约束|PRO
+切比雪夫不等式的二阶矩条件|Chebyshev variance tail bound|随机变量X具有有限方差且t>0|与均值相距至少t的概率被方差控制|P(abs(X-E X)≥t)≤Var(X)/t²|对非负变量(X-E X)²用马尔可夫不等式|若方差无穷大，则不能得有效有限界|测量误差标准差2时偏差≥6概率≤1/9|马尔可夫尾界仅需非负
+有限方差独立同分布弱大数定律|Weak law of large numbers by Chebyshev|X_i独立同分布且E X_i=μ，Var X_i=σ²<∞|样本均值依概率收敛μ|P(abs(X̄_n-μ)≥ε)≤σ²/(nε²)→0|计算样本均值方差再套切比雪夫|若样本高度相关则方差可能不随n衰减|测量样本数增加降低均值波动概率|切比雪夫不等式的二阶矩条件;协方差项决定方差可加性
+独立有界随机变量霍夫丁界|Hoeffding bounded independent sums|X_i独立且a_i≤X_i≤b_i几乎处处，t>0|独立和超出均值t的概率指数衰减|P(Σ(X_i-E X_i)≥t)≤exp(-2t²/Σ(b_i-a_i)²)|对中心化变量的矩母函数使用Chernoff方法|随机变量不独立时不能无条件套用此界|独立小噪声均值的偏差置信估计|马尔可夫尾界仅需非负
+凸函数詹森不等式|Jensen inequality for convex transforms|X可积，φ凸且φ(X)可积，E X在定义域内|凸函数作用于均值不大于均值中的凸函数|φ(E X)≤E[φ(X)]|从凸函数支撑直线或离散凸组合逼近证明|对凹函数不等号方向相反|E[X²]≥(E X)²导出方差非负|期望线性不要求独立
+离散相对熵非负的支撑条件|Gibbs inequality for discrete KL|离散概率p,q在有限或可数集上且p_i>0处必须q_i>0，否则KL=∞|相对熵非负，零当且仅当p与q分布相同|D(p∥q)=Σ_i p_i log(p_i/q_i)≥0|运用log t≤t-1或者Jensen不等式|KL不对称且一般不满足三角不等式|比较经验离散分布与模型分布|凸函数詹森不等式
+条件期望塔式定律子σ代数次序|Tower property of conditional expectation|G⊆H均为子σ代数且X可积|先对H条件化再对G条件化等于直接对G条件化|E[E[X∣H]∣G]=E[X∣G]|使用条件期望对G中任意事件积分一致的刻画|当G,H不嵌套时一般不能如此化简|多层分组预测先按细分组再归并到粗组|全期望法则条件期望版本
+@3|离散数学|匹配、网络与拓扑计数|组合结构的全局证书|MIT
+霍尔婚配条件覆盖左侧|Hall marriage necessary and sufficient|有限二部图G=(L,R,E)|覆盖所有L顶点的匹配存在当且仅当对每个S⊆L邻居数至少为card(S)|∀S⊆L,card(N(S))≥card(S)|必要性由单射匹配得出，充分性可用增广路径归纳|仅核对每个单顶点的邻居数不够|给三个岗位分配三名各自合格候选|两集合容斥计数的交集修正
+二部图最大匹配等于最小点覆盖|Konig maximum matching minimum vertex cover|有限二部图|最大匹配边数等于最小顶点覆盖大小|ν(G)=τ(G)|从最大匹配的交错路径构造同大小点覆盖|一般非二部图如三角形有ν=1但τ=2|任务资源二分匹配与最小关键节点集|霍尔婚配条件覆盖左侧
+最大流最小割的容量等价|Max flow min cut theorem|有限有向网络容量非负，给定源s与汇t|最大可行流值等于最小s-t割容量|maxflow(s,t)=mincut(s,t)|从残量网络无增广路时可达点集构造同值割|网络不满足流守恒约束时数值比较无意义|通信链路瓶颈与最大吞吐量一致|无权图广度优先层次最短
+连通平面图欧拉公式|Euler formula for planar embeddings|有限连通平面图给定平面嵌入，n顶点m边f个面含外面|满足n-m+f=2|n-m+f=2|从生成树开始逐条加边，每添形成环的边增加一个面|在环面等其他曲面嵌入时公式会改变|平面连通三角形有n=3,m=3,f=2|连通无向树的边数固定
+简单平面图边数上界适用条件|Planar simple graph edge bound|简单平面图n≥3个顶点|边数m≤3n-6|m≤3n-6|用每面边界长度至少3与欧拉公式|含平行边图不满足同一简单图上界|K5有10条边大于3·5-6=9故非平面|连通平面图欧拉公式
+伯恩赛德轨道计数引理|Burnside orbit counting lemma|有限群G作用于有限集合X|轨道数是群元素固定点数的平均|card(X/G)=Σ_(g∈G)card(Fix(g))/card(G)|双计数满足g·x=x的成对关系|简单按群阶除总元素数会遗漏非自由作用|正方形染色在旋转等价下的方案数|轨道稳定子计数与群作用
+@3|计算与优化|凸性与矩阵计算|证书、收敛率和低秩结构|OPT
+严格凸函数最优点唯一|Strict convexity unique optimizer|f在凸集C上严格凸且有最小点|该最小点唯一|f(tx+(1-t)y)<tf(x)+(1-t)f(y), x≠y|假设两个不同最优点，则中点给出更小目标|严格凸不能保证非紧域上一定取得最小值|二次正定代价在约束闭有界集上唯一最优|凸函数一阶最优性充分条件
+凸规划KKT充分性证书|KKT sufficiency for convex programs|f凸可微，g_i凸可微，等式约束仿射，原可行点及非负乘子满足KKT|所给原可行点为全局最小点|stationarity+feasibility+complementary slackness⇒optimal|以拉格朗日函数下界和驻点说明原目标无更小值|没有凸性时KKT驻点可为局部极值或鞍点|通过乘子与约束残差检查最优性|凸函数一阶最优性充分条件
+强凸光滑梯度下降线性收敛|Linear rate for smooth strongly convex gradient descent|f可微、μ强凸且梯度L-Lipschitz，0<μ≤L，取η=1/L|函数值误差按几何比例收缩|f(x_k)-f*≤(1-μ/L)^k(f(x_0)-f*)|结合下降引理和Polyak-Lojasiewicz型界|仅凸但不强凸时不保证相同线性速率|最小二乘加正则化后梯度下降几何收敛|L光滑函数的梯度下降一步界;严格凸函数最优点唯一
+共轭梯度法有限步性质|Conjugate gradient finite termination in exact arithmetic|A为n×n实对称正定矩阵，按标准共轭梯度求Ax=b且使用精确算术|最多n次迭代得到精确解|CG terminates in ≤n iterations|每步生成A共轭搜索方向并在Krylov子空间优化|浮点舍入下不保证严格n步终止|大型稀疏SPD方程用CG迭代|线性系统误差的条件数放大
+最佳秩k近似的奇异值截断|Eckart Young low rank approximation|A为实或复m×n矩阵，0≤k<rank(A)|截断SVD给出Frobenius范数最佳秩≤k近似|argmin_(rank B≤k)norm_F(A-B)=UΣ_kV*|正交不变范数下投影到最大奇异值方向|若存在重复奇异值则最优矩阵未必唯一|数据矩阵降维保留主要能量|正规方程平方条件数陷阱
+奇异值控制线性残差到误差|Smallest singular value error certificate|A实方阵可逆且x̂近似解，r=b-Ax̂|二范数解误差受最小奇异值的倒数控制|norm₂(x-x̂)≤norm₂(r)/σ_min(A)|由e=A⁻¹r和谱范数公式|σ_min很小时小残差不保证小误差|诊断病态标定矩阵的误差上界|线性系统误差的条件数放大;剩余量不等于真实误差
