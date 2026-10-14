@@ -1,5 +1,6 @@
 """Regression tests for evidence-only mathematics quality triage."""
 import json
+import hashlib
 import sqlite3
 import tempfile
 import unittest
@@ -12,15 +13,17 @@ from math_mcts.review_quality import normalized_name, review_signals, review_que
 
 
 def add_record(conn, id, name, formula, module):
+    statement_body = formula.removeprefix("theorem " + name).strip()
+    source_hash = hashlib.sha256(statement_body.encode("utf-8")).hexdigest()
     row = {"id": id, "en": name, "cn": name, "formal": formula,
            "module": module, "domain_en": module.split(".")[1],
            "level": 5, "original_metadata": {
-               "类型": "upstream_theorem", "陈述SHA256": "synthetic-" + id}}
+               "类型": "upstream_theorem", "陈述SHA256": source_hash}}
     conn.execute("INSERT INTO documents VALUES(?,?,?,?,?)",
                  (id, "unreviewed_import", 5, row["domain_en"],
                   json.dumps(row, ensure_ascii=False)))
     conn.execute("INSERT INTO source_registry VALUES (?,?,?,?,?,?)",
-                 (id, "synthetic-" + id, module, "fixed-commit",
+                 (id, source_hash, module, "fixed-commit",
                   "unreviewed_importance", None))
 
 
@@ -85,6 +88,18 @@ class ReviewQualityTests(unittest.TestCase):
             with sqlite3.connect(path) as db:
                 db.execute("DELETE FROM classified_knowledge WHERE id='MTH02'")
             with self.assertRaisesRegex(RuntimeError, "coverage"):
+                review_signals(path)
+
+    def test_modified_source_is_rejected_even_after_registration(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = self.prepare(tmp)
+            with sqlite3.connect(path) as db:
+                row = json.loads(db.execute(
+                    "SELECT record FROM documents WHERE id='MTH02'").fetchone()[0])
+                row["formal"] = "theorem smul_theorem : False := trivial"
+                db.execute("UPDATE documents SET record=? WHERE id='MTH02'",
+                           (json.dumps(row),))
+            with self.assertRaisesRegex(ValueError, "Stale or tampered"):
                 review_signals(path)
 
     def test_pagination_mode_validated(self):
