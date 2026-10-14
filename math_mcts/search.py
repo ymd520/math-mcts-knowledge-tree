@@ -210,7 +210,12 @@ def collision_score(tree: KnowledgeTree, a: str, b: str) -> float:
         score += 0.5
     if "核心" in ca.tags and "核心" in cb.tags:
         score += 0.3
-    score += 0.2 * (1 - abs(ca.level - cb.level) / 4)
+    # Imported source level=5 is an *unrated placeholder*, not difficulty 5.
+    # Unknown grade must not influence mathematical collision ranking.
+    a_unrated = "ungraded" in (ca.level_status or "").lower() or "unrated" in (ca.level_status or "").lower()
+    b_unrated = "ungraded" in (cb.level_status or "").lower() or "unrated" in (cb.level_status or "").lower()
+    if not a_unrated and not b_unrated:
+        score += 0.2 * (1 - abs(ca.level - cb.level) / 4)
     shared = set(ca.tags) & set(cb.tags) - {"核心"}
     score += 0.1 * min(2, len(shared))
     return round(score, 3)

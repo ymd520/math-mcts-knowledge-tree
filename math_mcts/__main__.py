@@ -181,6 +181,28 @@ def cmd_show_registered(args):
     print(json.dumps(record, indent=2, ensure_ascii=False))
 
 
+def cmd_knowledge_search(args):
+    from .knowledge_bank import KnowledgeBank
+    bank = KnowledgeBank(args.db)
+    items = bank.search(args.query, domain=args.domain, kind=args.kind,
+                        source_tier=args.tier, top_k=args.top_k)
+    print(json.dumps(items, ensure_ascii=False, indent=2))
+
+
+def cmd_knowledge_browse(args):
+    from .knowledge_bank import KnowledgeBank
+    bank = KnowledgeBank(args.db)
+    items = bank.browse(domain=args.domain, kind=args.kind, source_tier=args.tier,
+                        after_id=args.after_id, limit=args.limit)
+    print(json.dumps(items, ensure_ascii=False, indent=2))
+
+
+def cmd_knowledge_show(args):
+    from .knowledge_bank import KnowledgeBank
+    print(json.dumps(KnowledgeBank(args.db).get(args.id),
+                     ensure_ascii=False, indent=2))
+
+
 def cmd_scale_status(args):
     from .scale_plan import expansion_status
     from .fast_index import index_stats
@@ -295,6 +317,27 @@ def main():
     reg.add_argument("id", help="Source concept ID")
     reg.add_argument("--db", type=Path, required=True)
     reg.set_defaults(func=cmd_show_registered)
+    ks = sub.add_parser("knowledge-search",
+                        help="在分类知识层快速搜索（数学知识与重要性等级分离）")
+    ks.add_argument("query")
+    ks.add_argument("--db", type=Path, required=True)
+    ks.add_argument("--domain", help="中文数学领域")
+    ks.add_argument("--kind")
+    ks.add_argument("--tier", choices=["curated", "unreviewed_import"])
+    ks.add_argument("--top-k", type=int, default=10)
+    ks.set_defaults(func=cmd_knowledge_search)
+    kb = sub.add_parser("knowledge-browse", help="按领域和类型游标浏览已分类知识")
+    kb.add_argument("--db", type=Path, required=True)
+    kb.add_argument("--domain")
+    kb.add_argument("--kind")
+    kb.add_argument("--tier", choices=["curated", "unreviewed_import"])
+    kb.add_argument("--after-id", default="")
+    kb.add_argument("--limit", type=int, default=50)
+    kb.set_defaults(func=cmd_knowledge_browse)
+    kl = sub.add_parser("knowledge-show", help="按 ID 查看分类后的数学知识")
+    kl.add_argument("id")
+    kl.add_argument("--db", type=Path, required=True)
+    kl.set_defaults(func=cmd_knowledge_show)
     ps = sub.add_parser("scale-status", help="Level1–4十万重要知识目标与实际缺口")
     ps.add_argument("--db", type=Path)
     ps.set_defaults(func=cmd_scale_status)

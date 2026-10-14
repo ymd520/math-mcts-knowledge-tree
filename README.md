@@ -63,6 +63,25 @@ python -m math_mcts search-index "matrix" --db math_index.sqlite --registered-on
 详见 [SOURCE_REGISTRY.md](SOURCE_REGISTRY.md)，CI 实际登记数量以
 `source_registration_report.json` 为准。
 
+## 数学知识层：已分类接入十万条来源声明
+
+`KnowledgeBank` 将正式精选知识与十万来源知识放进同一分类索引，
+但重要性与难度评级彼此独立。十万条来源中，
+99,984 条经定理来源指纹登记；另外 16 条为单独标记的标准知识卡。
+新导入知识**全部可检索**，但重要性和教育等级保持“待评估”。
+
+```sh
+python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000
+python tools/register_source_statements.py --db math_index.sqlite
+python tools/classify_knowledge.py --db math_index.sqlite --report knowledge_classification.json
+python -m math_mcts knowledge-search "Fourier" --db math_index.sqlite --top-k 10
+python -m math_mcts knowledge-browse --db math_index.sqlite --domain 代数 --kind 定理声明 --limit 20
+```
+
+分类依据源代码数学领域、分支和模块路径，不冒充真正完成所有定理的
+语义分类；重要性与 Level 分级也不自动提高。
+详见 [KNOWLEDGE_CLASSIFICATION.md](KNOWLEDGE_CLASSIFICATION.md)。
+
 ## 快速调用
 
 ```sh
