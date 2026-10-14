@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from math_mcts.fast_index import fast_search
 from math_mcts.source_registry import (
     register_source_statements, get_registered_statement, SOURCE_COMMIT)
 
@@ -62,6 +63,19 @@ class SourceRegistryTests(unittest.TestCase):
                 self.assertFalse(item["reviewed_importance"])
                 self.assertFalse(item["proof_verified_this_run"])
                 self.assertFalse(f.readline())
+
+    def test_search_only_registered_through_fts(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "i.sqlite"
+            self.make_db(db)
+            with sqlite3.connect(db) as cx:
+                cx.execute("CREATE VIRTUAL TABLE term_index USING fts5(terms)")
+                for (rid,) in cx.execute("SELECT rowid FROM documents"):
+                    cx.execute("INSERT INTO term_index(rowid,terms) VALUES (?,?)",
+                               (rid, "upstream"))
+            register_source_statements(db, Path(tmp) / "registered.gz")
+            matches = fast_search(db, "upstream", registered_only=True)
+            self.assertEqual([x["id"] for x in matches], ["I1"])
 
     def test_repeat_registration_does_not_duplicate(self):
         with tempfile.TemporaryDirectory() as tmp:
