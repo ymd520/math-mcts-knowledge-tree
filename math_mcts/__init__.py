@@ -21,7 +21,7 @@ from .semantic_links import compatible_atoms, find_composable_rules
 from .scale_plan import expansion_status
 from .knowledge_bank import KnowledgeBank, classify_knowledge
 
-__version__ = "1.12.0"
+__version__ = "1.14.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "plan_learning_path", "search_concepts",
            "export_path_markdown", "to_dot",
