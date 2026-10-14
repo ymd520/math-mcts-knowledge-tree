@@ -62,6 +62,7 @@ jobs:
         run: |
           python tests/test_full_lean_plan.py
           python tests/test_full_lean_coverage.py
+          python tests/test_full_lean_import.py
       - name: Mathlib source extractor request tests
         run: python tests/test_mathlib_generator.py
       - name: Source module holdout and adaptive search tests
