@@ -57,7 +57,8 @@ def solve_adaptive(book, assumptions, goal, *, max_steps=20,
                 "states_expanded":result.states_expanded,
                 "search_elapsed_ms":result.elapsed_ms}
     started=time.perf_counter()
-    _,root=mcts(problem,iterations=iterations,max_depth=max_steps,seed=seed)
+    _,root=mcts(problem,iterations=iterations,max_depth=max_steps,seed=seed,
+                policy="puct",stop_on_success=True)
     certificate,depth,replayed=_certificate(
         book,frozenset(assumptions),goal,problem.best)
     if certificate is not None and not replayed:
@@ -67,4 +68,6 @@ def solve_adaptive(book, assumptions, goal, *, max_steps=20,
             "depth":depth,"graph_complete":graph.complete,
             "graph_size":len(graph.edges),
             "iterations":iterations,
+            "actual_simulations":root.stats["simulations"],
+            "search_policy":"guided_puct_with_early_stop",
             "search_elapsed_ms":(time.perf_counter()-started)*1000}
