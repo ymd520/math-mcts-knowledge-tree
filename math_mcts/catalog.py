@@ -10,7 +10,6 @@ import json
 import unicodedata
 from collections import Counter
 from pathlib import Path
-from .version import CATALOG_VERSION
 
 PACK_DIR = Path(__file__).with_name("data") / "curated"
 
@@ -73,7 +72,7 @@ def assemble(base_rows, directory=PACK_DIR):
             order.append(card["id"])
         added += len(deep)
     return [rows[cid] for cid in order], {"catalog_added": added, "catalog_enriched": enriched,
-                                          "catalog_version": CATALOG_VERSION,
+                                          "catalog_version": manifest["version"],
                                           **extra}
 
 
