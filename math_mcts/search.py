@@ -331,8 +331,11 @@ def collide_concepts(tree: KnowledgeTree, seed: str | None = None,
     返回 [(ConceptA, ConceptB, 碰撞分, curated说明或None)].
     """
     problem = CollisionProblem(tree, seed)
+    # Collision search relies on observing curated partners even when a node
+    # has hundreds of available actions. Disable narrow progressive widening
+    # for this bounded two-ply candidate-ranking task.
     _, root = mcts(problem, iterations=iterations, seed=seed_rng,
-                   max_depth=4)
+                   max_depth=4, widening_k=1000.0, widening_alpha=1.0)
     pairs: list[tuple] = []
 
     def collect(node):
