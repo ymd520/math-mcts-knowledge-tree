@@ -111,26 +111,37 @@ def benchmark_rule_problem(data: dict, *, iterations: int = 200,
                         "search_elapsed_ms": round(outcome.elapsed_ms, 3),
                         "effective_depth": outcome.effective_depth,
                         "certificate_replayed": outcome.valid_replay})
-    from .reasoning import derive
+    # Evaluate MCTS on precisely the same prebuilt hypergraph.
+    # This avoids incorrectly charging only MCTS for graph construction.
+    mc_problem = DerivationProblem(graph, assumptions, goal, max_steps)
     started = time.perf_counter()
-    mc = derive(book, assumptions, goal, iterations=iterations,
-                max_steps=max_steps, seed=seed, max_edges=3000, max_rounds=40)
+    _, mc_root = mcts(mc_problem, iterations=iterations, max_depth=max_steps,
+                      seed=seed)
     elapsed = (time.perf_counter()-started)*1000
-    results.append({"method": "mcts", "solved": mc.certificate is not None,
+    mc_cert, mc_depth, mc_replay = _certificate(
+        book, assumptions, goal, mc_problem.best)
+    if mc_cert is not None and not mc_replay:
+        raise RuntimeError("MCTS certificate failed independent replay")
+    active = [mc_root]
+    tree_nodes = 0
+    while active:
+        cur = active.pop()
+        tree_nodes += 1
+        active.extend(cur.children)
+    results.append({"method": "mcts", "solved": mc_cert is not None,
                     "states_expanded": None, "iterations": iterations,
-                    "generated_states": None, "search_elapsed_ms": round(elapsed,3),
-                    "effective_depth": mc.effective_depth,
-                    "certificate_replayed": (
-                        verify_certificate(book, mc.certificate, assumptions, goal)
-                        if mc.certificate else False),
-                    "scope_complete": mc.scope_complete})
+                    "generated_states": tree_nodes,
+                    "search_elapsed_ms": round(elapsed,3),
+                    "effective_depth": mc_depth,
+                    "certificate_replayed": mc_replay,
+                    "scope_complete": graph.complete})
     return {"graph_edges": len(graph.edges), "graph_complete": graph.complete,
             "graph_reason": graph.reason,
             "graph_construction_ms": round(graph_ms,3), "methods": results,
-            "limitations": ("Bounded methods have different unit costs; graph construction "
-                            "is shared upfront for BFS/beam but derive currently builds its "
-                            "own graph. Time and expanded nodes are reported, not treated "
-                            "as a perfectly matched computational budget.")}
+            "limitations": ("All solvers share one prebuilt hypergraph, and per-solver "
+                            "timing excludes graph creation. MCTS iterations differ "
+                            "from BFS/beam state expansions; this benchmark reports "
+                            "observed costs and proof success, not equal-work speedups.")}
 
 
 def benchmark_suite(problems: dict[str,dict], *, iterations=200,
