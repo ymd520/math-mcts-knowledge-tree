@@ -1,0 +1,52 @@
+# Level 1–3 来源主题索引，不是对原教材逐条转录；每项为独立撰写的学习性论证卡
+# @Level|领域|分支|主题|参考来源代码
+# 中文标题|英文标题|前提|结论|公式|证明或解题线索|误用/反例|示例|分号分隔的前置中文标题
+@1|数学基础|命题与集合|量词与论证基本结构|MIT
+全称命题反例的证伪门槛|One counterexample refutes a universal statement|P(x)是关于非空论域D的谓词|找到一个x满足非P(x)即可否定全称断言|¬∀x∈D P(x) ⇔ ∃x∈D ¬P(x)|对原断言整体取否定并移动量词|找到多个支持例子不能证明全称命题|声称所有整数偶数时用3证伪|
+存在命题证人的类型约束|Witness must lie in quantified domain|断言为存在x属于D使P(x)成立|证人必须属于D且满足P|∃x∈D P(x)|分别核验证人所在集合和谓词|从实数论域给出非整数证人不能证明整数命题|证明存在平方为4的整数用2|
+全称存在量词换序风险|Quantifier reversal is generally invalid|论域D和E非空且R为二元关系|每个x有各自的y不保证所有x共享一个y|∀x∃y R(x,y) ⇏ ∃y∀x R(x,y)|考察证人是否依赖于x|整数关系y=x满足左边而不满足右边|逐人分配座位不等于一个座位容纳所有人|存在命题证人的类型约束
+蕴含与逆命题的非对称性|Implication and converse differ|P与Q为命题|P推出Q不一定能从Q推出P|P⇒Q ⇏ Q⇒P|写出反例使Q真而P假|能被4整除可推出偶数但偶数不一定被4整除|8可被4整除，6偶但不被4整除|
+等价命题双方向核验|Biconditional requires both directions|P与Q为命题|只有分别证明P⇒Q和Q⇒P才能声称等价|P⇔Q ≡ (P⇒Q)∧(Q⇒P)|将充分与必要拆成两个可独立审查子目标|单向蕴含不足以推出双条件|整数n偶当且仅当n的平方偶|蕴含与逆命题的非对称性
+证明对象与证明方法区分|Proof method does not change goal|已固定原命题P及论域|直接证法、逆否和反证须回到同一P|P⇒Q ⇔ ¬Q⇒¬P|先写出要证明的命题再选择策略|证明了相邻弱命题不是完成原目标|从奇平方推出奇数可用逆否|等价命题双方向核验
+@1|代数|算术与初等代数|定义域及代数变换不变量|ALG
+分母非零的代数变形门槛|Nonzero denominator requirement|在通常实数或有理数运算中|清除分母前应列出分母不为零的条件|a/b=c/d ⇒ ad=bc 当bd≠0|先确定定义域，再进行交叉相乘|把1/x=1推到x=1时不能允许x=0|求解1/(x-1)=2先排除x=1|
+平方变换引入增根风险|Squaring may introduce extraneous roots|原方程两边是实数|平方得到的方程只给出必要条件，须回代|a=b⇒a²=b²；逆向不成立|先平方求候选，再代回原方程|x=-1满足x²=1却不满足x=1|解√x=x-2要检查x≥2|分母非零的代数变形门槛
+模同余加法的保持性|Congruence compatible with addition|整数a,b,c,d及模m≥1，a≡b且c≡d|对应两边相加仍同余|a+c≡b+d (mod m)|将两个差写成m的倍数并相加|同余不意味着原整数相等|7≡1模3，5≡2模3，则12≡3模3|
+模同余乘法的保持性|Congruence compatible with multiplication|整数a,b,c,d及m≥1，a≡b且c≡d|对应两边相乘仍同余|ac≡bd (mod m)|分解ac-bd=(a-b)c+b(c-d)|模数不能任意消去公因子|4·1≡4·3模8但1不≡3模8|模同余加法的保持性
+整除与线性组合的闭合|Divisors persist under integer combinations|d,a,b,s,t为整数且d整除a及b|d整除任何整数线性组合sa+tb|d∣a且d∣b ⇒ d∣(sa+tb)|把a与b分别写成d乘整数|结论只对整数系数成立|6整除12和18，也整除5·12-3·18|模同余加法的保持性
+矩阵乘法尺寸审查|Matrix product dimension check|A为m×n矩阵且B为p×q矩阵|AB定义要求n=p，结果大小m×q|A_(m×n) B_(n×q)→C_(m×q)|逐项内积需要相同长度|矩阵乘法不满足任意换序|2×3乘3×4得到2×4矩阵|
+@1|分析|函数与极限|定义域和极限检查|RA
+函数定义域的先验排除|Function domain precedes manipulation|函数由含根号与分母的实数表达式给出|在求导、取极限前先确定式子在哪些实数上有定义|1/(x-2) 的定义域为 R\{2}|先分别检查分母和偶次根号|公式化简后可能掩盖原来的空点|约分(x²-1)/(x-1)仍不允许x=1|
+函数值与极限值分离|Function value need not equal limit|讨论x趋于a时f(x)的极限|极限由附近函数值控制，f(a)可能不存在或不同|lim_(x→a) f(x)=L 不推出 f(a)=L|构造分段函数在单点修改函数值|忽略单点定义会误判连续|令f(x)=x对x≠0，f(0)=5，极限为0|函数定义域的先验排除
+收敛数列必有界的单向性|Convergent sequence boundedness is one way|实数数列a_n收敛到有限L|整列有界；有界不保证收敛|a_n→L ⇒ sup_n |a_n|<∞|尾部落在L附近，前面有限项各有界|(-1)^n有界却不收敛|序列n/(n+1)收敛且有界|
+极限有限和差封闭|Finite sum limit preservation|实数函数f,g在a处均有有限极限|和与差的极限等于极限之和差|lim(f±g)=lim f±lim g|以ε/2分配误差控制|无穷大减无穷大不能直接套有限极限法则|lim(x²+3x)=1+3 当x→1|函数值与极限值分离
+连续复合函数的取值范围条件|Composition continuity needs domain|g在a连续，f在g(a)连续且g邻近值落入f定义域|复合f∘g在a连续|f(g(x))→f(g(a))|先利用g连续再在f处使用ε-δ定义|若f在g(a)不连续则不能直接推出|sqrt(1+x²)处处连续|函数定义域的先验排除
+导数定义的差商条件|Derivative is limit of difference quotient|f在a附近有定义且差商有限极限存在|导数是沿h趋零的增量比极限|f'(a)=lim_(h→0)(f(a+h)-f(a))/h|在差商中保持h≠0并先求极限|单侧差商不一致时普通导数不存在|f(x)=|x|在0左右导数不同|函数值与极限值分离
+@1|几何与拓扑|欧氏几何|坐标几何的不变量|ALG
+坐标平移不改变欧氏距离|Translation preserves Euclidean distance|p,q,t为同维欧氏空间向量|两点同时平移后距离保持不变|‖(p+t)-(q+t)‖=‖p-q‖|相减时公共平移向量消去|平移不同向量不保证距离不变|地图整体移坐标原点不改变两城间距离|
+正交向量的零内积判据|Orthogonality via dot product|u,v为实欧氏空间向量|内积为零当且仅当两向量垂直，零向量需按定义处理|u·v=0|利用余弦公式或正交投影|对任意内积换成坐标乘积不一定成立|向量(1,1)与(1,-1)正交|
+三角形边长非退化检验|Nondegenerate triangle inequality test|a,b,c均为正数并拟作三边|非退化三角形存在当且仅当任意两边和严格大于第三边|max(a,b,c)<a+b+c-max(a,b,c)|只需检查最大边小于另外两边之和|边长1、2、3只形成退化情形|判断3、4、8不能构成三角形|
+二维两点距离平方公式|Planar distance squared|平面两点p=(x₁,y₁),q=(x₂,y₂)|距离平方是坐标差的平方和|d²=(x₂-x₁)²+(y₂-y₁)²|构造水平与竖直直角三角形|距离不是坐标差直接相加|点(0,0)与(3,4)相距5|三角形边长非退化检验
+平面有向面积符号与方向|Signed area encodes orientation|二维点A,B,C按次序排列|行列式符号决定顺逆时针，绝对值的一半为面积|2S_signed=det(B-A,C-A)|把三角形分解成叉积形式|面积取绝对值会失去方向信息|A=(0,0),B=(1,0),C=(0,1)取正向|二维两点距离平方公式
+直线方程法向量关系|Normal vector for linear equation|实数a,b不同时为零|ax+by=c表示直线，(a,b)为法向量|n·(x,y)=c|代入两点相减说明方向向量与n正交|a=b=0时不一定是一条直线|2x+3y=6的法向量(2,3)|正交向量的零内积判据
+@1|概率与统计|事件与数据|概率计算的条件门槛|PRO
+条件概率先查分母|Conditional probability requires positive conditioning event|概率空间中事件A,B且P(B)>0|条件概率等于交集概率除以条件事件概率|P(A∣B)=P(A∩B)/P(B)|先验证P(B)>0再代入|不能对零概率事件直接使用基础比值定义|牌堆已知红牌时求红桃概率|
+事件互斥不等于独立|Mutual exclusivity versus independence|P(A)>0且P(B)>0|互斥事件不可能独立|A∩B=∅ ⇒ P(A∩B)=0≠P(A)P(B)|独立需要交概率等于乘积|把彩票两种互斥中奖结果说成独立是错的|掷骰出1与出2互斥但不独立|条件概率先查分母
+补事件概率守恒|Complement event rule|A为概率空间中的事件|A和补事件不交且并为样本空间|P(Aᶜ)=1-P(A)|利用不交并的可加性|补事件必须相对同一样本空间|至少一次成功=1-全部失败|
+事件并集重叠扣除|Union probability corrects overlap|A,B为事件|并概率等于各自概率相加后扣交集|P(A∪B)=P(A)+P(B)-P(A∩B)|将A∪B分成三个不交部分|不相互排斥时直接相加会重复计算|两次试验至少一次成功|事件互斥不等于独立
+期望线性不要求独立|Linearity of expectation without independence|可积随机变量X,Y与常数a,b|无论X,Y是否独立都有线性关系|E[aX+bY]=aE[X]+bE[Y]|积分或离散求和的线性性|方差线性相加一般需要额外零协方差|同一骰子点数X和2X的和期望|事件并集重叠扣除
+概率为一不等于处处成立|Almost sure versus everywhere|事件A满足P(A)=1|补事件概率为0，但补事件未必为空|P(A)=1 ⇏ A=Ω|连续分布单点概率可以为0|把概率0误作逻辑不可能|均匀[0,1]变量取到0的概率为0|补事件概率守恒
+@1|离散数学|计数与图论|可验证的基础组合逻辑|DIS
+分类计数必须互斥|Disjoint cases in addition principle|有限对象全集分解为互不重叠的类别|总数是各类别的基数之和|card(A⊔B)=card(A)+card(B)|建立互不重叠的分割|两个类别重叠时必须扣交集|班级男女分类在不重叠定义下相加|
+分步计数需要纤维数量固定|Product counting with equal choices|第一步有m种选择且每种对应第二步n种|两步结果数为mn|card(S)=Σ_(a∈A)card(B_a)=mn|先按第一选择分组再求和|第二步选择数因第一步而变时不能直接相乘|3件上衣各搭2条裤子得6套|分类计数必须互斥
+鸽巢阈值需多于盒子|Pigeonhole strict threshold|n+1个对象分配进n个盒子且n≥1|至少一个盒子含不少于2个对象|max_i occupancy_i≥2|反设每盒至多1个则总数至多n|n个物件放进n盒不保证有碰撞|13人至少两人在同一月份出生|分步计数需要纤维数量固定
+握手引理含多重边的处理|Handshaking lemma with multiplicity|有限无向图把每条环计入两次度数|顶点度数和等于边数的两倍|Σ_v deg(v)=2m|逐条边核算对度数和的贡献|含环时把环只计1度会算错|3个顶点的三角形度数和6|
+简单路径与可重复游走的区别|Simple path versus walk|无向或有向图给定顶点和边|游走可重复顶点，简单路径顶点不重复|简单路径⇒游走；逆向不成立|以顶点序列是否重复判别|游走长度大不能推出不同顶点多|A-B-A-C为游走但非简单路径|
+数学归纳基步不可省略|Induction requires base case|命题P(n)定义于n≥n₀的整数|验证P(n₀)及P(n)⇒P(n+1)才可推出全部|P(n₀)∧∀n≥n₀(P(n)⇒P(n+1))|先固定起始下标再构建归纳步|仅有P(n)⇒P(n+1)不能排除所有P均假的情况|证明前n个奇数之和为n²|全称命题反例的证伪门槛
+@1|计算与优化|数值与算法基础|正确性和舍入条件|NUM
+绝对误差与相对误差的分母|Absolute versus relative error|真实值x及近似值x̂，计算相对误差时x≠0|绝对误差是差的绝对值，相对误差除以真实值尺度|E_abs=|x̂-x|；E_rel=E_abs/|x||相对误差必须先检查基准不为零|真实值0时相对误差通常不能照公式计算|100近似成101相对误差1%|
+循环不变量需覆盖初始化保持终止|Loop invariant three checkpoints|算法在循环入口具有谓词I且终止条件已知|初始化成立且每步保持，终止时I配合退出条件推出后置条件|Init⇒I；I∧guard⇒I'；I∧¬guard⇒Post|分开证明三处逻辑关系|只测试了几次循环不等于证明不变量|累加数组时已处理前k项之和等于当前累加器|等价命题双方向核验
+二分搜索必须固定单调谓词|Binary search requires monotone predicate|有序有限索引域上的布尔谓词由假过渡到真|每次保留跨越临界点的一半区间可找到边界|P(i)=false(i<k),true(i≥k)|维护已知假下界和真上界|谓词在区间内反复真假则二分可漏解|求数组第一个≥阈值的位置|循环不变量需覆盖初始化保持终止
+浮点相等检验不能代替误差模型|Floating-point equality versus tolerance|舍入运算下比较近似计算输出|近似误差应按量纲与误差预算处理，不能机械使用固定阈值| |x̂-x|≤atol+rtol·|x||先识别尺度与绝对误差下限|很小和很大数用同一绝对容差不稳妥|比较两个迭代求解结果|绝对误差与相对误差的分母
+数值微分步长双重误差|Finite difference step-size tradeoff|函数光滑且使用有舍入的浮点计算|步长过大截断误差大，过小舍入放大|中心差分截断O(h²)，舍入约O(ε_machine/h)|将截断和舍入两个误差项同时估计|步长越小并不总越精确|估计发动机传感器平滑信号的局部斜率|绝对误差与相对误差的分母
+剩余量不等于真实误差|Residual is not necessarily solution error|Ax=b且A可逆，近似解x̂|残差r=b-Ax̂与误差e=x-x̂由A逆联系|e=A⁻¹r|通过条件数判断残差到误差的放大|病态矩阵可能残差小却误差大|线性方程残差10⁻⁶不一定有10⁻⁶的解精度|绝对误差与相对误差的分母
