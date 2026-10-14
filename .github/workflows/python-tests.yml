@@ -73,6 +73,28 @@ jobs:
           assert all(c.id in scope.by_id for c in scope.concepts)
           print('FULL 100K CLASSIFICATION AND MCTS SCOPE PASSED', data['by_domain'])
           PY
+      - name: Knowledge quality review adversarial tests
+        run: python tests/test_quality_review.py
+      - name: Audit source knowledge and export review leads
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/review_quality.py --db math_index.sqlite --report quality_triage_report.json --output quality_review_top1000.jsonl.gz --mode priority
+          python tools/review_quality.py --db math_index.sqlite --read-only --mode anomaly --output quality_anomaly_top1000.jsonl.gz
+          python tools/review_quality.py --db math_index.sqlite --read-only --mode duplicate --output quality_duplicates_top1000.jsonl.gz
+      - name: Verify quality review invariants
+        if: matrix.python-version == '3.12'
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          data=json.loads(Path('quality_triage_report.json').read_text())
+          assert data['source_knowledge_scanned']==100000, data
+          assert data['importance_or_level_promoted']==0, data
+          with sqlite3.connect('math_index.sqlite') as db:
+              assert db.execute('SELECT COUNT(*) FROM knowledge_review_signals').fetchone()[0]==100000
+              assert db.execute("SELECT COUNT(*) FROM classified_knowledge WHERE source_tier='unreviewed_import' AND (difficulty_level IS NOT NULL OR importance_status!='importance_unrated')").fetchone()[0]==0
+          print('FULL SOURCE REVIEW AND ZERO-PROMOTION AUDIT PASSED', data)
+          PY
       - name: Export 100k source-backed candidate review queue
         if: matrix.python-version == '3.12'
         run: python tools/export_review_queue.py --db math_index.sqlite --output source_review_queue.jsonl.gz --summary scale_status.json
@@ -89,6 +111,10 @@ jobs:
             official_source_registry.jsonl.gz
             source_registration_report.json
             knowledge_classification.json
+            quality_triage_report.json
+            quality_review_top1000.jsonl.gz
+            quality_anomaly_top1000.jsonl.gz
+            quality_duplicates_top1000.jsonl.gz
             source_review_queue.jsonl.gz
             scale_status.json
             fts_benchmark.json

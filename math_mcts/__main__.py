@@ -197,6 +197,13 @@ def cmd_knowledge_browse(args):
     print(json.dumps(items, ensure_ascii=False, indent=2))
 
 
+def cmd_review_leads(args):
+    from .review_quality import review_queue
+    rows = review_queue(args.db, mode=args.mode, limit=args.limit,
+                        offset=args.offset)
+    print(json.dumps(rows, ensure_ascii=False, indent=2))
+
+
 def cmd_knowledge_show(args):
     from .knowledge_bank import KnowledgeBank
     print(json.dumps(KnowledgeBank(args.db).get(args.id),
@@ -338,6 +345,12 @@ def main():
     kl.add_argument("id")
     kl.add_argument("--db", type=Path, required=True)
     kl.set_defaults(func=cmd_knowledge_show)
+    rv = sub.add_parser("knowledge-review", help="来源与重复疑点审查队列；不代表正式重要性评级")
+    rv.add_argument("--db", type=Path, required=True)
+    rv.add_argument("--mode", choices=["priority", "anomaly", "duplicate"], default="priority")
+    rv.add_argument("--limit", type=int, default=20)
+    rv.add_argument("--offset", type=int, default=0)
+    rv.set_defaults(func=cmd_review_leads)
     ps = sub.add_parser("scale-status", help="Level1–4十万重要知识目标与实际缺口")
     ps.add_argument("--db", type=Path)
     ps.set_defaults(func=cmd_scale_status)

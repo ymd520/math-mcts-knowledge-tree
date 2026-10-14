@@ -114,10 +114,14 @@ class Concept:
 
     def card(self) -> str:
         """概念卡片: 完整的可读信息块."""
+        if "ungraded" in (self.level_status or "").lower() or "unrated" in (self.level_status or "").lower():
+            grade = "难度: 未评级（导入 Level 5 为占位值）"
+        else:
+            grade = (f"难度: {'★' * self.level}{'☆' * (5 - self.level)} "
+                     f"({self.level}/5)")
         lines = [f"【{self.cn}】({self.en})  [{self.id}·{self.kind}]",
                  f"位置: {self.path()}",
-                 f"难度: {'★' * self.level}{'☆' * (5 - self.level)} "
-                 f"({self.level}/5)",
+                 grade,
                  f"定义: {self.definition}"]
         if self.formal:
             lines.append("形式陈述: " + self.formal)
