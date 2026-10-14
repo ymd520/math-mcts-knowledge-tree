@@ -50,6 +50,18 @@ def apply_review_decisions(db_path: str | Path, decisions: list[dict]) -> dict:
             if row is None:
                 raise ValueError("Only source-registered theorem statements can be reviewed")
             sha, current=row
+            # Rehash the current source body instead of trusting a stale
+            # registration table alone.
+            raw=db.execute("SELECT record FROM documents WHERE id=?",(cid,)).fetchone()
+            record=json.loads(raw[0])
+            name=record.get("en","")
+            formal=record.get("formal","")
+            prefix="theorem "+name
+            if not formal.startswith(prefix):
+                raise ValueError("Malformed source theorem after registration")
+            body=formal[len(prefix):].strip()
+            if hashlib.sha256(body.encode("utf-8")).hexdigest()!=sha:
+                raise ValueError("Source theorem changed after registration")
             if d.get("source_sha256")!=sha:
                 raise ValueError("Review has stale or missing source statement hash")
             importance=d.get("importance")
