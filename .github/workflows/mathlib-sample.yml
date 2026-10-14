@@ -43,6 +43,19 @@ jobs:
           git -C mathlib4 checkout --detach FETCH_HEAD
           test "$(git -C mathlib4 rev-parse HEAD)" = "54c01c3314d33d15d77893cbe4e0472ff26bb34d"
           test "$(cat mathlib4/lean-toolchain)" = "leanprover/lean4:v4.35.0-rc4"
+      - name: Attribute pinned Mathlib module authors from real source file
+        run: |
+          python tools/verify_pinned_mathlib_credit.py \
+            --mathlib-root mathlib4 --module Mathlib.Algebra.Group.Basic \
+            --output pinned_mathlib_module_credit.json
+          python - <<'PY'
+          import json
+          row=json.load(open('pinned_mathlib_module_credit.json'))
+          assert row['source_commit']=="54c01c3314d33d15d77893cbe4e0472ff26bb34d"
+          assert 'Jeremy Avigad' in row['file_header']['module_header_authors']
+          assert row['file_header']['attribution_scope']=='module_file_header_not_individual_theorem'
+          print('Pinned source file authorship verified (file header only)')
+          PY
       - name: Prepare exact source Mathlib module with targeted cache and bounded fallback
         run: |
           bash -n tools/bootstrap_pinned_mathlib.sh
@@ -96,6 +109,7 @@ jobs:
         with:
           name: pinned-mathlib-source-sample
           path: |
+            pinned_mathlib_module_credit.json
             pinned_mathlib_output.log
             mathlib_extracted.jsonl
             mathlib_missing.json
