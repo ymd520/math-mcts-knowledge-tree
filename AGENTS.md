@@ -4,7 +4,7 @@ These rules apply whenever ChatGPT or another coding agent changes this reposito
 
 ## Version
 - `math_mcts/data/curated/manifest.json` is the only source of the current catalog/package version. Runtime code may expose a derived accessor, but version edits belong only in the manifest.
-- Import the constant in code and tests. Do not copy the current version into the manifest, README, or test expectations.
+- Runtime code and tests must read the version from the manifest-derived accessor. Update the current version only in the manifest; do not duplicate it in README text or test expectations.
 - Historical release labels in `CHANGELOG.md` are immutable history; add new work under `Unreleased` unless a release is explicitly cut.
 
 ## Branch lifecycle
