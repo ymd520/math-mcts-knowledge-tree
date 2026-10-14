@@ -107,13 +107,19 @@ def review_signals(db_path: str | Path) -> dict:
             name_key = normalized_name(name)
             reasons = []
             priority, anomaly = 0, 0
-            if name_key in curated_names:
+            anchored = name_key in curated_names
+            specialized = subfield in _ADVANCED_MODULES
+            if anchored:
                 # Exact *name* overlap is a review lead, not a proof that
                 # these declarations share assumptions/conclusions.
                 reasons.append("lexical_name_matches_curated")
                 priority += 45
-            if subfield in _ADVANCED_MODULES:
+            if specialized:
                 reasons.append("specialized_module_topic")
+            # Buckets are workflow routing hints, NEVER numeric difficulty.
+            bucket = ("curated_title_review" if anchored
+                      else "specialized_subject_review" if specialized
+                      else "general_source_review")
             if status == "standard_card_source_pending":
                 reasons.append("source_standard_card_not_registered_theorem")
                 anomaly += 15
@@ -128,7 +134,7 @@ def review_signals(db_path: str | Path) -> dict:
                 reasons.append("module_locator_needs_review")
                 anomaly += 30
             batch.append((cid, fingerprint, module, raw_kind, priority,
-                          anomaly, "unassessed", name_key, body_hash, 1, 1,
+                          anomaly, bucket, name_key, body_hash, 1, 1,
                           json.dumps(reasons, ensure_ascii=False)))
             counts[status] += 1
             for reason in reasons:
@@ -215,12 +221,13 @@ def review_queue(db_path: str | Path, *, limit: int = 100,
             FROM knowledge_review_signals r JOIN documents d ON d.id=r.id
             ORDER BY """ + order + " LIMIT ? OFFSET ?", (limit, offset)).fetchall()
     results = []
-    for cid, module, digest, priority, anomaly, names, statements, reasons, raw in rows:
+    for cid, module, digest, priority, anomaly, bucket, names, statements, reasons, raw in rows:
         record = json.loads(raw)
         results.append({
             "id": cid, "name": record.get("en"),
             "module": module, "source_statement_sha256": digest,
             "review_priority": priority, "anomaly_score": anomaly,
+            "review_bucket": bucket,
             "same_name_family_size": names,
             "same_normalized_statement_family_size": statements,
             "reason_codes": json.loads(reasons),
