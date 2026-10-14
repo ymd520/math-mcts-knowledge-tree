@@ -1,0 +1,50 @@
+name: Lean kernel extraction smoke
+
+on:
+  pull_request:
+    paths:
+      - 'lean/**'
+      - 'lean-toolchain'
+      - '.github/workflows/lean-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  elaborate-and-extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Run Lean kernel declaration extraction on an actual elaborated theorem
+        run: |
+          lean --version
+          lean lean/ExtractCoreSmoke.lean > lean_core_extract.log
+          cat lean_core_extract.log
+      - name: Validate emitted actual Lean environment references
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          lines=Path("lean_core_extract.log").read_text().splitlines()
+          exported=[json.loads(s) for s in lines if s.startswith("{") and '"declaration"' in s]
+          assert len(exported)==1, lines
+          result=exported[0]
+          assert result['declaration']=='mathMctsProofReferenceDemo', result
+          assert 'Nat.add_zero' in result['proof_references'], result
+          assert result['evidence']=='read_from_lean_environment'
+          assert result['type_expression'].strip()
+          print('Actual Lean environment type/proof reference extraction passed')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lean-core-extraction-smoke
+          path: lean_core_extract.log
+          if-no-files-found: ignore
