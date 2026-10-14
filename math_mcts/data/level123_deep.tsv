@@ -185,7 +185,7 @@ König无限引理|König's Infinity Lemma|根树无限且每个顶点只有有�
 @2|数学基础|集合与关系|等价关系与商集|DIS
 等价关系类构成集合划分|Equivalence classes partition a set|R是集合X上的等价关系|不同等价类相同或不交，全部等价类覆盖X|[x]∩[y]≠∅ ⇒ [x]=[y]|用交点元素及对称、传递性证明类相等|任意二元关系的关系类不一定构成划分|整数按模m同余分成m个剩余类|
 @3|数学基础|函数与映射|复合映射的单射判据|MIT
-复合映射的单射判据|Injectivity of a composition|f:X→Y且g:Y→Z|若g∘f单射则f单射；若f与g均单射则g∘f单射|g∘f单射 ⇒ f单射|追踪两个输入在复合后相等所推出的等式|g∘f单射不能单独推出g单射|若f先把不同输入合并，后续映射无法恢复|检查复合映射是否丢失输入信息|
+复合映射的单射判据|Injectivity of a composition|f:X→Y且g:Y→Z|若g∘f单射则f单射；若f与g均单射则g∘f单射|g∘f单射 ⇒ f单射|令g(f(x))=g(f(y))并逐层使用单射性|复合单射本身不能推出g在整个Y上单射|两个单射编码连续复合仍不丢失输入|
 @1|代数|线性代数|线性无关|LIN
 线性无关组的子集仍线性无关|Every subset of a linearly independent family is independent|向量组S线性无关且T⊆S|T仍线性无关|Σ_{v∈T}a_vv=0 ⇒ 所有a_v=0|将T上的关系在S中补零系数，再用S的无关性|超集不一定线性无关；加入零向量会破坏无关性|从一组线性无关向量中删去部分向量，余下仍无关|
 @2|代数|线性代数|秩与零空间|LIN
