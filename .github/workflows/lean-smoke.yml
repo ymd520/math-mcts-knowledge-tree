@@ -84,7 +84,7 @@ jobs:
           from pathlib import Path
           rows=[json.loads(x) for x in Path('lean_name_from_string_smoke.log').read_text().splitlines() if x.startswith('{')]
           assert len(rows)==1 and rows[0]['resolved'],rows
-          assert rows[0]['method']=='Lean.Name.fromString'
+          assert rows[0]['method']=='Lean.Name.str-fold'
           PY
       - uses: actions/upload-artifact@v4
         if: always()
