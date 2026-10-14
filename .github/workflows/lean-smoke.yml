@@ -61,6 +61,20 @@ jobs:
           assert record['binders'][0]['domain_ast'] and record['conclusion_ast']
           print('REAL elaborated Lean type telescope and conclusion extraction PASS')
           PY
+      - name: Check compatible and incompatible closed theorem premises in Lean Meta
+        run: |
+          set -o pipefail
+          lean lean/TypeCompatibilitySmoke.lean 2>&1 | tee lean_defeq_smoke.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          entries=[json.loads(line) for line in Path('lean_defeq_smoke.log').read_text().splitlines() if line.startswith('{')]
+          assert len(entries)==1,entries
+          assert entries[0]['actual_lean_meta_defeq']
+          assert entries[0]['different_closed_premise_rejected']
+          assert entries[0]['proof_of_remaining_conditions'] is False
+          print('Actual Lean Meta defeq on closed propositions PASS; no full proof claim')
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -68,4 +82,5 @@ jobs:
           path: |
             lean_core_extract.log
             lean_type_structure_smoke.log
+            lean_defeq_smoke.log
           if-no-files-found: ignore
