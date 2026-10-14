@@ -71,7 +71,7 @@ class DeepLevel123Tests(unittest.TestCase):
             "群同态第一同构定理",
             "单调收敛定理",
             "商映射开集判据",
-            "全方差公式",
+            "二维正态条件化均值与方差",
             "Pascal二项系数递推",
             "Slater条件保证凸规划强对偶",
         }
