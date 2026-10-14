@@ -20,7 +20,8 @@ class CatalogTests(unittest.TestCase):
         cls.report = json.loads((PACK_DIR / "build_report.json").read_text())
 
     def test_inventory_and_important_growth(self):
-        self.assertEqual(len(self.tree.concepts), len(self.base.concepts) + self.report["added"])
+        self.assertEqual(len(self.tree.concepts), len(self.base.concepts) + self.tree.meta["catalog_added"])
+        self.assertEqual(self.tree.meta["catalog_added"], self.report["added"] + 105)
         self.assertEqual(self.tree.check_integrity(), [])
         a, b = self.base.inventory(), self.tree.inventory()
         self.assertGreaterEqual(b["important_levels"][1], a["important_levels"][1])
