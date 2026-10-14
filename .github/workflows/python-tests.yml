@@ -45,6 +45,27 @@ jobs:
         run: python tools/register_source_statements.py --db math_index.sqlite --manifest official_source_registry.jsonl.gz --report source_registration_report.json
       - name: Source registry integrity tests
         run: python tests/test_source_registry.py
+      - name: Classified knowledge-layer regression tests
+        run: python tests/test_knowledge_bank.py
+      - name: Classify all 100k imported mathematics records
+        if: matrix.python-version == '3.12'
+        run: python tools/classify_knowledge.py --db math_index.sqlite --report knowledge_classification.json
+      - name: Verify category coverage and independent rating
+        if: matrix.python-version == '3.12'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('knowledge_classification.json').read_text())
+          assert data['total_knowledge_records'] == 111165, data
+          assert data['source_knowledge_imported'] == 100000, data
+          assert data['source_registered_theorems'] == 99984, data
+          assert data['source_standard_cards_pending'] == 16, data
+          assert data['importance_unrated_new_source_records'] == 100000
+          assert data['difficulty_unrated_new_source_records'] == 100000
+          assert sum(data['by_domain'].values()) == 111165
+          print('FULL 100K CLASSIFICATION PASSED', data['by_domain'])
+          PY
       - name: Export 100k source-backed candidate review queue
         if: matrix.python-version == '3.12'
         run: python tools/export_review_queue.py --db math_index.sqlite --output source_review_queue.jsonl.gz --summary scale_status.json
@@ -60,6 +81,7 @@ jobs:
             index_status.json
             official_source_registry.jsonl.gz
             source_registration_report.json
+            knowledge_classification.json
             source_review_queue.jsonl.gz
             scale_status.json
             fts_benchmark.json
