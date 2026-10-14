@@ -74,16 +74,13 @@ def plan_learning_path(tree: KnowledgeTree, target: str,
     do not truncate required prerequisites or affect this exact plan.
     """
     concept = tree.find(target)
-    known_ids = list(dict.fromkeys(k for k in known if k in tree.by_id))
-    learned = list(known_ids)
-    already = set(known_ids)
-    for cid in [*tree.prereq_closure(concept.id), concept.id]:
-        if cid not in already:
-            learned.append(cid)
-            already.add(cid)
-    # If target was in the explicitly known set, keep the requested learning
-    # sequence as-is; otherwise the final element is always the target.
-    return [tree.get(cid) for cid in learned]
+    already = {k for k in known if k in tree.by_id}
+    if concept.id in already:
+        # The target is already mastered. Keep the correct target identity for
+        # downstream renderers without adding unrelated mastered concepts.
+        return [concept]
+    return [tree.get(cid) for cid in
+            [*tree.prereq_closure(concept.id), concept.id] if cid not in already]
 
 
 def export_path_markdown(path: list[Concept]) -> str:
