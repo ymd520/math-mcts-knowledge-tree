@@ -127,7 +127,7 @@ python tools/benchmark_mcts_v2.py --iterations 180 --output mcts_v2_benchmark.js
 ```
 
 The benchmark uses exactly the same prebuilt ground graph for closure,
-classic UCT and guided PUCT, and reports measured simulations and elapsed
+classic UCT (with/without early stop) and guided PUCT (with/without early stop), and reports measured simulations and elapsed
 search time. One closure-edge scan is not equivalent to an MCTS simulation,
 and timings vary by machine. Claims of speedups require repeated trials
 and multiple realistic held-out datasets; none are asserted solely from
