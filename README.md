@@ -259,3 +259,12 @@ bash tools/bootstrap_pinned_mathlib.sh Mathlib/Algebra/Group/Basic.lean
 
 索引与知识卡会显示固定来源链接；仅凭模块不能推断单条定理的发现者。
 详见 [来源说明](ATTRIBUTION_AND_SOURCES.md) 和 [Lean 提取流程](LEAN_STRUCTURE_PIPELINE.md)。
+
+## 全量 Lean 提取与署名审核（阶段 1 → 2 → 4）
+
+参阅 [全量执行、类型语义和来源审核状态账](FULL_LEAN_EXECUTION.md)。
+99,984 条 source_registry 定理全部进入一个确定性、来源 SHA 锁定的分片计划；
+每个分片实际运行 Lean 后才增加提取数，未成功的来源必须保留未完成状态。
+Lean 类型结构与逻辑前提判断分开存储，不自动把语法引用当作新定理。
+全库来源审核队列保留原 mathlib 社区署名和许可，不把引用的数学结论当作仓库作者原创。
+本轮根据要求暂停真实复杂数学证明的阶段 3。

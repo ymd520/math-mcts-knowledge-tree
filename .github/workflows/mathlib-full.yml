@@ -1,0 +1,154 @@
+name: Full pinned mathlib extraction
+
+# Pull requests validate full coverage planning; merging launches bounded
+# workers. Exhaustive completion is NEVER reported until every registered
+# theorem has a genuine matching Lean export receipt.
+on:
+  pull_request:
+    paths:
+      - 'math_mcts/full_lean_*.py'
+      - 'tools/*full_lean*.py'
+      - '.github/workflows/mathlib-full.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'math_mcts/full_lean_*.py'
+      - 'tools/*full_lean*.py'
+      - '.github/workflows/mathlib-full.yml'
+  workflow_dispatch:
+    inputs:
+      worker_seconds:
+        description: 'Execution budget per worker (seconds)'
+        required: true
+        default: '3600'
+      max_batches:
+        description: '0 means no artificial batch cap'
+        required: true
+        default: '0'
+      resume_run_id:
+        description: 'Previous full workflow run ID to resume (optional)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: full-mathlib-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  source-plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Plan all registered mathlib declarations
+        run: |
+          python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000
+          python tools/register_source_statements.py --db math_index.sqlite
+          python tools/classify_knowledge.py --db math_index.sqlite
+          python tools/plan_full_lean.py --db math_index.sqlite --output mathlib_full_plan.json --report mathlib_full_plan_report.json --batch-limit 60
+          python - <<'PY'
+          import json
+          x=json.load(open('mathlib_full_plan.json'))
+          assert x['registered_total']==99984,x
+          assert x['scheduled_total']+x['unsupported_total']==99984
+          assert sum(len(b['registered_declarations']) for b in x['batches'])==x['scheduled_total']
+          print('Full planned scope and exceptions:',x['registered_total'],x['unsupported_total'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mathlib-full-plan
+          path: |
+            mathlib_full_plan.json
+            mathlib_full_plan_report.json
+
+  extract:
+    if: github.event_name != 'pull_request'
+    needs: source-plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    strategy:
+      fail-fast: false
+      matrix:
+        worker: [0,1,2,3,4,5,6,7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: mathlib-full-plan
+      - name: Restore verified receipts from prior run when requested
+        if: github.event_name == 'workflow_dispatch' && inputs.resume_run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: mathlib-full-worker-${{ matrix.worker }}
+          path: full_results
+          run-id: ${{ inputs.resume_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout EXACT original mathlib and Lean version
+        run: |
+          set -euo pipefail
+          mkdir mathlib4
+          git -C mathlib4 init
+          git -C mathlib4 remote add origin https://github.com/leanprover-community/mathlib4.git
+          git -C mathlib4 fetch --depth=1 origin 54c01c3314d33d15d77893cbe4e0472ff26bb34d
+          git -C mathlib4 checkout --detach FETCH_HEAD
+          test "$(git -C mathlib4 rev-parse HEAD)" = "54c01c3314d33d15d77893cbe4e0472ff26bb34d"
+          test "$(cat mathlib4/lean-toolchain)" = "leanprover/lean4:v4.35.0-rc4"
+      - name: Execute bounded full-coverage source chunks and write receipts
+        run: |
+          set -o pipefail
+          python tools/run_full_lean_worker.py --plan mathlib_full_plan.json --mathlib-root mathlib4 \
+            --out full_results --worker ${{ matrix.worker }} --workers 8 \
+            --max-seconds ${{ github.event_name == 'workflow_dispatch' && inputs.worker_seconds || '3600' }} \
+            --max-batches ${{ github.event_name == 'workflow_dispatch' && inputs.max_batches || '0' }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mathlib-full-worker-${{ matrix.worker }}
+          path: full_results/worker-*
+          retention-days: 90
+          if-no-files-found: ignore
+
+  audit:
+    if: always() && needs.source-plan.result == 'success' && github.event_name != 'pull_request'
+    needs: [source-plan,extract]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: mathlib-full-plan
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: mathlib-full-worker-*
+          path: full_results
+          merge-multiple: false
+      - name: Audit all 99984 original declarations WITHOUT faking completion
+        run: |
+          python tools/audit_full_lean.py --plan mathlib_full_plan.json --receipts full_results --report full_lean_coverage.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mathlib-full-coverage-audit
+          path: full_lean_coverage.json
+          if-no-files-found: ignore
+      - name: Assert full Lean coverage only if actually achieved
+        run: python tools/audit_full_lean.py --plan mathlib_full_plan.json --receipts full_results --require-complete
