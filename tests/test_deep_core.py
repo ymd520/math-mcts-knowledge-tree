@@ -33,7 +33,7 @@ class DeepLevel123Tests(unittest.TestCase):
 
     def test_proof_idea_counterexample_and_source_in_every_card(self):
         deep=[c for c in self.tree.concepts if c.id.startswith("D123_")]
-        self.assertEqual(len(deep),174)
+        self.assertEqual(len(deep),181)
         names=[name_key(c.cn) for c in self.tree.concepts]
         self.assertEqual(len(names)-len(set(names)),
                          len([name_key(c.cn) for c in self.base.concepts])-
