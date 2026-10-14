@@ -37,6 +37,25 @@ jobs:
         run: python tests/test_semantic_audit.py
       - name: Large-index and typed-composition unit tests
         run: python tests/test_scale.py
+      - name: Typed semantic graph and mathematics solver adversarial tests
+        run: python tests/test_semantic_pipeline.py
+      - name: Source-locked editorial promotion gate tests
+        run: python tests/test_editorial.py
+      - name: Compare mathematically sound rule-task solvers
+        run: |
+          python tools/semantic_pipeline.py --benchmark --iterations 220 --max-steps 12 --output semantic_benchmark.json
+          python - <<'PY'
+          import json
+          x=json.load(open('semantic_benchmark.json'))
+          assert len(x['scenarios'])==3
+          for name,report in x['scenarios'].items():
+              assert report['graph_complete'], name
+              row={r['method']:r for r in report['methods']}
+              for solver in ('bfs','beam'):
+                  assert row[solver]['solved'] and row[solver]['certificate_replayed'], (name,solver,row)
+              assert not row['mcts']['solved'] or row['mcts']['certificate_replayed'], name
+          print('BFS/beam/MCTS concrete math task certificate audit passed')
+          PY
       - name: Build a real 100k mathlib candidate index
         if: matrix.python-version == '3.12'
         run: python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000 --summary index_status.json
@@ -120,6 +139,13 @@ jobs:
             fts_benchmark.json
       - name: Full catalog audit
         run: python -m math_mcts.audit -o catalog_audit.json --fail-on-errors
+      - name: Publish semantic search comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semantic-math-bench-python-${{ matrix.python-version }}
+          path: semantic_benchmark.json
+          if-no-files-found: ignore
       - name: Publish audit results
         if: always()
         uses: actions/upload-artifact@v4
