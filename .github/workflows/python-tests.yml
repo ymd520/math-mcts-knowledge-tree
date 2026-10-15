@@ -95,6 +95,7 @@ jobs:
         run: |
           python tests/test_expansion.py
           python tests/test_literature_bridge.py
+          python tests/test_source_adapters.py
       - name: Field inventory taxonomy and cross-branch MCTS adversarial tests
         run: |
           python tests/test_field_inventory_v7.py
