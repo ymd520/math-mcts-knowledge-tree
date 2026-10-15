@@ -189,7 +189,8 @@ def prove_guarded(book: ConditionalBook, goal: Equation, *,
         if not verify_guarded_certificate(book, certificate, goal, assumptions=assumptions):
             raise RuntimeError("conditional proof failed independent replay")
         return GuardedResult("proved_relative_to_conditional_equalities",
-                             certificate, count, len(seen), attempts, len(path))
+                             certificate, count, len(seen), attempts,
+                             len(certificate.steps))
 
     seen = {goal.left: None}
     if goal.left == goal.right:
