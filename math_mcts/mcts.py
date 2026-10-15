@@ -20,6 +20,14 @@ class Problem:
         """state 下可执行的动作列表(空列表表示无后继)."""
         raise NotImplementedError
 
+    def iter_actions(self, state):
+        """Optional lazy action stream, yielded in caller-defined priority order.
+
+        The default preserves the old list-based interface. Do not use an
+        infinite iterator unless the finite search budget is intentional.
+        """
+        return iter(self.actions(state))
+
     def step(self, state, action):
         raise NotImplementedError
 
@@ -77,15 +85,18 @@ class Problem:
 
 class _Node:
     __slots__ = ("state", "parent", "action", "children",
-                 "untried", "untried_priors", "visits", "total", "best", "prior", "stats")
+                 "untried", "untried_priors", "stream", "stream_exhausted",
+                 "visits", "total", "best", "prior", "stats")
 
-    def __init__(self, state, parent=None, action=None, actions=(), prior=1.0):
+    def __init__(self, state, parent=None, action=None, actions=(), prior=1.0, stream=None):
         self.state = state
         self.parent = parent
         self.action = action          # 从 parent 到本节点的动作
         self.children: list["_Node"] = []
         self.untried: list = list(actions)
         self.untried_priors: list[float] = []
+        self.stream = stream
+        self.stream_exhausted = stream is None
         self.visits = 0
         self.total = 0.0
         self.best = None              # max 回传时的子树最优值
@@ -110,7 +121,8 @@ def mcts(problem: Problem, iterations: int = 1000,
          exploration: float = 1.414, max_depth: int = 60,
          seed: int | None = None, *, widening_k: float = 2.0,
          widening_alpha: float = 0.5, policy: str = "uct",
-         stop_on_success: bool = False):
+         stop_on_success: bool = False, action_mode: str = "eager",
+         plateau_patience: int | None = None, min_plateau_iterations: int = 20):
     """Bounded MCTS with progressive widening for very wide action spaces.
 
     The number of expanded children grows as ceil(k * (visits+1)**alpha).
@@ -119,6 +131,16 @@ def mcts(problem: Problem, iterations: int = 1000,
     extract the child with greatest backed-up value. Neither policy is a
     proof of global optimality; rollout values may be estimates.
     """
+    if action_mode not in {"eager", "stream"}:
+        raise ValueError("action_mode must be eager or stream")
+    if action_mode == "stream" and policy != "uct":
+        raise ValueError("Streamed actions cannot use globally normalized PUCT priors")
+    if plateau_patience is not None and (
+        type(plateau_patience) is not int or plateau_patience < 1
+    ):
+        raise ValueError("plateau_patience must be a positive integer or None")
+    if type(min_plateau_iterations) is not int or min_plateau_iterations < 1:
+        raise ValueError("min_plateau_iterations must be a positive integer")
     if policy not in {"uct", "puct"}:
         raise ValueError("policy must be uct or puct")
     if not isinstance(iterations, int) or iterations < 0:
@@ -127,7 +149,14 @@ def mcts(problem: Problem, iterations: int = 1000,
         raise ValueError("Invalid search/depth/widening parameters")
     rng = random.Random(seed)
     initial = problem.initial_state()
-    root = _Node(initial, actions=problem.actions(initial))
+    def new_node(state, parent=None, action=None, prior=1.0):
+        if action_mode == "stream":
+            return _Node(state, parent=parent, action=action, prior=prior,
+                         stream=iter(problem.iter_actions(state)))
+        return _Node(state, parent=parent, action=action, prior=prior,
+                     actions=problem.actions(state))
+
+    root = new_node(initial)
 
     def prepare_priors(node):
         if policy != "puct" or not node.untried:
@@ -149,7 +178,11 @@ def mcts(problem: Problem, iterations: int = 1000,
     prepare_priors(root)
     stats = {"requested_iterations": iterations, "simulations": 0,
              "created_nodes": 1, "guided_expansions": 0,
-             "policy": policy, "early_stop": False}
+             "policy": policy, "early_stop": False,
+             "action_mode": action_mode, "yielded_actions": 0,
+             "stream_exhausted_nodes": 0, "plateau_stop": False}
+    best_observed = float("-inf")
+    stale_simulations = 0
     for _ in range(iterations):
         if stop_on_success and problem.success_found():
             stats["early_stop"] = True
@@ -159,8 +192,22 @@ def mcts(problem: Problem, iterations: int = 1000,
         # prevents deeper exploration under a finite iteration budget.
         while depth < max_depth and not problem.terminal(node.state):
             allowance = max(1, math.ceil(widening_k * (node.visits + 1) ** widening_alpha))
-            if node.untried and len(node.children) < allowance:
-                if policy == "puct":
+            if (node.untried or not node.stream_exhausted) and len(node.children) < allowance:
+                if action_mode == "stream":
+                    try:
+                        action = next(node.stream)
+                    except StopIteration:
+                        node.stream_exhausted = True
+                        stats["stream_exhausted_nodes"] += 1
+                        if not node.children:
+                            break
+                        node = max(node.children,
+                                   key=lambda ch: ch.uct(exploration, problem, policy))
+                        depth += 1
+                        continue
+                    stats["yielded_actions"] += 1
+                    prior = 1.0
+                elif policy == "puct":
                     # Priors are normalized ONCE for the complete action set,
                     # not renormalized after each widening expansion.
                     action = node.untried.pop()
@@ -170,8 +217,7 @@ def mcts(problem: Problem, iterations: int = 1000,
                     prior = 1.0
                     action = node.untried.pop(rng.randrange(len(node.untried)))
                 child_state = problem.step(node.state, action)
-                child = _Node(child_state, parent=node, action=action,
-                              actions=problem.actions(child_state), prior=prior)
+                child = new_node(child_state, parent=node, action=action, prior=prior)
                 prepare_priors(child)
                 stats["created_nodes"] += 1
                 node.children.append(child)
@@ -184,13 +230,31 @@ def mcts(problem: Problem, iterations: int = 1000,
                        key=lambda ch: ch.uct(exploration, problem, policy))
             depth += 1
         # Simulated value is not necessarily the value of the expanded node.
-        value = problem.simulate(node.state, rng, max_depth - depth)
+        # Streaming mode evaluates the expanded frontier rather than running
+        # a default random rollout that would materialize potentially millions
+        # of actions through Problem.actions(). The caller must provide a
+        # meaningful intermediate-state reward/heuristic if desired.
+        value = (problem.reward(node.state) if action_mode == "stream"
+                 else problem.simulate(node.state, rng, max_depth - depth))
         if not math.isfinite(value):
             raise ValueError("Simulation reward must be finite")
         stats["simulations"] += 1
+        if value > best_observed:
+            best_observed = value
+            stale_simulations = 0
+        else:
+            stale_simulations += 1
         while node is not None:
             problem.accumulate(node, value)
             node = node.parent
+        # An optional *heuristic* resource controller. Sparse-reward
+        # problems can plateau before a solution exists; never interpret
+        # this as exhaustion, impossibility or proof of optimality.
+        if (plateau_patience is not None
+            and stats["simulations"] >= min_plateau_iterations
+            and stale_simulations >= plateau_patience):
+            stats["plateau_stop"] = True
+            break
 
     actions_seq: list = []
     node = root

@@ -25,6 +25,9 @@ class GraphBuildStats:
     known_facts: int
     premise_match_attempts: int
     selected_rules: int
+    activated_rule_checks: int
+    avoided_rule_checks: int
+    duplicate_delta_anchors_skipped: int
     status: str
 
 
@@ -85,6 +88,15 @@ def build_incremental_graph(book: RuleBook, assumptions: Iterable[Atom], goal: A
     for atom in (*assumptions, goal):
         book.validate_atom(atom)
     rules = book.backward_rules(goal)  # reviewed rules only
+    # Index *premise predicate -> eligible rules* once. Unrelated rules
+    # are never revisited on rounds where no matching predicate changed.
+    rule_by_predicate: dict[str, set[int]] = defaultdict(set)
+    premise_free: set[int] = set()
+    for ri, rule in enumerate(rules):
+        if not rule.premises:
+            premise_free.add(ri)
+        for premise in rule.premises:
+            rule_by_predicate[premise.predicate].add(ri)
     facts = set(assumptions)
     delta = set(assumptions)
     full_index: dict[str, list[Atom]] = defaultdict(list)
@@ -94,12 +106,16 @@ def build_incremental_graph(book: RuleBook, assumptions: Iterable[Atom], goal: A
     counters = [0]
     candidates = 0
     rounds = 0
+    activated_checks = 0
+    avoided_checks = 0
+    duplicate_anchors = 0
 
     def finish(complete: bool, reason: str):
         graph = ProofGraph(tuple(edges), complete, reason)
         stats = GraphBuildStats(rounds, candidates, len(edges), len(facts),
                                 counters[0], len(rules),
-                                "ground_reviewed_rules_only")
+                                activated_checks, avoided_checks,
+                                duplicate_anchors, "ground_reviewed_rules_only")
         return (graph, stats) if return_stats else graph
 
     for round_index in range(max_rounds):
@@ -108,7 +124,13 @@ def build_incremental_graph(book: RuleBook, assumptions: Iterable[Atom], goal: A
         for fact in sorted(delta):
             delta_index[fact.predicate].append(fact)
         new_facts: set[Atom] = set()
-        for rule in rules:
+        active = set(premise_free) if round_index == 0 else set()
+        for predicate in delta_index:
+            active.update(rule_by_predicate.get(predicate, ()))
+        activated_checks += len(active)
+        avoided_checks += len(rules) - len(active)
+        for ri in sorted(active):
+            rule = rules[ri]
             if not rule.premises:
                 bindings = ({},) if round_index == 0 else ()
                 for binding in bindings:
@@ -130,6 +152,13 @@ def build_incremental_graph(book: RuleBook, assumptions: Iterable[Atom], goal: A
                     continue
                 for binding in _anchor_bindings(rule, full_index, delta_index,
                                                 anchor, counters):
+                    # A rule instance whose several premises are new this
+                    # round belongs to its FIRST matching delta anchor.
+                    # This avoids redundant candidate instantiations.
+                    if any(rule.premises[j].instantiate(binding) in delta
+                           for j in range(anchor)):
+                        duplicate_anchors += 1
+                        continue
                     candidates += 1
                     edge = book.instantiate(rule.id, binding)
                     if edge not in edges:
