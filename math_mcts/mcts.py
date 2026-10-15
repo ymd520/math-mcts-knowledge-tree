@@ -208,7 +208,6 @@ def mcts(problem: Problem, iterations: int = 1000,
                     stats["yielded_actions"] += 1
                     prior = 1.0
                 elif policy == "puct":
-                if policy == "puct":
                     # Priors are normalized ONCE for the complete action set,
                     # not renormalized after each widening expansion.
                     action = node.untried.pop()
