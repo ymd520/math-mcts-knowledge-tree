@@ -2,6 +2,24 @@
 
 # 数学知识 MCTS 搜索树
 
+## 全量知识驱动的 MCTS 研究入口
+
+普通 `collide` 现在默认接入全部导入知识；新增 `research` 在每个展开状态
+重新检索当前分支相关的知识，并从全库随机探索补充候选。默认索引构建不再
+截断为十万条。首次运行自动构建完整缓存，后续复用。
+
+```bash
+python -m math_mcts research "compact topology continuous" --iterations 1000 --depth 20 -o research.json
+python -m math_mcts collide "convex optimization" --iterations 200
+# 显式只用精选库的旧接口：
+python -m math_mcts collide --curated-only
+```
+
+报告区分全库可检索范围、实际取回、树中实际选用、最终路径及实际深度。
+每条最终候选带原陈述、知识 ID、来源与核验状态；不把知识选择当成证明。
+底层裸 `mcts(Problem)` 仍是通用算法，需调用上述标准入口才能接入知识。
+详见 [全量知识接入与运行证据](FULL_CORPUS_MCTS.md)。
+
 当前正式知识目录版本：**v1.14.0**；新增十万规模未审来源候选索引能力。纯 Python 标准库，Python 3.10+。
 
 将数学知识组织为领域→分支→主题→概念，支持知识检索、学习路径、知识配对，
@@ -411,3 +429,4 @@ Lean 类型结构与逻辑前提判断分开存储，不自动把语法引用当
 新增 174 条带条件、结论、推导提示、反例和主题来源的教学深化卡；核心记录使用 `D123_` 稳定 ID，前置关系显式核验。
 卡片重要性与难度是**暂定编辑候选**，并非独立数学审核或 Lean 已证新成果。
 详见 [`LEVEL123_DEEP_EXPANSION.md`](LEVEL123_DEEP_EXPANSION.md)。
+

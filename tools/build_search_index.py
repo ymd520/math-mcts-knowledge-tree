@@ -1,7 +1,8 @@
 """Build a reproducible source-candidate search index, without grade inflation.
 
 Usage:
-  python tools/build_search_index.py --db math_index.sqlite --candidate-limit 100000
+  python tools/build_search_index.py --db math_index.sqlite  # all imported records
+  python tools/build_search_index.py --db sample.sqlite --candidate-limit 100000
   python tools/build_search_index.py --db math_index.sqlite --query "Fourier transform"
 """
 from __future__ import annotations
@@ -16,7 +17,8 @@ from math_mcts.fast_index import build_index, fast_search, index_stats
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--db", type=Path, default=Path("math_index.sqlite"))
-    p.add_argument("--candidate-limit", type=int, default=100000)
+    p.add_argument("--candidate-limit", type=int, default=None,
+                   help="Explicit sample cap; omitted means the complete imported corpus")
     p.add_argument("--curated-only", action="store_true")
     p.add_argument("--query")
     p.add_argument("--top-k", type=int, default=10)

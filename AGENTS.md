@@ -19,6 +19,12 @@ These rules apply whenever ChatGPT or another coding agent changes this reposito
 - Never estimate totals by eye, carry forward stale README counts, or report planned rows as written rows.
 - If a quantity cannot be reproduced, mark it unknown instead of presenting an estimate.
 
+## Knowledge-backed mathematical research
+- Use `research_with_knowledge` / `python -m math_mcts research` for knowledge-driven discovery. Its default index must cover every imported source record; do not silently replace it with the curated catalog or a capped sample.
+- Ordinary CLI `collide` uses the full corpus. `--curated-only`, `--levels`, and `--important` are explicitly narrower catalog views.
+- A bare `mcts(Problem)` run is only the generic search kernel. It does not call the knowledge corpus automatically and must never be described as full-knowledge mathematical research.
+- Report indexed coverage, actual retrieval/selection IDs, source tiers and actual tree depth separately. Selecting knowledge cards is not applying verified mathematical inference; keep proof verification separate.
+
 ## Textbook research and knowledge cards
 - Prefer primary, official textbook or course sources. Record author/title, edition where known, source URL, chapter/section locator, access and license status, and what the source supports.
 - Write concise original mathematical summaries. Do not copy textbook prose, examples, exercises, or solution text into cards.
@@ -26,3 +32,4 @@ These rules apply whenever ChatGPT or another coding agent changes this reposito
 - Keep importance, difficulty, source attribution, editorial review, and formal proof status separate. A textbook citation alone is not proof verification.
 - Do not mark a card as formally proved or independently verified without the corresponding review.
 - State accurately whether a feature uses MCTS, exact ranking, or another retrieval method.
+

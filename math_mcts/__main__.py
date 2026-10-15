@@ -134,6 +134,16 @@ def cmd_export_path(args):
 
 
 def cmd_collide(args):
+    if not (args.curated_only or args.levels or args.important):
+        # Ordinary research now uses the complete imported corpus. The older
+        # in-memory pair API remains an explicit curated/scoped operation.
+        from .indexed_mcts import research_with_knowledge
+        report = research_with_knowledge(
+            args.seed or '', db_path=args.db, iterations=args.iterations,
+            depth=2, top_k=args.top_k, seed=args.random_seed, domain=args.domain)
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return
+    print('Explicit scope: curated catalog (imported difficulty is unrated).')
     tree = KnowledgeTree.load()
     tree = apply_catalog_scope(tree, args)
     results = collide_concepts(tree, seed=args.seed, top_k=args.top_k,
@@ -147,6 +157,22 @@ def cmd_collide(args):
             print(f"     💡 {note}")
         else:
             print(f"     待探索: {a.definition[:40]}… + {b.definition[:40]}…")
+
+
+def cmd_research(args):
+    from .indexed_mcts import research_with_knowledge
+    report = research_with_knowledge(
+        args.objective, db_path=args.db, iterations=args.iterations,
+        depth=args.depth, retrieval_width=args.retrieval_width,
+        exploration_width=args.exploration_width, seed=args.seed,
+        top_k=args.top_k, domain=args.domain)
+    if args.output:
+        args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n',
+                               encoding='utf-8')
+        report = {key: value for key, value in report.items()
+                  if key not in {'retrieval_trace', 'knowledge_records'}}
+        report['full_report'] = str(args.output)
+    print(json.dumps(report, ensure_ascii=False, indent=2))
 
 
 def cmd_search_index(args):
@@ -324,7 +350,22 @@ def main():
                     help="围绕哪个概念碰撞(省略=全局最优碰撞对)")
     co.add_argument("--top_k", type=int, default=5)
     co.add_argument("--iterations", type=int, default=3000)
+    co.add_argument("--db", type=Path, help="完整语料索引；省略则自动构建/复用全量缓存")
+    co.add_argument("--curated-only", action="store_true", help="显式仅用精选库的旧配对接口")
+    co.add_argument("--random-seed", type=int, default=7)
     co.set_defaults(func=cmd_collide)
+    kr = sub.add_parser("research", help="全量知识库驱动的动态多层MCTS；输出研究线索及实际调用日志")
+    kr.add_argument("objective", nargs="?", default="")
+    kr.add_argument("--db", type=Path, help="须完整覆盖导入语料；省略则自动管理全量缓存")
+    kr.add_argument("--iterations", type=int, default=1000)
+    kr.add_argument("--depth", type=int, default=20)
+    kr.add_argument("--retrieval-width", type=int, default=24)
+    kr.add_argument("--exploration-width", type=int, default=8)
+    kr.add_argument("--seed", type=int, default=7)
+    kr.add_argument("--top-k", type=int, default=5)
+    kr.add_argument("--domain")
+    kr.add_argument("-o", "--output", type=Path)
+    kr.set_defaults(func=cmd_research)
     s = sub.add_parser("search", help="全量精确评分检索相关概念")
     add_catalog_scope(s)
     s.add_argument("query", help="检索关键词")
