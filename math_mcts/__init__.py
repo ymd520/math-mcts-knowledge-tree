@@ -37,6 +37,8 @@ from .ai_knowledge import (
     collide_for_research,
 )
 
+from .field_audit import audit_fields, load_taxonomy, choose_audit_queue
+
 from .version import CATALOG_VERSION
 
 __version__ = CATALOG_VERSION
@@ -61,6 +63,7 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "prove_guarded", "verify_guarded_certificate",
            "validate_pack", "ingest_ai_pack", "ingest_ai_file",
            "ai_knowledge_inventory", "search_ai_candidates",
-           "ai_candidate_tree", "query_for_research", "collide_for_research"]
+           "ai_candidate_tree", "query_for_research", "collide_for_research",
+           "audit_fields", "load_taxonomy", "choose_audit_queue"]
 
 
