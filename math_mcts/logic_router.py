@@ -45,9 +45,10 @@ def equation_data(eq: Equation) -> dict:
     return {"left": term_data(eq.left), "right": term_data(eq.right)}
 
 
-def load_equational_problem(data: dict):
-    if not isinstance(data, dict) or data.get("logic") != "equational":
-        raise ValueError("explicit equational logic selector required")
+def load_equational_book(data: dict) -> tuple[EquationBook, tuple[Equation, ...]]:
+    """Common type-checked reviewed axiom loader for the two equational logics."""
+    if not isinstance(data, dict):
+        raise ValueError("expected an equational problem object")
     signature = data["signature"]
     funcs = {
         name: (tuple(value["args"]), value["returns"])
@@ -63,10 +64,17 @@ def load_equational_problem(data: dict):
             row.get("mapping_review", "")))
     book = EquationBook(signature["sorts"], signature["constants"], funcs, rules)
     assumptions = tuple(parse_equation(eq) for eq in data.get("assumptions", []))
-    goal = parse_equation(data["goal"])
-    book.validate_equation(goal)
     for eq in assumptions:
         book.validate_equation(eq)
+    return book, assumptions
+
+
+def load_equational_problem(data: dict):
+    if not isinstance(data, dict) or data.get("logic") != "equational":
+        raise ValueError("explicit equational logic selector required")
+    book, assumptions = load_equational_book(data)
+    goal = parse_equation(data["goal"])
+    book.validate_equation(goal)
     return book, assumptions, goal
 
 
