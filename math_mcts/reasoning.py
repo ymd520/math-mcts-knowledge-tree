@@ -189,7 +189,14 @@ class ProofGraph:
 
     @classmethod
     def build(cls, book: RuleBook, assumptions: frozenset[Atom], goal: Atom,
-              max_rounds: int = 100, max_edges: int = 10000) -> "ProofGraph":
+              max_rounds: int = 100, max_edges: int = 10000,
+              *, strategy: str = "reference") -> "ProofGraph":
+        if strategy not in {"reference", "incremental"}:
+            raise ValueError("Unknown graph construction strategy")
+        if strategy == "incremental":
+            from .incremental_graph import build_incremental_graph
+            return build_incremental_graph(book, assumptions, goal,
+                                           max_rounds=max_rounds, max_edges=max_edges)
         if max_rounds < 1 or max_edges < 1:
             raise ValueError("Positive graph budgets required")
         for atom in (*assumptions, goal):
@@ -355,12 +362,13 @@ def _goal_steps(assumptions, goal, steps):
 
 def derive(book: RuleBook, assumptions, goal: Atom, *, iterations: int = 1000,
            max_steps: int = 50, seed: int = 7, max_rounds: int = 100,
-           max_edges: int = 10000) -> SearchResult:
+           max_edges: int = 10000, graph_strategy: str = "incremental") -> SearchResult:
     """Bounded proof scheduling over an explicitly reviewed Horn rule scope."""
     if iterations < 1 or max_steps < 1:
         raise ValueError("Positive search budgets required")
     assumptions = frozenset(assumptions)
-    graph = ProofGraph.build(book, assumptions, goal, max_rounds, max_edges)
+    graph = ProofGraph.build(book, assumptions, goal, max_rounds, max_edges,
+                             strategy=graph_strategy)
     # For ground positive Horn rules, deterministic event-driven closure is
     # often much cheaper and gives a replayed witness with zero rollouts.
     # It never certifies source claims or the absence of a bounded proof.

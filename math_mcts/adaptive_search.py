@@ -40,11 +40,28 @@ def solve_adaptive(book, assumptions, goal, *, max_steps=20,
     if iterations<1:
         raise ValueError("iterations must be positive")
     graph=ProofGraph.build(book,frozenset(assumptions),goal,
-                           max_rounds=round_limit,max_edges=edge_limit)
+                           max_rounds=round_limit,max_edges=edge_limit,
+                           strategy="incremental")
     problem=DerivationProblem(graph,frozenset(assumptions),goal,max_steps)
     method,selection=choose_search_method(
         graph,len(problem.actions(problem.initial_state())),
         exact_edge_threshold=exact_edge_threshold,wide_frontier=wide_frontier)
+    # Keep BFS behavior for small graphs; on larger reviewed Horn graphs a
+    # deterministic closure can avoid random/beam search entirely.
+    if method != "bfs":
+        from .hypergraph_closure import forward_certificate
+        started=time.perf_counter()
+        witness=forward_certificate(book,graph,frozenset(assumptions),goal,
+                                    max_steps=max_steps)
+        if witness.certificate is not None or (not witness.reached and graph.complete):
+            return {"method":"closure","route":{"reason":"large_graph_exact_horn_closure"},
+                    "solved":witness.certificate is not None,
+                    "replayed":witness.certificate is not None,
+                    "depth":witness.effective_depth,
+                    "graph_complete":graph.complete,"graph_size":len(graph.edges),
+                    "actual_simulations":0,"states_expanded":0,
+                    "search_elapsed_ms":(time.perf_counter()-started)*1000,
+                    "scope_reason":witness.status}
     if method!="mcts":
         result=solve_baseline(book,assumptions,goal,graph=graph,method=method,
                               max_steps=max_steps,max_expansions=iterations,
