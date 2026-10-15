@@ -45,9 +45,10 @@ def equation_data(eq: Equation) -> dict:
     return {"left": term_data(eq.left), "right": term_data(eq.right)}
 
 
-def load_equational_problem(data: dict):
-    if not isinstance(data, dict) or data.get("logic") != "equational":
-        raise ValueError("explicit equational logic selector required")
+def load_equational_book(data: dict) -> tuple[EquationBook, tuple[Equation, ...]]:
+    """Common type-checked reviewed axiom loader for the two equational logics."""
+    if not isinstance(data, dict):
+        raise ValueError("expected an equational problem object")
     signature = data["signature"]
     funcs = {
         name: (tuple(value["args"]), value["returns"])
@@ -63,10 +64,17 @@ def load_equational_problem(data: dict):
             row.get("mapping_review", "")))
     book = EquationBook(signature["sorts"], signature["constants"], funcs, rules)
     assumptions = tuple(parse_equation(eq) for eq in data.get("assumptions", []))
-    goal = parse_equation(data["goal"])
-    book.validate_equation(goal)
     for eq in assumptions:
         book.validate_equation(eq)
+    return book, assumptions
+
+
+def load_equational_problem(data: dict):
+    if not isinstance(data, dict) or data.get("logic") != "equational":
+        raise ValueError("explicit equational logic selector required")
+    book, assumptions = load_equational_book(data)
+    goal = parse_equation(data["goal"])
+    book.validate_equation(goal)
     return book, assumptions, goal
 
 
@@ -131,6 +139,9 @@ def verify_problem(data: dict, report: dict) -> bool:
         kind = data.get("logic")
         if kind != report.get("logic") or report.get("certificate") is None:
             return False
+        if kind in {"finite_equational", "conditional_equational"}:
+            from .logic_extensions import verify_extended
+            return verify_extended(data, report)
         if kind == "equational":
             book, assumptions, goal = load_equational_problem(data)
             cert = load_rewrite_certificate(report["certificate"])
@@ -147,11 +158,19 @@ def verify_problem(data: dict, report: dict) -> bool:
 def solve_problem(data: dict, *, max_steps: int = 30,
                   max_states: int = 4000, max_edges: int = 10000,
                   max_rounds: int = 100, max_term_nodes: int = 100,
-                  iterations: int = 1000, seed: int = 7) -> dict:
+                  iterations: int = 1000, seed: int = 7,
+                  max_cases: int = 2000, max_nodes: int = 5000,
+                  max_guard_attempts: int = 300) -> dict:
     """Return an independently replayed result and explicit trust scope."""
     if not isinstance(data, dict):
         raise ValueError("problem must be a JSON object")
     kind = data.get("logic")
+    if kind in {"finite_equational", "conditional_equational"}:
+        from .logic_extensions import solve_extended
+        return solve_extended(
+            data, max_steps=max_steps, max_states=max_states,
+            max_term_nodes=max_term_nodes, max_cases=max_cases,
+            max_nodes=max_nodes, max_guard_attempts=max_guard_attempts)
     if kind == "equational":
         book, assumptions, goal = load_equational_problem(data)
         result = prove_equation(book, goal, assumptions=assumptions,
@@ -197,4 +216,4 @@ def solve_problem(data: dict, *, max_steps: int = 30,
             "unverified_candidates": len(book.candidates),
             "trust_scope": "derivability_relative_to_caller_reviewed_ground_horn_rules",
         }
-    raise ValueError("explicit logic selector must be horn or equational")
+    raise ValueError("explicit logic selector must be horn, equational, finite_equational or conditional_equational")

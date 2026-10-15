@@ -24,6 +24,11 @@ from .equational import (Term, Equation, RewriteRule, EquationBook,
                          RewriteCertificate, prove_equation, verify_rewrite_certificate)
 from .logic_router import (solve_problem, verify_problem,
                            load_equational_problem, load_rewrite_certificate)
+from .finite_logic import (Formula, FiniteCertificate, prove_finite,
+                           verify_finite_certificate)
+from .conditional_logic import (ConditionalRule, ConditionalBook,
+                                GuardedCertificate, prove_guarded,
+                                verify_guarded_certificate)
 
 __version__ = "1.14.0"
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
@@ -41,6 +46,9 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "Term", "Equation", "RewriteRule", "EquationBook",
            "RewriteCertificate", "prove_equation", "verify_rewrite_certificate",
            "solve_problem", "verify_problem", "load_equational_problem",
-           "load_rewrite_certificate"]
+           "load_rewrite_certificate",
+           "Formula", "FiniteCertificate", "prove_finite", "verify_finite_certificate",
+           "ConditionalRule", "ConditionalBook", "GuardedCertificate",
+           "prove_guarded", "verify_guarded_certificate"]
 
 

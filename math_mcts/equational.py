@@ -300,6 +300,11 @@ def verify_rewrite_certificate(book: EquationBook, certificate: RewriteCertifica
                 return False
             if step.binding != tuple(sorted(binding.items())):
                 return False
+            # A schematic variable is *not* polymorphic. Without this check
+            # a bare-variable side could match a subterm of another sort.
+            if any(book.sort_of(binding[name]) != sort
+                   for name, sort in rule.variables):
+                return False
             before_sort = book.sort_of(_subterm(current, step.position))
             if before_sort != book.sort_of(_instantiate(replacement, binding)):
                 return False
@@ -362,7 +367,14 @@ def prove_equation(book: EquationBook, goal: Equation, *,
                     binding: dict[str, Term] = {}
                     if not _match(source, subterm, binding):
                         continue
+                    if any(book.sort_of(binding[name]) != sort
+                           for name, sort in rule.variables):
+                        continue
                     updated = _replace(current, position, _instantiate(target, binding))
+                    try:
+                        book.sort_of(updated)
+                    except ValueError:
+                        continue
                     if updated == current or updated in parent:
                         continue
                     if _size(updated) > max_term_nodes:
