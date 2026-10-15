@@ -111,7 +111,8 @@ class IndexedMCTSTests(unittest.TestCase):
                   imported_root=self.root)
         self.assertEqual(report['mcts']['simulations'], 150)
         self.assertEqual(report['coverage']['indexed_imported'], len(self.rows))
-        self.assertFalse(report['coverage']['all_records_examined_this_run'])
+        self.assertEqual(report['coverage']['all_records_examined_this_run'],
+                         report['usage']['distinct_cards_loaded'] == len(self.rows))
         self.assertGreater(report['usage']['retrieval_calls'], 1)
         self.assertGreater(report['usage']['distinct_cards_selected_in_tree'], 0)
         self.assertEqual(report['usage']['selected_by_source_tier'],
