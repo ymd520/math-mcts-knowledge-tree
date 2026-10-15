@@ -13,7 +13,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from math_mcts.indexed_mcts import research_with_knowledge
-from math_mcts.source_adapters import fetch_into_cache, import_local
+from math_mcts.source_adapters import discover_candidates, persist_candidates, import_local
 
 DEFAULT_CACHE = Path(".cache/math_mcts/literature.sqlite")
 PUBLIC = ("theoremsearch", "s2orc", "zbmath", "realmath")
@@ -39,23 +39,30 @@ def main(argv=None):
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args(argv)
+    if not 1 <= args.per_source <= 20:
+        parser.error("--per-source must be between 1 and 20")
 
     tasks = {}
     if args.all_public:
         # A single bounded request per source, in parallel, instead of
         # paid network calls during each expanded MCTS state.
+        discovered = {}
         with ThreadPoolExecutor(max_workers=4) as pool:
             futures = {
-                pool.submit(fetch_into_cache, args.cache, source,
-                            query=args.objective, limit=args.per_source): source
+                pool.submit(discover_candidates, source, query=args.objective,
+                            limit=args.per_source): source
                 for source in PUBLIC
             }
             for future in as_completed(futures):
                 source = futures[future]
                 try:
-                    tasks[source] = future.result()
+                    discovered[source] = future.result()
                 except Exception as exc:
                     tasks[source] = {"status": "failed", "reason": str(exc)}
+        # Concurrent remote read, serialized and atomic SQLite commits.
+        for source in PUBLIC:
+            if source in discovered:
+                tasks[source] = persist_candidates(args.cache, source, discovered[source])
     # These imports are intentionally sequential: source_expansion SQLite
     # append-only transactions must not fight one another for the same DB.
     for source, path in (("mathpile", args.mathpile), ("s2orc", args.s2orc),
