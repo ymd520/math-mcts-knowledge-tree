@@ -12,7 +12,7 @@ import json
 
 from .equational import (Equation, EquationBook, RewriteCertificate, RewriteRule,
                          RewriteStep, Term, prove_equation, verify_rewrite_certificate)
-from .reasoning import derive, load_reasoning_problem, verify_certificate
+from .reasoning import derive, load_reasoning_problem, verify_certificate, load_certificate
 
 
 def parse_term(data: Any) -> Term:
@@ -107,6 +107,43 @@ def load_rewrite_certificate(data: dict) -> RewriteCertificate:
         tuple(steps), data["rulebook_sha256"])
 
 
+def horn_certificate_data(certificate) -> dict:
+    """Serialize the *existing* Horn certificate without changing its format."""
+    def atom(a):
+        return {"predicate": a.predicate, "args": list(a.args)}
+    return {
+        "goal": atom(certificate.goal),
+        "assumptions": [atom(a) for a in sorted(certificate.assumptions)],
+        "rulebook_sha256": certificate.rulebook_sha256,
+        "steps": [{
+            "rule_id": edge.rule_id, "binding": [list(pair) for pair in edge.binding],
+            "premises": [atom(a) for a in edge.premises],
+            "conclusion": atom(edge.conclusion),
+        } for edge in certificate.steps],
+    }
+
+
+def verify_problem(data: dict, report: dict) -> bool:
+    """External proof replay against a freshly loaded exact problem snapshot."""
+    if not isinstance(data, dict) or not isinstance(report, dict):
+        return False
+    try:
+        kind = data.get("logic")
+        if kind != report.get("logic") or report.get("certificate") is None:
+            return False
+        if kind == "equational":
+            book, assumptions, goal = load_equational_problem(data)
+            cert = load_rewrite_certificate(report["certificate"])
+            return verify_rewrite_certificate(book, cert, goal, assumptions)
+        if kind == "horn":
+            book, assumptions, goal = load_reasoning_problem(data)
+            cert = load_certificate(report["certificate"])
+            return verify_certificate(book, cert, assumptions, goal)
+    except (KeyError, TypeError, ValueError, AttributeError, RecursionError):
+        return False
+    return False
+
+
 def solve_problem(data: dict, *, max_steps: int = 30,
                   max_states: int = 4000, max_edges: int = 10000,
                   max_rounds: int = 100, max_term_nodes: int = 100,
@@ -150,7 +187,8 @@ def solve_problem(data: dict, *, max_steps: int = 30,
             "status": outcome.status,
             # Retain public Horn certificate format unchanged. Caller can
             # serialize dataclass through its existing dedicated adapter.
-            "certificate": outcome.certificate,
+            "certificate": horn_certificate_data(outcome.certificate)
+                           if outcome.certificate else None,
             "certificate_replayed": replayed,
             "effective_depth": outcome.effective_depth,
             "search_method": outcome.search_method,
