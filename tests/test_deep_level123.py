@@ -9,6 +9,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from math_mcts.knowledge import KnowledgeTree
 from math_mcts.catalog import PACK_DIR,name_key,assemble
+from math_mcts.version import CATALOG_VERSION
 
 PACK="level123_multidomain_20261014.json"
 PREFIX="C26D"
@@ -30,7 +31,7 @@ class Level123DeepTests(unittest.TestCase):
             for level in (1,2,3):
                 self.assertEqual(by[(domain,level)],5)
         self.assertEqual(dict(Counter(r["level"] for r in self.rows)),{1:35,2:35,3:35})
-        self.assertEqual(self.tree.meta["version"],"1.14.0")
+        self.assertEqual(self.tree.meta["version"],CATALOG_VERSION)
         self.assertEqual(len(self.tree.concepts),
                          self.base.inventory()["total"]+self.tree.meta["catalog_added"])
         self.assertEqual(self.tree.check_integrity(),[])
