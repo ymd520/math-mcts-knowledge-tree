@@ -10,6 +10,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from math_mcts.knowledge import KnowledgeTree
 from math_mcts.catalog import name_key
 from math_mcts.deep_core import SEED_PATH,load_deep_core
+from math_mcts.version import CATALOG_VERSION
 
 
 class DeepLevel123Tests(unittest.TestCase):
@@ -24,7 +25,7 @@ class DeepLevel123Tests(unittest.TestCase):
         self.assertEqual(report["deep_core_by_level"],{1:50,2:58,3:66})
         self.assertEqual(len(report["deep_core_by_domain"]),7)
         self.assertEqual(report["deep_core_by_domain"],{"数学基础":25,"代数":25,"分析":26,"几何与拓扑":25,"概率与统计":24,"离散数学":24,"计算与优化":25})
-        self.assertEqual(report["catalog_version"],"1.14.0")
+        self.assertEqual(report["catalog_version"],CATALOG_VERSION)
         self.assertEqual(report["deep_core_seed_sha256"],
                          hashlib.sha256(SEED_PATH.read_bytes()).hexdigest())
         self.assertEqual(self.tree.check_integrity(),[])
