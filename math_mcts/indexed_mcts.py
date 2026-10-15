@@ -168,8 +168,16 @@ class IndexedCorpus:
                                    ' WHERE term_index MATCH ?' + clause +
                                    ' ORDER BY bm25(term_index),term_index.rowid LIMIT ?',
                                    (match, *values, limit)).fetchall()
-        rows = [self.db.execute('SELECT id,record,tier,level FROM documents WHERE rowid=?', rid).fetchone()
-                for rid in selected]
+        if not selected:
+            return []
+        # One bounded IN lookup rather than one SQL round-trip per ranked hit.
+        order = [item[0] for item in selected]
+        placeholders = ','.join('?' for _ in order)
+        loaded = {rid: (cid, blob, tier, lvl)
+                  for rid, cid, blob, tier, lvl in self.db.execute(
+                      'SELECT rowid,id,record,tier,level FROM documents WHERE rowid IN ('
+                      + placeholders + ')', order)}
+        rows = [loaded[rid] for rid in order]
         self.retrieved_ids.update(row[0] for row in rows)
         return [self._decode(row) for row in rows]
 
@@ -382,6 +390,7 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
                              'domain_filter': domain, 'eligible_scope': corpus.scope_count,
                              'all_records_examined_this_run': len(corpus.loaded_ids) == corpus.total,
                              'external_candidates_indexed': getattr(corpus, 'external_count', 0),
+                             'external_candidates_by_source': getattr(corpus, 'source_counts', {}),
                              'external_cache_enabled': external_db_path is not None},
                 'usage': {'retrieval_calls': corpus.search_calls,
                           'global_exploration_calls': corpus.sample_calls,
