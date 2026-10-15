@@ -302,11 +302,11 @@ class RouterIntegrationTests(unittest.TestCase):
 class ManySortedRegressionTests(unittest.TestCase):
     def test_polymorphic_forgery_rejected_in_base_logic(self):
         # x:S = f(x):S must NOT be applied with x:=t:T.
-        book=EquationBook(["S","T"],{"a":"S","t":"T"},
+        book=EquationBook(["S","T"],{"a":"S","t":"T","u":"T"},
             {"f":(("S",),"S")},[
                RewriteRule("expand",eq(v("?x"),f("f",v("?x"))),
                            (("?x","S"),),"fixture","reviewed")])
-        outcome=prove_equation(book,eq(c("t"),c("a")),max_steps=3)
+        outcome=prove_equation(book,eq(c("t"),c("u")),max_steps=3)
         self.assertIsNone(outcome.certificate)
 
 
