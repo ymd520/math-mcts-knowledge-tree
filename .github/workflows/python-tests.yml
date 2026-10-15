@@ -78,6 +78,28 @@ jobs:
           PY
       - name: Evidence-first knowledge expansion and research-operator tests
         run: python tests/test_expansion.py
+      - name: AI-to-MCTS knowledge pack, immutable provenance and actual MCTS integration
+        run: |
+          python tests/test_ai_knowledge_bridge.py
+          python tools/ai_knowledge_cli.py ingest examples/ai_knowledge_seed_v1.json --db ai_candidates.sqlite
+          python tools/ai_knowledge_cli.py inventory --db ai_candidates.sqlite > ai_inventory.json
+          python tools/ai_knowledge_cli.py search "Lagrange" --db ai_candidates.sqlite --limit 10 > ai_search.json
+          python tools/ai_knowledge_cli.py collide --db ai_candidates.sqlite --limit 30 --iterations 1000 > ai_pairs.json
+          python - <<'PY'
+          import json
+          inv=json.load(open('ai_inventory.json'))
+          matches=json.load(open('ai_search.json'))
+          pairs=json.load(open('ai_pairs.json'))
+          assert inv['unreviewed_ai_candidates']==18,inv
+          assert inv['curated_promotions']==0
+          assert inv['independent_proofs_verified']==0
+          assert len(matches['results'])>0
+          assert matches['results'][0]['verification_status']=='not_independently_verified'
+          assert pairs['search_method']=='MCTS_cross_domain_candidate_pairs'
+          assert len(pairs['results'])>=1
+          assert all(x['conjecture_only'] and not x['proof_verified'] for x in pairs['results'])
+          print('AI pack safely searchable and consumable by MCTS')
+          PY
       - name: Reasoning and certificates
         run: python tests/test_reasoning.py
       - name: Finite quantifiers and guarded equality adversarial proof checks

@@ -8,6 +8,27 @@
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
 搜索次数和深度不代表数学原创性或证明真实性。静态概念检索采用全量精确评分排序（不再声称检索访问次数来自 MCTS）；MCTS 仍用于知识配对和规则调度；学习路径已改为完整先修拓扑规划，避免无关随机绕路。
 
+## AI → MCTS 数学知识扩展接口
+
+现在可以让 ChatGPT 按统一 JSON 协议生成数学知识包，
+保留定理条件、数学结论、证明提示、反例检验方案和待核查来源，
+将其写入**独立的 AI 候选 SQLite 库**，供现有知识树与
+MCTS 跨领域碰撞模块调用。**AI 整理的数学知识永远默认未审核，
+不会自动升级为已证明、核心知识或可执行规则。**
+
+首批18条跨领域示范知识卡位于
+`examples/ai_knowledge_seed_v1.json`，运行：
+
+```bash
+python tools/ai_knowledge_cli.py ingest examples/ai_knowledge_seed_v1.json --db ai.sqlite
+python tools/ai_knowledge_cli.py search Lagrange --db ai.sqlite
+python tools/ai_knowledge_cli.py collide --db ai.sqlite --iterations 1000
+python tests/test_ai_knowledge_bridge.py
+```
+
+完整格式及从 ChatGPT 继续扩充的方式详见
+[AI 知识扩展桥接协议](AI_KNOWLEDGE_BRIDGE.md)。
+
 ## 通用数学逻辑第6阶段：有限量词与条件等式
 
 增加了**严格限定在显式有限对象集上的全称/存在量词证明**，
