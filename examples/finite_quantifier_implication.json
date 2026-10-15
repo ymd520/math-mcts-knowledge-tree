@@ -1,0 +1,75 @@
+{
+  "logic": "finite_equational",
+  "signature": {
+    "sorts": [
+      "S"
+    ],
+    "constants": {
+      "a": "S",
+      "b": "S"
+    },
+    "functions": {
+      "h": {
+        "args": [
+          "S"
+        ],
+        "returns": "S"
+      }
+    }
+  },
+  "rules": [
+    {
+      "id": "unreviewed_a_b",
+      "variables": {},
+      "source": "synthetic unverified proposal",
+      "status": "candidate",
+      "left": {
+        "const": "a"
+      },
+      "right": {
+        "const": "b"
+      }
+    }
+  ],
+  "assumptions": [],
+  "goal": {
+    "forall": {
+      "var": "?x",
+      "sort": "S",
+      "body": {
+        "implies": {
+          "premises": [
+            {
+              "left": {
+                "var": "?x"
+              },
+              "right": {
+                "const": "a"
+              }
+            }
+          ],
+          "body": {
+            "eq": {
+              "left": {
+                "app": "h",
+                "args": [
+                  {
+                    "var": "?x"
+                  }
+                ]
+              },
+              "right": {
+                "app": "h",
+                "args": [
+                  {
+                    "const": "a"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
