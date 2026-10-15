@@ -1,0 +1,578 @@
+[
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 0
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy 自由积 Free Product of Groups ",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 17
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Matroid.Indep.insert_indep_iff_of_notMem Matroid.Indep.insert_indep_iff_of_notMem Mathlib.Combinatorics.Matroid.Closure dualTensorHom_bijective_of_finite_projective_right dualTensorHom_bijective_of_finite_projective_right Mathlib.LinearAlgebra.Contraction",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 35
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy dualTensorHom_bijective_of_finite_projective_right dualTensorHom_bijective_of_finite_projective_right Mathlib.LinearAlgebra.Contraction dualTensorHom_bijective dualTensorHom_bijective Mathlib.LinearAlgebra.Contraction",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 52
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Theorem 2.14 Theorem 2.14 theoremsearch/statement/07636ad0-7366-4191-8978-3e0afa825e1a Submodule.finrank_quotient_eq_sum Submodule.finrank_quotient_eq_sum Mathlib.LinearAlgebra.FreeModule.Finite.Quotient",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 70
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Finset.prod_finset_product_right' Finset.prod_finset_product_right' Mathlib.Algebra.BigOperators.Group.Finset.Sigma Finset.filter_product_left Finset.filter_product_left Mathlib.Data.Finset.Prod",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 87
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Finset.product_subset_product_left Finset.product_subset_product_left Mathlib.Data.Finset.Prod CountableSupClosed.isLUB_mem CountableSupClosed.isLUB_mem Mathlib.Order.CountableSupClosed",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 104
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Topology.IsInducing.matrix_map Topology.IsInducing.matrix_map Mathlib.Topology.Instances.Matrix Topology.IsEmbedding.matrix_map Topology.IsEmbedding.matrix_map Mathlib.Topology.Instances.Matrix",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 122
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Matroid.Indep.union_indep_iff_forall_notMem_closure_left Matroid.Indep.union_indep_iff_forall_notMem_closure_left Mathlib.Combinatorics.Matroid.Closure nhdsSet_mono nhdsSet_mono Mathlib.Topology.NhdsSet",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 139
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy 有限秩商张成等于natDegreenorm finrank_quotient_span_eq_natDegree_norm Mathlib.LinearAlgebra.FreeModule.Norm Theorem 2.14 Theorem 2.14 theoremsearch/statement/07636ad0-7366-4191-8978-3e0afa825e1a",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 157
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Set.eq_top_of_card_le_of_finite Set.eq_top_of_card_le_of_finite Mathlib.SetTheory.Cardinal.NatCard Finset.notMem_singleton Finset.notMem_singleton Mathlib.Data.Finset.Insert",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 174
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Asymptotics.IsBigO.of_norm_eventuallyLE Asymptotics.IsBigO.of_norm_eventuallyLE Mathlib.Analysis.Asymptotics.Defs AddSubgroup.addCommutator_center_left AddSubgroup.addCommutator_center_left Mathlib.GroupTheory.Commutator.Basic",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 191
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy IsCompactlyGenerated.BooleanGenerators.finitelyAtomistic IsCompactlyGenerated.BooleanGenerators.finitelyAtomistic Mathlib.Order.BooleanGenerators IsCompactlyGenerated.BooleanGenerators.isAtom IsCompactlyGenerated.BooleanGenerators.isAtom Mathlib.Order.BooleanGenerators",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 209
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy 有限秩商张成等于natDegreenorm finrank_quotient_span_eq_natDegree_norm Mathlib.LinearAlgebra.FreeModule.Norm finrank_quotient_span_eq_natDegree_norm finrank_quotient_span_eq_natDegree_norm Mathlib.LinearAlgebra.FreeModule.Norm",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 226
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Finset.filter_product_left Finset.filter_product_left Mathlib.Data.Finset.Prod Finset.filter_product_right Finset.filter_product_right Mathlib.Data.Finset.Prod",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 243
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy 等价类与商集 Equivalence Class and Quotient Set  Theorem 2.14 Theorem 2.14 theoremsearch/statement/07636ad0-7366-4191-8978-3e0afa825e1a",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 261
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Theorem 2.14 Theorem 2.14 theoremsearch/statement/07636ad0-7366-4191-8978-3e0afa825e1a Subgroup.commutator_pi_pi_of_finite Subgroup.commutator_pi_pi_of_finite Mathlib.GroupTheory.Commutator.Finite",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 278
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy LinearMap.exists_monic_and_natDegree_eq_and_aeval_eq_zero LinearMap.exists_monic_and_natDegree_eq_and_aeval_eq_zero Mathlib.LinearAlgebra.Matrix.Charpoly.LinearMap Set.Iic.succ_eq_of_not_isMax Set.Iic.succ_eq_of_not_isMax Mathlib.Order.Interval.Set.SuccOrder",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 296
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy eq_finite_iUnion_of_isTopologicalBasis_of_isCompact_open eq_finite_iUnion_of_isTopologicalBasis_of_isCompact_open Mathlib.Topology.Compactness.Bases AddSubgroup.addCommutator_pi_pi_of_finite AddSubgroup.addCommutator_pi_pi_of_finite Mathlib.GroupTheory.Commutator.Finite",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 313
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy CategoryTheory.IsSubterminal.isoDiag_inv CategoryTheory.IsSubterminal.isoDiag_inv Mathlib.CategoryTheory.Subterminal Metric.exists_set_encard_eq_coveringNumber Metric.exists_set_encard_eq_coveringNumber Mathlib.Topology.MetricSpace.CoveringNumbers",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 330
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy TopologicalSpace.Opens.chartAt_inclusion_symm_eventuallyEq TopologicalSpace.Opens.chartAt_inclusion_symm_eventuallyEq Mathlib.Geometry.Manifold.HasGroupoid TopologicalSpace.Opens.chartAt_subtype_val_symm_eventuallyEq TopologicalSpace.Opens.chartAt_subtype_val_symm_eventuallyEq Mathlib.Geometry.Manifold.HasGroupoid",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 348
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy AddSubgroup.addCommutator_pi_pi_of_finite AddSubgroup.addCommutator_pi_pi_of_finite Mathlib.GroupTheory.Commutator.Finite AddSubgroup.addCommutator_pi_pi_le AddSubgroup.addCommutator_pi_pi_le Mathlib.GroupTheory.Commutator.Basic",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 365
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy FrameHom.coe_comp FrameHom.coe_comp Mathlib.Order.Hom.CompleteLattice FrameHom.cancel_left FrameHom.cancel_left Mathlib.Order.Hom.CompleteLattice",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 383
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Finset.product_subset_product_right Finset.product_subset_product_right Mathlib.Data.Finset.Prod Finset.product_subset_product_left Finset.product_subset_product_left Mathlib.Data.Finset.Prod",
+    "limit": 18,
+    "source_trace": "quotient_imbalance_hybrid_after_0.raw.json",
+    "state_index": 400
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 0
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Finset.product_subset_product_right Finset.product_subset_product_right Mathlib.Data.Finset.Prod",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 17
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Finset.prod_product_right' Finset.prod_product_right' Mathlib.Algebra.BigOperators.Group.Finset.Sigma Finset.filter_product_right Finset.filter_product_right Mathlib.Data.Finset.Prod",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 35
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy AddSubgroup.addCommutator_pi_pi_of_finite AddSubgroup.addCommutator_pi_pi_of_finite Mathlib.GroupTheory.Commutator.Finite AddSubgroup.addCommutator_pi_pi_le AddSubgroup.addCommutator_pi_pi_le Mathlib.GroupTheory.Commutator.Basic",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 52
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy 自由集合的基数公式 Finite.card_eq_zero_of_injective Mathlib.SetTheory.Cardinal.NatCard ModN.natCard_eq ModN.natCard_eq Mathlib.LinearAlgebra.FreeModule.ModN",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 70
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy IsClosed.stableUnderSpecialization IsClosed.stableUnderSpecialization Mathlib.Topology.Inseparable Module.finite_iff_finite Module.finite_iff_finite Mathlib.RingTheory.Finiteness.Cardinality",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 87
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Graph.le_noEdge_iff Graph.le_noEdge_iff Mathlib.Combinatorics.Graph.Subgraph Subgroup.le_normalizer_iff_commutator_le_left Subgroup.le_normalizer_iff_commutator_le_left Mathlib.GroupTheory.Commutator.Basic",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 104
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Set.eq_top_of_card_le_of_finite Set.eq_top_of_card_le_of_finite Mathlib.SetTheory.Cardinal.NatCard Set.Finite.eq_of_subset_of_card_le Set.Finite.eq_of_subset_of_card_le Mathlib.SetTheory.Cardinal.NatCard",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 122
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy 子模有限秩商 Submodule.finrank_quotient Mathlib.LinearAlgebra.Dimension.RankNullity 子模有限秩等于秩 Submodule.finrank_eq_rank Mathlib.LinearAlgebra.Dimension.StrongRankCondition",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 139
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy 配对计数的基数公式 List.Nodup.length_le_natCard Mathlib.SetTheory.Cardinal.NatCard 和型左侧配对的基数 Multiset.Nodup.card_le_encard Mathlib.SetTheory.Cardinal.NatCard",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 157
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy AddSubgroup.addCommutator_pi_pi_of_finite AddSubgroup.addCommutator_pi_pi_of_finite Mathlib.GroupTheory.Commutator.Finite Asymptotics.IsBigO.of_norm_eventuallyLE Asymptotics.IsBigO.of_norm_eventuallyLE Mathlib.Analysis.Asymptotics.Defs",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 174
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Set.Finite.inter_of_left Set.Finite.inter_of_left Mathlib.Data.Set.Finite.Basic Set.Finite.inter_of_right Set.Finite.inter_of_right Mathlib.Data.Set.Finite.Basic",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 191
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy eq_zero_of_zero_dvd eq_zero_of_zero_dvd Mathlib.Algebra.GroupWithZero.Divisibility exists_eq_mul_left_of_dvd exists_eq_mul_left_of_dvd Mathlib.Algebra.Divisibility.Basic",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 209
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy CountableSupClosed.isLUB_mem CountableSupClosed.isLUB_mem Mathlib.Order.CountableSupClosed Metric.coveringNumber_le_encard_self Metric.coveringNumber_le_encard_self Mathlib.Topology.MetricSpace.CoveringNumbers",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 226
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Set.Finite.eq_of_subset_of_card_le Set.Finite.eq_of_subset_of_card_le Mathlib.SetTheory.Cardinal.NatCard Set.eq_of_subset_of_card_le Set.eq_of_subset_of_card_le Mathlib.Data.Set.Finite.Basic",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 243
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy 类方程 Class Equation  共轭于中心元则相等 IsConj.eq_of_right_mem_center Mathlib.GroupTheory.Subgroup.Center",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 261
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy CategoryTheory.MorphismProperty.Comma.mapLeftEq_hom_app_right CategoryTheory.MorphismProperty.Comma.mapLeftEq_hom_app_right Mathlib.CategoryTheory.MorphismProperty.Comma BoundedVariationOn.eVariationOn_Ici_eq_Ioi_add_edist BoundedVariationOn.eVariationOn_Ici_eq_Ioi_add_edist Mathlib.Topology.EMetricSpace.BoundedVariation",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 278
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Equiv.coe_fn_mk Equiv.coe_fn_mk Mathlib.Logic.Equiv.Defs Subgroup.commutator_center_left Subgroup.commutator_center_left Mathlib.GroupTheory.Commutator.Basic",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 296
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy 二项式定理的应用 Applying the Binomial Theorem  二项式级数 Binomial Series ",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 313
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy MeasureTheory.VectorMeasure.prod_apply_eq_integral MeasureTheory.VectorMeasure.prod_apply_eq_integral Mathlib.MeasureTheory.VectorMeasure.Prod intervalIntegral.integral_Iio_add_Ici intervalIntegral.integral_Iio_add_Ici Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 330
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Subgroup.le_normalizer_iff_commutator_le_right Subgroup.le_normalizer_iff_commutator_le_right Mathlib.GroupTheory.Commutator.Basic Subgroup.commutator_top_right_le_iff Subgroup.commutator_top_right_le_iff Mathlib.GroupTheory.Commutator.Basic",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 348
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy HasFDerivWithinAt.sqrt HasFDerivWithinAt.sqrt Mathlib.Analysis.SpecialFunctions.Sqrt AddSubgroup.addCommutator_pi_pi_of_finite AddSubgroup.addCommutator_pi_pi_of_finite Mathlib.GroupTheory.Commutator.Finite",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 365
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy Set.eq_top_of_card_le_of_finite Set.eq_top_of_card_le_of_finite Mathlib.SetTheory.Cardinal.NatCard Subgroup.card_commutator_le_of_finite_commutatorSet Subgroup.card_commutator_le_of_finite_commutatorSet Mathlib.GroupTheory.Schreier",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 383
+  },
+  {
+    "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy NumberField.logHeight₁_eq NumberField.logHeight₁_eq Mathlib.NumberTheory.Height.NumberField NumberField.finite_setOfPred_logHeight₁_le NumberField.finite_setOfPred_logHeight₁_le Mathlib.NumberTheory.Height.NumberField",
+    "limit": 24,
+    "source_trace": "quotient_imbalance_primary_after_0.raw.json",
+    "state_index": 400
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 0
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization NNReal.eq NNReal.eq Mathlib.Basic.NNReal.Defs CategoryTheory.MonadHom.app_μ CategoryTheory.MonadHom.app_μ Mathlib.CategoryTheory.Monad.Basic",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 13
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup Sylow.le_center_or_le_commutator Sylow.le_center_or_le_commutator Mathlib.GroupTheory.SpecificGroups.ZGroup",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 26
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization diam_stdSimplex_le diam_stdSimplex_le Mathlib.Analysis.Convex.StdSimplex Continuous.arccos Continuous.arccos Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 39
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Theorem 10.4 Theorem 10.4 theoremsearch/statement/80c2aa7b-0816-45b7-ab38-cb93e74d47f8 SchwartzMap.fourier_convolution SchwartzMap.fourier_convolution Mathlib.Analysis.Fourier.Convolution",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 52
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization SchwartzMap.convolution_flip SchwartzMap.convolution_flip Mathlib.Analysis.Fourier.Convolution SchwartzMap.convolution_continuous_left SchwartzMap.convolution_continuous_left Mathlib.Analysis.Fourier.Convolution",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 65
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple Subgroup.Normal.eq_bot_or_eq_top Subgroup.Normal.eq_bot_or_eq_top Mathlib.GroupTheory.Subgroup.Simple",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 78
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization SimpleGraph.IsHamiltonian.of_card_eq_one SimpleGraph.IsHamiltonian.of_card_eq_one Mathlib.Combinatorics.SimpleGraph.Hamiltonian Group.IsNilpotent.exists_normal_card_eq_of_dvd_card Group.IsNilpotent.exists_normal_card_eq_of_dvd_card Mathlib.GroupTheory.Nilpotent",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 91
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization MeasureTheory.measure_inter_ne_top_of_right_ne_top MeasureTheory.measure_inter_ne_top_of_right_ne_top Mathlib.MeasureTheory.Measure.MeasureSpaceDef Group.isNilpotent_of_product_of_sylow_group Group.isNilpotent_of_product_of_sylow_group Mathlib.GroupTheory.Nilpotent",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 104
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Set.PartiallyWellOrderedOn.mono Set.PartiallyWellOrderedOn.mono Mathlib.Order.WellFoundedSet IsSimpleAddGroup.eq_bot_or_eq_top_of_normal IsSimpleAddGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 117
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple Subgroup.Normal.eq_bot_or_eq_top Subgroup.Normal.eq_bot_or_eq_top Mathlib.GroupTheory.Subgroup.Simple",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 130
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple Finset.uIcc_product_uIcc Finset.uIcc_product_uIcc Mathlib.Order.Interval.Finset.Defs",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 143
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup Set.insert_diff_subset Set.insert_diff_subset Mathlib.Order.BooleanAlgebra.Set",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 157
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization DirSupInaccOn.inter DirSupInaccOn.inter Mathlib.Order.DirSupClosed dirSupInaccOn_iff_inter_subset dirSupInaccOn_iff_inter_subset Mathlib.Order.DirSupClosed",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 170
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization NNReal.eq NNReal.eq Mathlib.Basic.NNReal.Defs SimpleGraph.Walk.coe_edges_toFinset SimpleGraph.Walk.coe_edges_toFinset Mathlib.Combinatorics.SimpleGraph.Walk.Basic",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 183
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup Matroid.IsBase.isBase_of_isBasis_superset Matroid.IsBase.isBase_of_isBasis_superset Mathlib.Combinatorics.Matroid.Basic",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 196
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization CategoryTheory.PreZeroHypercoverFamily.mem_precoverage_iff CategoryTheory.PreZeroHypercoverFamily.mem_precoverage_iff Mathlib.CategoryTheory.Sites.Hypercover.ZeroFamily Group.IsNilpotent.exists_normal_card_eq_of_dvd_card Group.IsNilpotent.exists_normal_card_eq_of_dvd_card Mathlib.GroupTheory.Nilpotent",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 209
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Group.IsNilpotent.exists_normal_card_eq_of_dvd_card Group.IsNilpotent.exists_normal_card_eq_of_dvd_card Mathlib.GroupTheory.Nilpotent Group.IsNilpotent.exists_normal_index_eq_of_dvd_card Group.IsNilpotent.exists_normal_index_eq_of_dvd_card Mathlib.GroupTheory.Nilpotent",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 222
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Real.fourier_smul_convolution_eq Real.fourier_smul_convolution_eq Mathlib.Analysis.Fourier.Convolution IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 235
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization SchwartzMap.convolution_flip SchwartzMap.convolution_flip Mathlib.Analysis.Fourier.Convolution SchwartzMap.fourier_convolution SchwartzMap.fourier_convolution Mathlib.Analysis.Fourier.Convolution",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 248
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization OrderEmbedding.image_Ioo OrderEmbedding.image_Ioo Mathlib.Order.Interval.Set.OrdConnected OrderIso.image_Ioo OrderIso.image_Ioo Mathlib.Order.Interval.Set.OrderIso",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 261
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Subsemiring.coe_iInf Subsemiring.coe_iInf Mathlib.Algebra.Ring.Subsemiring.Basic Subring.coe_iInf Subring.coe_iInf Mathlib.Algebra.Ring.Subring.Basic",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 274
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization StrictMono.image_Ioo_subset StrictMono.image_Ioo_subset Mathlib.Order.Interval.Set.Image StrictAnti.image_Ioo_subset StrictAnti.image_Ioo_subset Mathlib.Order.Interval.Set.Image",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 287
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization HolderOnWith.ediam_image_le_of_subset HolderOnWith.ediam_image_le_of_subset Mathlib.Topology.MetricSpace.Holder Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup",
+    "limit": 18,
+    "source_trace": "representation_alternatives_hybrid_after_0.raw.json",
+    "state_index": 300
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 0
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization NNReal.eq NNReal.eq Mathlib.Basic.NNReal.Defs CategoryTheory.MonadHom.app_μ CategoryTheory.MonadHom.app_μ Mathlib.CategoryTheory.Monad.Basic",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 13
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup Sylow.le_center_or_le_commutator Sylow.le_center_or_le_commutator Mathlib.GroupTheory.SpecificGroups.ZGroup",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 26
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization diam_stdSimplex_le diam_stdSimplex_le Mathlib.Analysis.Convex.StdSimplex Continuous.arccos Continuous.arccos Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 39
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization BoundedContinuousFunction.exists_extension_norm_eq_of_isClosedEmbedding' BoundedContinuousFunction.exists_extension_norm_eq_of_isClosedEmbedding' Mathlib.Topology.TietzeExtension IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 52
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup Nat.ordCompl_eq_self_iff_zero_or_not_dvd Nat.ordCompl_eq_self_iff_zero_or_not_dvd Mathlib.Data.Nat.Factorization.Basic",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 65
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup Sylow.le_center_or_le_commutator Sylow.le_center_or_le_commutator Mathlib.GroupTheory.SpecificGroups.ZGroup",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 78
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization MeasureTheory.AEEqFun.coeFn_div MeasureTheory.AEEqFun.coeFn_div Mathlib.MeasureTheory.Function.AEEqFun IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 91
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Real.log_div_self Real.log_div_self Mathlib.Analysis.SpecialFunctions.Log.Basic Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 104
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization dite_eq_or_eq dite_eq_or_eq Mathlib.Basic.Logic.Basic IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 117
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple Finset.sdiff_union_self_eq_union Finset.sdiff_union_self_eq_union Mathlib.Data.Finset.SDiff",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 130
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Sylow.normalizer_le_centralizer_or_le_commutator Sylow.normalizer_le_centralizer_or_le_commutator Mathlib.GroupTheory.SpecificGroups.ZGroup CocompactMap.comp_assoc CocompactMap.comp_assoc Mathlib.Topology.ContinuousMap.CocompactMap",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 143
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization BoundedContinuousFunction.exists_extension_norm_eq_of_isClosedEmbedding BoundedContinuousFunction.exists_extension_norm_eq_of_isClosedEmbedding Mathlib.Topology.TietzeExtension IsometryClass.antilipschitz IsometryClass.antilipschitz Mathlib.Topology.MetricSpace.Isometry",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 157
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization CategoryTheory.ComposableArrows.mk₁_hom CategoryTheory.ComposableArrows.mk₁_hom Mathlib.CategoryTheory.ComposableArrows.Basic FinVec.etaExpand_eq FinVec.etaExpand_eq Mathlib.Data.Fin.Tuple.Reflection",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 170
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization RelIso.apply_eq_iff_eq_symm_apply RelIso.apply_eq_iff_eq_symm_apply Mathlib.Order.RelIso.Basic Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 183
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization SimpleGraph.Walk.coe_edges_toFinset SimpleGraph.Walk.coe_edges_toFinset Mathlib.Combinatorics.SimpleGraph.Walk.Basic SimpleGraph.Walk.IsTrail.edges_nodup SimpleGraph.Walk.IsTrail.edges_nodup Mathlib.Combinatorics.SimpleGraph.Paths",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 196
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization SimpleGraph.Walk.coe_edges_toFinset SimpleGraph.Walk.coe_edges_toFinset Mathlib.Combinatorics.SimpleGraph.Walk.Basic IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 209
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Group.IsNilpotent.exists_normal_card_eq_of_dvd_card Group.IsNilpotent.exists_normal_card_eq_of_dvd_card Mathlib.GroupTheory.Nilpotent Group.IsNilpotent.exists_normal_index_eq_of_dvd_card Group.IsNilpotent.exists_normal_index_eq_of_dvd_card Mathlib.GroupTheory.Nilpotent",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 222
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup Sylow.le_center_or_le_commutator Sylow.le_center_or_le_commutator Mathlib.GroupTheory.SpecificGroups.ZGroup",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 235
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization CategoryTheory.isIso_of_mono_of_nonzero CategoryTheory.isIso_of_mono_of_nonzero Mathlib.CategoryTheory.Simple CategoryTheory.Simple.mono_isIso_iff_nonzero CategoryTheory.Simple.mono_isIso_iff_nonzero Mathlib.CategoryTheory.Simple",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 248
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Configuration.HasPoints.lineCount_le_pointCount Configuration.HasPoints.lineCount_le_pointCount Mathlib.Combinatorics.Configuration Configuration.HasLines.pointCount_le_lineCount Configuration.HasLines.pointCount_le_lineCount Mathlib.Combinatorics.Configuration",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 261
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Tuple.self_comp_sort Tuple.self_comp_sort Mathlib.Data.Fin.Tuple.Sort Sylow.commutator_eq_bot_or_commutator_eq_self Sylow.commutator_eq_bot_or_commutator_eq_self Mathlib.GroupTheory.SpecificGroups.ZGroup",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 274
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Configuration.ProjectivePlane.lineCount_eq_lineCount Configuration.ProjectivePlane.lineCount_eq_lineCount Mathlib.Combinatorics.Configuration Configuration.ProjectivePlane.lineCount_eq_pointCount Configuration.ProjectivePlane.lineCount_eq_pointCount Mathlib.Combinatorics.Configuration",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 287
+  },
+  {
+    "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization Configuration.ProjectivePlane.lineCount_eq_lineCount Configuration.ProjectivePlane.lineCount_eq_lineCount Mathlib.Combinatorics.Configuration IsSimpleGroup.eq_bot_or_eq_top_of_normal IsSimpleGroup.eq_bot_or_eq_top_of_normal Mathlib.GroupTheory.Subgroup.Simple",
+    "limit": 24,
+    "source_trace": "representation_alternatives_primary_after_0.raw.json",
+    "state_index": 300
+  }
+]

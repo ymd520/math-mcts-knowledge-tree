@@ -39,3 +39,9 @@ These rules apply whenever ChatGPT or another coding agent changes this reposito
 - Propose revisable directions/priors across direct, structural-transfer and open exploration; preserve a positive open-exploration budget and all-indexed retrieval scope.
 - Treat model priors as budget suggestions, never proof rewards or permanent knowledge exclusions. Keep Discovery and Verification evidence separate.
 - The protocol is guidance, not a runtime feature: do not claim the current research CLI accepts plan JSON, weighted PUCT, or automatic replanning. Use supported calls and record actual budget/IDs.
+
+## Retrieval backend reporting
+- Read [VECTOR_RETRIEVAL.md](VECTOR_RETRIEVAL.md) before claiming retrieval acceleration. NumPy is optional; record the actual strategy, NumPy version, fallback counts and cache budget from retrieval_profile.
+- Do not apply optional-backend benchmark speedups to an environment using the standard-library reference backend. Do not invent a --backend CLI switch or install dependencies inside node expansion.
+- Benchmark speed against a pinned source/data baseline with fixed budgets and full retrieval-trace comparisons. Keep failed strategies and measurements explicitly marked as rejected.
+- On Linux, use /proc/self/status VmHWM for the exec image's own peak RSS; getrusage.ru_maxrss can inherit the parent process's pre-exec high-water mark.

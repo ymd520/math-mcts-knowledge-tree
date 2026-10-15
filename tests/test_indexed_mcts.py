@@ -1,4 +1,5 @@
 """Adversarial integration checks for full-corpus dynamic knowledge retrieval."""
+import random
 import gzip
 import hashlib
 import json
@@ -227,6 +228,74 @@ class IndexedMCTSTests(unittest.TestCase):
             any(cid.startswith("EXT_") for cid in event["lexical_ids"])
             for event in report["retrieval_trace"]))
         self.assertFalse(report["proof_verified"])
+
+class VectorFTSRetrievalTests(unittest.TestCase):
+    def make_db(self, texts, **kw):
+        from math_mcts.vector_retrieval import VectorFTSRetriever
+        db = sqlite3.connect(':memory:')
+        self.addCleanup(db.close)
+        db.execute('CREATE VIRTUAL TABLE term_index USING fts5(terms)')
+        db.executemany('INSERT INTO term_index(terms) VALUES (?)', [(t,) for t in texts])
+        return db, VectorFTSRetriever(db, len(texts), **kw)
+
+    def test_randomized_exact_order_with_phrase_tokens_and_cjk(self):
+        rng = random.Random(2901)
+        words = ['finite', 'group', 'matrix', 'left', 'right', 'energy', '矩阵', '概率']
+        texts = [' '.join(rng.choices(words, k=rng.randint(1, 25))) +
+                 ' rare_' + str(i % 79) for i in range(400)]
+        _, r = self.make_db(texts)
+        if not r.enabled:
+            self.skipTest('optional NumPy backend not installed')
+        for _ in range(500):
+            tokens = sorted(rng.sample(words, rng.randint(0, len(words))) +
+                            rng.sample(['rare_' + str(i) for i in range(90)],
+                                       rng.randint(1, 3)))
+            limit = rng.choice([1, 3, 10, 24, 100])
+            self.assertEqual(r.search(tokens, limit), r.full_rank(tokens, limit))
+        self.assertGreater(r.counts['vector_queries'], 0)
+        self.assertGreater(r.counts['term_cache_hits'], 0)
+
+    def test_wide_ties_fall_back_without_truncating_tie_group(self):
+        _, r = self.make_db(['common'] * 100, pool_limit=4)
+        if not r.enabled:
+            self.skipTest('optional NumPy backend not installed')
+        self.assertEqual(r.search(['common'], 3), r.full_rank(['common'], 3))
+        self.assertEqual(r.counts['wide_tie_fallbacks'], 1)
+
+    def test_explicit_reference_and_domain_filter(self):
+        db, r = self.make_db(['common rarea', 'common rareb', 'common'], use_numpy=False)
+        db.execute('CREATE TABLE documents(domain TEXT)')
+        db.executemany('INSERT INTO documents(domain) VALUES (?)', [('A',), ('B',), ('A',)])
+        kw = dict(clause=' AND d.domain=?', values=('B',))
+        self.assertEqual(r.search(['common', 'rarea'], 3, **kw),
+                         r.full_rank(['common', 'rarea'], 3, **kw))
+        self.assertFalse(r.enabled)
+        self.assertEqual(r.profile()['strategy'], 'sqlite_reference')
+
+    def test_rowid_buffer_guard_and_memory_cache_bound(self):
+        from math_mcts.vector_retrieval import VectorFTSRetriever
+        db, r = self.make_db(['common unique_' + str(i) for i in range(400)],
+                             cache_bytes=16000)
+        if not r.enabled:
+            self.skipTest('optional NumPy backend not installed')
+        for i in range(80):
+            tokens = ['common', 'unique_' + str(i)]
+            self.assertEqual(r.search(tokens, 3), r.full_rank(tokens, 3))
+            self.assertLessEqual(r.cached_bytes, r.cache_bytes)
+        guarded = VectorFTSRetriever(db, 10**12, cache_bytes=16000)
+        self.assertFalse(guarded.enabled)
+        self.assertEqual(guarded.search(['common'], 3), guarded.full_rank(['common'], 3))
+
+    def test_empty_hits_and_allocation_failure_fallback(self):
+        _, r = self.make_db(['common rare', 'common', 'common'])
+        self.assertEqual(r.search(['missing'], 3), [])
+        if not r.enabled:
+            return
+        with patch.object(r, '_term_scores', side_effect=MemoryError):
+            self.assertEqual(r.search(['common'], 2), r.full_rank(['common'], 2))
+        self.assertFalse(r.enabled)
+        self.assertEqual(r.counts['memory_fallbacks'], 1)
+
 
 if __name__ == '__main__':
     unittest.main()

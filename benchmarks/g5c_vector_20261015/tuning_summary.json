@@ -1,0 +1,329 @@
+{
+  "indexed": {
+    "curated": 11843,
+    "unreviewed_candidates": 234576,
+    "total_indexed": 246419,
+    "status": "source_candidates_not_automatically_important"
+  },
+  "build_seconds": 140.91940065699998,
+  "baseline_seconds": 8.251781405999992,
+  "query_count": 96,
+  "options": [
+    {
+      "sparse_limit": 128,
+      "pool_limit": 1024,
+      "seconds": 9.806282518999978,
+      "exact_queries": 96,
+      "profiles": [
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 150,
+            "full_rank_queries": 24,
+            "split_queries": 24,
+            "candidate_rows_scored": 3957,
+            "posting_cache_hits": 409
+          },
+          "seconds": {
+            "posting_lookup": 0.01799053199994205,
+            "full_match_and_rank": 1.9367301399999235,
+            "candidate_match_and_rank": 0.4833927039999537
+          },
+          "sparse_limit": 128,
+          "pool_limit": 1024
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 154,
+            "full_rank_queries": 24,
+            "split_queries": 24,
+            "candidate_rows_scored": 4421,
+            "posting_cache_hits": 409
+          },
+          "seconds": {
+            "posting_lookup": 0.024192597000279648,
+            "full_match_and_rank": 2.1766588309999406,
+            "candidate_match_and_rank": 0.5601220210001543
+          },
+          "sparse_limit": 128,
+          "pool_limit": 1024
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 125,
+            "full_rank_queries": 23,
+            "split_queries": 24,
+            "candidate_rows_scored": 3429,
+            "posting_cache_hits": 433,
+            "dense_cache_hits": 1
+          },
+          "seconds": {
+            "posting_lookup": 0.016360043999981144,
+            "full_match_and_rank": 1.8213014640000438,
+            "candidate_match_and_rank": 0.47235218100010457
+          },
+          "sparse_limit": 128,
+          "pool_limit": 1024
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 123,
+            "full_rank_queries": 22,
+            "split_queries": 24,
+            "candidate_rows_scored": 3577,
+            "posting_cache_hits": 442,
+            "dense_cache_hits": 2
+          },
+          "seconds": {
+            "posting_lookup": 0.01638467600008653,
+            "full_match_and_rank": 1.7771629340000175,
+            "candidate_match_and_rank": 0.48124041999994915
+          },
+          "sparse_limit": 128,
+          "pool_limit": 1024
+        }
+      ]
+    },
+    {
+      "sparse_limit": 512,
+      "pool_limit": 8192,
+      "seconds": 9.996657605000081,
+      "exact_queries": 96,
+      "profiles": [
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 150,
+            "full_rank_queries": 24,
+            "split_queries": 24,
+            "candidate_rows_scored": 43250,
+            "posting_cache_hits": 409
+          },
+          "seconds": {
+            "posting_lookup": 0.030261101000206736,
+            "full_match_and_rank": 1.7654445010000188,
+            "candidate_match_and_rank": 0.6929344779999269
+          },
+          "sparse_limit": 512,
+          "pool_limit": 8192
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 154,
+            "full_rank_queries": 24,
+            "split_queries": 24,
+            "candidate_rows_scored": 43632,
+            "posting_cache_hits": 409
+          },
+          "seconds": {
+            "posting_lookup": 0.03520397300005129,
+            "full_match_and_rank": 1.91148955700001,
+            "candidate_match_and_rank": 0.7755274679999786
+          },
+          "sparse_limit": 512,
+          "pool_limit": 8192
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 125,
+            "full_rank_queries": 23,
+            "split_queries": 24,
+            "candidate_rows_scored": 64751,
+            "posting_cache_hits": 433,
+            "dense_cache_hits": 1
+          },
+          "seconds": {
+            "posting_lookup": 0.026193503999650147,
+            "full_match_and_rank": 1.6019068970000205,
+            "candidate_match_and_rank": 0.742145442999913
+          },
+          "sparse_limit": 512,
+          "pool_limit": 8192
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 123,
+            "full_rank_queries": 22,
+            "split_queries": 24,
+            "candidate_rows_scored": 65385,
+            "posting_cache_hits": 442,
+            "dense_cache_hits": 2
+          },
+          "seconds": {
+            "posting_lookup": 0.0263431729999013,
+            "full_match_and_rank": 1.5683971330000475,
+            "candidate_match_and_rank": 0.7521526960000813
+          },
+          "sparse_limit": 512,
+          "pool_limit": 8192
+        }
+      ]
+    },
+    {
+      "sparse_limit": 2048,
+      "pool_limit": 32768,
+      "seconds": 10.439455373999863,
+      "exact_queries": 96,
+      "profiles": [
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 150,
+            "full_rank_queries": 23,
+            "split_queries": 24,
+            "candidate_rows_scored": 107101,
+            "posting_cache_hits": 409,
+            "dense_cache_hits": 1
+          },
+          "seconds": {
+            "posting_lookup": 0.056067677999834586,
+            "full_match_and_rank": 1.570635540000012,
+            "candidate_match_and_rank": 0.8775497929999858
+          },
+          "sparse_limit": 2048,
+          "pool_limit": 32768
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 154,
+            "full_rank_queries": 24,
+            "split_queries": 24,
+            "candidate_rows_scored": 101921,
+            "posting_cache_hits": 409
+          },
+          "seconds": {
+            "posting_lookup": 0.06516967800001794,
+            "full_match_and_rank": 1.9219389480000757,
+            "candidate_match_and_rank": 0.9603652400000726
+          },
+          "sparse_limit": 2048,
+          "pool_limit": 32768
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 125,
+            "full_rank_queries": 23,
+            "split_queries": 24,
+            "candidate_rows_scored": 106336,
+            "posting_cache_hits": 433,
+            "dense_cache_hits": 1
+          },
+          "seconds": {
+            "posting_lookup": 0.048788983000150665,
+            "full_match_and_rank": 1.5205588979998765,
+            "candidate_match_and_rank": 0.8703657200000237
+          },
+          "sparse_limit": 2048,
+          "pool_limit": 32768
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 123,
+            "full_rank_queries": 22,
+            "split_queries": 24,
+            "candidate_rows_scored": 104553,
+            "posting_cache_hits": 442,
+            "dense_cache_hits": 2
+          },
+          "seconds": {
+            "posting_lookup": 0.04879510799980835,
+            "full_match_and_rank": 1.5039967959999956,
+            "candidate_match_and_rank": 0.8740643060000934
+          },
+          "sparse_limit": 2048,
+          "pool_limit": 32768
+        }
+      ]
+    },
+    {
+      "sparse_limit": 8192,
+      "pool_limit": 65536,
+      "seconds": 14.98348703699989,
+      "exact_queries": 96,
+      "profiles": [
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 150,
+            "full_rank_queries": 22,
+            "split_queries": 24,
+            "candidate_rows_scored": 727315,
+            "posting_cache_hits": 409,
+            "dense_cache_hits": 1
+          },
+          "seconds": {
+            "posting_lookup": 0.1327303789999803,
+            "full_match_and_rank": 1.0802118069999551,
+            "candidate_match_and_rank": 2.533116523999979
+          },
+          "sparse_limit": 8192,
+          "pool_limit": 65536
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 154,
+            "full_rank_queries": 23,
+            "split_queries": 24,
+            "candidate_rows_scored": 761779,
+            "posting_cache_hits": 409,
+            "dense_cache_hits": 1
+          },
+          "seconds": {
+            "posting_lookup": 0.15418743200018525,
+            "full_match_and_rank": 1.3178798050000466,
+            "candidate_match_and_rank": 2.7444923889999586
+          },
+          "sparse_limit": 8192,
+          "pool_limit": 65536
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 125,
+            "full_rank_queries": 21,
+            "split_queries": 24,
+            "candidate_rows_scored": 547938,
+            "posting_cache_hits": 433,
+            "dense_cache_hits": 3
+          },
+          "seconds": {
+            "posting_lookup": 0.11859438800016164,
+            "full_match_and_rank": 1.0788165160000176,
+            "candidate_match_and_rank": 2.0340548540000327
+          },
+          "sparse_limit": 8192,
+          "pool_limit": 65536
+        },
+        {
+          "strategy": "exact_dense_plus_complete_sparse",
+          "counts": {
+            "posting_queries": 123,
+            "full_rank_queries": 20,
+            "split_queries": 24,
+            "candidate_rows_scored": 571337,
+            "posting_cache_hits": 442,
+            "dense_cache_hits": 4
+          },
+          "seconds": {
+            "posting_lookup": 0.11677213500027506,
+            "full_match_and_rank": 1.04906446800004,
+            "candidate_match_and_rank": 2.1017291249998777
+          },
+          "sparse_limit": 8192,
+          "pool_limit": 65536
+        }
+      ]
+    }
+  ],
+  "limits": "Single-pass parameter screen; full paired MCTS validation still required."
+}

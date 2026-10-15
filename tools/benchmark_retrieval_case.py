@@ -81,15 +81,32 @@ def worker(args):
     args.raw.write_text(raw + '\n', encoding='utf-8')
     disk_write = perf_counter() - write_start
     path_ids = sorted({cid for p in report['paths'] for cid in p['knowledge_ids']})
+    peak_rss_kib = None
+    peak_rss_source = None
+    if sys.platform == 'linux':
+        # getrusage.ru_maxrss may retain the fork parent's pre-exec high-water
+        # mark. /proc/self/status reports this exec image's own high-water RSS.
+        try:
+            for line in Path('/proc/self/status').read_text().splitlines():
+                if line.startswith('VmHWM:'):
+                    peak_rss_kib = int(line.split()[1])
+                    peak_rss_source = 'proc_self_status_VmHWM'
+                    break
+        except (OSError, ValueError):
+            pass
     out = {
+        'peak_rss_kib_linux': peak_rss_kib,
+        'peak_rss_source': peak_rss_source,
         'task': task, 'research_wall_seconds': research_wall,
         'exclusive_phases_seconds': exclusive,
         'nested_diagnostics_seconds_do_not_sum': dict(phases),
         'method_calls': dict(calls), 'serialization_seconds': serialization,
         'raw_write_seconds': disk_write, 'raw_report_bytes': len(raw.encode()),
         'runtime_timings_seconds': report.get('timings_seconds'),
+        'retrieval_profile': report.get('retrieval_profile'),
         'coverage': report['coverage'], 'usage': report['usage'], 'mcts': report['mcts'],
         'path_ids': path_ids,
+        'trace_sha256': hashlib.sha256(json.dumps(report['retrieval_trace'], sort_keys=True).encode()).hexdigest(),
         'path_sha256': hashlib.sha256(json.dumps(report['paths'], sort_keys=True).encode()).hexdigest(),
         'raw_report': str(args.raw), 'proof_verified': report['proof_verified'],
     }

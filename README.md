@@ -453,3 +453,22 @@ Existing pinned mathlib4 corpus remains mandatory; TheoremSearch, zbMATH,
 S2ORC, RealMath, and MathPile are explicitly opted in as unverified local
 candidates. Gated MathPile content is never downloaded without the user's
 own authenticated access and source-license acknowledgement.
+
+## Optional full-corpus retrieval acceleration
+
+The standard-library SQL backend remains supported. Installing the optional,
+pinned numerical backend enables bounded phrase-score caching with original-query
+SQLite rescoring; the full indexed knowledge scope, source status and MCTS
+heuristic are unchanged:
+
+```sh
+python -m pip install -r requirements-acceleration.txt
+python -m math_mcts research "finite group convolution" --iterations 400 --depth 20 -o report.json
+```
+
+Check `retrieval_profile.strategy` and `numpy_version` in the report rather than
+assuming acceleration. No package is installed automatically; unavailable or
+resource-limited backends fall back to reference SQL.
+See [backend design and limits](VECTOR_RETRIEVAL.md) and the
+[paired G5C timing report](benchmarks/g5c_vector_20261015/REPORT.md).
+Knowledge retrieval is not a proof of G5C or of theorem applicability.

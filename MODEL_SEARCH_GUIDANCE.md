@@ -106,3 +106,12 @@ prior 是方向的全局预算份额，同一通道内求和等于 channel_weigh
 优先加入计划校验器、批量读取、版本绑定查询缓存和分阶段计时；
 随后评估 PUCT 先验、节点检索扩宽/换查询动作、停滞重规划。
 保留未被模型推荐方向的探索机会，以及主库全量覆盖与独立 Verification。
+
+## 已实现的可选检索加速与模型报告要求
+
+运行时现有可选词项评分缓存，见 [VECTOR_RETRIEVAL.md](VECTOR_RETRIEVAL.md)。
+它不执行方向权重计划，也不是语义推理。基础SQL后端仍仅需标准库；
+可在项目环境中一次性安装 requirements-acceleration.txt 启用可选NumPy路径，
+不要在节点循环中安装依赖或联网。现有research入口自动检测环境，没有 --backend 参数。
+每次报告读取 retrieval_profile 的实际strategy、numpy_version、缓存及回退计数；
+未启用时不得套用加速倍数。所有方向仍搜索全索引，并分别记录实际知识ID和树深。

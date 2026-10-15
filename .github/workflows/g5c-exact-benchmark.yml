@@ -1,0 +1,106 @@
+name: G5C exact retrieval paired benchmark
+on:
+  push:
+    branches:
+      - task/exact-sparse-retrieval
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    env:
+      BENCH_REPETITIONS: ${{ contains(github.event.head_commit.message, '[memory-probe]') && '1' || '3' }}
+    if: ${{ !contains(github.event.head_commit.message, '[fts-pilot]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned optional acceleration backend
+        run: python -m pip install -r requirements-acceleration.txt
+      - name: Prepare previous optimized source baseline
+        run: git worktree add --detach /tmp/mcts-before fe04234bf13df72a7219c572bc87f43b064ff615
+      - name: Exact retrieval adversarial tests
+        run: python tests/test_indexed_mcts.py
+      - name: Paired G5C full-corpus phase timings
+        run: |
+          set -o pipefail
+          python -u tools/benchmark_retrieval_case.py \
+            --baseline-root /tmp/mcts-before --current-root "$GITHUB_WORKSPACE" \
+            --config examples/g5c_ncrh_research_case.json \
+            --output .cache/math_mcts/g5c_exact_benchmark \
+            --repetitions "$BENCH_REPETITIONS" --prefetch 2>&1 | tee g5c_exact_benchmark.log
+      - name: Verify every paired retrieval trace and summarize profiles
+        run: |
+          python - <<'PY'
+          import json, os
+          s=json.load(open('.cache/math_mcts/g5c_exact_benchmark/summary.json'))
+          assert s['status']=='completed' and len(s['runs'])==8*int(os.environ['BENCH_REPETITIONS']) and s['inputs_unchanged']
+          for r in s['runs']:
+              t=r['task']
+              pair=[x for x in s['runs'] if all(x['task'][k]==t[k] for k in ('label','mode','repetition')) and x['task']['version']!=t['version']]
+              assert len(pair)==1
+              assert r['trace_sha256']==pair[0]['trace_sha256'],t
+              assert r['path_sha256']==pair[0]['path_sha256'],t
+              if t['version']=='after' and t['repetition']==0:
+                  print('EXACT_PROFILE='+json.dumps({'task':t,'profile':r['retrieval_profile']}))
+          print('All paired runs preserve complete retrieval traces and final paths')
+          PY
+      - name: Retain raw evidence and per-run timings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5c-exact-retrieval-phase-benchmark
+          path: |
+            .cache/math_mcts/g5c_exact_benchmark/*.json
+            g5c_exact_benchmark.log
+            examples/g5c_ncrh_research_case.json
+          retention-days: 30
+          if-no-files-found: warn
+
+  parameter-screen:
+    if: ${{ contains(github.event.head_commit.message, '[fts-pilot]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Screen exact retrieval parameters on full index
+        run: |
+          set -o pipefail
+          python -u tools/tune_fts_retrieval.py \
+            --queries benchmarks/g5c_20261015/exact_tuning_queries.json \
+            --output .cache/math_mcts/g5c_fts_tuning 2>&1 | tee g5c_fts_tuning.log
+      - name: Retain parameter-screen evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5c-exact-parameter-screen
+          path: |
+            .cache/math_mcts/g5c_fts_tuning/summary.json
+            g5c_fts_tuning.log
+          retention-days: 30
+
+  optional-backend-tests:
+    if: ${{ !contains(github.event.head_commit.message, '[fts-pilot]') }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install pinned optional backend
+        run: python -m pip install -r requirements-acceleration.txt
+      - name: Verify vector and reference retrieval paths
+        run: |
+          python tests/test_indexed_mcts.py
+          python tests/test_literature_bridge.py
+          python tests/test_source_adapters.py
