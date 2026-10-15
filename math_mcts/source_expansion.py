@@ -19,14 +19,15 @@ from urllib.parse import urlparse
 
 from .fast_index import terms_for
 
-KINDS = frozenset({"theorem", "lemma", "definition", "method", "conjecture", "counterexample"})
+KINDS = frozenset({"theorem", "lemma", "definition", "method", "conjecture",
+                   "counterexample", "paper", "excerpt", "review"})
 FIELDS = ("source", "source_ref", "source_url", "license", "locator",
           "name", "kind", "statement")
 SCHEMA = "1"
 OPTIONAL = ("domain", "branch", "assumptions", "conclusion", "formula",
             "proof_hint", "counterexample_hint", "source_provider", "provider_url",
             "paper_title", "authors", "original_source", "original_kind",
-            "external_id", "source_precision", "reuse_policy")
+            "external_id", "source_precision", "reuse_policy", "doi")
 _MAX_LINE = 100_000
 _MAX_STATEMENT = 12_000
 _SPACE = re.compile(r"\s+")
