@@ -177,5 +177,33 @@ class IndexedMCTSTests(unittest.TestCase):
                       iterations=7, depth=2, top_k=2, seed=11, domain=None)
 
 
+    def test_explicit_external_literature_is_mcts_searchable_and_not_trusted(self):
+        from math_mcts.source_expansion import import_jsonl
+        ext = self.root / "external.sqlite"
+        source = self.root / "external.jsonl"
+        row = {"source": "arXiv", "source_ref": "local-fixed-statement-v1",
+               "source_url": "https://arxiv.org/abs/2601.00001",
+               "license": "unverified", "locator": "paper/theorem/1",
+               "name": "origin_word external lemma", "kind": "lemma",
+               "statement": "The origin_word external lemma has strict hypotheses.",
+               "authors": "Researcher One", "paper_title": "External paper",
+               "source_provider": "TheoremSearch",
+               "provider_url": "https://github.com/uw-math-ai/TheoremSearch"}
+        source.write_text(json.dumps(row) + "\n", encoding="utf-8")
+        import_jsonl(ext, source)
+        report = research_with_knowledge(
+            "origin_word", db_path=self.path, external_db_path=ext, iterations=30,
+            depth=3, retrieval_width=12, exploration_width=2, seed=5,
+            imported_root=self.root)
+        self.assertEqual(report["coverage"]["indexed_imported"], len(self.rows))
+        self.assertEqual(report["coverage"]["external_candidates_indexed"], 1)
+        self.assertTrue(report["coverage"]["complete_imported_index"])
+        self.assertGreater(report["usage"]["external_retrieval_calls"], 0)
+        self.assertGreater(report["usage"]["distinct_external_lexical_hits"], 0)
+        self.assertTrue(any(
+            any(cid.startswith("EXT_") for cid in event["lexical_ids"])
+            for event in report["retrieval_trace"]))
+        self.assertFalse(report["proof_verified"])
+
 if __name__ == '__main__':
     unittest.main()
