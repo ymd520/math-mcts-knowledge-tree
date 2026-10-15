@@ -126,6 +126,21 @@ class SemiNaiveTests(unittest.TestCase):
         self.assertIsNone(derive(book, [nodes[0]], nodes[-1], iterations=2,
                                  max_rounds=3).certificate)
 
+    def test_adaptive_large_graph_uses_exact_closure(self):
+        from math_mcts.adaptive_search import solve_adaptive
+        count = 135
+        nodes = [p(f"stage{i}") for i in range(count + 1)]
+        book = RuleBook({x.predicate: () for x in nodes}, {}, [
+            Rule(f"r{i}", (nodes[i],), nodes[i + 1],
+                 source="synthetic", status="reviewed") for i in range(count)])
+        result = solve_adaptive(book, [nodes[0]], nodes[-1],
+                                max_steps=count, iterations=10,
+                                round_limit=count+5, edge_limit=count+5)
+        self.assertEqual(result["method"], "closure")
+        self.assertTrue(result["solved"])
+        self.assertTrue(result["replayed"])
+        self.assertEqual(result["actual_simulations"], 0)
+
     def test_reject_invalid_strategy(self):
         atom = p("a")
         book = RuleBook({"a": ()}, {}, [])
