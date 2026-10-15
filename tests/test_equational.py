@@ -19,7 +19,7 @@ from math_mcts.equational import (
 )
 from math_mcts.logic_router import (
     load_equational_problem, solve_problem, certificate_data,
-    load_rewrite_certificate, parse_term, term_data,
+    load_rewrite_certificate, parse_term, term_data, verify_problem,
 )
 
 
@@ -236,6 +236,10 @@ class MultiLogicRouterTests(unittest.TestCase):
         cert = load_rewrite_certificate(payload)
         self.assertTrue(verify_rewrite_certificate(book, cert, goal, assumptions))
         self.assertEqual(term_data(goal.left),data["goal"]["left"])
+        self.assertTrue(verify_problem(data, json.loads(json.dumps(report))))
+        modified = copy.deepcopy(data)
+        modified["rules"][0]["source"] += " altered"
+        self.assertFalse(verify_problem(modified, report))
 
     def test_no_auto_logic_inference_or_candidate_promotion(self):
         data = self.fixture_data()
@@ -268,6 +272,11 @@ class MultiLogicRouterTests(unittest.TestCase):
         self.assertTrue(report["certificate_replayed"])
         self.assertEqual(report["trust_scope"],
             "derivability_relative_to_caller_reviewed_ground_horn_rules")
+        as_json = json.loads(json.dumps(report))
+        self.assertTrue(verify_problem(data, as_json))
+        modified = copy.deepcopy(data)
+        modified["rules"][0]["source"] = "tampered"
+        self.assertFalse(verify_problem(modified, as_json))
 
 
 if __name__=="__main__":
