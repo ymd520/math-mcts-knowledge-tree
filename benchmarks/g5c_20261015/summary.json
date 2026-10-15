@@ -1,0 +1,3275 @@
+{
+  "status": "completed",
+  "case_id": "G5C-NCRH-20261015",
+  "mathematical_problem": "G finite group of order m^2; A subset G with cardinality m. Prove z2=m^2-|AA| >= c*m with universal c>0. Existing conditional estimate z2+Delta/(4m)>=m(m-1)/(m+1). Seek general structural control for high quotient imbalance Delta, in arbitrary finite groups; do not assume Abelian group, normal subset or small representation degree.",
+  "environment": {
+    "python": "3.12.15",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "sqlite": "3.45.1"
+  },
+  "commits": {
+    "before": "9c1d97ba357ad768c04db497351f2a4f560a6906",
+    "after": "ee400f03376a66db731d86290f0203799cbf4085"
+  },
+  "inputs": {
+    "config_sha256": "f91feb1ecf6f21faa7dd64edc286e682435ba86ab055e606b8c2c5f67408e554",
+    "primary_db_sha256": "94b6212e89bf138637f576d2c0dd2c1c3b62d1a85648226fb769aae499539fb9",
+    "external_db_sha256": "c6c4de8a57777b6e77047191264833ae20cbdf47e9a9c9051519014258eca4ff"
+  },
+  "coverage": {
+    "schema": "1",
+    "curated_count": "11843",
+    "unreviewed_candidate_count": "234576",
+    "available_imported_count": "234576",
+    "indexed_all_imports": "1",
+    "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+    "candidate_limit": "all",
+    "curated_input_sha256": "bc361fd51725c3ab1b81847bb1cc869815d502e0b018d26f57a98db781b071ed",
+    "target_important_l1_l4": "100000",
+    "actual_imported": 234576,
+    "actual_curated": 11843,
+    "actual_total": 246419
+  },
+  "build_result": {
+    "curated": 11843,
+    "unreviewed_candidates": 234576,
+    "total_indexed": 246419,
+    "status": "source_candidates_not_automatically_important"
+  },
+  "setup_seconds": {
+    "full_index_build": 129.20148708099998,
+    "initial_full_validation": 0.3986138790000098,
+    "parallel_prefetch_and_serial_import": 8.547632815000014
+  },
+  "prefetch": {
+    "zbmath": {
+      "status": "fetched",
+      "fetch_seconds": 0.2446832329999893,
+      "import": {
+        "source": "zbmath",
+        "network_results": 3,
+        "inserted": 3,
+        "status": "external_unreviewed_candidates_only"
+      },
+      "persist_seconds": 0.003907370000007404
+    },
+    "s2orc": {
+      "status": "failed",
+      "error": "HTTP Error 429: ",
+      "fetch_seconds": 0.6855912579999881
+    },
+    "realmath": {
+      "status": "fetched",
+      "fetch_seconds": 1.192735583000001,
+      "import": {
+        "source": "realmath",
+        "network_results": 6,
+        "inserted": 6,
+        "status": "external_unreviewed_candidates_only"
+      },
+      "persist_seconds": 0.005522319999982983
+    },
+    "theoremsearch": {
+      "status": "fetched",
+      "fetch_seconds": 8.531411673000008,
+      "import": {
+        "source": "theoremsearch",
+        "network_results": 6,
+        "inserted": 6,
+        "status": "external_unreviewed_candidates_only"
+      },
+      "persist_seconds": 0.00612454899999193
+    }
+  },
+  "external_counts": {
+    "arXiv": 6,
+    "realmath": 6,
+    "zbmath": 3
+  },
+  "runs": [
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "primary",
+        "version": "before",
+        "repetition": 0,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 51.33958662600003,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4045600960000115,
+        "primary_open": 0.018774721999989197,
+        "external_open": 0.0,
+        "tree_search": 50.86647242400002,
+        "report_and_close": 0.049779384000004256
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4045600960000115,
+        "primary_open": 0.018774721999989197,
+        "primary_decode_inclusive": 1.3640569960013806,
+        "primary_search_inclusive": 50.002985020000125,
+        "random_sampling_inclusive": 0.6525679660005039,
+        "primary_get_inclusive": 0.0763348599945175,
+        "tree_search": 50.86647242400002,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 13179,
+        "primary_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 17127,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.01424065799994878,
+      "raw_write_seconds": 0.0058285209999553445,
+      "raw_report_bytes": 2305197,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "distinct_cards_loaded": 6004,
+        "distinct_lexical_hits": 2916,
+        "distinct_exploration_hits": 3190,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 294,
+        "selected_by_source_tier": {
+          "unreviewed_import": 243,
+          "curated": 51
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM1d7c0268f11e18a4b5ec3f58f31e0ba5d8df8cfdc1ebec3afeeabdc879090137",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM594c9a65ff53f687f45c3776f6254bdd72a74188beef5370839acafd2232e487",
+        "IM5e990f81a656da8ef9a32b0c45a714c3a393bf62baf17c9cdfb657862886654a",
+        "IM714dc6de7d068114a615ff8a88c384c9c2f45f7069a73464c8a2397fd05982c5",
+        "IM7ee8ad2b75c56147a878ad556bca382f52233e7eb0e7c56827fc1d6464f33f19",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa605c628e7fbd6e460fbb2aee1e06ba102caf00ec9aa653bb2249447ae4a8471",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMc8940ffa9131875eb2273ba680b6142392b0f77d4a86e87b6c0ea1ee6d85ec7d",
+        "IMcdcaccac817116acd97f0e36c82dffebf0959cba02d03ec576fe8131dc7bbe1f",
+        "IMd6fc232aa3d0adf7658786b7e254d6b3e127b51e84e75c72d5989beae286d879",
+        "IMdb4283ea62d8f5d2f1afbdace009bcbb5a12e6356337dd500f45398e2101fc8c",
+        "IMdf979285d4400637f2ae3722820bc4864e542fbc0ee703f5b272f427228df098",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe3606ae915e59be3a3c18c48d6f738129e3092b5164a9f2428497b6b3dd0fd64",
+        "IMe42713bfd302911f4c5e3cb0e1bed7784445fde7e4c08ed0e85435c93e857185"
+      ],
+      "path_sha256": "1ae11b0079b333f88c11512c84ae73c7de56abd45c226179f4a1c2067c7253bd",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_primary_before_0.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 51.56249435400002
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "primary",
+        "version": "after",
+        "repetition": 0,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 43.66204675099999,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4025970099999654,
+        "primary_open": 0.018466357999955108,
+        "external_open": 0.0,
+        "tree_search": 43.18771802700002,
+        "report_and_close": 0.053265356000054
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4025970099999654,
+        "primary_open": 0.018466357999955108,
+        "primary_decode_inclusive": 1.3823224020005114,
+        "primary_search_inclusive": 42.31433114800012,
+        "random_sampling_inclusive": 0.6563098069999,
+        "primary_get_inclusive": 0.12873858399882465,
+        "tree_search": 43.18771802700002,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 11816,
+        "primary_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 18687,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.013518596000039906,
+      "raw_write_seconds": 0.006739992000007078,
+      "raw_report_bytes": 2305410,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.4026051349999875,
+        "corpus_open": 0.01847287100002859,
+        "tree_search": 43.18779383799995,
+        "report_assembly": 0.05025226400005067
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "primary_query_cache_hits": 65,
+        "distinct_cards_loaded": 6004,
+        "distinct_lexical_hits": 2916,
+        "distinct_exploration_hits": 3190,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 294,
+        "selected_by_source_tier": {
+          "unreviewed_import": 243,
+          "curated": 51
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM1d7c0268f11e18a4b5ec3f58f31e0ba5d8df8cfdc1ebec3afeeabdc879090137",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM594c9a65ff53f687f45c3776f6254bdd72a74188beef5370839acafd2232e487",
+        "IM5e990f81a656da8ef9a32b0c45a714c3a393bf62baf17c9cdfb657862886654a",
+        "IM714dc6de7d068114a615ff8a88c384c9c2f45f7069a73464c8a2397fd05982c5",
+        "IM7ee8ad2b75c56147a878ad556bca382f52233e7eb0e7c56827fc1d6464f33f19",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa605c628e7fbd6e460fbb2aee1e06ba102caf00ec9aa653bb2249447ae4a8471",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMc8940ffa9131875eb2273ba680b6142392b0f77d4a86e87b6c0ea1ee6d85ec7d",
+        "IMcdcaccac817116acd97f0e36c82dffebf0959cba02d03ec576fe8131dc7bbe1f",
+        "IMd6fc232aa3d0adf7658786b7e254d6b3e127b51e84e75c72d5989beae286d879",
+        "IMdb4283ea62d8f5d2f1afbdace009bcbb5a12e6356337dd500f45398e2101fc8c",
+        "IMdf979285d4400637f2ae3722820bc4864e542fbc0ee703f5b272f427228df098",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe3606ae915e59be3a3c18c48d6f738129e3092b5164a9f2428497b6b3dd0fd64",
+        "IMe42713bfd302911f4c5e3cb0e1bed7784445fde7e4c08ed0e85435c93e857185"
+      ],
+      "path_sha256": "1ae11b0079b333f88c11512c84ae73c7de56abd45c226179f4a1c2067c7253bd",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_primary_after_0.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 43.85497217799997
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "hybrid",
+        "version": "before",
+        "repetition": 0,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 49.67349549900001,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.40178286499997284,
+        "primary_open": 0.019231705000038346,
+        "external_open": 0.000501840000026732,
+        "tree_search": 49.20375089700002,
+        "report_and_close": 0.04822819199995365
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.40178286499997284,
+        "primary_open": 0.019231705000038346,
+        "external_open": 0.000501840000026732,
+        "primary_decode_inclusive": 1.1673266410009546,
+        "primary_search_inclusive": 48.16834659699964,
+        "external_or_primary_get_inclusive": 0.08042561800164094,
+        "hybrid_search_inclusive": 48.33265983199988,
+        "random_sampling_inclusive": 0.6559433299996726,
+        "primary_get_inclusive": 0.0608513029999358,
+        "tree_search": 49.20375089700002
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "primary_decode_inclusive": 10678,
+        "primary_search_inclusive": 401,
+        "external_or_primary_get_inclusive": 19295,
+        "hybrid_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 14196,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.012574873000005482,
+      "raw_write_seconds": 0.004994992000035836,
+      "raw_report_bytes": 2210980,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "distinct_cards_loaded": 5092,
+        "distinct_lexical_hits": 2008,
+        "distinct_exploration_hits": 3184,
+        "external_retrieval_calls": 401,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 245,
+        "selected_by_source_tier": {
+          "unreviewed_import": 223,
+          "unreviewed_external_source": 9,
+          "curated": 13
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_f02c92fc93b91e3c3151f7b774d363db",
+        "IM0b12d7120483d6eb1fd976909f659884326ab9dfbd09e3a75a7be4dff0ccd17e",
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM105d9253ecc60ddc5425c583617a41dade14a2849ec93d75eebea5ac48773f74",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM330f7d61ae5abae48a031c8699813f107d6752058b85f3702e0fc9b41183fed8",
+        "IM3546f91c01d0b19c31c96a3217a010b27ca80e508a18688c6829324076443331",
+        "IM3d3f9bc217c195c392cb0d9c318ad2e32c9ee74aa235bc31547da57ef0031ca9",
+        "IM3e9c6aef28d1aa5103c02fd6956c583321d4b390277b9b8c75e0cb5cf96c9b0e",
+        "IM49ebc988c624369a3fd9ac62c998a43d2fbbd3a22bf2f1cac2f9aadbf8895ec7",
+        "IM6dfcf84ff18250ebddcf593db9525c021dc2da5fa3e22d1a351c9e6f966c89ce",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa4fbf0223edf0459a4316298fd2039ac77ffcaccb4364d8070744ddc0513da4e",
+        "IMa8b2c0d844b703720eaae064e0d887a6b769972615706348a11a176e80a492b5",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb014b268c90754c4af338d346491cbdb3c293596de21b1af1ca49123200f026b",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc479649f9db133db4b3c321a2d12a01b2180115732f82b7c8545dc83ca9f53d3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMcd0481f6f20c4288dbcd47e5bf24644d32f0e50e4db0260eb3e6fd2cbfaca37c",
+        "IMd8df0d1719ae9f2e47cedf7419578a72b1d31126f88d25e3262210349724e5fd",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe58f142af23ffa6eeba058e0ba85f7e7a1a7819127e7741fb0351d76fbbeecd6",
+        "IMf8f676de5f0be191aafab91b7a0928b86fad453e01cd6b12b009b5cbac216a37"
+      ],
+      "path_sha256": "d50eebc4b4f0bab854aa8bbc71187a41bb188bf3f34c94e211439b72f2a3b918",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_hybrid_before_0.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 49.85940639400002
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "hybrid",
+        "version": "after",
+        "repetition": 0,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 37.15060043599999,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.40018414999997276,
+        "primary_open": 0.0197199800000476,
+        "external_open": 0.0004698799999687253,
+        "tree_search": 36.683306523,
+        "report_and_close": 0.046919903000002705
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.40018414999997276,
+        "primary_open": 0.0197199800000476,
+        "external_open": 0.0004698799999687253,
+        "external_or_primary_get_inclusive": 0.07856145800042214,
+        "primary_decode_inclusive": 1.1568519410030262,
+        "primary_search_inclusive": 35.66269353099989,
+        "hybrid_search_inclusive": 35.82592668999928,
+        "random_sampling_inclusive": 0.6486664520007821,
+        "primary_get_inclusive": 0.13376619600467166,
+        "tree_search": 36.683306523
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "external_or_primary_get_inclusive": 19295,
+        "primary_decode_inclusive": 9173,
+        "primary_search_inclusive": 401,
+        "hybrid_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 16014,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.014863507999962167,
+      "raw_write_seconds": 0.005302777999986574,
+      "raw_report_bytes": 2211194,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.4001926159999698,
+        "corpus_open": 0.02020696200003158,
+        "tree_search": 36.68341845200001,
+        "report_assembly": 0.04218173199996045
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "primary_query_cache_hits": 101,
+        "distinct_cards_loaded": 5092,
+        "distinct_lexical_hits": 2008,
+        "distinct_exploration_hits": 3184,
+        "external_retrieval_calls": 401,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 245,
+        "selected_by_source_tier": {
+          "unreviewed_import": 223,
+          "curated": 13,
+          "unreviewed_external_source": 9
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_f02c92fc93b91e3c3151f7b774d363db",
+        "IM0b12d7120483d6eb1fd976909f659884326ab9dfbd09e3a75a7be4dff0ccd17e",
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM105d9253ecc60ddc5425c583617a41dade14a2849ec93d75eebea5ac48773f74",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM330f7d61ae5abae48a031c8699813f107d6752058b85f3702e0fc9b41183fed8",
+        "IM3546f91c01d0b19c31c96a3217a010b27ca80e508a18688c6829324076443331",
+        "IM3d3f9bc217c195c392cb0d9c318ad2e32c9ee74aa235bc31547da57ef0031ca9",
+        "IM3e9c6aef28d1aa5103c02fd6956c583321d4b390277b9b8c75e0cb5cf96c9b0e",
+        "IM49ebc988c624369a3fd9ac62c998a43d2fbbd3a22bf2f1cac2f9aadbf8895ec7",
+        "IM6dfcf84ff18250ebddcf593db9525c021dc2da5fa3e22d1a351c9e6f966c89ce",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa4fbf0223edf0459a4316298fd2039ac77ffcaccb4364d8070744ddc0513da4e",
+        "IMa8b2c0d844b703720eaae064e0d887a6b769972615706348a11a176e80a492b5",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb014b268c90754c4af338d346491cbdb3c293596de21b1af1ca49123200f026b",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc479649f9db133db4b3c321a2d12a01b2180115732f82b7c8545dc83ca9f53d3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMcd0481f6f20c4288dbcd47e5bf24644d32f0e50e4db0260eb3e6fd2cbfaca37c",
+        "IMd8df0d1719ae9f2e47cedf7419578a72b1d31126f88d25e3262210349724e5fd",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe58f142af23ffa6eeba058e0ba85f7e7a1a7819127e7741fb0351d76fbbeecd6",
+        "IMf8f676de5f0be191aafab91b7a0928b86fad453e01cd6b12b009b5cbac216a37"
+      ],
+      "path_sha256": "d50eebc4b4f0bab854aa8bbc71187a41bb188bf3f34c94e211439b72f2a3b918",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_hybrid_after_0.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 37.33515859700003
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "primary",
+        "version": "before",
+        "repetition": 0,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 31.760649230000013,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.39934198299999935,
+        "primary_open": 0.01833041800000501,
+        "external_open": 0.0,
+        "tree_search": 31.314095582999983,
+        "report_and_close": 0.02888124600002584
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.39934198299999935,
+        "primary_open": 0.01833041800000501,
+        "primary_decode_inclusive": 0.7729195890031519,
+        "primary_search_inclusive": 30.69105134200072,
+        "random_sampling_inclusive": 0.4797594439997397,
+        "primary_get_inclusive": 0.02973481199859407,
+        "tree_search": 31.314095582999983,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 9757,
+        "primary_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 12525,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.011294848000034108,
+      "raw_write_seconds": 0.004201888000011422,
+      "raw_report_bytes": 1730337,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "distinct_cards_loaded": 3767,
+        "distinct_lexical_hits": 1448,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 164,
+        "selected_by_source_tier": {
+          "unreviewed_import": 164
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM3aaf5ae0287604cef317b26998289b9b87dfbe0ae7e6a05f30b3cccd5d429095",
+        "IM3c4ae51c3ef75607860001245f4356e78334ff9e1532be347f51e04d58d94592",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM8d20521e9bb9eb53167852bb30337621397f1dcc310806ce46a5a27612d991c9",
+        "IMacffa27752763276ccb2ad4f48b85422c2cac57459c1d18b631883e877792db1",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMae7cab10239ed1250dbb0fab30dd9dbe6a30d4669dc0ce292ccdef620a02dbaf",
+        "IMafe474921259d5661c2ad344fbfc4541d2f166dae159184b07b7ea6b057cb301",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee"
+      ],
+      "path_sha256": "1e0e3407172a02ff728972937e63cf60ab9326e1601953563dee6b2bb80404bf",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_primary_before_0.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 31.925638569
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "primary",
+        "version": "after",
+        "repetition": 0,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 25.716816333999986,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.40431151100000307,
+        "primary_open": 0.02987578899995924,
+        "external_open": 0.0,
+        "tree_search": 25.25305919499999,
+        "report_and_close": 0.029569839000032516
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.40431151100000307,
+        "primary_open": 0.02987578899995924,
+        "primary_decode_inclusive": 0.7789493759979109,
+        "primary_search_inclusive": 24.628774863999695,
+        "random_sampling_inclusive": 0.4826021930002753,
+        "primary_get_inclusive": 0.0461783480051281,
+        "tree_search": 25.25305919499999,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 8052,
+        "primary_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 14301,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.010807983000006516,
+      "raw_write_seconds": 0.004392146999975921,
+      "raw_report_bytes": 1730553,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.40432001599998557,
+        "corpus_open": 0.029883011999970677,
+        "tree_search": 25.253138945000046,
+        "report_assembly": 0.025518241999975544
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "primary_query_cache_hits": 74,
+        "distinct_cards_loaded": 3767,
+        "distinct_lexical_hits": 1448,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 164,
+        "selected_by_source_tier": {
+          "unreviewed_import": 164
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM3aaf5ae0287604cef317b26998289b9b87dfbe0ae7e6a05f30b3cccd5d429095",
+        "IM3c4ae51c3ef75607860001245f4356e78334ff9e1532be347f51e04d58d94592",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM8d20521e9bb9eb53167852bb30337621397f1dcc310806ce46a5a27612d991c9",
+        "IMacffa27752763276ccb2ad4f48b85422c2cac57459c1d18b631883e877792db1",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMae7cab10239ed1250dbb0fab30dd9dbe6a30d4669dc0ce292ccdef620a02dbaf",
+        "IMafe474921259d5661c2ad344fbfc4541d2f166dae159184b07b7ea6b057cb301",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee"
+      ],
+      "path_sha256": "1e0e3407172a02ff728972937e63cf60ab9326e1601953563dee6b2bb80404bf",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_primary_after_0.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 25.914922692999994
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "hybrid",
+        "version": "before",
+        "repetition": 0,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 31.719676301999982,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.40297134899998355,
+        "primary_open": 0.019024901000022965,
+        "external_open": 0.0004976339999984702,
+        "tree_search": 31.26765324600001,
+        "report_and_close": 0.029529171999968185
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.40297134899998355,
+        "primary_open": 0.019024901000022965,
+        "external_open": 0.0004976339999984702,
+        "primary_decode_inclusive": 0.7060897730023612,
+        "primary_search_inclusive": 30.522547637000287,
+        "external_or_primary_get_inclusive": 0.04280026599946041,
+        "hybrid_search_inclusive": 30.640431021000666,
+        "random_sampling_inclusive": 0.48087189699981536,
+        "primary_get_inclusive": 0.027099085003499113,
+        "tree_search": 31.26765324600001
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "primary_decode_inclusive": 7941,
+        "primary_search_inclusive": 301,
+        "external_or_primary_get_inclusive": 14273,
+        "hybrid_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 11797,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.010400167000057081,
+      "raw_write_seconds": 0.005077358999983517,
+      "raw_report_bytes": 1645337,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "distinct_cards_loaded": 3504,
+        "distinct_lexical_hits": 1172,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 301,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 167,
+        "selected_by_source_tier": {
+          "unreviewed_import": 162,
+          "unreviewed_external_source": 5
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_d447e2b1ce387c624b88ae7eb69d9b7d",
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM9ab5faae15b4a0ec4e1ad43e4997af4a03d4dfc1d81410413bd81031496a3baa",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee",
+        "IMd05ceac257ddeacb193eea863415af64f1bb84a6266fdeb67540c53cdcb53880",
+        "IMf0a713e38c4e431b6640fa2e6980edd8fe4de4f52d5a6de88fc9fee4d3e0c22d"
+      ],
+      "path_sha256": "d1f03f455e07aa7ef45f56705ad7cc0a74febc8007a3767d70691604b7886d29",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_hybrid_before_0.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 31.87485712700004
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "hybrid",
+        "version": "after",
+        "repetition": 0,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 25.982940645999975,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4031518340000275,
+        "primary_open": 0.018738032000101157,
+        "external_open": 0.0004918110000744491,
+        "tree_search": 25.52974348600003,
+        "report_and_close": 0.030815482999742017
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4031518340000275,
+        "primary_open": 0.018738032000101157,
+        "external_open": 0.0004918110000744491,
+        "external_or_primary_get_inclusive": 0.04281202299716824,
+        "primary_decode_inclusive": 0.7060476289965436,
+        "primary_search_inclusive": 24.781442209998318,
+        "hybrid_search_inclusive": 24.904013220000706,
+        "random_sampling_inclusive": 0.48146966299952965,
+        "primary_get_inclusive": 0.03805247299919756,
+        "tree_search": 25.52974348600003
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "external_or_primary_get_inclusive": 14273,
+        "primary_decode_inclusive": 6799,
+        "primary_search_inclusive": 301,
+        "hybrid_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 12985,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.010249256000065543,
+      "raw_write_seconds": 0.005386914000041543,
+      "raw_report_bytes": 1645552,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.40316035999990163,
+        "corpus_open": 0.019248146000109045,
+        "tree_search": 25.529820158999996,
+        "report_assembly": 0.026780139999914354
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "primary_query_cache_hits": 66,
+        "distinct_cards_loaded": 3504,
+        "distinct_lexical_hits": 1172,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 301,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 167,
+        "selected_by_source_tier": {
+          "unreviewed_import": 162,
+          "unreviewed_external_source": 5
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_d447e2b1ce387c624b88ae7eb69d9b7d",
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM9ab5faae15b4a0ec4e1ad43e4997af4a03d4dfc1d81410413bd81031496a3baa",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee",
+        "IMd05ceac257ddeacb193eea863415af64f1bb84a6266fdeb67540c53cdcb53880",
+        "IMf0a713e38c4e431b6640fa2e6980edd8fe4de4f52d5a6de88fc9fee4d3e0c22d"
+      ],
+      "path_sha256": "d1f03f455e07aa7ef45f56705ad7cc0a74febc8007a3767d70691604b7886d29",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_hybrid_after_0.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 26.162993131999997
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "primary",
+        "version": "after",
+        "repetition": 1,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 42.30602824999994,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.40336156400007894,
+        "primary_open": 0.018540787000006276,
+        "external_open": 0.0,
+        "tree_search": 41.831858689,
+        "report_and_close": 0.05226720999985446
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.40336156400007894,
+        "primary_open": 0.018540787000006276,
+        "primary_decode_inclusive": 1.357650650004416,
+        "primary_search_inclusive": 40.97587012799977,
+        "random_sampling_inclusive": 0.6445967399993151,
+        "primary_get_inclusive": 0.12514272100190738,
+        "tree_search": 41.831858689,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 11816,
+        "primary_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 18687,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.012187707000066439,
+      "raw_write_seconds": 0.0075820349999276004,
+      "raw_report_bytes": 2305411,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.4033698700000059,
+        "corpus_open": 0.01854821099993842,
+        "tree_search": 41.83193732500001,
+        "report_assembly": 0.049410003000048164
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "primary_query_cache_hits": 65,
+        "distinct_cards_loaded": 6004,
+        "distinct_lexical_hits": 2916,
+        "distinct_exploration_hits": 3190,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 294,
+        "selected_by_source_tier": {
+          "unreviewed_import": 243,
+          "curated": 51
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM1d7c0268f11e18a4b5ec3f58f31e0ba5d8df8cfdc1ebec3afeeabdc879090137",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM594c9a65ff53f687f45c3776f6254bdd72a74188beef5370839acafd2232e487",
+        "IM5e990f81a656da8ef9a32b0c45a714c3a393bf62baf17c9cdfb657862886654a",
+        "IM714dc6de7d068114a615ff8a88c384c9c2f45f7069a73464c8a2397fd05982c5",
+        "IM7ee8ad2b75c56147a878ad556bca382f52233e7eb0e7c56827fc1d6464f33f19",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa605c628e7fbd6e460fbb2aee1e06ba102caf00ec9aa653bb2249447ae4a8471",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMc8940ffa9131875eb2273ba680b6142392b0f77d4a86e87b6c0ea1ee6d85ec7d",
+        "IMcdcaccac817116acd97f0e36c82dffebf0959cba02d03ec576fe8131dc7bbe1f",
+        "IMd6fc232aa3d0adf7658786b7e254d6b3e127b51e84e75c72d5989beae286d879",
+        "IMdb4283ea62d8f5d2f1afbdace009bcbb5a12e6356337dd500f45398e2101fc8c",
+        "IMdf979285d4400637f2ae3722820bc4864e542fbc0ee703f5b272f427228df098",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe3606ae915e59be3a3c18c48d6f738129e3092b5164a9f2428497b6b3dd0fd64",
+        "IMe42713bfd302911f4c5e3cb0e1bed7784445fde7e4c08ed0e85435c93e857185"
+      ],
+      "path_sha256": "1ae11b0079b333f88c11512c84ae73c7de56abd45c226179f4a1c2067c7253bd",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_primary_after_1.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 42.49656762899997
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "primary",
+        "version": "before",
+        "repetition": 1,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 51.86905234299991,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4047179699999788,
+        "primary_open": 0.01860861800003022,
+        "external_open": 0.0,
+        "tree_search": 51.394960493999974,
+        "report_and_close": 0.05076526099992407
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4047179699999788,
+        "primary_open": 0.01860861800003022,
+        "primary_decode_inclusive": 1.3625745329991332,
+        "primary_search_inclusive": 50.529597536000665,
+        "random_sampling_inclusive": 0.652428141999053,
+        "primary_get_inclusive": 0.07710482699690147,
+        "tree_search": 51.394960493999974,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 13179,
+        "primary_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 17127,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.013574362999975165,
+      "raw_write_seconds": 0.006777348000014172,
+      "raw_report_bytes": 2305197,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "distinct_cards_loaded": 6004,
+        "distinct_lexical_hits": 2916,
+        "distinct_exploration_hits": 3190,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 294,
+        "selected_by_source_tier": {
+          "unreviewed_import": 243,
+          "curated": 51
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM1d7c0268f11e18a4b5ec3f58f31e0ba5d8df8cfdc1ebec3afeeabdc879090137",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM594c9a65ff53f687f45c3776f6254bdd72a74188beef5370839acafd2232e487",
+        "IM5e990f81a656da8ef9a32b0c45a714c3a393bf62baf17c9cdfb657862886654a",
+        "IM714dc6de7d068114a615ff8a88c384c9c2f45f7069a73464c8a2397fd05982c5",
+        "IM7ee8ad2b75c56147a878ad556bca382f52233e7eb0e7c56827fc1d6464f33f19",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa605c628e7fbd6e460fbb2aee1e06ba102caf00ec9aa653bb2249447ae4a8471",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMc8940ffa9131875eb2273ba680b6142392b0f77d4a86e87b6c0ea1ee6d85ec7d",
+        "IMcdcaccac817116acd97f0e36c82dffebf0959cba02d03ec576fe8131dc7bbe1f",
+        "IMd6fc232aa3d0adf7658786b7e254d6b3e127b51e84e75c72d5989beae286d879",
+        "IMdb4283ea62d8f5d2f1afbdace009bcbb5a12e6356337dd500f45398e2101fc8c",
+        "IMdf979285d4400637f2ae3722820bc4864e542fbc0ee703f5b272f427228df098",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe3606ae915e59be3a3c18c48d6f738129e3092b5164a9f2428497b6b3dd0fd64",
+        "IMe42713bfd302911f4c5e3cb0e1bed7784445fde7e4c08ed0e85435c93e857185"
+      ],
+      "path_sha256": "1ae11b0079b333f88c11512c84ae73c7de56abd45c226179f4a1c2067c7253bd",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_primary_before_1.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 52.06109970199998
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "hybrid",
+        "version": "after",
+        "repetition": 1,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 37.70534319600006,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4059888479999927,
+        "primary_open": 0.018808484000032877,
+        "external_open": 0.00048780299994177767,
+        "tree_search": 37.23348285600002,
+        "report_and_close": 0.0465752050000674
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4059888479999927,
+        "primary_open": 0.018808484000032877,
+        "external_open": 0.00048780299994177767,
+        "external_or_primary_get_inclusive": 0.07875651599715638,
+        "primary_decode_inclusive": 1.158578559994453,
+        "primary_search_inclusive": 36.215737473998615,
+        "hybrid_search_inclusive": 36.379331354999294,
+        "random_sampling_inclusive": 0.6458815079992064,
+        "primary_get_inclusive": 0.13459515299109626,
+        "tree_search": 37.23348285600002
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "external_or_primary_get_inclusive": 19295,
+        "primary_decode_inclusive": 9173,
+        "primary_search_inclusive": 401,
+        "hybrid_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 16014,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.013584180999941964,
+      "raw_write_seconds": 0.005388078000009955,
+      "raw_report_bytes": 2211196,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.4059974339999144,
+        "corpus_open": 0.019316145000061624,
+        "tree_search": 37.233559378999985,
+        "report_assembly": 0.04208816499999557
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "primary_query_cache_hits": 101,
+        "distinct_cards_loaded": 5092,
+        "distinct_lexical_hits": 2008,
+        "distinct_exploration_hits": 3184,
+        "external_retrieval_calls": 401,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 245,
+        "selected_by_source_tier": {
+          "unreviewed_external_source": 9,
+          "unreviewed_import": 223,
+          "curated": 13
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_f02c92fc93b91e3c3151f7b774d363db",
+        "IM0b12d7120483d6eb1fd976909f659884326ab9dfbd09e3a75a7be4dff0ccd17e",
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM105d9253ecc60ddc5425c583617a41dade14a2849ec93d75eebea5ac48773f74",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM330f7d61ae5abae48a031c8699813f107d6752058b85f3702e0fc9b41183fed8",
+        "IM3546f91c01d0b19c31c96a3217a010b27ca80e508a18688c6829324076443331",
+        "IM3d3f9bc217c195c392cb0d9c318ad2e32c9ee74aa235bc31547da57ef0031ca9",
+        "IM3e9c6aef28d1aa5103c02fd6956c583321d4b390277b9b8c75e0cb5cf96c9b0e",
+        "IM49ebc988c624369a3fd9ac62c998a43d2fbbd3a22bf2f1cac2f9aadbf8895ec7",
+        "IM6dfcf84ff18250ebddcf593db9525c021dc2da5fa3e22d1a351c9e6f966c89ce",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa4fbf0223edf0459a4316298fd2039ac77ffcaccb4364d8070744ddc0513da4e",
+        "IMa8b2c0d844b703720eaae064e0d887a6b769972615706348a11a176e80a492b5",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb014b268c90754c4af338d346491cbdb3c293596de21b1af1ca49123200f026b",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc479649f9db133db4b3c321a2d12a01b2180115732f82b7c8545dc83ca9f53d3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMcd0481f6f20c4288dbcd47e5bf24644d32f0e50e4db0260eb3e6fd2cbfaca37c",
+        "IMd8df0d1719ae9f2e47cedf7419578a72b1d31126f88d25e3262210349724e5fd",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe58f142af23ffa6eeba058e0ba85f7e7a1a7819127e7741fb0351d76fbbeecd6",
+        "IMf8f676de5f0be191aafab91b7a0928b86fad453e01cd6b12b009b5cbac216a37"
+      ],
+      "path_sha256": "d50eebc4b4f0bab854aa8bbc71187a41bb188bf3f34c94e211439b72f2a3b918",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_hybrid_after_1.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 37.888677916999995
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "hybrid",
+        "version": "before",
+        "repetition": 1,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 49.82842168299999,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4016419129999349,
+        "primary_open": 0.019039604999989024,
+        "external_open": 0.0004827740000337144,
+        "tree_search": 49.358879760000036,
+        "report_and_close": 0.048377630999993926
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4016419129999349,
+        "primary_open": 0.019039604999989024,
+        "external_open": 0.0004827740000337144,
+        "primary_decode_inclusive": 1.1609882089981056,
+        "primary_search_inclusive": 48.331910706998656,
+        "external_or_primary_get_inclusive": 0.07933576699679179,
+        "hybrid_search_inclusive": 48.49335520400189,
+        "random_sampling_inclusive": 0.6531563769995046,
+        "primary_get_inclusive": 0.06023101400614905,
+        "tree_search": 49.358879760000036
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "primary_decode_inclusive": 10678,
+        "primary_search_inclusive": 401,
+        "external_or_primary_get_inclusive": 19295,
+        "hybrid_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 14196,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.014291545999981281,
+      "raw_write_seconds": 0.006010021999941273,
+      "raw_report_bytes": 2210980,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "distinct_cards_loaded": 5092,
+        "distinct_lexical_hits": 2008,
+        "distinct_exploration_hits": 3184,
+        "external_retrieval_calls": 401,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 245,
+        "selected_by_source_tier": {
+          "unreviewed_import": 223,
+          "unreviewed_external_source": 9,
+          "curated": 13
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_f02c92fc93b91e3c3151f7b774d363db",
+        "IM0b12d7120483d6eb1fd976909f659884326ab9dfbd09e3a75a7be4dff0ccd17e",
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM105d9253ecc60ddc5425c583617a41dade14a2849ec93d75eebea5ac48773f74",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM330f7d61ae5abae48a031c8699813f107d6752058b85f3702e0fc9b41183fed8",
+        "IM3546f91c01d0b19c31c96a3217a010b27ca80e508a18688c6829324076443331",
+        "IM3d3f9bc217c195c392cb0d9c318ad2e32c9ee74aa235bc31547da57ef0031ca9",
+        "IM3e9c6aef28d1aa5103c02fd6956c583321d4b390277b9b8c75e0cb5cf96c9b0e",
+        "IM49ebc988c624369a3fd9ac62c998a43d2fbbd3a22bf2f1cac2f9aadbf8895ec7",
+        "IM6dfcf84ff18250ebddcf593db9525c021dc2da5fa3e22d1a351c9e6f966c89ce",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa4fbf0223edf0459a4316298fd2039ac77ffcaccb4364d8070744ddc0513da4e",
+        "IMa8b2c0d844b703720eaae064e0d887a6b769972615706348a11a176e80a492b5",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb014b268c90754c4af338d346491cbdb3c293596de21b1af1ca49123200f026b",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc479649f9db133db4b3c321a2d12a01b2180115732f82b7c8545dc83ca9f53d3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMcd0481f6f20c4288dbcd47e5bf24644d32f0e50e4db0260eb3e6fd2cbfaca37c",
+        "IMd8df0d1719ae9f2e47cedf7419578a72b1d31126f88d25e3262210349724e5fd",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe58f142af23ffa6eeba058e0ba85f7e7a1a7819127e7741fb0351d76fbbeecd6",
+        "IMf8f676de5f0be191aafab91b7a0928b86fad453e01cd6b12b009b5cbac216a37"
+      ],
+      "path_sha256": "d50eebc4b4f0bab854aa8bbc71187a41bb188bf3f34c94e211439b72f2a3b918",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_hybrid_before_1.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 50.00942254500001
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "primary",
+        "version": "after",
+        "repetition": 1,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 25.57186874499996,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.39918659499994646,
+        "primary_open": 0.019026270000040313,
+        "external_open": 0.0,
+        "tree_search": 25.124580487000003,
+        "report_and_close": 0.029075392999970973
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.39918659499994646,
+        "primary_open": 0.019026270000040313,
+        "primary_decode_inclusive": 0.7654045150068214,
+        "primary_search_inclusive": 24.507814139001425,
+        "random_sampling_inclusive": 0.4770183879995784,
+        "primary_get_inclusive": 0.045639421992063944,
+        "tree_search": 25.124580487000003,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 8052,
+        "primary_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 14301,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.011195288999942932,
+      "raw_write_seconds": 0.004386361999991095,
+      "raw_report_bytes": 1730551,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.3991959319999978,
+        "corpus_open": 0.019033713999988322,
+        "tree_search": 25.124659004000023,
+        "report_assembly": 0.02515350099997704
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "primary_query_cache_hits": 74,
+        "distinct_cards_loaded": 3767,
+        "distinct_lexical_hits": 1448,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 164,
+        "selected_by_source_tier": {
+          "unreviewed_import": 164
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM3aaf5ae0287604cef317b26998289b9b87dfbe0ae7e6a05f30b3cccd5d429095",
+        "IM3c4ae51c3ef75607860001245f4356e78334ff9e1532be347f51e04d58d94592",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM8d20521e9bb9eb53167852bb30337621397f1dcc310806ce46a5a27612d991c9",
+        "IMacffa27752763276ccb2ad4f48b85422c2cac57459c1d18b631883e877792db1",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMae7cab10239ed1250dbb0fab30dd9dbe6a30d4669dc0ce292ccdef620a02dbaf",
+        "IMafe474921259d5661c2ad344fbfc4541d2f166dae159184b07b7ea6b057cb301",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee"
+      ],
+      "path_sha256": "1e0e3407172a02ff728972937e63cf60ab9326e1601953563dee6b2bb80404bf",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_primary_after_1.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 25.763123159000088
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "primary",
+        "version": "before",
+        "repetition": 1,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 31.70225739,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4062955229999261,
+        "primary_open": 0.020723527999962243,
+        "external_open": 0.0,
+        "tree_search": 31.24624824199998,
+        "report_and_close": 0.028990097000132664
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4062955229999261,
+        "primary_open": 0.020723527999962243,
+        "primary_decode_inclusive": 0.7810008810045019,
+        "primary_search_inclusive": 30.615118891999828,
+        "random_sampling_inclusive": 0.48462378999931843,
+        "primary_get_inclusive": 0.029781217002437188,
+        "tree_search": 31.24624824199998,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 9757,
+        "primary_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 12525,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.011631233000002794,
+      "raw_write_seconds": 0.0037216570000282445,
+      "raw_report_bytes": 1730337,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "distinct_cards_loaded": 3767,
+        "distinct_lexical_hits": 1448,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 164,
+        "selected_by_source_tier": {
+          "unreviewed_import": 164
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM3aaf5ae0287604cef317b26998289b9b87dfbe0ae7e6a05f30b3cccd5d429095",
+        "IM3c4ae51c3ef75607860001245f4356e78334ff9e1532be347f51e04d58d94592",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM8d20521e9bb9eb53167852bb30337621397f1dcc310806ce46a5a27612d991c9",
+        "IMacffa27752763276ccb2ad4f48b85422c2cac57459c1d18b631883e877792db1",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMae7cab10239ed1250dbb0fab30dd9dbe6a30d4669dc0ce292ccdef620a02dbaf",
+        "IMafe474921259d5661c2ad344fbfc4541d2f166dae159184b07b7ea6b057cb301",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee"
+      ],
+      "path_sha256": "1e0e3407172a02ff728972937e63cf60ab9326e1601953563dee6b2bb80404bf",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_primary_before_1.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 31.876128847000018
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "hybrid",
+        "version": "after",
+        "repetition": 1,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 26.06177574000003,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.40622311100003117,
+        "primary_open": 0.019165937000025224,
+        "external_open": 0.0004735170000458311,
+        "tree_search": 25.605155502000002,
+        "report_and_close": 0.03075767299992549
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.40622311100003117,
+        "primary_open": 0.019165937000025224,
+        "external_open": 0.0004735170000458311,
+        "external_or_primary_get_inclusive": 0.04286504700530713,
+        "primary_decode_inclusive": 0.707023875999198,
+        "primary_search_inclusive": 24.854200502000594,
+        "hybrid_search_inclusive": 24.976863248000768,
+        "random_sampling_inclusive": 0.4815926510002555,
+        "primary_get_inclusive": 0.03789549300631734,
+        "tree_search": 25.605155502000002
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "external_or_primary_get_inclusive": 14273,
+        "primary_decode_inclusive": 6799,
+        "primary_search_inclusive": 301,
+        "hybrid_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 12985,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.009861050999916188,
+      "raw_write_seconds": 0.0044261460000143416,
+      "raw_report_bytes": 1645553,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.40623137599993697,
+        "corpus_open": 0.019657457999983308,
+        "tree_search": 25.605231434000075,
+        "report_assembly": 0.026841191000016806
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "primary_query_cache_hits": 66,
+        "distinct_cards_loaded": 3504,
+        "distinct_lexical_hits": 1172,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 301,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 167,
+        "selected_by_source_tier": {
+          "unreviewed_import": 162,
+          "unreviewed_external_source": 5
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_d447e2b1ce387c624b88ae7eb69d9b7d",
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM9ab5faae15b4a0ec4e1ad43e4997af4a03d4dfc1d81410413bd81031496a3baa",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee",
+        "IMd05ceac257ddeacb193eea863415af64f1bb84a6266fdeb67540c53cdcb53880",
+        "IMf0a713e38c4e431b6640fa2e6980edd8fe4de4f52d5a6de88fc9fee4d3e0c22d"
+      ],
+      "path_sha256": "d1f03f455e07aa7ef45f56705ad7cc0a74febc8007a3767d70691604b7886d29",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_hybrid_after_1.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 26.21362744800001
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "hybrid",
+        "version": "before",
+        "repetition": 1,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 31.83742787999995,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.40471264299992527,
+        "primary_open": 0.018732018999912725,
+        "external_open": 0.00047362699990571855,
+        "tree_search": 31.384295327000018,
+        "report_and_close": 0.02921426400018845
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.40471264299992527,
+        "primary_open": 0.018732018999912725,
+        "external_open": 0.00047362699990571855,
+        "primary_decode_inclusive": 0.7192390299924227,
+        "primary_search_inclusive": 30.620572514999708,
+        "external_or_primary_get_inclusive": 0.04400240600921279,
+        "hybrid_search_inclusive": 30.742445224999983,
+        "random_sampling_inclusive": 0.48810145599895804,
+        "primary_get_inclusive": 0.027538307993609124,
+        "tree_search": 31.384295327000018
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "primary_decode_inclusive": 7941,
+        "primary_search_inclusive": 301,
+        "external_or_primary_get_inclusive": 14273,
+        "hybrid_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 11797,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.01020154899993031,
+      "raw_write_seconds": 0.00524467899992942,
+      "raw_report_bytes": 1645337,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "distinct_cards_loaded": 3504,
+        "distinct_lexical_hits": 1172,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 301,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 167,
+        "selected_by_source_tier": {
+          "unreviewed_import": 162,
+          "unreviewed_external_source": 5
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_d447e2b1ce387c624b88ae7eb69d9b7d",
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM9ab5faae15b4a0ec4e1ad43e4997af4a03d4dfc1d81410413bd81031496a3baa",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee",
+        "IMd05ceac257ddeacb193eea863415af64f1bb84a6266fdeb67540c53cdcb53880",
+        "IMf0a713e38c4e431b6640fa2e6980edd8fe4de4f52d5a6de88fc9fee4d3e0c22d"
+      ],
+      "path_sha256": "d1f03f455e07aa7ef45f56705ad7cc0a74febc8007a3767d70691604b7886d29",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_hybrid_before_1.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 32.02902215000006
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "primary",
+        "version": "before",
+        "repetition": 2,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 52.05442235299995,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.39916429699997025,
+        "primary_open": 0.018605062000006,
+        "external_open": 0.0,
+        "tree_search": 51.58550926099997,
+        "report_and_close": 0.05114373300000352
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.39916429699997025,
+        "primary_open": 0.018605062000006,
+        "primary_decode_inclusive": 1.4033197919980012,
+        "primary_search_inclusive": 50.687825374001704,
+        "random_sampling_inclusive": 0.6676724939983387,
+        "primary_get_inclusive": 0.0789446129897442,
+        "tree_search": 51.58550926099997,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 13179,
+        "primary_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 17127,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.012089111000022967,
+      "raw_write_seconds": 0.006321615000047132,
+      "raw_report_bytes": 2305197,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "distinct_cards_loaded": 6004,
+        "distinct_lexical_hits": 2916,
+        "distinct_exploration_hits": 3190,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 294,
+        "selected_by_source_tier": {
+          "unreviewed_import": 243,
+          "curated": 51
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM1d7c0268f11e18a4b5ec3f58f31e0ba5d8df8cfdc1ebec3afeeabdc879090137",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM594c9a65ff53f687f45c3776f6254bdd72a74188beef5370839acafd2232e487",
+        "IM5e990f81a656da8ef9a32b0c45a714c3a393bf62baf17c9cdfb657862886654a",
+        "IM714dc6de7d068114a615ff8a88c384c9c2f45f7069a73464c8a2397fd05982c5",
+        "IM7ee8ad2b75c56147a878ad556bca382f52233e7eb0e7c56827fc1d6464f33f19",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa605c628e7fbd6e460fbb2aee1e06ba102caf00ec9aa653bb2249447ae4a8471",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMc8940ffa9131875eb2273ba680b6142392b0f77d4a86e87b6c0ea1ee6d85ec7d",
+        "IMcdcaccac817116acd97f0e36c82dffebf0959cba02d03ec576fe8131dc7bbe1f",
+        "IMd6fc232aa3d0adf7658786b7e254d6b3e127b51e84e75c72d5989beae286d879",
+        "IMdb4283ea62d8f5d2f1afbdace009bcbb5a12e6356337dd500f45398e2101fc8c",
+        "IMdf979285d4400637f2ae3722820bc4864e542fbc0ee703f5b272f427228df098",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe3606ae915e59be3a3c18c48d6f738129e3092b5164a9f2428497b6b3dd0fd64",
+        "IMe42713bfd302911f4c5e3cb0e1bed7784445fde7e4c08ed0e85435c93e857185"
+      ],
+      "path_sha256": "1ae11b0079b333f88c11512c84ae73c7de56abd45c226179f4a1c2067c7253bd",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_primary_before_2.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 52.237859518999926
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "primary",
+        "version": "after",
+        "repetition": 2,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 43.84418285800007,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.400464822999993,
+        "primary_open": 0.01925517699999091,
+        "external_open": 0.0,
+        "tree_search": 43.3698123449999,
+        "report_and_close": 0.05465051300018331
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.400464822999993,
+        "primary_open": 0.01925517699999091,
+        "primary_decode_inclusive": 1.3962304759892277,
+        "primary_search_inclusive": 42.480682098999864,
+        "random_sampling_inclusive": 0.659781703000931,
+        "primary_get_inclusive": 0.1294792989998541,
+        "tree_search": 43.3698123449999,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 11816,
+        "primary_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 18687,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.01306056200007788,
+      "raw_write_seconds": 0.006448824000017339,
+      "raw_report_bytes": 2305411,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.4004755329999625,
+        "corpus_open": 0.019264935000023797,
+        "tree_search": 43.369904227000006,
+        "report_assembly": 0.05098644300005617
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "primary_query_cache_hits": 65,
+        "distinct_cards_loaded": 6004,
+        "distinct_lexical_hits": 2916,
+        "distinct_exploration_hits": 3190,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 294,
+        "selected_by_source_tier": {
+          "unreviewed_import": 243,
+          "curated": 51
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM1d7c0268f11e18a4b5ec3f58f31e0ba5d8df8cfdc1ebec3afeeabdc879090137",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM594c9a65ff53f687f45c3776f6254bdd72a74188beef5370839acafd2232e487",
+        "IM5e990f81a656da8ef9a32b0c45a714c3a393bf62baf17c9cdfb657862886654a",
+        "IM714dc6de7d068114a615ff8a88c384c9c2f45f7069a73464c8a2397fd05982c5",
+        "IM7ee8ad2b75c56147a878ad556bca382f52233e7eb0e7c56827fc1d6464f33f19",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa605c628e7fbd6e460fbb2aee1e06ba102caf00ec9aa653bb2249447ae4a8471",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMc8940ffa9131875eb2273ba680b6142392b0f77d4a86e87b6c0ea1ee6d85ec7d",
+        "IMcdcaccac817116acd97f0e36c82dffebf0959cba02d03ec576fe8131dc7bbe1f",
+        "IMd6fc232aa3d0adf7658786b7e254d6b3e127b51e84e75c72d5989beae286d879",
+        "IMdb4283ea62d8f5d2f1afbdace009bcbb5a12e6356337dd500f45398e2101fc8c",
+        "IMdf979285d4400637f2ae3722820bc4864e542fbc0ee703f5b272f427228df098",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe3606ae915e59be3a3c18c48d6f738129e3092b5164a9f2428497b6b3dd0fd64",
+        "IMe42713bfd302911f4c5e3cb0e1bed7784445fde7e4c08ed0e85435c93e857185"
+      ],
+      "path_sha256": "1ae11b0079b333f88c11512c84ae73c7de56abd45c226179f4a1c2067c7253bd",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_primary_after_2.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 44.02695619999997
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "hybrid",
+        "version": "before",
+        "repetition": 2,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 50.12544459200001,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.40596281099999487,
+        "primary_open": 0.02018402699991384,
+        "external_open": 0.0005442289999564309,
+        "tree_search": 49.650162033000015,
+        "report_and_close": 0.0485914920001278
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.40596281099999487,
+        "primary_open": 0.02018402699991384,
+        "external_open": 0.0005442289999564309,
+        "primary_decode_inclusive": 1.1981721930051208,
+        "primary_search_inclusive": 48.57356634000098,
+        "external_or_primary_get_inclusive": 0.08281661299963616,
+        "hybrid_search_inclusive": 48.748101140001495,
+        "random_sampling_inclusive": 0.6722845450004797,
+        "primary_get_inclusive": 0.06177126499562746,
+        "tree_search": 49.650162033000015
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "primary_decode_inclusive": 10678,
+        "primary_search_inclusive": 401,
+        "external_or_primary_get_inclusive": 19295,
+        "hybrid_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 14196,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.013792541999919194,
+      "raw_write_seconds": 0.005072155999982897,
+      "raw_report_bytes": 2210980,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "distinct_cards_loaded": 5092,
+        "distinct_lexical_hits": 2008,
+        "distinct_exploration_hits": 3184,
+        "external_retrieval_calls": 401,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 245,
+        "selected_by_source_tier": {
+          "unreviewed_import": 223,
+          "curated": 13,
+          "unreviewed_external_source": 9
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_f02c92fc93b91e3c3151f7b774d363db",
+        "IM0b12d7120483d6eb1fd976909f659884326ab9dfbd09e3a75a7be4dff0ccd17e",
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM105d9253ecc60ddc5425c583617a41dade14a2849ec93d75eebea5ac48773f74",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM330f7d61ae5abae48a031c8699813f107d6752058b85f3702e0fc9b41183fed8",
+        "IM3546f91c01d0b19c31c96a3217a010b27ca80e508a18688c6829324076443331",
+        "IM3d3f9bc217c195c392cb0d9c318ad2e32c9ee74aa235bc31547da57ef0031ca9",
+        "IM3e9c6aef28d1aa5103c02fd6956c583321d4b390277b9b8c75e0cb5cf96c9b0e",
+        "IM49ebc988c624369a3fd9ac62c998a43d2fbbd3a22bf2f1cac2f9aadbf8895ec7",
+        "IM6dfcf84ff18250ebddcf593db9525c021dc2da5fa3e22d1a351c9e6f966c89ce",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa4fbf0223edf0459a4316298fd2039ac77ffcaccb4364d8070744ddc0513da4e",
+        "IMa8b2c0d844b703720eaae064e0d887a6b769972615706348a11a176e80a492b5",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb014b268c90754c4af338d346491cbdb3c293596de21b1af1ca49123200f026b",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc479649f9db133db4b3c321a2d12a01b2180115732f82b7c8545dc83ca9f53d3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMcd0481f6f20c4288dbcd47e5bf24644d32f0e50e4db0260eb3e6fd2cbfaca37c",
+        "IMd8df0d1719ae9f2e47cedf7419578a72b1d31126f88d25e3262210349724e5fd",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe58f142af23ffa6eeba058e0ba85f7e7a1a7819127e7741fb0351d76fbbeecd6",
+        "IMf8f676de5f0be191aafab91b7a0928b86fad453e01cd6b12b009b5cbac216a37"
+      ],
+      "path_sha256": "d50eebc4b4f0bab854aa8bbc71187a41bb188bf3f34c94e211439b72f2a3b918",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_hybrid_before_2.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 50.330929008
+    },
+    {
+      "task": {
+        "label": "quotient_imbalance",
+        "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+        "iterations": 400,
+        "mode": "hybrid",
+        "version": "after",
+        "repetition": 2,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 37.81708171200012,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4069052480000437,
+        "primary_open": 0.019061927000052492,
+        "external_open": 0.0005437979999669551,
+        "tree_search": 37.34404846199993,
+        "report_and_close": 0.0465222770001219
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4069052480000437,
+        "primary_open": 0.019061927000052492,
+        "external_open": 0.0005437979999669551,
+        "external_or_primary_get_inclusive": 0.07914819399684347,
+        "primary_decode_inclusive": 1.1607476119950206,
+        "primary_search_inclusive": 36.31403548399919,
+        "hybrid_search_inclusive": 36.48239316700028,
+        "random_sampling_inclusive": 0.6467571740009816,
+        "primary_get_inclusive": 0.13319930300531269,
+        "tree_search": 37.34404846199993
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "external_or_primary_get_inclusive": 19295,
+        "primary_decode_inclusive": 9173,
+        "primary_search_inclusive": 401,
+        "hybrid_search_inclusive": 401,
+        "random_sampling_inclusive": 401,
+        "primary_get_inclusive": 16014,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.014074839999921096,
+      "raw_write_seconds": 0.005377858999963792,
+      "raw_report_bytes": 2211196,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.40691431499999453,
+        "corpus_open": 0.019630000000006476,
+        "tree_search": 37.344156364000014,
+        "report_assembly": 0.04180260199996155
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 401,
+        "global_exploration_calls": 401,
+        "primary_query_cache_hits": 101,
+        "distinct_cards_loaded": 5092,
+        "distinct_lexical_hits": 2008,
+        "distinct_exploration_hits": 3184,
+        "external_retrieval_calls": 401,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 245,
+        "selected_by_source_tier": {
+          "unreviewed_import": 223,
+          "curated": 13,
+          "unreviewed_external_source": 9
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 400,
+        "simulations": 400,
+        "created_nodes": 401,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 400,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_f02c92fc93b91e3c3151f7b774d363db",
+        "IM0b12d7120483d6eb1fd976909f659884326ab9dfbd09e3a75a7be4dff0ccd17e",
+        "IM0c54aad11e08f98b8e6068800e56a9f36c1ff08f45728d6bc4d44c2146020a32",
+        "IM105d9253ecc60ddc5425c583617a41dade14a2849ec93d75eebea5ac48773f74",
+        "IM1816caf91c5ff827545bb4384e462c1990478096002b9fdbce19eca3a98299de",
+        "IM2450da1dd3a7012e9b041874e6154bf02e52cd1cb0e4627971aca16e536b7f5a",
+        "IM2e65003043812916e7af98b3887649e9d33fdc3b6d920895bf51e9203931fcea",
+        "IM330f7d61ae5abae48a031c8699813f107d6752058b85f3702e0fc9b41183fed8",
+        "IM3546f91c01d0b19c31c96a3217a010b27ca80e508a18688c6829324076443331",
+        "IM3d3f9bc217c195c392cb0d9c318ad2e32c9ee74aa235bc31547da57ef0031ca9",
+        "IM3e9c6aef28d1aa5103c02fd6956c583321d4b390277b9b8c75e0cb5cf96c9b0e",
+        "IM49ebc988c624369a3fd9ac62c998a43d2fbbd3a22bf2f1cac2f9aadbf8895ec7",
+        "IM6dfcf84ff18250ebddcf593db9525c021dc2da5fa3e22d1a351c9e6f966c89ce",
+        "IM8da91efb8a6004ec58fd8c16b8d72734797c281ca674846733e3293c9d1d0918",
+        "IM92ef72bbfce0af7764bf34a6c14b32d79c8769d600cb81d03efd496d2d44eab6",
+        "IMa4fbf0223edf0459a4316298fd2039ac77ffcaccb4364d8070744ddc0513da4e",
+        "IMa8b2c0d844b703720eaae064e0d887a6b769972615706348a11a176e80a492b5",
+        "IMa922b1987936914e0818dc476ae687e675a05eb1639bc7d7eba5a598916c60f9",
+        "IMb014b268c90754c4af338d346491cbdb3c293596de21b1af1ca49123200f026b",
+        "IMb20924ffe5b080e8ca549b3ddea22e729c1b185ea6814830c320c7ff4ff359a3",
+        "IMc479649f9db133db4b3c321a2d12a01b2180115732f82b7c8545dc83ca9f53d3",
+        "IMc708e5f669bde46ba47fe6f95115b7ad91f1eca17bfcb430530d6f1ebf667ecc",
+        "IMcd0481f6f20c4288dbcd47e5bf24644d32f0e50e4db0260eb3e6fd2cbfaca37c",
+        "IMd8df0d1719ae9f2e47cedf7419578a72b1d31126f88d25e3262210349724e5fd",
+        "IMe22d0ff894ef6e1571cb5376a6b527f7d374b12b60d10e3bcc916b674d03410f",
+        "IMe58f142af23ffa6eeba058e0ba85f7e7a1a7819127e7741fb0351d76fbbeecd6",
+        "IMf8f676de5f0be191aafab91b7a0928b86fad453e01cd6b12b009b5cbac216a37"
+      ],
+      "path_sha256": "d50eebc4b4f0bab854aa8bbc71187a41bb188bf3f34c94e211439b72f2a3b918",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/quotient_imbalance_hybrid_after_2.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 37.992507861000036
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "primary",
+        "version": "before",
+        "repetition": 2,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 31.80516565200014,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4032578169999397,
+        "primary_open": 0.01910771300003944,
+        "external_open": 0.0,
+        "tree_search": 31.35373212400009,
+        "report_and_close": 0.029067998000073203
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4032578169999397,
+        "primary_open": 0.01910771300003944,
+        "primary_decode_inclusive": 0.7907607920149076,
+        "primary_search_inclusive": 30.711580481000283,
+        "random_sampling_inclusive": 0.49125965000075666,
+        "primary_get_inclusive": 0.030305422991204978,
+        "tree_search": 31.35373212400009,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 9757,
+        "primary_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 12525,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.010144060999891735,
+      "raw_write_seconds": 0.004377866000140784,
+      "raw_report_bytes": 1730336,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "distinct_cards_loaded": 3767,
+        "distinct_lexical_hits": 1448,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 164,
+        "selected_by_source_tier": {
+          "unreviewed_import": 164
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM3aaf5ae0287604cef317b26998289b9b87dfbe0ae7e6a05f30b3cccd5d429095",
+        "IM3c4ae51c3ef75607860001245f4356e78334ff9e1532be347f51e04d58d94592",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM8d20521e9bb9eb53167852bb30337621397f1dcc310806ce46a5a27612d991c9",
+        "IMacffa27752763276ccb2ad4f48b85422c2cac57459c1d18b631883e877792db1",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMae7cab10239ed1250dbb0fab30dd9dbe6a30d4669dc0ce292ccdef620a02dbaf",
+        "IMafe474921259d5661c2ad344fbfc4541d2f166dae159184b07b7ea6b057cb301",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee"
+      ],
+      "path_sha256": "1e0e3407172a02ff728972937e63cf60ab9326e1601953563dee6b2bb80404bf",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_primary_before_2.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 31.983695328000067
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "primary",
+        "version": "after",
+        "repetition": 2,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 25.794519752999804,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4068142579999403,
+        "primary_open": 0.019398376000026474,
+        "external_open": 0.0,
+        "tree_search": 25.338814195000168,
+        "report_and_close": 0.029492923999669074
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4068142579999403,
+        "primary_open": 0.019398376000026474,
+        "primary_decode_inclusive": 0.7836346699914429,
+        "primary_search_inclusive": 24.703066395999258,
+        "random_sampling_inclusive": 0.4855973050025568,
+        "primary_get_inclusive": 0.0463650099966344,
+        "tree_search": 25.338814195000168,
+        "external_open": 0.0
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "primary_decode_inclusive": 8052,
+        "primary_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 14301,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.011027535000039279,
+      "raw_write_seconds": 0.0042639230000531825,
+      "raw_report_bytes": 1730552,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.4068230240000048,
+        "corpus_open": 0.019406000000117274,
+        "tree_search": 25.338892931999908,
+        "report_assembly": 0.025316676000102234
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 0,
+        "external_candidates_by_source": {},
+        "external_cache_enabled": false
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "primary_query_cache_hits": 74,
+        "distinct_cards_loaded": 3767,
+        "distinct_lexical_hits": 1448,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 0,
+        "distinct_external_lexical_hits": 0,
+        "distinct_cards_selected_in_tree": 164,
+        "selected_by_source_tier": {
+          "unreviewed_import": 164
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM3aaf5ae0287604cef317b26998289b9b87dfbe0ae7e6a05f30b3cccd5d429095",
+        "IM3c4ae51c3ef75607860001245f4356e78334ff9e1532be347f51e04d58d94592",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM8d20521e9bb9eb53167852bb30337621397f1dcc310806ce46a5a27612d991c9",
+        "IMacffa27752763276ccb2ad4f48b85422c2cac57459c1d18b631883e877792db1",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMae7cab10239ed1250dbb0fab30dd9dbe6a30d4669dc0ce292ccdef620a02dbaf",
+        "IMafe474921259d5661c2ad344fbfc4541d2f166dae159184b07b7ea6b057cb301",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee"
+      ],
+      "path_sha256": "1e0e3407172a02ff728972937e63cf60ab9326e1601953563dee6b2bb80404bf",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_primary_after_2.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 25.973365909999984
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "hybrid",
+        "version": "before",
+        "repetition": 2,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 32.25040288299988,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.4023877919998995,
+        "primary_open": 0.01936416300009114,
+        "external_open": 0.000547115000017584,
+        "tree_search": 31.79819451100002,
+        "report_and_close": 0.029909301999850868
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.4023877919998995,
+        "primary_open": 0.01936416300009114,
+        "external_open": 0.000547115000017584,
+        "primary_decode_inclusive": 0.7322982350146958,
+        "primary_search_inclusive": 31.013400924998905,
+        "external_or_primary_get_inclusive": 0.04523231799021232,
+        "hybrid_search_inclusive": 31.140114221001795,
+        "random_sampling_inclusive": 0.49652614999877187,
+        "primary_get_inclusive": 0.02760609600272801,
+        "tree_search": 31.79819451100002
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "primary_decode_inclusive": 7941,
+        "primary_search_inclusive": 301,
+        "external_or_primary_get_inclusive": 14273,
+        "hybrid_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 11797,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.00971774300001016,
+      "raw_write_seconds": 0.005625942000051509,
+      "raw_report_bytes": 1645336,
+      "runtime_timings_seconds": null,
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "distinct_cards_loaded": 3504,
+        "distinct_lexical_hits": 1172,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 301,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 167,
+        "selected_by_source_tier": {
+          "unreviewed_import": 162,
+          "unreviewed_external_source": 5
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_d447e2b1ce387c624b88ae7eb69d9b7d",
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM9ab5faae15b4a0ec4e1ad43e4997af4a03d4dfc1d81410413bd81031496a3baa",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee",
+        "IMd05ceac257ddeacb193eea863415af64f1bb84a6266fdeb67540c53cdcb53880",
+        "IMf0a713e38c4e431b6640fa2e6980edd8fe4de4f52d5a6de88fc9fee4d3e0c22d"
+      ],
+      "path_sha256": "d1f03f455e07aa7ef45f56705ad7cc0a74febc8007a3767d70691604b7886d29",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_hybrid_before_2.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 32.435937459000115
+    },
+    {
+      "task": {
+        "label": "representation_alternatives",
+        "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+        "iterations": 300,
+        "mode": "hybrid",
+        "version": "after",
+        "repetition": 2,
+        "depth": 20,
+        "retrieval_width": 24,
+        "exploration_width": 8,
+        "seed": 29
+      },
+      "research_wall_seconds": 26.216994131000092,
+      "exclusive_phases_seconds": {
+        "index_validation": 0.40471943700003976,
+        "primary_open": 0.018954474999873128,
+        "external_open": 0.0005226379998930497,
+        "tree_search": 25.76111234100017,
+        "report_and_close": 0.0316852400001153
+      },
+      "nested_diagnostics_seconds_do_not_sum": {
+        "index_validation": 0.40471943700003976,
+        "primary_open": 0.018954474999873128,
+        "external_open": 0.0005226379998930497,
+        "external_or_primary_get_inclusive": 0.04454749599176466,
+        "primary_decode_inclusive": 0.7218505330054086,
+        "primary_search_inclusive": 24.98705342699691,
+        "hybrid_search_inclusive": 25.11506842200083,
+        "random_sampling_inclusive": 0.4887223579999045,
+        "primary_get_inclusive": 0.038867786018272454,
+        "tree_search": 25.76111234100017
+      },
+      "method_calls": {
+        "index_validation": 1,
+        "primary_open": 1,
+        "external_open": 1,
+        "external_or_primary_get_inclusive": 14273,
+        "primary_decode_inclusive": 6799,
+        "primary_search_inclusive": 301,
+        "hybrid_search_inclusive": 301,
+        "random_sampling_inclusive": 301,
+        "primary_get_inclusive": 12985,
+        "tree_search": 1
+      },
+      "serialization_seconds": 0.009541422999973292,
+      "raw_write_seconds": 0.005016140999941854,
+      "raw_report_bytes": 1645552,
+      "runtime_timings_seconds": {
+        "index_validation_or_build": 0.40472866499999327,
+        "corpus_open": 0.01949855399993794,
+        "tree_search": 25.761202970000113,
+        "report_assembly": 0.027377794999893013
+      },
+      "coverage": {
+        "indexed_total": 246419,
+        "indexed_imported": 234576,
+        "manifest_imported": 234576,
+        "complete_imported_index": true,
+        "imported_manifest_sha256": "a0873eace78398b23b3e78fca7ea2b920956d417ecde0cdb7c6a2f0cdcef2417",
+        "domain_filter": null,
+        "eligible_scope": 246419,
+        "all_records_examined_this_run": false,
+        "external_candidates_indexed": 15,
+        "external_candidates_by_source": {
+          "arXiv": 6,
+          "realmath": 6,
+          "zbmath": 3
+        },
+        "external_cache_enabled": true
+      },
+      "usage": {
+        "retrieval_calls": 301,
+        "global_exploration_calls": 301,
+        "primary_query_cache_hits": 66,
+        "distinct_cards_loaded": 3504,
+        "distinct_lexical_hits": 1172,
+        "distinct_exploration_hits": 2399,
+        "external_retrieval_calls": 301,
+        "distinct_external_lexical_hits": 15,
+        "distinct_cards_selected_in_tree": 167,
+        "selected_by_source_tier": {
+          "unreviewed_import": 162,
+          "unreviewed_external_source": 5
+        },
+        "actual_tree_depth": 6
+      },
+      "mcts": {
+        "requested_iterations": 300,
+        "simulations": 300,
+        "created_nodes": 301,
+        "guided_expansions": 0,
+        "policy": "uct",
+        "early_stop": false,
+        "action_mode": "stream",
+        "yielded_actions": 300,
+        "stream_exhausted_nodes": 0,
+        "plateau_stop": false
+      },
+      "path_ids": [
+        "EXT_d447e2b1ce387c624b88ae7eb69d9b7d",
+        "IM0b5441609d7c30eb2b6f95e1a23a50184a19e8156f4891e0cae08d98b8b1a6d6",
+        "IM13a622d17adc418224d5afc23e0d8fe038858f1d3b27a8843b3cdfa8c797c26e",
+        "IM23f89a2f3b9d6dfae67b4d33d4da8d3282b5cc7e5eaadf4d36f4d2dcde39c951",
+        "IM638781dcf842730f2923e11d935f82b56f708735877465fcbda9999d77d59d9c",
+        "IM75dccbcd40adef0613faba8aba3362dc606890197faac640c4d31fde47d2c11c",
+        "IM8bcaf2907eb26a6d731d99426abf3436269d25410277ea0f446ef7b1309b5374",
+        "IM9ab5faae15b4a0ec4e1ad43e4997af4a03d4dfc1d81410413bd81031496a3baa",
+        "IMae1155755c754452c1e15c88c35639cb45751ce51210af079b168026f84de65e",
+        "IMcb379d728462b9e917b192bb0d949e4aa69d007b4266cdd1e83c4ead18fd96ee",
+        "IMd05ceac257ddeacb193eea863415af64f1bb84a6266fdeb67540c53cdcb53880",
+        "IMf0a713e38c4e431b6640fa2e6980edd8fe4de4f52d5a6de88fc9fee4d3e0c22d"
+      ],
+      "path_sha256": "d1f03f455e07aa7ef45f56705ad7cc0a74febc8007a3767d70691604b7886d29",
+      "raw_report": "/home/runner/work/math-mcts-knowledge-tree/math-mcts-knowledge-tree/.cache/math_mcts/g5c_phase_benchmark/representation_alternatives_hybrid_after_2.raw.json",
+      "proof_verified": false,
+      "process_wall_seconds": 26.374811194999893
+    }
+  ],
+  "limits": [
+    "Knowledge retrieval experiment, not G5C proof.",
+    "Shared database and fixed query/seed/budget; no OS-cache flush.",
+    "Each run is a fresh process; query caches warm only inside a run.",
+    "Nested method timings overlap and must not be summed.",
+    "Hybrid quota fix can change paths; speed alone is not quality.",
+    "Public samples/metadata only; no full external datasets loaded."
+  ],
+  "statistics": [
+    {
+      "objective": "quotient_imbalance",
+      "mode": "primary",
+      "version": "before",
+      "repetitions": 3,
+      "seconds": {
+        "index_validation": {
+          "median": 0.4045600960000115,
+          "min": 0.39916429699997025,
+          "max": 0.4047179699999788
+        },
+        "primary_open": {
+          "median": 0.01860861800003022,
+          "min": 0.018605062000006,
+          "max": 0.018774721999989197
+        },
+        "external_open": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tree_search": {
+          "median": 51.394960493999974,
+          "min": 50.86647242400002,
+          "max": 51.58550926099997
+        },
+        "report_and_close": {
+          "median": 0.05076526099992407,
+          "min": 0.049779384000004256,
+          "max": 0.05114373300000352
+        },
+        "research_wall": {
+          "median": 51.86905234299991,
+          "min": 51.33958662600003,
+          "max": 52.05442235299995
+        },
+        "serialization": {
+          "median": 0.013574362999975165,
+          "min": 0.012089111000022967,
+          "max": 0.01424065799994878
+        }
+      },
+      "deterministic_paths": true
+    },
+    {
+      "objective": "quotient_imbalance",
+      "mode": "primary",
+      "version": "after",
+      "repetitions": 3,
+      "seconds": {
+        "index_validation": {
+          "median": 0.4025970099999654,
+          "min": 0.400464822999993,
+          "max": 0.40336156400007894
+        },
+        "primary_open": {
+          "median": 0.018540787000006276,
+          "min": 0.018466357999955108,
+          "max": 0.01925517699999091
+        },
+        "external_open": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tree_search": {
+          "median": 43.18771802700002,
+          "min": 41.831858689,
+          "max": 43.3698123449999
+        },
+        "report_and_close": {
+          "median": 0.053265356000054,
+          "min": 0.05226720999985446,
+          "max": 0.05465051300018331
+        },
+        "research_wall": {
+          "median": 43.66204675099999,
+          "min": 42.30602824999994,
+          "max": 43.84418285800007
+        },
+        "serialization": {
+          "median": 0.01306056200007788,
+          "min": 0.012187707000066439,
+          "max": 0.013518596000039906
+        }
+      },
+      "deterministic_paths": true
+    },
+    {
+      "objective": "quotient_imbalance",
+      "mode": "hybrid",
+      "version": "before",
+      "repetitions": 3,
+      "seconds": {
+        "index_validation": {
+          "median": 0.40178286499997284,
+          "min": 0.4016419129999349,
+          "max": 0.40596281099999487
+        },
+        "primary_open": {
+          "median": 0.019231705000038346,
+          "min": 0.019039604999989024,
+          "max": 0.02018402699991384
+        },
+        "external_open": {
+          "median": 0.000501840000026732,
+          "min": 0.0004827740000337144,
+          "max": 0.0005442289999564309
+        },
+        "tree_search": {
+          "median": 49.358879760000036,
+          "min": 49.20375089700002,
+          "max": 49.650162033000015
+        },
+        "report_and_close": {
+          "median": 0.048377630999993926,
+          "min": 0.04822819199995365,
+          "max": 0.0485914920001278
+        },
+        "research_wall": {
+          "median": 49.82842168299999,
+          "min": 49.67349549900001,
+          "max": 50.12544459200001
+        },
+        "serialization": {
+          "median": 0.013792541999919194,
+          "min": 0.012574873000005482,
+          "max": 0.014291545999981281
+        }
+      },
+      "deterministic_paths": true
+    },
+    {
+      "objective": "quotient_imbalance",
+      "mode": "hybrid",
+      "version": "after",
+      "repetitions": 3,
+      "seconds": {
+        "index_validation": {
+          "median": 0.4059888479999927,
+          "min": 0.40018414999997276,
+          "max": 0.4069052480000437
+        },
+        "primary_open": {
+          "median": 0.019061927000052492,
+          "min": 0.018808484000032877,
+          "max": 0.0197199800000476
+        },
+        "external_open": {
+          "median": 0.00048780299994177767,
+          "min": 0.0004698799999687253,
+          "max": 0.0005437979999669551
+        },
+        "tree_search": {
+          "median": 37.23348285600002,
+          "min": 36.683306523,
+          "max": 37.34404846199993
+        },
+        "report_and_close": {
+          "median": 0.0465752050000674,
+          "min": 0.0465222770001219,
+          "max": 0.046919903000002705
+        },
+        "research_wall": {
+          "median": 37.70534319600006,
+          "min": 37.15060043599999,
+          "max": 37.81708171200012
+        },
+        "serialization": {
+          "median": 0.014074839999921096,
+          "min": 0.013584180999941964,
+          "max": 0.014863507999962167
+        }
+      },
+      "deterministic_paths": true
+    },
+    {
+      "objective": "representation_alternatives",
+      "mode": "primary",
+      "version": "before",
+      "repetitions": 3,
+      "seconds": {
+        "index_validation": {
+          "median": 0.4032578169999397,
+          "min": 0.39934198299999935,
+          "max": 0.4062955229999261
+        },
+        "primary_open": {
+          "median": 0.01910771300003944,
+          "min": 0.01833041800000501,
+          "max": 0.020723527999962243
+        },
+        "external_open": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tree_search": {
+          "median": 31.314095582999983,
+          "min": 31.24624824199998,
+          "max": 31.35373212400009
+        },
+        "report_and_close": {
+          "median": 0.028990097000132664,
+          "min": 0.02888124600002584,
+          "max": 0.029067998000073203
+        },
+        "research_wall": {
+          "median": 31.760649230000013,
+          "min": 31.70225739,
+          "max": 31.80516565200014
+        },
+        "serialization": {
+          "median": 0.011294848000034108,
+          "min": 0.010144060999891735,
+          "max": 0.011631233000002794
+        }
+      },
+      "deterministic_paths": true
+    },
+    {
+      "objective": "representation_alternatives",
+      "mode": "primary",
+      "version": "after",
+      "repetitions": 3,
+      "seconds": {
+        "index_validation": {
+          "median": 0.40431151100000307,
+          "min": 0.39918659499994646,
+          "max": 0.4068142579999403
+        },
+        "primary_open": {
+          "median": 0.019398376000026474,
+          "min": 0.019026270000040313,
+          "max": 0.02987578899995924
+        },
+        "external_open": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tree_search": {
+          "median": 25.25305919499999,
+          "min": 25.124580487000003,
+          "max": 25.338814195000168
+        },
+        "report_and_close": {
+          "median": 0.029492923999669074,
+          "min": 0.029075392999970973,
+          "max": 0.029569839000032516
+        },
+        "research_wall": {
+          "median": 25.716816333999986,
+          "min": 25.57186874499996,
+          "max": 25.794519752999804
+        },
+        "serialization": {
+          "median": 0.011027535000039279,
+          "min": 0.010807983000006516,
+          "max": 0.011195288999942932
+        }
+      },
+      "deterministic_paths": true
+    },
+    {
+      "objective": "representation_alternatives",
+      "mode": "hybrid",
+      "version": "before",
+      "repetitions": 3,
+      "seconds": {
+        "index_validation": {
+          "median": 0.40297134899998355,
+          "min": 0.4023877919998995,
+          "max": 0.40471264299992527
+        },
+        "primary_open": {
+          "median": 0.019024901000022965,
+          "min": 0.018732018999912725,
+          "max": 0.01936416300009114
+        },
+        "external_open": {
+          "median": 0.0004976339999984702,
+          "min": 0.00047362699990571855,
+          "max": 0.000547115000017584
+        },
+        "tree_search": {
+          "median": 31.384295327000018,
+          "min": 31.26765324600001,
+          "max": 31.79819451100002
+        },
+        "report_and_close": {
+          "median": 0.029529171999968185,
+          "min": 0.02921426400018845,
+          "max": 0.029909301999850868
+        },
+        "research_wall": {
+          "median": 31.83742787999995,
+          "min": 31.719676301999982,
+          "max": 32.25040288299988
+        },
+        "serialization": {
+          "median": 0.01020154899993031,
+          "min": 0.00971774300001016,
+          "max": 0.010400167000057081
+        }
+      },
+      "deterministic_paths": true
+    },
+    {
+      "objective": "representation_alternatives",
+      "mode": "hybrid",
+      "version": "after",
+      "repetitions": 3,
+      "seconds": {
+        "index_validation": {
+          "median": 0.40471943700003976,
+          "min": 0.4031518340000275,
+          "max": 0.40622311100003117
+        },
+        "primary_open": {
+          "median": 0.018954474999873128,
+          "min": 0.018738032000101157,
+          "max": 0.019165937000025224
+        },
+        "external_open": {
+          "median": 0.0004918110000744491,
+          "min": 0.0004735170000458311,
+          "max": 0.0005226379998930497
+        },
+        "tree_search": {
+          "median": 25.605155502000002,
+          "min": 25.52974348600003,
+          "max": 25.76111234100017
+        },
+        "report_and_close": {
+          "median": 0.030815482999742017,
+          "min": 0.03075767299992549,
+          "max": 0.0316852400001153
+        },
+        "research_wall": {
+          "median": 26.06177574000003,
+          "min": 25.982940645999975,
+          "max": 26.216994131000092
+        },
+        "serialization": {
+          "median": 0.009861050999916188,
+          "min": 0.009541422999973292,
+          "max": 0.010249256000065543
+        }
+      },
+      "deterministic_paths": true
+    }
+  ],
+  "whole_benchmark_seconds": 1038.259904089,
+  "inputs_unchanged": true
+}
