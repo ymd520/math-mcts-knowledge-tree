@@ -1,0 +1,157 @@
+{
+  "logic": "conditional_equational",
+  "signature": {
+    "sorts": [
+      "S"
+    ],
+    "constants": {
+      "a": "S",
+      "b": "S",
+      "ok": "S"
+    },
+    "functions": {
+      "mark": {
+        "args": [
+          "S"
+        ],
+        "returns": "S"
+      },
+      "f": {
+        "args": [
+          "S"
+        ],
+        "returns": "S"
+      },
+      "g": {
+        "args": [
+          "S"
+        ],
+        "returns": "S"
+      },
+      "bad": {
+        "args": [
+          "S"
+        ],
+        "returns": "S"
+      }
+    }
+  },
+  "rules": [
+    {
+      "id": "mark_a",
+      "source": "synthetic reviewed local fixture identity",
+      "status": "reviewed",
+      "variables": {},
+      "left": {
+        "app": "mark",
+        "args": [
+          {
+            "const": "a"
+          }
+        ]
+      },
+      "right": {
+        "const": "ok"
+      }
+    }
+  ],
+  "conditional_rules": [
+    {
+      "id": "guarded_fg",
+      "source": "synthetic reviewed conditional identity",
+      "status": "reviewed",
+      "variables": {
+        "?x": "S"
+      },
+      "guards": [
+        {
+          "left": {
+            "app": "mark",
+            "args": [
+              {
+                "var": "?x"
+              }
+            ]
+          },
+          "right": {
+            "const": "ok"
+          }
+        }
+      ],
+      "left": {
+        "app": "f",
+        "args": [
+          {
+            "var": "?x"
+          }
+        ]
+      },
+      "right": {
+        "app": "g",
+        "args": [
+          {
+            "var": "?x"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unreviewed_bad",
+      "source": "synthetic untrusted hypothesis",
+      "status": "candidate",
+      "variables": {
+        "?x": "S"
+      },
+      "guards": [
+        {
+          "left": {
+            "app": "mark",
+            "args": [
+              {
+                "var": "?x"
+              }
+            ]
+          },
+          "right": {
+            "const": "ok"
+          }
+        }
+      ],
+      "left": {
+        "app": "f",
+        "args": [
+          {
+            "var": "?x"
+          }
+        ]
+      },
+      "right": {
+        "app": "bad",
+        "args": [
+          {
+            "var": "?x"
+          }
+        ]
+      }
+    }
+  ],
+  "assumptions": [],
+  "goal": {
+    "left": {
+      "app": "f",
+      "args": [
+        {
+          "const": "a"
+        }
+      ]
+    },
+    "right": {
+      "app": "g",
+      "args": [
+        {
+          "const": "a"
+        }
+      ]
+    }
+  }
+}
