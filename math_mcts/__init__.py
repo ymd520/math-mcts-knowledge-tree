@@ -30,7 +30,9 @@ from .conditional_logic import (ConditionalRule, ConditionalBook,
                                 GuardedCertificate, prove_guarded,
                                 verify_guarded_certificate)
 
-__version__ = "1.14.0"
+from .version import CATALOG_VERSION
+
+__version__ = CATALOG_VERSION
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "plan_learning_path", "search_concepts",
            "export_path_markdown", "to_dot",
