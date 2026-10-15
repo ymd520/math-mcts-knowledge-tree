@@ -68,7 +68,7 @@ class SemiNaiveTests(unittest.TestCase):
                  p("good", "?x"), (("?x", "T"),), "synthetic", "reviewed")
         book = RuleBook(signatures, objects, [r, s, t])
         facts = frozenset([p("link", "a", "b"), p("link", "b", "c"),
-                           p("link", "c", "d")])
+                           p("link", "c", "d"), p("link", "d", "a")])
         old, new, stats = compare(book, facts, p("good", "a"))
         self.assertGreater(len(new.edges), 10)
         self.assertTrue(new.complete)
