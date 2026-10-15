@@ -29,6 +29,18 @@ jobs:
         run: python tests/test_mcts_v2.py
       - name: Semi-naive vs reference Horn graph differential tests
         run: python tests/test_incremental_graph.py
+      - name: Generic incremental graph benchmark with exact-edge parity
+        run: |
+          python tools/benchmark_incremental_graph.py --repetitions 3 --depth 80 --breadth 45 --output incremental_graph_benchmark.json
+          python - <<'PY'
+          import json
+          x=json.load(open("incremental_graph_benchmark.json"))
+          assert len(x["cases"])>=5
+          for name,case in x["cases"].items():
+              assert case["exact_edge_agreement"],name
+              assert case["ground_edges"]>=0
+          print("Verified same ground hyperedges; speed not assumed")
+          PY
       - name: Compare proven closure to bounded UCT and guided PUCT
         run: |
           python tools/benchmark_mcts_v2.py --iterations 180 --output mcts_v2_benchmark.json
