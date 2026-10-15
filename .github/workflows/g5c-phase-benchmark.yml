@@ -1,0 +1,41 @@
+name: G5C paired phase benchmark
+on:
+  push:
+    branches:
+      - task/g5c-phase-benchmark
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare pinned pre-optimization source checkout
+        run: git worktree add --detach /tmp/mcts-before 9c1d97ba357ad768c04db497351f2a4f560a6906
+      - name: Compile benchmark harness
+        run: python -m compileall -q tools/benchmark_retrieval_case.py
+      - name: Paired G5C full-corpus phase timings
+        run: |
+          set -o pipefail
+          python -u tools/benchmark_retrieval_case.py \
+            --baseline-root /tmp/mcts-before --current-root "$GITHUB_WORKSPACE" \
+            --config examples/g5c_ncrh_research_case.json \
+            --output .cache/math_mcts/g5c_phase_benchmark \
+            --repetitions 3 --prefetch 2>&1 | tee g5c_phase_benchmark.log
+      - name: Retain raw evidence and per-run timings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5c-paired-phase-benchmark
+          path: |
+            .cache/math_mcts/g5c_phase_benchmark/*.json
+            g5c_phase_benchmark.log
+            examples/g5c_ncrh_research_case.json
+          retention-days: 30
+          if-no-files-found: warn
