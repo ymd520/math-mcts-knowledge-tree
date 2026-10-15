@@ -8,6 +8,22 @@
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
 搜索次数和深度不代表数学原创性或证明真实性。静态概念检索采用全量精确评分排序（不再声称检索访问次数来自 MCTS）；MCTS 仍用于知识配对和规则调度；学习路径已改为完整先修拓扑规划，避免无关随机绕路。
 
+## 通用数学多逻辑架构：类型化等式改写
+
+新增独立的**类型化等式证明层**，支持显式常量和函数签名、带类型的
+恒等式模板、函数内部改写、等式双向使用和带来源指纹的证书重放。
+使用 `logic_router` 显式选择原有 `horn` 或新 `equational` 逻辑；
+缺失类型、未审核候选与隐式见证均被拒绝，**不自动声称数学真实性**。
+
+```sh
+python tests/test_equational.py
+python tools/solve_logic.py examples/equational_right_unit.json --output result.json
+python tools/solve_logic.py examples/equational_right_unit.json --verify result.json
+```
+
+逻辑层与知识、搜索、验证层的依赖关系详见
+[通用数学逻辑分层设计](GENERAL_LOGIC_ARCHITECTURE.md)。
+
 ## 通用 MCTS v4：精准规则激活与流式搜索
 
 新增加的事实只激活相关前提谓词的规则，并减少同轮重复实例化；

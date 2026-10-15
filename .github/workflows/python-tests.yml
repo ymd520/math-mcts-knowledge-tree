@@ -80,6 +80,20 @@ jobs:
         run: python tests/test_expansion.py
       - name: Reasoning and certificates
         run: python tests/test_reasoning.py
+      - name: Typed equational layer and independently replayed multi-logic certificates
+        run: |
+          python tests/test_equational.py
+          python tools/solve_logic.py examples/equational_right_unit.json --output equational_proof_report.json
+          python tools/solve_logic.py examples/equational_right_unit.json --verify equational_proof_report.json
+          python - <<'PY'
+          import json
+          x=json.load(open("equational_proof_report.json"))
+          assert x["logic"] == "equational"
+          assert x["status"] == "proved_relative_to_equalities"
+          assert x["certificate_replayed"]
+          assert x["unverified_candidates"] == 1
+          print("Typed term rewriting and source-bound replay passed")
+          PY
       - name: Layered collision tests
         run: python tests/test_layered.py
       - name: Condition-boundary audits for additional 105 sourced Level1–3 math cards
