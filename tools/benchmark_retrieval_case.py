@@ -88,8 +88,10 @@ def worker(args):
         'method_calls': dict(calls), 'serialization_seconds': serialization,
         'raw_write_seconds': disk_write, 'raw_report_bytes': len(raw.encode()),
         'runtime_timings_seconds': report.get('timings_seconds'),
+        'retrieval_profile': report.get('retrieval_profile'),
         'coverage': report['coverage'], 'usage': report['usage'], 'mcts': report['mcts'],
         'path_ids': path_ids,
+        'trace_sha256': hashlib.sha256(json.dumps(report['retrieval_trace'], sort_keys=True).encode()).hexdigest(),
         'path_sha256': hashlib.sha256(json.dumps(report['paths'], sort_keys=True).encode()).hexdigest(),
         'raw_report': str(args.raw), 'proof_verified': report['proof_verified'],
     }

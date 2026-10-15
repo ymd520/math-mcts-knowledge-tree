@@ -19,6 +19,7 @@ from .attribution import source_credit
 from .fast_index import build_index, terms_for, catalog_fingerprint
 from .knowledge import IMPORTED_DIR, _normalize_imported_domain, _IMPORT_DOMAIN_MAP
 from .mcts import Problem, mcts
+from .fts_retrieval import ExactFTSRetriever
 
 DEFAULT_CORPUS_DB = Path('.cache') / 'math_mcts' / 'full_corpus.sqlite'
 _STOP = {'mathlib', 'theorem', 'lemma', 'def', 'instance', 'by', 'true',
@@ -98,6 +99,9 @@ class IndexedCorpus:
         # Cache belongs to this immutable read transaction, never another index.
         self._qcache = OrderedDict()
         self.query_cache_hits = 0
+        self.retriever = ExactFTSRetriever(self.db)
+        self.lexical_record_load_seconds = 0.
+        self.lexical_decode_seconds = 0.
         self.loaded_ids = set()
         self.retrieved_ids = set()
         self.explored_ids = set()
@@ -170,13 +174,7 @@ class IndexedCorpus:
             return [self.get(cid) for cid in self._qcache[key]]
         match = ' OR '.join('"' + t.replace('"', '""') + '"' for t in tokens)
         clause, values = self._filter()
-        # Rank narrow rowids first. Carrying full Lean records through the
-        # BM25 sort reads large JSON blobs for every match, not just the batch.
-        join = ' JOIN documents d ON d.rowid=term_index.rowid' if clause else ''
-        selected = self.db.execute('SELECT term_index.rowid FROM term_index' + join +
-                                   ' WHERE term_index MATCH ?' + clause +
-                                   ' ORDER BY bm25(term_index),term_index.rowid LIMIT ?',
-                                   (match, *values, limit)).fetchall()
+        selected = self.retriever.search(tokens, limit, clause=clause, values=values)
         # Cache empty hits too; repeated misses must not re-run FTS.
         if not selected:
             self._remember_query(key, ())
@@ -184,14 +182,19 @@ class IndexedCorpus:
         # One bounded IN lookup rather than one SQL round-trip per ranked hit.
         order = [item[0] for item in selected]
         placeholders = ','.join('?' for _ in order)
+        loading_at = time.perf_counter()
         loaded = {rid: (cid, blob, tier, lvl)
                   for rid, cid, blob, tier, lvl in self.db.execute(
                       'SELECT rowid,id,record,tier,level FROM documents WHERE rowid IN ('
                       + placeholders + ')', order)}
+        self.lexical_record_load_seconds += time.perf_counter() - loading_at
         rows = [loaded[rid] for rid in order]
         self.retrieved_ids.update(row[0] for row in rows)
         self._remember_query(key, tuple(row[0] for row in rows))
-        return [self._decode(row) for row in rows]
+        decoding_at = time.perf_counter()
+        cards = [self._decode(row) for row in rows]
+        self.lexical_decode_seconds += time.perf_counter() - decoding_at
+        return cards
 
     def _remember_query(self, key, ids):
         self._qcache[key] = ids
@@ -430,6 +433,9 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
                                       for cid in reported_ids],
                 'retrieval_trace': problem.trace,
                 'score_meaning': 'lexical relevance, shared vocabulary, domain breadth and depth; not mathematical validity or novelty',
+                'retrieval_profile': {**corpus.retriever.profile(),
+                    'lexical_record_load_seconds': corpus.lexical_record_load_seconds,
+                    'lexical_decode_seconds': corpus.lexical_decode_seconds},
                 'elapsed_seconds': 0.}
         finished_at = time.perf_counter()
         report['timings_seconds'] = {

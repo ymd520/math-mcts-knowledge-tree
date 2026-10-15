@@ -1,4 +1,5 @@
 """Adversarial integration checks for full-corpus dynamic knowledge retrieval."""
+import random
 import gzip
 import hashlib
 import json
@@ -227,6 +228,61 @@ class IndexedMCTSTests(unittest.TestCase):
             any(cid.startswith("EXT_") for cid in event["lexical_ids"])
             for event in report["retrieval_trace"]))
         self.assertFalse(report["proof_verified"])
+
+class ExactFTSRetrievalTests(unittest.TestCase):
+    def make_db(self, texts):
+        from math_mcts.fts_retrieval import ExactFTSRetriever
+        db = sqlite3.connect(':memory:')
+        self.addCleanup(db.close)
+        db.execute('CREATE VIRTUAL TABLE term_index USING fts5(terms)')
+        db.executemany('INSERT INTO term_index(terms) VALUES (?)', [(t,) for t in texts])
+        return db, ExactFTSRetriever(db, sparse_limit=8)
+
+    def test_randomized_top_k_agrees_with_original_including_phrase_tokens(self):
+        rng = random.Random(2901)
+        common = ['finite', 'group', 'matrix', 'left', 'right', 'energy']
+        texts = [' '.join(rng.choices(common, k=rng.randint(1, 25))) +
+                 ' rare_' + str(i % 79) for i in range(400)]
+        _, retriever = self.make_db(texts)
+        for _ in range(250):
+            tokens = sorted(rng.sample(common, rng.randint(0, 6)) +
+                            rng.sample(['rare_' + str(i) for i in range(90)],
+                                       rng.randint(1, 3)))
+            limit = rng.choice([1, 3, 10, 24, 100])
+            self.assertEqual(retriever.search(tokens, limit),
+                             retriever.full_rank(tokens, limit))
+        self.assertGreater(retriever.counts['split_queries'], 0)
+
+    def test_dense_cache_and_rowid_ties_preserve_exact_order(self):
+        _, r = self.make_db(['common'] * 100 + ['common rarea', 'common rareb'])
+        for tokens in (['common', 'rarea'], ['common', 'rareb']):
+            self.assertEqual(r.search(tokens, 5), r.full_rank(tokens, 5))
+        self.assertGreater(r.counts['dense_cache_hits'], 0)
+        self.assertEqual(r.search(['common', 'missing'], 5),
+                         r.full_rank(['common', 'missing'], 5))
+
+    def test_oversized_sparse_union_falls_back_without_truncation(self):
+        _, r = self.make_db(['sparse'] * 7 + ['other'] * 7)
+        r.pool_limit = 5
+        self.assertEqual(r.search(['other', 'sparse'], 3),
+                         r.full_rank(['other', 'sparse'], 3))
+        self.assertEqual(r.counts['pool_fallbacks'], 1)
+
+    def test_explicit_domain_retains_original_filtered_query(self):
+        db, r = self.make_db(['common rarea', 'common rareb', 'common'])
+        db.execute('CREATE TABLE documents(domain TEXT)')
+        db.executemany('INSERT INTO documents(domain) VALUES (?)', [('A',), ('B',), ('A',)])
+        kw = dict(clause=' AND d.domain=?', values=('B',))
+        self.assertEqual(r.search(['common', 'rarea'], 3, **kw),
+                         r.full_rank(['common', 'rarea'], 3, **kw))
+        self.assertEqual(r.counts['filtered_fallbacks'], 1)
+
+    def test_empty_and_dense_only_queries(self):
+        _, r = self.make_db(['common'] * 30)
+        self.assertEqual(r.search(['missing'], 3), [])
+        self.assertEqual(r.search(['common'], 3), r.full_rank(['common'], 3))
+        self.assertGreater(r.counts['dense_only_queries'], 0)
+
 
 if __name__ == '__main__':
     unittest.main()
