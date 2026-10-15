@@ -140,7 +140,8 @@ def cmd_collide(args):
         from .indexed_mcts import research_with_knowledge
         report = research_with_knowledge(
             args.seed or '', db_path=args.db, iterations=args.iterations,
-            depth=2, top_k=args.top_k, seed=args.random_seed, domain=args.domain)
+            depth=2, top_k=args.top_k, seed=args.random_seed, domain=args.domain,
+            **({'external_db_path': args.external_db} if getattr(args, 'external_db', None) else {}))
         print(json.dumps(report, ensure_ascii=False, indent=2))
         return
     print('Explicit scope: curated catalog (imported difficulty is unrated).')
@@ -165,7 +166,8 @@ def cmd_research(args):
         args.objective, db_path=args.db, iterations=args.iterations,
         depth=args.depth, retrieval_width=args.retrieval_width,
         exploration_width=args.exploration_width, seed=args.seed,
-        top_k=args.top_k, domain=args.domain)
+        top_k=args.top_k, domain=args.domain,
+        **({'external_db_path': args.external_db} if getattr(args, 'external_db', None) else {}))
     if args.output:
         args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n',
                                encoding='utf-8')
@@ -351,12 +353,14 @@ def main():
     co.add_argument("--top_k", type=int, default=5)
     co.add_argument("--iterations", type=int, default=3000)
     co.add_argument("--db", type=Path, help="完整语料索引；省略则自动构建/复用全量缓存")
+    co.add_argument("--external-db", type=Path, help="显式接入本地、待审外部文献候选缓存")
     co.add_argument("--curated-only", action="store_true", help="显式仅用精选库的旧配对接口")
     co.add_argument("--random-seed", type=int, default=7)
     co.set_defaults(func=cmd_collide)
     kr = sub.add_parser("research", help="全量知识库驱动的动态多层MCTS；输出研究线索及实际调用日志")
     kr.add_argument("objective", nargs="?", default="")
     kr.add_argument("--db", type=Path, help="须完整覆盖导入语料；省略则自动管理全量缓存")
+    kr.add_argument("--external-db", type=Path, help="显式接入本地、待审外部文献候选缓存")
     kr.add_argument("--iterations", type=int, default=1000)
     kr.add_argument("--depth", type=int, default=20)
     kr.add_argument("--retrieval-width", type=int, default=24)
