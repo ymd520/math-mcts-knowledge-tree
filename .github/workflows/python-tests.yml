@@ -80,6 +80,21 @@ jobs:
         run: python tests/test_expansion.py
       - name: Reasoning and certificates
         run: python tests/test_reasoning.py
+      - name: Finite quantifiers and guarded equality adversarial proof checks
+        run: |
+          python tests/test_logic_v6.py
+          python tools/solve_logic.py examples/finite_quantifier_implication.json --output finite_proof.json
+          python tools/solve_logic.py examples/finite_quantifier_implication.json --verify finite_proof.json
+          python tools/solve_logic.py examples/conditional_guarded_equality.json --output guarded_proof.json
+          python tools/solve_logic.py examples/conditional_guarded_equality.json --verify guarded_proof.json
+          python - <<'PY'
+          import json
+          a=json.load(open("finite_proof.json"))
+          b=json.load(open("guarded_proof.json"))
+          assert a["certificate_replayed"] and a["instantiated_quantifier_cases"] == 2
+          assert b["certificate_replayed"] and b["unverified_candidates"] == 1
+          print("Finite instantiation and guarded prerequisites independently replayed")
+          PY
       - name: Typed equational layer and independently replayed multi-logic certificates
         run: |
           python tests/test_equational.py
