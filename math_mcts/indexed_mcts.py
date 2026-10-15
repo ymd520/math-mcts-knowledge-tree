@@ -313,7 +313,7 @@ class KnowledgeMCTSProblem(Problem):
 def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
                             depth=20, retrieval_width=24, exploration_width=8,
                             seed=7, top_k=5, domain=None,
-                            imported_root=IMPORTED_DIR):
+                            imported_root=IMPORTED_DIR, external_db_path=None):
     """The standard full-corpus research entry point, with fail-closed coverage.
 
     An omitted db_path manages a full runtime cache automatically. An explicitly
@@ -332,6 +332,13 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
         path = Path(db_path)
         coverage = validate_full_index(path, imported_root=imported_root)
     corpus = IndexedCorpus(path, domain=domain)
+    if external_db_path is not None:
+        from .literature_bridge import HybridCorpus
+        try:
+            corpus = HybridCorpus(corpus, external_db_path)
+        except Exception:
+            corpus.close()
+            raise
     try:
         problem = KnowledgeMCTSProblem(corpus, objective, depth=depth,
                                       retrieval_width=retrieval_width,
@@ -373,12 +380,16 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
                              'complete_imported_index': True,
                              'imported_manifest_sha256': coverage['imported_manifest_sha256'],
                              'domain_filter': domain, 'eligible_scope': corpus.scope_count,
-                             'all_records_examined_this_run': len(corpus.loaded_ids) == corpus.total},
+                             'all_records_examined_this_run': len(corpus.loaded_ids) == corpus.total,
+                             'external_candidates_indexed': getattr(corpus, 'external_count', 0),
+                             'external_cache_enabled': external_db_path is not None},
                 'usage': {'retrieval_calls': corpus.search_calls,
                           'global_exploration_calls': corpus.sample_calls,
                           'distinct_cards_loaded': len(corpus.loaded_ids),
                           'distinct_lexical_hits': len(corpus.retrieved_ids),
                           'distinct_exploration_hits': len(corpus.explored_ids),
+                          'external_retrieval_calls': getattr(corpus, 'external_search_calls', 0),
+                          'distinct_external_lexical_hits': len(getattr(corpus, 'external_retrieved_ids', ())),
                           'distinct_cards_selected_in_tree': len(problem.selected_ids),
                           'selected_by_source_tier': tiers_used,
                           'actual_tree_depth': problem.maximum_expanded_depth},
