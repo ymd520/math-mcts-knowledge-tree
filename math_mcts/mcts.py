@@ -230,7 +230,12 @@ def mcts(problem: Problem, iterations: int = 1000,
                        key=lambda ch: ch.uct(exploration, problem, policy))
             depth += 1
         # Simulated value is not necessarily the value of the expanded node.
-        value = problem.simulate(node.state, rng, max_depth - depth)
+        # Streaming mode evaluates the expanded frontier rather than running
+        # a default random rollout that would materialize potentially millions
+        # of actions through Problem.actions(). The caller must provide a
+        # meaningful intermediate-state reward/heuristic if desired.
+        value = (problem.reward(node.state) if action_mode == "stream"
+                 else problem.simulate(node.state, rng, max_depth - depth))
         if not math.isfinite(value):
             raise ValueError("Simulation reward must be finite")
         stats["simulations"] += 1
