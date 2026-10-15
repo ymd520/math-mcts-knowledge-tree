@@ -1,5 +1,11 @@
 # 更新日志
 
+## Unreleased
+
+- Add an optional bounded NumPy phrase-score cache with original-query SQLite rescoring and standard-library fallback; preserve full-index scope and deterministic ties.
+- Add retrieval substage timings, complete-trace G5C comparisons and reproducible negative experiments; see benchmarks/g5c_vector_20261015/REPORT.md.
+- Correct Linux per-exec peak-RSS measurement to use VmHWM instead of an inherited getrusage high-water mark.
+
 ## [1.14.1] - 2026-10-15
 
 ### 新增
