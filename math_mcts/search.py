@@ -244,22 +244,7 @@ class CollisionProblem(Problem):
         self.diversity_axis = diversity_axis
         self.seed = tree.find(seed).id if seed else None
 
-    def _group_key(self, concept):
-        return (concept.domain_cn if self.diversity_axis == "domain"
-                else (concept.domain_cn, concept.branch_cn))
 
-    def _different_group(self, a, b):
-        return self._group_key(a) != self._group_key(b)
-
-    def _pair_score(self, a: str, b: str) -> float:
-        value = collision_score(self.tree, a, b)
-        # Only the explicit cross-branch search mode adds a small domain-local
-        # diversity heuristic; no proof, importance or novelty is implied.
-        ca, cb = self.tree.get(a), self.tree.get(b)
-        if (self.diversity_axis == "branch" and ca.domain_cn == cb.domain_cn
-                and ca.branch_cn != cb.branch_cn):
-            value += 0.2
-        return round(value, 3)
         # 规模优化: 候选搭档改为懒计算. 原先 __init__ 里对每个概念全量配对
         # 是 O(N²)(4588 规模约 2100 万次比较, 23 万规模则不可行);
         # 现在只在 MCTS 实际访问到某个概念时才计算其候选, 并缓存.
@@ -286,6 +271,23 @@ class CollisionProblem(Problem):
         per_group = max(1, self.CAND_CAP // max(1, len(groups)))
         selected = {cid for group in groups.values() for cid in group[:per_group]}
         self._roots = sorted(selected | {cid for cid in curated if cid in tree.by_id})
+
+    def _group_key(self, concept):
+        return (concept.domain_cn if self.diversity_axis == "domain"
+                else (concept.domain_cn, concept.branch_cn))
+
+    def _different_group(self, a, b):
+        return self._group_key(a) != self._group_key(b)
+
+    def _pair_score(self, a: str, b: str) -> float:
+        value = collision_score(self.tree, a, b)
+        # Only the explicit cross-branch search mode adds a small domain-local
+        # diversity heuristic; no proof, importance or novelty is implied.
+        ca, cb = self.tree.get(a), self.tree.get(b)
+        if (self.diversity_axis == "branch" and ca.domain_cn == cb.domain_cn
+                and ca.branch_cn != cb.branch_cn):
+            value += 0.2
+        return round(value, 3)
 
     def _cands_for(self, cid: str) -> list[str]:
         """某概念的跨领域候选搭档(标签优先级截断到 CAND_CAP), 懒计算+缓存.
