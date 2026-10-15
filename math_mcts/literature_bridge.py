@@ -161,6 +161,8 @@ class HybridCorpus:
                 "SELECT COUNT(*) FROM external_terms").fetchone()[0]
             if fts_count != self.external_count:
                 raise ValueError("External candidate FTS index inconsistent")
+            self.source_counts = dict(self.external.execute(
+                "SELECT source,COUNT(*) FROM external_candidates GROUP BY source"))
         except (sqlite3.DatabaseError, ValueError):
             self.external.close()
             raise ValueError("Invalid or incomplete external literature cache")
@@ -193,6 +195,7 @@ class HybridCorpus:
             "source_tier": "unreviewed_external_source",
             "difficulty_level": None, "verification_status": "pending",
             "curation_status": "unreviewed_external_source",
+            "source_kind": row["kind"],
             "proof_verified_by_this_search": False,
             "attribution": {
                 "source_project": row["source"], "source_project_url": row["source_url"],
@@ -202,6 +205,7 @@ class HybridCorpus:
                 "paper_title": row.get("paper_title"), "authors": authors,
                 "original_source": row.get("original_source", row["source"]),
                 "external_id": row.get("external_id"),
+                "doi": row.get("doi"),
                 "original_kind": row.get("original_kind", row["kind"]),
                 "license": row["license"], "license_verified": False,
                 "source_precision": row.get("source_precision"),
@@ -253,11 +257,27 @@ class HybridCorpus:
             ids = self._qcache[key]
             self._qcache.move_to_end(key)
         else:
-            ids = [r[0] for r in self.external.execute(
-                "SELECT e.id FROM external_terms t JOIN external_candidates e "
-                "ON e.rowid=t.rowid WHERE external_terms MATCH ? "
+            # Retrieve a bounded ID-only shortlist, not full text blobs.
+            # Balance providers so one huge dataset cannot eclipse the rest.
+            shortlist = self.external.execute(
+                "SELECT e.id,e.source,e.normalized_statement_sha256 "
+                "FROM external_terms t JOIN external_candidates e ON e.rowid=t.rowid "
+                "WHERE external_terms MATCH ? "
                 "ORDER BY bm25(external_terms),e.id LIMIT ?",
-                (expression, external_limit)).fetchall()]
+                (expression, min(200, max(external_limit * 16, 32)))).fetchall()
+            groups = {}
+            seen_hashes = set()
+            for cid, source, digest in shortlist:
+                if digest in seen_hashes:
+                    continue  # lexical duplicate; never claim semantic equivalence
+                seen_hashes.add(digest)
+                groups.setdefault(source, []).append(cid)
+            ids = []
+            # Source buckets keep original BM25 order within each provider.
+            while len(ids) < external_limit and any(groups.values()):
+                for group in groups.values():
+                    if group and len(ids) < external_limit:
+                        ids.append(group.pop(0))
             self._qcache[key] = ids
             if len(self._qcache) > 128:
                 self._qcache.popitem(last=False)

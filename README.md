@@ -441,3 +441,15 @@ credit, author metadata when supplied, source URL, statement locator, content
 snapshot and unknown-license status are retained. Nothing is promoted to a
 verified theorem or redistributed by the bridge. Do not treat this feature as
 an automatic proof or novelty check.
+
+
+## Six-source evidence retrieval
+
+See [SIX_SOURCE_INTEGRATION.md](SIX_SOURCE_INTEGRATION.md) for provider-specific
+interfaces, required user permissions, license and original-author attribution,
+streaming ingestion, bounded cross-source MCTS retrieval, and verification limits.
+
+Existing pinned mathlib4 corpus remains mandatory; TheoremSearch, zbMATH,
+S2ORC, RealMath, and MathPile are explicitly opted in as unverified local
+candidates. Gated MathPile content is never downloaded without the user's
+own authenticated access and source-license acknowledgement.
