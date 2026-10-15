@@ -337,13 +337,16 @@ def query_for_research(db_path: str | Path, query: str, *,
 
 def collide_for_research(db_path: str | Path, *, seed: str | None = None,
                          limit=100, top_k=5, iterations=300,
-                         base_tree: KnowledgeTree | None = None) -> list[dict]:
-    """Run actual two-step existing MCTS collision search on quarantined candidates."""
+                         base_tree: KnowledgeTree | None = None,
+                         diversity_axis: str = "domain") -> list[dict]:
+    """Run actual MCTS with explicit domain- or branch-diversity constraints."""
     tree = candidate_tree(db_path,limit=limit,base_tree=base_tree)
-    pairs = collide_concepts(tree,seed=seed,top_k=top_k,iterations=iterations)
+    pairs = collide_concepts(tree,seed=seed,top_k=top_k,iterations=iterations,
+                             diversity_axis=diversity_axis)
     return [{
         "a":a.id, "b":b.id, "a_title":a.cn, "b_title":b.cn,
         "heuristic_collision_score":score,
+        "diversity_axis":diversity_axis,
         "conjecture_only":True, "proof_verified":False,
         "reviewed_rule_created":False,
     } for a,b,score,_ in pairs]
