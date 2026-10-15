@@ -27,6 +27,25 @@ jobs:
         run: python tests/test_mcts.py
       - name: Ground Horn closure and guided MCTS adversarial tests
         run: python tests/test_mcts_v2.py
+      - name: Generic lazy UCT and delta-index adversarial tests
+        run: python tests/test_generic_search_v4.py
+      - name: Measure generic delta-index and wide-action memory proxy
+        run: |
+          python tools/benchmark_generic_v4.py --chain 100 --width 60000 --iterations 15 --output mcts_generic_v4_benchmark.json
+          python - <<'PY'
+          import json
+          x=json.load(open("mcts_generic_v4_benchmark.json"))
+          assert x["chain"]["exact_edge_sets_equal"]
+          assert x["chain"]["proof_replayed"]
+          assert x["chain"]["activated_rule_checks"] <= 103
+          assert x["chain"]["avoided_rule_checks"] >= 4000
+          a=x["wide_branching"]["methods"]
+          assert a["eager"]["candidate_actions_materialized"]==60000
+          assert a["stream"]["candidate_actions_materialized"]==0
+          assert 0 < a["stream"]["candidate_actions_yielded"] <= 15
+          assert a["stream"]["actual_simulations"]==15
+          print("Verified delta-index correctness and bounded stream enumeration")
+          PY
       - name: Semi-naive vs reference Horn graph differential tests
         run: python tests/test_incremental_graph.py
       - name: Generic incremental graph benchmark with exact-edge parity
