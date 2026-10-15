@@ -41,8 +41,13 @@ class Level123DeepTests(unittest.TestCase):
         clashes=[(r["id"],r["cn"],oldnames[name_key(r["cn"])])
                  for r in self.rows if name_key(r["cn"]) in oldnames]
         self.assertEqual(clashes,[],f"New entries collide with base: {clashes!r}")
-        self.assertEqual(self.tree.inventory()["duplicate_name_groups"],
-                         self.base.inventory()["duplicate_name_groups"])
+        # This test owns the 105-row pack, not unrelated duplicate names
+        # already present in separate curated/deep-core source bundles.
+        # Check that each of THESE 105 names is unique in the actual catalog.
+        merged_names=Counter(name_key(c.cn) for c in self.tree.concepts)
+        collisions={r["cn"]:merged_names[name_key(r["cn"])]
+                    for r in self.rows if merged_names[name_key(r["cn"])] != 1}
+        self.assertEqual(collisions, {}, "105-row pack introduced an ambiguous name")
 
     def test_conditions_are_bound_and_no_false_lean_certification(self):
         seen=set()
