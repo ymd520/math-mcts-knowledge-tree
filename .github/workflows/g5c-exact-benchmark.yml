@@ -7,6 +7,7 @@ permissions:
   contents: read
 jobs:
   benchmark:
+    if: ${{ !contains(github.event.head_commit.message, '[fts-pilot]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 55
     steps:
@@ -55,3 +56,28 @@ jobs:
             examples/g5c_ncrh_research_case.json
           retention-days: 30
           if-no-files-found: warn
+
+  parameter-screen:
+    if: ${{ contains(github.event.head_commit.message, '[fts-pilot]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Screen exact retrieval parameters on full index
+        run: |
+          set -o pipefail
+          python -u tools/tune_fts_retrieval.py \
+            --queries benchmarks/g5c_20261015/exact_tuning_queries.json \
+            --output .cache/math_mcts/g5c_fts_tuning 2>&1 | tee g5c_fts_tuning.log
+      - name: Retain parameter-screen evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5c-exact-parameter-screen
+          path: |
+            .cache/math_mcts/g5c_fts_tuning/summary.json
+            g5c_fts_tuning.log
+          retention-days: 30
