@@ -1,0 +1,21 @@
+{
+  "case_id": "G5C-NCRH-20261015",
+  "mathematical_problem": "G finite group of order m^2; A subset G with cardinality m. Prove z2=m^2-|AA| >= c*m with universal c>0. Existing conditional estimate z2+Delta/(4m)>=m(m-1)/(m+1). Seek general structural control for high quotient imbalance Delta, in arbitrary finite groups; do not assume Abelian group, normal subset or small representation degree.",
+  "objectives": [
+    {
+      "label": "quotient_imbalance",
+      "query": "finite nonabelian groups left right quotient multiplicity imbalance conjugacy class Fourier matrix commutator product set energy",
+      "iterations": 400
+    },
+    {
+      "label": "representation_alternatives",
+      "query": "non-normal nilpotent Fourier blocks matrix self commutator product convolution finite simple groups approximate factorization",
+      "iterations": 300
+    }
+  ],
+  "depth": 20,
+  "retrieval_width": 24,
+  "exploration_width": 8,
+  "seed": 29,
+  "external_prefetch_limit": 6
+}
