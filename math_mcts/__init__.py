@@ -40,6 +40,7 @@ from .ai_knowledge import (
 from .field_audit import audit_fields, load_taxonomy, choose_audit_queue
 
 from .version import CATALOG_VERSION
+from .indexed_mcts import research_with_knowledge, validate_full_index, ensure_full_index
 
 __version__ = CATALOG_VERSION
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
@@ -64,6 +65,7 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "validate_pack", "ingest_ai_pack", "ingest_ai_file",
            "ai_knowledge_inventory", "search_ai_candidates",
            "ai_candidate_tree", "query_for_research", "collide_for_research",
-           "audit_fields", "load_taxonomy", "choose_audit_queue"]
+           "audit_fields", "load_taxonomy", "choose_audit_queue",
+           "research_with_knowledge", "validate_full_index", "ensure_full_index"]
 
 

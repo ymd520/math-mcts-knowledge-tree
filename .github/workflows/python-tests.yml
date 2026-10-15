@@ -29,6 +29,21 @@ jobs:
         run: python tests/test_mcts_v2.py
       - name: Generic lazy UCT and delta-index adversarial tests
         run: python tests/test_generic_search_v4.py
+      - name: Complete-corpus runtime and per-state retrieval adversarial tests
+        run: python tests/test_indexed_mcts.py
+      - name: Build ALL imported knowledge and exercise dynamic MCTS retrieval
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/build_search_index.py --db full_corpus.sqlite --summary full_index_status.json
+          python tools/benchmark_indexed_mcts.py --db full_corpus.sqlite --iterations 80 --depth 6 --output full_corpus_mcts_benchmark.json
+      - name: Publish complete-corpus usage evidence
+        if: matrix.python-version == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-corpus-mcts-usage
+          path: |
+            full_index_status.json
+            full_corpus_mcts_benchmark.json
       - name: Measure generic delta-index and wide-action memory proxy
         run: |
           python tools/benchmark_generic_v4.py --chain 100 --width 60000 --iterations 15 --output mcts_generic_v4_benchmark.json

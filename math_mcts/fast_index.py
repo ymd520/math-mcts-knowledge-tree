@@ -16,10 +16,29 @@ import os
 import re
 import sqlite3
 
-from .knowledge import IMPORTED_DIR, KnowledgeTree
+from .knowledge import IMPORTED_DIR, DATA_PATH, KnowledgeTree
 from .attribution import source_credit
 
 _WORD = re.compile(r"[a-z0-9_]+|[\u4e00-\u9fff]+", re.I)
+
+
+def catalog_fingerprint() -> str:
+    """Hash the actual inputs used by KnowledgeTree.load, not a copied version."""
+    from .catalog import PACK_DIR
+    from .deep_core import SEED_PATH
+    manifest_path = PACK_DIR / 'manifest.json'
+    manifest = json.loads(manifest_path.read_bytes())
+    paths = [DATA_PATH, manifest_path, SEED_PATH]
+    for entry in manifest['packs']:
+        path = (PACK_DIR / entry['file']).resolve()
+        if path.parent != PACK_DIR.resolve():
+            raise ValueError('Pack path escapes catalog directory')
+        paths.append(path)
+    digest = hashlib.sha256()
+    for path in paths:
+        digest.update(path.name.encode())
+        digest.update(hashlib.sha256(path.read_bytes()).digest())
+    return digest.hexdigest()
 
 
 def terms_for(text: str) -> list[str]:
@@ -50,7 +69,7 @@ def _insert(conn, row: dict, tier: str, level: int | None):
                  (rid, " ".join(terms_for(searchable))))
 
 
-def build_index(db_path: str | Path, *, candidate_limit: int = 100000,
+def build_index(db_path: str | Path, *, candidate_limit: int | None = None,
                 include_curated: bool = True, include_imported: bool = True,
                 imported_root: str | Path = IMPORTED_DIR) -> dict:
     """Build atomically; imported selection round-robins domains, not source order.
@@ -59,8 +78,8 @@ def build_index(db_path: str | Path, *, candidate_limit: int = 100000,
     Reject malformed shards and duplicate identifiers instead of silently
     changing their meaning. This index may be rebuilt from immutable sources.
     """
-    if candidate_limit < 0:
-        raise ValueError("candidate_limit must be nonnegative")
+    if candidate_limit is not None and (type(candidate_limit) is not int or candidate_limit < 0):
+        raise ValueError("candidate_limit must be nonnegative or None (all records)")
     output = Path(db_path)
     output.parent.mkdir(parents=True, exist_ok=True)
     temp = output.with_name(output.name + ".building")
@@ -70,9 +89,11 @@ def build_index(db_path: str | Path, *, candidate_limit: int = 100000,
         conn.execute("CREATE TABLE documents (id TEXT PRIMARY KEY, tier TEXT NOT NULL, "
                      "level INTEGER, domain TEXT NOT NULL, record TEXT NOT NULL)")
         conn.execute("CREATE INDEX ix_tier_level ON documents(tier, level)")
+        conn.execute("CREATE INDEX ix_domain ON documents(domain)")
         conn.execute("CREATE VIRTUAL TABLE term_index USING fts5(terms, tokenize='unicode61')")
         conn.execute("CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL)")
-        imported_count = 0
+        imported_count = staged_count = expected_imported = 0
+        manifest_sha256 = ""
         if include_curated:
             tree = KnowledgeTree.load()
             for c in tree.concepts:
@@ -80,7 +101,13 @@ def build_index(db_path: str | Path, *, candidate_limit: int = 100000,
         curated_count = conn.execute("SELECT COUNT(*) FROM documents").fetchone()[0]
         if include_imported:
             root = Path(imported_root)
-            manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+            manifest_bytes = (root / "manifest.json").read_bytes()
+            manifest_sha256 = hashlib.sha256(manifest_bytes).hexdigest()
+            manifest = json.loads(manifest_bytes)
+            expected_imported = sum(item["card_count"] for item in manifest["files"])
+            for count_key in ("expected_cards", "imported_cards"):
+                if count_key in manifest and manifest[count_key] != expected_imported:
+                    raise ValueError("Imported manifest total differs from shard counts")
             conn.execute("CREATE TABLE staging (id TEXT PRIMARY KEY, domain TEXT NOT NULL, "
                          "record TEXT NOT NULL)")
             seen_statements = set()
@@ -99,7 +126,7 @@ def build_index(db_path: str | Path, *, candidate_limit: int = 100000,
                     # The source data has placeholder level 5 and pending review.
                     # The raw original grade is retained in record for audit.
                     if not row.get("formal") and not row.get("definition"):
-                        continue
+                        raise ValueError("Imported record lacks a statement: " + row["id"])
                     source_hash = row.get("original_metadata", {}).get("陈述SHA256")
                     if source_hash:
                         if source_hash in seen_statements:
@@ -115,16 +142,26 @@ def build_index(db_path: str | Path, *, candidate_limit: int = 100000,
                           (PARTITION BY domain ORDER BY id) AS domain_rank
                       FROM staging
                       ) ORDER BY domain_rank, domain, id LIMIT ?"""
-            for (blob,) in conn.execute(query, (candidate_limit,)):
+            for (blob,) in conn.execute(query, (-1 if candidate_limit is None else candidate_limit,)):
                 row = json.loads(blob)
                 _insert(conn, row, "unreviewed_import", None)
                 imported_count += 1
             conn.execute("DROP TABLE staging")
+            if staged_count != expected_imported:
+                raise ValueError("Imported corpus coverage mismatch")
         conn.execute("INSERT INTO metadata VALUES('schema', '1')")
         conn.execute("INSERT INTO metadata VALUES('curated_count', ?)",
                      (str(curated_count),))
         conn.execute("INSERT INTO metadata VALUES('unreviewed_candidate_count', ?)",
                      (str(imported_count),))
+        for key, value in {
+            "available_imported_count": expected_imported,
+            "indexed_all_imports": int(include_imported and imported_count == expected_imported),
+            "imported_manifest_sha256": manifest_sha256,
+            "candidate_limit": "all" if candidate_limit is None else candidate_limit,
+            "curated_input_sha256": catalog_fingerprint() if include_curated else '',
+        }.items():
+            conn.execute("INSERT INTO metadata VALUES(?,?)", (key, str(value)))
         conn.execute("INSERT INTO metadata VALUES('target_important_l1_l4', '100000')")
         conn.execute("PRAGMA optimize")
         conn.commit()
