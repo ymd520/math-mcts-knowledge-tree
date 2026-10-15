@@ -91,6 +91,8 @@ def _indexed_module_counts(path: str | Path) -> tuple[dict,dict]:
         c["registration:"+status]+=count
         c["importance:"+importance]+=count
         c["grade_assigned" if level is not None else "grade_unassigned"]+=count
+        if tier=="unreviewed_import":
+            c["imported_grade_unassigned" if level is None else "imported_grade_assigned"]+=count
         diagnostics["indexed_source_records"]+=count
     return by_module,dict(diagnostics)
 
@@ -165,7 +167,7 @@ def audit_fields(*, tree: KnowledgeTree | None = None,
             "indexed_curated_records":evidence.get("tier:curated") if indexed_db is not None else None,
             "indexed_source_registered":evidence.get("registration:source_statement_registered") if indexed_db is not None else None,
             "indexed_imported_importance_unrated":evidence.get("importance:importance_unrated") if indexed_db is not None else None,
-            "indexed_imported_grade_unassigned":evidence.get("grade_unassigned") if indexed_db is not None else None,
+            "indexed_imported_grade_unassigned":evidence.get("imported_grade_unassigned",0) if indexed_db is not None else None,
             "independent_theorem_proof_count":None,
             "coverage_work_label":gap,
         })
