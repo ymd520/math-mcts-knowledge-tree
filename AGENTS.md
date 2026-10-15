@@ -33,3 +33,9 @@ These rules apply whenever ChatGPT or another coding agent changes this reposito
 - Do not mark a card as formally proved or independently verified without the corresponding review.
 - State accurately whether a feature uses MCTS, exact ranking, or another retrieval method.
 
+
+## Model-guided full-corpus search
+- Before planning or running knowledge-backed research, read [MODEL_SEARCH_GUIDANCE.md](MODEL_SEARCH_GUIDANCE.md) and follow its model-to-search planning protocol.
+- Propose revisable directions/priors across direct, structural-transfer and open exploration; preserve a positive open-exploration budget and all-indexed retrieval scope.
+- Treat model priors as budget suggestions, never proof rewards or permanent knowledge exclusions. Keep Discovery and Verification evidence separate.
+- The protocol is guidance, not a runtime feature: do not claim the current research CLI accepts plan JSON, weighted PUCT, or automatic replanning. Use supported calls and record actual budget/IDs.
