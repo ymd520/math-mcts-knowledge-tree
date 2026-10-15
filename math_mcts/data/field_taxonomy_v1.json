@@ -1,0 +1,766 @@
+{
+  "schema": "math-mcts-field-taxonomy-v1",
+  "interpretation": "field names and prefix lists are editorial multi-label classification aids, never verified mathematical completeness",
+  "fields": [
+    {
+      "id": "F01",
+      "domain": "数学基础",
+      "field": "集合论与基数理论",
+      "module_prefixes": [
+        "Mathlib.SetTheory",
+        "Mathlib.Order"
+      ],
+      "curated_title_terms": [
+        "集合论",
+        "基数",
+        "序数",
+        "cardinal",
+        "ordinal"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "F02",
+      "domain": "数学基础",
+      "field": "命题逻辑与证明论",
+      "module_prefixes": [
+        "Mathlib.Logic",
+        "Mathlib.Data.Bool"
+      ],
+      "curated_title_terms": [
+        "命题逻辑",
+        "证明",
+        "proof",
+        "logic"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "F03",
+      "domain": "数学基础",
+      "field": "模型论",
+      "module_prefixes": [
+        "Mathlib.ModelTheory"
+      ],
+      "curated_title_terms": [
+        "模型论",
+        "model theory"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "F04",
+      "domain": "数学基础",
+      "field": "可计算性与递归理论",
+      "module_prefixes": [
+        "Mathlib.Computability"
+      ],
+      "curated_title_terms": [
+        "可计算",
+        "递归",
+        "computability"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "F05",
+      "domain": "数学基础",
+      "field": "范畴论",
+      "module_prefixes": [
+        "Mathlib.CategoryTheory"
+      ],
+      "curated_title_terms": [
+        "范畴",
+        "函子",
+        "category",
+        "functor"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "F06",
+      "domain": "数学基础",
+      "field": "序理论与格论",
+      "module_prefixes": [
+        "Mathlib.Order",
+        "Mathlib.Algebra.Order"
+      ],
+      "curated_title_terms": [
+        "偏序",
+        "格论",
+        "lattice",
+        "order theory"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "F07",
+      "domain": "数学基础",
+      "field": "类型论与形式化验证",
+      "module_prefixes": [
+        "Mathlib.Lean",
+        "Mathlib.Logic",
+        "Mathlib.Tactic"
+      ],
+      "curated_title_terms": [
+        "类型论",
+        "形式化",
+        "type theory",
+        "Lean"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "A01",
+      "domain": "代数",
+      "field": "群论",
+      "module_prefixes": [
+        "Mathlib.GroupTheory",
+        "Mathlib.Algebra.Group"
+      ],
+      "curated_title_terms": [
+        "群论",
+        "子群",
+        "group",
+        "subgroup"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "A02",
+      "domain": "代数",
+      "field": "环论与交换代数",
+      "module_prefixes": [
+        "Mathlib.RingTheory",
+        "Mathlib.Algebra.Ring",
+        "Mathlib.Algebra.Comm"
+      ],
+      "curated_title_terms": [
+        "交换代数",
+        "环论",
+        "理想",
+        "commutative algebra"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "A03",
+      "domain": "代数",
+      "field": "线性代数与矩阵",
+      "module_prefixes": [
+        "Mathlib.LinearAlgebra",
+        "Mathlib.Data.Matrix"
+      ],
+      "curated_title_terms": [
+        "矩阵",
+        "线性",
+        "matrix",
+        "linear algebra"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "A04",
+      "domain": "代数",
+      "field": "表示论",
+      "module_prefixes": [
+        "Mathlib.RepresentationTheory"
+      ],
+      "curated_title_terms": [
+        "表示论",
+        "character theory",
+        "representation"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "A05",
+      "domain": "代数",
+      "field": "李代数与李群",
+      "module_prefixes": [
+        "Mathlib.Algebra.Lie",
+        "Mathlib.Geometry.Manifold.Algebra"
+      ],
+      "curated_title_terms": [
+        "李代数",
+        "李群",
+        "Lie algebra"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "A06",
+      "domain": "代数",
+      "field": "同调代数",
+      "module_prefixes": [
+        "Mathlib.Algebra.Homology"
+      ],
+      "curated_title_terms": [
+        "同调代数",
+        "导出函子",
+        "homological",
+        "homology"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "A07",
+      "domain": "代数",
+      "field": "代数几何",
+      "module_prefixes": [
+        "Mathlib.AlgebraicGeometry"
+      ],
+      "curated_title_terms": [
+        "代数几何",
+        "scheme",
+        "概形",
+        "algebraic geometry"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "A08",
+      "domain": "代数",
+      "field": "代数数论与伽罗瓦理论",
+      "module_prefixes": [
+        "Mathlib.NumberTheory",
+        "Mathlib.FieldTheory"
+      ],
+      "curated_title_terms": [
+        "代数数论",
+        "伽罗瓦",
+        "galois",
+        "number field"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "A09",
+      "domain": "代数",
+      "field": "域论与多项式",
+      "module_prefixes": [
+        "Mathlib.FieldTheory",
+        "Mathlib.Algebra.Polynomial"
+      ],
+      "curated_title_terms": [
+        "域扩张",
+        "多项式",
+        "field extension",
+        "polynomial"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "A10",
+      "domain": "代数",
+      "field": "解析数论与模形式",
+      "module_prefixes": [
+        "Mathlib.NumberTheory.ModularForms",
+        "Mathlib.NumberTheory.PrimeCounting"
+      ],
+      "curated_title_terms": [
+        "模形式",
+        "解析数论",
+        "modular form",
+        "prime counting"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "N01",
+      "domain": "分析",
+      "field": "实分析与测度收敛",
+      "module_prefixes": [
+        "Mathlib.Analysis.SpecialFunctions",
+        "Mathlib.Analysis.Calculus"
+      ],
+      "curated_title_terms": [
+        "实分析",
+        "收敛",
+        "real analysis",
+        "convergence"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "N02",
+      "domain": "分析",
+      "field": "泛函分析与算子理论",
+      "module_prefixes": [
+        "Mathlib.Analysis.Normed",
+        "Mathlib.Analysis.InnerProductSpace",
+        "Mathlib.Analysis.CStarAlgebra"
+      ],
+      "curated_title_terms": [
+        "泛函分析",
+        "算子",
+        "Banach",
+        "Hilbert"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "N03",
+      "domain": "分析",
+      "field": "测度论与积分",
+      "module_prefixes": [
+        "Mathlib.MeasureTheory"
+      ],
+      "curated_title_terms": [
+        "测度论",
+        "积分",
+        "measure theory",
+        "Lebesgue"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "N04",
+      "domain": "分析",
+      "field": "傅里叶与调和分析",
+      "module_prefixes": [
+        "Mathlib.Analysis.Fourier",
+        "Mathlib.Analysis.Distribution.FourierMultiplier"
+      ],
+      "curated_title_terms": [
+        "傅里叶",
+        "调和分析",
+        "Fourier",
+        "harmonic analysis"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "N05",
+      "domain": "分析",
+      "field": "复分析",
+      "module_prefixes": [
+        "Mathlib.Analysis.Complex"
+      ],
+      "curated_title_terms": [
+        "复分析",
+        "全纯",
+        "complex analysis",
+        "holomorphic"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "N06",
+      "domain": "分析",
+      "field": "偏微分方程与Sobolev空间",
+      "module_prefixes": [
+        "Mathlib.Analysis.Distribution.Sobolev",
+        "Mathlib.Analysis.FunctionalSpaces.SobolevInequality"
+      ],
+      "curated_title_terms": [
+        "偏微分方程",
+        "Sobolev",
+        "弱解",
+        "PDE"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "N07",
+      "domain": "分析",
+      "field": "常微分方程与动力系统",
+      "module_prefixes": [
+        "Mathlib.Analysis.ODE",
+        "Mathlib.Dynamics"
+      ],
+      "curated_title_terms": [
+        "常微分方程",
+        "动力系统",
+        "ODE",
+        "dynamical"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "G01",
+      "domain": "几何与拓扑",
+      "field": "欧氏与仿射几何",
+      "module_prefixes": [
+        "Mathlib.Geometry.Euclidean",
+        "Mathlib.Geometry.Affine"
+      ],
+      "curated_title_terms": [
+        "欧氏几何",
+        "仿射",
+        "Euclidean",
+        "affine"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "G02",
+      "domain": "几何与拓扑",
+      "field": "点集拓扑与紧致性",
+      "module_prefixes": [
+        "Mathlib.Topology"
+      ],
+      "curated_title_terms": [
+        "紧致",
+        "拓扑",
+        "compact",
+        "topology"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "G03",
+      "domain": "几何与拓扑",
+      "field": "流形与微分几何",
+      "module_prefixes": [
+        "Mathlib.Geometry.Manifold"
+      ],
+      "curated_title_terms": [
+        "流形",
+        "曲率",
+        "manifold",
+        "differential geometry"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "G04",
+      "domain": "几何与拓扑",
+      "field": "代数拓扑与同伦论",
+      "module_prefixes": [
+        "Mathlib.AlgebraicTopology"
+      ],
+      "curated_title_terms": [
+        "代数拓扑",
+        "同伦",
+        "homotopy",
+        "algebraic topology"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "G05",
+      "domain": "几何与拓扑",
+      "field": "度量几何",
+      "module_prefixes": [
+        "Mathlib.Topology.MetricSpace",
+        "Mathlib.Geometry.Euclidean"
+      ],
+      "curated_title_terms": [
+        "度量几何",
+        "测地线",
+        "metric geometry",
+        "geodesic"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "G06",
+      "domain": "几何与拓扑",
+      "field": "辛几何与几何分析",
+      "module_prefixes": [
+        "Mathlib.Geometry.Manifold",
+        "Mathlib.Analysis.Calculus"
+      ],
+      "curated_title_terms": [
+        "辛几何",
+        "symplectic",
+        "几何分析"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "P01",
+      "domain": "概率与统计",
+      "field": "测度概率基础",
+      "module_prefixes": [
+        "Mathlib.Probability",
+        "Mathlib.MeasureTheory.Measure.ProbabilityMeasure"
+      ],
+      "curated_title_terms": [
+        "概率",
+        "条件概率",
+        "probability"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "P02",
+      "domain": "概率与统计",
+      "field": "鞅与随机过程",
+      "module_prefixes": [
+        "Mathlib.Probability.Martingale"
+      ],
+      "curated_title_terms": [
+        "鞅",
+        "随机过程",
+        "martingale",
+        "stochastic process"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "P03",
+      "domain": "概率与统计",
+      "field": "随机极限定理与大偏差",
+      "module_prefixes": [
+        "Mathlib.Probability"
+      ],
+      "curated_title_terms": [
+        "中心极限定理",
+        "大偏差",
+        "CLT",
+        "large deviation"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "P04",
+      "domain": "概率与统计",
+      "field": "统计推断与实验设计",
+      "module_prefixes": [
+        "Mathlib.Probability",
+        "Mathlib.Statistics"
+      ],
+      "curated_title_terms": [
+        "统计推断",
+        "置信区间",
+        "statistics",
+        "inference"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "P05",
+      "domain": "概率与统计",
+      "field": "信息论与编码理论",
+      "module_prefixes": [
+        "Mathlib.InformationTheory"
+      ],
+      "curated_title_terms": [
+        "信息论",
+        "编码",
+        "entropy",
+        "coding"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "P06",
+      "domain": "概率与统计",
+      "field": "随机分析与布朗运动",
+      "module_prefixes": [
+        "Mathlib.Probability"
+      ],
+      "curated_title_terms": [
+        "布朗运动",
+        "Ito",
+        "随机积分",
+        "Brownian"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "D01",
+      "domain": "离散数学",
+      "field": "图论与网络流",
+      "module_prefixes": [
+        "Mathlib.Combinatorics.SimpleGraph",
+        "Mathlib.Combinatorics.Digraph"
+      ],
+      "curated_title_terms": [
+        "图论",
+        "网络流",
+        "graph theory",
+        "network flow"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "D02",
+      "domain": "离散数学",
+      "field": "加性组合",
+      "module_prefixes": [
+        "Mathlib.Combinatorics.Additive"
+      ],
+      "curated_title_terms": [
+        "加性组合",
+        "Sidon",
+        "sumset",
+        "additive combinatorics"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "D03",
+      "domain": "离散数学",
+      "field": "极值与概率组合",
+      "module_prefixes": [
+        "Mathlib.Combinatorics"
+      ],
+      "curated_title_terms": [
+        "极值组合",
+        "概率方法",
+        "extremal",
+        "probabilistic method"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "D04",
+      "domain": "离散数学",
+      "field": "拟阵与子模函数",
+      "module_prefixes": [
+        "Mathlib.Combinatorics.Matroid"
+      ],
+      "curated_title_terms": [
+        "拟阵",
+        "子模",
+        "matroid",
+        "submodular"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "D05",
+      "domain": "离散数学",
+      "field": "枚举组合与生成函数",
+      "module_prefixes": [
+        "Mathlib.Combinatorics.Enumerative",
+        "Mathlib.Combinatorics"
+      ],
+      "curated_title_terms": [
+        "生成函数",
+        "枚举",
+        "generating function",
+        "enumerative"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "D06",
+      "domain": "离散数学",
+      "field": "离散几何与编码组合",
+      "module_prefixes": [
+        "Mathlib.Combinatorics",
+        "Mathlib.Geometry"
+      ],
+      "curated_title_terms": [
+        "离散几何",
+        "球堆积",
+        "discrete geometry"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "C01",
+      "domain": "计算与优化",
+      "field": "数值线性代数",
+      "module_prefixes": [
+        "Mathlib.LinearAlgebra.Matrix",
+        "Mathlib.Analysis.Normed"
+      ],
+      "curated_title_terms": [
+        "数值线性代数",
+        "条件数",
+        "conditioning",
+        "numerical"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "C02",
+      "domain": "计算与优化",
+      "field": "凸优化与对偶",
+      "module_prefixes": [
+        "Mathlib.Analysis.Convex"
+      ],
+      "curated_title_terms": [
+        "凸优化",
+        "对偶",
+        "convex optimization",
+        "duality"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "C03",
+      "domain": "计算与优化",
+      "field": "非凸优化与变分",
+      "module_prefixes": [
+        "Mathlib.Analysis.Calculus",
+        "Mathlib.Analysis.Convex"
+      ],
+      "curated_title_terms": [
+        "非凸优化",
+        "变分",
+        "nonconvex",
+        "variational"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "C04",
+      "domain": "计算与优化",
+      "field": "最优控制与动态规划",
+      "module_prefixes": [
+        "Mathlib.Dynamics",
+        "Mathlib.Combinatorics.Optimization"
+      ],
+      "curated_title_terms": [
+        "最优控制",
+        "动态规划",
+        "control",
+        "Bellman"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "C05",
+      "domain": "计算与优化",
+      "field": "有限元与数值偏微分方程",
+      "module_prefixes": [
+        "Mathlib.Analysis.Distribution.Sobolev"
+      ],
+      "curated_title_terms": [
+        "有限元",
+        "Galerkin",
+        "finite element",
+        "numerical PDE"
+      ],
+      "review_priority": "P0"
+    },
+    {
+      "id": "C06",
+      "domain": "计算与优化",
+      "field": "算法复杂度与离散算法",
+      "module_prefixes": [
+        "Mathlib.Computability",
+        "Mathlib.Data.List"
+      ],
+      "curated_title_terms": [
+        "复杂度",
+        "算法",
+        "complexity",
+        "algorithm"
+      ],
+      "review_priority": "P1"
+    },
+    {
+      "id": "C07",
+      "domain": "计算与优化",
+      "field": "最优传输与信息几何",
+      "module_prefixes": [
+        "Mathlib.MeasureTheory",
+        "Mathlib.InformationTheory"
+      ],
+      "curated_title_terms": [
+        "最优传输",
+        "Wasserstein",
+        "optimal transport",
+        "information geometry"
+      ],
+      "review_priority": "P0"
+    }
+  ]
+}
