@@ -236,9 +236,15 @@ class CollisionProblem(Problem):
     # 按"跨领域 + 标签优先级"截断, 既保证质量又保证速度.
     CAND_CAP = 600
 
-    def __init__(self, tree: KnowledgeTree, seed: str | None = None):
+    def __init__(self, tree: KnowledgeTree, seed: str | None = None,
+                 *, diversity_axis: str = "domain"):
+        if diversity_axis not in {"domain", "branch"}:
+            raise ValueError("diversity_axis must be domain or branch")
         self.tree = tree
+        self.diversity_axis = diversity_axis
         self.seed = tree.find(seed).id if seed else None
+
+
         # 规模优化: 候选搭档改为懒计算. 原先 __init__ 里对每个概念全量配对
         # 是 O(N²)(4588 规模约 2100 万次比较, 23 万规模则不可行);
         # 现在只在 MCTS 实际访问到某个概念时才计算其候选, 并缓存.
@@ -259,12 +265,29 @@ class CollisionProblem(Problem):
         for pair in tree.collisions:
             self._curated_partners.setdefault(pair["a"], set()).add(pair["b"])
             self._curated_partners.setdefault(pair["b"], set()).add(pair["a"])
-        domains = {}
+        groups = {}
         for concept in roots:
-            domains.setdefault(concept.domain_cn, []).append(concept.id)
-        per_domain = max(1, self.CAND_CAP // max(1, len(domains)))
-        selected = {cid for group in domains.values() for cid in group[:per_domain]}
+            groups.setdefault(self._group_key(concept), []).append(concept.id)
+        per_group = max(1, self.CAND_CAP // max(1, len(groups)))
+        selected = {cid for group in groups.values() for cid in group[:per_group]}
         self._roots = sorted(selected | {cid for cid in curated if cid in tree.by_id})
+
+    def _group_key(self, concept):
+        return (concept.domain_cn if self.diversity_axis == "domain"
+                else (concept.domain_cn, concept.branch_cn))
+
+    def _different_group(self, a, b):
+        return self._group_key(a) != self._group_key(b)
+
+    def _pair_score(self, a: str, b: str) -> float:
+        value = collision_score(self.tree, a, b)
+        # Only the explicit cross-branch search mode adds a small domain-local
+        # diversity heuristic; no proof, importance or novelty is implied.
+        ca, cb = self.tree.get(a), self.tree.get(b)
+        if (self.diversity_axis == "branch" and ca.domain_cn == cb.domain_cn
+                and ca.branch_cn != cb.branch_cn):
+            value += 0.2
+        return round(value, 3)
 
     def _cands_for(self, cid: str) -> list[str]:
         """某概念的跨领域候选搭档(标签优先级截断到 CAND_CAP), 懒计算+缓存.
@@ -275,7 +298,7 @@ class CollisionProblem(Problem):
         if cid not in self._cands:
             me = self.tree.get(cid)
             pool = [o for o in self._ranked
-                    if o.id != cid and o.domain_cn != me.domain_cn]
+                    if o.id != cid and self._different_group(o, me)]
             if len(pool) <= self.CAND_CAP:
                 cands = [o.id for o in pool]
             else:
@@ -283,7 +306,7 @@ class CollisionProblem(Problem):
                          for i in range(self.CAND_CAP)]
             for other in sorted(self._curated_partners.get(cid, ())):
                 if (other not in cands
-                        and self.tree.get(other).domain_cn != me.domain_cn):
+                        and self._different_group(self.tree.get(other), me)):
                     cands.append(other)
             self._cands[cid] = cands
         return self._cands[cid]
@@ -309,12 +332,12 @@ class CollisionProblem(Problem):
     def reward(self, state) -> float:
         if len(state) != 2:
             return 0.0
-        return collision_score(self.tree, state[0], state[1])
+        return self._pair_score(state[0], state[1])
 
     def _best_partner(self, cid: str) -> float:
         if cid not in self._best_cache:
             self._best_cache[cid] = max(
-                (collision_score(self.tree, cid, o)
+                (self._pair_score(cid, o)
                  for o in self._cands_for(cid)),
                 default=0.0)
         return self._best_cache[cid]
@@ -333,13 +356,15 @@ class CollisionProblem(Problem):
 
 def collide_concepts(tree: KnowledgeTree, seed: str | None = None,
                      top_k: int = 5, iterations: int = 3000,
-                     seed_rng: int = 7):
+                     seed_rng: int = 7, *, diversity_axis: str = "domain"):
     """知识碰撞: 找与 seed(或全局)最值得碰撞的概念.
 
     seed: 围绕哪个概念碰撞(中文名/英文名/id), None=全局最优碰撞对.
+    diversity_axis='domain' (原有行为) or 'branch' (允许同一级领域的不同分支).
+    仅改变启发式搜索候选空间，不是定理证明也不保证最优.
     返回 [(ConceptA, ConceptB, 碰撞分, curated说明或None)].
     """
-    problem = CollisionProblem(tree, seed)
+    problem = CollisionProblem(tree, seed, diversity_axis=diversity_axis)
     # Collision search relies on observing curated partners even when a node
     # has hundreds of available actions. Disable narrow progressive widening
     # for this bounded two-ply candidate-ranking task.

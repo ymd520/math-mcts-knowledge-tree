@@ -1,0 +1,286 @@
+{
+  "schema": "math-mcts-level-review-suggestions-v1",
+  "origin": "AI editorial proposals only; these levels are not official catalog grades or mathematical proof status",
+  "proposals": [
+    {
+      "local_id": "FIELD-F01",
+      "field": "集合论与基数理论",
+      "suggested_level": 2,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-F02",
+      "field": "命题逻辑与证明论",
+      "suggested_level": 1,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-F03",
+      "field": "模型论",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-F04",
+      "field": "可计算性与递归理论",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-F05",
+      "field": "范畴论",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-F06",
+      "field": "序理论与格论",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-F07",
+      "field": "类型论与形式化验证",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-A02",
+      "field": "环论与交换代数",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-A04",
+      "field": "表示论",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-A05",
+      "field": "李代数与李群",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-A06",
+      "field": "同调代数",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-A07",
+      "field": "代数几何",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-A08",
+      "field": "代数数论与伽罗瓦理论",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-A10",
+      "field": "解析数论与模形式",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-N02",
+      "field": "泛函分析与算子理论",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-N04",
+      "field": "傅里叶与调和分析",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-N06",
+      "field": "偏微分方程与Sobolev空间",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-N07",
+      "field": "常微分方程与动力系统",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-G03",
+      "field": "流形与微分几何",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-G04",
+      "field": "代数拓扑与同伦论",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-G06",
+      "field": "辛几何与几何分析",
+      "suggested_level": 5,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-P02",
+      "field": "鞅与随机过程",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-P03",
+      "field": "随机极限定理与大偏差",
+      "suggested_level": 2,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-P04",
+      "field": "统计推断与实验设计",
+      "suggested_level": 2,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-P05",
+      "field": "信息论与编码理论",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-P06",
+      "field": "随机分析与布朗运动",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-D02",
+      "field": "加性组合",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-D03",
+      "field": "极值与概率组合",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-D04",
+      "field": "拟阵与子模函数",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-C01",
+      "field": "数值线性代数",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-C02",
+      "field": "凸优化与对偶",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-C03",
+      "field": "非凸优化与变分",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-C04",
+      "field": "最优控制与动态规划",
+      "suggested_level": 3,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-C05",
+      "field": "有限元与数值偏微分方程",
+      "suggested_level": 4,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    },
+    {
+      "local_id": "FIELD-C07",
+      "field": "最优传输与信息几何",
+      "suggested_level": 5,
+      "importance": "needs_human_assessment",
+      "proof_verified": false,
+      "reason": "Difficulty suggestion based on prerequisites and typical subject placement; not an independently reviewed difficulty rubric."
+    }
+  ]
+}

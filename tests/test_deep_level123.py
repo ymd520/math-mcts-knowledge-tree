@@ -9,6 +9,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from math_mcts.knowledge import KnowledgeTree
 from math_mcts.catalog import PACK_DIR,name_key,assemble
+from math_mcts.version import CATALOG_VERSION
 
 PACK="level123_multidomain_20261014.json"
 PREFIX="C26D"
@@ -30,7 +31,7 @@ class Level123DeepTests(unittest.TestCase):
             for level in (1,2,3):
                 self.assertEqual(by[(domain,level)],5)
         self.assertEqual(dict(Counter(r["level"] for r in self.rows)),{1:35,2:35,3:35})
-        self.assertEqual(self.tree.meta["version"],"1.14.0")
+        self.assertEqual(self.tree.meta["version"],CATALOG_VERSION)
         self.assertEqual(len(self.tree.concepts),
                          self.base.inventory()["total"]+self.tree.meta["catalog_added"])
         self.assertEqual(self.tree.check_integrity(),[])
@@ -40,8 +41,13 @@ class Level123DeepTests(unittest.TestCase):
         clashes=[(r["id"],r["cn"],oldnames[name_key(r["cn"])])
                  for r in self.rows if name_key(r["cn"]) in oldnames]
         self.assertEqual(clashes,[],f"New entries collide with base: {clashes!r}")
-        self.assertEqual(self.tree.inventory()["duplicate_name_groups"],
-                         self.base.inventory()["duplicate_name_groups"])
+        # This test owns the 105-row pack, not unrelated duplicate names
+        # already present in separate curated/deep-core source bundles.
+        # Check that each of THESE 105 names is unique in the actual catalog.
+        merged_names=Counter(name_key(c.cn) for c in self.tree.concepts)
+        collisions={r["cn"]:merged_names[name_key(r["cn"])]
+                    for r in self.rows if merged_names[name_key(r["cn"])] != 1}
+        self.assertEqual(collisions, {}, "105-row pack introduced an ambiguous name")
 
     def test_conditions_are_bound_and_no_false_lean_certification(self):
         seen=set()

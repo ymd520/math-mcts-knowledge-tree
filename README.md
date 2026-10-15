@@ -8,6 +8,26 @@
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
 搜索次数和深度不代表数学原创性或证明真实性。静态概念检索采用全量精确评分排序（不再声称检索访问次数来自 MCTS）；MCTS 仍用于知识配对和规则调度；学习路径已改为完整先修拓扑规划，避免无关随机绕路。
 
+## V7：49分支全领域盘点、分级建议和跨分支 MCTS
+
+新增 **7个一级领域、49个专业分支** 的覆盖矩阵，
+分别盘点模块路径、真实索引记录、正式知识词面匹配、
+已有编辑分级、验证状态和未审核 AI 补充条目。
+与历史大规模导入来源严格分离，不把已有模块或 AI 候选
+误算成已证明定理。新增35条跨学科精确条件/结论知识
+**候选**及独立的建议 Level 审核清单。
+
+MCTS 新增 `diversity_axis="branch"`，允许同一数学大领域
+内不同专业分支的知识碰撞，保留原有默认 `domain` 模式。
+
+```bash
+python tests/test_field_inventory_v7.py
+python tools/audit_fields.py --output field_audit.json --markdown field_audit.md --ai-pack examples/field_replenishment_v1.json
+```
+
+方法、证据范围与使用说明详见
+[49分支数学知识覆盖审计与 MCTS 优化](FIELD_COVERAGE_V7.md)。
+
 ## AI → MCTS 数学知识扩展接口
 
 现在可以让 ChatGPT 按统一 JSON 协议生成数学知识包，
