@@ -81,13 +81,22 @@ def worker(args):
     args.raw.write_text(raw + '\n', encoding='utf-8')
     disk_write = perf_counter() - write_start
     path_ids = sorted({cid for p in report['paths'] for cid in p['knowledge_ids']})
-    try:
-        import resource
-        peak_rss_kib = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss if sys.platform == 'linux' else None
-    except ImportError:
-        peak_rss_kib = None
+    peak_rss_kib = None
+    peak_rss_source = None
+    if sys.platform == 'linux':
+        # getrusage.ru_maxrss may retain the fork parent's pre-exec high-water
+        # mark. /proc/self/status reports this exec image's own high-water RSS.
+        try:
+            for line in Path('/proc/self/status').read_text().splitlines():
+                if line.startswith('VmHWM:'):
+                    peak_rss_kib = int(line.split()[1])
+                    peak_rss_source = 'proc_self_status_VmHWM'
+                    break
+        except (OSError, ValueError):
+            pass
     out = {
         'peak_rss_kib_linux': peak_rss_kib,
+        'peak_rss_source': peak_rss_source,
         'task': task, 'research_wall_seconds': research_wall,
         'exclusive_phases_seconds': exclusive,
         'nested_diagnostics_seconds_do_not_sum': dict(phases),
