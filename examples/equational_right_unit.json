@@ -1,0 +1,90 @@
+{
+  "logic": "equational",
+  "signature": {
+    "sorts": [
+      "S"
+    ],
+    "constants": {
+      "a": "S",
+      "e": "S"
+    },
+    "functions": {
+      "mul": {
+        "args": [
+          "S",
+          "S"
+        ],
+        "returns": "S"
+      },
+      "wrap": {
+        "args": [
+          "S"
+        ],
+        "returns": "S"
+      }
+    }
+  },
+  "rules": [
+    {
+      "id": "right_unit",
+      "variables": {
+        "?x": "S"
+      },
+      "source": "synthetic explicitly reviewed demonstration identity",
+      "status": "reviewed",
+      "left": {
+        "app": "mul",
+        "args": [
+          {
+            "var": "?x"
+          },
+          {
+            "const": "e"
+          }
+        ]
+      },
+      "right": {
+        "var": "?x"
+      }
+    },
+    {
+      "id": "unreviewed_a_equals_e",
+      "variables": {},
+      "source": "toy candidate only",
+      "status": "candidate",
+      "left": {
+        "const": "a"
+      },
+      "right": {
+        "const": "e"
+      }
+    }
+  ],
+  "assumptions": [],
+  "goal": {
+    "left": {
+      "app": "wrap",
+      "args": [
+        {
+          "app": "mul",
+          "args": [
+            {
+              "const": "a"
+            },
+            {
+              "const": "e"
+            }
+          ]
+        }
+      ]
+    },
+    "right": {
+      "app": "wrap",
+      "args": [
+        {
+          "const": "a"
+        }
+      ]
+    }
+  }
+}
