@@ -8,6 +8,21 @@
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
 搜索次数和深度不代表数学原创性或证明真实性。静态概念检索采用全量精确评分排序（不再声称检索访问次数来自 MCTS）；MCTS 仍用于知识配对和规则调度；学习路径已改为完整先修拓扑规划，避免无关随机绕路。
 
+## 通用数学推理 v3：增量超图生成与自适应路由
+
+不针对任何特定猜想。对已审核的类型化 Horn 规则，
+新增上一轮事实差量匹配、重复超边消除及完整性预算检查；
+`derive` 默认选用增量构图，旧实现仍可作为精确对照。
+自适应搜索在大型图上优先尝试可重放的确定性证明，
+不必固定执行大量随机模拟。未审来源仍无法成为已审核证明规则。
+
+```sh
+python tests/test_incremental_graph.py
+python tools/benchmark_incremental_graph.py --repetitions 3 --output incremental_graph_benchmark.json
+```
+
+详见 [通用数学 MCTS v3](GENERIC_MCTS_V3.md)。
+
 ## 目标导向 MCTS v2 与确定性证明调度
 
 增加事件驱动 Horn 超图闭包、独立可重放证书、可选 PUCT 先验、
