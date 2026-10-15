@@ -1,0 +1,38 @@
+name: G5C MCTS evaluation (knowledge retrieval only)
+
+on:
+  push:
+    branches:
+      - task/g5c-mcts-evaluation
+
+permissions:
+  contents: read
+
+jobs:
+  g5c-case-study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source files compile
+        run: python -m compileall -q math_mcts tools/research_case_study.py
+      - name: Run full-index G5C vs public-source cached G5C searches
+        run: |
+          python tools/research_case_study.py \
+            --config examples/g5c_ncrh_research_case.json \
+            --output .cache/math_mcts/g5c_probe.json \
+            --prefetch 2>&1 | tee g5c_probe.log
+      - name: Save independently reproducible run data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5c-mcts-full-index-experiment
+          path: |
+            .cache/math_mcts/g5c_probe.json
+            g5c_probe.log
+            examples/g5c_ncrh_research_case.json
+          if-no-files-found: warn
+          retention-days: 7
