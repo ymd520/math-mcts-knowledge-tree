@@ -27,6 +27,8 @@ jobs:
         run: python tests/test_mcts.py
       - name: Ground Horn closure and guided MCTS adversarial tests
         run: python tests/test_mcts_v2.py
+      - name: Semi-naive vs reference Horn graph differential tests
+        run: python tests/test_incremental_graph.py
       - name: Compare proven closure to bounded UCT and guided PUCT
         run: |
           python tools/benchmark_mcts_v2.py --iterations 180 --output mcts_v2_benchmark.json
