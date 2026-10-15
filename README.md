@@ -430,3 +430,14 @@ Lean 类型结构与逻辑前提判断分开存储，不自动把语法引用当
 卡片重要性与难度是**暂定编辑候选**，并非独立数学审核或 Lean 已证新成果。
 详见 [`LEVEL123_DEEP_EXPANSION.md`](LEVEL123_DEEP_EXPANSION.md)。
 
+
+
+## External mathematics literature (opt-in)
+
+The [literature bridge](EXTERNAL_LITERATURE.md) supports explicit TheoremSearch
+semantic retrieval into a separate local, unreviewed SQLite cache, then
+**offline** bounded external FTS lookup inside complete-corpus MCTS. Paper
+credit, author metadata when supplied, source URL, statement locator, content
+snapshot and unknown-license status are retained. Nothing is promoted to a
+verified theorem or redistributed by the bridge. Do not treat this feature as
+an automatic proof or novelty check.
