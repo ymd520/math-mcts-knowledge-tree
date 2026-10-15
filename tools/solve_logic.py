@@ -26,6 +26,9 @@ def main():
     parser.add_argument("--max-states", type=int, default=4000)
     parser.add_argument("--max-term-nodes", type=int, default=100)
     parser.add_argument("--iterations", type=int, default=1000)
+    parser.add_argument("--max-cases", type=int, default=2000)
+    parser.add_argument("--max-proof-nodes", type=int, default=5000)
+    parser.add_argument("--max-guard-attempts", type=int, default=300)
     args = parser.parse_args()
     problem = json.loads(args.problem.read_text(encoding="utf-8"))
     if args.verify:
@@ -37,7 +40,9 @@ def main():
     outcome = solve_problem(problem, max_steps=args.max_steps,
                             max_states=args.max_states,
                             max_term_nodes=args.max_term_nodes,
-                            iterations=args.iterations)
+                            iterations=args.iterations,
+                            max_cases=args.max_cases, max_nodes=args.max_proof_nodes,
+                            max_guard_attempts=args.max_guard_attempts)
     rendered = json.dumps(outcome, ensure_ascii=False, indent=2) + "\n"
     if args.output:
         args.output.write_text(rendered, encoding="utf-8")
