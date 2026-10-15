@@ -78,6 +78,25 @@ jobs:
           PY
       - name: Evidence-first knowledge expansion and research-operator tests
         run: python tests/test_expansion.py
+      - name: Field inventory taxonomy and cross-branch MCTS adversarial tests
+        run: |
+          python tests/test_field_inventory_v7.py
+          python tools/ai_knowledge_cli.py ingest examples/field_replenishment_v1.json --db field_supplements.sqlite
+          python tools/ai_knowledge_cli.py inventory --db field_supplements.sqlite > field_ai_inventory.json
+          python tools/audit_fields.py --output field_audit_unindexed.json --markdown field_audit_unindexed.md --ai-pack examples/field_replenishment_v1.json
+          python - <<'PY'
+          import json
+          a=json.load(open("field_audit_unindexed.json"))
+          b=json.load(open("field_ai_inventory.json"))
+          assert a["taxonomy_fields"]==49, a
+          assert a["domain_count"]==7, a
+          assert a["ai_proposals_total_separate"]==35, a
+          assert b["unreviewed_ai_candidates"]==35,b
+          assert b["curated_promotions"]==0 and b["independent_proofs_verified"]==0
+          assert all(row["indexed_imported_records"] is None for row in a["fields"])
+          assert all(row["independent_theorem_proof_count"] is None for row in a["fields"])
+          print("49-field/35-candidate inventory, cross-branch MCTS, and non-promotion checks passed")
+          PY
       - name: AI-to-MCTS knowledge pack, immutable provenance and actual MCTS integration
         run: |
           python tests/test_ai_knowledge_bridge.py
@@ -236,6 +255,20 @@ jobs:
       - name: Classify all 100k imported mathematics records
         if: matrix.python-version == '3.12'
         run: python tools/classify_knowledge.py --db math_index.sqlite --report knowledge_classification.json
+      - name: Audit 49 mathematics fields against 100k classified source records
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/audit_fields.py --indexed-db math_index.sqlite --output field_audit_100k.json --markdown field_audit_100k.md --ai-pack examples/field_replenishment_v1.json
+          python - <<'PY'
+          import json
+          x=json.load(open("field_audit_100k.json"))
+          assert x["taxonomy_fields"]==49,x
+          assert x["ai_proposals_total_separate"]==35,x
+          assert x["indexed_subset_evidence"].get("indexed_source_records",0)>90000,x
+          assert all(row["indexed_imported_records"] is not None for row in x["fields"])
+          assert all(row["independent_theorem_proof_count"] is None for row in x["fields"])
+          print("Full indexed source-field classification audited; no kernel-proof claims")
+          PY
       - name: Create citation index for all imported and curated cards
         if: matrix.python-version == '3.12'
         run: |
@@ -330,6 +363,8 @@ jobs:
             full_source_review_backlog.jsonl.gz
             full_source_review_backlog_report.json
             knowledge_classification.json
+            field_audit_100k.json
+            field_audit_100k.md
             source_attribution_report.json
             level123_deep_audit.json
             quality_triage_report.json
