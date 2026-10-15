@@ -19,7 +19,7 @@ from .attribution import source_credit
 from .fast_index import build_index, terms_for, catalog_fingerprint
 from .knowledge import IMPORTED_DIR, _normalize_imported_domain, _IMPORT_DOMAIN_MAP
 from .mcts import Problem, mcts
-from .fts_retrieval import ExactFTSRetriever
+from .vector_retrieval import VectorFTSRetriever
 
 DEFAULT_CORPUS_DB = Path('.cache') / 'math_mcts' / 'full_corpus.sqlite'
 _STOP = {'mathlib', 'theorem', 'lemma', 'def', 'instance', 'by', 'true',
@@ -99,7 +99,7 @@ class IndexedCorpus:
         # Cache belongs to this immutable read transaction, never another index.
         self._qcache = OrderedDict()
         self.query_cache_hits = 0
-        self.retriever = ExactFTSRetriever(self.db)
+        self.retriever = VectorFTSRetriever(self.db, self.max_rowid)
         self.lexical_record_load_seconds = 0.
         self.lexical_decode_seconds = 0.
         self.loaded_ids = set()

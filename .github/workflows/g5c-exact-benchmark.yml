@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install pinned optional acceleration backend
+        run: python -m pip install -r requirements-acceleration.txt
       - name: Prepare previous optimized source baseline
         run: git worktree add --detach /tmp/mcts-before fe04234bf13df72a7219c572bc87f43b064ff615
       - name: Exact retrieval adversarial tests
@@ -81,3 +83,22 @@ jobs:
             .cache/math_mcts/g5c_fts_tuning/summary.json
             g5c_fts_tuning.log
           retention-days: 30
+
+  optional-backend-tests:
+    if: ${{ !contains(github.event.head_commit.message, '[fts-pilot]') }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install pinned optional backend
+        run: python -m pip install -r requirements-acceleration.txt
+      - name: Verify vector and reference retrieval paths
+        run: |
+          python tests/test_indexed_mcts.py
+          python tests/test_literature_bridge.py
+          python tests/test_source_adapters.py

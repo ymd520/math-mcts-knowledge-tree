@@ -8,7 +8,13 @@ from time import perf_counter
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from math_mcts.fast_index import build_index
 from math_mcts.indexed_mcts import IndexedCorpus, _tokens
-from math_mcts.fts_retrieval import ExactFTSRetriever
+# The rejected strategy is archived for reproducibility, not a runtime backend.
+import importlib.util
+_spec = importlib.util.spec_from_file_location('rejected_sparse',
+    Path(__file__).resolve().parents[1] / 'benchmarks/experiments/sparse_retrieval_rejected.py')
+_module = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_module)
+ExactFTSRetriever = _module.ExactFTSRetriever
 
 
 def main():

@@ -81,7 +81,13 @@ def worker(args):
     args.raw.write_text(raw + '\n', encoding='utf-8')
     disk_write = perf_counter() - write_start
     path_ids = sorted({cid for p in report['paths'] for cid in p['knowledge_ids']})
+    try:
+        import resource
+        peak_rss_kib = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss if sys.platform == 'linux' else None
+    except ImportError:
+        peak_rss_kib = None
     out = {
+        'peak_rss_kib_linux': peak_rss_kib,
         'task': task, 'research_wall_seconds': research_wall,
         'exclusive_phases_seconds': exclusive,
         'nested_diagnostics_seconds_do_not_sum': dict(phases),
