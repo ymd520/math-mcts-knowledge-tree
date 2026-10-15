@@ -8,6 +8,25 @@
 以及相对于明确审核规则的多前提、多层推导。MCTS用于搜索调度，
 搜索次数和深度不代表数学原创性或证明真实性。静态概念检索采用全量精确评分排序（不再声称检索访问次数来自 MCTS）；MCTS 仍用于知识配对和规则调度；学习路径已改为完整先修拓扑规划，避免无关随机绕路。
 
+## 通用数学逻辑第6阶段：有限量词与条件等式
+
+增加了**严格限定在显式有限对象集上的全称/存在量词证明**，
+以及带独立前提证书的条件等式改写。所有量词实例、存在见证、
+局部蕴含假设和条件规则的前提都要由独立验证器复核。
+**有限枚举不等于无限数学对象的全称定理证明**；没有找到证明
+也不意味着结论是假的。与此同时修复了旧等式引擎可能跨类型
+匹配裸变量的安全漏洞。
+
+```sh
+python tests/test_logic_v6.py
+python tools/solve_logic.py examples/finite_quantifier_implication.json --output finite_proof.json
+python tools/solve_logic.py examples/finite_quantifier_implication.json --verify finite_proof.json
+python tools/solve_logic.py examples/conditional_guarded_equality.json --output guarded_proof.json
+python tools/solve_logic.py examples/conditional_guarded_equality.json --verify guarded_proof.json
+```
+
+类型、信任边界、证书与资源限制详见 [通用逻辑第6阶段架构说明](GENERAL_LOGIC_V6.md)。
+
 ## 通用数学多逻辑架构：类型化等式改写
 
 新增独立的**类型化等式证明层**，支持显式常量和函数签名、带类型的
