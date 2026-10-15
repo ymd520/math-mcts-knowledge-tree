@@ -345,20 +345,32 @@ def import_local(db, source, path, *, max_records=10000, ack_license=False,
             "license_acceptance_declared": bool(ack_license)}
 
 
-def fetch_into_cache(db, source, *, query="", limit=10, opener=None):
-    """Explicit network access: three documented public discovery adapters."""
+def discover_candidates(source, *, query="", limit=10, opener=None):
+    """Pure bounded network discovery; does not touch a local SQLite database."""
     if source == "theoremsearch":
-        return cache_theoremsearch(db, query, limit=limit, opener=opener)
+        from .literature_bridge import query_theoremsearch
+        rows, stats = query_theoremsearch(query, limit=limit, opener=opener)
+        return rows
     if source == "s2orc":
-        rows = fetch_s2orc_papers(query, limit=limit, opener=opener)
-    elif source == "realmath":
-        rows = fetch_realmath_rows(limit=limit, opener=opener)
-    elif source == "zbmath":
-        rows = fetch_zbmath_sample(opener=opener)[:limit]
-    else:
-        raise ValueError("MathPile requires access approval and local file import; "
-                         "mathlib4 is already pinned in the primary index")
+        return fetch_s2orc_papers(query, limit=limit, opener=opener)
+    if source == "realmath":
+        return fetch_realmath_rows(limit=limit, opener=opener)
+    if source == "zbmath":
+        return fetch_zbmath_sample(opener=opener)[:limit]
+    raise ValueError("Only documented public discovery interfaces support live fetch")
+
+
+def persist_candidates(db, source, rows):
+    """Serial cache writer. Safe to call after concurrent network prefetch."""
     report = _write_candidates(db, rows, max_records=max(1, len(rows)))
     return {"source": source, "network_results": len(rows),
             "inserted": report["inserted"],
             "status": "external_unreviewed_candidates_only"}
+
+
+def fetch_into_cache(db, source, *, query="", limit=10, opener=None):
+    """Explicit live discovery, followed by local unreviewed staging."""
+    if source == "theoremsearch":
+        return cache_theoremsearch(db, query, limit=limit, opener=opener)
+    rows = discover_candidates(source, query=query, limit=limit, opener=opener)
+    return persist_candidates(db, source, rows)
