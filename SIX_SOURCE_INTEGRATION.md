@@ -50,6 +50,19 @@ S2ORC local records are corpusid/externalids/content, optionally content.text.
 MathPile rows contain text, SubSet and meta; original text authors and URLs
 may be missing. These are marked 'unknown' rather than falsely attributed.
 
+## One-command source-aware research
+
+    python tools/research_all.py "spectral gaps on finite groups" --all-public --iterations 1000 --depth 20 --output .cache/math_mcts/research.json
+
+This explicitly performs one public discovery round for TheoremSearch, S2ORC
+paper metadata, the pinned zbMATH sample and RealMath, with network requests
+parallelized but SQLite writes serialized. It then runs local-only full-index
+MCTS, caching actual selected citations and provider counts. Provider failures
+are individually reported rather than pretending that a failed source was read.
+For nonpublic sources use --mathpile /path/to/file --ack-license, and/or
+--s2orc /path/to/authorized-s2orc.jsonl.gz --s2orc-text --ack-license.
+No dataset gate is bypassed.
+
 ## Retrieval architecture
 
     python -m math_mcts research "spectral gaps on finite groups" --external-db .cache/math_mcts/literature.sqlite --iterations 1000 --depth 20
