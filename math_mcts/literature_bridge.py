@@ -237,6 +237,9 @@ class HybridCorpus:
     def search(self, query, limit):
         # Retrieval quota never removes all primary hits, even at limit=1.
         self.external_search_calls += 1
+        # Unclassified external results must not bypass an explicit domain filter.
+        if self.primary.domain is not None:
+            return self.primary.search(query, limit)
         external_limit = min(self.quota, max(0, limit - 1))
         if self.external_count == 0 or external_limit == 0:
             return self.primary.search(query, limit)
