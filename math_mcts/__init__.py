@@ -30,6 +30,13 @@ from .conditional_logic import (ConditionalRule, ConditionalBook,
                                 GuardedCertificate, prove_guarded,
                                 verify_guarded_certificate)
 
+from .ai_knowledge import (
+    validate_pack, ingest_pack as ingest_ai_pack, ingest_file as ingest_ai_file,
+    inventory as ai_knowledge_inventory, lookup as search_ai_candidates,
+    candidate_tree as ai_candidate_tree, query_for_research,
+    collide_for_research,
+)
+
 from .version import CATALOG_VERSION
 
 __version__ = CATALOG_VERSION
@@ -51,6 +58,9 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "load_rewrite_certificate",
            "Formula", "FiniteCertificate", "prove_finite", "verify_finite_certificate",
            "ConditionalRule", "ConditionalBook", "GuardedCertificate",
-           "prove_guarded", "verify_guarded_certificate"]
+           "prove_guarded", "verify_guarded_certificate",
+           "validate_pack", "ingest_ai_pack", "ingest_ai_file",
+           "ai_knowledge_inventory", "search_ai_candidates",
+           "ai_candidate_tree", "query_for_research", "collide_for_research"]
 
 
