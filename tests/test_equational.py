@@ -69,7 +69,7 @@ class EquationalTests(unittest.TestCase):
     def test_associativity_inside_context(self):
         book = group_like()
         goal = Equation(F("h", F("mul", F("mul", C("a"), C("b")), C("e"))),
-                        F("h", F("mul", C("a"), F("mul", C("b"), C("e"))))
+                        F("h", F("mul", C("a"), F("mul", C("b"), C("e")))))
         result = prove_equation(book, goal, max_steps=1)
         self.assertEqual(result.depth, 1)
         self.assertTrue(verify_rewrite_certificate(book, result.certificate, goal))
