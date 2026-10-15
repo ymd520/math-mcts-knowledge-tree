@@ -293,6 +293,7 @@ def _write_candidates(db, items, *, max_records=1000):
     import tempfile
     if not items:
         return {"input_records": 0, "inserted": 0, "already_present_identical": 0}
+    Path(db).parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="math-mcts-source-") as tmp:
         path = Path(tmp) / "records.jsonl"
         with path.open("w", encoding="utf-8") as f:

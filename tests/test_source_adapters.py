@@ -176,6 +176,15 @@ class SourceAdapterTests(unittest.TestCase):
         result = import_local(self.db, "s2orc", s2, include_text=True, ack_license=True)
         self.assertEqual(result["inserted"], 1)
 
+    def test_live_cache_creates_parent_directories(self):
+        nested = self.root / "missing_parent" / "subdir" / "research.sqlite"
+        fake = FakeTransport()
+        result = fetch_into_cache(nested, "zbmath", limit=2, opener=fake)
+        self.assertTrue(nested.is_file())
+        self.assertEqual(result["inserted"], 1)
+        again = fetch_into_cache(nested, "zbmath", limit=2, opener=fake)
+        self.assertEqual(again["inserted"], 0)
+
     def test_live_adapters_use_real_documented_endpoints_and_bounded_cache(self):
         fake = FakeTransport()
         result = fetch_into_cache(self.db, "s2orc", query="finite group", limit=4, opener=fake)
