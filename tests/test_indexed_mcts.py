@@ -50,6 +50,29 @@ class IndexedMCTSTests(unittest.TestCase):
         self.path = self.root / 'full.sqlite'
         build_index(self.path, include_curated=False, imported_root=self.root)
 
+    def test_query_cache_reuses_hits_and_misses_with_snapshot_isolation(self):
+        corpus = IndexedCorpus(self.path)
+        self.addCleanup(corpus.close)
+        statements = []
+        corpus.db.set_trace_callback(statements.append)
+        for query in ('origin_word', 'absent_unique_token'):
+            first = [c['id'] for c in corpus.search(query, 4)]
+            statements.clear()
+            self.assertEqual(first, [c['id'] for c in corpus.search(query, 4)])
+            self.assertFalse(any('MATCH' in sql for sql in statements))
+        self.assertEqual(corpus.query_cache_hits, 2)
+        fresh = IndexedCorpus(self.path)
+        self.addCleanup(fresh.close)
+        self.assertEqual(fresh.query_cache_hits, 0)
+        self.assertEqual(len(fresh._qcache), 0)
+
+    def test_phase_timings_include_report_assembly(self):
+        report = research_with_knowledge('origin_word', db_path=self.path,
+                    iterations=5, depth=3, imported_root=self.root)
+        self.assertTrue(all(t >= 0 for t in report['timings_seconds'].values()))
+        self.assertAlmostEqual(sum(report['timings_seconds'].values()),
+                               report['elapsed_seconds'])
+
     def test_default_index_admits_entire_imported_corpus(self):
         meta = validate_full_index(self.path, imported_root=self.root)
         self.assertEqual(meta['actual_imported'], len(self.rows))
@@ -207,3 +230,4 @@ class IndexedMCTSTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

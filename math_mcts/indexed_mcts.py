@@ -95,6 +95,9 @@ class IndexedCorpus:
         self.imported = self.db.execute("SELECT COUNT(*) FROM documents WHERE tier='unreviewed_import'").fetchone()[0]
         self.max_rowid = self.db.execute('SELECT MAX(rowid) FROM documents').fetchone()[0]
         self._cache = OrderedDict()
+        # Cache belongs to this immutable read transaction, never another index.
+        self._qcache = OrderedDict()
+        self.query_cache_hits = 0
         self.loaded_ids = set()
         self.retrieved_ids = set()
         self.explored_ids = set()
@@ -159,6 +162,12 @@ class IndexedCorpus:
         tokens = _tokens(query)[:24]
         if not tokens:
             return []
+        tokens = list(dict.fromkeys(tokens))
+        key = (tuple(tokens), limit)
+        if key in self._qcache:
+            self.query_cache_hits += 1
+            self._qcache.move_to_end(key)
+            return [self.get(cid) for cid in self._qcache[key]]
         match = ' OR '.join('"' + t.replace('"', '""') + '"' for t in tokens)
         clause, values = self._filter()
         # Rank narrow rowids first. Carrying full Lean records through the
@@ -168,7 +177,9 @@ class IndexedCorpus:
                                    ' WHERE term_index MATCH ?' + clause +
                                    ' ORDER BY bm25(term_index),term_index.rowid LIMIT ?',
                                    (match, *values, limit)).fetchall()
+        # Cache empty hits too; repeated misses must not re-run FTS.
         if not selected:
+            self._remember_query(key, ())
             return []
         # One bounded IN lookup rather than one SQL round-trip per ranked hit.
         order = [item[0] for item in selected]
@@ -179,7 +190,13 @@ class IndexedCorpus:
                       + placeholders + ')', order)}
         rows = [loaded[rid] for rid in order]
         self.retrieved_ids.update(row[0] for row in rows)
+        self._remember_query(key, tuple(row[0] for row in rows))
         return [self._decode(row) for row in rows]
+
+    def _remember_query(self, key, ids):
+        self._qcache[key] = ids
+        if len(self._qcache) > 256:
+            self._qcache.popitem(last=False)
 
     def sample(self, rng, limit):
         """Random rowid probes, not ORDER BY RANDOM() over the full corpus.
@@ -339,6 +356,7 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
     else:
         path = Path(db_path)
         coverage = validate_full_index(path, imported_root=imported_root)
+    validated_at = time.perf_counter()
     corpus = IndexedCorpus(path, domain=domain)
     if external_db_path is not None:
         from .literature_bridge import HybridCorpus
@@ -347,6 +365,7 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
         except Exception:
             corpus.close()
             raise
+    opened_at = time.perf_counter()
     try:
         problem = KnowledgeMCTSProblem(corpus, objective, depth=depth,
                                       retrieval_width=retrieval_width,
@@ -354,6 +373,7 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
         path_actions, root = mcts(problem, iterations=iterations, max_depth=depth,
                                  seed=seed, action_mode='stream',
                                  widening_k=1., widening_alpha=.25)
+        searched_at = time.perf_counter()
         # Report actual tree nodes, not completed random-rollout depth.
         nodes = [root]
         states = {}
@@ -381,7 +401,7 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
         for cid in problem.selected_ids:
             tier = corpus.get(cid)['source_tier']
             tiers_used[tier] = tiers_used.get(tier, 0) + 1
-        return {'status': 'knowledge_search_leads_only', 'proof_verified': False,
+        report = {'status': 'knowledge_search_leads_only', 'proof_verified': False,
                 'objective': objective, 'seed': seed,
                 'coverage': {'indexed_total': corpus.total, 'indexed_imported': corpus.imported,
                              'manifest_imported': coverage['actual_imported'],
@@ -394,6 +414,7 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
                              'external_cache_enabled': external_db_path is not None},
                 'usage': {'retrieval_calls': corpus.search_calls,
                           'global_exploration_calls': corpus.sample_calls,
+                          'primary_query_cache_hits': corpus.query_cache_hits,
                           'distinct_cards_loaded': len(corpus.loaded_ids),
                           'distinct_lexical_hits': len(corpus.retrieved_ids),
                           'distinct_exploration_hits': len(corpus.explored_ids),
@@ -409,6 +430,15 @@ def research_with_knowledge(objective='', *, db_path=None, iterations=1000,
                                       for cid in reported_ids],
                 'retrieval_trace': problem.trace,
                 'score_meaning': 'lexical relevance, shared vocabulary, domain breadth and depth; not mathematical validity or novelty',
-                'elapsed_seconds': time.perf_counter() - start}
+                'elapsed_seconds': 0.}
+        finished_at = time.perf_counter()
+        report['timings_seconds'] = {
+            'index_validation_or_build': validated_at - start,
+            'corpus_open': opened_at - validated_at,
+            'tree_search': searched_at - opened_at,
+            'report_assembly': finished_at - searched_at}
+        report['elapsed_seconds'] = finished_at - start
+        return report
     finally:
         corpus.close()
+

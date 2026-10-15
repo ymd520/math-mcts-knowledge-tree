@@ -247,10 +247,9 @@ class HybridCorpus:
         external_limit = min(self.quota, max(0, limit - 1))
         if self.external_count == 0 or external_limit == 0:
             return self.primary.search(query, limit)
-        primary_hits = self.primary.search(query, limit - external_limit)
         terms = [x for x in terms_for(query)[:24] if x]
         if not terms:
-            return primary_hits
+            return self.primary.search(query, limit)
         expression = " OR ".join('"' + term.replace('"', '""') + '"' for term in terms)
         key = (expression, external_limit)
         if key in self._qcache:
@@ -283,9 +282,12 @@ class HybridCorpus:
                 self._qcache.popitem(last=False)
         found = [self.get(cid) for cid in ids]
         self.external_retrieved_ids.update(ids)
+        # Reserve only slots actually filled by external hits.
+        primary_hits = self.primary.search(query, limit - len(found))
         return primary_hits + found
 
     def sample(self, rng, limit):
         # Preserve primary global exploration, without falsely sampling every
         # remote theorem ever indexed on the TheoremSearch service.
         return self.primary.sample(rng, limit)
+

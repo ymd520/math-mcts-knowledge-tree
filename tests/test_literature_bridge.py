@@ -92,6 +92,17 @@ class LiteratureBridgeTests(unittest.TestCase):
         self.transport_calls.append((request.full_url, timeout))
         return FakeResponse({"results": [HIT]})
 
+    def test_external_miss_returns_unused_slots_to_primary(self):
+        cache_theoremsearch(self.db, 'compact', opener=self.opener)
+        primary = Primary()
+        from unittest.mock import patch
+        hybrid = HybridCorpus(primary, self.db)
+        self.addCleanup(hybrid.close)
+        with patch.object(primary, 'search', wraps=primary.search) as search:
+            hits = hybrid.search('absent_unique_token', 10)
+        search.assert_called_once_with('absent_unique_token', 10)
+        self.assertEqual([c['id'] for c in hits], ['I1'])
+
     def test_metadata_and_rights_not_promoted(self):
         rows, report = normalize_theoremsearch({"results": [HIT]})
         self.assertEqual(report["accepted"], 1)
@@ -172,3 +183,4 @@ class LiteratureBridgeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
