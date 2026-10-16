@@ -1,38 +1,38 @@
 {
-  "version": "1.14.1",
-  "packs": [
-    {
-      "file": "level_1_20261014.json.gz",
-      "count": 160,
-      "overlays": 49,
-      "sha256": "4181f113587bc02214ba54ff619d022517132a874a4664e532e2cbd59327511c"
-    },
-    {
-      "file": "level_2_20261014.json.gz",
-      "count": 109,
-      "overlays": 160,
-      "sha256": "4d341b2abd28c144b4e578ed16d9d873659fa0b92ba4c0ff80f2b7ba9cdb59a3"
-    },
-    {
-      "file": "level_3_20261014.json.gz",
-      "count": 55,
-      "overlays": 229,
-      "sha256": "092e64561077ad53138d79f2692cf16c3001223e3bd3136493a1e87ff083d515"
-    },
-    {
-      "file": "level_4_20261014.json.gz",
-      "count": 66,
-      "overlays": 236,
-      "sha256": "332988bbb7e288430b4c183782d78ecfb1dd05e3a31fbcfa4a0ecaa7f5a8a969"
-    },
-    {
-      "file": "level123_multidomain_20261014.json",
-      "count": 105,
-      "overlays": 0,
-      "sha256": "d345559e0b854d35c61d79438e1424aad66ff8f5767778d5782829e3f339ed17"
-    }
-  ],
-  "source_seed_sha256": "cfb4ffffcb6b24490406da6a13d73da2263966567792abdd89cb8fe15b35daeb",
-  "generator_sha256": "1971fcc12c38e40a8353f108a483574efe2b3e22bb9c3a1e115b15bc822ecb20",
-  "base_snapshot_sha256": "4220995f6fd46b0238b5a0d1a72b9746b308eff1b3aba31df4eea96f5baa1e16"
+ "version": "1.14.2",
+ "packs": [
+  {
+   "file": "level_1_20261014.json.gz",
+   "count": 160,
+   "overlays": 49,
+   "sha256": "4181f113587bc02214ba54ff619d022517132a874a4664e532e2cbd59327511c"
+  },
+  {
+   "file": "level_2_20261014.json.gz",
+   "count": 109,
+   "overlays": 160,
+   "sha256": "4d341b2abd28c144b4e578ed16d9d873659fa0b92ba4c0ff80f2b7ba9cdb59a3"
+  },
+  {
+   "file": "level_3_20261014.json.gz",
+   "count": 55,
+   "overlays": 229,
+   "sha256": "092e64561077ad53138d79f2692cf16c3001223e3bd3136493a1e87ff083d515"
+  },
+  {
+   "file": "level_4_20261014.json.gz",
+   "count": 66,
+   "overlays": 236,
+   "sha256": "332988bbb7e288430b4c183782d78ecfb1dd05e3a31fbcfa4a0ecaa7f5a8a969"
+  },
+  {
+   "file": "level123_multidomain_20261014.json",
+   "count": 105,
+   "overlays": 0,
+   "sha256": "d345559e0b854d35c61d79438e1424aad66ff8f5767778d5782829e3f339ed17"
+  }
+ ],
+ "source_seed_sha256": "cfb4ffffcb6b24490406da6a13d73da2263966567792abdd89cb8fe15b35daeb",
+ "generator_sha256": "1971fcc12c38e40a8353f108a483574efe2b3e22bb9c3a1e115b15bc822ecb20",
+ "base_snapshot_sha256": "4220995f6fd46b0238b5a0d1a72b9746b308eff1b3aba31df4eea96f5baa1e16"
 }
