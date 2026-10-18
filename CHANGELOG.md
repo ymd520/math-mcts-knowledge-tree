@@ -6,6 +6,21 @@
 - Add retrieval substage timings, complete-trace G5C comparisons and reproducible negative experiments; see benchmarks/g5c_vector_20261015/REPORT.md.
 - Correct Linux per-exec peak-RSS measurement to use VmHWM instead of an inherited getrusage high-water mark.
 
+## [1.14.4] - 2026-10-18
+
+### 新增
+- 每日扩充：新增 200 条重要知识（LV31205–LV31404），优先补 7 大领域较薄弱分支：Galois 理论进阶/交换代数/代数数论/同调代数/赋值论（代数 30）、代数拓扑/微分几何/辛几何/低维拓扑（几何与拓扑 30）、泛函分析/复分析/遍历理论/变分法（分析 29）、模型论/可计算性理论/模态与直觉主义逻辑/算法信息论/数学哲学一瞥（数学基础 31）、极限理论/随机过程/非参统计/概率论基础（概率与统计 30）、代数组合学/可计算性/组合设计（离散数学 25）、稀疏优化/约束优化/数值偏微分方程/随机优化/无约束优化（计算与优化 25）。类型：概念 121、定理 41、公式 8、算法 20、思路 6、推论 4；level 按真实理解门槛诚实打分（L2×1、L3×16、L4×72、L5×111，薄弱分支多为高阶内容）；tags 全部"重要"，未授"核心"。
+- 跨领域碰撞 +2（29 条）：蒙特卡洛方法×大数定律（CA12×PR09，频率依概率收敛是采样的理论底气）、牛顿法×压缩映射原理（CA07×AN161，牛顿法是带导数修正的不动点迭代）。
+
+### 修正
+- 抽查修正 8 条：ML2007/ML3182 去 Lean 源码化（中文标题可读化、英文标识符→规范英文，ML3182 定义重写、tags"重要"→空）；B7P0390（F 检验）kind"方法"→"概念"（七类规范）；CA44/PR16/PR32 公式转纯 Unicode（u_j^{n+1}→uⱼⁿ⁺¹、e^{itX}→eⁱᵗˣ）；PR16/PR32 补 kind="概念"（原缺失）；B7G0876/B7D0420 补例子与公式。
+- 新条目入库前修复 9 处 LaTeX 残留（e^{iπ}→eⁱπ、T^{n(x)}→Tⁿ⁽ˣ⁾ 等）；LV31363 换题：原"费马小定理的推论"与 AL54 近义重复，改为"费马伪素数"（概念，prereq AL54）。
+- 维护：PR16 被修正后其编辑覆盖层重新绑定（level_4_20261014.json.gz 内 overlay base_sha256 更新、pack 重打包、manifest sha256 同步），覆盖层的 tags/importance_reason 修订继续生效。
+
+### 验证
+- 200 条起草阶段经全库中文标题/英文归一化标题逐条查重零撞车，批次内零重复，id 连续无断号；合并前独立复核：字段完备、长度合规（定义≤80字/例子≤60字/公式≤3）、prereq 零坏链、kind 七类合规。
+- `python3 -m math_mcts info` 完整性自检通过（12393 条）；`tests/test_mcts.py` ALL TESTS PASSED。
+
 ## [1.14.3] - 2026-10-17
 
 ### 新增
