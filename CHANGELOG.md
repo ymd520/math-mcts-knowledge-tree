@@ -1,5 +1,11 @@
 # 更新日志
 
+## [1.15.0] - 2026-10-18
+
+### 新增
+- 用户即时授权大批量扩充：新增 1596 条重要知识（LV31405–LV33372），7 大领域均衡覆盖（数学基础 226 / 代数 228 / 分析 230 / 几何与拓扑 229 / 概率与统计 226 / 离散数学 228 / 计算与优化 229），全库 11724 → 13320。类型：概念 819、定理 329、算法 147、方法 131、思路 82（含真实例子）、公式 77 等；level 诚实打分（1:43 / 2:243 / 3:541 / 4:497 / 5:272）；54 条标「核心」（Yoneda 引理、Weil 猜想、Peter-Weyl 定理、维津定理、卡尔森电晕定理等），其余「重要」。选题专挑各分支深水区重要结果（同调代数、代数K理论、遍历论、示性类、随机矩阵、拟阵、近似算法、递归论/模型论/证明论等）；中央复核共刷掉 372 条撞车主题。
+- 架构：无改动。完整性自检通过，测试全过。
+
 ## Unreleased
 
 - Add an optional bounded NumPy phrase-score cache with original-query SQLite rescoring and standard-library fallback; preserve full-index scope and deterministic ties.
