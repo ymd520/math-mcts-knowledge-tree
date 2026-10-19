@@ -58,7 +58,7 @@ jobs:
             .cache/math_mcts/g5c_exact_benchmark/*.json
             g5c_exact_benchmark.log
             examples/g5c_ncrh_research_case.json
-          retention-days: 30
+          retention-days: 7
           if-no-files-found: warn
 
   parameter-screen:
@@ -84,7 +84,7 @@ jobs:
           path: |
             .cache/math_mcts/g5c_fts_tuning/summary.json
             g5c_fts_tuning.log
-          retention-days: 30
+          retention-days: 7
 
   optional-backend-tests:
     if: ${{ !contains(github.event.head_commit.message, '[fts-pilot]') }}

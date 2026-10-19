@@ -37,5 +37,5 @@ jobs:
             .cache/math_mcts/g5c_phase_benchmark/*.json
             g5c_phase_benchmark.log
             examples/g5c_ncrh_research_case.json
-          retention-days: 30
+          retention-days: 7
           if-no-files-found: warn

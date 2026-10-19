@@ -40,6 +40,7 @@ jobs:
         if: matrix.python-version == '3.12'
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: full-corpus-mcts-usage
           path: |
             full_index_status.json
@@ -370,6 +371,7 @@ jobs:
         if: matrix.python-version == '3.12'
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: source-candidates-100k
           path: |
             index_status.json
@@ -398,6 +400,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: semantic-math-bench-python-${{ matrix.python-version }}
           path: |
             semantic_benchmark.json
@@ -407,6 +410,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: catalog-audit-python-${{ matrix.python-version }}
           path: catalog_audit.json
           if-no-files-found: ignore

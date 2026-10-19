@@ -49,6 +49,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
+          retention-days: 7
           name: original-mathlib-source-credits
           path: original_module_authors.json
           if-no-files-found: ignore

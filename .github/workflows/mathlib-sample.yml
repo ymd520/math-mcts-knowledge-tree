@@ -135,6 +135,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
+          retention-days: 7
           name: pinned-mathlib-source-sample
           path: |
             pinned_mathlib_module_credit.json
