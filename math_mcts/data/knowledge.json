@@ -2,10 +2,10 @@
   "meta": {
     "name": "全领域数学基础与重要知识 MCTS 搜索树",
     "name_en": "Math Knowledge MCTS Search Tree",
-    "version": "1.15.4",
+    "version": "1.15.5",
     "structure": "领域 -> 分支 -> 主题 -> 概念",
     "note": "每条概念: 一句话定义(零基础可读) + 关键公式(纯Unicode) + 难度1-5 + 前置依赖",
-    "concept_count": 14120
+    "concept_count": 14320
   },
   "concepts": [
     {
@@ -293415,7 +293415,7 @@
     {
       "branch_cn": "极值组合",
       "cn": "Turán 极值图的唯一性",
-      "definition": "达到 Turán 界的 K_{r+1}-free 图必同构于 Turán 图：顶点尽量均分成 r 部，部间连满边。",
+      "definition": "达到 Turán 界的无 Kᵣ₊₁ 子图必同构于 Turán 图：顶点尽量均分成 r 部，部间连满边。",
       "domain_cn": "离散数学",
       "domain_en": "Discrete Math",
       "en": "Uniqueness of the extremal graph in Turán's theorem",
@@ -293475,7 +293475,7 @@
     {
       "branch_cn": "离散几何",
       "cn": "Szemerédi–Trotter 定理",
-      "definition": "平面上 n 个点与 m 条直线至多产生 O(n^{2/3}m^{2/3}+n+m) 个点线关联，是关联几何的基石。",
+      "definition": "平面上 n 个点与 m 条直线至多产生 O(n^(2/3)m^(2/3)+n+m) 个点线关联，是关联几何的基石。",
       "domain_cn": "离散数学",
       "domain_en": "Discrete Math",
       "en": "Szemerédi–Trotter incidence theorem",
@@ -293497,7 +293497,7 @@
     {
       "branch_cn": "离散几何",
       "cn": "Erdős 距离问题",
-      "definition": "平面上 n 个点最少能决定多少种不同距离，Erdős 猜想答案是 n^{1−o(1)} 量级。",
+      "definition": "平面上 n 个点最少能决定多少种不同距离，Erdős 猜想答案是 n^(1−o(1)) 量级。",
       "domain_cn": "离散数学",
       "domain_en": "Discrete Math",
       "en": "Erdős distinct distances problem",
@@ -293569,7 +293569,7 @@
       "en": "Gowers uniformity norms",
       "example": "Gowers 用它给出 Szemerédi 定理的定量证明",
       "formulas": [
-        "‖f‖_Uᵈ²ᵈ = 𝔼ₓ,ₕ ∏_ω f(x+ω·h)，ω∈{0,1}ᵈ"
+        "‖f‖_{Uᵈ}^(2ᵈ) = 𝔼_{x,h} ∏_{ω∈{0,1}ᵈ} f(x+ω·h)"
       ],
       "id": "LV34126",
       "kind": "概念",
@@ -294181,7 +294181,7 @@
       "en": "Lagrangian Dual Bound for Integer Programs",
       "definition": "把难约束松弛进目标得拉格朗日对偶，弱对偶恒给出下界，但整数规划一般有对偶间隙、强对偶不成立。",
       "formulas": [
-        "L(λ) = min{cᵀx + λᵀ(Ax−b)}",
+        "L(λ) = minₓ(cᵀx + λᵀ(Ax−b))",
         "max(λ≥0) L(λ) ≤ p*"
       ],
       "level": 3,
@@ -294540,6 +294540,4609 @@
       "kind": "推论",
       "example": "100 个专家做 1 万轮预测，平均每轮遗憾不超过约 0.03。",
       "id": "LV34172"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "Freyd一般伴随函子定理",
+      "conclusion": "",
+      "definition": "完备范畴上的函子若保持极限且满足解集条件，则它必有左伴随；这是构造自由对象的通用判据。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Freyd General Adjoint Functor Theorem",
+      "example": "遗忘函子 Top→Set 满足解集条件，故拓扑空间有自由构造。",
+      "formulas": [
+        "Hom(FX, Y) ≅ Hom(X, GY)",
+        "F 保持所有小余极限"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "LV33976",
+        "BS18"
+      ],
+      "tags": "重要",
+      "topic_cn": "一般伴随函子定理",
+      "id": "LV34173"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "特殊伴随函子定理",
+      "conclusion": "",
+      "definition": "余完备范畴上的函子若保持极限、满足解集条件且定义域有小余生成集，则它有左伴随。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Special Adjoint Functor Theorem",
+      "example": "用 SAFT 证明完备范畴中保持极限的函子必有左伴随。",
+      "formulas": [
+        "G 保持极限 + 解集条件 ⇒ G 有左伴随"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "LV33975",
+        "BS18"
+      ],
+      "tags": "重要",
+      "topic_cn": "特殊伴随函子定理",
+      "id": "LV34174"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "右伴随保持极限",
+      "conclusion": "",
+      "definition": "伴随对中右伴随自动保持一切极限，左伴随自动保持一切余极限；这是伴随的核心计算性质。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Right Adjoints Preserve Limits",
+      "example": "Hom 函子 Hom(A,−) 是右伴随，故它把极限变成极限。",
+      "formulas": [
+        "F ⊣ G ⇒ G 保持所有极限",
+        "lim G(D) ≅ G(lim D)"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "LV33975",
+        "LV33976"
+      ],
+      "tags": "重要",
+      "topic_cn": "右伴随保持极限",
+      "id": "LV34175"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "集合论",
+      "cn": "Knaster–Tarski不动点定理",
+      "conclusion": "",
+      "definition": "完备格上的单调自映射必有不动点，且全体不动点构成完备格；归纳定义的数学基础。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Knaster–Tarski Fixed Point Theorem",
+      "example": "程序语义中递归定义的最小不动点由此保证存在。",
+      "formulas": [
+        "F 单调 ⇒ ∃x 使 F(x) = x",
+        "最小不动点 = 全体前不动点之交"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "BS02",
+        "BS16"
+      ],
+      "tags": "重要",
+      "topic_cn": "Knaster-Tarski不动点定理",
+      "id": "LV34176"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "反推数学",
+      "cn": "弱König引理",
+      "conclusion": "",
+      "definition": "每棵无限有限分支树都有无限分支；它等价于 Cantor 空间的紧致性，是反推数学的基准公理。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Weak König's Lemma",
+      "example": "用弱 König 引理证明 [0,1] 上连续函数必有界。",
+      "formulas": [
+        "无限二叉树 ⇒ 存在无限分支"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "BS13",
+        "BS109"
+      ],
+      "tags": "重要",
+      "topic_cn": "弱König引理",
+      "id": "LV34177"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "证明论",
+      "cn": "Kirby–Paris定理",
+      "conclusion": "",
+      "definition": "Goodstein 定理在皮亚诺算术中不可证：存在真但 PA 证不出的初等数论命题，比哥德尔句更自然。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Kirby–Paris Theorem",
+      "example": "Goodstein 数列终归于零，但 PA 证明不了这一点。",
+      "formulas": [
+        "PA ⊬ Goodstein 定理"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "BS70",
+        "BS13"
+      ],
+      "tags": "重要",
+      "topic_cn": "Kirby-Paris定理",
+      "id": "LV34178"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "模型论",
+      "cn": "Lindström定理",
+      "conclusion": "",
+      "definition": "一阶逻辑是满足紧致性与下行勒文海姆–斯科伦性质的最强逻辑；它刻画了一阶逻辑的极大性。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Lindström's Theorem",
+      "example": "二阶逻辑不满足紧致性，故它严格强于一阶逻辑。",
+      "formulas": [
+        "紧致 + LS↓ ⇒ 该逻辑 ≡ 一阶逻辑"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "BS55",
+        "BS71"
+      ],
+      "tags": "核心",
+      "topic_cn": "Lindström定理",
+      "id": "LV34179"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "笛卡尔闭范畴",
+      "conclusion": "",
+      "definition": "有终对象、有限积与指数对象的范畴；其中态射集可内化为对象，是 λ 演算的语义模型。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Cartesian Closed Category",
+      "example": "Set 范畴中指数对象 B^A 就是全体函数集。",
+      "formulas": [
+        "Hom(X×Y, Z) ≅ Hom(X, [Y,Z])",
+        "有终对象 1"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "BS05",
+        "LV33974"
+      ],
+      "tags": "重要",
+      "topic_cn": "笛卡尔闭范畴",
+      "id": "LV34180"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "等化子与余等化子",
+      "conclusion": "",
+      "definition": "等化子挑出一对平行箭头取值相等的部分，是极限；余等化子把它们强制等同，是余极限。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Equalizer and Coequalizer",
+      "example": "集合范畴中 f,g 的等化子是 {x|f(x)=g(x)}。",
+      "formulas": [
+        "Eq(f,g) 由满足 f(x)=g(x) 的 x 组成"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "BS05",
+        "BS18"
+      ],
+      "tags": "",
+      "topic_cn": "等化子与余等化子",
+      "id": "LV34181"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "伴随的单位与余单位",
+      "conclusion": "",
+      "definition": "伴随对 F⊣G 的单位 η:Id⇒GF 与余单位 ε:FG⇒Id 满足三角恒等式，伴随的全部信息都藏在其中。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Unit and Counit of an Adjunction",
+      "example": "自由–遗忘伴随的单位把集合嵌入自由群的生成元。",
+      "formulas": [
+        "η: Id ⇒ GF",
+        "ε: FG ⇒ Id",
+        "εF ∘ Fη = id"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "LV33975",
+        "LV33976"
+      ],
+      "tags": "",
+      "topic_cn": "伴随的单位与余单位",
+      "id": "LV34182"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "预层",
+      "conclusion": "",
+      "definition": "小范畴上取值于集合的反变函子；几何中层的前身，范畴 C 上的预层范畴是自由余完备化。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Presheaf",
+      "example": "流形上光滑函数芽的分配构成预层。",
+      "formulas": [
+        "从 C 的反范畴到 Set 的函子"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "BS05",
+        "BS18"
+      ],
+      "tags": "",
+      "topic_cn": "预层",
+      "id": "LV34183"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "集合论",
+      "cn": "真类",
+      "conclusion": "",
+      "definition": "太大而不能成为集合的类，如所有集合组成的全域 V；真类只能出现在公式里，不能作为集合的元素。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Proper Class",
+      "example": "所有序数组成的 Ord 是真类，否则 Burali-Forti 悖论。",
+      "formulas": [],
+      "kind": "概念",
+      "level": 1,
+      "prereq": [
+        "BS27",
+        "BS28"
+      ],
+      "tags": "",
+      "topic_cn": "真类",
+      "id": "LV34184"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "描述集合论",
+      "cn": "Borel可归约性",
+      "conclusion": "",
+      "definition": "用 Borel 函数把一个集合的问题翻译成另一个：A≤_B B 意味着 A 的复杂度不高于 B，是描述集合论的比较标尺。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Borel Reducibility",
+      "example": "用 Borel 可归约性比较解析等价关系的复杂度高低。",
+      "formulas": [
+        "A 可Borel归约到B ⇔ ∃Borel映射f使x∈A ⇔ f(x)∈B"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "BS05",
+        "BS06"
+      ],
+      "tags": "",
+      "topic_cn": "Borel可归约性",
+      "id": "LV34185"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "描述集合论",
+      "cn": "Wadge归约",
+      "conclusion": "",
+      "definition": "用连续函数归约集合：存在连续映射把 A 的成员判别搬运到 B 上；它决定 Wadge 层级。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Wadge Reduction",
+      "example": "Wadge 层级下 Borel 集的复杂度被连续归约完全分类。",
+      "formulas": [
+        "A 可Wadge归约到B ⇔ ∃连续映射f使x∈A ⇔ f(x)∈B"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "BS05",
+        "BS06"
+      ],
+      "tags": "",
+      "topic_cn": "Wadge归约",
+      "id": "LV34186"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "大基数",
+      "cn": "超紧基数",
+      "conclusion": "",
+      "definition": "对任意 λ 都存在初等嵌入 j:V→M 使临界点为 κ 且 M 对 λ 序列封闭；比可测基数强得多的大基数。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Supercompact Cardinal",
+      "example": "超紧基数蕴含宇宙中存在大量可测基数。",
+      "formulas": [
+        "κ 超紧 ⇔ ∀λ ∃初等嵌入 j:V→M"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "BS19",
+        "BS44"
+      ],
+      "tags": "",
+      "topic_cn": "超紧基数",
+      "id": "LV34187"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "模型论",
+      "cn": "半代数集",
+      "conclusion": "",
+      "definition": "由多项式方程与不等式定义的实数集；它是 o-极小结构的基本构件，投影仍是半代数集。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Semialgebraic Set",
+      "example": "圆盘 {(x,y)|x²+y²≤1} 是半代数集。",
+      "formulas": [
+        "由 p(x)>0 与 q(x)=0 定义的 ℝⁿ 子集"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "BS09",
+        "BS51"
+      ],
+      "tags": "",
+      "topic_cn": "半代数集",
+      "id": "LV34188"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "topos一瞥",
+      "conclusion": "",
+      "definition": "行为像集合范畴的范畴：有有限极限、指数对象与子对象分类子；是直觉主义逻辑的语义舞台。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Topos (Glimpse)",
+      "example": "集合范畴与层范畴都是 topos，共享内部逻辑。",
+      "formulas": [],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "LV33974",
+        "BS33"
+      ],
+      "tags": "",
+      "topic_cn": "topos",
+      "id": "LV34189"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "类型论",
+      "cn": "Hindley-Milner类型推导算法",
+      "conclusion": "",
+      "definition": "为 λ 演算自动推导最一般类型的算法：用合一求解类型方程，多态 let 绑定可泛化；ML 语言的类型基石。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Hindley–Milner Type Inference",
+      "example": "Haskell 编译器用 HM 算法推导 map 的类型。",
+      "formulas": [
+        "Γ ⊢ e : τ"
+      ],
+      "kind": "算法",
+      "level": 3,
+      "prereq": [
+        "BS05",
+        "BS99"
+      ],
+      "tags": "",
+      "topic_cn": "Hindley-Milner类型推导",
+      "id": "LV34190"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "选择公理",
+      "cn": "每个向量空间都有基",
+      "conclusion": "",
+      "definition": "佐恩引理的直接推论：每个向量空间都存在由极大线性无关集构成的基，如 ℝ 在 ℚ 上的 Hamel 基。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Every Vector Space Has a Basis",
+      "example": "ℝ 作为 ℚ 向量空间的 Hamel 基无法显式写出。",
+      "formulas": [],
+      "kind": "推论",
+      "level": 2,
+      "prereq": [
+        "BS38"
+      ],
+      "tags": "重要",
+      "topic_cn": "向量空间的基",
+      "id": "LV34191"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "选择公理",
+      "cn": "实数集可良序",
+      "conclusion": "",
+      "definition": "良序定理的推论：在选择公理下实数集可被排成超限序列；没有显式构造，纯粹存在性。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "The Reals Can Be Well-ordered",
+      "example": "选择公理下 ℝ 可排成超限序列，但写不出具体排列。",
+      "formulas": [],
+      "kind": "推论",
+      "level": 3,
+      "prereq": [
+        "BS39"
+      ],
+      "tags": "",
+      "topic_cn": "实数集的良序",
+      "id": "LV34192"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "集合论",
+      "cn": "不存在万有集合",
+      "conclusion": "",
+      "definition": "康托尔定理的推论：不存在包含一切集合的集合，否则幂集基数矛盾；罗素悖论的定理形态。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "No Universal Set",
+      "example": "若有万有集 U，则 P(U)⊆U 与康托尔定理矛盾。",
+      "formulas": [
+        "若 U 为万有集，则 P(U) ⊆ U，矛盾"
+      ],
+      "kind": "推论",
+      "level": 2,
+      "prereq": [
+        "BS41",
+        "BS27"
+      ],
+      "tags": "",
+      "topic_cn": "不存在万有集合",
+      "id": "LV34193"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "选择公理",
+      "cn": "每个非零交换环都有极大理想",
+      "conclusion": "",
+      "definition": "佐恩引理的推论：每个非零含幺交换环都含极大理想；交换代数中局部化的起点。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Krull's Maximal Ideal Theorem",
+      "example": "ℤ 的极大理想恰为 (p)，p 取遍素数。",
+      "formulas": [],
+      "kind": "推论",
+      "level": 3,
+      "prereq": [
+        "BS38"
+      ],
+      "tags": "重要",
+      "topic_cn": "Krull极大理想定理",
+      "id": "LV34194"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "泛性质论证",
+      "conclusion": "",
+      "definition": "不碰具体构造，只用泛性质证存在唯一：满足同一泛性质的对象必唯一同构。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Universal Property Argument",
+      "example": "证积唯一：设 A×B 与 P 都满足积的泛性质，互射复合即得同构。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 2,
+      "prereq": [
+        "LV33973",
+        "BS05"
+      ],
+      "tags": "",
+      "topic_cn": "泛性质论证",
+      "id": "LV34195"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "集合论",
+      "cn": "反射论证",
+      "conclusion": "",
+      "definition": "要证关于全集 V 的命题，先反射到某个 V_α 上验证，再用反射原理拉回全集。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Reflection Argument",
+      "example": "证 ZFC 有限子理论协调：取反射的 V_α，它已是该子理论的集合模型。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 3,
+      "prereq": [
+        "BS28",
+        "BS22"
+      ],
+      "tags": "",
+      "topic_cn": "反射论证",
+      "id": "LV34196"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "集合论",
+      "cn": "单调迭代求最小不动点",
+      "conclusion": "",
+      "definition": "求单调算子的最小不动点时，从最小元开始反复迭代取上确界，极限即所求。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Iterating to the Least Fixed Point",
+      "example": "求递归程序语义：从空关系迭代单调泛函，ω 步极限得最小不动点语义。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 3,
+      "prereq": [
+        "BS13",
+        "BS97"
+      ],
+      "tags": "",
+      "topic_cn": "单调迭代求最小不动点",
+      "id": "LV34197"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "Mac Lane相干定理",
+      "conclusion": "",
+      "definition": "单子范畴中，凡由结合子与单位子拼成的、起点终点相同的两条态射必相等：加括号的方式不影响结果。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Mac Lane Coherence Theorem",
+      "example": "把(a⊗b)⊗(c⊗d)换括号成a⊗(b⊗(c⊗d))，两种换法结果相同。",
+      "formulas": [
+        "α：(a⊗b)⊗c → a⊗(b⊗c)",
+        "λ：I⊗a → a，ρ：a⊗I → a"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "LV33974",
+        "LV33973"
+      ],
+      "tags": "",
+      "topic_cn": "单子范畴的相干性",
+      "id": "LV34198"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "范畴论",
+      "cn": "Freyd–Mitchell嵌入定理",
+      "conclusion": "",
+      "definition": "每个小阿贝尔范畴都可忠实正合地嵌入某个模范畴：抽象正合列的论证，都能在模上用元素追图完成。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Freyd–Mitchell Embedding Theorem",
+      "example": "证蛇引理时可设对象是模、态射是同态，直接追元素。",
+      "formulas": [
+        "A ↪ R-Mod（忠实、正合、保持正合列）"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "LV33974",
+        "LV33976"
+      ],
+      "tags": "重要",
+      "topic_cn": "阿贝尔范畴的嵌入表示",
+      "id": "LV34199"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "集合论",
+      "cn": "Shoenfield绝对性定理",
+      "conclusion": "",
+      "definition": "Σ¹₂语句在含全部可数序数的传递模型间绝对：力迫扩张改变不了这类命题的真假。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Shoenfield Absoluteness Theorem",
+      "example": "关于实数集的Σ¹₂性质，用力迫法证不出真假翻转。",
+      "formulas": [
+        "M 传递、ω₁ ⊆ M ⇒ (M ⊨ φ ⇔ V ⊨ φ)，φ ∈ Σ¹₂"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "BS50",
+        "LV33993"
+      ],
+      "tags": "",
+      "topic_cn": "力迫与绝对性",
+      "id": "LV34200"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "证明论",
+      "cn": "Presburger算术可判定性",
+      "conclusion": "",
+      "definition": "只用加法（不用乘法）谈自然数的一阶理论是可判定的：总有算法判定任一语句的真假。",
+      "domain_cn": "数学基础",
+      "domain_en": "Mathematical Foundations",
+      "en": "Decidability of Presburger Arithmetic",
+      "example": "∀x ∃y (x + y = 2x) 的真假可由算法判定，无需人看。",
+      "formulas": [
+        "Th(ℕ, +, 0, 1, <) 可判定"
+      ],
+      "kind": "定理",
+      "level": 2,
+      "prereq": [
+        "BS23",
+        "BS52"
+      ],
+      "tags": "",
+      "topic_cn": "算术理论的可判定性",
+      "id": "LV34201"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "仿射代数几何",
+      "cn": "弱零点定理",
+      "conclusion": "",
+      "definition": "代数闭域上 n 元多项式环的每个极大理想都对应仿射空间中的一个点。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Weak Nullstellenssatz",
+      "example": "ℂ[x,y] 的极大理想必形如 (x−a, y−b)，对应点 (a,b)。",
+      "formulas": [
+        "k 代数闭时 𝔪 = (x₁−a₁,…,xₙ−aₙ)",
+        "k[x₁,…,xₙ]/𝔪 ≅ k"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "AL121",
+        "AL124"
+      ],
+      "tags": "重要",
+      "topic_cn": "零点定理",
+      "id": "LV34202"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "交换代数",
+      "cn": "Krull交定理",
+      "conclusion": "",
+      "definition": "诺特整环或诺特局部环中，任一理想各次幂的交恒为零。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Krull Intersection Theorem",
+      "example": "局部环中 ∩mⁿ=0 蕴含非零元不被无限整除。",
+      "formulas": [
+        "∩ₙ Iⁿ = 0（R 诺特整环或诺特局部环）"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AL122",
+        "AL125"
+      ],
+      "tags": "重要",
+      "topic_cn": "诺特环",
+      "id": "LV34203"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "交换代数",
+      "cn": "Hilbert-Samuel多项式",
+      "conclusion": "",
+      "definition": "诺特局部环中 m-准素理想幂商的长度函数，最终由多项式给出。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Hilbert-Samuel Polynomial",
+      "example": "d 维正则局部环的重数 e=1，首项系数为 1/d!。",
+      "formulas": [
+        "n ≫ 0 时 ℓ(R/Iⁿ⁺¹) = P(n)",
+        "deg P = dim R"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AL122",
+        "AL125"
+      ],
+      "tags": "重要",
+      "topic_cn": "分次环与维数",
+      "id": "LV34204"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "交换代数",
+      "cn": "Hilbert-Burch定理",
+      "conclusion": "",
+      "definition": "余维 2 的 Cohen-Macaulay 商环的极小自由分解由其定义矩阵的最大子式给出。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Hilbert-Burch Theorem",
+      "example": "扭立方曲线的定义理想由 2×3 矩阵的 2 阶子式生成。",
+      "formulas": [
+        "0 → Rᵐ⁻¹ → Rᵐ → I → 0",
+        "I 由 φ 的 (m−1) 阶子式生成"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "AL122",
+        "AL23"
+      ],
+      "tags": "重要",
+      "topic_cn": "自由分解",
+      "id": "LV34205"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "交换代数",
+      "cn": "Serre正则性判据",
+      "conclusion": "",
+      "definition": "诺特局部环是正则局部环，当且仅当其整体维数有限。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Serre's Regularity Criterion",
+      "example": "光滑点的局部环正则，故其上模都有有限自由分解。",
+      "formulas": [
+        "R 正则 ⟺ gl.dim R < ∞",
+        "正则局部环的整体维数 = Krull 维数"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "AL122",
+        "AL23"
+      ],
+      "tags": "核心",
+      "topic_cn": "正则环",
+      "id": "LV34206"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "李代数",
+      "cn": "Levi分解定理",
+      "conclusion": "",
+      "definition": "特征零域上有限维李代数可分解为半单 Levi 子代数与可解根基的半直积。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Levi Decomposition Theorem",
+      "example": "𝔟（上三角矩阵李代数）= 对角 Cartan ⋉ 严格上三角幂零根基。",
+      "formulas": [
+        "𝔤 = 𝔰 ⋉ rad(𝔤)"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "LV34005",
+        "AL13"
+      ],
+      "tags": "重要",
+      "topic_cn": "结构理论",
+      "id": "LV34207"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "域论与伽罗瓦理论",
+      "cn": "循环扩张",
+      "conclusion": "",
+      "definition": "伽罗瓦群为循环群的有限伽罗瓦扩张，是类域论的基本构件。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Cyclic Extension",
+      "example": "分圆扩张 ℚ(ζₚ)/ℚ 是 p−1 次循环扩张。",
+      "formulas": [
+        "Gal(K/k) 为循环群",
+        "n 次循环扩张（特征 ∤ n）⟺ K = k(ⁿ√a)"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AL139",
+        "AL40"
+      ],
+      "tags": "重要",
+      "topic_cn": "伽罗瓦扩张",
+      "id": "LV34208"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "多项式",
+      "cn": "Descartes符号法则",
+      "conclusion": "",
+      "definition": "实系数多项式的正根个数等于系数序列变号数减去一个偶数。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Descartes' Rule of Signs",
+      "example": "x³−3x+1 变号 2 次，故有 0 或 2 个正根。",
+      "formulas": [
+        "正根数 = 变号数 − 2k（k ≥ 0 整数）",
+        "f(−x) 的变号数估计负根数"
+      ],
+      "kind": "定理",
+      "level": 2,
+      "prereq": [
+        "AL01",
+        "AL15"
+      ],
+      "tags": "重要",
+      "topic_cn": "实根估计",
+      "id": "LV34209"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "交换代数",
+      "cn": "Hilbert级数",
+      "conclusion": "",
+      "definition": "把分次模各齐次分支的维数打包成幂级数，是计算维数的生成函数。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Hilbert Series",
+      "example": "k[x,y] 的 Hilbert 级数为 1/(1−t)²，展开系数为 n+1。",
+      "formulas": [
+        "H(t) = ∑ₙ dim Mₙ · tⁿ",
+        "H(t) = 1/(1−t)ⁿ（多项式环 k[x₁,…,xₙ]）"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "AL122",
+        "AL08"
+      ],
+      "tags": "重要",
+      "topic_cn": "分次环与维数",
+      "id": "LV34210"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "交换代数",
+      "cn": "极小自由分解",
+      "conclusion": "",
+      "definition": "微分矩阵元全落在极大理想中的自由分解，是模最紧凑的自由逼近。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Minimal Free Resolution",
+      "example": "k[x]/(x²) 的极小自由分解是 2-周期无穷复形。",
+      "formulas": [
+        "⋯ → F₁ → F₀ → M → 0（微分元 ∈ 𝔪）",
+        "βᵢ = rank Fᵢ"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "AL23",
+        "AL122"
+      ],
+      "tags": "重要",
+      "topic_cn": "自由分解",
+      "id": "LV34211"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "交换代数",
+      "cn": "典范模",
+      "conclusion": "",
+      "definition": "Cohen-Macaulay 局部环上实现局部对偶的有限生成模，是对偶化层的代数化身。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Canonical Module",
+      "example": "Gorenstein 环的典范模就是环本身（相差一个同构）。",
+      "formulas": [
+        "Gorenstein ⟺ 典范模 ω ≅ R"
+      ],
+      "kind": "概念",
+      "level": 5,
+      "prereq": [
+        "AL122",
+        "AL23"
+      ],
+      "tags": "",
+      "topic_cn": "对偶理论",
+      "id": "LV34212"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "李代数",
+      "cn": "幂零李代数",
+      "conclusion": "",
+      "definition": "下中心列经有限步降到零的李代数，是最接近交换的可解李代数。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Nilpotent Lie Algebra",
+      "example": "严格上三角矩阵在换位子括号下构成幂零李代数。",
+      "formulas": [
+        "𝔤⁰ = 𝔤, 𝔤ⁱ⁺¹ = [𝔤, 𝔤ⁱ]，某步为 0",
+        "Engel 定理：幂零 ⟺ adₓ 皆幂零"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AL13",
+        "AL08"
+      ],
+      "tags": "重要",
+      "topic_cn": "结构理论",
+      "id": "LV34213"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "李代数",
+      "cn": "Kac-Moody李代数",
+      "conclusion": "",
+      "definition": "由广义 Cartan 矩阵经生成元与关系定义的无限维李代数，单李代数的无穷维推广。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Kac-Moody Lie Algebra",
+      "example": "仿射李代数是最重要的一类 Kac-Moody 代数，源于 loop 代数。",
+      "formulas": [
+        "[hᵢ,hⱼ] = 0，[eᵢ,fⱼ] = δᵢⱼhᵢ",
+        "(ad eᵢ)¹⁻ᵃⁱʲ(eⱼ) = 0（Serre 关系）"
+      ],
+      "kind": "概念",
+      "level": 5,
+      "prereq": [
+        "LV34005",
+        "AL13"
+      ],
+      "tags": "核心",
+      "topic_cn": "无限维李理论",
+      "id": "LV34214"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "表示论",
+      "cn": "量子群",
+      "conclusion": "",
+      "definition": "半单李代数泛包络代数的单参数形变，带辫子结构的 Hopf 代数。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Quantum Group",
+      "example": "量子 sl₂ 的表示给出 Jones 多项式等纽结不变量。",
+      "formulas": [
+        "Uq(𝔤)：q → 1 时回到 U(𝔤)",
+        "Δ(E) = E⊗1 + K⊗E"
+      ],
+      "kind": "概念",
+      "level": 5,
+      "prereq": [
+        "LV34005",
+        "AL19"
+      ],
+      "tags": "重要",
+      "topic_cn": "量子化",
+      "id": "LV34215"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "环论",
+      "cn": "Morita等价",
+      "conclusion": "",
+      "definition": "两个环的模范畴等价，环的许多性质在 Morita 等价下保持不变。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Morita Equivalence",
+      "example": "矩阵环 Mₙ(k) 与基域 k 有相同的表示论。",
+      "formulas": [
+        "R 与 Mₙ(R) Morita 等价",
+        "Mod-R ≃ Mod-S"
+      ],
+      "kind": "概念",
+      "level": 5,
+      "prereq": [
+        "AL23",
+        "AL05"
+      ],
+      "tags": "",
+      "topic_cn": "模范畴",
+      "id": "LV34216"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "二次型",
+      "cn": "Hasse-Minkowski定理",
+      "conclusion": "",
+      "definition": "有理数域上二次型整体等价当且仅当在实数域和所有 p 进数域上都等价。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Hasse-Minkowski Theorem",
+      "example": "x²+y²=3z² 在 ℚ₂ 无非零解，故在 ℚ 也只有零解。",
+      "formulas": [
+        "q₁ ∼ q₂（ℚ 上）⟺ 在所有位 v 上都等价",
+        "∏ᵥ (a,b)ᵥ = 1（Hilbert 符号乘积公式）"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AL12",
+        "AL175"
+      ],
+      "tags": "重要",
+      "topic_cn": "局部整体原则",
+      "id": "LV34217"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数数论",
+      "cn": "分歧群",
+      "conclusion": "",
+      "definition": "素理想分解群中按赋值差分出的子群列，逐层度量扩张的分歧深度。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Ramification Groups",
+      "example": "G₁ 非平凡当且仅当分歧是野分歧（p 整除分歧指数）。",
+      "formulas": [
+        "G₋₁ = 分解群 ⊃ G₀ = 惯性群 ⊃ G₁ ⊃ ⋯",
+        "G₀/G₁ 循环，G₁ 为 p-群"
+      ],
+      "kind": "概念",
+      "level": 5,
+      "prereq": [
+        "LV34019",
+        "AL139"
+      ],
+      "tags": "",
+      "topic_cn": "分歧理论",
+      "id": "LV34218"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数数论",
+      "cn": "Iwasawa理论一瞥",
+      "conclusion": "",
+      "definition": "研究 ℤₚ 扩张塔中理想类群 p-部分增长规律的理论，连接 p 进 L 函数与类群。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Iwasawa Theory (Glimpse)",
+      "example": "分圆 ℤₚ 扩张的 Iwasawa 主猜想已被 Mazur-Wiles 证明。",
+      "formulas": [
+        "n ≫ 0 时 vₚ(|Cl(Kₙ)|) = μpⁿ + λn + ν",
+        "主猜想：特征理想由 p 进 L 函数生成"
+      ],
+      "kind": "概念",
+      "level": 5,
+      "prereq": [
+        "AL148",
+        "LV34019"
+      ],
+      "tags": "重要",
+      "topic_cn": "p进L函数",
+      "id": "LV34219"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数结构",
+      "cn": "八元数",
+      "conclusion": "",
+      "definition": "8 维实可除代数，乘法满足交错律但不再结合，有乘性范数。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Octonions",
+      "example": "八元数是非结合可除代数的终点：16 维已无可除代数。",
+      "formulas": [
+        "|xy| = |x|·|y|",
+        "eᵢ² = −1（i = 1,…,7）"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "AL14",
+        "AL08"
+      ],
+      "tags": "",
+      "topic_cn": "可除代数",
+      "id": "LV34220"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "计算代数",
+      "cn": "LLL算法",
+      "conclusion": "",
+      "definition": "多项式时间内把格基约化为近似最短的算法，是格密码分析的基石。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "LLL Algorithm",
+      "example": "用 LLL 找整数关系：给定 π 的近似值反推极小多项式。",
+      "formulas": [
+        "约化基首向量 |b₁| ≤ 2⁽ⁿ⁻¹⁾ᐟ²·λ₁",
+        "Lovász 条件：|μᵢⱼ| ≤ 1/2"
+      ],
+      "kind": "算法",
+      "level": 3,
+      "prereq": [
+        "AL08",
+        "AL11"
+      ],
+      "tags": "重要",
+      "topic_cn": "格算法",
+      "id": "LV34221"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "群论",
+      "cn": "pq阶群的可解性",
+      "conclusion": "",
+      "definition": "Burnside pq 定理的直接推论：阶为两素数之积的群必可解。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Solvability of Groups of Order pq",
+      "example": "15 阶群必循环：pq 阶群可解且 Sylow 子群正规。",
+      "formulas": [
+        "|G| = pq（p,q 素数）⇒ G 可解"
+      ],
+      "kind": "推论",
+      "level": 3,
+      "prereq": [
+        "LV34004",
+        "AL92"
+      ],
+      "tags": "重要",
+      "topic_cn": "可解群",
+      "id": "LV34222"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数结构",
+      "cn": "有限维实可除代数的分类",
+      "conclusion": "",
+      "definition": "Frobenius 定理的推论：有限维实可除代数只有 ℝ、ℂ、ℍ 三种。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Classification of Finite-Dimensional Real Division Algebras",
+      "example": "八元数 8 维但乘法不结合，故不在分类之列。",
+      "formulas": [
+        "D/ℝ 有限维可除 ⟹ D ≅ ℝ, ℂ 或 ℍ"
+      ],
+      "kind": "推论",
+      "level": 3,
+      "prereq": [
+        "LV34011",
+        "AL14"
+      ],
+      "tags": "重要",
+      "topic_cn": "可除代数",
+      "id": "LV34223"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "交换代数",
+      "cn": "有限生成代数保持诺特性",
+      "conclusion": "",
+      "definition": "Hilbert 基定理的推论：诺特环上的有限生成代数仍是诺特环。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Finite Generation Preserves Noetherianity",
+      "example": "k[x₁,…,xₙ] 的任一商环都满足理想极大条件。",
+      "formulas": [
+        "R 诺特 ⟹ R[x₁,…,xₙ] 诺特",
+        "A = R[a₁,…,aₙ] 为 R[x] 的商 ⟹ A 诺特"
+      ],
+      "kind": "推论",
+      "level": 3,
+      "prereq": [
+        "AL123",
+        "AL122"
+      ],
+      "tags": "重要",
+      "topic_cn": "诺特环",
+      "id": "LV34224"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "群表示论",
+      "cn": "群代数的半单性",
+      "conclusion": "",
+      "definition": "Maschke 定理的推论：特征不整除群阶时，群代数半单，表示完全可约。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Semisimplicity of Group Algebras",
+      "example": "ℂS₃ ≅ ℂ×ℂ×M₂(ℂ)：3 阶对称群的表示全由三块拼成。",
+      "formulas": [
+        "char k ∤ |G| ⟹ kG 半单",
+        "kG ≅ ∏ Mₙᵢ(Dᵢ)"
+      ],
+      "kind": "推论",
+      "level": 4,
+      "prereq": [
+        "AL114",
+        "AL112"
+      ],
+      "tags": "重要",
+      "topic_cn": "群代数",
+      "id": "LV34225"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "解题思路",
+      "cn": "首项消去法",
+      "conclusion": "",
+      "definition": "用带余除法或辗转相除反复消去最高次项，是多项式算法的通用引擎。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Leading Term Cancellation",
+      "example": "求 gcd(x³−1, x²−1)：消首项得 x³−1 − x(x²−1) = x−1。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 2,
+      "prereq": [
+        "AL01",
+        "AL17"
+      ],
+      "tags": "",
+      "topic_cn": "多项式技巧",
+      "id": "LV34226"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "解题思路",
+      "cn": "模素数约化法",
+      "conclusion": "",
+      "definition": "把整数问题先模素数 p 看：p 进世界里无解，则整数世界也无解。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Reduction Modulo a Prime",
+      "example": "证 x²+y²=3z² 只有零解：模 4 看平方只可能是 0 或 1。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 2,
+      "prereq": [
+        "AL16",
+        "AL01"
+      ],
+      "tags": "",
+      "topic_cn": "数论技巧",
+      "id": "LV34227"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "解题思路",
+      "cn": "特殊化验证恒等式",
+      "conclusion": "",
+      "definition": "要证多项式恒等式，先代入足够多特殊值检验：值对得多项式必恒等。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Verifying Identities by Specialization",
+      "example": "证 (x+y)³ 展开式：代入 (1,1)、(1,2) 等数值逐项核对。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 2,
+      "prereq": [
+        "AL01",
+        "AL121"
+      ],
+      "tags": "",
+      "topic_cn": "多项式技巧",
+      "id": "LV34228"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "域论",
+      "cn": "超越元",
+      "conclusion": "",
+      "definition": "域扩张 K/F 中不满足 F 上任何非零多项式的元素，与代数元相对，如 π 对 ℚ。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Transcendental Element",
+      "example": "π 和 e 都是 ℚ 上的超越元，Lindemann–Weierstrass 定理断言了这一点。",
+      "formulas": [],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "AL150",
+        "AL40"
+      ],
+      "tags": "重要",
+      "topic_cn": "域扩张",
+      "id": "LV34229"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数数论",
+      "cn": "理想范数",
+      "conclusion": "",
+      "definition": "数域整数环 O 中非零理想 𝔞 的范数 N(𝔞)=|O/𝔞|，衡量理想“大小”且保持乘性。",
+      "domain_cn": "代数",
+      "domain_en": "Algebra",
+      "en": "Norm of an Ideal",
+      "example": "ℤ 中主理想 (n) 的范数是 |n|；(2) 在高斯整数环 ℤ[i] 中的范数是 4。",
+      "formulas": [
+        "N(𝔞) = |O/𝔞|",
+        "N(𝔞𝔟) = N(𝔞)N(𝔟)"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "LV34009",
+        "LV34019"
+      ],
+      "tags": "重要",
+      "topic_cn": "理想理论",
+      "id": "LV34230"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "泛函分析",
+      "cn": "Hille-Yosida 定理",
+      "conclusion": "",
+      "definition": "稠定闭算子A生成压缩C₀半群，当且仅当预解集含(0,∞)且预解式满足‖(λI−A)⁻ⁿ‖≤λ⁻ⁿ。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Hille-Yosida Theorem",
+      "example": "拉普拉斯算子Δ生成热半群，热方程的解随时间被压缩衰减。",
+      "formulas": [
+        "‖(λI − A)⁻ⁿ‖ ≤ 1/λⁿ, λ > 0, n = 1,2,…",
+        "T(t)x = limₙ→∞ (I − tA/n)⁻ⁿx"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AN159",
+        "AN167",
+        "AN145"
+      ],
+      "tags": "核心",
+      "topic_cn": "算子半群",
+      "id": "LV34231"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "泛函分析",
+      "cn": "Gelfand 变换",
+      "conclusion": "",
+      "definition": "交换Banach代数中每个元素a对应其谱空间上的连续函数â(λ)=λ(a)，乘法变为逐点乘法。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Gelfand Transform",
+      "example": "圆盘代数的Gelfand变换把函数映为它在极大理想空间上的取值。",
+      "formulas": [
+        "â(λ) = λ(a)",
+        "σ(a) = â[Σ]"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AN159",
+        "AN166"
+      ],
+      "tags": "",
+      "topic_cn": "算子代数",
+      "id": "LV34232"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "调和分析",
+      "cn": "Marcinkiewicz 乘子定理",
+      "conclusion": "",
+      "definition": "一维傅里叶乘子若在每个二进区间上一致有界变差，则它在Lᵖ上有界(1<p<∞)。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Marcinkiewicz Multiplier Theorem",
+      "example": "Hilbert变换的符号函数满足该条件，故它在Lᵖ上有界。",
+      "formulas": [
+        "Var(m; [2ᵏ,2ᵏ⁺¹]) ≤ C",
+        "‖Tmf‖Lᵖ ≤ C‖f‖Lᵖ"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AN21",
+        "AN113"
+      ],
+      "tags": "",
+      "topic_cn": "傅里叶乘子",
+      "id": "LV34233"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "遍历论",
+      "cn": "Ratner 测度刚性定理",
+      "conclusion": "",
+      "definition": "齐性空间上单幂流的遍历不变测度必为某闭轨道上的齐性测度，轨道闭包必为齐性子流形。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Ratner's Measure Rigidity Theorem",
+      "example": "由此推出Oppenheim猜想：不定三元二次型在整数点取值稠密。",
+      "formulas": [
+        "μ ∈ Erg(uₜ) ⇒ μ(H·x) = 1"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "AL86",
+        "AN25"
+      ],
+      "tags": "核心",
+      "topic_cn": "测度刚性",
+      "id": "LV34234"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "实分析",
+      "cn": "Gehring 引理",
+      "conclusion": "",
+      "definition": "满足反向Hölder不等式的非负函数自动获得更高次可积性，指数提升有定量估计。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Gehring's Lemma",
+      "example": "拟正则映射的梯度满足反向Hölder，故自动高阶可积。",
+      "formulas": [
+        "⨍Q wʳ ≤ C(⨍2Q w)ʳ ⇒ w ∈ Lʳ⁺ᵋ"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AN06",
+        "AN11"
+      ],
+      "tags": "",
+      "topic_cn": "高阶可积性",
+      "id": "LV34235"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "级数",
+      "cn": "拉贝判别法",
+      "conclusion": "",
+      "definition": "比值判别法失效（极限为1）时的加细判别：看n(1−aₙ₊₁/aₙ)的极限，大于1收敛、小于1发散。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Raabe's Test",
+      "example": "∑1/(n(ln n)ᵖ)用比值法得1，拉贝判别法判定p>1收敛。",
+      "formulas": [
+        "lim n(1 − aₙ₊₁/aₙ) > 1 ⇒ ∑aₙ 收敛",
+        "lim n(1 − aₙ₊₁/aₙ) < 1 ⇒ ∑aₙ 发散"
+      ],
+      "kind": "定理",
+      "level": 2,
+      "prereq": [
+        "AN45",
+        "AN12"
+      ],
+      "tags": "",
+      "topic_cn": "审敛法",
+      "id": "LV34236"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "Monge-Ampère 方程",
+      "conclusion": "",
+      "definition": "det(D²u)=f的完全非线性椭圆方程：最优传输与给定Gauss曲率问题的核心模型。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Monge-Ampère Equation",
+      "example": "Brenier定理中的凸势函数满足Monge-Ampère方程。",
+      "formulas": [
+        "det(D²u) = f(x)"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "AN55",
+        "AN201"
+      ],
+      "tags": "重要",
+      "topic_cn": "完全非线性方程",
+      "id": "LV34237"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "积分论",
+      "cn": "黎曼-斯蒂尔杰斯积分",
+      "conclusion": "",
+      "definition": "对单调增函数α的积分∫f dα：把通常的dx换成dα，黎曼积分是α(x)=x的特例。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Riemann-Stieltjes Integral",
+      "example": "α为阶梯函数时∫f dα化为级数求和，统一了求和与积分。",
+      "formulas": [
+        "∫ₐᵇ f dα = lim ∑ f(ξᵢ)(α(xᵢ) − α(xᵢ₋₁))"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "AN06",
+        "AN76"
+      ],
+      "tags": "",
+      "topic_cn": "积分推广",
+      "id": "LV34238"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "Weiss 单调性公式",
+      "conclusion": "",
+      "definition": "障碍问题解的Weiss能量沿半径单调不减，blow-up极限必为齐次函数，由此对自由边界点分类。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Weiss Monotonicity Formula",
+      "example": "用Weiss单调性公式证障碍问题自由边界在正则点附近是光滑超曲面。",
+      "formulas": [
+        "W(r₁) ≤ W(r₂), r₁ < r₂"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AN153",
+        "AN147"
+      ],
+      "tags": "",
+      "topic_cn": "自由边界",
+      "id": "LV34239"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "ABP 估计",
+      "conclusion": "",
+      "definition": "非散度型一致椭圆方程的上确界被右端的Lⁿ范数控制，是Alexandrov极值原理的定量版。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "ABP Estimate",
+      "example": "它是Krylov-Safonov Hölder估计的起点。",
+      "formulas": [
+        "sup u ≤ C·diam(Ω)·‖(Lu)₋‖Lⁿ"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AN147",
+        "AN55"
+      ],
+      "tags": "",
+      "topic_cn": "非散度型方程",
+      "id": "LV34240"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "分数阶拉普拉斯",
+      "conclusion": "",
+      "definition": "拉普拉斯算子的分数次幂(−Δ)ˢ(0<s<1)：非局部算子，取值依赖全空间，是反常扩散的生成元。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Fractional Laplacian",
+      "example": "分数阶拉普拉斯生成对称稳定过程，描述跳跃型反常扩散。",
+      "formulas": [
+        "(−Δ)ˢu(x) = Cₙ,ₛ P.V. ∫ (u(x)−u(y))/|x−y|ⁿ⁺²ˢ dy"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "AN55",
+        "AN21"
+      ],
+      "tags": "重要",
+      "topic_cn": "非局部算子",
+      "id": "LV34241"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "变分法",
+      "cn": "Brenier 定理",
+      "conclusion": "",
+      "definition": "二次代价下的最优传输映射必为某凸函数的梯度，在温和条件下唯一存在。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Brenier's Theorem",
+      "example": "把一堆沙最省力地搬成目标形状，搬运方案由凸函数梯度给出。",
+      "formulas": [
+        "T = ∇φ, D²φ ≥ 0",
+        "T#μ = ν"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AN09",
+        "AN189"
+      ],
+      "tags": "重要",
+      "topic_cn": "最优传输",
+      "id": "LV34242"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "调和分析",
+      "cn": "T(b) 定理",
+      "conclusion": "",
+      "definition": "若算子T及其伴随把某个试验函数b映入BMO且弱有界性成立，则T在L²上有界。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "T(b) Theorem",
+      "example": "David-Journé-Semmes为证Cauchy积分算子有界性发展了该工具。",
+      "formulas": [
+        "T(b),T*b ∈ BMO, WBP ⇒ ‖Tf‖₂ ≤ C‖f‖₂"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "AN21",
+        "AN113"
+      ],
+      "tags": "",
+      "topic_cn": "奇异积分",
+      "id": "LV34243"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "调和分析",
+      "cn": "A₂ 猜想",
+      "conclusion": "",
+      "definition": "Calderón-Zygmund算子范数被A₂特征数线性控制，Hytönen于2012年给出证明。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "A2 Conjecture",
+      "example": "它是Hytönen表示定理的直接推论，终结了权不等式线性界的猜想。",
+      "formulas": [
+        "‖Tf‖L²(w) ≤ C [w]A₂ ‖f‖L²(w)"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "AN21",
+        "AN113"
+      ],
+      "tags": "",
+      "topic_cn": "权不等式",
+      "id": "LV34244"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "分散估计",
+      "conclusion": "",
+      "definition": "自由Schrödinger方程的解满足L¹到L∞的衰减估计，色散把波包摊平：‖S(t)u₀‖∞≤C|t|⁻ⁿᐟ²‖u₀‖₁。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Dispersive Estimate",
+      "example": "它是Strichartz估计的出发点，管着非线性色散方程的整体适定性。",
+      "formulas": [
+        "‖S(t)u₀‖∞ ≤ C|t|⁻ⁿᐟ²‖u₀‖₁"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AN21",
+        "AN54"
+      ],
+      "tags": "",
+      "topic_cn": "色散方程",
+      "id": "LV34245"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "调和分析",
+      "cn": "Bochner-Riesz 乘子",
+      "conclusion": "",
+      "definition": "把傅里叶变换截断在球内、边界按(1−|ξ|²)ᵟ₊磨光的乘子，临界指数猜想至今未完全解决。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Bochner-Riesz Multiplier",
+      "example": "δ=0即球面求和问题，与傅里叶限制性猜想深刻相连。",
+      "formulas": [
+        "mδ(ξ) = (1 − |ξ|²)ᵟ₊",
+        "δ > max(0, n|1/p − 1/2| − 1/2)"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "AN21",
+        "AN113"
+      ],
+      "tags": "",
+      "topic_cn": "傅里叶乘子",
+      "id": "LV34246"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "调和分析",
+      "cn": "傅里叶限制性问题",
+      "conclusion": "",
+      "definition": "把曲面上Lᵖ函数做傅里叶延拓，问它在ℝⁿ上属于哪个Lᵠ：曲面弯曲带来增益。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Fourier Restriction Problem",
+      "example": "Stein猜想：抛物面上p>2n/(n+1)时成立，高维仍开放。",
+      "formulas": [
+        "F=(fdσ)∧, ‖F‖Lᵠ ≤ C‖f‖Lᵖ"
+      ],
+      "kind": "概念",
+      "level": 5,
+      "prereq": [
+        "AN21",
+        "AN75"
+      ],
+      "tags": "",
+      "topic_cn": "限制性猜想",
+      "id": "LV34247"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "Stefan 问题",
+      "conclusion": "",
+      "definition": "描述冰融化时固液界面移动的模型：热方程配上界面处的Stefan条件决定自由边界演化。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Stefan Problem",
+      "example": "冰块融化时冰水交界面的移动速度由两侧热流跳跃决定。",
+      "formulas": [
+        "V = −[∂u/∂ν] 于自由边界"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AN145",
+        "AN24"
+      ],
+      "tags": "重要",
+      "topic_cn": "自由边界",
+      "id": "LV34248"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "半凹函数",
+      "conclusion": "",
+      "definition": "减去二次函数后为凹的函数：比Lipschitz稍强，是Hamilton-Jacobi方程解的典型正则性。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Semiconcave Function",
+      "example": "Hopf-Lax公式给出的值函数自动半凹，故几乎处处可微。",
+      "formulas": [
+        "u(x₁)+u(x₂) ≤ 2u((x₁+x₂)/2) + C|x₁−x₂|²"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AN189",
+        "AN07"
+      ],
+      "tags": "",
+      "topic_cn": "Hamilton-Jacobi方程",
+      "id": "LV34249"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "动态规划原理",
+      "conclusion": "",
+      "definition": "最优控制满足：整段最优则任一子段也最优，值函数的递推关系即Bellman方程的思想源头。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Dynamic Programming Principle",
+      "example": "导航软件每走一段就重新规划剩余最短路，正是动态规划原理。",
+      "formulas": [
+        "V(x) = infᵤ (∫₀ʰ L dt + V(x(h)))"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "AN08",
+        "AN16"
+      ],
+      "tags": "",
+      "topic_cn": "最优控制",
+      "id": "LV34250"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "无穷拉普拉斯",
+      "conclusion": "",
+      "definition": "p-拉普拉斯令p→∞的极限算子，刻画绝对极小Lipschitz扩张，与tug-of-war博弈相关。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Infinity Laplacian",
+      "example": "tug-of-war博弈的值函数满足无穷拉普拉斯方程。",
+      "formulas": [
+        "Δ∞u = ⟨D²u ∇u, ∇u⟩"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "AN07",
+        "AN201"
+      ],
+      "tags": "",
+      "topic_cn": "非线性算子",
+      "id": "LV34251"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "调和分析",
+      "cn": "VMO 空间",
+      "conclusion": "",
+      "definition": "平均振荡在小尺度下一致趋于零的BMO函数子空间，是紧算子与逼近论的自然舞台。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "VMO Space",
+      "example": "一致连续函数属于VMO，而log|x|属于BMO却不属于VMO。",
+      "formulas": [
+        "ω(r)=supₓ ⨍Bᵣ(x)|f−fB| → 0 (r→0)"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AN11",
+        "AN76"
+      ],
+      "tags": "",
+      "topic_cn": "函数空间",
+      "id": "LV34252"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "复分析",
+      "cn": "Bergman 空间",
+      "conclusion": "",
+      "definition": "圆盘上全纯且p次方可积的函数组成的Banach空间，点求值连续故有再生核。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Bergman Space",
+      "example": "Bergman核给出L²全纯函数的正交投影，是多复变的基本工具。",
+      "formulas": [
+        "Aᵖ = Hol(𝔻) ∩ Lᵖ(𝔻)",
+        "f(z) = ∫ K(z,w)f(w) dA"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AN14",
+        "AN160"
+      ],
+      "tags": "",
+      "topic_cn": "函数空间",
+      "id": "LV34253"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "傅里叶分析",
+      "cn": "sinc 函数",
+      "conclusion": "",
+      "definition": "sinc(x)=sin(πx)/(πx)：带限信号的插值基函数，采样定理的砖块。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Sinc Function",
+      "example": "采样定理用sinc函数把离散采样点插值回连续信号。",
+      "formulas": [
+        "sinc(x) = sin(πx)/(πx)",
+        "f(t) = ∑ f(nT) sinc(t/T − n)"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "AN119",
+        "AN21"
+      ],
+      "tags": "",
+      "topic_cn": "采样理论",
+      "id": "LV34254"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "熵解",
+      "conclusion": "",
+      "definition": "守恒律弱解中满足全部凸熵不等式的那个，Kruzhkov证明它唯一且物理上正确。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Entropy Solution",
+      "example": "Burgers方程激波有无穷多弱解，熵条件挑出物理上压缩的那支。",
+      "formulas": [
+        "∂ₜη(u) + ∂ₓq(u) ≤ 0, η'' ≥ 0"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "AN155",
+        "AN156"
+      ],
+      "tags": "",
+      "topic_cn": "守恒律",
+      "id": "LV34255"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "复分析",
+      "cn": "Beltrami 方程",
+      "conclusion": "",
+      "definition": "∂̄f=μ∂f（|μ|<1）：把共形条件松弛为有界畸变，其解正是拟共形映射。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Beltrami Equation",
+      "example": "可测Riemann映射定理：每个Beltrami系数对应唯一的拟共形形变。",
+      "formulas": [
+        "∂̄f = μ ∂f, ‖μ‖∞ < 1"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "AN109",
+        "AN07"
+      ],
+      "tags": "",
+      "topic_cn": "拟共形映射",
+      "id": "LV34256"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "偏微分方程",
+      "cn": "紧性反证法",
+      "conclusion": "",
+      "definition": "证一致估计的常用套路：设估计不成立，取出爆破序列做缩放，用紧性取极限得矛盾。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Compactness-Contradiction Argument",
+      "example": "证椭圆方程解的先验界：爆破序列缩放后收敛到非常值整解，矛盾。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 3,
+      "prereq": [
+        "AN63",
+        "AN64"
+      ],
+      "tags": "",
+      "topic_cn": "先验估计",
+      "id": "LV34257"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "傅里叶分析",
+      "cn": "混叠",
+      "conclusion": "",
+      "definition": "采样率不足时高频冒充低频的现象：频率f与f+kf_s无法区分，是采样定理的反面。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Aliasing",
+      "example": "电影里车轮倒转就是时间混叠：帧率低于轮辐旋转频率。",
+      "formulas": [
+        "x[n] = sin(2π(f+k·fs)n/fs) = sin(2πfn/fs)"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "AN119",
+        "AN116"
+      ],
+      "tags": "",
+      "topic_cn": "采样理论",
+      "id": "LV34258"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "泛函分析",
+      "cn": "压缩映射迭代的指数收敛速度",
+      "conclusion": "",
+      "definition": "压缩映射的Picard迭代指数收敛到唯一不动点：误差每步至少乘以压缩常数q<1。",
+      "domain_cn": "分析",
+      "domain_en": "Analysis",
+      "en": "Exponential Convergence of Picard Iteration",
+      "example": "解x=cos x时迭代xₙ₊₁=cos xₙ，误差每步缩小约0.74倍。",
+      "formulas": [
+        "‖xₙ − x*‖ ≤ qⁿ/(1−q) ‖x₁ − x₀‖"
+      ],
+      "kind": "推论",
+      "level": 2,
+      "prereq": [
+        "AN161"
+      ],
+      "tags": "",
+      "topic_cn": "不动点迭代",
+      "id": "LV34259"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "三维拓扑",
+      "cn": "Dehn引理",
+      "conclusion": "",
+      "definition": "三维流形中边界嵌入的奇异圆盘总可修正为嵌入圆盘，是三维拓扑的奠基性引理。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Dehn's Lemma",
+      "example": "把纽结补中的奇异压缩圆盘换成嵌入的，再做Dehn手术。",
+      "formulas": [
+        "f: D² → M 奇异、∂f 嵌入 ⇒ 存在嵌入圆盘 g: D² → M"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "GE12",
+        "GE24"
+      ],
+      "tags": "重要",
+      "topic_cn": "Dehn引理",
+      "id": "LV34260"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "同伦论",
+      "cn": "Hopf度数定理",
+      "conclusion": "",
+      "definition": "同维闭定向流形之间的映射，其同伦类由映射度这一个整数完全决定。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Hopf Degree Theorem",
+      "example": "S²到自身的映射同伦类就是全体整数，度2的映射把球面绕两圈。",
+      "formulas": [
+        "deg: [M, N] → ℤ 为一一对应",
+        "deg(f) = Σ ε（对 f⁻¹(y) 中每点取 ±1 求和）"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "GE22",
+        "GE140"
+      ],
+      "tags": "重要",
+      "topic_cn": "映射度",
+      "id": "LV34261"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "度量几何",
+      "cn": "Gromov预紧性定理",
+      "conclusion": "",
+      "definition": "直径一致有界、ε-网基数一致有限的紧致度量空间族，必有Gromov-Hausdorff收敛子列。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Gromov Precompactness Theorem",
+      "example": "截面曲率一致有界的紧致流形列必有子列GH收敛。",
+      "formulas": [
+        "diam Xᵢ ≤ D 且 N(ε, Xᵢ) ≤ N(ε) ⇒ 族预紧"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "GE173",
+        "GE171"
+      ],
+      "tags": "重要",
+      "topic_cn": "Gromov预紧性",
+      "id": "LV34262"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "Cayley-Bacharach定理",
+      "conclusion": "",
+      "definition": "两条d次平面曲线交于d²个点，若某e次曲线（e<d）经过其中d²−1点，则必经过最后一点。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Cayley-Bacharach Theorem",
+      "example": "两条三次曲线交于9点，8点共二次曲线则第9点也在其上。",
+      "formulas": [
+        "|C₁ ∩ C₂| = d²（无公共分支）",
+        "e < d 时第 d² 个交点自动落在 C₃ 上"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AL192",
+        "LV34061"
+      ],
+      "tags": "",
+      "topic_cn": "相交理论",
+      "id": "LV34263"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "Lefschetz超平面定理",
+      "conclusion": "",
+      "definition": "光滑射影簇的超平面截面保留了低于复维数一半的所有同伦群，拓扑几乎不变。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Lefschetz Hyperplane Theorem",
+      "example": "光滑三次曲面的基本群与P³一样是平凡的。",
+      "formulas": [
+        "πᵢ(Y) ≅ πᵢ(X)（i < n−1）",
+        "i = n−1 时 πᵢ(Y) → πᵢ(X) 满"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "GE135",
+        "LV34061"
+      ],
+      "tags": "重要",
+      "topic_cn": "超平面截面",
+      "id": "LV34264"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "辛几何",
+      "cn": "Duistermaat-Heckman定理",
+      "conclusion": "",
+      "definition": "哈密顿环面作用下，约化空间的辛体积是矩参数的分片多项式函数，可局部化计算。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Duistermaat-Heckman Theorem",
+      "example": "用不动点数据求和算出复射影空间的辛体积。",
+      "formulas": [
+        "约化体积关于 ξ 为分片多项式函数"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "LV34066",
+        "GE96"
+      ],
+      "tags": "重要",
+      "topic_cn": "局部化",
+      "id": "LV34265"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "辛几何",
+      "cn": "辛填充",
+      "conclusion": "",
+      "definition": "以给定切触流形为凹边界的紧辛流形，研究切触结构能否被辛流形填充的核心对象。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Symplectic Filling",
+      "example": "标准三维球面的辛填充正是四维球，奇异填充对应奇异切触结构。",
+      "formulas": [],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "LV34075",
+        "GE12"
+      ],
+      "tags": "",
+      "topic_cn": "辛拓扑",
+      "id": "LV34266"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "极小曲面",
+      "cn": "Weierstrass表示定理",
+      "conclusion": "",
+      "definition": "R³中每个极小曲面都可由一个亚纯函数g与全纯1-形式dh经显式积分得到。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Weierstrass Representation Theorem",
+      "example": "取g(z)=z、dh=dz即得Enneper极小曲面。",
+      "formulas": [
+        "X(z) = Re ∫ (½(1−g²), i/2(1+g²), g) dh"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "GE75",
+        "GE21"
+      ],
+      "tags": "",
+      "topic_cn": "极小曲面表示",
+      "id": "LV34267"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "Clifford定理",
+      "conclusion": "",
+      "definition": "光滑曲线上特殊除子D满足h⁰(D) ≤ deg(D)/2 + 1，等号只在超椭圆等特殊情形成立。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Clifford's Theorem",
+      "example": "用它估计曲线上线丛的整体截面数上界。",
+      "formulas": [
+        "h⁰(D) ≤ deg(D)/2 + 1（D 特殊）"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AL192",
+        "LV34061"
+      ],
+      "tags": "",
+      "topic_cn": "特殊除子",
+      "id": "LV34268"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "纽结理论",
+      "cn": "Kauffman括号",
+      "conclusion": "",
+      "definition": "把每个交叉点按两种方式光滑化再对全部状态求和，得到纽结图的单变量多项式。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Kauffman Bracket",
+      "example": "三叶结的括号多项式规范化后即得其Jones多项式。",
+      "formulas": [
+        "⟨╳⟩ = A⟨≍⟩ + A⁻¹⟨)(⟩",
+        "⟨○ ⊔ L⟩ = (−A² − A⁻²)⟨L⟩"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "GE24",
+        "GE148"
+      ],
+      "tags": "重要",
+      "topic_cn": "纽结多项式",
+      "id": "LV34269"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "纽结理论",
+      "cn": "纽结亏格",
+      "conclusion": "",
+      "definition": "以该纽结为边界的所有Seifert曲面中亏格的最小值，是经典的纽结不变量。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Knot Genus",
+      "example": "三叶结的亏格是1，平凡纽结的亏格是0。",
+      "formulas": [
+        "g(K) = 以 K 为边界的曲面 Σ 之亏格最小值"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "GE24",
+        "GE148"
+      ],
+      "tags": "重要",
+      "topic_cn": "纽结不变量",
+      "id": "LV34270"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "纽结理论",
+      "cn": "纤维纽结",
+      "conclusion": "",
+      "definition": "补空间能纤维化成圆周上的Seifert曲面丛的纽结，纽结补即曲面的映射环。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Fibered Knot",
+      "example": "三叶结的补空间是穿孔环面在圆周上的映射环。",
+      "formulas": [
+        "S³ ∖ K 为 Σ 在 S¹ 上的映射环"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "GE24",
+        "LV34076"
+      ],
+      "tags": "",
+      "topic_cn": "纽结分类",
+      "id": "LV34271"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "纽结理论",
+      "cn": "双曲纽结",
+      "conclusion": "",
+      "definition": "补空间容许完备有限体积双曲度量的纽结，8字结是最简单的例子。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Hyperbolic Knot",
+      "example": "8字结补体积约2.03，为最小体积的尖点双曲流形之一。",
+      "formulas": [],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "GE24",
+        "GE17"
+      ],
+      "tags": "",
+      "topic_cn": "双曲结构",
+      "id": "LV34272"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "辛几何",
+      "cn": "哈密顿流",
+      "conclusion": "",
+      "definition": "由哈密顿函数经辛形式定义的向量场生成的流，自动保持辛结构与能量。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Hamiltonian Flow",
+      "example": "单摆的相流就是余切丛上的一支哈密顿流。",
+      "formulas": [
+        "XH ⌟ ω = dH（XH 为哈密顿向量场）",
+        "H 沿流不变（能量守恒）"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "GE12",
+        "LV34066"
+      ],
+      "tags": "重要",
+      "topic_cn": "哈密顿系统",
+      "id": "LV34273"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "解题思路",
+      "cn": "用覆叠空间把局部问题整体化",
+      "conclusion": "",
+      "definition": "换到覆叠空间上局部性质不变而整体变简单，解完问题再把结果投影回底空间。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Globalizing Local Problems via Covering Spaces",
+      "example": "在万有覆叠R上把环路提升为道路，算完再投影回去。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 2,
+      "prereq": [
+        "GE92",
+        "GE177"
+      ],
+      "tags": "",
+      "topic_cn": "覆叠技巧",
+      "id": "LV34274"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "切触几何",
+      "cn": "Reeb流",
+      "conclusion": "",
+      "definition": "切触流形上由切触形式唯一确定的向量场生成的流，其周期轨道是切触拓扑的核心对象。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Reeb Flow",
+      "example": "标准三维球面上的Reeb流周期轨道恰为Hopf纤维。",
+      "formulas": [
+        "dα(R, ·) = 0 且 α(R) = 1"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "LV34075",
+        "GE12"
+      ],
+      "tags": "",
+      "topic_cn": "切触动力学",
+      "id": "LV34275"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "同伦论",
+      "cn": "零伦映射",
+      "conclusion": "",
+      "definition": "能连续形变为常值映射的映射，直观上就是可以缩成一个点的映射。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Null-homotopic Map",
+      "example": "圆盘恒等映射零伦，圆周恒等映射不零伦。",
+      "formulas": [
+        "f 同伦于常值映射"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "GE22",
+        "GE95"
+      ],
+      "tags": "",
+      "topic_cn": "同伦",
+      "id": "LV34276"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "Veronese嵌入",
+      "conclusion": "",
+      "definition": "把射影空间按全部d次单项式映入更高维射影空间，d=2时把P¹映成圆锥曲线。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Veronese Embedding",
+      "example": "二次Veronese把P²映成P⁵中的Veronese曲面。",
+      "formulas": [
+        "Veronese 映射的坐标取遍全部 d 次单项式",
+        "ν₂(P¹) 为平面二次曲线"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "LV34061",
+        "AL192"
+      ],
+      "tags": "",
+      "topic_cn": "射影嵌入",
+      "id": "LV34277"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "Picard群",
+      "conclusion": "",
+      "definition": "簇上可逆层按张量积的同构类群，记录线丛有多少种拓扑扭曲。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Picard Group",
+      "example": "Pic(Pⁿ) ≅ ℤ，由超平面丛O(1)生成。",
+      "formulas": [
+        "Pic(X) = H¹(X, O*)"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "LV34061",
+        "AL192"
+      ],
+      "tags": "",
+      "topic_cn": "除子理论",
+      "id": "LV34278"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "超椭圆曲线",
+      "conclusion": "",
+      "definition": "容许到射影直线二重覆盖的光滑曲线，亏格g时方程为y²=2g+1或2g+2次多项式。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Hyperelliptic Curve",
+      "example": "亏格2曲线必超椭圆，亏格3的一般曲线不是。",
+      "formulas": [
+        "y² = f(x)，deg f = 2g+1 或 2g+2"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AL192",
+        "LV34061"
+      ],
+      "tags": "",
+      "topic_cn": "代数曲线",
+      "id": "LV34279"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "除子类群",
+      "conclusion": "",
+      "definition": "Weil除子模去线性等价得到的群，衡量簇离“余维1子簇皆为函数零点”有多远。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Divisor Class Group",
+      "example": "Cl(Pⁿ) ≅ ℤ；光滑时除子类群等于Picard群。",
+      "formulas": [
+        "Cl(X) = Div(X)/线性等价"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AL192",
+        "LV34061"
+      ],
+      "tags": "",
+      "topic_cn": "除子理论",
+      "id": "LV34280"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "非常丰沛",
+      "conclusion": "",
+      "definition": "线丛的整体截面能把簇闭嵌入射影空间，比“丰沛”更强的嵌入性条件。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Very Ample Line Bundle",
+      "example": "Pⁿ上的O(d)在d ≥ 1时非常丰沛。",
+      "formulas": [],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "LV34061",
+        "AL192"
+      ],
+      "tags": "",
+      "topic_cn": "线丛",
+      "id": "LV34281"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "算术亏格",
+      "conclusion": "",
+      "definition": "p_a = 1 − χ(O_C)，用结构层上同调定义的亏格，对奇异曲线仍有意义。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Arithmetic Genus",
+      "example": "平面d次曲线的算术亏格为(d−1)(d−2)/2。",
+      "formulas": [
+        "pₐ = h¹(O) − h⁰(O) + 1（O 为结构层）"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AL192",
+        "LV34061"
+      ],
+      "tags": "",
+      "topic_cn": "曲线不变量",
+      "id": "LV34282"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "几何亏格",
+      "conclusion": "",
+      "definition": "p_g = h⁰(ω_C)，即全纯1-形式空间的维数，是曲线的双有理不变量。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Geometric Genus",
+      "example": "光滑曲线的几何亏格等于算术亏格，节点会使算术亏格更大。",
+      "formulas": [
+        "几何亏格 = h⁰(ω)，ω 为典范丛"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "AL192",
+        "LV34061"
+      ],
+      "tags": "",
+      "topic_cn": "曲线不变量",
+      "id": "LV34283"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "复几何",
+      "cn": "第一陈类",
+      "conclusion": "",
+      "definition": "复线丛在H²(X,ℤ)中的示性类，为零当且仅当线丛拓扑平凡，张量积对应相加。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "First Chern Class",
+      "example": "c₁(O(1))是超平面的上同调类，生成H²(Pⁿ)。",
+      "formulas": [
+        "c₁(L) ∈ H²(X, ℤ)",
+        "c₁(L₁⊗L₂) = c₁(L₁) + c₁(L₂)"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "GE96",
+        "GE21"
+      ],
+      "tags": "重要",
+      "topic_cn": "示性类",
+      "id": "LV34284"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "拓扑空间基础",
+      "cn": "对径点",
+      "conclusion": "",
+      "definition": "球面上关于球心对称的一对点，如北极与南极，Borsuk-Ulam定理的主角。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Antipodal Point",
+      "example": "S²到R²的连续映射必把某对对径点映到同一点。",
+      "formulas": [
+        "x 的对径点是 −x"
+      ],
+      "kind": "概念",
+      "level": 1,
+      "prereq": [
+        "GE26",
+        "GE09"
+      ],
+      "tags": "",
+      "topic_cn": "球面",
+      "id": "LV34285"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "曲线论",
+      "cn": "曲率圆",
+      "conclusion": "",
+      "definition": "在一点与曲线有三阶接触的圆，半径为曲率半径，圆心在法线方向上。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Circle of Curvature",
+      "example": "抛物线y=x²在原点的曲率圆半径为1/2。",
+      "formulas": [
+        "R = 1/κ",
+        "圆心 = γ + N/κ"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "GE07",
+        "GE18"
+      ],
+      "tags": "",
+      "topic_cn": "曲线曲率",
+      "id": "LV34286"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数几何",
+      "cn": "伴随公式",
+      "conclusion": "",
+      "definition": "光滑簇中光滑除子的典范丛，等于ambient典范丛加除子后再限制到除子上。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Adjunction Formula",
+      "example": "P²中d次光滑曲线的亏格为(d−1)(d−2)/2。",
+      "formulas": [
+        "除子的典范丛 =（环境典范丛 + 除子）限制到除子上",
+        "2g−2 = D·(D+K)（曲线情形）"
+      ],
+      "kind": "公式",
+      "level": 4,
+      "prereq": [
+        "LV34061",
+        "LV34072"
+      ],
+      "tags": "重要",
+      "topic_cn": "典范丛",
+      "id": "LV34287"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "比较几何",
+      "cn": "正Ricci紧致流形的基本群有限",
+      "conclusion": "",
+      "definition": "Ricci曲率有正下界的完备流形直径有限从而紧致，万有覆叠紧致故基本群有限。",
+      "domain_cn": "几何与拓扑",
+      "domain_en": "Geometry & Topology",
+      "en": "Finite Fundamental Group from Positive Ricci Curvature",
+      "example": "正截面曲率的紧致流形基本群必有限，如球面。",
+      "formulas": [
+        "Ric ≥ (n−1)k > 0 ⇒ |π₁(M)| < ∞"
+      ],
+      "kind": "推论",
+      "level": 4,
+      "prereq": [
+        "GE128",
+        "GE23"
+      ],
+      "tags": "",
+      "topic_cn": "基本群",
+      "id": "LV34288"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "随机过程",
+      "cn": "布朗局部时",
+      "conclusion": "",
+      "definition": "布朗运动在位置x附近停留时间的密度,刻画路径在x处'磨蹭'了多久,是研究轨道精细结构的核心工具。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Brownian Local Time",
+      "example": "用局部时可将布朗运动的|x|分解为鞅与增过程之和",
+      "formulas": [
+        "L(t,x) = lim(ε→0⁺) (1/2ε) ∫₀ᵗ 𝟙(|B(s)−x|<ε) ds"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "PR41",
+        "PR18"
+      ],
+      "tags": "重要",
+      "topic_cn": "布朗运动精细结构",
+      "id": "LV34289"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "随机过程",
+      "cn": "Novikov条件",
+      "conclusion": "",
+      "definition": "判定随机指数是否为真鞅的充分条件:指数可积性成立则Doléans指数是鞅,是测度变换的通行证。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Novikov's Condition",
+      "example": "验证Black-Scholes模型中折现股价是指数鞅",
+      "formulas": [
+        "E[exp(½∫₀ᵀ θ(t)²dt)] < ∞ ⇒ ℰ(θ·B) 为真鞅"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "PR42",
+        "PR16"
+      ],
+      "tags": "重要",
+      "topic_cn": "随机指数与测度变换",
+      "id": "LV34290"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "随机过程",
+      "cn": "Chung-Fuchs定理",
+      "conclusion": "",
+      "definition": "一维随机游走常返当且仅当Sₙ/n依概率趋于0,把常返性判定化为弱大数律,简洁而深刻。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Chung–Fuchs Theorem",
+      "example": "对称简单随机游走满足条件,故在一维常返",
+      "formulas": [
+        "Sₙ/n 依概率收敛到 0 ⟺ 随机游走常返"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "PR09",
+        "PR148"
+      ],
+      "tags": "重要",
+      "topic_cn": "随机游走常返性",
+      "id": "LV34291"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "随机过程",
+      "cn": "Yamada-Watanabe定理",
+      "conclusion": "",
+      "definition": "随机微分方程中路径唯一性加弱解存在,则强解存在且唯一,把两种解的概念牢牢焊在一起。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Yamada–Watanabe Theorem",
+      "example": "系数Lipschitz时直接得到SDE强解的存在唯一性",
+      "formulas": [
+        "路径唯一性 + 弱解存在 ⇒ 强存在唯一"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "PR156",
+        "PR77"
+      ],
+      "tags": "重要",
+      "topic_cn": "随机微分方程解理论",
+      "id": "LV34292"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "随机过程",
+      "cn": "随机指数",
+      "conclusion": "",
+      "definition": "连续局部鞅的指数化版本,是Girsanov测度变换中构造新概率的密度过程,处处为正的局部鞅。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Doléans-Dade Exponential",
+      "example": "布朗运动的随机指数exp(B(t)−t/2)是经典指数鞅",
+      "formulas": [
+        "ℰ(M)(t) = exp(M(t) − ½⟨M⟩(t))"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "PR42",
+        "PR155"
+      ],
+      "tags": "重要",
+      "topic_cn": "随机指数与测度变换",
+      "id": "LV34293"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "随机过程",
+      "cn": "Esscher变换",
+      "conclusion": "",
+      "definition": "用指数倾斜给原分布重新加权得到新分布,倾斜参数h调节偏斜方向,是精算定价与重要性采样的经典技巧。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Esscher Transform",
+      "example": "对重尾索赔分布做指数倾斜以估计罕见大额损失概率",
+      "formulas": [
+        "dQ/dP = exp(hX)/E[exp(hX)]"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "PR16",
+        "PR32"
+      ],
+      "tags": "",
+      "topic_cn": "测度变换技巧",
+      "id": "LV34294"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "随机过程",
+      "cn": "鞅差中心极限定理",
+      "conclusion": "",
+      "definition": "把中心极限定理推广到鞅差序列:条件方差稳定加上Lindeberg条件,部分和仍渐近正态,是时间序列推断的基石。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Martingale Difference Central Limit Theorem",
+      "example": "GARCH模型的得分序列渐近正态由此得到",
+      "formulas": [
+        "∑E[Xₖ²|Fₖ₋₁] → σ² ⇒ ∑Xₖ/√n ⇒ N(0,σ²)"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "PR10",
+        "PR42"
+      ],
+      "tags": "重要",
+      "topic_cn": "鞅极限定理",
+      "id": "LV34295"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "极限定理",
+      "cn": "分位数过程",
+      "conclusion": "",
+      "definition": "经验分位数函数的涨落过程:√n(Fₙ⁻¹−F⁻¹)的极限行为,是构造分位数置信带与检验的理论基础。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Quantile Process",
+      "example": "用它构造总体中位数的渐近置信区间",
+      "formulas": [
+        "Qₙ(t) = √n(Fₙ⁻¹(t) − F⁻¹(t))"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "PR58",
+        "PR188"
+      ],
+      "tags": "重要",
+      "topic_cn": "经验过程进阶",
+      "id": "LV34296"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "极限定理",
+      "cn": "似然三剑客",
+      "conclusion": "",
+      "definition": "Wald检验、Score检验、似然比检验在原假设下渐近等价且都服从卡方分布,是同一几何思想的三副面孔。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Trinity of Likelihood Tests",
+      "example": "检验逻辑回归中某变量系数是否为零,三者结论渐近一致",
+      "formulas": [
+        "Wald, Score, LR 在H₀下都依分布收敛到 χ²"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "PR90",
+        "PR91",
+        "PR92"
+      ],
+      "tags": "重要",
+      "topic_cn": "假设检验渐近理论",
+      "id": "LV34297"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "极限定理",
+      "cn": "Bhattacharyya界",
+      "conclusion": "",
+      "definition": "Cramér-Rao下界的高阶推广:用得分函数的高阶导数构造更紧的方差下界,模型越弯曲界越紧。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Bhattacharyya Bound",
+      "example": "偏态分布族中它比Cramér-Rao界更接近真实最小方差",
+      "formulas": [
+        "Var(T) ≥ [g′(θ)]²/I₁(θ)"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "PR88",
+        "PR36"
+      ],
+      "tags": "",
+      "topic_cn": "信息界",
+      "id": "LV34298"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "贝叶斯统计",
+      "cn": "后验收缩率",
+      "conclusion": "",
+      "definition": "刻画后验分布向真值集中的速度:收缩率εₙ越小贝叶斯学习越快,是非参数贝叶斯的性能标尺。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Posterior Contraction Rate",
+      "example": "光滑指数β的函数估计中后验达到极小极大最优速率",
+      "formulas": [
+        "Π(d(θ,θ₀) > Mεₙ|Xⁿ) → 0"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "PR17",
+        "PR76"
+      ],
+      "tags": "核心",
+      "topic_cn": "贝叶斯渐近理论",
+      "id": "LV34299"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "贝叶斯统计",
+      "cn": "Schwartz后验相合性定理",
+      "conclusion": "",
+      "definition": "先验给真值邻域正质量且备择可被一致检验区分,则后验几乎必然集中到真值,是贝叶斯相合性的奠基石。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Schwartz's Posterior Consistency Theorem",
+      "example": "有限维参数模型中验证贝叶斯估计量相合性的首选工具",
+      "formulas": [
+        "Π(θ₀的邻域) > 0 + 一致可检验 ⇒ 后验相合"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "PR17",
+        "PR03"
+      ],
+      "tags": "重要",
+      "topic_cn": "贝叶斯渐近理论",
+      "id": "LV34300"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "贝叶斯统计",
+      "cn": "Huber污染模型",
+      "conclusion": "",
+      "definition": "真实分布是干净分布P混入ε比例任意坏分布Q,是稳健统计的起点:估计量要在最坏污染下依然可靠。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Huber's Contamination Model",
+      "example": "评估样本均值在5%异常值污染下的最坏表现",
+      "formulas": [
+        "F(ε) = (1−ε)P + εQ, Q任意"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "PR11",
+        "PR105"
+      ],
+      "tags": "",
+      "topic_cn": "稳健统计基础",
+      "id": "LV34301"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "贝叶斯统计",
+      "cn": "Pitman-Koopman-Darmois定理",
+      "conclusion": "",
+      "definition": "若存在与样本量无关的有限维充分统计量,则分布必属指数族,解释了指数族为何在统计中无处不在。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Pitman–Koopman–Darmois Theorem",
+      "example": "正态样本的(x̄, s²)充分,印证正态属指数族",
+      "formulas": [
+        "T(X₁,…,Xₙ) 维数有界 ⇒ 指数族"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "PR81",
+        "PR82"
+      ],
+      "tags": "重要",
+      "topic_cn": "充分统计量理论",
+      "id": "LV34302"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "高维统计",
+      "cn": "不可表示条件",
+      "conclusion": "",
+      "definition": "Lasso选对变量的门槛:无关变量与相关变量经校正后的相关性必须小于1,否则Lasso必定选错变量。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Irrepresentable Condition",
+      "example": "基因筛选中若无关基因与致病基因高度相关,Lasso会选错",
+      "formulas": [
+        "无关变量j∉S: ‖ΣSS⁻¹ΣSj‖₁ < 1"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "PR116",
+        "PR123"
+      ],
+      "tags": "重要",
+      "topic_cn": "Lasso理论",
+      "id": "LV34303"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "高维统计",
+      "cn": "去偏Lasso",
+      "conclusion": "",
+      "definition": "给Lasso估计加一个偏差修正项使其渐近正态,从而能构造置信区间和p值,是高维推断的破冰之作。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Debiased Lasso",
+      "example": "对基因表达数据中单个基因的系数做显著性检验",
+      "formulas": [
+        "β̃ = β̂ + Θ̂Xᵀ(y−Xβ̂)/n"
+      ],
+      "kind": "算法",
+      "level": 3,
+      "prereq": [
+        "PR116",
+        "PR13"
+      ],
+      "tags": "重要",
+      "topic_cn": "高维推断",
+      "id": "LV34304"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "高维统计",
+      "cn": "MCP惩罚",
+      "conclusion": "",
+      "definition": "Zhang提出的凹惩罚:小系数如Lasso般收缩,大系数几乎不受罚,兼得稀疏性与近似无偏,比SCAD更易计算。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Minimax Concave Penalty",
+      "example": "高维回归中它比Lasso的变量选择错误率更低",
+      "formulas": [
+        "p(λ,t) = λ∫₀ᵗ (1−x/(γλ))₊ dx"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "PR116",
+        "PR130"
+      ],
+      "tags": "",
+      "topic_cn": "非凸惩罚",
+      "id": "LV34305"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "因果推断",
+      "cn": "双重机器学习",
+      "conclusion": "",
+      "definition": "用机器学习拟合混杂函数再做正交化残差回归,消除正则化带来的偏误,是高维因果效应的标准流程。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Double Machine Learning",
+      "example": "用随机森林控制上百个协变量估计培训对收入的影响",
+      "formulas": [
+        "Y−m̂(X) 对 D−ê(X) 回归, m̂,ê 交叉拟合"
+      ],
+      "kind": "算法",
+      "level": 3,
+      "prereq": [
+        "LV34102",
+        "LV34104"
+      ],
+      "tags": "核心",
+      "topic_cn": "因果机器学习",
+      "id": "LV34306"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "因果推断",
+      "cn": "因果森林",
+      "conclusion": "",
+      "definition": "Wager与Athey把随机森林改造为估计异质处理效应的工具:按处理效应差异分裂,给出个体化因果效应。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Causal Forest",
+      "example": "估计降压药对不同年龄段患者的疗效差异",
+      "formulas": [],
+      "kind": "算法",
+      "level": 3,
+      "prereq": [
+        "LV34102",
+        "PR14"
+      ],
+      "tags": "重要",
+      "topic_cn": "因果机器学习",
+      "id": "LV34307"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "因果推断",
+      "cn": "Goodman-Bacon分解",
+      "conclusion": "",
+      "definition": "交错双重差分中双向固定效应估计量是所有2×2 DID的加权平均,部分权重可能为负,解释了TWFE为何翻车。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Goodman–Bacon Decomposition",
+      "example": "诊断最低工资交错试点研究中TWFE估计的权重构成",
+      "formulas": [
+        "β̂TWFE = Σ sₖₗ β̂ₖₗ, 权重sₖₗ可为负"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "PR192",
+        "PR14"
+      ],
+      "tags": "重要",
+      "topic_cn": "双重差分进阶",
+      "id": "LV34308"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "因果推断",
+      "cn": "孟德尔随机化",
+      "conclusion": "",
+      "definition": "用基因变异做工具变量:基因在受孕时随机分配天然满足外生性,是观察性研究中最可信的因果设计之一。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Mendelian Randomization",
+      "example": "用基因预测的LDL水平估计胆固醇对心脏病的因果效应",
+      "formulas": [],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "PR192",
+        "PR04"
+      ],
+      "tags": "重要",
+      "topic_cn": "工具变量进阶",
+      "id": "LV34309"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "因果推断",
+      "cn": "对撞子偏倚",
+      "conclusion": "",
+      "definition": "对共同结果做条件化会凭空制造虚假相关:控制了X与Y的共同结果Z,X和Y就'被相关'了,是选择偏倚的源头。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Collider Bias",
+      "example": "只看住院病人会发现两种疾病呈负相关(伯克森悖论)",
+      "formulas": [],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "PR02",
+        "PR04"
+      ],
+      "tags": "重要",
+      "topic_cn": "因果图与偏倚",
+      "id": "LV34310"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "分布",
+      "cn": "逆Wishart分布",
+      "conclusion": "",
+      "definition": "Wishart分布的矩阵求逆版本,是多元正态协方差矩阵的共轭先验,贝叶斯多变量分析的标配。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Inverse-Wishart Distribution",
+      "example": "贝叶斯因子分析中对载荷协方差矩阵取逆Wishart先验",
+      "formulas": [
+        "Σ ∼ IW(ν,Ψ)",
+        "E[Σ] = Ψ/(ν−p−1)"
+      ],
+      "kind": "分布",
+      "level": 2,
+      "prereq": [
+        "PR132",
+        "PR51"
+      ],
+      "tags": "重要",
+      "topic_cn": "多元分布",
+      "id": "LV34311"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "分布",
+      "cn": "矩阵正态分布",
+      "conclusion": "",
+      "definition": "把多元正态推广到随机矩阵:行协方差与列协方差做Kronecker积,是矩阵型数据的正态语言。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Matrix Normal Distribution",
+      "example": "对跨国多年份的经济指标面板数据建模",
+      "formulas": [
+        "X ∼ MN(M,U,V)",
+        "vec(X) ∼ N(vec(M), V⊗U)"
+      ],
+      "kind": "分布",
+      "level": 2,
+      "prereq": [
+        "PR131",
+        "PR08"
+      ],
+      "tags": "",
+      "topic_cn": "多元分布",
+      "id": "LV34312"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "分布",
+      "cn": "多元t分布",
+      "conclusion": "",
+      "definition": "多元正态的厚尾版本:正态向量除以独立的卡方尺度调整,是重尾数据的稳健建模利器。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Multivariate t Distribution",
+      "example": "金融资产收益率的联合建模,比多元正态更抗极端值",
+      "formulas": [
+        "X = μ + Z/√(W/ν), Z⊥W",
+        "W ∼ χ²(ν)"
+      ],
+      "kind": "分布",
+      "level": 2,
+      "prereq": [
+        "PR27",
+        "PR131"
+      ],
+      "tags": "重要",
+      "topic_cn": "多元分布",
+      "id": "LV34313"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "方法技巧",
+      "cn": "Lindeberg替换技巧",
+      "conclusion": "",
+      "definition": "逐个把求和项换成高斯变量,每次替换只改变泰勒展开的三阶以上余项,是证明普适性结论的万能钥匙。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Lindeberg Replacement Trick",
+      "example": "Tao与Vu用它证明随机矩阵特征值统计的普适性",
+      "formulas": [],
+      "kind": "思路",
+      "level": 3,
+      "prereq": [
+        "PR10",
+        "PR32"
+      ],
+      "tags": "重要",
+      "topic_cn": "普适性证明技巧",
+      "id": "LV34314"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "方法技巧",
+      "cn": "Poisson化技巧",
+      "conclusion": "",
+      "definition": "把固定样本量n换成Poisson(n)个随机样本,化相关为独立,算完再de-Poissonize回来,是组合概率的常用魔法。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Poissonization Trick",
+      "example": "证明投球入箱问题中空箱数量的渐近正态性",
+      "formulas": [],
+      "kind": "思路",
+      "level": 2,
+      "prereq": [
+        "PR19",
+        "PR20"
+      ],
+      "tags": "",
+      "topic_cn": "组合概率技巧",
+      "id": "LV34315"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "方法技巧",
+      "cn": "鞅方法证集中不等式",
+      "conclusion": "",
+      "definition": "把目标函数写成Doob鞅的逐项暴露形式,化为鞅差和后直接套Azuma-Hoeffding,是证集中不等式的标准流水线。",
+      "domain_cn": "概率与统计",
+      "domain_en": "Probability & Statistics",
+      "en": "Martingale Method for Concentration",
+      "example": "证明随机图色数围绕其均值高度集中",
+      "formulas": [],
+      "kind": "思路",
+      "level": 3,
+      "prereq": [
+        "PR42",
+        "PR165"
+      ],
+      "tags": "重要",
+      "topic_cn": "集中不等式技巧",
+      "id": "LV34316"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "图子式理论",
+      "cn": "Robertson–Seymour 定理",
+      "conclusion": "",
+      "definition": "任何子式封闭的图族都可由有限个禁止子式刻画；它是图子式理论的最高峰，证明长达二十多篇论文。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Robertson–Seymour Theorem",
+      "example": "平面图就是排除K₅和K₃,₃子式的图，是它的著名特例。",
+      "formulas": [
+        "G ∈ 𝓕 ⟺ H₁,…,Hₜ都不是G的子式"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "DM72",
+        "DM05"
+      ],
+      "tags": "核心",
+      "topic_cn": "图子式定理",
+      "id": "LV34317"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "图子式理论",
+      "cn": "Hadwiger 猜想",
+      "conclusion": "",
+      "definition": "色数至少为t的图必含Kₜ子式；它是染色理论中最著名的未解猜想，四色定理是t=5的情形。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Hadwiger's Conjecture",
+      "example": "t=5时断言：需5种颜色的图必含K₅子式。",
+      "formulas": [
+        "χ(G) ≥ t ⇒ Kₜ是G的子式"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "DM23",
+        "DM80"
+      ],
+      "tags": "重要",
+      "topic_cn": "Hadwiger 猜想",
+      "id": "LV34318"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "图子式理论",
+      "cn": "Hadwiger 数",
+      "conclusion": "",
+      "definition": "图G的Hadwiger数是它所含的最大完全图子式的阶数，记作h(G)，度量图有多稠密。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Hadwiger Number",
+      "example": "平面图的Hadwiger数不超过4，这是Wagner定理的推论。",
+      "formulas": [
+        "h(G) = 最大的t使Kₜ ≤ₘ G"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "DM05",
+        "DM23"
+      ],
+      "tags": "",
+      "topic_cn": "Hadwiger 数",
+      "id": "LV34319"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "图子式理论",
+      "cn": "网格子式定理",
+      "conclusion": "",
+      "definition": "树宽充分大的图必含大网格子式；它把“树宽大”翻译成具体的稠密子结构，是结构图论的基石。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Grid Minor Theorem",
+      "example": "平面图不含大网格子式，故其树宽被网格大小控制。",
+      "formulas": [
+        "tw(G) ≥ f(r) ⇒ G含r×r网格子式"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "DM72",
+        "DM14"
+      ],
+      "tags": "",
+      "topic_cn": "网格定理",
+      "id": "LV34320"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "图子式理论",
+      "cn": "拓扑子式",
+      "conclusion": "",
+      "definition": "把图的边换成内部不交的路得到H，则H是原图的拓扑子式；它比子式更严格，Kuratowski定理用的就是它。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Topological Minor",
+      "example": "K₅的细分仍含K₅拓扑子式，Kuratowski定理据此判定平面图。",
+      "formulas": [],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "DM72",
+        "DM05"
+      ],
+      "tags": "",
+      "topic_cn": "子式概念",
+      "id": "LV34321"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "结构图论",
+      "cn": "路宽",
+      "conclusion": "",
+      "definition": "路宽是树宽的线性版本：把图装进一条路状的袋子序列中，袋子最大尺寸减一即为路宽。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Pathwidth",
+      "example": "路的路宽为1，完全图K_n的路宽为n−1。",
+      "formulas": [
+        "pw(G) ≥ tw(G)"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "DM06",
+        "DM127"
+      ],
+      "tags": "",
+      "topic_cn": "宽度参数",
+      "id": "LV34322"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "匹配理论",
+      "cn": "友谊定理",
+      "conclusion": "",
+      "definition": "若有限图中每对顶点恰有一位共同邻居，则该图必为风车图：若干三角形共用一个顶点。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Friendship Theorem",
+      "example": "三对朋友两两恰有一个共同好友时，必有一位万人迷连接所有人。",
+      "formulas": [],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "DM05",
+        "DM09"
+      ],
+      "tags": "",
+      "topic_cn": "匹配结构",
+      "id": "LV34323"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "匹配理论",
+      "cn": "Petersen 定理",
+      "conclusion": "",
+      "definition": "每个3正则无桥图都有完美匹配；它说明高度对称的图不会卡住而找不到配对。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Petersen's Theorem on Perfect Matchings",
+      "example": "立方体图Q₃是3正则无桥图，故必有完美匹配。",
+      "formulas": [],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "DM57",
+        "DM58"
+      ],
+      "tags": "",
+      "topic_cn": "匹配结构",
+      "id": "LV34324"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数图论",
+      "cn": "Perron–Frobenius 图谱定理",
+      "conclusion": "",
+      "definition": "连通图的邻接矩阵最大特征值是单根，对应特征向量全为正；它掌控随机游走的长期行为。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Perron–Frobenius Theorem for Graphs",
+      "example": "连通正则图上的随机游走最终趋向均匀分布。",
+      "formulas": [
+        "λ₁ > |λ₂|",
+        "x > 0, Ax = λ₁x"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "DM59",
+        "AL10"
+      ],
+      "tags": "重要",
+      "topic_cn": "图谱",
+      "id": "LV34325"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数图论",
+      "cn": "迹公式数闭途径",
+      "conclusion": "",
+      "definition": "邻接矩阵A的k次幂的迹等于图中长度为k的闭途径总数，把组合计数变成线性代数。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Trace Formula for Closed Walks",
+      "example": "tr(A³)/6等于图中三角形的个数。",
+      "formulas": [
+        "tr(Aᵏ) = 长度k的闭途径数"
+      ],
+      "kind": "公式",
+      "level": 2,
+      "prereq": [
+        "DM59",
+        "DM15"
+      ],
+      "tags": "",
+      "topic_cn": "谱与计数",
+      "id": "LV34326"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "组合数论",
+      "cn": "Frobenius 硬币问题",
+      "conclusion": "",
+      "definition": "互素的正整数 a、b 所不能表示成 ax+by（x、y 为非负整数）的最大整数是 ab−a−b。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Frobenius Coin Problem",
+      "example": "4 和 7 互素，最大凑不出的数是 4×7−4−7=17；6 和 10 不互素则无最大数。",
+      "formulas": [
+        "g(a,b) = ab − a − b",
+        "不可表数恰有 (a−1)(b−1)/2 个"
+      ],
+      "kind": "定理",
+      "level": 2,
+      "prereq": [
+        "DM02"
+      ],
+      "tags": "",
+      "topic_cn": "Frobenius 硬币问题",
+      "id": "LV34327"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "概率方法",
+      "cn": "Park–Pham 定理",
+      "conclusion": "",
+      "definition": "随机集合出现目标性质的阈值不超过期望阈值的K·q·logℓ倍，解决了Kahn–Kalai猜想。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Park–Pham Theorem",
+      "example": "它给出随机图中出现大团等性质的阈值上界。",
+      "formulas": [
+        "p꜀ ≤ K·q·log ℓ"
+      ],
+      "kind": "定理",
+      "level": 5,
+      "prereq": [
+        "DM61",
+        "DM02"
+      ],
+      "tags": "重要",
+      "topic_cn": "阈值理论",
+      "id": "LV34328"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "加法组合",
+      "cn": "Plünnecke–Ruzsa 不等式",
+      "conclusion": "",
+      "definition": "若|A+A| ≤ K|A|，则任意n,m都有|nA−mA| ≤ Kⁿ⁺ᵐ|A|；小倍增的集合其高阶和差集仍受控。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Plünnecke–Ruzsa Inequality",
+      "example": "等差数列的倍增常数小，故其多重和集增长缓慢。",
+      "formulas": [
+        "|nA − mA| ≤ Kⁿ⁺ᵐ|A|，其中K = |A+A|/|A|"
+      ],
+      "kind": "公式",
+      "level": 3,
+      "prereq": [
+        "DM01",
+        "DM48"
+      ],
+      "tags": "重要",
+      "topic_cn": "和集估计",
+      "id": "LV34329"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "加法组合",
+      "cn": "Freiman 3k−4 定理",
+      "conclusion": "",
+      "definition": "整数集A若|A+A| ≤ 3|A|−4，则A必含于长等差数列中；小倍增蕴含强结构。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Freiman's 3k−4 Theorem",
+      "example": "{1,2,4}的和集大小为6，恰满足3·3−4的界。",
+      "formulas": [
+        "|A+A| ≤ 3|A|−4 ⇒ A含于等差数列"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "DM01",
+        "DM48"
+      ],
+      "tags": "",
+      "topic_cn": "和集估计",
+      "id": "LV34330"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "加法组合",
+      "cn": "Olson 定理",
+      "conclusion": "",
+      "definition": "有限域F_p中去掉0的任一子集若大于√(4p−3)，则必有非空子集和为0；它是零和组合学的基石。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Olson's Theorem",
+      "example": "p=101时任意21个非零元中必有子集和为0。",
+      "formulas": [
+        "|S| > √(4p−3) ⇒ 0 ∈ Σ(S)"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "DM02",
+        "AL137"
+      ],
+      "tags": "",
+      "topic_cn": "零和问题",
+      "id": "LV34331"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "加法组合",
+      "cn": "Chevalley–Warning 定理",
+      "conclusion": "",
+      "definition": "有限域上若干多项式若变量数超过次数和，则公共零点数被p整除；它是组合数论的万能钥匙。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Chevalley–Warning Theorem",
+      "example": "推出x²+y²+z²≡0 (mod p)必有非零解。",
+      "formulas": [
+        "∑deg fᵢ < n ⇒ p整除公共零点数N"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "AL137",
+        "AL01"
+      ],
+      "tags": "重要",
+      "topic_cn": "多项式方法",
+      "id": "LV34332"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "加法组合",
+      "cn": "Ruzsa 覆盖引理",
+      "conclusion": "",
+      "definition": "若|A+B| ≤ K|B|，则A可被至多K个B−B的平移覆盖；小倍增的集合能被差集的少量平移盖住。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Ruzsa's Covering Lemma",
+      "example": "它是证明Plünnecke–Ruzsa不等式的关键一步。",
+      "formulas": [
+        "A ⊆ (B−B)的K个平移之并"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "DM02",
+        "DM01"
+      ],
+      "tags": "",
+      "topic_cn": "覆盖引理",
+      "id": "LV34333"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "极值组合",
+      "cn": "Erdős–Pósa 定理",
+      "conclusion": "",
+      "definition": "图中的圈要么有很多个两两不交的，要么删掉少量顶点就能全消灭；打包与覆盖在此对偶。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Erdős–Pósa Theorem",
+      "example": "消灭图中所有圈所需的顶点数只与不交圈数有关。",
+      "formulas": [
+        "不交圈数ν ≥ k，或删点数τ ≤ f(k)"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "DM05",
+        "DM16"
+      ],
+      "tags": "重要",
+      "topic_cn": "圈填充",
+      "id": "LV34334"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "极值组合",
+      "cn": "Corrádi–Hajnal 定理",
+      "conclusion": "",
+      "definition": "3k个顶点的图中若最小度至少2k，则含k个两两不交的三角形；它是三角形填充的奠基结果。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Corrádi–Hajnal Theorem",
+      "example": "9个顶点最小度6的图必含3个不交三角形。",
+      "formulas": [
+        "δ(G) ≥ 2k, |V| = 3k ⇒ k个不交三角形"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "DM57",
+        "DM05"
+      ],
+      "tags": "",
+      "topic_cn": "三角形填充",
+      "id": "LV34335"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "极值组合",
+      "cn": "Moon–Moser 定理",
+      "conclusion": "",
+      "definition": "n个顶点的图至多有3的n/3次幂个极大团，且Turán图取到等号；它限定了团枚举的最坏情形。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Moon–Moser Theorem",
+      "example": "n=9时极大团至多27个，Turán图T(9,3)达到。",
+      "formulas": [
+        "极大团数 ≤ 3的n/3次幂"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "DM69",
+        "DM05"
+      ],
+      "tags": "",
+      "topic_cn": "团计数",
+      "id": "LV34336"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "证明方法",
+      "cn": "线性代数方法",
+      "conclusion": "",
+      "definition": "给每个组合对象配一个向量，证这些向量线性无关，从而用维数给对象个数上界；代数替你计数。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Linear Algebra Method in Combinatorics",
+      "example": "Fisher不等式：区组特征向量线性无关，故b ≥ v。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 4,
+      "prereq": [
+        "DM53",
+        "AL10"
+      ],
+      "tags": "",
+      "topic_cn": "代数方法",
+      "id": "LV34337"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "证明方法",
+      "cn": "Pósa 旋转",
+      "conclusion": "",
+      "definition": "在最长路的端点处做旋转延长路径：把路尾接到路中某点、甩掉一段，从而在稠密图中造出哈密顿圈。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Pósa Rotation",
+      "example": "Pósa用它证明稠密随机图几乎必然有哈密顿圈。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 3,
+      "prereq": [
+        "DM08",
+        "DM74"
+      ],
+      "tags": "",
+      "topic_cn": "路的技巧",
+      "id": "LV34338"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "组合设计",
+      "cn": "区组设计的参数方程",
+      "conclusion": "",
+      "definition": "2-(v,k,λ)设计的五个参数满足vr=bk与r(k−1)=λ(v−1)，任何存在性论证都先过这两关。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Parameter Equations of Block Designs",
+      "example": "Steiner三元系中r=(v−1)/2，故v必为奇数。",
+      "formulas": [
+        "vr = bk",
+        "r(k−1) = λ(v−1)"
+      ],
+      "kind": "公式",
+      "level": 2,
+      "prereq": [
+        "DM38",
+        "DM15"
+      ],
+      "tags": "",
+      "topic_cn": "设计参数",
+      "id": "LV34339"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "相交族",
+      "cn": "并闭集猜想",
+      "conclusion": "",
+      "definition": "有限个集合对并封闭且不全空，则必有某个元素属于至少一半的集合；它是组合学最著名的猜想之一。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Union-Closed Sets Conjecture",
+      "example": "2022年Gilmer证明必有元素出现在至少38%的集合中。",
+      "formulas": [],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "DM02",
+        "DM12"
+      ],
+      "tags": "重要",
+      "topic_cn": "并闭集",
+      "id": "LV34340"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "图论",
+      "cn": "Chvátal–Erdős 定理",
+      "conclusion": "",
+      "definition": "顶点连通度不小于独立数的图必有哈密顿圈，把 Dirac、Ore 定理统一为一个更强条件。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Chvatal–Erdos Theorem",
+      "example": "Petersen 图连通度 3、独立数 4，不满足 κ≥α，确实没有哈密顿圈。",
+      "formulas": [
+        "κ(G) ≥ α(G) ⇒ G 有哈密顿圈"
+      ],
+      "kind": "定理",
+      "level": 3,
+      "prereq": [
+        "DM74",
+        "DM55"
+      ],
+      "tags": "重要",
+      "topic_cn": "Chvátal–Erdős 定理",
+      "id": "LV34341"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "图论",
+      "cn": "Bondy–Chvátal 闭包定理",
+      "conclusion": "",
+      "definition": "把度数之和≥顶点数的非邻接顶点对反复连边，所得闭包图有哈密顿圈当且仅当原图有。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Bondy-Chvatal Closure Theorem",
+      "example": "n=6 的图中度数 2 与 4 的非邻顶点对先连边，闭包变完全图则原图哈密顿。",
+      "formulas": [
+        "deg(u) + deg(v) ≥ n ⇒ 连边 uv",
+        "cl(G) 有哈密顿圈 ⇔ G 有哈密顿圈"
+      ],
+      "kind": "定理",
+      "level": 2,
+      "prereq": [
+        "DM74"
+      ],
+      "tags": "",
+      "topic_cn": "Bondy–Chvátal 闭包",
+      "id": "LV34342"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "代数编码",
+      "cn": "Delsarte 线性规划界",
+      "conclusion": "",
+      "definition": "把码的距离分布写成线性规划，约束来自对偶分布非负，最优值就是码长 n、距离 d 下码大小的上界。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Delsarte's Linear Programming Bound",
+      "example": "n=23、d=7 时 Delsarte 界给出 A(23,7) ≤ 4096，恰为二元 Golay 码达到。",
+      "formulas": [
+        "∑ A(k) K(k,i) ≥ 0，对一切 i",
+        "A(n,d) ≤ 线性规划的最优值"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "DM150",
+        "DM147"
+      ],
+      "tags": "重要",
+      "topic_cn": "Delsarte 线性规划界",
+      "id": "LV34343"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "加法组合",
+      "cn": "Dias da Silva–Hamidouche 定理",
+      "conclusion": "",
+      "definition": "有限域中两集合的“不同元和集”大小至少为两集合大小之和减 3，证实了 Erdős–Heilbronn 猜想。",
+      "domain_cn": "离散数学",
+      "domain_en": "Discrete Mathematics",
+      "en": "Dias da Silva-Hamidouche Theorem",
+      "example": "取 A=B 为 1,2,3,4，在 mod 11 下不同元和集至少 5 个，实际恰为 3,4,5,6,7。",
+      "formulas": [
+        "A∧B 为 a∈A、b∈B、a≠b 的和 a+b 全体",
+        "|A∧B| ≥ min(p, |A| + |B| − 3)"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "AL137",
+        "AL01"
+      ],
+      "tags": "",
+      "topic_cn": "Dias da Silva–Hamidouche 定理",
+      "id": "LV34344"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "一维优化",
+      "cn": "黄金分割搜索",
+      "conclusion": "",
+      "definition": "在单峰函数区间上按黄金比例0.618不断缩小区间的免导数一维优化法,每次迭代只需一次函数求值。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Golden-Section Search",
+      "example": "求f(x)=(x−2)²在[0,5]上的最小值,黄金分割搜索约20次迭代达1e-4精度。",
+      "formulas": [
+        "φ = (√5 − 1)/2 ≈ 0.618",
+        "k次迭代后区间长度缩为0.618ᵏ倍"
+      ],
+      "kind": "算法",
+      "level": 2,
+      "prereq": [
+        "CA175",
+        "CA05"
+      ],
+      "tags": "",
+      "topic_cn": "一维搜索",
+      "id": "LV34345"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "分布式训练",
+      "cn": "数据并行",
+      "conclusion": "",
+      "definition": "把训练数据分片到多块GPU,每块算一份梯度再全局平均,是最常用的分布式训练范式。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Data Parallelism",
+      "example": "8卡训练大模型时每卡处理1/8数据,梯度做all-reduce平均后更新参数。",
+      "formulas": [
+        "g = (1/P)∑ₚ gₚ, P为worker数"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "CA13",
+        "LV34156"
+      ],
+      "tags": "",
+      "topic_cn": "分布式训练范式",
+      "id": "LV34346"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "通信压缩",
+      "cn": "signSGD",
+      "conclusion": "",
+      "definition": "每轮只传输梯度每个分量的符号(±1)而非32位浮点,把通信量压缩32倍的分布式优化算法。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "SignSGD",
+      "example": "多机训练时worker只上传梯度符号,server做多数投票后更新模型。",
+      "formulas": [
+        "x ← x − η·sign(g)",
+        "每坐标仅需1比特"
+      ],
+      "kind": "算法",
+      "level": 2,
+      "prereq": [
+        "CA13",
+        "LV34158"
+      ],
+      "tags": "",
+      "topic_cn": "梯度压缩",
+      "id": "LV34347"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "在线学习",
+      "cn": "乐观面对不确定原则",
+      "conclusion": "",
+      "definition": "做决策时给试得少的选项加分:按'均值+不确定性上界'选,逼自己探索未知,赌博机与强化学习的通用心法。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Optimism in the Face of Uncertainty",
+      "example": "UCB算法按均值加置信半径选臂,没试过的臂因上界高而获得机会。",
+      "formulas": [],
+      "kind": "思路",
+      "level": 2,
+      "prereq": [
+        "CA136",
+        "CA135"
+      ],
+      "tags": "",
+      "topic_cn": "探索利用权衡",
+      "id": "LV34348"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "在线学习",
+      "cn": "动态遗憾",
+      "conclusion": "",
+      "definition": "比较基准随时间变化的遗憾:与每轮各自的最优决策比较,刻画在线算法追踪漂移环境的能力。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Dynamic Regret",
+      "example": "股票策略每天的最优仓位都在变,动态遗憾衡量算法跟上这种漂移的程度。",
+      "formulas": [
+        "动态遗憾 D-Regret = ∑ₜ fₜ(xₜ) − ∑ₜ minₓ fₜ(x)"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "CA69",
+        "LV34159"
+      ],
+      "tags": "",
+      "topic_cn": "遗憾分析",
+      "id": "LV34349"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "赌博机",
+      "cn": "组合老虎机",
+      "conclusion": "",
+      "definition": "每轮不是选一个臂而是选一组臂(如一条路径),奖励是整组联合产生的赌博机推广模型。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Combinatorial Bandits",
+      "example": "在线广告每轮从上千广告中选5个展示位组合,根据整体点击获得奖励。",
+      "formulas": [
+        "Sₜ ⊂ [K], 奖励 R(Sₜ)"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "CA135",
+        "CA33"
+      ],
+      "tags": "",
+      "topic_cn": "组合决策",
+      "id": "LV34350"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "非凸优化",
+      "cn": "二次增长条件",
+      "conclusion": "",
+      "definition": "函数值与最优值的差距至少随'到最优解集距离的平方'增长,是比强凸更弱却仍保线性收敛的条件。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Quadratic Growth Condition",
+      "example": "Lasso目标非强凸但满足二次增长,近端梯度法在其上仍线性收敛。",
+      "formulas": [
+        "f(x) − f* ≥ (μ/2)·dist(x, X*)²"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "CA84",
+        "CA06"
+      ],
+      "tags": "",
+      "topic_cn": "收敛条件",
+      "id": "LV34351"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "高效推理",
+      "cn": "推测解码",
+      "conclusion": "",
+      "definition": "用小模型一次猜出多个token,再让大模型并行验证接受,采样分布不变而解码大幅加速的推理算法。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Speculative Decoding",
+      "example": "7B小模型起草5个token,70B模型一次验证,解码速度提升2-3倍且输出分布不变。",
+      "formulas": [
+        "接受概率 min(1, p(x)/q(x))"
+      ],
+      "kind": "算法",
+      "level": 3,
+      "prereq": [
+        "CA111",
+        "CA12"
+      ],
+      "tags": "",
+      "topic_cn": "解码加速",
+      "id": "LV34352"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "通信压缩",
+      "cn": "Top-k梯度稀疏化",
+      "conclusion": "",
+      "definition": "每轮只传输梯度中绝对值最大的k个分量并本地累积残差,大幅削减分布式训练通信量的压缩算法。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Top-k Gradient Sparsification",
+      "example": "千卡训练中梯度压缩99%仍收敛,通信时间从瓶颈变为可忽略。",
+      "formulas": [
+        "只传 Top-k(|g|)",
+        "残差 e ← e + g − Top-k(g)"
+      ],
+      "kind": "算法",
+      "level": 3,
+      "prereq": [
+        "LV34158",
+        "CA13"
+      ],
+      "tags": "",
+      "topic_cn": "梯度压缩",
+      "id": "LV34353"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "凸优化理论",
+      "cn": "相对光滑性",
+      "conclusion": "",
+      "definition": "光滑性概念的推广:梯度Lipschitz条件换成相对参考凸函数的Bregman散度,适配非欧几何的优化分析。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Relative Smoothness",
+      "example": "泊松逆问题用Burg熵做参考函数,镜像下降获得相对光滑下的收敛保证。",
+      "formulas": [
+        "f(y) ≤ f(x) + ⟨∇f(x), y−x⟩ + L·Dₕ(y,x)"
+      ],
+      "kind": "概念",
+      "level": 3,
+      "prereq": [
+        "CA85",
+        "CA05"
+      ],
+      "tags": "",
+      "topic_cn": "光滑性推广",
+      "id": "LV34354"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "算子理论",
+      "cn": "单调算子",
+      "conclusion": "",
+      "definition": "满足⟨F(x)−F(y), x−y⟩ ≥ 0的集值映射,是凸函数次梯度与KKT系统的统一抽象,分裂算法的理论地基。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Monotone Operator",
+      "example": "把KKT条件写成单调包含0 ∈ F(z),近端点算法直接求解该算子零点。",
+      "formulas": [
+        "⟨F(x) − F(y), x − y⟩ ≥ 0",
+        "凸函数次梯度 ∂f 是单调算子"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "CA05",
+        "CA86"
+      ],
+      "tags": "重要",
+      "topic_cn": "单调算子",
+      "id": "LV34355"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "算子分裂",
+      "cn": "三算子分裂",
+      "conclusion": "",
+      "definition": "Davis-Yin提出的同时处理'光滑项+两个非光滑项'复合优化的分裂算法,统一了近端梯度与DR分裂。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Davis–Yin Three-Operator Splitting",
+      "example": "带两个正则项的图像去模糊:min 保真项+TV+稀疏项,三算子分裂逐项处理。",
+      "formulas": [
+        "min f(x)+g(x)+h(x), f光滑",
+        "每步只用 prox g、prox h 与 ∇f"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA62",
+        "CA27"
+      ],
+      "tags": "",
+      "topic_cn": "算子分裂法",
+      "id": "LV34356"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "加速方法",
+      "cn": "Catalyst加速框架",
+      "conclusion": "",
+      "definition": "Lin等人提出的通用加速框架:给任何线性收敛的优化算法套一层近端点外循环,自动得到加速收敛率。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Catalyst Acceleration Framework",
+      "example": "把Catalyst套在SVRG外面,有限和问题的复杂度从O(n)降到加速率。",
+      "formulas": [
+        "外循环 min f(x) + (κ/2)‖x − yₖ‖²",
+        "内循环用原算法近似求解子问题"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA178",
+        "CA62"
+      ],
+      "tags": "重要",
+      "topic_cn": "加速框架",
+      "id": "LV34357"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "方差缩减",
+      "cn": "Katyusha",
+      "conclusion": "",
+      "definition": "Allen-Zhu提出的加速方差缩减算法,把Nesterov动量与SVRG结合,达到有限和优化的最优复杂度。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Katyusha",
+      "example": "逻辑回归训练中Katyusha比SVRG更快达到高精度,尤其条件数大时。",
+      "formulas": [
+        "复杂度 O((n + √(nL/μ)) log(1/ε))"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA78",
+        "CA178"
+      ],
+      "tags": "",
+      "topic_cn": "加速方差缩减",
+      "id": "LV34358"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "非凸优化",
+      "cn": "Burer–Monteiro分解",
+      "conclusion": "",
+      "definition": "把半定规划的矩阵变量写成X=RRᵀ低秩分解,将凸SDP化为非凸问题求解,规模大时快得多的建模技巧。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Burer–Monteiro Factorization",
+      "example": "Max-Cut的SDP松弛用r=10的低秩分解求解,比内点法快上百倍。",
+      "formulas": [
+        "X = RRᵀ, R ∈ ℝⁿˣʳ",
+        "r(r+1)/2 ≥ m 时无虚假局部极小"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "AL30",
+        "CA05"
+      ],
+      "tags": "重要",
+      "topic_cn": "低秩建模",
+      "id": "LV34359"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "非凸优化",
+      "cn": "Wirtinger流",
+      "conclusion": "",
+      "definition": "Candès等人提出的解相位恢复的梯度法:用谱初始化找好起点,再对非凸强度损失做梯度下降。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Wirtinger Flow",
+      "example": "X射线晶体学中从衍射强度重建相位,Wirtinger流给出首个多项式时间保证。",
+      "formulas": [
+        "min ∑ᵢ (|aᵢᵀz|² − yᵢ)²",
+        "谱初始化 z₀ 取主特征向量方向"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA06",
+        "CA13"
+      ],
+      "tags": "",
+      "topic_cn": "相位恢复",
+      "id": "LV34360"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "神经网络景观",
+      "cn": "深度线性网络无坏局部极小",
+      "conclusion": "",
+      "definition": "Kawaguchi证明:深层线性网络的每个局部极小都是全局极小,鞍点严格,为理解深度学习景观奠基。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "No Bad Local Minima in Deep Linear Networks",
+      "example": "解释了线性网络上梯度下降不易卡住,为研究非线性网络景观提供基准。",
+      "formulas": [
+        "min ‖Wᴴ…W₁X − Y‖²",
+        "局部极小 ⇒ 全局极小"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "CA06",
+        "LV34164"
+      ],
+      "tags": "",
+      "topic_cn": "优化景观",
+      "id": "LV34361"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "极小极大优化",
+      "cn": "Extragradient方法",
+      "conclusion": "",
+      "definition": "Korpelevich提出解变分不等式/鞍点问题的两步法:先试探半步再校正,克服了梯度下降-上升的发散。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Extragradient Method",
+      "example": "训练GAN时用extragradient代替同时梯度更新,显著缓解震荡与模式崩溃。",
+      "formulas": [
+        "y = x − ηF(x), x⁺ = x − ηF(y)"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA06",
+        "CA57"
+      ],
+      "tags": "重要",
+      "topic_cn": "变分不等式",
+      "id": "LV34362"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "极小极大优化",
+      "cn": "OGDA",
+      "conclusion": "",
+      "definition": "乐观梯度下降-上升:把上一步梯度当作对下一步的预测做外推,是无悔学习在双人博弈中的自然算法。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Optimistic Gradient Descent-Ascent",
+      "example": "双人零和博弈中双方都用OGDA,时间平均策略收敛到纳什均衡。",
+      "formulas": [
+        "x⁺ = x − 2ηF(x) + ηF(x̃)，x̃为上一步迭代点"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA06",
+        "CA177"
+      ],
+      "tags": "",
+      "topic_cn": "博弈优化",
+      "id": "LV34363"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "博弈论",
+      "cn": "Blackwell可达性定理",
+      "conclusion": "",
+      "definition": "Blackwell证明:在重复博弈中玩家能把平均收益向量压进任意可达凸集,是无悔学习与相关均衡的理论源头。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Blackwell Approachability Theorem",
+      "example": "由此推出存在无悔策略,进而证明有限博弈中相关均衡可经学习达到。",
+      "formulas": [
+        "平均收益 (1/T)∑rₜ → 凸集 S",
+        "策略:沿指向S投影的方向走"
+      ],
+      "kind": "定理",
+      "level": 4,
+      "prereq": [
+        "DM160",
+        "CA69"
+      ],
+      "tags": "核心",
+      "topic_cn": "重复博弈",
+      "id": "LV34364"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "赌博机",
+      "cn": "LinUCB",
+      "conclusion": "",
+      "definition": "带上下文的老虎机算法:假设期望奖励是特征的线性函数,用岭回归估计加置信椭球做乐观选择。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "LinUCB",
+      "example": "新闻推荐中按用户-文章特征预测点击率,置信上界驱动探索新文章。",
+      "formulas": [
+        "aₜ = argmaxₐ (θ̂ᵀxₐ + α·√(xₐᵀV⁻¹xₐ))"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA136",
+        "CA135"
+      ],
+      "tags": "重要",
+      "topic_cn": "上下文赌博机",
+      "id": "LV34365"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "赌博机",
+      "cn": "GP-UCB",
+      "conclusion": "",
+      "definition": "Srinivas等提出的高斯过程老虎机算法:用GP后验均值加方差做采集函数,贝叶斯优化的理论主力。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "GP-UCB",
+      "example": "超参数调优中GP-UCB按采集函数选下一组超参数试,样本效率远超随机搜索。",
+      "formulas": [
+        "xₜ = argmax (μₜ₋₁(x) + √βₜ·σₜ₋₁(x))",
+        "遗憾界 O(√(Tγₜ log T))"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA183",
+        "CA136"
+      ],
+      "tags": "",
+      "topic_cn": "贝叶斯优化",
+      "id": "LV34366"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "次模优化",
+      "cn": "连续贪心",
+      "conclusion": "",
+      "definition": "Vondrák提出:在多线性扩展的连续松弛上沿梯度方向走,取整后得次模最大化1-1/e近似的里程碑算法。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Continuous Greedy",
+      "example": "影响力最大化、传感器布置等次模问题都用连续贪心达到最优近似比。",
+      "formulas": [
+        "dx/dt 取 P 中使⟨v, ∇F(x)⟩最大的 v",
+        "近似比 1 − 1/e"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA68",
+        "CA33"
+      ],
+      "tags": "重要",
+      "topic_cn": "次模最大化",
+      "id": "LV34367"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "次模优化",
+      "cn": "多线性扩展",
+      "conclusion": "",
+      "definition": "次模集函数到连续域的典则延拓:每个元素以概率xᵢ独立入选时期望值,让离散优化能用连续工具。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Multilinear Extension",
+      "example": "连续贪心先在多线性扩展上优化再做交换取整,得到1-1/e保证。",
+      "formulas": [
+        "F(x) = E[f(S)]，S中每个元素以概率xᵢ独立入选"
+      ],
+      "kind": "概念",
+      "level": 4,
+      "prereq": [
+        "CA68",
+        "CA05"
+      ],
+      "tags": "",
+      "topic_cn": "连续松弛",
+      "id": "LV34368"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "分布式优化",
+      "cn": "拜占庭鲁棒聚合",
+      "conclusion": "",
+      "definition": "防御恶意worker上传任意坏梯度的聚合规则,如Krum选几何中心梯度,保障分布式训练不被带偏。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Byzantine-Robust Aggregation",
+      "example": "20个worker中有5个被劫持时,Krum聚合仍能让模型正常收敛。",
+      "formulas": [
+        "Krum选使到k近邻距离和最小的梯度"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA13",
+        "LV34156"
+      ],
+      "tags": "",
+      "topic_cn": "鲁棒分布式",
+      "id": "LV34369"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "大规模特征值",
+      "cn": "LOBPCG",
+      "conclusion": "",
+      "definition": "Knyazev提出的块预条件共轭梯度特征求解器,一次算多个特征对,是大规模对称特征值问题的工业标准。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Locally Optimal Block Preconditioned Conjugate Gradient",
+      "example": "有限元振动分析中求前50阶模态,LOBPCG比Lanczos更稳且易并行。",
+      "formulas": [
+        "Rayleigh–Ritz投影 + 预条件校正",
+        "一次求m个最小特征对"
+      ],
+      "kind": "算法",
+      "level": 4,
+      "prereq": [
+        "CA25",
+        "CA17"
+      ],
+      "tags": "",
+      "topic_cn": "特征值求解器",
+      "id": "LV34370"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "分布式训练",
+      "cn": "模型并行",
+      "conclusion": "",
+      "definition": "把模型本身切分到多块GPU,每块只存一部分参数,解决单卡装不下大模型的分布式训练范式。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Model Parallelism",
+      "example": "70B模型单卡装不下,用张量并行切到8卡,每卡只存1/8权重。",
+      "formulas": [
+        "按层切分(流水线并行) 或 按张量切分(张量并行)"
+      ],
+      "kind": "概念",
+      "level": 2,
+      "prereq": [
+        "CA13",
+        "LV34156"
+      ],
+      "tags": "",
+      "topic_cn": "模型切分",
+      "id": "LV34371"
+    },
+    {
+      "assumptions": "",
+      "branch_cn": "块坐标优化",
+      "cn": "交替最小化",
+      "conclusion": "",
+      "definition": "固定所有块只优化一块,轮流迭代的块坐标下降特例,是EM与矩阵补全等算法的共同骨架。",
+      "domain_cn": "计算与优化",
+      "domain_en": "Computing & Optimization",
+      "en": "Alternating Minimization",
+      "example": "矩阵补全中交替固定用户/物品因子做最小二乘,是ALS协同过滤的核心。",
+      "formulas": [
+        "固定y优化x, 再固定x优化y, 轮流迭代"
+      ],
+      "kind": "算法",
+      "level": 3,
+      "prereq": [
+        "CA64",
+        "CA06"
+      ],
+      "tags": "",
+      "topic_cn": "交替优化",
+      "id": "LV34372"
     }
+
   ]
 }
