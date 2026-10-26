@@ -112,3 +112,43 @@ The proved special-family bound and the exact n=2 enumeration do not settle
 this question. The next mathematical bottleneck is to replace the symplectic
 commutator-rank argument with a structural quantity available for arbitrary
 finite groups, or to construct a counterexample family.
+
+
+## 6. First paired MCTS benchmark (10 seeds)
+
+The checked-in paired-benchmark workflow completed on Python 3.12.15 for
+n=3, |G|=256 and m=16, using seeds
+11, 23, 37, 41, 53, 67, 79, 83, 217 and 2027. Every sample size used the same
+initial subset for each seed. Lower defect is better.
+
+### Equal iteration budget
+
+250 iterations, depth limit 6, and a 120-node cap per run:
+
+| Lookahead sample B | Mean best defect | Seeds improved vs B=0 | Tied | Worse | Mean exact swap evaluations | Mean seconds |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0 | 102.1 | — | — | — | 119.1 | 0.0203 |
+| 16 | 100.9 | 7/10 | 1/10 | 2/10 | 231.0 | 0.0267 |
+| 32 | 98.5 | 10/10 | 0/10 | 0/10 | 362.3 | 0.0404 |
+
+### Equal wall-clock budget
+
+One second per run, depth limit 6, and a 10,000-node cap so the wall-clock
+budget—not the node cap—controlled the run:
+
+| Lookahead sample B | Mean best defect | Seeds improved vs B=0 | Tied | Worse | Mean exact swap evaluations |
+|---:|---:|---:|---:|---:|---:|
+| 0 | 96.8 | — | — | — | 955.4 |
+| 16 | 97.2 | 4/10 | 2/10 | 4/10 | 1255.1 |
+| 32 | 93.6 | 7/10 | 1/10 | 2/10 | 1507.6 |
+
+### Interpretation
+
+For this restricted n=3 family and these ten paired seeds, B=32 improved the
+best defect in all ten equal-iteration comparisons and in seven of ten
+equal-time comparisons. The mean best defect fell from 102.1 to 98.5 under
+equal iterations, and from 96.8 to 93.6 under equal time. This is a useful
+positive signal for bounded exact-lookahead admission, not a universal result:
+the sample is still small, only one group family was tested, and equal-time
+runs spent more exact swap evaluations when B increased. Keep B=32 opt-in
+until additional group families, more seeds and held-out budgets are tested.
