@@ -464,6 +464,10 @@ class PUCTAdmissionFairnessTests(unittest.TestCase):
 
 
 from math_mcts.product_defect import FiniteGroupProductDefect, ProductDefectSearchProblem
+from tools.g5c_special_2group_experiment import (
+    ConstrainedSquareOneProblem, build_group, group_product, sample_initial_subset,
+    square_one_pair_keys,
+)
 
 
 class IncrementalProductDefectTests(unittest.TestCase):
@@ -611,6 +615,60 @@ class IncrementalProductDefectTests(unittest.TestCase):
         self.assertEqual(len(ranked_actions), len(baseline_actions))
         self.assertEqual(ranked_problem.candidate_evaluations, sample_size)
         self.assertEqual(state.subset, frozenset({0, 1, 3}))
+
+
+class G5CSpecialTwoGroupTests(unittest.TestCase):
+    def test_group_law_and_restricted_family_invariants(self):
+        n = 2
+        group = build_group(n)
+        identity = (0, 0, 0, 0)
+        for a0 in group:
+            self.assertEqual(group_product(identity, a0, n), a0)
+            self.assertEqual(group_product(a0, identity, n), a0)
+            x, y, t, c0 = a0
+            inverse = (x, y, t ^ ((x & y).bit_count() & 1), c0)
+            self.assertEqual(group_product(a0, inverse, n), identity)
+        subset = sample_initial_subset(n, 101)
+        self.assertEqual(len(subset), 1 << (n + 1))
+        self.assertTrue(all(((x & y).bit_count() & 1) == 1
+                            for x, y, _t, _c in subset))
+        pair_keys = [(x, y, c0) for x, y, _t, c0 in subset]
+        self.assertEqual(len(set(pair_keys)), len(pair_keys))
+        self.assertEqual(len(square_one_pair_keys(n)), 12)
+
+    def test_constrained_actions_preserve_family_and_lookahead_order(self):
+        n = 2
+        group = build_group(n)
+        subset = sample_initial_subset(n, 53)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: group_product(a, b, n), subset
+        )
+        state = evaluator.initial_state
+        baseline = ConstrainedSquareOneProblem(evaluator, n, seed=17)
+        baseline_actions = list(baseline.iter_actions(state))
+        self.assertEqual(len(baseline_actions), 72)
+        self.assertEqual(len(set(baseline_actions)), len(baseline_actions))
+        for action in baseline_actions:
+            child = state.swap(*action)
+            self.assertEqual(len(child.subset), 8)
+            keys = [(x, y, c0) for x, y, _t, c0 in child.subset]
+            self.assertEqual(len(set(keys)), 8)
+            self.assertTrue(all(((x & y).bit_count() & 1) == 1
+                                for x, y, _t, _c in child.subset))
+
+        sample_size = 5
+        expected = sorted(
+            enumerate(baseline_actions[:sample_size]),
+            key=lambda item: (state.swap(*item[1]).z, item[0]),
+        )
+        ranked_problem = ConstrainedSquareOneProblem(
+            evaluator, n, seed=17, candidate_sample_size=sample_size
+        )
+        ranked_actions = list(ranked_problem.iter_actions(state))
+        self.assertEqual(ranked_actions[:sample_size],
+                         [action for _, action in expected])
+        self.assertEqual(set(ranked_actions), set(baseline_actions))
+        self.assertEqual(ranked_problem.candidate_evaluations, sample_size)
 
 
 if __name__ == "__main__":
