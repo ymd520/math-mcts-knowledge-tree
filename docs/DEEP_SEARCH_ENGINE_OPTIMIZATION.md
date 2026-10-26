@@ -1,0 +1,42 @@
+# Deep-search engine optimization: phase 1
+
+This branch begins a staged optimization of the generic MCTS engine. It does not claim a universal search-quality improvement; each policy change must be measured against a fixed-budget baseline.
+
+## Phase 1: separate selection from backup
+
+Previously, the problem's `value_op` implicitly controlled both:
+- the statistic backed up to a node (`mean` or best observed value), and
+- the exploitation term used by UCT/PUCT selection.
+
+These are different decisions. A max-backup problem can overvalue a branch because one noisy rollout produced an unusually high score. The engine now retains both the sample mean and the best observed return for every node, while preserving `value_op` as the default selection behavior.
+
+The new optional argument is:
+
+- `selection_value="backup"`: compatibility mode; uses the existing `Problem.node_value` semantics.
+- `selection_value="mean"`: uses empirical mean for the exploitation term while still retaining best-so-far values for max-backup and final extraction.
+- `selection_value="max"`: uses best observed return for exploitation, independent of the backup objective.
+
+The default remains `"backup"`; existing callers need not change. `root.stats["selection_value"]` records the chosen policy.
+
+## How to evaluate it
+
+Compare `backup`, `mean`, and `max` under identical:
+- problem instances and action-generation order,
+- random seeds (paired runs),
+- simulation/iteration budgets and maximum depth,
+- wall-clock and peak-memory measurement protocols.
+
+Record success rate, best observed score, mean score, created nodes, action-generation count, elapsed time, and run-to-run variance. Report distributions across seeds, not a single best run. Do not promote a new default merely because it wins on one fixture.
+
+## Next engineering stages
+
+1. **Search correctness and traceability:** retain the exact evaluated trajectory or clearly label the returned tree prefix; never conflate a rollout score with a complete extracted path.
+2. **State identity and duplicate control:** add opt-in canonical state keys, local duplicate-action/state suppression, and explicit cycle handling without silently merging nodes whose histories affect rewards.
+3. **Budget accounting:** separately cap expansions, action-generation work, rollout depth, retrieval calls, and elapsed time; report which budget stopped the run.
+4. **Progressive widening and exploration:** evaluate diverse candidate admission, adaptive widening and exploration schedules against the existing policy; preserve stream ordering bias as an explicit property.
+5. **Benchmark suite:** paired seeds, adversarial sparse-reward and deceptive-reward cases, wide/deep synthetic graphs, and regression checks. Timing is reported, not asserted in CI.
+6. **Only after evidence:** consider parallel search, transposition DAGs, and more complex controllers; each requires its own consistency and concurrency tests.
+
+## Status
+
+Phase 1 code and regression tests are included in this branch. CI execution and benchmark results must be checked before treating the change as validated. No claim is made here that mean selection is universally superior.
