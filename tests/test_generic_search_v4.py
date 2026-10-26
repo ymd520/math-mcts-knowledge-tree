@@ -586,5 +586,32 @@ class IncrementalProductDefectTests(unittest.TestCase):
             evaluator.initial_state.swap(0, 1)
 
 
+    def test_bounded_exact_lookahead_ranks_sample_and_preserves_coverage(self):
+        group = range(8)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: (a + b) % 8, {0, 1, 3}
+        )
+        state = evaluator.initial_state
+        baseline = ProductDefectSearchProblem(evaluator, seed=41)
+        baseline_actions = list(baseline.iter_actions(state))
+        sample_size = 7
+        expected = sorted(
+            enumerate(baseline_actions[:sample_size]),
+            key=lambda item: (state.swap(*item[1]).z, item[0]),
+        )
+        ranked_problem = ProductDefectSearchProblem(
+            evaluator, seed=41, candidate_sample_size=sample_size
+        )
+        ranked_actions = list(ranked_problem.iter_actions(state))
+        self.assertEqual(
+            ranked_actions[:sample_size],
+            [action for _, action in expected],
+        )
+        self.assertEqual(set(ranked_actions), set(baseline_actions))
+        self.assertEqual(len(ranked_actions), len(baseline_actions))
+        self.assertEqual(ranked_problem.candidate_evaluations, sample_size)
+        self.assertEqual(state.subset, frozenset({0, 1, 3}))
+
+
 if __name__ == "__main__":
     unittest.main()
