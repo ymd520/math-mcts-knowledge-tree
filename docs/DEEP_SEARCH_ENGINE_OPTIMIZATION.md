@@ -65,3 +65,19 @@ search mixes prior-ranked admission with randomized coverage. Use paired-seed
 benchmarks before selecting a nonzero value: randomized admission can improve
 coverage but can also spend budget on low-quality candidates. The setting is
 ignored by UCT and defaults to legacy behavior.
+
+
+## G5-C exact incremental product-defect evaluator
+
+math_mcts/product_defect.py adds FiniteGroupProductDefect. For a finite group
+and a subset A, it tracks the exact ordered-pair multiplicities
+r(g)=#{(a,b) in A×A: ab=g} and the exact defect z=|G|-|A²|.
+A one-element swap changes only products involving the removed or inserted
+element, so it constructs O(|A|) multiplicity deltas rather than recomputing
+all |A|² products. Search states keep sparse overlays and periodically compact
+to bound lookup-chain depth. This reduces transition arithmetic, but does not
+by itself remove the O(|G|) initial universe representation or guarantee faster
+end-to-end MCTS; benchmarks must include overlay lookups, compaction, and memory.
+The full recomputation method is an independent audit oracle, not the fast path.
+Tests compare incremental and full counts on cyclic and noncommutative finite
+groups. No G5-C universal bound is claimed.
