@@ -115,9 +115,16 @@ class FiniteGroupProductDefect(Generic[T]):
             type(compact_every) is not int or compact_every < 1
         ):
             raise ValueError("compact_every must be a positive integer or None")
-        self.group = frozenset(group_elements)
+        group_order = tuple(group_elements)
+        self.group = frozenset(group_order)
         if not self.group:
             raise ValueError("group_elements must be nonempty")
+        if len(group_order) != len(self.group):
+            raise ValueError("group_elements must not contain duplicates")
+        if not callable(multiply):
+            raise ValueError("multiply must be callable")
+        self.group_order = group_order
+        self._group_index = {g: i for i, g in enumerate(group_order)}
         self.multiply = multiply
         initial_items = list(initial_subset)
         subset = frozenset(initial_items)
@@ -181,13 +188,15 @@ class ProductDefectSearchProblem(Problem):
         return self.evaluator.initial_state
 
     def iter_actions(self, state: ProductDefectState):
-        remove_items = sorted(state.subset, key=repr)
-        add_items = sorted(self.evaluator.group - state.subset, key=repr)
+        order_key = self.evaluator._group_index.__getitem__
+        remove_items = sorted(state.subset, key=order_key)
+        add_items = sorted(self.evaluator.group - state.subset, key=order_key)
         width = len(add_items)
         total = len(remove_items) * width
         if total == 0:
             return
-        stable_state = repr(tuple(sorted(state.subset, key=repr)))
+        signature = tuple(order_key(g) for g in remove_items)
+        stable_state = ",".join(map(str, signature))
         digest = sha256(f"{self.seed}|{stable_state}".encode("utf-8")).digest()
         if total == 1:
             multiplier = 1
