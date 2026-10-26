@@ -202,7 +202,7 @@ def exact_n2_enumeration():
     }
 
 
-def run_mcts(n, iterations, seeds, sample_sizes, max_nodes, depth):
+def run_mcts(n, iterations, seeds, sample_sizes, max_nodes, depth, time_budget_seconds=None):
     group = build_group(n)
     rows = []
     for seed in seeds:
@@ -221,6 +221,7 @@ def run_mcts(n, iterations, seeds, sample_sizes, max_nodes, depth):
                 max_nodes=max_nodes, action_mode="stream", policy="uct",
                 selection_value="max", state_key=lambda state: state.subset,
                 widening_k=2.0, widening_alpha=0.5,
+                time_budget_seconds=time_budget_seconds,
             )
             elapsed = time.perf_counter() - started
             best_value = root.stats["best_observed_value"]
@@ -244,6 +245,7 @@ def run_mcts(n, iterations, seeds, sample_sizes, max_nodes, depth):
         "iterations_per_run": iterations,
         "max_nodes": max_nodes,
         "depth": depth,
+        "time_budget_seconds": time_budget_seconds,
         "results": rows,
     }
 
@@ -257,6 +259,7 @@ def main():
     parser.add_argument("--candidate-sizes", type=int, nargs="+", default=[0, 16, 32])
     parser.add_argument("--max-nodes", type=int, default=300)
     parser.add_argument("--depth", type=int, default=8)
+    parser.add_argument("--time-budget-seconds", type=float, default=None)
     parser.add_argument("--output", default="-")
     args = parser.parse_args()
     if args.mode == "exact-n2":
@@ -264,10 +267,13 @@ def main():
     else:
         if args.n < 2 or args.iterations < 1 or args.max_nodes < 1 or args.depth < 1:
             parser.error("n >= 2, iterations/max-nodes/depth >= 1 are required")
+        if args.time_budget_seconds is not None and args.time_budget_seconds <= 0:
+            parser.error("time budget must be positive when supplied")
         if any(x < 0 for x in args.candidate_sizes):
             parser.error("candidate sizes must be nonnegative")
         result = run_mcts(args.n, args.iterations, args.seeds,
-                          args.candidate_sizes, args.max_nodes, args.depth)
+                          args.candidate_sizes, args.max_nodes, args.depth,
+                          args.time_budget_seconds)
     text = json.dumps(result, indent=2, sort_keys=True)
     if args.output == "-":
         print(text)
