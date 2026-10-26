@@ -75,7 +75,8 @@ r(g)=#{(a,b) in A×A: ab=g} and the exact defect z=|G|-|A²|.
 A one-element swap changes only products involving the removed or inserted
 element, so it constructs O(|A|) multiplicity deltas rather than recomputing
 all |A|² products. Search states keep sparse overlays and periodically compact
-to bound lookup-chain depth. This reduces transition arithmetic, but does not
+to bound lookup-chain depth; the default compaction interval is a heuristic
+based on sqrt(|A|), clamped to 4–32, and can be overridden. This reduces transition arithmetic, but does not
 by itself remove the O(|G|) initial universe representation or guarantee faster
 end-to-end MCTS; benchmarks must include overlay lookups, compaction, and memory.
 The full recomputation method is an independent audit oracle, not the fast path.
