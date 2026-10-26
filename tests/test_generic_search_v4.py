@@ -406,6 +406,14 @@ class SearchBudgetTests(unittest.TestCase):
             mcts(Empty(), max_nodes=0)
         with self.assertRaisesRegex(ValueError, "time_budget_seconds"):
             mcts(Empty(), time_budget_seconds=float("nan"))
+        with self.assertRaisesRegex(ValueError, "time_budget_seconds"):
+            mcts(Empty(), time_budget_seconds=True)
+        with self.assertRaisesRegex(ValueError, "iterations"):
+            mcts(Empty(), iterations=True)
+        with self.assertRaisesRegex(ValueError, "max_depth"):
+            mcts(Empty(), max_depth=1.5)
+        with self.assertRaisesRegex(ValueError, "finite numbers"):
+            mcts(Empty(), exploration=float("nan"))
 
 
 if __name__ == "__main__":
