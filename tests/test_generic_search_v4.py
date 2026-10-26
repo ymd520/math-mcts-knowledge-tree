@@ -680,5 +680,35 @@ class G5CSpecialTwoGroupTests(unittest.TestCase):
         self.assertEqual(result["minimizer_count"], 18432)
 
 
+    def test_constrained_g5c_problem_runs_in_latest_mcts(self):
+        n = 2
+        group = build_group(n)
+        subset = sample_initial_subset(n, 29)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: group_product(a, b, n), subset
+        )
+        problem = ConstrainedSquareOneProblem(
+            evaluator, n, seed=29, candidate_sample_size=4
+        )
+        _, root = mcts(
+            problem, iterations=35, seed=29, max_depth=4, max_nodes=24,
+            action_mode="stream", policy="uct", selection_value="max",
+            state_key=lambda state: state.subset,
+            widening_k=2.0, widening_alpha=0.5,
+        )
+        self.assertGreater(root.stats["simulations"], 0)
+        self.assertLessEqual(root.stats["created_nodes"], 24)
+        self.assertGreater(problem.candidate_evaluations, 0)
+        self.assertTrue(root.stats["best_trajectory_complete"])
+        state = evaluator.initial_state
+        for action in root.best_trajectory:
+            state = state.swap(*action)
+        self.assertEqual(state.z, int(-root.stats["best_observed_value"]))
+        keys = [(x, y, c0) for x, y, _t, c0 in state.subset]
+        self.assertEqual(len(keys), len(set(keys)))
+        self.assertTrue(all(((x & y).bit_count() & 1) == 1
+                            for x, y, _t, _c in state.subset))
+
+
 if __name__ == "__main__":
     unittest.main()
