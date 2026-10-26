@@ -352,5 +352,61 @@ class CanonicalStateTests(unittest.TestCase):
             mcts(Unhashable(), iterations=1, state_key=lambda state: state)
 
 
+class SearchBudgetTests(unittest.TestCase):
+    def test_node_budget_caps_tree_growth_but_allows_evaluation(self):
+        class Wide(Problem):
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return list(range(100)) if state == "root" else []
+            def step(self, state, action):
+                return ("leaf", action)
+            def terminal(self, state):
+                return state != "root"
+            def reward(self, state):
+                return 0.0
+
+        _, root = mcts(Wide(), iterations=20, max_nodes=3, seed=3)
+        self.assertLessEqual(root.stats["created_nodes"], 3)
+        self.assertEqual(root.stats["simulations"], 20)
+        self.assertTrue(root.stats["node_budget_exhausted"])
+
+    def test_zero_time_budget_stops_before_first_simulation(self):
+        class Empty(Problem):
+            def initial_state(self):
+                return 0
+            def actions(self, state):
+                return []
+            def step(self, state, action):
+                return state
+            def terminal(self, state):
+                return True
+            def reward(self, state):
+                return 0.0
+
+        _, root = mcts(Empty(), iterations=100, time_budget_seconds=0.0)
+        self.assertEqual(root.stats["simulations"], 0)
+        self.assertEqual(root.stats["stop_reason"], "time_budget")
+        self.assertGreaterEqual(root.stats["elapsed_seconds"], 0.0)
+
+    def test_invalid_budgets_are_rejected(self):
+        class Empty(Problem):
+            def initial_state(self):
+                return 0
+            def actions(self, state):
+                return []
+            def step(self, state, action):
+                return state
+            def terminal(self, state):
+                return True
+            def reward(self, state):
+                return 0.0
+
+        with self.assertRaisesRegex(ValueError, "max_nodes"):
+            mcts(Empty(), max_nodes=0)
+        with self.assertRaisesRegex(ValueError, "time_budget_seconds"):
+            mcts(Empty(), time_budget_seconds=float("nan"))
+
+
 if __name__ == "__main__":
     unittest.main()
