@@ -53,6 +53,27 @@ class Problem:
             depth += 1
         return self.reward(state)
 
+    def simulate_with_trace(self, state, rng, max_depth: int):
+        """Return (value, rollout_actions, complete_trace).
+
+        Custom simulate() overrides remain compatible. Unless they also
+        override this method, their internal rollout is opaque and only the
+        tree prefix can be reported as a trajectory.
+        """
+        if type(self).simulate is not Problem.simulate:
+            return self.simulate(state, rng, max_depth), [], False
+        depth = 0
+        actions = []
+        while not self.terminal(state) and depth < max_depth:
+            acts = self.actions(state)
+            if not acts:
+                break
+            action = acts[rng.randrange(len(acts))]
+            actions.append(action)
+            state = self.step(state, action)
+            depth += 1
+        return self.reward(state), actions, True
+
     # -- 价值回传方式 --------------------------------------------------
     # "mean": 回传均值, 适合序贯决策(学习路径规划);
     # "max":  回传子树最优值, 适合"找最优叶节点"类搜索(概念检索/知识碰撞),
@@ -86,7 +107,8 @@ class Problem:
 class _Node:
     __slots__ = ("state", "parent", "action", "children",
                  "untried", "untried_priors", "stream", "stream_exhausted",
-                 "visits", "total", "best", "prior", "stats")
+                 "visits", "total", "best", "prior", "stats",
+                 "best_trajectory", "best_trajectory_complete", "best_observed")
 
     def __init__(self, state, parent=None, action=None, actions=(), prior=1.0, stream=None):
         self.state = state
@@ -102,6 +124,9 @@ class _Node:
         self.best = None              # best observed return in this subtree
         self.prior = prior
         self.stats = None
+        self.best_trajectory = []
+        self.best_trajectory_complete = False
+        self.best_observed = None
 
     @property
     def mean(self) -> float:
@@ -191,6 +216,15 @@ def mcts(problem: Problem, iterations: int = 1000,
              "stream_exhausted_nodes": 0, "plateau_stop": False}
     best_observed = float("-inf")
     stale_simulations = 0
+
+    def tree_prefix_actions(node):
+        path = []
+        while node.parent is not None:
+            path.append(node.action)
+            node = node.parent
+        path.reverse()
+        return path
+
     for _ in range(iterations):
         if stop_on_success and problem.success_found():
             stats["early_stop"] = True
@@ -242,13 +276,19 @@ def mcts(problem: Problem, iterations: int = 1000,
         # a default random rollout that would materialize potentially millions
         # of actions through Problem.actions(). The caller must provide a
         # meaningful intermediate-state reward/heuristic if desired.
-        value = (problem.reward(node.state) if action_mode == "stream"
-                 else problem.simulate(node.state, rng, max_depth - depth))
+        if action_mode == "stream":
+            value, rollout_actions, trace_complete = problem.reward(node.state), [], True
+        else:
+            value, rollout_actions, trace_complete = problem.simulate_with_trace(
+                node.state, rng, max_depth - depth)
         if not math.isfinite(value):
             raise ValueError("Simulation reward must be finite")
         stats["simulations"] += 1
         if value > best_observed:
             best_observed = value
+            root.best_observed = value
+            root.best_trajectory = tree_prefix_actions(node) + list(rollout_actions)
+            root.best_trajectory_complete = trace_complete
             stale_simulations = 0
         else:
             stale_simulations += 1
@@ -276,5 +316,8 @@ def mcts(problem: Problem, iterations: int = 1000,
         actions_seq.append(node.action)
         if problem.terminal(node.state):
             break
+    stats["best_observed_value"] = root.best_observed
+    stats["best_trajectory_depth"] = len(root.best_trajectory)
+    stats["best_trajectory_complete"] = root.best_trajectory_complete
     root.stats = stats
     return actions_seq, root
