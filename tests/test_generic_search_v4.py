@@ -463,7 +463,7 @@ class PUCTAdmissionFairnessTests(unittest.TestCase):
             mcts(self.WeightedWide(), policy="puct", admission_epsilon=float("nan"))
 
 
-from math_mcts.product_defect import FiniteGroupProductDefect
+from math_mcts.product_defect import FiniteGroupProductDefect, ProductDefectSearchProblem
 
 
 class IncrementalProductDefectTests(unittest.TestCase):
@@ -507,6 +507,37 @@ class IncrementalProductDefectTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "add"):
             evaluator.initial_state.swap(0, 1)
 
+
+
+    def test_lazy_swap_actions_cover_neighborhood_without_duplicates(self):
+        group = range(8)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: (a+b) % 8, {0, 1, 3}
+        )
+        problem = ProductDefectSearchProblem(evaluator, seed=23)
+        state = evaluator.initial_state
+        actions_a = list(problem.iter_actions(state))
+        actions_b = list(problem.iter_actions(state))
+        expected = {(remove, add) for remove in state.subset
+                    for add in set(group) - state.subset}
+        self.assertEqual(len(actions_a), len(expected))
+        self.assertEqual(set(actions_a), expected)
+        self.assertEqual(actions_a, actions_b)
+
+    def test_lazy_product_defect_problem_runs_in_stream_mcts(self):
+        group = range(8)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: (a+b) % 8, {0, 1, 3}
+        )
+        problem = ProductDefectSearchProblem(evaluator, seed=7)
+        _, root = mcts(
+            problem, iterations=30, max_depth=4, max_nodes=20, seed=7,
+            action_mode="stream", policy="uct",
+            state_key=lambda state: state.subset,
+        )
+        self.assertGreater(root.stats["simulations"], 0)
+        self.assertLessEqual(root.stats["created_nodes"], 20)
+        self.assertTrue(root.children)
 
 
 if __name__ == "__main__":
