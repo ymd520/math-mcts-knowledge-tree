@@ -178,11 +178,16 @@ class ProductDefectSearchProblem(Problem):
 
     value_op = "max"
 
-    def __init__(self, evaluator: FiniteGroupProductDefect, *, seed: int = 0):
+    def __init__(self, evaluator: FiniteGroupProductDefect, *, seed: int = 0,
+                 candidate_sample_size: int = 0):
         if type(seed) is not int:
             raise ValueError("seed must be an integer")
+        if type(candidate_sample_size) is not int or candidate_sample_size < 0:
+            raise ValueError("candidate_sample_size must be a nonnegative integer")
         self.evaluator = evaluator
         self.seed = seed
+        self.candidate_sample_size = candidate_sample_size
+        self.candidate_evaluations = 0
 
     def initial_state(self) -> ProductDefectState:
         return self.evaluator.initial_state
@@ -207,10 +212,29 @@ class ProductDefectSearchProblem(Problem):
                 if multiplier >= total:
                     multiplier = 1
         offset = int.from_bytes(digest[8:16], "big") % total
-        for position in range(total):
+        def action_at(position):
             index = (multiplier * position + offset) % total
             remove_index, add_index = divmod(index, width)
-            yield (remove_items[remove_index], add_items[add_index])
+            return (remove_items[remove_index], add_items[add_index])
+
+        # Optional bounded exact one-step lookahead: score only the first B
+        # actions in the seeded permutation, then admit those sampled actions
+        # in increasing exact defect order. The remaining actions are still
+        # yielded exactly once, preserving eventual neighborhood coverage.
+        # This improves progressive-widening admission without materializing
+        # the full O(|A|(|G|-|A|)) neighborhood.
+        sample_count = min(self.candidate_sample_size, total)
+        if sample_count:
+            ranked = []
+            for position in range(sample_count):
+                action = action_at(position)
+                next_state = state.swap(*action)
+                self.candidate_evaluations += 1
+                ranked.append((next_state.z, position, action))
+            for _, _, action in sorted(ranked, key=lambda item: (item[0], item[1])):
+                yield action
+        for position in range(sample_count, total):
+            yield action_at(position)
 
     def actions(self, state: ProductDefectState):
         """Eager compatibility interface; prefer iter_actions for wide states."""
