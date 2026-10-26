@@ -51,3 +51,17 @@ The regression test replays a best trajectory through the problem's transition f
 ## Status
 
 Phase 1 code and regression tests are included in this branch. CI execution and benchmark results must be checked before treating the change as validated. No claim is made here that mean selection is universally superior.
+
+
+## Progressive-widening admission fairness (opt-in)
+
+For PUCT, the default `admission_epsilon=0.0` preserves highest-prior-first
+admission. Setting `admission_epsilon` in `[0, 1]` gives each expansion an
+independent chance to admit a uniformly sampled remaining action instead.
+This changes candidate admission only; the normalized prior remains attached
+to its action and the PUCT selection formula is unchanged. At epsilon 1, the
+admission order is uniform without replacement; at intermediate values, the
+search mixes prior-ranked admission with randomized coverage. Use paired-seed
+benchmarks before selecting a nonzero value: randomized admission can improve
+coverage but can also spend budget on low-quality candidates. The setting is
+ignored by UCT and defaults to legacy behavior.
