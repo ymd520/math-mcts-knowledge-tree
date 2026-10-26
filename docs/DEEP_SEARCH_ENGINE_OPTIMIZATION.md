@@ -28,10 +28,21 @@ Compare `backup`, `mean`, and `max` under identical:
 
 Record success rate, best observed score, mean score, created nodes, action-generation count, elapsed time, and run-to-run variance. Report distributions across seeds, not a single best run. Do not promote a new default merely because it wins on one fixture.
 
+## Phase 2: best-observed trajectory traceability
+
+The root node now exposes:
+- `root.best_observed`: highest observed simulation/reward value.
+- `root.best_trajectory`: the tree prefix plus rollout actions for that best observation, when available.
+- `root.best_trajectory_complete`: whether the engine knows the full action trace.
+- matching summary fields in `root.stats`.
+
+The existing return value from `mcts()` remains the established tree-extraction policy for compatibility. The separate trajectory archive prevents callers from mistaking that policy path for the exact rollout that generated the best score. If a problem overrides `simulate()` without implementing `simulate_with_trace()`, the rollout is opaque; the engine records only the known tree prefix and explicitly marks the trace incomplete. Stream mode uses the selected tree prefix as a complete trace because it evaluates the current node directly.
+
+The regression test replays a best trajectory through the problem's transition function and checks that its terminal reward matches the recorded best observation. This is a trace-consistency check, not a guarantee that the trajectory is optimal.
+
 ## Next engineering stages
 
-1. **Search correctness and traceability:** retain the exact evaluated trajectory or clearly label the returned tree prefix; never conflate a rollout score with a complete extracted path.
-2. **State identity and duplicate control:** add opt-in canonical state keys, local duplicate-action/state suppression, and explicit cycle handling without silently merging nodes whose histories affect rewards.
+1. **State identity and duplicate control:** add opt-in canonical state keys, local duplicate-action/state suppression, and explicit cycle handling without silently merging nodes whose histories affect rewards.
 3. **Budget accounting:** separately cap expansions, action-generation work, rollout depth, retrieval calls, and elapsed time; report which budget stopped the run.
 4. **Progressive widening and exploration:** evaluate diverse candidate admission, adaptive widening and exploration schedules against the existing policy; preserve stream ordering bias as an explicit property.
 5. **Benchmark suite:** paired seeds, adversarial sparse-reward and deceptive-reward cases, wide/deep synthetic graphs, and regression checks. Timing is reported, not asserted in CI.
