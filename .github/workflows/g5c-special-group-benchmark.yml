@@ -1,4 +1,5 @@
 name: G5-C special 2-group paired MCTS benchmark
+# Re-triggered after fixing standalone script import path; no artifacts are uploaded.
 
 on:
   push:
