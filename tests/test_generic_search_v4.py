@@ -466,7 +466,7 @@ class PUCTAdmissionFairnessTests(unittest.TestCase):
 from math_mcts.product_defect import FiniteGroupProductDefect, ProductDefectSearchProblem
 from tools.g5c_special_2group_experiment import (
     ConstrainedSquareOneProblem, build_group, group_product, sample_initial_subset,
-    square_one_pair_keys,
+    square_one_pair_keys, exact_n2_enumeration,
 )
 
 
@@ -669,6 +669,15 @@ class G5CSpecialTwoGroupTests(unittest.TestCase):
                          [action for _, action in expected])
         self.assertEqual(set(ranked_actions), set(baseline_actions))
         self.assertEqual(ranked_problem.candidate_evaluations, sample_size)
+
+
+    def test_exact_restricted_n2_enumeration(self):
+        result = exact_n2_enumeration()
+        self.assertEqual(result["group_order"], 64)
+        self.assertEqual(result["m"], 8)
+        self.assertEqual(result["candidate_count"], 126720)
+        self.assertEqual(result["minimum_defect"], 25)
+        self.assertEqual(result["minimizer_count"], 18432)
 
 
 if __name__ == "__main__":
