@@ -203,5 +203,512 @@ class StreamTests(unittest.TestCase):
         self.assertFalse(default.stats["plateau_stop"])
 
 
+class SelectionBackupSeparationTests(unittest.TestCase):
+    def test_max_backup_retains_mean_and_best_statistics(self):
+        class MaxProblem(Problem):
+            value_op = "max"
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return ["low", "high"] if state == "root" else []
+            def step(self, state, action):
+                return action
+            def terminal(self, state):
+                return state != "root"
+            def reward(self, state):
+                return {"low": 0.2, "high": 0.9}.get(state, 0.0)
+
+        _, root = mcts(MaxProblem(), iterations=80, seed=9,
+                       selection_value="mean")
+        self.assertEqual(root.stats["selection_value"], "mean")
+        self.assertEqual(root.visits, root.stats["simulations"])
+        self.assertAlmostEqual(root.best, 0.9)
+        self.assertGreaterEqual(root.mean, 0.2)
+        self.assertLessEqual(root.mean, 0.9)
+
+    def test_max_sample_selection_is_available_for_mean_backup(self):
+        class MeanProblem(Problem):
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return ["a", "b"] if state == "root" else []
+            def step(self, state, action):
+                return action
+            def terminal(self, state):
+                return state != "root"
+            def reward(self, state):
+                return {"a": 0.1, "b": 0.8}.get(state, 0.0)
+
+        _, root = mcts(MeanProblem(), iterations=50, seed=4,
+                       selection_value="max")
+        self.assertEqual(root.stats["selection_value"], "max")
+        self.assertAlmostEqual(root.best, 0.8)
+        self.assertGreaterEqual(root.mean, 0.1)
+        self.assertLessEqual(root.mean, 0.8)
+
+    def test_invalid_selection_value_rejected(self):
+        class Empty(Problem):
+            def initial_state(self):
+                return 0
+            def actions(self, state):
+                return []
+            def step(self, state, action):
+                return state
+            def terminal(self, state):
+                return True
+            def reward(self, state):
+                return 0.0
+
+        with self.assertRaisesRegex(ValueError, "selection_value"):
+            mcts(Empty(), iterations=1, selection_value="unknown")
+
+
+class TrajectoryTraceTests(unittest.TestCase):
+    class TinyTree(Problem):
+        def initial_state(self):
+            return "root"
+        def actions(self, state):
+            return {"root": ["A", "B"], "A": ["finish_A"],
+                    "B": ["finish_B"]}.get(state, [])
+        def step(self, state, action):
+            return action if action in {"A", "B"} else action.removeprefix("finish_") + "_done"
+        def terminal(self, state):
+            return state.endswith("_done")
+        def reward(self, state):
+            return 1.0 if state == "A_done" else 0.0
+
+    def test_best_rollout_trace_replays_to_recorded_score(self):
+        problem = self.TinyTree()
+        _, root = mcts(problem, iterations=100, max_depth=4, seed=17)
+        self.assertTrue(root.stats["best_trajectory_complete"])
+        self.assertEqual(root.stats["best_observed_value"], 1.0)
+        state = problem.initial_state()
+        for action in root.best_trajectory:
+            state = problem.step(state, action)
+        self.assertTrue(problem.terminal(state))
+        self.assertEqual(problem.reward(state), root.best_observed)
+        self.assertEqual(root.stats["best_trajectory_depth"],
+                         len(root.best_trajectory))
+
+    def test_custom_opaque_simulator_is_not_claimed_as_complete_trace(self):
+        class Opaque(Problem):
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return ["leaf"] if state == "root" else []
+            def step(self, state, action):
+                return action
+            def terminal(self, state):
+                return state == "leaf"
+            def reward(self, state):
+                return 0.0
+            def simulate(self, state, rng, max_depth):
+                return 0.75
+
+        _, root = mcts(Opaque(), iterations=1, seed=1)
+        self.assertFalse(root.stats["best_trajectory_complete"])
+        self.assertEqual(root.stats["best_observed_value"], 0.75)
+        self.assertEqual(root.best_trajectory, ["leaf"])
+
+
+class CanonicalStateTests(unittest.TestCase):
+    def test_duplicate_sibling_states_and_ancestral_cycles_are_skipped(self):
+        class Loopy(Problem):
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return (["to_A", "alias_A", "loop"] if state == "root"
+                        else ["back"] if state == "A" else [])
+            def step(self, state, action):
+                if state == "root":
+                    return {"to_A": "A", "alias_A": "A",
+                            "loop": "root"}[action]
+                return "root"
+            def terminal(self, state):
+                return False
+            def reward(self, state):
+                return 0.0
+
+        _, root = mcts(Loopy(), iterations=80, max_depth=5, seed=11,
+                       state_key=lambda state: state)
+        self.assertEqual(len(root.children), 1)
+        self.assertGreaterEqual(root.stats["duplicate_states_skipped"], 1)
+        self.assertGreaterEqual(root.stats["cycle_edges_skipped"], 1)
+
+    def test_state_key_must_return_hashable_identity(self):
+        class Unhashable(Problem):
+            def initial_state(self):
+                return []
+            def actions(self, state):
+                return []
+            def step(self, state, action):
+                return state
+            def terminal(self, state):
+                return True
+            def reward(self, state):
+                return 0.0
+
+        with self.assertRaisesRegex(ValueError, "hashable"):
+            mcts(Unhashable(), iterations=1, state_key=lambda state: state)
+
+
+class SearchBudgetTests(unittest.TestCase):
+    def test_node_budget_caps_tree_growth_but_allows_evaluation(self):
+        class Wide(Problem):
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return list(range(100)) if state == "root" else []
+            def step(self, state, action):
+                return ("leaf", action)
+            def terminal(self, state):
+                return state != "root"
+            def reward(self, state):
+                return 0.0
+
+        _, root = mcts(Wide(), iterations=20, max_nodes=3, seed=3)
+        self.assertLessEqual(root.stats["created_nodes"], 3)
+        self.assertEqual(root.stats["simulations"], 20)
+        self.assertTrue(root.stats["node_budget_exhausted"])
+
+    def test_zero_time_budget_stops_before_first_simulation(self):
+        class Empty(Problem):
+            def initial_state(self):
+                return 0
+            def actions(self, state):
+                return []
+            def step(self, state, action):
+                return state
+            def terminal(self, state):
+                return True
+            def reward(self, state):
+                return 0.0
+
+        _, root = mcts(Empty(), iterations=100, time_budget_seconds=0.0)
+        self.assertEqual(root.stats["simulations"], 0)
+        self.assertEqual(root.stats["stop_reason"], "time_budget")
+        self.assertGreaterEqual(root.stats["elapsed_seconds"], 0.0)
+
+    def test_invalid_budgets_are_rejected(self):
+        class Empty(Problem):
+            def initial_state(self):
+                return 0
+            def actions(self, state):
+                return []
+            def step(self, state, action):
+                return state
+            def terminal(self, state):
+                return True
+            def reward(self, state):
+                return 0.0
+
+        with self.assertRaisesRegex(ValueError, "max_nodes"):
+            mcts(Empty(), max_nodes=0)
+        with self.assertRaisesRegex(ValueError, "time_budget_seconds"):
+            mcts(Empty(), time_budget_seconds=float("nan"))
+        with self.assertRaisesRegex(ValueError, "time_budget_seconds"):
+            mcts(Empty(), time_budget_seconds=True)
+        with self.assertRaisesRegex(ValueError, "iterations"):
+            mcts(Empty(), iterations=True)
+        with self.assertRaisesRegex(ValueError, "max_depth"):
+            mcts(Empty(), max_depth=1.5)
+        with self.assertRaisesRegex(ValueError, "finite numbers"):
+            mcts(Empty(), exploration=float("nan"))
+
+
+class PUCTAdmissionFairnessTests(unittest.TestCase):
+    class WeightedWide(Problem):
+        value_op = "max"
+
+        def initial_state(self):
+            return "root"
+
+        def actions(self, state):
+            return list(range(40)) if state == "root" else []
+
+        def action_weight(self, state, action):
+            return float(action + 1)
+
+        def step(self, state, action):
+            return ("leaf", action)
+
+        def terminal(self, state):
+            return state != "root"
+
+        def reward(self, state):
+            return 0.0
+
+    def test_epsilon_admission_is_seeded_and_reaches_low_prior_actions(self):
+        def run():
+            _, root = mcts(
+                self.WeightedWide(), iterations=80, seed=31, policy="puct",
+                widening_k=1.5, widening_alpha=0.5, admission_epsilon=1.0,
+                max_depth=2,
+            )
+            return [child.action for child in root.children], root.stats
+
+        first_actions, stats = run()
+        second_actions, second_stats = run()
+        self.assertEqual(first_actions, second_actions)
+        self.assertEqual(stats["puct_random_admissions"],
+                         second_stats["puct_random_admissions"])
+        self.assertGreater(stats["puct_random_admissions"], 0)
+        self.assertTrue(any(action < 10 for action in first_actions))
+        self.assertEqual(stats["admission_epsilon"], 1.0)
+
+    def test_admission_epsilon_validation(self):
+        with self.assertRaisesRegex(ValueError, "admission_epsilon"):
+            mcts(self.WeightedWide(), policy="puct", admission_epsilon=-0.1)
+        with self.assertRaisesRegex(ValueError, "admission_epsilon"):
+            mcts(self.WeightedWide(), policy="puct", admission_epsilon=float("nan"))
+
+
+from math_mcts.product_defect import FiniteGroupProductDefect, ProductDefectSearchProblem
+from tools.g5c_special_2group_experiment import (
+    ConstrainedSquareOneProblem, build_group, group_product, sample_initial_subset,
+    square_one_pair_keys, exact_n2_enumeration,
+)
+
+
+class IncrementalProductDefectTests(unittest.TestCase):
+    @staticmethod
+    def d8_multiply(a, b):
+        i, s = a
+        j, t = b
+        return ((i + (-1 if s else 1) * j) % 4, s ^ t)
+
+    def test_cyclic_group_swap_matches_full_recomputation(self):
+        group = range(8)
+        mul = lambda a, b: (a + b) % 8
+        evaluator = FiniteGroupProductDefect(group, mul, {0, 1, 3}, compact_every=2)
+        state = evaluator.initial_state
+        for remove, add in [(1, 2), (0, 7), (3, 4), (2, 5), (7, 1)]:
+            state = state.swap(remove, add)
+            exact_counts, exact_z = evaluator.recompute(state.subset)
+            self.assertEqual(state.z, exact_z)
+            self.assertEqual({g: state.count(g) for g in group if state.count(g)},
+                             exact_counts)
+            self.assertEqual(state.z, len(group) - len(exact_counts))
+
+    def test_noncommutative_group_and_parent_immutability(self):
+        group = [(i, s) for i in range(4) for s in range(2)]
+        evaluator = FiniteGroupProductDefect(
+            group, self.d8_multiply, {(0, 0), (1, 0), (0, 1)}, compact_every=3
+        )
+        parent = evaluator.initial_state
+        child = parent.swap((1, 0), (2, 1))
+        self.assertEqual(parent.subset, frozenset({(0, 0), (1, 0), (0, 1)}))
+        exact_counts, exact_z = evaluator.recompute(child.subset)
+        self.assertEqual(child.z, exact_z)
+        self.assertEqual(
+            {g: child.count(g) for g in group if child.count(g)}, exact_counts
+        )
+
+    def test_swap_preconditions(self):
+        evaluator = FiniteGroupProductDefect(range(4), lambda a, b: (a+b) % 4, {0, 1})
+        with self.assertRaisesRegex(ValueError, "remove"):
+            evaluator.initial_state.swap(2, 3)
+        with self.assertRaisesRegex(ValueError, "add"):
+            evaluator.initial_state.swap(0, 1)
+
+
+
+    def test_lazy_swap_actions_cover_neighborhood_without_duplicates(self):
+        group = range(8)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: (a+b) % 8, {0, 1, 3}
+        )
+        problem = ProductDefectSearchProblem(evaluator, seed=23)
+        state = evaluator.initial_state
+        actions_a = list(problem.iter_actions(state))
+        actions_b = list(problem.iter_actions(state))
+        expected = {(remove, add) for remove in state.subset
+                    for add in set(group) - state.subset}
+        self.assertEqual(len(actions_a), len(expected))
+        self.assertEqual(set(actions_a), expected)
+        self.assertEqual(actions_a, actions_b)
+
+    def test_lazy_product_defect_problem_runs_in_stream_mcts(self):
+        group = range(8)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: (a+b) % 8, {0, 1, 3}
+        )
+        problem = ProductDefectSearchProblem(evaluator, seed=7)
+        _, root = mcts(
+            problem, iterations=30, max_depth=4, max_nodes=20, seed=7,
+            action_mode="stream", policy="uct",
+            state_key=lambda state: state.subset,
+        )
+        self.assertGreater(root.stats["simulations"], 0)
+        self.assertLessEqual(root.stats["created_nodes"], 20)
+        self.assertTrue(root.children)
+
+
+    def test_incremental_swap_uses_linear_group_multiplication_calls(self):
+        calls = {"n": 0}
+        def mul(a, b):
+            calls["n"] += 1
+            return (a + b) % 64
+
+        subset = set(range(16))
+        evaluator = FiniteGroupProductDefect(range(64), mul, subset)
+        initial_calls = calls["n"]
+        state = evaluator.initial_state.swap(3, 40)
+        swap_calls = calls["n"] - initial_calls
+        self.assertEqual(swap_calls, 4 * (len(subset) - 1) + 2)
+        self.assertLess(swap_calls, len(subset) ** 2)
+        exact_counts, exact_z = evaluator.recompute(state.subset)
+        self.assertEqual(state.z, exact_z)
+        self.assertEqual({g: state.count(g) for g in range(64) if state.count(g)},
+                         exact_counts)
+
+
+    def test_randomized_noncommutative_swap_walk_matches_recomputation(self):
+        group = [(i, s) for i in range(4) for s in range(2)]
+        evaluator = FiniteGroupProductDefect(
+            group, self.d8_multiply, {(0, 0), (1, 0), (0, 1)}, compact_every=4
+        )
+        state = evaluator.initial_state
+        rng = random.Random(1181)
+        for _ in range(60):
+            remove = rng.choice(tuple(state.subset))
+            add = rng.choice(tuple(set(group) - state.subset))
+            state = state.swap(remove, add)
+            exact_counts, exact_z = evaluator.recompute(state.subset)
+            self.assertEqual(state.z, exact_z)
+            self.assertEqual(
+                {g: state.count(g) for g in group if state.count(g)},
+                exact_counts,
+            )
+
+    def test_swap_checks_group_operation_closure(self):
+        def invalid_operation(a, b):
+            return 2 if a == 1 and b == 1 else 0
+
+        evaluator = FiniteGroupProductDefect([0, 1], invalid_operation, {0})
+        with self.assertRaisesRegex(ValueError, "outside group_elements"):
+            evaluator.initial_state.swap(0, 1)
+
+
+    def test_bounded_exact_lookahead_ranks_sample_and_preserves_coverage(self):
+        group = range(8)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: (a + b) % 8, {0, 1, 3}
+        )
+        state = evaluator.initial_state
+        baseline = ProductDefectSearchProblem(evaluator, seed=41)
+        baseline_actions = list(baseline.iter_actions(state))
+        sample_size = 7
+        expected = sorted(
+            enumerate(baseline_actions[:sample_size]),
+            key=lambda item: (state.swap(*item[1]).z, item[0]),
+        )
+        ranked_problem = ProductDefectSearchProblem(
+            evaluator, seed=41, candidate_sample_size=sample_size
+        )
+        ranked_actions = list(ranked_problem.iter_actions(state))
+        self.assertEqual(
+            ranked_actions[:sample_size],
+            [action for _, action in expected],
+        )
+        self.assertEqual(set(ranked_actions), set(baseline_actions))
+        self.assertEqual(len(ranked_actions), len(baseline_actions))
+        self.assertEqual(ranked_problem.candidate_evaluations, sample_size)
+        self.assertEqual(state.subset, frozenset({0, 1, 3}))
+
+
+class G5CSpecialTwoGroupTests(unittest.TestCase):
+    def test_group_law_and_restricted_family_invariants(self):
+        n = 2
+        group = build_group(n)
+        identity = (0, 0, 0, 0)
+        for a0 in group:
+            self.assertEqual(group_product(identity, a0, n), a0)
+            self.assertEqual(group_product(a0, identity, n), a0)
+            x, y, t, c0 = a0
+            inverse = (x, y, t ^ ((x & y).bit_count() & 1), c0)
+            self.assertEqual(group_product(a0, inverse, n), identity)
+        subset = sample_initial_subset(n, 101)
+        self.assertEqual(len(subset), 1 << (n + 1))
+        self.assertTrue(all(((x & y).bit_count() & 1) == 1
+                            for x, y, _t, _c in subset))
+        pair_keys = [(x, y, c0) for x, y, _t, c0 in subset]
+        self.assertEqual(len(set(pair_keys)), len(pair_keys))
+        self.assertEqual(len(square_one_pair_keys(n)), 12)
+
+    def test_constrained_actions_preserve_family_and_lookahead_order(self):
+        n = 2
+        group = build_group(n)
+        subset = sample_initial_subset(n, 53)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: group_product(a, b, n), subset
+        )
+        state = evaluator.initial_state
+        baseline = ConstrainedSquareOneProblem(evaluator, n, seed=17)
+        baseline_actions = list(baseline.iter_actions(state))
+        self.assertEqual(len(baseline_actions), 72)
+        self.assertEqual(len(set(baseline_actions)), len(baseline_actions))
+        for action in baseline_actions:
+            child = state.swap(*action)
+            self.assertEqual(len(child.subset), 8)
+            keys = [(x, y, c0) for x, y, _t, c0 in child.subset]
+            self.assertEqual(len(set(keys)), 8)
+            self.assertTrue(all(((x & y).bit_count() & 1) == 1
+                                for x, y, _t, _c in child.subset))
+
+        sample_size = 5
+        expected = sorted(
+            enumerate(baseline_actions[:sample_size]),
+            key=lambda item: (state.swap(*item[1]).z, item[0]),
+        )
+        ranked_problem = ConstrainedSquareOneProblem(
+            evaluator, n, seed=17, candidate_sample_size=sample_size
+        )
+        ranked_actions = list(ranked_problem.iter_actions(state))
+        self.assertEqual(ranked_actions[:sample_size],
+                         [action for _, action in expected])
+        self.assertEqual(set(ranked_actions), set(baseline_actions))
+        self.assertEqual(ranked_problem.candidate_evaluations, sample_size)
+
+
+    def test_exact_restricted_n2_enumeration(self):
+        result = exact_n2_enumeration()
+        self.assertEqual(result["group_order"], 64)
+        self.assertEqual(result["m"], 8)
+        self.assertEqual(result["candidate_count"], 126720)
+        self.assertEqual(result["minimum_defect"], 25)
+        self.assertEqual(result["minimizer_count"], 18432)
+
+
+    def test_constrained_g5c_problem_runs_in_latest_mcts(self):
+        n = 2
+        group = build_group(n)
+        subset = sample_initial_subset(n, 29)
+        evaluator = FiniteGroupProductDefect(
+            group, lambda a, b: group_product(a, b, n), subset
+        )
+        problem = ConstrainedSquareOneProblem(
+            evaluator, n, seed=29, candidate_sample_size=4
+        )
+        _, root = mcts(
+            problem, iterations=35, seed=29, max_depth=4, max_nodes=24,
+            action_mode="stream", policy="uct", selection_value="max",
+            state_key=lambda state: state.subset,
+            widening_k=2.0, widening_alpha=0.5,
+        )
+        self.assertGreater(root.stats["simulations"], 0)
+        self.assertLessEqual(root.stats["created_nodes"], 24)
+        self.assertGreater(problem.candidate_evaluations, 0)
+        self.assertTrue(root.stats["best_trajectory_complete"])
+        state = evaluator.initial_state
+        for action in root.best_trajectory:
+            state = state.swap(*action)
+        self.assertEqual(state.z, int(-root.stats["best_observed_value"]))
+        keys = [(x, y, c0) for x, y, _t, c0 in state.subset]
+        self.assertEqual(len(keys), len(set(keys)))
+        self.assertTrue(all(((x & y).bit_count() & 1) == 1
+                            for x, y, _t, _c in state.subset))
+
+
 if __name__ == "__main__":
     unittest.main()

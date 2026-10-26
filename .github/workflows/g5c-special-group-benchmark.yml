@@ -1,0 +1,71 @@
+name: G5-C special 2-group paired MCTS benchmark
+# Re-triggered after fixing standalone script import path; no artifacts are uploaded.
+
+on:
+  push:
+    branches:
+      - opt/deep-search-engine-v1
+    paths:
+      - "math_mcts/mcts.py"
+      - "math_mcts/product_defect.py"
+      - "tools/g5c_special_2group_experiment.py"
+      - ".github/workflows/g5c-special-group-benchmark.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  paired-benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Equal iteration budget
+        run: |
+          python tools/g5c_special_2group_experiment.py \
+            --mode mcts --n 3 --iterations 250 \
+            --seeds 11 23 37 41 53 67 79 83 217 2027 --candidate-sizes 0 16 32 \
+            --max-nodes 120 --depth 6 --output /tmp/g5c-equal-iterations.json
+          cat /tmp/g5c-equal-iterations.json
+      - name: Equal wall-clock budget
+        run: |
+          python tools/g5c_special_2group_experiment.py \
+            --mode mcts --n 3 --iterations 100000 \
+            --seeds 11 23 37 41 53 67 79 83 217 2027 --candidate-sizes 0 16 32 \
+            --max-nodes 10000 --depth 6 --time-budget-seconds 1.0 \
+            --output /tmp/g5c-equal-time.json
+          cat /tmp/g5c-equal-time.json
+      - name: Publish compact benchmark summary in job logs and step summary
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          paths = [
+              ("Equal iteration budget", "/tmp/g5c-equal-iterations.json"),
+              ("Equal wall-clock budget", "/tmp/g5c-equal-time.json"),
+          ]
+          lines = ["# G5-C special 2-group paired MCTS benchmark", "",
+                   "Restricted square-one, inverse-pair-free family only.", ""]
+          for title, path in paths:
+              lines += [f"## {title}", "",
+                        "| Seed | Sample size | Best defect | Lookahead scores | All swap evaluations | Seconds | Nodes |",
+                        "|---:|---:|---:|---:|---:|---:|---:|"]
+              if not os.path.exists(path):
+                  lines += ["| — | — | benchmark output missing | — | — | — |", ""]
+                  continue
+              data = json.load(open(path, encoding="utf-8"))
+              for row in data["results"]:
+                  lines.append(
+                      f"| {row['seed']} | {row['candidate_sample_size']} | "
+                      f"{row['best_defect']} | {row['candidate_evaluations']} | "
+                      f"{row['swap_evaluations']} | {row['elapsed_seconds']:.3f} | "
+                      f"{row['created_nodes']} |"
+                  )
+              lines.append("")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
+              out.write("\n".join(lines) + "\n")
+          print("\n".join(lines))
+          PY

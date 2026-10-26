@@ -167,7 +167,12 @@ class GuidedMCTSTests(unittest.TestCase):
         sequence2, root2 = mcts(q, iterations=200, seed=11, policy="puct",
                                  stop_on_success=True)
         self.assertEqual(sequence2, sequence)
-        self.assertEqual(root2.stats, root.stats)
+        # Wall-clock telemetry is expected to vary across otherwise identical runs.
+        stats1 = {k: v for k, v in root.stats.items() if k != "elapsed_seconds"}
+        stats2 = {k: v for k, v in root2.stats.items() if k != "elapsed_seconds"}
+        self.assertEqual(stats2, stats1)
+        self.assertGreaterEqual(root.stats["elapsed_seconds"], 0.0)
+        self.assertGreaterEqual(root2.stats["elapsed_seconds"], 0.0)
 
     def test_default_uct_backward_compatible(self):
         _, root = mcts(self.Toy(), iterations=10, seed=7)
