@@ -57,6 +57,7 @@ class ProductDefectState(Generic[T]):
             changes[owner._product(a, add)] += 1
         changes[owner._product(remove, remove)] -= 1
         changes[owner._product(add, add)] += 1
+        owner.swap_evaluations += 1
 
         new_z = self.z
         sparse_delta: dict[T, int] = {}
@@ -126,6 +127,7 @@ class FiniteGroupProductDefect(Generic[T]):
         self.group_order = group_order
         self._group_index = {g: i for i, g in enumerate(group_order)}
         self.multiply = multiply
+        self.swap_evaluations = 0
         initial_items = list(initial_subset)
         subset = frozenset(initial_items)
         if len(subset) != len(initial_items):
