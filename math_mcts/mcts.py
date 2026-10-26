@@ -159,7 +159,8 @@ def mcts(problem: Problem, iterations: int = 1000,
          selection_value: str = "backup", state_key=None,
          max_nodes: int | None = None, time_budget_seconds: float | None = None,
          stop_on_success: bool = False, action_mode: str = "eager",
-         plateau_patience: int | None = None, min_plateau_iterations: int = 20):
+         plateau_patience: int | None = None, min_plateau_iterations: int = 20,
+         admission_epsilon: float = 0.0):
     """Bounded MCTS with progressive widening for very wide action spaces.
 
     The number of expanded children grows as ceil(k * (visits+1)**alpha).
@@ -180,6 +181,10 @@ def mcts(problem: Problem, iterations: int = 1000,
         raise ValueError("min_plateau_iterations must be a positive integer")
     if policy not in {"uct", "puct"}:
         raise ValueError("policy must be uct or puct")
+    if (type(admission_epsilon) not in (int, float)
+            or not math.isfinite(admission_epsilon)
+            or not 0.0 <= admission_epsilon <= 1.0):
+        raise ValueError("admission_epsilon must be finite and in [0, 1]")
     if selection_value not in {"backup", "mean", "max"}:
         raise ValueError("selection_value must be backup, mean, or max")
     if state_key is not None and not callable(state_key):
@@ -302,9 +307,18 @@ def mcts(problem: Problem, iterations: int = 1000,
                     prior = 1.0
                 elif policy == "puct":
                     # Priors are normalized ONCE for the complete action set,
-                    # not renormalized after each widening expansion.
-                    action = node.untried.pop()
-                    prior = node.untried_priors.pop()
+                    # not renormalized after each widening expansion. By default
+                    # admit highest-prior actions first. An epsilon admission
+                    # chance samples uniformly from remaining actions to prevent
+                    # hard starvation of low-prior branches under progressive
+                    # widening; it does not change PUCT's selection formula.
+                    if admission_epsilon > 0 and rng.random() < admission_epsilon:
+                        admission_index = rng.randrange(len(node.untried))
+                        stats["puct_random_admissions"] += 1
+                    else:
+                        admission_index = len(node.untried) - 1
+                    action = node.untried.pop(admission_index)
+                    prior = node.untried_priors.pop(admission_index)
                     stats["guided_expansions"] += 1
                 else:
                     prior = 1.0
