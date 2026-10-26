@@ -75,12 +75,13 @@ class Problem:
         return node.total / node.visits
 
     def accumulate(self, node, value: float) -> None:
+        # Keep mean and best-so-far statistics simultaneously. Selection and
+        # backup are distinct choices; max-backup must not erase the mean.
         node.visits += 1
+        node.total += value
         if self.value_op == "max":
             if node.best is None or value > node.best:
                 node.best = value
-        else:
-            node.total += value
 
 
 class _Node:
@@ -107,20 +108,26 @@ class _Node:
     def mean(self) -> float:
         return self.total / self.visits if self.visits else 0.0
 
-    def uct(self, c: float, problem: "Problem", policy="uct") -> float:
-        if policy == "puct":
+    def uct(self, c: float, problem: "Problem", policy="uct",
+            selection_value="backup") -> float:
+        if selection_value == "mean":
+            q = self.mean if self.visits else 0.0
+        elif selection_value == "max":
+            q = self.best if self.visits and self.best is not None else 0.0
+        else:
             q = problem.node_value(self) if self.visits else 0.0
+        if policy == "puct":
             return q + c * self.prior * math.sqrt(self.parent.visits + 1) / (1 + self.visits)
         if self.visits == 0:
             return float("inf")
-        return (problem.node_value(self)
-                + c * math.sqrt(math.log(max(1, self.parent.visits)) / self.visits))
+        return (q + c * math.sqrt(math.log(max(1, self.parent.visits)) / self.visits))
 
 
 def mcts(problem: Problem, iterations: int = 1000,
          exploration: float = 1.414, max_depth: int = 60,
          seed: int | None = None, *, widening_k: float = 2.0,
          widening_alpha: float = 0.5, policy: str = "uct",
+         selection_value: str = "backup",
          stop_on_success: bool = False, action_mode: str = "eager",
          plateau_patience: int | None = None, min_plateau_iterations: int = 20):
     """Bounded MCTS with progressive widening for very wide action spaces.
@@ -143,6 +150,8 @@ def mcts(problem: Problem, iterations: int = 1000,
         raise ValueError("min_plateau_iterations must be a positive integer")
     if policy not in {"uct", "puct"}:
         raise ValueError("policy must be uct or puct")
+    if selection_value not in {"backup", "mean", "max"}:
+        raise ValueError("selection_value must be backup, mean, or max")
     if not isinstance(iterations, int) or iterations < 0:
         raise ValueError("iterations must be a nonnegative integer")
     if max_depth < 0 or exploration < 0 or widening_k <= 0 or not 0 < widening_alpha <= 1:
@@ -178,8 +187,8 @@ def mcts(problem: Problem, iterations: int = 1000,
     prepare_priors(root)
     stats = {"requested_iterations": iterations, "simulations": 0,
              "created_nodes": 1, "guided_expansions": 0,
-             "policy": policy, "early_stop": False,
-             "action_mode": action_mode, "yielded_actions": 0,
+             "policy": policy, "selection_value": selection_value,
+             "early_stop": False, "action_mode": action_mode, "yielded_actions": 0,
              "stream_exhausted_nodes": 0, "plateau_stop": False}
     best_observed = float("-inf")
     stale_simulations = 0
@@ -202,7 +211,7 @@ def mcts(problem: Problem, iterations: int = 1000,
                         if not node.children:
                             break
                         node = max(node.children,
-                                   key=lambda ch: ch.uct(exploration, problem, policy))
+                                   key=lambda ch: ch.uct(exploration, problem, policy, selection_value))
                         depth += 1
                         continue
                     stats["yielded_actions"] += 1
