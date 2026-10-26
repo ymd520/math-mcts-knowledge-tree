@@ -239,6 +239,7 @@ def run_mcts(n, iterations, seeds, sample_sizes, max_nodes, depth, time_budget_s
                 "simulations": root.stats["simulations"],
                 "created_nodes": root.stats["created_nodes"],
                 "candidate_evaluations": problem.candidate_evaluations,
+                "swap_evaluations": evaluator.swap_evaluations,
                 "elapsed_seconds": elapsed,
                 "initial_defect": evaluator.initial_state.z,
                 "stop_reason": root.stats["stop_reason"],
