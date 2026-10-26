@@ -1,5 +1,13 @@
 # 更新日志
 
+## [Unreleased]
+
+### 新增
+- 直觉先验接入 MCTS（`math_mcts/intuition.py`，新接口 `collide_with_intuition` / `intuition_score` / `intuition_rules`，CLI `collide --intuition`）：51 个经典核心概念的手写结构签名（对象类型、角色、作用对象、产出、不变量、证明模式、对偶、量纲）按固定规则打分作 PUCT 先验，指导碰撞搜索的探索顺序；终局评分仍是 `collision_score`，旧 `collide_concepts` 行为不变。未签名概念给下限权重 0.05（仍可探索，不被排除）；签名属待专家复核的派生层，不进精选库正式收录，更不是证明。新增 `tests/test_intuition.py`。
+
+### 验证
+- `tests/test_intuition.py` ALL INTUITION TESTS PASSED；`tests/test_mcts.py` ALL TESTS PASSED（旧 AN21×PR07 置顶不变）。
+
 ## [1.15.8] - 2026-10-26
 
 ### 新增

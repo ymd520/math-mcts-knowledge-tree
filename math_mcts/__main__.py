@@ -17,6 +17,7 @@ from pathlib import Path
 from .knowledge import KnowledgeTree
 from .search import (plan_learning_path, search_concepts,
                      export_path_markdown, collide_concepts)
+from .intuition import collide_with_intuition, intuition_score
 from .reasoning import load_reasoning_problem, load_certificate, derive, verify_certificate
 from .layered import (load_layered_problem, load_layer_certificate, derive_layers,
                       replay_layers, report_json)
@@ -134,6 +135,25 @@ def cmd_export_path(args):
 
 
 def cmd_collide(args):
+    if getattr(args, "intuition", False):
+        # 直觉先验只覆盖 51 个已签名概念，适用范围是精选库配对搜索；
+        # 它只改变探索顺序，终局评分仍是 collision_score。
+        tree = KnowledgeTree.load()
+        tree = apply_catalog_scope(tree, args)
+        results = collide_with_intuition(tree, seed=args.seed, top_k=args.top_k,
+                                         iterations=args.iterations)
+        title = f"围绕「{args.seed}」" if args.seed else "全局"
+        print(f"知识碰撞·直觉先验 ({title}, MCTS 迭代 {args.iterations} 次):")
+        for i, (a, b, score, note) in enumerate(results, 1):
+            intu = intuition_score(tree, a.id, b.id)
+            print(f"  {i}. {a.cn} × {b.cn}  (碰撞分 {score:.2f}"
+                  f"{f', 直觉分 {intu:.2f}' if intu is not None else ', 直觉分 未签名'})")
+            print(f"     {a.domain_cn} / {b.domain_cn}")
+            if note:
+                print(f"     💡 {note}")
+            else:
+                print(f"     待探索: {a.definition[:40]}… + {b.definition[:40]}…")
+        return
     if not (args.curated_only or args.levels or args.important):
         # Ordinary research now uses the complete imported corpus. The older
         # in-memory pair API remains an explicit curated/scoped operation.
@@ -355,6 +375,7 @@ def main():
     co.add_argument("--db", type=Path, help="完整语料索引；省略则自动构建/复用全量缓存")
     co.add_argument("--external-db", type=Path, help="显式接入本地、待审外部文献候选缓存")
     co.add_argument("--curated-only", action="store_true", help="显式仅用精选库的旧配对接口")
+    co.add_argument("--intuition", action="store_true", help="直觉先验版碰撞: 以签名规则分作 PUCT 先验，终局评分不变")
     co.add_argument("--random-seed", type=int, default=7)
     co.set_defaults(func=cmd_collide)
     kr = sub.add_parser("research", help="全量知识库驱动的动态多层MCTS；输出研究线索及实际调用日志")

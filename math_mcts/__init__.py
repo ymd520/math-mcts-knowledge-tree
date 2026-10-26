@@ -9,6 +9,8 @@ from .mcts import mcts, Problem
 from .search import (plan_learning_path, search_concepts,
                      export_path_markdown, collide_concepts,
                      collision_score)
+from .intuition import (IntuitionCollisionProblem, collide_with_intuition,
+                        intuition_score, intuition_rules)
 from .viz import to_dot
 from .reasoning import (Atom, Rule, RuleBook, Certificate, ProofGraph,
                         DiscoveryQueue, derive, verify_certificate,
@@ -47,6 +49,8 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "plan_learning_path", "search_concepts",
            "export_path_markdown", "to_dot",
            "collide_concepts", "collision_score",
+           "IntuitionCollisionProblem", "collide_with_intuition",
+           "intuition_score", "intuition_rules",
            "Atom", "Rule", "RuleBook", "Certificate", "ProofGraph",
            "DiscoveryQueue", "derive", "verify_certificate", "load_reasoning_problem",
            "load_certificate", "LayerConfig", "LayerCertificate", "derive_layers",
