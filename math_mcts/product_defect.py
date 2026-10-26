@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from collections import Counter
 from hashlib import sha256
-from math import gcd
+from math import gcd, isqrt
 from dataclasses import dataclass
 from typing import Callable, Generic, Hashable, Iterable, TypeVar
 
@@ -97,7 +97,8 @@ class FiniteGroupProductDefect(Generic[T]):
 
     multiply must implement the group operation. Initialization costs O(|A|^2);
     each swap constructs O(|A|) product-count changes, with sparse lookups
-    through at most compact_every overlay layers.
+    through at most compact_every overlay layers. If unspecified, compaction
+    interval is heuristically chosen from sqrt(|A|), clamped to [4, 32].
     """
 
     def __init__(
@@ -106,10 +107,12 @@ class FiniteGroupProductDefect(Generic[T]):
         multiply: Callable[[T, T], T],
         initial_subset: Iterable[T],
         *,
-        compact_every: int = 32,
+        compact_every: int | None = None,
     ):
-        if type(compact_every) is not int or compact_every < 1:
-            raise ValueError("compact_every must be a positive integer")
+        if compact_every is not None and (
+            type(compact_every) is not int or compact_every < 1
+        ):
+            raise ValueError("compact_every must be a positive integer or None")
         self.group = frozenset(group_elements)
         if not self.group:
             raise ValueError("group_elements must be nonempty")
@@ -120,7 +123,10 @@ class FiniteGroupProductDefect(Generic[T]):
             raise ValueError("initial_subset must not contain duplicates")
         if not subset <= self.group:
             raise ValueError("initial_subset must be contained in group_elements")
-        self.compact_every = compact_every
+        # Balance overlay lookup depth against the O(|G|) cost of compaction.
+        # For |G|=m^2, sqrt(m) is a useful conservative starting point.
+        self.compact_every = (compact_every if compact_every is not None
+                              else max(4, min(32, isqrt(max(1, len(subset))))))
 
         counts: Counter[T] = Counter()
         for a in subset:
