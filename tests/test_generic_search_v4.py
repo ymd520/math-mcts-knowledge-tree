@@ -263,5 +263,53 @@ class SelectionBackupSeparationTests(unittest.TestCase):
             mcts(Empty(), iterations=1, selection_value="unknown")
 
 
+class TrajectoryTraceTests(unittest.TestCase):
+    class TinyTree(Problem):
+        def initial_state(self):
+            return "root"
+        def actions(self, state):
+            return {"root": ["A", "B"], "A": ["finish_A"],
+                    "B": ["finish_B"]}.get(state, [])
+        def step(self, state, action):
+            return action if action in {"A", "B"} else action.removeprefix("finish_") + "_done"
+        def terminal(self, state):
+            return state.endswith("_done")
+        def reward(self, state):
+            return 1.0 if state == "A_done" else 0.0
+
+    def test_best_rollout_trace_replays_to_recorded_score(self):
+        problem = self.TinyTree()
+        _, root = mcts(problem, iterations=100, max_depth=4, seed=17)
+        self.assertTrue(root.stats["best_trajectory_complete"])
+        self.assertEqual(root.stats["best_observed_value"], 1.0)
+        state = problem.initial_state()
+        for action in root.best_trajectory:
+            state = problem.step(state, action)
+        self.assertTrue(problem.terminal(state))
+        self.assertEqual(problem.reward(state), root.best_observed)
+        self.assertEqual(root.stats["best_trajectory_depth"],
+                         len(root.best_trajectory))
+
+    def test_custom_opaque_simulator_is_not_claimed_as_complete_trace(self):
+        class Opaque(Problem):
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return ["leaf"] if state == "root" else []
+            def step(self, state, action):
+                return action
+            def terminal(self, state):
+                return state == "leaf"
+            def reward(self, state):
+                return 0.0
+            def simulate(self, state, rng, max_depth):
+                return 0.75
+
+        _, root = mcts(Opaque(), iterations=1, seed=1)
+        self.assertFalse(root.stats["best_trajectory_complete"])
+        self.assertEqual(root.stats["best_observed_value"], 0.75)
+        self.assertEqual(root.best_trajectory, ["leaf"])
+
+
 if __name__ == "__main__":
     unittest.main()
