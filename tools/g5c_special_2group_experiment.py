@@ -14,7 +14,11 @@ import itertools
 import json
 import random
 import time
+import sys
+from pathlib import Path
 from math import gcd
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from math_mcts.mcts import Problem, mcts
 from math_mcts.product_defect import FiniteGroupProductDefect
