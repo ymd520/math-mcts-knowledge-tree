@@ -13,6 +13,8 @@ from math import gcd, isqrt
 from dataclasses import dataclass
 from typing import Callable, Generic, Hashable, Iterable, TypeVar
 
+from .mcts import Problem
+
 T = TypeVar("T", bound=Hashable)
 
 
@@ -49,12 +51,12 @@ class ProductDefectState(Generic[T]):
         remaining = self.subset - {remove}
         changes: Counter[T] = Counter()
         for a in remaining:
-            changes[owner.multiply(remove, a)] -= 1
-            changes[owner.multiply(a, remove)] -= 1
-            changes[owner.multiply(add, a)] += 1
-            changes[owner.multiply(a, add)] += 1
-        changes[owner.multiply(remove, remove)] -= 1
-        changes[owner.multiply(add, add)] += 1
+            changes[owner._product(remove, a)] -= 1
+            changes[owner._product(a, remove)] -= 1
+            changes[owner._product(add, a)] += 1
+            changes[owner._product(a, add)] += 1
+        changes[owner._product(remove, remove)] -= 1
+        changes[owner._product(add, add)] += 1
 
         new_z = self.z
         sparse_delta: dict[T, int] = {}
@@ -140,6 +142,12 @@ class FiniteGroupProductDefect(Generic[T]):
             z=len(self.group) - len(counts), depth=0,
         )
 
+    def _product(self, a: T, b: T) -> T:
+        product = self.multiply(a, b)
+        if product not in self.group:
+            raise ValueError("multiply returned an element outside group_elements")
+        return product
+
     def recompute(self, subset: Iterable[T]) -> tuple[dict[T, int], int]:
         """Independent full recomputation, intended for audits and tests."""
         subset = frozenset(subset)
@@ -153,7 +161,7 @@ class FiniteGroupProductDefect(Generic[T]):
         return dict(counts), len(self.group) - len(counts)
 
 
-class ProductDefectSearchProblem:
+class ProductDefectSearchProblem(Problem):
     """Lazy swap-neighborhood adapter for the repository's generic MCTS engine.
 
     Use mcts(..., action_mode="stream", policy="uct", state_key=lambda s: s.subset).
