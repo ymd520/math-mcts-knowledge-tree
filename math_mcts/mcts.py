@@ -187,13 +187,19 @@ def mcts(problem: Problem, iterations: int = 1000,
     if max_nodes is not None and (type(max_nodes) is not int or max_nodes < 1):
         raise ValueError("max_nodes must be a positive integer or None")
     if time_budget_seconds is not None and (
-        not isinstance(time_budget_seconds, (int, float))
+        type(time_budget_seconds) not in (int, float)
         or not math.isfinite(time_budget_seconds) or time_budget_seconds < 0
     ):
         raise ValueError("time_budget_seconds must be finite and nonnegative or None")
-    if not isinstance(iterations, int) or iterations < 0:
+    if type(iterations) is not int or iterations < 0:
         raise ValueError("iterations must be a nonnegative integer")
-    if max_depth < 0 or exploration < 0 or widening_k <= 0 or not 0 < widening_alpha <= 1:
+    if type(max_depth) is not int or max_depth < 0:
+        raise ValueError("max_depth must be a nonnegative integer")
+    numeric_parameters = (exploration, widening_k, widening_alpha)
+    if any(type(x) not in (int, float) or not math.isfinite(x)
+           for x in numeric_parameters):
+        raise ValueError("exploration and widening parameters must be finite numbers")
+    if exploration < 0 or widening_k <= 0 or not 0 < widening_alpha <= 1:
         raise ValueError("Invalid search/depth/widening parameters")
     rng = random.Random(seed)
     started_at = time.monotonic()
@@ -250,7 +256,9 @@ def mcts(problem: Problem, iterations: int = 1000,
              "early_stop": False, "action_mode": action_mode, "yielded_actions": 0,
              "stream_exhausted_nodes": 0, "plateau_stop": False,
              "duplicate_states_skipped": 0, "cycle_edges_skipped": 0,
-             "node_budget_exhausted": False, "stop_reason": "iterations"}
+             "node_budget_exhausted": False, "stop_reason": "iterations",
+             "max_nodes_budget": max_nodes,
+             "time_budget_seconds": time_budget_seconds}
     best_observed = float("-inf")
     stale_simulations = 0
 
