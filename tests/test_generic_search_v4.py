@@ -540,5 +540,24 @@ class IncrementalProductDefectTests(unittest.TestCase):
         self.assertTrue(root.children)
 
 
+    def test_incremental_swap_uses_linear_group_multiplication_calls(self):
+        calls = {"n": 0}
+        def mul(a, b):
+            calls["n"] += 1
+            return (a + b) % 64
+
+        subset = set(range(16))
+        evaluator = FiniteGroupProductDefect(range(64), mul, subset)
+        initial_calls = calls["n"]
+        state = evaluator.initial_state.swap(3, 40)
+        swap_calls = calls["n"] - initial_calls
+        self.assertEqual(swap_calls, 4 * (len(subset) - 1) + 2)
+        self.assertLess(swap_calls, len(subset) ** 2)
+        exact_counts, exact_z = evaluator.recompute(state.subset)
+        self.assertEqual(state.z, exact_z)
+        self.assertEqual({g: state.count(g) for g in range(64) if state.count(g)},
+                         exact_counts)
+
+
 if __name__ == "__main__":
     unittest.main()
