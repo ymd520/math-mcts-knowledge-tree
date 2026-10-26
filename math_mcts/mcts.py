@@ -108,9 +108,11 @@ class _Node:
     __slots__ = ("state", "parent", "action", "children",
                  "untried", "untried_priors", "stream", "stream_exhausted",
                  "visits", "total", "best", "prior", "stats",
-                 "best_trajectory", "best_trajectory_complete", "best_observed")
+                 "best_trajectory", "best_trajectory_complete", "best_observed",
+                 "state_identity", "child_keys")
 
-    def __init__(self, state, parent=None, action=None, actions=(), prior=1.0, stream=None):
+    def __init__(self, state, parent=None, action=None, actions=(), prior=1.0,
+                 stream=None, state_identity=None):
         self.state = state
         self.parent = parent
         self.action = action          # 从 parent 到本节点的动作
@@ -127,6 +129,8 @@ class _Node:
         self.best_trajectory = []
         self.best_trajectory_complete = False
         self.best_observed = None
+        self.state_identity = state_identity
+        self.child_keys = set()
 
     @property
     def mean(self) -> float:
@@ -151,7 +155,7 @@ def mcts(problem: Problem, iterations: int = 1000,
          exploration: float = 1.414, max_depth: int = 60,
          seed: int | None = None, *, widening_k: float = 2.0,
          widening_alpha: float = 0.5, policy: str = "uct",
-         selection_value: str = "backup",
+         selection_value: str = "backup", state_key=None,
          stop_on_success: bool = False, action_mode: str = "eager",
          plateau_patience: int | None = None, min_plateau_iterations: int = 20):
     """Bounded MCTS with progressive widening for very wide action spaces.
@@ -176,18 +180,37 @@ def mcts(problem: Problem, iterations: int = 1000,
         raise ValueError("policy must be uct or puct")
     if selection_value not in {"backup", "mean", "max"}:
         raise ValueError("selection_value must be backup, mean, or max")
+    if state_key is not None and not callable(state_key):
+        raise ValueError("state_key must be callable or None")
     if not isinstance(iterations, int) or iterations < 0:
         raise ValueError("iterations must be a nonnegative integer")
     if max_depth < 0 or exploration < 0 or widening_k <= 0 or not 0 < widening_alpha <= 1:
         raise ValueError("Invalid search/depth/widening parameters")
     rng = random.Random(seed)
+
+    def identity_for(state):
+        if state_key is None:
+            return None
+        key = state_key(state)
+        try:
+            hash(key)
+        except TypeError as exc:
+            raise ValueError("state_key must return a hashable value") from exc
+        return key
+
     initial = problem.initial_state()
-    def new_node(state, parent=None, action=None, prior=1.0):
+    missing_identity = object()
+
+    def new_node(state, parent=None, action=None, prior=1.0,
+                 state_identity=missing_identity):
+        if state_identity is missing_identity:
+            state_identity = identity_for(state)
         if action_mode == "stream":
             return _Node(state, parent=parent, action=action, prior=prior,
-                         stream=iter(problem.iter_actions(state)))
+                         stream=iter(problem.iter_actions(state)),
+                         state_identity=state_identity)
         return _Node(state, parent=parent, action=action, prior=prior,
-                     actions=problem.actions(state))
+                     actions=problem.actions(state), state_identity=state_identity)
 
     root = new_node(initial)
 
@@ -259,7 +282,24 @@ def mcts(problem: Problem, iterations: int = 1000,
                     prior = 1.0
                     action = node.untried.pop(rng.randrange(len(node.untried)))
                 child_state = problem.step(node.state, action)
-                child = new_node(child_state, parent=node, action=action, prior=prior)
+                child_identity = identity_for(child_state)
+                if state_key is not None:
+                    if child_identity in node.child_keys:
+                        stats["duplicate_states_skipped"] += 1
+                        continue
+                    ancestor = node
+                    is_cycle = False
+                    while ancestor is not None:
+                        if ancestor.state_identity == child_identity:
+                            is_cycle = True
+                            break
+                        ancestor = ancestor.parent
+                    if is_cycle:
+                        stats["cycle_edges_skipped"] += 1
+                        continue
+                    node.child_keys.add(child_identity)
+                child = new_node(child_state, parent=node, action=action,
+                                 prior=prior, state_identity=child_identity)
                 prepare_priors(child)
                 stats["created_nodes"] += 1
                 node.children.append(child)
