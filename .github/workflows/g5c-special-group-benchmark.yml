@@ -51,8 +51,8 @@ jobs:
                    "Restricted square-one, inverse-pair-free family only.", ""]
           for title, path in paths:
               lines += [f"## {title}", "",
-                        "| Seed | Sample size | Best defect | Exact candidate evaluations | Seconds | Nodes |",
-                        "|---:|---:|---:|---:|---:|---:|"]
+                        "| Seed | Sample size | Best defect | Lookahead scores | All swap evaluations | Seconds | Nodes |",
+                        "|---:|---:|---:|---:|---:|---:|---:|"]
               if not os.path.exists(path):
                   lines += ["| — | — | benchmark output missing | — | — | — |", ""]
                   continue
@@ -61,7 +61,8 @@ jobs:
                   lines.append(
                       f"| {row['seed']} | {row['candidate_sample_size']} | "
                       f"{row['best_defect']} | {row['candidate_evaluations']} | "
-                      f"{row['elapsed_seconds']:.3f} | {row['created_nodes']} |"
+                      f"{row['swap_evaluations']} | {row['elapsed_seconds']:.3f} | "
+                      f"{row['created_nodes']} |"
                   )
               lines.append("")
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
