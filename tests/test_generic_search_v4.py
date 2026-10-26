@@ -463,5 +463,51 @@ class PUCTAdmissionFairnessTests(unittest.TestCase):
             mcts(self.WeightedWide(), policy="puct", admission_epsilon=float("nan"))
 
 
+from math_mcts.product_defect import FiniteGroupProductDefect
+
+
+class IncrementalProductDefectTests(unittest.TestCase):
+    @staticmethod
+    def d8_multiply(a, b):
+        i, s = a
+        j, t = b
+        return ((i + (-1 if s else 1) * j) % 4, s ^ t)
+
+    def test_cyclic_group_swap_matches_full_recomputation(self):
+        group = range(8)
+        mul = lambda a, b: (a + b) % 8
+        evaluator = FiniteGroupProductDefect(group, mul, {0, 1, 3}, compact_every=2)
+        state = evaluator.initial_state
+        for remove, add in [(1, 2), (0, 7), (3, 4), (2, 5), (7, 1)]:
+            state = state.swap(remove, add)
+            exact_counts, exact_z = evaluator.recompute(state.subset)
+            self.assertEqual(state.z, exact_z)
+            self.assertEqual({g: state.count(g) for g in group if state.count(g)},
+                             exact_counts)
+            self.assertEqual(state.z, len(group) - len(exact_counts))
+
+    def test_noncommutative_group_and_parent_immutability(self):
+        group = [(i, s) for i in range(4) for s in range(2)]
+        evaluator = FiniteGroupProductDefect(
+            group, self.d8_multiply, {(0, 0), (1, 0), (0, 1)}, compact_every=3
+        )
+        parent = evaluator.initial_state
+        child = parent.swap((1, 0), (2, 1))
+        self.assertEqual(parent.subset, frozenset({(0, 0), (1, 0), (0, 1)}))
+        exact_counts, exact_z = evaluator.recompute(child.subset)
+        self.assertEqual(child.z, exact_z)
+        self.assertEqual(
+            {g: child.count(g) for g in group if child.count(g)}, exact_counts
+        )
+
+    def test_swap_preconditions(self):
+        evaluator = FiniteGroupProductDefect(range(4), lambda a, b: (a+b) % 4, {0, 1})
+        with self.assertRaisesRegex(ValueError, "remove"):
+            evaluator.initial_state.swap(2, 3)
+        with self.assertRaisesRegex(ValueError, "add"):
+            evaluator.initial_state.swap(0, 1)
+
+
+
 if __name__ == "__main__":
     unittest.main()
