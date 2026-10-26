@@ -311,5 +311,46 @@ class TrajectoryTraceTests(unittest.TestCase):
         self.assertEqual(root.best_trajectory, ["leaf"])
 
 
+class CanonicalStateTests(unittest.TestCase):
+    def test_duplicate_sibling_states_and_ancestral_cycles_are_skipped(self):
+        class Loopy(Problem):
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return (["to_A", "alias_A", "loop"] if state == "root"
+                        else ["back"] if state == "A" else [])
+            def step(self, state, action):
+                if state == "root":
+                    return {"to_A": "A", "alias_A": "A",
+                            "loop": "root"}[action]
+                return "root"
+            def terminal(self, state):
+                return False
+            def reward(self, state):
+                return 0.0
+
+        _, root = mcts(Loopy(), iterations=80, max_depth=5, seed=11,
+                       state_key=lambda state: state)
+        self.assertEqual(len(root.children), 1)
+        self.assertGreaterEqual(root.stats["duplicate_states_skipped"], 1)
+        self.assertGreaterEqual(root.stats["cycle_edges_skipped"], 1)
+
+    def test_state_key_must_return_hashable_identity(self):
+        class Unhashable(Problem):
+            def initial_state(self):
+                return []
+            def actions(self, state):
+                return []
+            def step(self, state, action):
+                return state
+            def terminal(self, state):
+                return True
+            def reward(self, state):
+                return 0.0
+
+        with self.assertRaisesRegex(ValueError, "hashable"):
+            mcts(Unhashable(), iterations=1, state_key=lambda state: state)
+
+
 if __name__ == "__main__":
     unittest.main()
