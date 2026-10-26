@@ -416,5 +416,52 @@ class SearchBudgetTests(unittest.TestCase):
             mcts(Empty(), exploration=float("nan"))
 
 
+class PUCTAdmissionFairnessTests(unittest.TestCase):
+    class WeightedWide(Problem):
+        value_op = "max"
+
+        def initial_state(self):
+            return "root"
+
+        def actions(self, state):
+            return list(range(40)) if state == "root" else []
+
+        def action_weight(self, state, action):
+            return float(action + 1)
+
+        def step(self, state, action):
+            return ("leaf", action)
+
+        def terminal(self, state):
+            return state != "root"
+
+        def reward(self, state):
+            return 0.0
+
+    def test_epsilon_admission_is_seeded_and_reaches_low_prior_actions(self):
+        def run():
+            _, root = mcts(
+                self.WeightedWide(), iterations=80, seed=31, policy="puct",
+                widening_k=1.5, widening_alpha=0.5, admission_epsilon=1.0,
+                max_depth=2,
+            )
+            return [child.action for child in root.children], root.stats
+
+        first_actions, stats = run()
+        second_actions, second_stats = run()
+        self.assertEqual(first_actions, second_actions)
+        self.assertEqual(stats["puct_random_admissions"],
+                         second_stats["puct_random_admissions"])
+        self.assertGreater(stats["puct_random_admissions"], 0)
+        self.assertTrue(any(action < 10 for action in first_actions))
+        self.assertEqual(stats["admission_epsilon"], 1.0)
+
+    def test_admission_epsilon_validation(self):
+        with self.assertRaisesRegex(ValueError, "admission_epsilon"):
+            mcts(self.WeightedWide(), policy="puct", admission_epsilon=-0.1)
+        with self.assertRaisesRegex(ValueError, "admission_epsilon"):
+            mcts(self.WeightedWide(), policy="puct", admission_epsilon=float("nan"))
+
+
 if __name__ == "__main__":
     unittest.main()
