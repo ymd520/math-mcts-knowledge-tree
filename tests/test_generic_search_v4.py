@@ -203,5 +203,65 @@ class StreamTests(unittest.TestCase):
         self.assertFalse(default.stats["plateau_stop"])
 
 
+class SelectionBackupSeparationTests(unittest.TestCase):
+    def test_max_backup_retains_mean_and_best_statistics(self):
+        class MaxProblem(Problem):
+            value_op = "max"
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return ["low", "high"] if state == "root" else []
+            def step(self, state, action):
+                return action
+            def terminal(self, state):
+                return state != "root"
+            def reward(self, state):
+                return {"low": 0.2, "high": 0.9}.get(state, 0.0)
+
+        _, root = mcts(MaxProblem(), iterations=80, seed=9,
+                       selection_value="mean")
+        self.assertEqual(root.stats["selection_value"], "mean")
+        self.assertEqual(root.visits, root.stats["simulations"])
+        self.assertAlmostEqual(root.best, 0.9)
+        self.assertGreaterEqual(root.mean, 0.2)
+        self.assertLessEqual(root.mean, 0.9)
+
+    def test_max_sample_selection_is_available_for_mean_backup(self):
+        class MeanProblem(Problem):
+            def initial_state(self):
+                return "root"
+            def actions(self, state):
+                return ["a", "b"] if state == "root" else []
+            def step(self, state, action):
+                return action
+            def terminal(self, state):
+                return state != "root"
+            def reward(self, state):
+                return {"a": 0.1, "b": 0.8}.get(state, 0.0)
+
+        _, root = mcts(MeanProblem(), iterations=50, seed=4,
+                       selection_value="max")
+        self.assertEqual(root.stats["selection_value"], "max")
+        self.assertAlmostEqual(root.best, 0.8)
+        self.assertGreaterEqual(root.mean, 0.1)
+        self.assertLessEqual(root.mean, 0.8)
+
+    def test_invalid_selection_value_rejected(self):
+        class Empty(Problem):
+            def initial_state(self):
+                return 0
+            def actions(self, state):
+                return []
+            def step(self, state, action):
+                return state
+            def terminal(self, state):
+                return True
+            def reward(self, state):
+                return 0.0
+
+        with self.assertRaisesRegex(ValueError, "selection_value"):
+            mcts(Empty(), iterations=1, selection_value="unknown")
+
+
 if __name__ == "__main__":
     unittest.main()
