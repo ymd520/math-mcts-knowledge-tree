@@ -8,6 +8,8 @@ periodically to bound lookup depth.
 from __future__ import annotations
 
 from collections import Counter
+from hashlib import sha256
+from math import gcd
 from dataclasses import dataclass
 from typing import Callable, Generic, Hashable, Iterable, TypeVar
 
@@ -143,3 +145,62 @@ class FiniteGroupProductDefect(Generic[T]):
         if not counts.keys() <= self.group:
             raise ValueError("multiply returned an element outside group_elements")
         return dict(counts), len(self.group) - len(counts)
+
+
+class ProductDefectSearchProblem:
+    """Lazy swap-neighborhood adapter for the repository's generic MCTS engine.
+
+    Use mcts(..., action_mode="stream", policy="uct", state_key=lambda s: s.subset).
+    The affine permutation of the swap index space gives deterministic,
+    seed-controlled coverage without materializing O(|A|(|G|-|A|)) actions.
+    """
+
+    value_op = "max"
+
+    def __init__(self, evaluator: FiniteGroupProductDefect, *, seed: int = 0):
+        if type(seed) is not int:
+            raise ValueError("seed must be an integer")
+        self.evaluator = evaluator
+        self.seed = seed
+
+    def initial_state(self) -> ProductDefectState:
+        return self.evaluator.initial_state
+
+    def iter_actions(self, state: ProductDefectState):
+        remove_items = sorted(state.subset, key=repr)
+        add_items = sorted(self.evaluator.group - state.subset, key=repr)
+        width = len(add_items)
+        total = len(remove_items) * width
+        if total == 0:
+            return
+        stable_state = repr(tuple(sorted(state.subset, key=repr)))
+        digest = sha256(f"{self.seed}|{stable_state}".encode("utf-8")).digest()
+        if total == 1:
+            multiplier = 1
+        else:
+            multiplier = 1 + (int.from_bytes(digest[:8], "big") % (total - 1))
+            while gcd(multiplier, total) != 1:
+                multiplier += 1
+                if multiplier >= total:
+                    multiplier = 1
+        offset = int.from_bytes(digest[8:16], "big") % total
+        for position in range(total):
+            index = (multiplier * position + offset) % total
+            remove_index, add_index = divmod(index, width)
+            yield (remove_items[remove_index], add_items[add_index])
+
+    def actions(self, state: ProductDefectState):
+        """Eager compatibility interface; prefer iter_actions for wide states."""
+        return list(self.iter_actions(state))
+
+    def step(self, state: ProductDefectState, action):
+        remove, add = action
+        return state.swap(remove, add)
+
+    def terminal(self, state: ProductDefectState) -> bool:
+        return False
+
+    def reward(self, state: ProductDefectState) -> float:
+        """MCTS maximizes reward, so negate the exact integer defect."""
+        return -float(state.z)
+
