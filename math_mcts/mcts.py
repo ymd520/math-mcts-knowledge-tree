@@ -236,7 +236,8 @@ def mcts(problem: Problem, iterations: int = 1000,
              "created_nodes": 1, "guided_expansions": 0,
              "policy": policy, "selection_value": selection_value,
              "early_stop": False, "action_mode": action_mode, "yielded_actions": 0,
-             "stream_exhausted_nodes": 0, "plateau_stop": False}
+             "stream_exhausted_nodes": 0, "plateau_stop": False,
+             "duplicate_states_skipped": 0, "cycle_edges_skipped": 0}
     best_observed = float("-inf")
     stale_simulations = 0
 
