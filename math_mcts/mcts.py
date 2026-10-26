@@ -257,6 +257,7 @@ def mcts(problem: Problem, iterations: int = 1000,
     prepare_priors(root)
     stats = {"requested_iterations": iterations, "simulations": 0,
              "created_nodes": 1, "guided_expansions": 0,
+             "puct_random_admissions": 0, "admission_epsilon": admission_epsilon,
              "policy": policy, "selection_value": selection_value,
              "early_stop": False, "action_mode": action_mode, "yielded_actions": 0,
              "stream_exhausted_nodes": 0, "plateau_stop": False,
