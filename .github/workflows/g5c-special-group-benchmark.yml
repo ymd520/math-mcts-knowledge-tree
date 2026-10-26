@@ -27,14 +27,14 @@ jobs:
         run: |
           python tools/g5c_special_2group_experiment.py \
             --mode mcts --n 3 --iterations 250 \
-            --seeds 217 2027 --candidate-sizes 0 16 32 \
+            --seeds 11 23 37 41 53 67 79 83 217 2027 --candidate-sizes 0 16 32 \
             --max-nodes 120 --depth 6 --output /tmp/g5c-equal-iterations.json
           cat /tmp/g5c-equal-iterations.json
       - name: Equal wall-clock budget
         run: |
           python tools/g5c_special_2group_experiment.py \
             --mode mcts --n 3 --iterations 100000 \
-            --seeds 217 2027 --candidate-sizes 0 16 32 \
+            --seeds 11 23 37 41 53 67 79 83 217 2027 --candidate-sizes 0 16 32 \
             --max-nodes 10000 --depth 6 --time-budget-seconds 1.0 \
             --output /tmp/g5c-equal-time.json
           cat /tmp/g5c-equal-time.json
