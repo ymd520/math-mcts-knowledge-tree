@@ -82,3 +82,21 @@ end-to-end MCTS; benchmarks must include overlay lookups, compaction, and memory
 The full recomputation method is an independent audit oracle, not the fast path.
 Tests compare incremental and full counts on cyclic and noncommutative finite
 groups. No G5-C universal bound is claimed.
+
+
+## Exact-lookahead admission for finite-group product-defect search
+
+`ProductDefectSearchProblem` accepts an opt-in `candidate_sample_size=B`.
+For each state, it takes the first B actions from a deterministic seeded
+permutation of the swap neighborhood, computes each successor's exact
+`z_2(A)=|G|-|AA|` using incremental multiplicity updates, and admits those
+sampled actions in increasing defect order. The rest of the neighborhood is
+still yielded exactly once in the original permutation order. Memory used by
+the candidate pool is O(B), not O(|A|(|G|-|A|)).
+
+This is a bounded one-step lookahead heuristic, not a global optimizer. It
+spends O(B|A|) multiplication-oracle calls per expanded state in addition to
+the selected transitions, so compare B=0 against several small B values under
+paired seeds and equal wall-clock or exact-evaluation budgets. Record both
+best defect and total exact successor evaluations; iteration count alone is
+not a fair cost measure.
