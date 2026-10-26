@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import math
 import random
+import time
 
 
 class Problem:
@@ -156,6 +157,7 @@ def mcts(problem: Problem, iterations: int = 1000,
          seed: int | None = None, *, widening_k: float = 2.0,
          widening_alpha: float = 0.5, policy: str = "uct",
          selection_value: str = "backup", state_key=None,
+         max_nodes: int | None = None, time_budget_seconds: float | None = None,
          stop_on_success: bool = False, action_mode: str = "eager",
          plateau_patience: int | None = None, min_plateau_iterations: int = 20):
     """Bounded MCTS with progressive widening for very wide action spaces.
@@ -182,11 +184,21 @@ def mcts(problem: Problem, iterations: int = 1000,
         raise ValueError("selection_value must be backup, mean, or max")
     if state_key is not None and not callable(state_key):
         raise ValueError("state_key must be callable or None")
+    if max_nodes is not None and (type(max_nodes) is not int or max_nodes < 1):
+        raise ValueError("max_nodes must be a positive integer or None")
+    if time_budget_seconds is not None and (
+        not isinstance(time_budget_seconds, (int, float))
+        or not math.isfinite(time_budget_seconds) or time_budget_seconds < 0
+    ):
+        raise ValueError("time_budget_seconds must be finite and nonnegative or None")
     if not isinstance(iterations, int) or iterations < 0:
         raise ValueError("iterations must be a nonnegative integer")
     if max_depth < 0 or exploration < 0 or widening_k <= 0 or not 0 < widening_alpha <= 1:
         raise ValueError("Invalid search/depth/widening parameters")
     rng = random.Random(seed)
+    started_at = time.monotonic()
+    deadline = (None if time_budget_seconds is None
+                else started_at + time_budget_seconds)
 
     def identity_for(state):
         if state_key is None:
@@ -237,7 +249,8 @@ def mcts(problem: Problem, iterations: int = 1000,
              "policy": policy, "selection_value": selection_value,
              "early_stop": False, "action_mode": action_mode, "yielded_actions": 0,
              "stream_exhausted_nodes": 0, "plateau_stop": False,
-             "duplicate_states_skipped": 0, "cycle_edges_skipped": 0}
+             "duplicate_states_skipped": 0, "cycle_edges_skipped": 0,
+             "node_budget_exhausted": False, "stop_reason": "iterations"}
     best_observed = float("-inf")
     stale_simulations = 0
 
@@ -250,15 +263,21 @@ def mcts(problem: Problem, iterations: int = 1000,
         return path
 
     for _ in range(iterations):
+        if deadline is not None and time.monotonic() >= deadline:
+            stats["stop_reason"] = "time_budget"
+            break
         if stop_on_success and problem.success_found():
             stats["early_stop"] = True
+            stats["stop_reason"] = "success"
             break
         node, depth = root, 0
         # Select/expand at every depth. A large untried root no longer
         # prevents deeper exploration under a finite iteration budget.
         while depth < max_depth and not problem.terminal(node.state):
             allowance = max(1, math.ceil(widening_k * (node.visits + 1) ** widening_alpha))
-            if (node.untried or not node.stream_exhausted) and len(node.children) < allowance:
+            has_unseen_actions = bool(node.untried) if action_mode == "eager" else not node.stream_exhausted
+            can_create_node = max_nodes is None or stats["created_nodes"] < max_nodes
+            if has_unseen_actions and len(node.children) < allowance and can_create_node:
                 if action_mode == "stream":
                     try:
                         action = next(node.stream)
@@ -307,6 +326,9 @@ def mcts(problem: Problem, iterations: int = 1000,
                 node = child
                 depth += 1
                 break
+            if (has_unseen_actions and len(node.children) < allowance
+                    and not can_create_node):
+                stats["node_budget_exhausted"] = True
             if not node.children:
                 break
             node = max(node.children,
@@ -343,6 +365,7 @@ def mcts(problem: Problem, iterations: int = 1000,
             and stats["simulations"] >= min_plateau_iterations
             and stale_simulations >= plateau_patience):
             stats["plateau_stop"] = True
+            stats["stop_reason"] = "plateau"
             break
 
     actions_seq: list = []
@@ -360,5 +383,6 @@ def mcts(problem: Problem, iterations: int = 1000,
     stats["best_observed_value"] = root.best_observed
     stats["best_trajectory_depth"] = len(root.best_trajectory)
     stats["best_trajectory_complete"] = root.best_trajectory_complete
+    stats["elapsed_seconds"] = max(0.0, time.monotonic() - started_at)
     root.stats = stats
     return actions_seq, root
