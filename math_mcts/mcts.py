@@ -79,9 +79,8 @@ class Problem:
         # backup are distinct choices; max-backup must not erase the mean.
         node.visits += 1
         node.total += value
-        if self.value_op == "max":
-            if node.best is None or value > node.best:
-                node.best = value
+        if node.best is None or value > node.best:
+            node.best = value
 
 
 class _Node:
@@ -100,7 +99,7 @@ class _Node:
         self.stream_exhausted = stream is None
         self.visits = 0
         self.total = 0.0
-        self.best = None              # max 回传时的子树最优值
+        self.best = None              # best observed return in this subtree
         self.prior = prior
         self.stats = None
 
@@ -236,7 +235,7 @@ def mcts(problem: Problem, iterations: int = 1000,
             if not node.children:
                 break
             node = max(node.children,
-                       key=lambda ch: ch.uct(exploration, problem, policy))
+                       key=lambda ch: ch.uct(exploration, problem, policy, selection_value))
             depth += 1
         # Simulated value is not necessarily the value of the expanded node.
         # Streaming mode evaluates the expanded frontier rather than running
