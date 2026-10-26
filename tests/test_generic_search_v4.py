@@ -559,5 +559,32 @@ class IncrementalProductDefectTests(unittest.TestCase):
                          exact_counts)
 
 
+    def test_randomized_noncommutative_swap_walk_matches_recomputation(self):
+        group = [(i, s) for i in range(4) for s in range(2)]
+        evaluator = FiniteGroupProductDefect(
+            group, self.d8_multiply, {(0, 0), (1, 0), (0, 1)}, compact_every=4
+        )
+        state = evaluator.initial_state
+        rng = random.Random(1181)
+        for _ in range(60):
+            remove = rng.choice(tuple(state.subset))
+            add = rng.choice(tuple(set(group) - state.subset))
+            state = state.swap(remove, add)
+            exact_counts, exact_z = evaluator.recompute(state.subset)
+            self.assertEqual(state.z, exact_z)
+            self.assertEqual(
+                {g: state.count(g) for g in group if state.count(g)},
+                exact_counts,
+            )
+
+    def test_swap_checks_group_operation_closure(self):
+        def invalid_operation(a, b):
+            return 2 if a == 1 and b == 1 else 0
+
+        evaluator = FiniteGroupProductDefect([0, 1], invalid_operation, {0})
+        with self.assertRaisesRegex(ValueError, "outside group_elements"):
+            evaluator.initial_state.swap(0, 1)
+
+
 if __name__ == "__main__":
     unittest.main()
