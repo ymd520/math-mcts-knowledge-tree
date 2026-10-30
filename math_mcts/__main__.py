@@ -180,6 +180,29 @@ def cmd_collide(args):
             print(f"     待探索: {a.definition[:40]}… + {b.definition[:40]}…")
 
 
+def cmd_deep_collide(args):
+    from .deep_collision import deep_collide
+    tree = KnowledgeTree.load()
+    chains, fusions, stats = deep_collide(
+        tree, seed=args.seed, top_k=args.top_k,
+        per_domain=args.per_domain, beam_width=args.beam_width,
+        max_leaves=args.max_leaves,
+        include_curated=not args.no_curated)
+    print(f"深度碰撞 ({args.seed or '全局'}): 池 {stats['pool_size']} 个概念, "
+          f"实际评过 {stats['searched_concepts']} 个, "
+          f"配对评分 {stats['pair_evals']} 次, 用时 {stats['seconds']} 秒")
+    for i, ch in enumerate(chains, 1):
+        names = " × ".join(f"{c.cn}[{c.id}]" for c in ch.concepts)
+        print(f"  {i}. {names}  (链分 {ch.score:.2f})")
+        for s in ch.steps:
+            print(f"     + {s['add_cn']}[{s['add']}] 步分 {s['step']:.2f} "
+                  f"桥接 {s['bridge']:.2f} {s['parts']}")
+    print("融合榜:")
+    for i, f in enumerate(fusions[:5], 1):
+        print(f"  {i}. {'+'.join(f.left_ids)} × {'+'.join(f.right_ids)} "
+              f"(分 {f.score:.2f}, 桥接 {f.bridge:.2f})")
+
+
 def cmd_research(args):
     from .indexed_mcts import research_with_knowledge
     report = research_with_knowledge(
@@ -378,6 +401,14 @@ def main():
     co.add_argument("--intuition", action="store_true", help="直觉先验版碰撞: 以签名规则分作 PUCT 先验，终局评分不变")
     co.add_argument("--random-seed", type=int, default=7)
     co.set_defaults(func=cmd_collide)
+    dc = sub.add_parser("deep-collide", help="深度碰撞: 大池束搜索, 用速度换深度与广度")
+    dc.add_argument("seed", nargs="?", default=None, help="种子概念(中文名/英文名/id), 省略则从 curated 对出发全局搜索")
+    dc.add_argument("--top_k", type=int, default=10)
+    dc.add_argument("--per_domain", type=int, default=200, help="每域候选池上限, 7 域约 1400 个概念")
+    dc.add_argument("--beam_width", type=int, default=40)
+    dc.add_argument("--max_leaves", type=int, default=5)
+    dc.add_argument("--no_curated", action="store_true", help="关掉 curated 加分, 进入纯新发现模式")
+    dc.set_defaults(func=cmd_deep_collide)
     kr = sub.add_parser("research", help="全量知识库驱动的动态多层MCTS；输出研究线索及实际调用日志")
     kr.add_argument("objective", nargs="?", default="")
     kr.add_argument("--db", type=Path, help="须完整覆盖导入语料；省略则自动管理全量缓存")

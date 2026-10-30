@@ -1,5 +1,15 @@
 # 更新日志
 
+## [Unreleased]
+
+### 新增
+- 深度碰撞搜索正式模块（`math_mcts/deep_collision.py`，新接口 `deep_collide` / `DeepCollisionSearch`，CLI `python -m math_mcts deep-collide`）：用速度换深度与广度，旧 `collide_concepts` / `collision_score` 一字不动。候选池按领域核心优先、每域默认 200 个（7 域约 1400 个概念，再并全部 curated 概念永不截断）；束宽默认 40、默认搜到 5 叶，产物可继续加概念也可产物间融合；桥接用门控乘法（桥接低于 0.25 时多样性/边际增益按比例打折）加分支基线扣除（候选分支内高频闭包节点按频率打折，防代数拓扑类分支当填充物）；`--no_curated` 可关掉 curated 加分进入纯新发现模式；每轮统计实报池规模、实际评过概念数、配对评分数与用时。新增 `tests/test_deep_collision.py`。
+- 产物合成档案（图层面，非语义合成）：产物自带先修闭包并集、领域/分支集合、平均难度、curated 邻居并集、标签并集；全库仅 51 个直觉签名、732 条有 assumptions 字段，尚不足以对任意产物合成 applies_to/produces 语义签名，此局限在模块文档里明说。
+
+### 验证
+- 默认参数实测（种子傅里叶变换）：池 1460 个概念，实际评过 1242 个，配对评分 102002 次，用时 1.32 秒，链 160 条、融合 20 条，最高链 5 叶（傅里叶变换 × 期望与方差 × 梯度下降 × 图的谱 × Eells-Sampson 存在定理，3.632）；去 curated 模式最高链 2.346（傅里叶变换 × 图的谱 × 主成分分析 × Eells-Sampson 存在定理 × Karmarkar 内点法，谱/核/优化主题簇，无 curated 步）。如实说明：广度与深度目标已达成，但链分高仍不等于新定理，顶链仍由已知对或主题簇承载，需证明/反例/文献核查才算进展。
+- `tests/test_deep_collision.py` ALL DEEP COLLISION TESTS PASSED；`tests/test_mcts.py` ALL TESTS PASSED；`tests/test_intuition.py` ALL INTUITION TESTS PASSED；`python3 -m math_mcts info` 完整性自检通过。
+
 ## [1.15.12] - 2026-10-30
 
 ### 新增

@@ -11,6 +11,8 @@ from .search import (plan_learning_path, search_concepts,
                      collision_score)
 from .intuition import (IntuitionCollisionProblem, collide_with_intuition,
                         intuition_score, intuition_rules)
+from .deep_collision import (DeepChain, DeepCollisionSearch, DeepFusion,
+                             deep_collide)
 from .viz import to_dot
 from .reasoning import (Atom, Rule, RuleBook, Certificate, ProofGraph,
                         DiscoveryQueue, derive, verify_certificate,
@@ -51,6 +53,7 @@ __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "collide_concepts", "collision_score",
            "IntuitionCollisionProblem", "collide_with_intuition",
            "intuition_score", "intuition_rules",
+           "DeepChain", "DeepCollisionSearch", "DeepFusion", "deep_collide",
            "Atom", "Rule", "RuleBook", "Certificate", "ProofGraph",
            "DiscoveryQueue", "derive", "verify_certificate", "load_reasoning_problem",
            "load_certificate", "LayerConfig", "LayerCertificate", "derive_layers",
