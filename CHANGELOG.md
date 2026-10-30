@@ -10,6 +10,15 @@
 - 默认参数实测（种子傅里叶变换）：池 1460 个概念，实际评过 1242 个，配对评分 102002 次，用时 1.32 秒，链 160 条、融合 20 条，最高链 5 叶（傅里叶变换 × 期望与方差 × 梯度下降 × 图的谱 × Eells-Sampson 存在定理，3.632）；去 curated 模式最高链 2.346（傅里叶变换 × 图的谱 × 主成分分析 × Eells-Sampson 存在定理 × Karmarkar 内点法，谱/核/优化主题簇，无 curated 步）。如实说明：广度与深度目标已达成，但链分高仍不等于新定理，顶链仍由已知对或主题簇承载，需证明/反例/文献核查才算进展。
 - `tests/test_deep_collision.py` ALL DEEP COLLISION TESTS PASSED；`tests/test_mcts.py` ALL TESTS PASSED；`tests/test_intuition.py` ALL INTUITION TESTS PASSED；`python3 -m math_mcts info` 完整性自检通过。
 
+## [1.16.0] - 2026-10-31
+
+### 新增
+- 大批量扩充：新增 2800 条重要知识（LV35773–LV38572），7 域各 400 条（数学基础 / 代数 / 分析 / 几何与拓扑 / 概率与统计 / 离散数学 / 计算与优化），全库 15720 → 18520（含补充包共 19189，原 16389）。类型：概念 1472、定理 415、方法 550、算法 191、公式 95、思路 23、推论 8、分布 46；tags 全部为“重要”；level：L1 150、L2 403、L3 877、L4 857、L5 513。各域分支覆盖：数学基础 19、代数 29、分析 24、几何与拓扑 62、概率与统计 41、离散数学 48、计算与优化 46，分支只用已有分支名，未发明新分支；prereq 只指已入库 id，新条 prereq 零悬空、零指向本批 id。
+
+### 验证
+- 中央复核四轮，累计刷掉 133 条：硬规则（cn/en 精确、en 归一化、词序）104 条；定义相似度（2-gram ≥0.45）人工复核刷掉语义重复 11 条（导出群↔换位子群、梯度向量↔梯度、PID 结构定理↔主理想整环结构定理等）及补位语义屏蔽 2 条；词序归一化 4 条（Hom-张量伴随、庞特里亚金-托姆构造、笼图、盖莱-埃德蒙兹分解）；种子/补充包名校验 4 条（Burnside 定理撞补充种子、正弦/余弦/正切和角公式撞补充包）；cn name_key（去空格/大小写）7 条（Hölder/Minkowski 不等式、Gromov-Witten 不变量、GARCH 模型、Sinkhorn 算法、列主元 QR/部分选主元 LU 分解）；未用池补位后 7 域各 400 条、id 连续无断号。教训：只对精选库去重不够，info 加载会校验补充种子名，首轮合并后 info 曾因 Burnside 同名报错，补种子/补充包名校验后才通过；duplicate_name_groups 保持旧的 167，未新增。D04 交卷的 28 条 kind“应用”已按中央规则映射（大圆航线→概念，其余→方法）；D06 交卷主选 450 条已按前 400 作主选、后 50 并入备选池。
+- `python3 -m math_mcts info` 完整性自检通过（精选 18520 条，含补充包共 19189 条）；`tests/test_mcts.py` ALL TESTS PASSED；`tests/test_intuition.py` ALL INTUITION TESTS PASSED；`tests/test_deep_collision.py` ALL DEEP COLLISION TESTS PASSED。
+
 ## [1.15.12] - 2026-10-30
 
 ### 新增
