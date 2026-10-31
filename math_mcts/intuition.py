@@ -5,8 +5,10 @@
 仍属“待专家复核的派生层”，不是精选库的正式收录，更不是证明。
 
 接入方式（刻意保守）：
-  - 旧 ``collide_concepts`` 完全不动：终局评分仍是 ``collision_score``，
+  - 旧 ``collide_concepts`` 的终局评分仍是 ``collision_score``，
     curated 对 AN21 x PR07 在旧接口下仍排第一（见 tests/test_mcts.py）。
+    （2026-10-31 等概率落地改了旧接口的候选生成：种子模式改为
+    全量评分、全局模式改为均匀采样；评分函数本身未动。）
   - 新接口 ``collide_with_intuition`` 只改探索顺序：用 MCTS 的 PUCT 策略，
     ``IntuitionCollisionProblem.action_weight`` 返回直觉分作先验；
     直觉分高只意味着“值得先试”，不改变终局评分，不等于定理成立。
@@ -146,8 +148,10 @@ class IntuitionCollisionProblem(CollisionProblem):
     直觉分；未签名一律给下限权重，仍可被探索。
     """
 
-    def __init__(self, tree, seed=None, *, diversity_axis="domain"):
-        super().__init__(tree, seed, diversity_axis=diversity_axis)
+    def __init__(self, tree, seed=None, *, diversity_axis="domain",
+                 seed_rng=7):
+        super().__init__(tree, seed, diversity_axis=diversity_axis,
+                         seed_rng=seed_rng)
         self._potential_cache = {}
 
     def _potential(self, cid: str) -> float:
@@ -192,7 +196,8 @@ def collide_with_intuition(tree, seed=None, top_k=5, iterations=1000,
     1000/1.0：先验只有在预算受限、不能把全部候选都展开时才真正起
     指导作用；把全部候选都展开就等于先验白给。
     """
-    problem = IntuitionCollisionProblem(tree, seed, diversity_axis=diversity_axis)
+    problem = IntuitionCollisionProblem(tree, seed, diversity_axis=diversity_axis,
+                                      seed_rng=seed_rng)
     _, root = mcts(problem, iterations=iterations, seed=seed_rng,
                    max_depth=4, policy="puct",
                    widening_k=widening_k, widening_alpha=widening_alpha)

@@ -8,7 +8,7 @@ from .knowledge import Concept, KnowledgeTree
 from .mcts import mcts, Problem
 from .search import (plan_learning_path, search_concepts,
                      export_path_markdown, collide_concepts,
-                     collision_score)
+                     collision_score, random_collide)
 from .intuition import (IntuitionCollisionProblem, collide_with_intuition,
                         intuition_score, intuition_rules)
 from .deep_collision import (DeepChain, DeepCollisionSearch, DeepFusion,
@@ -50,7 +50,7 @@ __version__ = CATALOG_VERSION
 __all__ = ["Concept", "KnowledgeTree", "Problem", "mcts",
            "plan_learning_path", "search_concepts",
            "export_path_markdown", "to_dot",
-           "collide_concepts", "collision_score",
+           "collide_concepts", "collision_score", "random_collide",
            "IntuitionCollisionProblem", "collide_with_intuition",
            "intuition_score", "intuition_rules",
            "DeepChain", "DeepCollisionSearch", "DeepFusion", "deep_collide",

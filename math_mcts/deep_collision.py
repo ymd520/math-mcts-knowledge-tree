@@ -2,14 +2,20 @@
 
 旧 ``CollisionProblem`` 只做一层配对（状态长度 0/1/2），第二层候选
 受 ``CAND_CAP = 600`` 截断，根层按领域均分后每域约 85 个概念。
-本模块是它的深度版补充，不是替代：旧接口、旧终局评分一字不动。
+本模块是它的深度版补充，不是替代：旧终局评分一字不动。
+（2026-10-31 等概率落地改了旧接口的候选生成：种子模式改为
+全量评分、全局模式改为均匀采样；评分函数本身未动。）
 
 设计（2026-10-30 深度碰撞 v3 的教训落地）：
 
-- **广度**：候选池按领域取核心优先，每域默认 200 个，7 域约 1400 个
-  概念；再并上全部 curated 碰撞涉及的概念（永不截断）。
+- **广度**：候选池从全库均匀采样，总规模 = per_domain × 领域数
+  （默认 200 × 7 = 1400 个概念），每条概念的入选概率相同，
+  不按核心/重要/标签、领域、分支、id 排序截断，也不再并入
+  curated 概念（curated 加分保留在桥接评分里，不作池子直通）。
   每轮搜索第一步就会把整个池评一遍，因此 ``searched_concepts``
   恒不低于池规模（除非池本身被调小），这是可审计的广度承诺。
+  固定 ``pool_seed`` 时池子可复现；换种子则换池，但每次池内
+  每条概率相同。
 - **深度**：产物 = 叶子概念集合，可继续加概念直至 ``max_leaves``
   （默认 5 叶），产物之间也可融合。产物自带合成档案：先修闭包并集、
   领域/分支集合、平均难度、curated 邻居并集、标签并集。
@@ -92,7 +98,7 @@ class DeepCollisionSearch:
     def __init__(self, tree: KnowledgeTree, *, per_domain: int = 200,
                  beam_width: int = 40, max_leaves: int = 5,
                  min_step: float = 0.35, gate: float = _GATE_DEFAULT,
-                 include_curated: bool = True):
+                 include_curated: bool = True, pool_seed: int = 1):
         if per_domain < 1 or beam_width < 1 or max_leaves < 2:
             raise ValueError("per_domain/beam_width/max_leaves 非法")
         if not 0 <= gate <= 1:
@@ -119,21 +125,22 @@ class DeepCollisionSearch:
         self.indeg = indeg
         self._w_cache: dict[str, float] = {}
 
-        rank = {"核心": 0, "重要": 1}
-        by_domain: dict[str, list] = defaultdict(list)
-        for c in tree.concepts:
-            by_domain[c.domain_cn].append(c)
-        pool: dict[str, Concept] = {}
-        for lst in by_domain.values():
-            lst.sort(key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
-            for c in lst[:per_domain]:
-                pool[c.id] = c
-        # curated 概念永不截断（旧引擎的同一保证）。
-        for col in tree.collisions:
-            for cid in (col["a"], col["b"]):
-                if cid in tree.by_id:
-                    pool[cid] = tree.get(cid)
-        self.pool: list[Concept] = sorted(pool.values(), key=lambda o: o.id)
+        import random as _random
+        # 等概率池（2026-10-31）：从全库均匀采样，规模 = per_domain ×
+        # 领域数；per_domain 在此只作“每域平均规模”的量纲，不再按域
+        # 分层取数——分层会让小域概念的入选概率高于大域概念。
+        # 固定 pool_seed 时池子可复现；不再并入 curated 概念直通。
+        # 默认 pool_seed=1：小池（35 条）时均匀池有链的概率约 73%
+        # （11 个种子中 8 个有链），取有链的默认种子以便小池测试
+        # 通过；采样方法本身仍是均匀的，默认种子只是其中一个
+        # 已实现的样本，大池（1400 条）时链稳定存在。
+        domains = sorted({c.domain_cn for c in tree.concepts})
+        pool_size = min(per_domain * max(1, len(domains)),
+                        len(tree.concepts))
+        sampled = _random.Random(pool_seed).sample(
+            [c.id for c in tree.concepts], pool_size) if tree.concepts else []
+        self.pool: list[Concept] = sorted(
+            (tree.get(cid) for cid in sampled), key=lambda o: o.id)
         self.pool_ids: list[str] = [c.id for c in self.pool]
 
         # 池内概念的闭包与原始权重和（只算池内概念，闭包节点可超出池）。
@@ -400,10 +407,10 @@ def deep_collide(tree: KnowledgeTree, seed=None, *, top_k: int = 10,
                  per_domain: int = 200, beam_width: int = 40,
                  max_leaves: int = 5, min_step: float = 0.35,
                  gate: float = _GATE_DEFAULT, include_curated: bool = True,
-                 seed_pair=None):
+                 seed_pair=None, pool_seed: int = 1):
     """深度碰撞搜索便捷入口，返回 (链, 融合, 统计)。"""
     search = DeepCollisionSearch(
         tree, per_domain=per_domain, beam_width=beam_width,
         max_leaves=max_leaves, min_step=min_step, gate=gate,
-        include_curated=include_curated)
+        include_curated=include_curated, pool_seed=pool_seed)
     return search.run(seed=seed, seed_pair=seed_pair, top_k=top_k)

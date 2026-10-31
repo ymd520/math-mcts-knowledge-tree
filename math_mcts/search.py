@@ -7,6 +7,7 @@
 """
 from __future__ import annotations
 
+import random
 import re
 from collections import Counter
 
@@ -228,49 +229,38 @@ class CollisionProblem(Problem):
     搜索树: 根 -> 第一个概念 -> 第二个概念(跨领域) -> 叶=碰撞对.
     模拟步用候选集合内精确求值，MCTS 做有界候选探索，
     回传方式为 max(同 ConceptSearchProblem 的理由).
+
+    等概率规则（2026-10-31 落地）：候选生成不按标签、领域、分支、
+    id 排序截断。种子模式的搭档集合是全部跨组概念（不截断）；
+    全局模式的根与搭档一律均匀采样。评分只决定排序，不决定谁能
+    进候选；curated 加分保留在评分里，但不再有 curated 直通。
     """
 
     value_op = "max"
 
-    # 规模优化: 第二层候选上限. 概念数上千后全量配对是 O(N²),
-    # 按"跨领域 + 标签优先级"截断, 既保证质量又保证速度.
+    # 全局模式的候选上限：均匀采样，不是标签优先级截断。
     CAND_CAP = 600
 
     def __init__(self, tree: KnowledgeTree, seed: str | None = None,
-                 *, diversity_axis: str = "domain"):
+                 *, diversity_axis: str = "domain", seed_rng: int = 7):
         if diversity_axis not in {"domain", "branch"}:
             raise ValueError("diversity_axis must be domain or branch")
         self.tree = tree
         self.diversity_axis = diversity_axis
         self.seed = tree.find(seed).id if seed else None
+        self.seed_rng = seed_rng
 
-
-        # 规模优化: 候选搭档改为懒计算. 原先 __init__ 里对每个概念全量配对
-        # 是 O(N²)(4588 规模约 2100 万次比较, 23 万规模则不可行);
-        # 现在只在 MCTS 实际访问到某个概念时才计算其候选, 并缓存.
+        # 候选搭档懒计算+缓存（全局模式的采样按概念 id 确定性派生，
+        # 同一概念每次调用得到同一均匀样本；种子模式不截断）。
         self._cands: dict[str, list[str]] = {}
         self._best_cache: dict[str, float] = {}
-        # 根层候选也截断: 概念数上千后全量根动作会让 MCTS 在 4000 次迭代内
-        # 一次也到不了第二层(4588 规模实测返回 0 对). 取标签优先级 top-K,
-        # 再并上 curated 碰撞涉及的概念, 保证人工精选对仍可被发现.
-        rank = {"核心": 0, "重要": 1}
-        roots = sorted(tree.concepts,
-                       key=lambda o: (min((rank.get(t, 2) for t in o.tags), default=2), o.id))
-        curated = {col["a"] for col in tree.collisions} | \
-                  {col["b"] for col in tree.collisions}
-        # Ranking and curated adjacency are immutable for this search scope.
-        # Build once: individual roots must not re-sort the full 100k corpus.
-        self._ranked = roots
-        self._curated_partners = {}
-        for pair in tree.collisions:
-            self._curated_partners.setdefault(pair["a"], set()).add(pair["b"])
-            self._curated_partners.setdefault(pair["b"], set()).add(pair["a"])
-        groups = {}
-        for concept in roots:
-            groups.setdefault(self._group_key(concept), []).append(concept.id)
-        per_group = max(1, self.CAND_CAP // max(1, len(groups)))
-        selected = {cid for group in groups.values() for cid in group[:per_group]}
-        self._roots = sorted(selected | {cid for cid in curated if cid in tree.by_id})
+        if self.seed is not None:
+            self._roots = [self.seed]
+        else:
+            rng = random.Random(seed_rng)
+            ids = [c.id for c in tree.concepts]
+            self._roots = rng.sample(ids, min(self.CAND_CAP, len(ids))) \
+                if ids else []
 
     def _group_key(self, concept):
         return (concept.domain_cn if self.diversity_axis == "domain"
@@ -290,24 +280,24 @@ class CollisionProblem(Problem):
         return round(value, 3)
 
     def _cands_for(self, cid: str) -> list[str]:
-        """某概念的跨领域候选搭档(标签优先级截断到 CAND_CAP), 懒计算+缓存.
+        """某概念的跨组候选搭档，懒计算+缓存。
 
-        curated 碰撞涉及的搭档永不截断: 人工精选对必须可达,
-        不随规模增长被稀释(9417 规模下 835 个"核心", PR07 曾被挤出 top-600).
+        种子模式（self.seed 已定）：返回全部跨组概念，不截断——
+        直觉先验的 PUCT 才能在全量候选里按先验先试高分对，
+        且每个搭档的入选概率都是 100%。
+        全局模式：从全部跨组概念中均匀采样 CAND_CAP 条（按概念
+        id 确定性派生种子），每条搭档的入选概率均为
+        CAND_CAP / 跨组概念数，与标签、分支、id 无关。
         """
         if cid not in self._cands:
             me = self.tree.get(cid)
-            pool = [o for o in self._ranked
+            pool = [o.id for o in self.tree.concepts
                     if o.id != cid and self._different_group(o, me)]
-            if len(pool) <= self.CAND_CAP:
-                cands = [o.id for o in pool]
+            if self.seed is not None or len(pool) <= self.CAND_CAP:
+                cands = pool
             else:
-                cands = [pool[i * len(pool) // self.CAND_CAP].id
-                         for i in range(self.CAND_CAP)]
-            for other in sorted(self._curated_partners.get(cid, ())):
-                if (other not in cands
-                        and self._different_group(self.tree.get(other), me)):
-                    cands.append(other)
+                rng = random.Random(f"{self.seed_rng}:{cid}")
+                cands = rng.sample(pool, self.CAND_CAP)
             self._cands[cid] = cands
         return self._cands[cid]
 
@@ -363,11 +353,28 @@ def collide_concepts(tree: KnowledgeTree, seed: str | None = None,
     diversity_axis='domain' (原有行为) or 'branch' (允许同一级领域的不同分支).
     仅改变启发式搜索候选空间，不是定理证明也不保证最优.
     返回 [(ConceptA, ConceptB, 碰撞分, curated说明或None)].
+
+    等概率规则（2026-10-31）：种子模式对全部跨组搭档做精确评分
+    后排序（单种子配对评分是 O(N) 的廉价运算，不再走 MCTS 的
+    随机访问——每个搭档都被评分，入选概率 100% 相等）；
+    全局模式仍走 MCTS，但根与搭档均均匀采样。iterations 参数
+    只在全局模式下生效；种子模式下忽略它（已全量评分）。
     """
-    problem = CollisionProblem(tree, seed, diversity_axis=diversity_axis)
-    # Collision search relies on observing curated partners even when a node
-    # has hundreds of available actions. Disable narrow progressive widening
-    # for this bounded two-ply candidate-ranking task.
+    if seed is not None:
+        problem = CollisionProblem(tree, seed, diversity_axis=diversity_axis,
+                                   seed_rng=seed_rng)
+        sid = problem.seed
+        me = tree.get(sid)
+        ranked = []
+        for oid in problem._cands_for(sid):
+            ranked.append((sid, oid, problem._pair_score(sid, oid),
+                           tree.collision_note(sid, oid)))
+        ranked.sort(key=lambda x: (-x[2], x[1]))
+        return [(tree.get(a), tree.get(b), m, note)
+                for a, b, m, note in ranked[:top_k]]
+    problem = CollisionProblem(tree, seed, diversity_axis=diversity_axis,
+                               seed_rng=seed_rng)
+    # 全局模式：MCTS 有界探索，根与搭档均已均匀采样。
     _, root = mcts(problem, iterations=iterations, seed=seed_rng,
                    max_depth=4, widening_k=1000.0, widening_alpha=1.0)
     pairs: list[tuple] = []
@@ -391,6 +398,51 @@ def collide_concepts(tree: KnowledgeTree, seed: str | None = None,
                     reverse=True)
     return [(tree.get(a), tree.get(b), m, note)
             for a, b, _, m, note in ranked[:top_k]]
+
+
+def random_collide(tree: KnowledgeTree, seed: str | None = None,
+                   top_k: int = 5, seed_rng: int = 7,
+                   *, diversity_axis: str = "domain"):
+    """纯随机碰撞：不评分、不排序，直接均匀抽跨组对。
+
+    种子模式：搭档从种子的全部跨组概念中均匀无放回抽取，每条
+    搭档概率相等；全局模式：先均匀抽第一个概念，再均匀抽其跨组
+    搭档，重复抽到 top_k 条互不相同的无序对为止。
+    返回 [(ConceptA, ConceptB, None, curated说明或None)]，分数字段
+    为 None 表示本模式不排名；顺序即抽取顺序，不是价值顺序。
+    """
+    if diversity_axis not in {"domain", "branch"}:
+        raise ValueError("diversity_axis must be domain or branch")
+    if top_k <= 0:
+        return []
+    problem = CollisionProblem(tree, seed, diversity_axis=diversity_axis,
+                               seed_rng=seed_rng)
+    rng = random.Random(seed_rng)
+    out = []
+    if seed is not None:
+        sid = problem.seed
+        pool = problem._cands_for(sid)
+        for oid in rng.sample(pool, min(top_k, len(pool))):
+            out.append((tree.get(sid), tree.get(oid), None,
+                        tree.collision_note(sid, oid)))
+        return out
+    seen = set()
+    ids = [c.id for c in tree.concepts]
+    guard = 0
+    while len(out) < top_k and guard < top_k * 100 + 100:
+        guard += 1
+        a = rng.choice(ids)
+        pool = problem._cands_for(a)
+        if not pool:
+            continue
+        b = rng.choice(pool)
+        key = frozenset((a, b))
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append((tree.get(a), tree.get(b), None,
+                    tree.collision_note(a, b)))
+    return out
 
 
 def search_concepts(tree: KnowledgeTree, query: str, top_k: int = 5,
