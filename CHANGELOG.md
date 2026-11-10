@@ -12,6 +12,20 @@
 - 默认参数实测（种子傅里叶变换）：池 1460 个概念，实际评过 1242 个，配对评分 102002 次，用时 1.32 秒，链 160 条、融合 20 条，最高链 5 叶（傅里叶变换 × 期望与方差 × 梯度下降 × 图的谱 × Eells-Sampson 存在定理，3.632）；去 curated 模式最高链 2.346（傅里叶变换 × 图的谱 × 主成分分析 × Eells-Sampson 存在定理 × Karmarkar 内点法，谱/核/优化主题簇，无 curated 步）。如实说明：广度与深度目标已达成，但链分高仍不等于新定理，顶链仍由已知对或主题簇承载，需证明/反例/文献核查才算进展。
 - `tests/test_deep_collision.py` ALL DEEP COLLISION TESTS PASSED；`tests/test_mcts.py` ALL TESTS PASSED；`tests/test_intuition.py` ALL INTUITION TESTS PASSED；`python3 -m math_mcts info` 完整性自检通过。
 
+## [1.17.11] - 2026-11-10
+
+### 新增
+- 每日扩充：新增 200 条重要知识（LV42428–LV42627），7 大领域均衡覆盖（数学基础 29 / 代数 29 / 分析 29 / 几何与拓扑 29 / 概率与统计 28 / 离散数学 28 / 计算与优化 28），全库 22375 → 22575（含补充包共 23244）。类型：概念 125、定理 28、思路 14（含真实例子）、方法 14、推论 7（各域均 1 条，prereq 含父定理）、公式 6、算法 4、检验 2；level：L1 32、L2 56、L3 64、L4 43、L5 5，每域 L1–L2 均 ≥10 条；tags 核心 21（一般递归函数、亨金引理、哥德尔配对函数、内积、可逆矩阵定理、冯·戴克定理、复变函数的导数、皮卡存在定理、存在唯一性定理、基本群的同伦不变性、魏因加滕映射、球面三角形的面积公式、假设检验的功效、林德伯格-莱维定理、布莱克公式、顶点覆盖数、Mann 定理、信源编码定理、前向传播、塞亚引理、高斯-牛顿算法）、重要其余。分支只用已有分支名，未发明新分支；prereq 只指已入库 id，新条 prereq 零悬空、零指向本批 id。
+- 跨领域碰撞 +3（98 条）：谱定理×图的谱（AL31×DM59，对称矩阵对角化与图谱的同一机制）、欧拉公式×欧拉示性数（LV30375×GE16，同一个欧拉的两张面孔）、傅里叶变换×特征函数（AN21×PR32，频域语言在概率论的化身）。
+
+### 修正
+- 抽查 8 条旧条目（LV42420、LV42320、LV42220、LV42120、LV42020、LV41920、LV41820、LV41720）定义与公式逐条核对，7 条无明确错误未作改动；LV41720 普拉托问题补公式 H = 0（极小曲面平均曲率为零）。LV41820 的 domain_en "Computation & Optimization" 与库内 1470 条旧条一致，未动（domain_en 历史遗留多版本，不在本轮批量归一化）。
+
+### 验证
+- 中央复核：200 条 id 连续无断号（LV42428–LV42627）；全库中文精确名/中文归一化名/英文归一化名/英文词序名/补充包名/补充种子名/深表标题逐条查重。首轮拦下 24 条真撞车：代数 6 条（秩-零度定理撞 LV31678、Smith标准形撞 LV33413、若尔当-赫尔德定理撞 LV34002、K0群撞 LV32856、p群的中心非平凡撞 LV31703、通用包络代数撞 LV33625）、几何 1 条（三角形外角定理撞补充包 level_1）、概率 6 条（McNemar检验、Ornstein-Uhlenbeck过程、Pinsker不等式、Black-Scholes公式、Fisher-Tippett-Gnedenko定理、Marchenko-Pastur律）、离散 5 条（Gallai-Edmonds分解、Cauchy-Davenport定理、Sylvester-Gallai定理、Hilton-Milner定理、Chung-Graham-Wilson定理）、计算 6 条（克伦肖-柯蒂斯求积、张量列分解、汉密尔顿-雅可比-贝尔曼方程、拉克斯-米尔格拉姆定理、高斯-赛德尔迭代、莱文伯格-马夸特算法），均按原槽位（kind/level/tags 不变）换题并重验通过；其中多条是中英名不一致、仅英文归一化名撞车（如秩-零度定理 vs Rank-Nullity Theorem），分域自查的精确匹配漏检。终验零撞车、零悬空 prereq；长度合规（定义≤80字/例子≤60字/公式≤3 且无 LaTeX 命令写法）；3 条碰撞 id 存在且领域不同、无历史重复。
+- 合并用文本级追加（meta 只替换 version 与 concept_count 字符串、新条目逐行追加），避开字符串切尾拼接的旧坑；合并脚本与中央复核脚本存 goal hidden_files（merge_v1.17.11.py、verify_20261110.py）。
+- `python3 -m math_mcts info` 完整性自检通过（精选 22575 条，含补充包共 23244 条）；`tests/test_mcts.py` ALL TESTS PASSED；`tests/test_intuition.py` ALL INTUITION TESTS PASSED；`tests/test_deep_collision.py` ALL DEEP COLLISION TESTS PASSED。
+
 ## [1.17.10] - 2026-11-09
 
 ### 新增
